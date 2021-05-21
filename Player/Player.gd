@@ -27,6 +27,7 @@ onready var hurtSFX = $Sounds/Hurt
 var healthVigIntens = 0
 var vel := Vector2.ZERO
 var lastFramePos = Vector2.ZERO
+var walkParticles = preload("res://Player/WalkParticles.tscn")
 
 
 signal removeTile(mousePosition)
@@ -122,6 +123,14 @@ func _input(event):
 		backItemHolder.remove_child(back)
 		itemHolder.add_child(back)
 		back.set_logic(true)
+
+
+func add_walk_particles(spawnPos:Vector2):
+	var newDust = walkParticles.instance()
+	newDust.position = spawnPos
+	newDust.scale.x = -vel.normalized().x if vel.normalized().x != 0 else 1
+	newDust.emitting = true
+	add_child(newDust)
 
 
 func _on_death():
