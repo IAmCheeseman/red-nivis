@@ -1,0 +1,50 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Items/Weapons/Bodies/GunBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Weapons/Grips/grip1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Weapons/sliders/Slider2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/Weapons/sliders/Slider1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Items/Weapons/Barrels/Barrel10.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/Weapons/Sights/Sight2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Items/Weapons/Sights/Sight1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/Weapons/Barrels/Barrel1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Items/Weapons/Sights/Sight3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Items/Weapons/Sights/Sight4.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Items/Weapons/Grips/grip2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Items/Weapons/Barrels/Barrel6.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Items/Weapons/Barrels/Barrel7.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/Weapons/Sights/Sight5.tscn" type="PackedScene" id=14]
+
+[node name="GunBody" instance=ExtResource( 1 )]
+position = Vector2( 7, 0 )
+rarity = 2
+bulletSpawnDist = 19
+fullyAutomatic = true
+look = 16
+damage = 5.0
+recoil = 0.3
+cooldown = 0.1
+multishot = 1
+projSpeed = 430.0
+projScale = 0.4
+accuracy = 16.0
+kickUp = 15.0
+
+[node name="Sprite" parent="." index="0"]
+region_rect = Rect2( 5, 58, 8, 8 )
+
+[node name="Barrel" parent="." index="1"]
+position = Vector2( 3, -2 )
+whitelistedParts = [ ExtResource( 8 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 5 ) ]
+
+[node name="Grip" parent="." index="2"]
+position = Vector2( 4, 0 )
+whitelistedParts = [ ExtResource( 2 ), ExtResource( 11 ), ExtResource( 14 ) ]
+
+[node name="ReloadSlider" parent="." index="3"]
+position = Vector2( -0.999999, -4 )
+whitelistedParts = [ ExtResource( 4 ), ExtResource( 3 ) ]
+
+[node name="Sight" parent="." index="4"]
+position = Vector2( 3, -4 )
+whitelistedParts = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ) ]

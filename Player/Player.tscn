@@ -1,0 +1,339 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Player/player_sheet.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://UI/healthBar.png" type="Texture" id=3]
+[ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Canvas/vignette.png" type="Texture" id=5]
+[ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/NokiaCellphone.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Player/DeathScreen.gd" type="Script" id=8]
+[ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/camera.gd" type="Script" id=10]
+[ext_resource path="res://UI/healthBarUnder.png" type="Texture" id=11]
+[ext_resource path="res://Player/HealthBar.gd" type="Script" id=12]
+[ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Player/BackItemHolder.gd" type="Script" id=14]
+[ext_resource path="res://Player/Hit.wav" type="AudioStream" id=15]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float is_on : hint_range(0, 1);
+
+void fragment() {
+	vec4 pixel = texture(TEXTURE, UV);
+	pixel.rgb += vec3(1.0*is_on, 1.0*is_on, 1.0*is_on);
+
+	COLOR = pixel;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/is_on = 0.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 3.99999
+height = 4.37304
+
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScaleHelper:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.1, 0.9 ), Vector2( 0.9, 1.1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Run"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScaleHelper:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+uniform float darkness;
+uniform sampler2D vignette;
+
+void fragment() {
+	vec3 vignette_color = texture(vignette, UV).rgb;
+	vignette_color += darkness;
+	
+	COLOR.a -= vignette_color.r;
+	COLOR.rgb *= vec3(0, 0, 0);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/darkness = 0.051
+shader_param/vignette = ExtResource( 5 )
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+
+uniform float intensity : hint_range(0.0, 1.0);
+uniform sampler2D vignette;
+
+void fragment() {
+	vec3 vignetteColor = texture(vignette, UV).rgb;
+	vec4 finalColor = vec4(.6*intensity, .15, .15, (1.0-vignetteColor.r)*intensity);
+	
+	COLOR = finalColor;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/intensity = 0.0
+shader_param/vignette = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 7 )
+
+[sub_resource type="CapsuleShape2D" id=11]
+radius = 4.0
+height = 5.69744
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 4.0
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, -3 )
+collision_layer = 0
+script = ExtResource( 2 )
+maxSpeed = 90
+friction = 5.0
+recoveryTime = 2.0
+
+[node name="ScaleHelper" type="Node2D" parent="."]
+position = Vector2( 0, 5 )
+scale = Vector2( 0.919551, 1.08045 )
+
+[node name="Sprite" type="Sprite" parent="ScaleHelper"]
+material = SubResource( 2 )
+position = Vector2( 1.19209e-07, -4.72594 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -12.9142, -16.6892 )
+hframes = 17
+frame = 2
+
+[node name="Shadow" type="Sprite" parent="ScaleHelper/Sprite"]
+modulate = Color( 0, 0, 0, 0.498039 )
+material = SubResource( 2 )
+position = Vector2( -0.914194, 14.3108 )
+scale = Vector2( 1, -1 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -12, -12 )
+hframes = 17
+frame = 2
+
+[node name="BackItemHolder" type="Node2D" parent="ScaleHelper/Sprite"]
+show_behind_parent = true
+position = Vector2( -2.161, -0.825442 )
+rotation = -0.0999827
+scale = Vector2( 1.08749, 0.92554 )
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 5 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 4 )
+anims/Run = SubResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Vignette" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 7 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthThing" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 9 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="CanvasLayer/HealthThing"]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 3.1158
+margin_top = 3.37119
+margin_right = 43.1158
+margin_bottom = 17.3712
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "FPS: %s"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeathScreen" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="RichTextLabel" parent="CanvasLayer/DeathScreen"]
+margin_right = 300.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 100, 16 )
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 10 )
+bbcode_enabled = true
+bbcode_text = "[center][shake]Game Over[/shake]"
+text = "Game Over"
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DeathScreen"]
+margin_top = 20.0
+margin_right = 300.0
+margin_bottom = 36.0
+alignment = 1
+
+[node name="Continue" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
+margin_left = 77.0
+margin_right = 132.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+text = "Continue"
+flat = true
+
+[node name="Quit" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
+margin_left = 136.0
+margin_right = 223.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+text = "Quit to Desktop"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
+visible = false
+
+[node name="Hurtbox" parent="." groups=[
+"player",
+] instance=ExtResource( 4 )]
+collision_layer = 2
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( -1, -4 )
+shape = SubResource( 11 )
+
+[node name="HurtTimer" type="Timer" parent="Hurtbox"]
+one_shot = true
+
+[node name="ItemHolder" type="Node2D" parent="."]
+position = Vector2( 0, -3 )
+
+[node name="HealthBar" type="TextureProgress" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -13.0
+margin_top = -23.0
+margin_right = 13.0
+margin_bottom = -18.0
+value = 70.0
+texture_under = ExtResource( 11 )
+texture_progress = ExtResource( 3 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoftCollision" parent="." instance=ExtResource( 13 )]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2( 0, -3 )
+shape = SubResource( 12 )
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 15 )
+volume_db = -8.0
+
+[connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
+[connection signal="tween_all_completed" from="CanvasLayer/HealthThing/Tween" to="." method="_on_health_vig_tween_all_completed"]
+[connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/DeathScreen" method="_on_Continue_button_up"]
+[connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/DeathScreen" method="_on_Quit_button_up"]
+[connection signal="dead" from="Hurtbox" to="." method="_on_death"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_Hurtbox_hurt"]
+
+[editable path="Hurtbox"]
+[editable path="SoftCollision"]

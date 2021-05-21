@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Items/Weapons/Part.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Weapons/Sights/LaserSight.gd" type="Script" id=2]
+
+[node name="Part" instance=ExtResource( 1 )]
+rarity = 3
+look = 8
+spread = -20.0
+accuracy = -33.333
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 2 )
+offset = Vector2( 0.5, 0 )
+region_rect = Rect2( 39, 7, 7, 4 )
+
+[node name="LaserSight" type="Line2D" parent="." index="1"]
+position = Vector2( 1, 2.5 )
+points = PoolVector2Array( 3, -1, 380, -1 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+script = ExtResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="LaserSight" index="0"]
+enabled = true
+cast_to = Vector2( 999, 0 )

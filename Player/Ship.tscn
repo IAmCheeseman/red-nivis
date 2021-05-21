@@ -1,0 +1,295 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Player/Ship.gd" type="Script" id=1]
+[ext_resource path="res://Player/camera.gd" type="Script" id=2]
+[ext_resource path="res://Player/playerSpaceship.png" type="Texture" id=3]
+[ext_resource path="res://Ruins/Smoke.png" type="Texture" id=4]
+[ext_resource path="res://Space/PlanetGlow.png" type="Texture" id=5]
+[ext_resource path="res://UI/PlanetFinderPanel.png" type="Texture" id=6]
+[ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=7]
+[ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player/ShipDrive.wav" type="AudioStream" id=9]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.0912548, 0.250951, 0.737643, 1 )
+colors = PoolColorArray( 0.915039, 0.240174, 0.175144, 1, 0.875977, 0.540481, 0.19162, 1, 0.219727, 0.219727, 0.219727, 1, 0.770508, 0.770508, 0.770508, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 48.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 21.98
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+color_ramp = SubResource( 3 )
+anim_speed = 1.0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 6, 8 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "init"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlanetFinderPanel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -98, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlanetFinderPanel/ButtonPrompt:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlanetFinderPanel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -98, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlanetFinderPanel/ButtonPrompt:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlanetFinderPanel/ButtonPrompt:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 99, 0 ), Vector2( 99, -1 ), Vector2( 99, -1 ) ]
+}
+
+[node name="Ship" type="KinematicBody2D" groups=[
+"playerShip",
+]]
+collision_mask = 0
+script = ExtResource( 1 )
+maxSpeed = 7500
+accelaration = 4950.0
+rotationSpeed = 120
+
+[node name="JetSmoke" type="Particles2D" parent="."]
+material = SubResource( 1 )
+position = Vector2( 0, 8 )
+amount = 48
+local_coords = false
+process_material = SubResource( 4 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 5 )
+texture_scale = 0.1
+energy = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Drive" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 9 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlanetFinderPanel" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 0.36
+anchor_bottom = 1.0
+margin_left = -98.0
+margin_right = -98.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlanetFinderPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CanvasLayer/PlanetFinderPanel/VBoxContainer"]
+margin_top = -1.0
+margin_right = 108.0
+margin_bottom = 19.68
+rect_min_size = Vector2( 0, 20.68 )
+custom_fonts/font = ExtResource( 7 )
+text = "Planet Finder"
+align = 1
+valign = 1
+
+[node name="Visible" type="Button" parent="CanvasLayer/PlanetFinderPanel/VBoxContainer"]
+margin_top = 24.0
+margin_right = 108.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.388235, 0.388235, 0.388235, 1 )
+text = "Toggle Visible"
+flat = true
+
+[node name="Hub" type="Button" parent="CanvasLayer/PlanetFinderPanel/VBoxContainer"]
+margin_top = 44.0
+margin_right = 108.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.388235, 0.388235, 0.388235, 1 )
+text = "Hub"
+flat = true
+
+[node name="Sun" type="Button" parent="CanvasLayer/PlanetFinderPanel/VBoxContainer"]
+margin_top = 64.0
+margin_right = 108.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.388235, 0.388235, 0.388235, 1 )
+text = "Sun"
+flat = true
+
+[node name="Reg" type="Button" parent="CanvasLayer/PlanetFinderPanel/VBoxContainer"]
+margin_top = 84.0
+margin_right = 108.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.388235, 0.388235, 0.388235, 1 )
+text = "Grass"
+flat = true
+
+[node name="Fire" type="Button" parent="CanvasLayer/PlanetFinderPanel/VBoxContainer"]
+margin_top = 104.0
+margin_right = 108.0
+margin_bottom = 120.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.388235, 0.388235, 0.388235, 1 )
+text = "Fire"
+flat = true
+
+[node name="Acid" type="Button" parent="CanvasLayer/PlanetFinderPanel/VBoxContainer"]
+margin_top = 124.0
+margin_right = 108.0
+margin_bottom = 140.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.388235, 0.388235, 0.388235, 1 )
+text = "Acid"
+flat = true
+
+[node name="Water" type="Button" parent="CanvasLayer/PlanetFinderPanel/VBoxContainer"]
+margin_top = 144.0
+margin_right = 108.0
+margin_bottom = 160.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.388235, 0.388235, 0.388235, 1 )
+text = "Water"
+flat = true
+
+[node name="ButtonPrompt" type="Label" parent="CanvasLayer/PlanetFinderPanel"]
+margin_left = 99.0
+margin_top = -1.0
+margin_right = 108.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20.68 )
+custom_fonts/font = ExtResource( 7 )
+text = "Z"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlanetFinderAnim" type="AnimationPlayer" parent="CanvasLayer"]
+autoplay = "init"
+anims/init = SubResource( 6 )
+anims/show = SubResource( 7 )
+
+[node name="ButtonPrompt" type="AnimationPlayer" parent="CanvasLayer"]
+autoplay = "idle"
+anims/idle = SubResource( 8 )
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/PlanetFinderPanel/VBoxContainer/Visible" to="." method="change_planet_finder" binds= [ -1 ]]
+[connection signal="pressed" from="CanvasLayer/PlanetFinderPanel/VBoxContainer/Hub" to="." method="change_planet_finder" binds= [ 0 ]]
+[connection signal="pressed" from="CanvasLayer/PlanetFinderPanel/VBoxContainer/Sun" to="." method="change_planet_finder" binds= [ 5 ]]
+[connection signal="pressed" from="CanvasLayer/PlanetFinderPanel/VBoxContainer/Reg" to="." method="change_planet_finder" binds= [ 1 ]]
+[connection signal="pressed" from="CanvasLayer/PlanetFinderPanel/VBoxContainer/Fire" to="." method="change_planet_finder" binds= [ 2 ]]
+[connection signal="pressed" from="CanvasLayer/PlanetFinderPanel/VBoxContainer/Acid" to="." method="change_planet_finder" binds= [ 3 ]]
+[connection signal="pressed" from="CanvasLayer/PlanetFinderPanel/VBoxContainer/Water" to="." method="change_planet_finder" binds= [ 4 ]]

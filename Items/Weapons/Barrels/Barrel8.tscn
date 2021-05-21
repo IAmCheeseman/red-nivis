@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Items/Weapons/Part.tscn" type="PackedScene" id=1]
+
+[node name="Part" instance=ExtResource( 1 )]
+rarity = 2
+damage = 50.0
+recoil = 10.0
+projScale = -20.0
+spread = -21.0
+accuracy = -33.33
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 4, 1 )
+region_rect = Rect2( 21, 69, 8, 6 )

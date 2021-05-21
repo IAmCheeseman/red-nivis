@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Items/prefixeParticles.png" type="Texture" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id=2]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.269939, 11.4546 ), 0.0, 0.0, 0, 0, Vector2( 0.665644, -14.7273 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.0214724, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.880368, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -24.0266, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 6.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, -2, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle_curve = SubResource( 3 )
+scale_curve = SubResource( 5 )
+color = Color( 1, 1, 1, 0.666667 )
+anim_offset = 0.81
+
+[node name="Poison" type="Particles2D"]
+material = SubResource( 1 )
+lifetime = 7.0
+local_coords = false
+process_material = SubResource( 6 )
+texture = ExtResource( 1 )

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://WorldGeneration/planet.gd" type="Script" id=1]
+[ext_resource path="res://Tiles/AltGround/Rocks.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Tiles/Solids/RedStone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://WorldGeneration/Planets/FireAtmosphere.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Tiles/Ground/FireRocks.png" type="Texture" id=6]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+period = 42.0
+persistence = 0.611
+lacunarity = 3.02
+
+[sub_resource type="NoiseTexture" id=2]
+noise = SubResource( 1 )
+
+[resource]
+script = ExtResource( 1 )
+solidTiles = ExtResource( 3 )
+backgroundTiles = ExtResource( 2 )
+backgroundImage = ExtResource( 6 )
+atmosphereColor = Color( 0.65098, 0.317647, 0.317647, 1 )
+amosphereParticles = ExtResource( 5 )
+ruinChance = 6
+minRuinDist = 15
+ruinColor = Color( 0.52549, 0.0666667, 0.0666667, 1 )
+miniBiomes = [  ]
+size = 16
+chunkSize = 10
+noiseTexture = SubResource( 2 )
+minNoise = -0.1
+props = [  ]
+enemies = [  ]
+enemyChances = [  ]
+maxEnemies = 5

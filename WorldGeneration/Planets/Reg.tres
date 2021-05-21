@@ -1,0 +1,40 @@
+[gd_resource type="Resource" load_steps=12 format=2]
+
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/Bull/JumpingBull.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Tiles/AltGround/Grass.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tiles/Solids/RegSolid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://WorldGeneration/planet.gd" type="Script" id=5]
+[ext_resource path="res://Tiles/Ground/Grass.png" type="Texture" id=6]
+[ext_resource path="res://WorldGeneration/Planets/Assets/Cliffs/RegCliff1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/BigBull/BigJumpingBull.tscn" type="PackedScene" id=9]
+[ext_resource path="res://WorldGeneration/Minibiomes/RegPlanetMiniBiome1.tres" type="Resource" id=10]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 1
+octaves = 1
+period = 15.7
+persistence = 0.274
+lacunarity = 1.69
+
+[sub_resource type="NoiseTexture" id=2]
+noise = SubResource( 1 )
+
+[resource]
+script = ExtResource( 5 )
+solidTiles = ExtResource( 4 )
+backgroundTiles = ExtResource( 3 )
+backgroundImage = ExtResource( 6 )
+atmosphereColor = Color( 0.745098, 0.858824, 0.968627, 1 )
+ruinChance = 6
+minRuinDist = 15
+ruinColor = Color( 0.341176, 0.623529, 0.145098, 1 )
+miniBiomes = [ ExtResource( 10 ) ]
+size = 16
+chunkSize = 10
+noiseTexture = SubResource( 2 )
+minNoise = 0.1
+props = [ ExtResource( 1 ), ExtResource( 8 ) ]
+enemies = [ ExtResource( 2 ), ExtResource( 9 ) ]
+enemyChances = [ 5.0, 2.0 ]
+maxEnemies = 3

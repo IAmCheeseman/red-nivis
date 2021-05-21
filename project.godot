@@ -1,0 +1,202 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "BigJumpingBull",
+"language": "GDScript",
+"path": "res://Enemies/BigBull/BigJumpingBull.gd"
+}, {
+"base": "Node",
+"class": "DrunkWalker",
+"language": "GDScript",
+"path": "res://WorldGeneration/walker.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "EnemyBullet",
+"language": "GDScript",
+"path": "res://Enemies/EnemyBullet/EnemyBullet.gd"
+}, {
+"base": "Area2D",
+"class": "Hurtbox",
+"language": "GDScript",
+"path": "res://Colliders/Hurtbox.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "JumpingBull",
+"language": "GDScript",
+"path": "res://Enemies/Bull/Bull.gd"
+}, {
+"base": "Resource",
+"class": "Minibiome",
+"language": "GDScript",
+"path": "res://WorldGeneration/Minibiome.gd"
+}, {
+"base": "Resource",
+"class": "Planet",
+"language": "GDScript",
+"path": "res://WorldGeneration/planet.gd"
+}, {
+"base": "Resource",
+"class": "Prefix",
+"language": "GDScript",
+"path": "res://Items/Weapons/Prefixes.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Ruin",
+"language": "GDScript",
+"path": "res://Ruins/Ruins.gd"
+}, {
+"base": "Resource",
+"class": "RuinHandler",
+"language": "GDScript",
+"path": "res://Ruins/RuinHandler.gd"
+}, {
+"base": "Node2D",
+"class": "SoundManager",
+"language": "GDScript",
+"path": "res://SoundManager.gd"
+} ]
+_global_script_class_icons={
+"BigJumpingBull": "",
+"DrunkWalker": "",
+"EnemyBullet": "",
+"Hurtbox": "",
+"JumpingBull": "",
+"Minibiome": "",
+"Planet": "",
+"Prefix": "",
+"Ruin": "",
+"RuinHandler": "",
+"SoundManager": ""
+}
+
+[application]
+
+config/name="Astronaut Game"
+run/main_scene="res://UI/MainMenu.tscn"
+
+[autoload]
+
+GameManager="*res://GameManager.gd"
+Memory="*res://MemoryManager.gd"
+Settings="*res://settings.gd"
+
+[display]
+
+window/size/width=300
+window/size/height=300
+window/size/test_width=1200
+window/size/test_height=900
+window/vsync/use_vsync=false
+mouse_cursor/custom_image="res://Canvas/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 19, 19 )
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+move_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+remove_tile={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+toggle_fullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"unicode":0,"echo":false,"script":null)
+ ]
+}
+interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+use_item={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+spawnGun={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":76,"unicode":0,"echo":false,"script":null)
+ ]
+}
+swap_weapons={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+showPlanetFinder={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Enviorment"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+
+[rendering]
+
+2d/snapping/use_gpu_pixel_snap=true
+threads/thread_model=2
+quality/dynamic_fonts/use_oversampling=false

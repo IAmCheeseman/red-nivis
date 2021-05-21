@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Items/Weapons/Part.tscn" type="PackedScene" id=1]
+
+[node name="Part" instance=ExtResource( 1 )]
+position = Vector2( 3, 1 )
+look = -20
+damage = -10.0
+recoil = 20.0
+cooldown = 50.0
+multishot = 2
+projScale = -20.0
+spread = -10.0
+accuracy = 20.0
+
+[node name="Sprite" parent="." index="0"]
+offset = Vector2( 0.5, 0 )
+region_rect = Rect2( 33, 46, 9, 6 )
