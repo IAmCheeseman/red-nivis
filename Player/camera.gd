@@ -1,6 +1,7 @@
 extends Camera2D
 
-onready var tween = $Tween
+onready var offsetTween = $OffsetTween
+onready var rotTween = $RotTween
 onready var timer = $Timer
 
 
@@ -17,6 +18,7 @@ var sensitivity = 6
 # Screenshake
 var priority = -1
 var strength = 0
+var rotStrength
 var freq = 0
 var time = 0
 var shakeDir = Vector2.ZERO
@@ -42,7 +44,7 @@ func _process(_delta):
 
 
 # SCREENSHAKE
-func start(priority_=0, strength_=16, freq_=.1, time_=.25, dir=Vector2.ZERO):
+func start(priority_=0, strength_=16, freq_=.1, time_=.25, rotStrength_=12, dir=Vector2.ZERO):
 	# Check the priority so small actions don't overtake big ones
 	if priority > priority_:
 		return
@@ -52,29 +54,48 @@ func start(priority_=0, strength_=16, freq_=.1, time_=.25, dir=Vector2.ZERO):
 	freq = freq_
 	time = time_
 	shakeDir = dir
+	rotStrength = rotStrength_*Settings.screenshake
 
 	# Starting the screenshake
 	timer.start(time)
 	shake()
 
+
 func shake():
+	# Getting the direction
 	var dir 
 	if shakeDir == Vector2.ZERO:
 		dir = Vector2.RIGHT.rotated(rand_range(0, 360))*strength
 	else:
 		dir = shakeDir*strength
-
-	tween.interpolate_property(self, "offset", offset, dir, freq,
+	
+	# Getting the rotation
+	var rot = rand_range(-rotStrength, rotStrength)
+	if rot > 0: rot = rotStrength; else: rot = -rotStrength
+	
+	# Tweening the offset
+	offsetTween.interpolate_property(self, "offset", offset, dir, freq,
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tween.start()
-
+	offsetTween.start()
+	
+	# Tweening the rotation
+	rotTween.interpolate_property(self, "rotation_degrees", rotation_degrees, rot,
+	freq, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	rotTween.start()
 
 func _on_Tween_tween_all_completed():
 	# If timer is over, stop, and reset
 	if timer.is_stopped():
 		priority = -1
-		tween.interpolate_property(self, "offset", offset, Vector2.ZERO, freq,
+		
+		# Resetting the offset
+		offsetTween.interpolate_property(self, "offset", offset, Vector2.ZERO, freq,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
+		offsetTween.start()
+		
+		# Resetting the rotation
+		rotTween.interpolate_property(self, "rotation_degrees", rotation_degrees, 0,
+		freq, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		rotTween.start()
 		return
 	shake()
