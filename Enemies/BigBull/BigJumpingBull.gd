@@ -145,7 +145,7 @@ func _on_StateTimer_timeout():
 	if state == ATTACK:
 		state = BOUNCE
 		vel = global_position.direction_to(player.global_position)*(speed*1.4)
-	else: ATTACK
+	else: state = ATTACK
 	stateTimes.shuffle()
 	stateTimer.start(stateTimes[0])
 
