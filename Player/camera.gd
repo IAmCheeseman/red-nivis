@@ -16,8 +16,6 @@ var priority = -1
 var strength = 0
 var freq = 0
 var time = 0
-var isRandom = true
-var isBackwards = false
 
 
 func _ready():
@@ -34,49 +32,31 @@ func _process(_delta):
 	var newOffset = lerp(offset, dirMouse*mouseDist, lerpSpeed)
 	offset = newOffset
 
+
 # SCREENSHAKE
-func start(priority_=0, strength_=16, freq_=.1, time_=.25, isRandom_=true, isBackwards_=false):
+func start(priority_=0, strength_=16, freq_=.1, time_=.25):
 	if priority > priority_:
 		return
 	priority = priority_
 	strength = strength_
 	freq = freq_
 	time = time_
-	isRandom = isRandom_
-	isBackwards = isBackwards_
 
 	timer.start(time)
-	if isRandom:
-		shakeRandom()
-	else:
-		shake()
-
+	shake()
 
 func shake():
-	var shakeDir = global_position.direction_to(get_global_mouse_position())*strength
-	shakeDir -= (shakeDir*2)*int(!isBackwards)
-
-	tween.interpolate_property(self, "offset", offset, Vector2.ZERO+shakeDir, freq,
-	Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
-	tween.start()
-
-
-func shakeRandom():
 	var shakeDir = Vector2.RIGHT.rotated(rand_range(0, 360))*rand_range(1, strength)
 	tween.interpolate_property(self, "offset", offset, Vector2.ZERO+shakeDir, freq,
-	Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+	Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 
 
 func _on_Tween_tween_all_completed():
-	if timer.is_stopped() or !isRandom:
+	if timer.is_stopped():
 		priority = -1
-		tween.interpolate_property(self, "offset", offset, Vector2.ZERO, freq,
+		tween.interpolate_property(self, "offset", offset, Vector2.ZERO, .25,
 		Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
 		tween.start()
 		return
-
-	if isRandom:
-		shakeRandom()
-	else:
-		shake()
+	shake()

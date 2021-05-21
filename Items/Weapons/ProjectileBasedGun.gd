@@ -65,7 +65,8 @@ func shoot():
 
 		shootSound.play()
 	# Screenshake
-	GameManager.emit_signal("screenshake", 0, 16, .5, 10, false, true)
+	#priority_=0, strength_=16, freq_=.1, time_=.25, isRandom_=true, isBackwards_=false)
+	GameManager.emit_signal("screenshake", 0, 32, .1, .2)
 
 	var shell = load("res://Items/Weapons/Bullet/Shell.tscn").instance()
 	shell.global_position = global_position

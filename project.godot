@@ -93,8 +93,8 @@ Settings="*res://settings.gd"
 
 window/size/width=300
 window/size/height=300
-window/size/test_width=1200
-window/size/test_height=900
+window/size/test_width=600
+window/size/test_height=600
 window/vsync/use_vsync=false
 mouse_cursor/custom_image="res://Canvas/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2( 19, 19 )
