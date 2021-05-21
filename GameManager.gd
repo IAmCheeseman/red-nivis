@@ -7,6 +7,7 @@ var heldItem
 var heldItemStats
 
 
+# warning-ignore:unused_signal
 signal screenshake
 
 

@@ -35,7 +35,7 @@ var player : KinematicBody2D
 var world
 var vel = Vector2.ZERO
 var lastFramePos = Vector2.ZERO
-var state = WANDER setget set_state
+var state = WANDER
 var futurePosition = position
 var targetPosRot = 0
 
@@ -71,13 +71,6 @@ func _physics_process(delta):
 	move_and_slide(vel*delta)
 
 	AI(delta)
-
-
-func set_state(value):
-	state = value
-	if value == BOUNCE:
-		vel = global_position.direction_to(player.global_position)*(speed*2)
-
 
 func AI(delta):
 	if !player:
@@ -149,7 +142,10 @@ func _on_hurt():
 
 
 func _on_StateTimer_timeout():
-	state = BOUNCE if state == ATTACK else ATTACK
+	if state == ATTACK:
+		state = BOUNCE
+		vel = global_position.direction_to(player.global_position)*(speed*1.4)
+	else: ATTACK
 	stateTimes.shuffle()
 	stateTimer.start(stateTimes[0])
 

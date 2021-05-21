@@ -21,6 +21,7 @@ var isBackwards = false
 
 
 func _ready():
+# warning-ignore:return_value_discarded
 	GameManager.connect("screenshake", self, "start")
 
 
