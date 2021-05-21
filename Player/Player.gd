@@ -84,7 +84,7 @@ func _physics_process(delta):
 		backItemHolder.get_child(0).scale = Vector2.ONE
 
 	# Tilting the player in the direction they're moving
-	sprite.rotation_degrees = vel.x*tiltStrength
+	sprite.rotation_degrees = (vel.x*tiltStrength)*int(Settings.playerTilt)
 
 # warning-ignore:return_value_discarded
 	move_and_slide(vel*maxSpeed)

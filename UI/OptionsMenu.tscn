@@ -21,18 +21,18 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Center"]
-margin_left = 52.0
-margin_top = 122.0
-margin_right = 247.0
-margin_bottom = 178.0
+margin_left = 40.0
+margin_top = 120.0
+margin_right = 260.0
+margin_bottom = 180.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Center/VBoxContainer"]
-margin_right = 195.0
-margin_bottom = 36.0
+margin_right = 220.0
+margin_bottom = 40.0
 
 [node name="Buttons" type="VBoxContainer" parent="Center/VBoxContainer/HBoxContainer"]
-margin_right = 73.0
-margin_bottom = 36.0
+margin_right = 98.0
+margin_bottom = 40.0
 
 [node name="PixelPerfect" type="CheckButton" parent="Center/VBoxContainer/HBoxContainer/Buttons"]
 visible = false
@@ -48,7 +48,7 @@ text = "Pixel Perfect"
 flat = true
 
 [node name="Vignette" type="CheckButton" parent="Center/VBoxContainer/HBoxContainer/Buttons"]
-margin_right = 73.0
+margin_right = 98.0
 margin_bottom = 18.0
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 1 )
@@ -59,10 +59,23 @@ custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
 text = "Vignette"
 flat = true
 
+[node name="PlayerTilt" type="CheckButton" parent="Center/VBoxContainer/HBoxContainer/Buttons"]
+margin_top = 22.0
+margin_right = 98.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+text = "Player Tilting"
+flat = true
+
 [node name="Sliders" type="VBoxContainer" parent="Center/VBoxContainer/HBoxContainer"]
-margin_left = 77.0
-margin_right = 195.0
-margin_bottom = 36.0
+margin_left = 102.0
+margin_right = 220.0
+margin_bottom = 40.0
 custom_constants/separation = 12
 
 [node name="Screenshake" type="HBoxContainer" parent="Center/VBoxContainer/HBoxContainer/Sliders"]
@@ -114,9 +127,9 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="Center/VBoxContainer"]
-margin_top = 40.0
-margin_right = 195.0
-margin_bottom = 56.0
+margin_top = 44.0
+margin_right = 220.0
+margin_bottom = 60.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0.439216, 0, 0, 1 )
 custom_colors/font_color = Color( 0.815686, 0, 0, 1 )
@@ -127,6 +140,7 @@ flat = true
 
 [connection signal="toggled" from="Center/VBoxContainer/HBoxContainer/Buttons/PixelPerfect" to="." method="_on_PixelPerfect_toggled"]
 [connection signal="toggled" from="Center/VBoxContainer/HBoxContainer/Buttons/Vignette" to="." method="_on_Vignette_toggled"]
+[connection signal="toggled" from="Center/VBoxContainer/HBoxContainer/Buttons/PlayerTilt" to="." method="_on_PlayerTilt_toggled"]
 [connection signal="value_changed" from="Center/VBoxContainer/HBoxContainer/Sliders/Screenshake/HSlider" to="." method="_on_screenshake_value_changed"]
 [connection signal="value_changed" from="Center/VBoxContainer/HBoxContainer/Sliders/CameraLook/HSlider" to="." method="_on_cameralook_value_changed"]
 [connection signal="pressed" from="Center/VBoxContainer/Back" to="." method="_on_Play_pressed"]

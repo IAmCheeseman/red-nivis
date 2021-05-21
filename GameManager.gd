@@ -52,25 +52,26 @@ func _ready():
 
 
 func _on_screen_resized():
-	var new_window_size = OS.window_size
+	if Settings.pixelPerfect:
+		var new_window_size = OS.window_size
 
-	var scale_w = max(int(new_window_size.x / base_size.x), 1)
-	var scale_h = max(int(new_window_size.y / base_size.y), 1)
-	var scale = min(scale_w, scale_h)
+		var scale_w = max(int(new_window_size.x / base_size.x), 1)
+		var scale_h = max(int(new_window_size.y / base_size.y), 1)
+		var scale = min(scale_w, scale_h)
 
-	var diff = new_window_size - (base_size * scale)
-	var diffhalf = (diff * 0.5).floor()
+		var diff = new_window_size - (base_size * scale)
+		var diffhalf = (diff * 0.5).floor()
 
-	root.set_attach_to_screen_rect(Rect2(diffhalf, base_size * scale))
+		root.set_attach_to_screen_rect(Rect2(diffhalf, base_size * scale))
 
-	# Black bars to prevent flickering:
-	var odd_offset = Vector2(int(new_window_size.x) % 2, int(new_window_size.y) % 2)
+		# Black bars to prevent flickering:
+		var odd_offset = Vector2(int(new_window_size.x) % 2, int(new_window_size.y) % 2)
 
-# warning-ignore:narrowing_conversion
-# warning-ignore:narrowing_conversion
-	VisualServer.black_bars_set_margins(
-		max(diffhalf.x, 0), # prevent negative values, they make the black bars go in the wrong direction.
-		max(diffhalf.y, 0),
-		max(diffhalf.x, 0) + odd_offset.x,
-		max(diffhalf.y, 0) + odd_offset.y
-	)
+	# warning-ignore:narrowing_conversion
+	# warning-ignore:narrowing_conversion
+		VisualServer.black_bars_set_margins(
+			max(diffhalf.x, 0), # prevent negative values, they make the black bars go in the wrong direction.
+			max(diffhalf.y, 0),
+			max(diffhalf.x, 0) + odd_offset.x,
+			max(diffhalf.y, 0) + odd_offset.y
+		)
