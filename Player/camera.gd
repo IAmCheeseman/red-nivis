@@ -35,7 +35,7 @@ func _process(_delta):
 
 	var mousePosition = get_local_mouse_position()
 	var dirMouse = position.rotated(global_rotation).direction_to(mousePosition)
-	var mouseDist = position.distance_to(mousePosition)/sensitivity
+	var mouseDist = (position.distance_to(mousePosition)/sensitivity)*Settings.cameraLook
 	mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
 
 	position = lerp(position, dirMouse*mouseDist, lerpSpeed)
@@ -48,7 +48,7 @@ func start(priority_=0, strength_=16, freq_=.1, time_=.25, dir=Vector2.ZERO):
 		return
 	# Setting the properties
 	priority = priority_
-	strength = strength_
+	strength = strength_*Settings.screenshake
 	freq = freq_
 	time = time_
 	shakeDir = dir

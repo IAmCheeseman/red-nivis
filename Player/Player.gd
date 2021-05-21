@@ -36,6 +36,8 @@ func _ready():
 	# Making sure players cannot come back to life by leaving an area
 	if GameManager.isDead:
 		_on_death()
+	if !Settings.vignette:
+		vignette.queue_free()
 
 
 func process_input(delta) -> Vector2:

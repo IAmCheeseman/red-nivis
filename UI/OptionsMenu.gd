@@ -4,10 +4,20 @@ var dataManager = DataManager.new()
 
 
 func _ready():
+	var settingsData = dataManager.load_data("save.dat")
+	
+	if settingsData:
+		Settings.cameraLook = settingsData.cameraLook
+		Settings.vignette = settingsData.vignette
+		Settings.pixelPerfect = settingsData.pixelPerfect
+		Settings.screenshake = settingsData.screenshake
+	
 	$Center/VBoxContainer/HBoxContainer/Buttons/PixelPerfect.pressed = Settings.pixelPerfect
 	$Center/VBoxContainer/HBoxContainer/Buttons/Vignette.pressed = Settings.vignette
 	$Center/VBoxContainer/HBoxContainer/Sliders/Screenshake/HSlider.value = Settings.screenshake
 	$Center/VBoxContainer/HBoxContainer/Sliders/CameraLook/HSlider.value = Settings.cameraLook
+	
+	$Center/VBoxContainer/Back.set_focus_mode(Control.FOCUS_NONE)
 
 
 func _on_screenshake_value_changed(value):

@@ -5,8 +5,6 @@ onready var space = $Space
 onready var options = $CanvasLayer/OptionsMenu
 onready var buttons = $CanvasLayer/Buttons
 
-var dataManager = DataManager.new()
-
 func _ready():
 	var buttonContainer = $CanvasLayer/Buttons
 	for c in buttonContainer.get_children():
@@ -17,14 +15,7 @@ func _ready():
 	var useLandscape = bool(round(rand_range(0, 1)))
 	if useLandscape: landscape.queue_free()
 	else: space.queue_free()
-	
-	var settingsData = dataManager.load_data("save.dat")
-	
-	if settingsData:
-		Settings.cameraLook = settingsData.cameraLook
-		Settings.vignette = settingsData.vignette
-		Settings.pixelPerfect = settingsData.pixelPerfect
-		Settings.screenshake = settingsData.screenshake
+
 
 
 func _on_Quit_pressed():
