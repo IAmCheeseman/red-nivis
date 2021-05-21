@@ -24,39 +24,47 @@ func _ready():
 
 
 func _process(_delta):
+	# Finding out where the camera should be by
+	# getting the direction and distance to the mouse and
+	# lerping the position to the direction*distance
+
 	var mousePosition = get_local_mouse_position()
-	var dirMouse = position.direction_to(mousePosition)
+	var dirMouse = position.rotated(global_rotation).direction_to(mousePosition)
 	var mouseDist = position.distance_to(mousePosition)/sensitivity
 	mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
 
-	var newOffset = lerp(offset, dirMouse*mouseDist, lerpSpeed)
-	offset = newOffset
+	position = lerp(position, dirMouse*mouseDist, lerpSpeed)
 
 
 # SCREENSHAKE
 func start(priority_=0, strength_=16, freq_=.1, time_=.25):
+	# Check the priority so small actions don't overtake big ones
 	if priority > priority_:
 		return
+	# Setting the properties
 	priority = priority_
 	strength = strength_
 	freq = freq_
 	time = time_
 
+	# Starting the screenshake
 	timer.start(time)
 	shake()
 
 func shake():
-	var shakeDir = Vector2.RIGHT.rotated(rand_range(0, 360))*rand_range(1, strength)
-	tween.interpolate_property(self, "offset", offset, Vector2.ZERO+shakeDir, freq,
-	Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	var shakeDir = Vector2.RIGHT.rotated(rand_range(0, 360))*strength
+
+	tween.interpolate_property(self, "offset", offset, shakeDir, freq,
+	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
 
 func _on_Tween_tween_all_completed():
+	# If timer is over, stop, and reset
 	if timer.is_stopped():
 		priority = -1
-		tween.interpolate_property(self, "offset", offset, Vector2.ZERO, .25,
-		Tween.TRANS_LINEAR, Tween.EASE_OUT_IN)
+		tween.interpolate_property(self, "offset", offset, Vector2.ZERO, freq,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		tween.start()
 		return
 	shake()

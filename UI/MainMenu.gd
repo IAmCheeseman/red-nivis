@@ -9,6 +9,7 @@ func _ready():
 		c.set_focus_mode(Control.FOCUS_NONE)
 
 	randomize()
+# warning-ignore:narrowing_conversion
 	var useLandscape = bool(round(rand_range(0, 1)))
 	if useLandscape: landscape.queue_free()
 	else: space.queue_free()
