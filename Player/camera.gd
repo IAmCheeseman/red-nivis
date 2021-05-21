@@ -16,6 +16,7 @@ var priority = -1
 var strength = 0
 var freq = 0
 var time = 0
+var shakeDir = Vector2.ZERO
 
 
 func _ready():
@@ -37,7 +38,7 @@ func _process(_delta):
 
 
 # SCREENSHAKE
-func start(priority_=0, strength_=16, freq_=.1, time_=.25):
+func start(priority_=0, strength_=16, freq_=.1, time_=.25, dir=Vector2.ZERO):
 	# Check the priority so small actions don't overtake big ones
 	if priority > priority_:
 		return
@@ -46,15 +47,20 @@ func start(priority_=0, strength_=16, freq_=.1, time_=.25):
 	strength = strength_
 	freq = freq_
 	time = time_
+	shakeDir = dir
 
 	# Starting the screenshake
 	timer.start(time)
 	shake()
 
 func shake():
-	var shakeDir = Vector2.RIGHT.rotated(rand_range(0, 360))*strength
+	var dir 
+	if shakeDir == Vector2.ZERO:
+		dir = Vector2.RIGHT.rotated(rand_range(0, 360))*strength
+	else:
+		dir = shakeDir*strength
 
-	tween.interpolate_property(self, "offset", offset, shakeDir, freq,
+	tween.interpolate_property(self, "offset", offset, dir, freq,
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
 
