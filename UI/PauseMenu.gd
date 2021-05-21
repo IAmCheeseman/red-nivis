@@ -1,8 +1,10 @@
 extends Control
 
+export var useable = true
 
 func _ready():
 	hide()
+	if !useable: queue_free()
 
 
 func _input(event):
