@@ -128,7 +128,12 @@ func _input(event):
 func add_walk_particles(spawnPos:Vector2):
 	var newDust = walkParticles.instance()
 	newDust.position = spawnPos
-	newDust.scale.x = -vel.normalized().x if vel.normalized().x != 0 else 1
+	
+	# Making it look right
+	var normalizedVelX = vel.normalized().x
+	if normalizedVelX != 0: newDust.scale.x = -normalizedVelX
+	else: newDust.rotation_degrees = 300
+	
 	newDust.emitting = true
 	add_child(newDust)
 
