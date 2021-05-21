@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Tiles/AltGround/Grass.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Tiles/Solids/RegSolid.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Tiles/Ground/Grass.png" type="Texture" id=6]
+[ext_resource path="res://UI/OptionsMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Space/SpaceTile.png" type="Texture" id=9]
 [ext_resource path="res://Player/Ship.tscn" type="PackedScene" id=10]
@@ -72,10 +73,10 @@ position = Vector2( 150, 150 )
 [node name="Camera" parent="Space/Ship" index="2"]
 current = false
 
-[node name="PlanetFinderPanel" parent="Space/Ship/CanvasLayer" index="0"]
+[node name="PlanetFinderPanel" parent="Space/Ship/CanvasLayer" index="1"]
 visible = false
 
-[node name="PauseMenu" parent="Space/Ship/CanvasLayer" index="3"]
+[node name="PauseMenu" parent="Space/Ship/CanvasLayer" index="4"]
 useable = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -141,7 +142,6 @@ custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
-disabled = true
 text = "Options"
 flat = true
 align = 0
@@ -159,8 +159,12 @@ text = "Quit to Desktop"
 flat = true
 align = 0
 
+[node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
+
 [connection signal="pressed" from="CanvasLayer/Buttons/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/Feedback" to="." method="_on_Feedback_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/Quit" to="." method="_on_Quit_pressed"]
 
 [editable path="Landscape/Player"]

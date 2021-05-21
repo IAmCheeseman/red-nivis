@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/CheckButtons.tres" type="Theme" id=2]
+[ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=3]
+
+[node name="OptionsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 1018, -189 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Center"]
+margin_left = 42.0
+margin_top = 120.0
+margin_right = 258.0
+margin_bottom = 180.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Center/VBoxContainer"]
+margin_right = 216.0
+margin_bottom = 40.0
+
+[node name="Buttons" type="VBoxContainer" parent="Center/VBoxContainer/HBoxContainer"]
+margin_right = 94.0
+margin_bottom = 40.0
+
+[node name="PixelPerfect" type="CheckButton" parent="Center/VBoxContainer/HBoxContainer/Buttons"]
+margin_right = 94.0
+margin_bottom = 18.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+text = "Pixel Perfect"
+flat = true
+
+[node name="Vignette" type="CheckButton" parent="Center/VBoxContainer/HBoxContainer/Buttons"]
+margin_top = 22.0
+margin_right = 94.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+text = "Vignette"
+flat = true
+
+[node name="Sliders" type="VBoxContainer" parent="Center/VBoxContainer/HBoxContainer"]
+margin_left = 98.0
+margin_right = 216.0
+margin_bottom = 40.0
+custom_constants/separation = 12
+
+[node name="Screenshake" type="HBoxContainer" parent="Center/VBoxContainer/HBoxContainer/Sliders"]
+margin_right = 118.0
+margin_bottom = 14.0
+custom_constants/separation = 6
+
+[node name="Label" type="Label" parent="Center/VBoxContainer/HBoxContainer/Sliders/Screenshake"]
+margin_right = 62.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 14 )
+custom_fonts/font = ExtResource( 1 )
+text = "Screenshake"
+valign = 2
+
+[node name="HSlider" type="HSlider" parent="Center/VBoxContainer/HBoxContainer/Sliders/Screenshake"]
+margin_left = 68.0
+margin_right = 118.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 0, 10 )
+theme = ExtResource( 2 )
+max_value = 2.0
+step = 0.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CameraLook" type="HBoxContainer" parent="Center/VBoxContainer/HBoxContainer/Sliders"]
+margin_top = 26.0
+margin_right = 118.0
+margin_bottom = 36.0
+
+[node name="Label" type="Label" parent="Center/VBoxContainer/HBoxContainer/Sliders/CameraLook"]
+margin_right = 64.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 1 )
+text = "Camera Look"
+
+[node name="HSlider" type="HSlider" parent="Center/VBoxContainer/HBoxContainer/Sliders/CameraLook"]
+margin_left = 68.0
+margin_right = 118.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 0, 10 )
+theme = ExtResource( 2 )
+max_value = 1.0
+step = 0.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="Center/VBoxContainer"]
+margin_top = 44.0
+margin_right = 216.0
+margin_bottom = 60.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.439216, 0, 0, 1 )
+custom_colors/font_color = Color( 0.815686, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.635294, 0, 0, 1 )
+enabled_focus_mode = 0
+text = "Back"
+flat = true
+
+[connection signal="toggled" from="Center/VBoxContainer/HBoxContainer/Buttons/PixelPerfect" to="." method="_on_PixelPerfect_toggled"]
+[connection signal="toggled" from="Center/VBoxContainer/HBoxContainer/Buttons/Vignette" to="." method="_on_Vignette_toggled"]
+[connection signal="value_changed" from="Center/VBoxContainer/HBoxContainer/Sliders/Screenshake/HSlider" to="." method="_on_screenshake_value_changed"]
+[connection signal="value_changed" from="Center/VBoxContainer/HBoxContainer/Sliders/CameraLook/HSlider" to="." method="_on_cameralook_value_changed"]
+[connection signal="pressed" from="Center/VBoxContainer/Play" to="." method="_on_Play_pressed"]

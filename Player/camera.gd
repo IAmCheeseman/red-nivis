@@ -4,6 +4,9 @@ onready var tween = $Tween
 onready var timer = $Timer
 
 
+export var mouseWeight = true
+
+
 # Mouse movement
 var lerpSpeed = 1
 var maxOffset = 32
@@ -22,6 +25,7 @@ var shakeDir = Vector2.ZERO
 func _ready():
 # warning-ignore:return_value_discarded
 	GameManager.connect("screenshake", self, "start")
+	if !mouseWeight: set_process(false)
 
 
 func _process(_delta):

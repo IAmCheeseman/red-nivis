@@ -132,6 +132,7 @@ texture = ExtResource( 4 )
 texture = ExtResource( 3 )
 
 [node name="Camera" parent="." instance=ExtResource( 2 )]
+mouseWeight = false
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 5 )
@@ -147,6 +148,14 @@ shape = SubResource( 5 )
 stream = ExtResource( 9 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Vignette" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource( 10 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PlanetFinderPanel" type="TextureRect" parent="CanvasLayer"]
 anchor_right = 0.36
@@ -284,14 +293,6 @@ anims/idle = SubResource( 8 )
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 8 )]
 visible = false
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = ExtResource( 10 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="CanvasLayer/PlanetFinderPanel/VBoxContainer/Visible" to="." method="change_planet_finder" binds= [ -1 ]]
 [connection signal="pressed" from="CanvasLayer/PlanetFinderPanel/VBoxContainer/Hub" to="." method="change_planet_finder" binds= [ 0 ]]

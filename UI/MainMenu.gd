@@ -2,6 +2,10 @@ extends Control
 
 onready var landscape = $Landscape
 onready var space = $Space
+onready var options = $CanvasLayer/OptionsMenu
+onready var buttons = $CanvasLayer/Buttons
+
+var dataManager = DataManager.new()
 
 func _ready():
 	var buttonContainer = $CanvasLayer/Buttons
@@ -13,6 +17,14 @@ func _ready():
 	var useLandscape = bool(round(rand_range(0, 1)))
 	if useLandscape: landscape.queue_free()
 	else: space.queue_free()
+	
+	var settingsData = dataManager.load_data("save.dat")
+	
+	if settingsData:
+		Settings.cameraLook = settingsData.cameraLook
+		Settings.vignette = settingsData.vignette
+		Settings.pixelPerfect = settingsData.pixelPerfect
+		Settings.screenshake = settingsData.screenshake
 
 
 func _on_Quit_pressed():
@@ -27,3 +39,8 @@ func _on_Play_pressed():
 func _on_Feedback_pressed():
 # warning-ignore:return_value_discarded
 	OS.shell_open("https://forms.gle/Fi7mr6HH6zgAHs4e8")
+
+
+func _on_Options_pressed():
+	buttons.hide()
+	options.show()
