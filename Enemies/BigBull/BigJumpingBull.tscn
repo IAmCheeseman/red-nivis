@@ -272,7 +272,7 @@ frame = 12
 
 [node name="Shadow" type="Sprite" parent="ScaleHelper/Sprite"]
 modulate = Color( 0, 0, 0, 0.498039 )
-position = Vector2( 0, 55.5 )
+position = Vector2( 0, 64 )
 scale = Vector2( 1, -1 )
 texture = ExtResource( 2 )
 hframes = 13
