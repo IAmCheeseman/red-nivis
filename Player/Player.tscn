@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Player/BackItemHolder.gd" type="Script" id=14]
 [ext_resource path="res://Player/Hit.wav" type="AudioStream" id=15]
+[ext_resource path="res://Player/Vignette.tres" type="Material" id=16]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -94,7 +95,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=6]
 resource_name = "flash"
 length = 0.1
 tracks/0/type = "value"
@@ -110,27 +111,14 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Shader" id=6]
-code = "shader_type canvas_item;
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 4.0
+height = 5.69744
 
-uniform float darkness;
-uniform sampler2D vignette;
+[sub_resource type="CircleShape2D" id=13]
+radius = 4.0
 
-void fragment() {
-	vec3 vignette_color = texture(vignette, UV).rgb;
-	vignette_color += darkness;
-	
-	COLOR.a -= vignette_color.r;
-	COLOR.rgb *= vec3(0, 0, 0);
-}
-"
-
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
-shader_param/darkness = 0.051
-shader_param/vignette = ExtResource( 5 )
-
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
 
 uniform float intensity : hint_range(0.0, 1.0);
@@ -144,20 +132,13 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
 shader_param/intensity = 0.0
 shader_param/vignette = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=11]
 font_data = ExtResource( 7 )
-
-[sub_resource type="CapsuleShape2D" id=11]
-radius = 4.0
-height = 5.69744
-
-[sub_resource type="CircleShape2D" id=12]
-radius = 4.0
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, -3 )
@@ -212,13 +193,55 @@ anims/Idle = SubResource( 4 )
 anims/Run = SubResource( 5 )
 
 [node name="Flash" type="AnimationPlayer" parent="."]
-anims/flash = SubResource( 13 )
+anims/flash = SubResource( 6 )
+
+[node name="Hurtbox" parent="." groups=[
+"player",
+] instance=ExtResource( 4 )]
+collision_layer = 2
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( -1, -4 )
+shape = SubResource( 12 )
+
+[node name="HurtTimer" type="Timer" parent="Hurtbox"]
+one_shot = true
+
+[node name="ItemHolder" type="Node2D" parent="."]
+position = Vector2( 0, -3 )
+
+[node name="HealthBar" type="TextureProgress" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -13.0
+margin_top = -23.0
+margin_right = 13.0
+margin_bottom = -18.0
+value = 70.0
+texture_under = ExtResource( 11 )
+texture_progress = ExtResource( 3 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoftCollision" parent="." instance=ExtResource( 13 )]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2( 0, -3 )
+shape = SubResource( 13 )
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 15 )
+volume_db = -8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
 [node name="Vignette" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 7 )
+material = ExtResource( 16 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -226,7 +249,7 @@ __meta__ = {
 }
 
 [node name="HealthThing" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 9 )
+material = SubResource( 10 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -261,7 +284,7 @@ margin_right = 300.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 10 )
+custom_fonts/normal_font = SubResource( 11 )
 bbcode_enabled = true
 bbcode_text = "[center][shake]Game Over[/shake]"
 text = "Game Over"
@@ -303,54 +326,12 @@ __meta__ = {
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
 visible = false
 
-[node name="Hurtbox" parent="." groups=[
-"player",
-] instance=ExtResource( 4 )]
-collision_layer = 2
-collision_mask = 2147483648
-
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( -1, -4 )
-shape = SubResource( 11 )
-
-[node name="HurtTimer" type="Timer" parent="Hurtbox"]
-one_shot = true
-
-[node name="ItemHolder" type="Node2D" parent="."]
-position = Vector2( 0, -3 )
-
-[node name="HealthBar" type="TextureProgress" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = -13.0
-margin_top = -23.0
-margin_right = 13.0
-margin_bottom = -18.0
-value = 70.0
-texture_under = ExtResource( 11 )
-texture_progress = ExtResource( 3 )
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SoftCollision" parent="." instance=ExtResource( 13 )]
-
-[node name="CollisionShape2D" parent="SoftCollision" index="0"]
-position = Vector2( 0, -3 )
-shape = SubResource( 12 )
-
-[node name="Sounds" type="Node2D" parent="."]
-
-[node name="Hurt" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 15 )
-volume_db = -8.0
-
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
+[connection signal="dead" from="Hurtbox" to="." method="_on_death"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_Hurtbox_hurt"]
 [connection signal="tween_all_completed" from="CanvasLayer/HealthThing/Tween" to="." method="_on_health_vig_tween_all_completed"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/DeathScreen" method="_on_Continue_button_up"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/DeathScreen" method="_on_Quit_button_up"]
-[connection signal="dead" from="Hurtbox" to="." method="_on_death"]
-[connection signal="hurt" from="Hurtbox" to="." method="_on_Hurtbox_hurt"]
 
 [editable path="Hurtbox"]
 [editable path="SoftCollision"]
