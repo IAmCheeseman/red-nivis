@@ -7,7 +7,7 @@ func _ready():
 	var buttonContainer = $CanvasLayer/Buttons
 	for c in buttonContainer.get_children():
 		c.set_focus_mode(Control.FOCUS_NONE)
-	
+
 	randomize()
 	var useLandscape = bool(round(rand_range(0, 1)))
 	if useLandscape: landscape.queue_free()

@@ -9,7 +9,7 @@
 [ext_resource path="res://UI/NokiaCellphone.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Player/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Player/camera.gd" type="Script" id=10]
+[ext_resource path="res://Camera.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/healthBarUnder.png" type="Texture" id=11]
 [ext_resource path="res://Player/HealthBar.gd" type="Script" id=12]
 [ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=13]
@@ -188,9 +188,7 @@ position = Vector2( 0, 5 )
 rotation = 1.5708
 shape = SubResource( 3 )
 
-[node name="Camera" type="Camera2D" parent="."]
-current = true
-script = ExtResource( 10 )
+[node name="Camera" parent="." instance=ExtResource( 10 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"

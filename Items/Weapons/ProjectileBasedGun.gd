@@ -26,10 +26,10 @@ func _physics_process(delta):
 		get_parent().scale.y = 1
 
 	get_parent().get_parent().show_behind_parent = local.y < 0
-	
+
 	body = get_parent().get_node("Pivot/GunBody")
 	body.rotation_degrees = lerp(body.rotation_degrees, 0, 4*delta)
-	
+
 	pivot.look_at(get_global_mouse_position())
 	if stats.fullyAutomatic:
 		if Input.is_action_pressed("use_item") and get_parent().canShoot:
@@ -41,30 +41,32 @@ func _physics_process(delta):
 
 func shoot():
 	randomize()
-	
+
 	for i in stats.multishot:
 		var dir = global_position.direction_to(get_global_mouse_position())
 		var spread = deg2rad(stats.spread*i-(stats.spread*(stats.multishot-1)/2))
 		var accuracy = deg2rad(rand_range(-stats.accuracy, stats.accuracy))
 		dir = dir.rotated(spread+accuracy)
 		var newBullet = bullet.instance()
-		
+
 		newBullet.direction = dir.normalized()
 		newBullet.speed = stats.projSpeed+rand_range(-30, 30)
 		newBullet.scale = Vector2.ONE*stats.projScale
 		newBullet.peircing = stats.peircing
-		
+
 		newBullet.global_position = global_position+dir*stats.bulletSpawnDist
 		get_tree().root.get_child(3).add_child(newBullet)
 		newBullet.hitbox.damage = stats.damage
-		
+
 		body.rotation_degrees = -stats.kickUp
-		
+
 		get_parent().canShoot = false
 		cooldownTimer.start(stats.cooldown)
 
 		shootSound.play()
-	
+	# Screenshake
+	GameManager.emit_signal("screenshake", 0, 16, .5, 10, false, true)
+
 	var shell = load("res://Items/Weapons/Bullet/Shell.tscn").instance()
 	shell.global_position = global_position
 	shell.dist = rand_range(16, 32)

@@ -50,10 +50,10 @@ func _ready():
 		randomize()
 		gunLogic.set_physics_process(false)
 		rotation_degrees = rand_range(0, 360)
-		
-		
+
+
 		# Selecting the gun body
-		
+
 		bodies.shuffle()
 		var newBody = load(bodies[0]).instance()
 		var loops = 0
@@ -64,35 +64,35 @@ func _ready():
 
 		pivot.add_child(newBody)
 		body = newBody
-		
-		
+
+
 		# Setting the gun stats
 		stats = body.get_stats()
 		stats.body = bodies[0]
-		
-		
+
+
 		# Adding Parts
-		
+
 		# Adding the over barrel attachment, such as a scope
 		var useOverBarrelAttach = rand_range(0, 2)
 		if useOverBarrelAttach <= 1:
 			var overBarrelPosition = body.get_node("Sight")
 			add_part_with_stats(overBarrelPosition, "sight")
-		
+
 		var useGrip = rand_range(0, 2)
 		if useGrip <= 1:
 			var gripPosition = body.get_node("Grip")
 			add_part_with_stats(gripPosition, "grip")
-		
+
 		var useSlider = rand_range(0, 2)
 		if useSlider <= 1:
 			var slider = body.get_node("ReloadSlider")
 			add_part_with_stats(slider, "slider")
-		
+
 		var barrel = body.get_node("Barrel")
 		add_part_with_stats(barrel, "barrel")
-		
-		
+
+
 		# Adjusting stats
 		stats.damage += stats.projSpeed/80*stats.projScale/5
 		stats.accuracy -= stats.projSpeed/90
@@ -101,17 +101,17 @@ func _ready():
 		stats.look += 8*int( (stats.peircing and stats.projSpeed>430) or stats.isHitscan)
 		stats.cooldown = clamp(stats.cooldown, .1, INF)
 		# DON'T USE MULTISHOT IN HITSCAN SCRIPT
-		
-		
+
+
 		set_gun_logic()
-		
+
 	else:
 		pickUpArea.queue_free()
 		tooltipHolder.queue_free()
-		
+
 		var newBody = load(stats.body).instance()
 		pivot.add_child(newBody)
-		
+
 		var overBarrelPosition = newBody.get_node("Sight")
 # warning-ignore:shadowed_variable
 		var grip = newBody.get_node("Grip")
@@ -132,11 +132,11 @@ func setTooltips():
 	description += " Damage: %s\n" % stepify(stats.damage, .1)
 	description += " Cooldown: %s\n" % stepify(stats.cooldown, .1)
 	description += " Accuracy: %s" % stepify(stats.accuracy, .1) if stats.accuracy > 0 else " Accuracy: %s" % -stepify(stats.accuracy, .1)
-	
+
 	if stats.multishot > 1:
 		description += "\n Multishot: %s\n" % stats.multishot
 		description += " Spread: %s" % stepify(stats.spread, .1)
-		
+
 	tooltips.text = description
 
 
@@ -150,26 +150,26 @@ func add_part_with_stats(partPos : Position2D, statsName : String):
 	var whitelist = partPos.whitelistedParts
 	if whitelist.size() > 0:
 		var newPart = get_part(whitelist)
-			
+
 		var partStats = newPart.get_stats()
-		
+
 		for stat in partStats.keys():
 			if stats[stat] is int:
 				stats[stat] += partStats[stat]
 				stats[stat] = clamp(stats[stat], 0, INF)
 				stats[statsName] = whitelist[0]
 				continue
-				
+
 			elif stats[stat] is float:
 				var addAmount
 				if partStats[stat] < 0:
 					addAmount = -GameManager.percentage_from(-partStats[stat], stats[stat])
-				else: 
+				else:
 					addAmount = GameManager.percentage_from(partStats[stat], stats[stat])
 				stats[stat] += addAmount
 				stats[stat] = clamp(stats[stat], 0, INF)
 		stats[statsName] = whitelist[0]
-		
+
 		partPos.add_child(newPart)
 
 
@@ -196,7 +196,7 @@ func set_active():
 	gunLogic.cooldownTimer = $Cooldown
 	gunLogic.shootSound = $ShootSound
 	gunLogic.set_physics_process(true)
-	
+
 	var gripP = $Pivot/GunBody/Grip
 	if gripP.get_child_count() == 1:
 		grip = gripP.get_child(0)

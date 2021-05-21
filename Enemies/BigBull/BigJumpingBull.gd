@@ -17,7 +17,7 @@ const stateTimes = [
 export var speed := 850
 export var maxHealth := 4
 export var sightDist := 16*6
-export var acceleration = 2.0 
+export var acceleration = 2.0
 export var friction := 1.5
 
 onready var sightLine = $Sight
@@ -55,28 +55,28 @@ func _physics_process(delta):
 		vel = Vector2.ZERO
 		if state == BOUNCE:
 			state = ATTACK
-	
+
 	var distPlayer = global_position.distance_to(player.global_position)
-		
+
 	if distPlayer >= 16*35:
 		world.enemyCount -= 1
 		queue_free()
-	
+
 	var pushVector = softCollision.get_push_vector()
 	vel += pushVector*(float(speed)/5)
-	
+
 # warning-ignore:return_value_discarded
 	move_and_slide(vel*delta)
 
 	AI(delta)
-	
+
 
 
 func jump():
 	var randomness = Vector2(rand_range(-32, 32), rand_range(-32, 32))
 	var dir = global_position.direction_to(player.global_position+randomness)*speed
 	if rand_range(0, 5) <= 1:
-		dir = -dir 
+		dir = -dir
 	vel = dir
 
 
@@ -90,9 +90,9 @@ func set_state(value):
 func AI(delta):
 	if !player:
 		return
-	
+
 	sightLine.cast_to = player.global_position-global_position
-	
+
 	match state:
 		WANDER:
 			wanderState(delta)
@@ -106,7 +106,7 @@ func bounceState(_delta):
 	animationPlayer.play("Roll")
 	shadow.global_position = sprite.global_position
 	shadow.global_position.y -= sprite.position.y*2
-	
+
 	if stateTimer.is_stopped():
 		stateTimes.shuffle()
 		stateTimer.start(stateTimes[0])
@@ -115,24 +115,24 @@ func bounceState(_delta):
 func attackState(_delta):
 	animationPlayer.play("Run")
 	sprite.scale.x = -1 if vel.x > 0 else 1
-	
+
 	if stateTimer.is_stopped():
 		stateTimes.shuffle()
 		stateTimer.start(stateTimes[0])
-	
+
 	var canSeePlayer = !sightLine.is_colliding()
 	if !canSeePlayer:
 		state = WANDER
-	
+
 
 
 func wanderState(delta):
 	vel = vel.move_toward(Vector2.ZERO, friction*delta)
 	animationPlayer.play("Idle")
-	
+
 	var canSeePlayer = !sightLine.is_colliding()
 	if canSeePlayer:
-		
+
 		if global_position.distance_to(player.position) < sightDist:
 			state = ATTACK
 
@@ -150,7 +150,7 @@ func _on_StateTimer_timeout():
 	state = BOUNCE if state == ATTACK else ATTACK
 	stateTimes.shuffle()
 	stateTimer.start(stateTimes[0])
-	
+
 
 
 
