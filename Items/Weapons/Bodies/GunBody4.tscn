@@ -28,7 +28,7 @@ cooldown = 1.2
 multishot = 17
 projSpeed = 330.0
 projScale = 0.3
-spread = 1.0
+spread = 0.1
 accuracy = 14.0
 kickUp = 36.0
 

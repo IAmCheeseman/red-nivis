@@ -15,7 +15,7 @@
 [ext_resource path="res://Items/Weapons/Sights/Sight5.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Items/Weapons/Grips/grip3.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Items/Weapons/Barrels/Barrel10.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Items/Weapons/Sounds/ShootDefualt2.wav" type="AudioStream" id=16]
+[ext_resource path="res://Items/Weapons/Sounds/ShootDefualt3.wav" type="AudioStream" id=16]
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/Bullet2.png" type="Texture" id=17]
 [ext_resource path="res://Items/Weapons/Bullet/Lights/bulletLight2.png" type="Texture" id=18]
 
