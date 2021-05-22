@@ -8,17 +8,22 @@ export(String, "Master", "Ambient", "Music", "SFX") var bus = 0
 
 
 func play():
+	# Creating the audio player
+
 	var newAudioPlayer
 	match directional:
 		true:
 			newAudioPlayer = AudioStreamPlayer2D.new()
 		false:
 			newAudioPlayer = AudioStreamPlayer.new()
+
+	# Setting parameters
 	newAudioPlayer.stream = audio
 	newAudioPlayer.bus = bus
 	newAudioPlayer.autoplay = true
 	newAudioPlayer.volume_db = volumeMod
 	newAudioPlayer.connect("finished", self, "_on_audio_finished", [newAudioPlayer])
+
 	add_child(newAudioPlayer)
 
 
