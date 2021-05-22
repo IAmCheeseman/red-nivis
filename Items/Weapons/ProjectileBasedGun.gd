@@ -82,7 +82,7 @@ func shoot():
 	# Getting the parameters
 	var strength = 8*GameManager.percentage_from(10, stats.damage)
 	strength *= stats.cooldown+.3
-	var freq = .1#clamp(stats.damage/100, .1, .1)
+	var freq = clamp(stats.damage/1000, .1, .1)
 	var direction = -global_position.direction_to(get_global_mouse_position())
 	
 	# Shaking the camera
