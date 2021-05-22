@@ -57,6 +57,9 @@ position = Vector2( 152.433, 166.853 )
 [node name="Camera" parent="Landscape/Player" index="2"]
 current = false
 
+[node name="PauseMenu" parent="Landscape/Player/CanvasLayer" index="4"]
+useable = false
+
 [node name="Space" type="Node2D" parent="."]
 
 [node name="Background" type="TextureRect" parent="Space"]

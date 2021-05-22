@@ -63,21 +63,21 @@ func start(priority_=0, strength_=16, freq_=.1, time_=.25, rotStrength_=12, dir=
 
 func shake():
 	# Getting the direction
-	var dir 
+	var dir
 	if shakeDir == Vector2.ZERO:
 		dir = Vector2.RIGHT.rotated(rand_range(0, 360))*strength
 	else:
 		dir = shakeDir*strength
-	
+
 	# Getting the rotation
 	var rot = rand_range(-rotStrength, rotStrength)
 	if rot > 0: rot = rotStrength; else: rot = -rotStrength
-	
+
 	# Tweening the offset
 	offsetTween.interpolate_property(self, "offset", offset, dir, freq,
 	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	offsetTween.start()
-	
+
 	# Tweening the rotation
 	rotTween.interpolate_property(self, "rotation_degrees", rotation_degrees, rot,
 	freq, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -87,12 +87,12 @@ func _on_Tween_tween_all_completed():
 	# If timer is over, stop, and reset
 	if timer.is_stopped():
 		priority = -1
-		
+
 		# Resetting the offset
 		offsetTween.interpolate_property(self, "offset", offset, Vector2.ZERO, freq,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		offsetTween.start()
-		
+
 		# Resetting the rotation
 		rotTween.interpolate_property(self, "rotation_degrees", rotation_degrees, 0,
 		freq, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
