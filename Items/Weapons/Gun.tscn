@@ -45,7 +45,7 @@ material = SubResource( 2 )
 
 [node name="ShootSound" parent="." instance=ExtResource( 2 )]
 audio = ExtResource( 3 )
-volumeMod = -20.0
+volumeMod = -10.0
 bus = "SFX"
 
 [connection signal="area_entered" from="PickUpArea" to="." method="_on_PickUpArea_area_entered"]

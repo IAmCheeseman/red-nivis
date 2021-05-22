@@ -8,14 +8,14 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.764085 )
 colors = PoolColorArray( 0.255859, 0.155516, 0.113937, 1, 0.443359, 0.371331, 0.24073, 1 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="ParticlesMaterial" id=4]
 flag_disable_z = true
 direction = Vector3( 1, -0.5, 0 )
 spread = 22.83
@@ -25,7 +25,7 @@ initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.3
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 3 )
 anim_speed = 1.0
 
 [sub_resource type="Animation" id=5]
@@ -52,7 +52,7 @@ emitting = false
 one_shot = true
 explosiveness = 1.0
 local_coords = false
-process_material = SubResource( 2 )
+process_material = SubResource( 4 )
 texture = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

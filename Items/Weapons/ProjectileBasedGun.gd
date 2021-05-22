@@ -74,9 +74,6 @@ func shoot():
 		get_parent().canShoot = false
 		cooldownTimer.start(stats.cooldown)
 
-		# Playing a sound for feedback
-		shootSound.play()
-
 	# Screenshake
 
 	# Getting the parameters
@@ -87,6 +84,9 @@ func shoot():
 
 	# Shaking the camera
 	GameManager.emit_signal("screenshake", 0, strength*2, freq, freq, strength/3, direction)
+
+	# Playing a sound for feedback
+	shootSound.play()
 
 	# Creating a bullet shell
 	var shell = load("res://Items/Weapons/Bullet/Shell.tscn").instance()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Player/Ship.gd" type="Script" id=1]
+[ext_resource path="res://Player/ShipDrive.wav" type="AudioStream" id=1]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/playerSpaceship.png" type="Texture" id=3]
 [ext_resource path="res://Ruins/Smoke.png" type="Texture" id=4]
@@ -8,8 +8,8 @@
 [ext_resource path="res://UI/PlanetFinderPanel.png" type="Texture" id=6]
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=7]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Player/ShipDrive.wav" type="AudioStream" id=9]
-[ext_resource path="res://Player/Vignette.tres" type="Material" id=10]
+[ext_resource path="res://Player/Vignette.tres" type="Material" id=9]
+[ext_resource path="res://Player/Ship.gd" type="Script" id=10]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 particles_animation = true
@@ -115,7 +115,7 @@ tracks/0/keys = {
 "playerShip",
 ]]
 collision_mask = 0
-script = ExtResource( 1 )
+script = ExtResource( 10 )
 maxSpeed = 7500
 accelaration = 4950.0
 rotationSpeed = 120
@@ -145,12 +145,12 @@ shape = SubResource( 5 )
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Drive" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 9 )
+stream = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Vignette" type="ColorRect" parent="CanvasLayer"]
-material = ExtResource( 10 )
+material = ExtResource( 9 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
