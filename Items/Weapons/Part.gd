@@ -38,7 +38,7 @@ func get_stats() -> Dictionary:
 		"kickUp"       : kickUp,
 		"isHitscan" : isHitscan,
 	}
-	
+
 	if isBody:
 		stats.fullyAutomatic = fullyAutomatic
 		stats.gunType = gunType
@@ -46,5 +46,5 @@ func get_stats() -> Dictionary:
 		stats.lightTexture = bulletLight
 		stats.shootSound = shootSound
 		stats.bulletSpawnDist = bulletSpawnDist
-	
+
 	return stats

@@ -9,6 +9,7 @@ onready var jetSmoke = $JetSmoke
 onready var planetFinderAnim = $CanvasLayer/PlanetFinderAnim
 onready var moveForwardSound = $Sounds/Drive
 onready var planetFinder = $CanvasLayer/PlanetFinderPanel
+onready var vignette = $CanvasLayer/Vignette
 
 signal changePlanetFinder(planet)
 
@@ -20,6 +21,7 @@ func _ready():
 	for b in planetFinder.get_node("VBoxContainer").get_children():
 		if b is Button:
 			b.focus_mode = Control.FOCUS_NONE
+	if !Settings.vignette: vignette.queue_free()
 
 
 func _physics_process(delta):
