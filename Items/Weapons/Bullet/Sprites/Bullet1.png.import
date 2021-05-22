@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bulletLight.png-105327dedbb4e49b27c90e1296a297a3.stex"
+path="res://.import/Bullet1.png-edbd08085eb444bd652bc6f0f5d9e12e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Weapons/Bullet/bulletLight.png"
-dest_files=[ "res://.import/bulletLight.png-105327dedbb4e49b27c90e1296a297a3.stex" ]
+source_file="res://Items/Weapons/Bullet/Sprites/Bullet1.png"
+dest_files=[ "res://.import/Bullet1.png-edbd08085eb444bd652bc6f0f5d9e12e.stex" ]
 
 [params]
 

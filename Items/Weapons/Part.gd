@@ -4,6 +4,7 @@ export var isBody = false
 export(int, "Common", "Uncommon", "Rare", "Unique") var rarity
 export(int, "Pistol", "Shotgun", "Rifle", "Sniper", "Explosive") var gunType
 export var bulletSprite : StreamTexture
+export var bulletLight : StreamTexture
 export var shootSound = preload("res://Items/Weapons/Sounds/ShootDefualt.wav")
 export var bulletSpawnDist : int
 export var fullyAutomatic = false
@@ -42,6 +43,7 @@ func get_stats() -> Dictionary:
 		stats.fullyAutomatic = fullyAutomatic
 		stats.gunType = gunType
 		stats.bulletSprite = bulletSprite
+		stats.lightTexture = bulletLight
 		stats.shootSound = shootSound
 		stats.bulletSpawnDist = bulletSpawnDist
 	

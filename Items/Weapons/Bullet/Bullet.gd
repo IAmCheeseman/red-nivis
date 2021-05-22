@@ -5,6 +5,16 @@ var speed : float
 var peircing = false
 
 onready var hitbox = $Hitbox
+onready var sprite = $Sprite
+
+
+func set_texture(texture, lightTexture):
+	sprite.texture = texture
+
+
+func _ready():
+	look_at(global_position+direction)
+
 
 func _physics_process(delta):
 	position += (direction*speed)*delta

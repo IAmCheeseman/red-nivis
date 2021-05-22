@@ -65,6 +65,7 @@ func shoot():
 		# Adding it to the tree
 		get_tree().root.get_child(3).add_child(newBullet)
 		newBullet.hitbox.damage = stats.damage
+		newBullet.set_texture(stats.bulletSprite, stats.lightTexture)
 		
 		# Rotating the gun for juice
 		body.rotation_degrees = -stats.kickUp
@@ -81,7 +82,7 @@ func shoot():
 	# Getting the parameters
 	var strength = 8*GameManager.percentage_from(10, stats.damage)
 	strength *= stats.cooldown+.3
-	var freq = clamp(stats.damage/100, .1, .3)
+	var freq = .1#clamp(stats.damage/100, .1, .1)
 	var direction = -global_position.direction_to(get_global_mouse_position())
 	
 	# Shaking the camera
