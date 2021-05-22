@@ -6,6 +6,7 @@ onready var pivot = $Pivot
 onready var tooltips = $TooltipHolder/GunTooltips/Tooltips
 onready var tooltipsAnim = $TooltipHolder/GunTooltips/AnimationPlayer
 onready var tooltipHolder = $TooltipHolder
+onready var shootSound = $ShootSound
 var body
 
 var gunTypes = [" Pistol", " Shotgun", " Rifle", " Sniper", " Explosive"]
@@ -101,8 +102,7 @@ func _ready():
 		stats.look += 8*int( (stats.peircing and stats.projSpeed>430) or stats.isHitscan)
 		stats.cooldown = clamp(stats.cooldown, .1, INF)
 		# DON'T USE MULTISHOT IN HITSCAN SCRIPT
-
-
+		
 		set_gun_logic()
 
 	else:
@@ -121,6 +121,9 @@ func _ready():
 		add_part(grip, "grip")
 		add_part(barrel, "barrel")
 		add_part(slider, "slider")
+		
+		shootSound.audio = stats.shootSound
+		
 		set_active()
 	tooltipHolder.global_rotation_degrees = 0
 	setTooltips()

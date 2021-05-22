@@ -24,3 +24,9 @@ func play():
 
 func _on_audio_finished(player):
 	player.queue_free()
+
+
+# Making sure sounds can't pile up and play all at once.
+func _on_SoundManager_tree_exiting():
+	for c in get_children():
+		c.queue_free()
