@@ -20,8 +20,6 @@ func set_texture(texture:StreamTexture, lightTexture:StreamTexture):
 	get_parent().add_child(particles)
 
 
-
-
 func _ready():
 	look_at(global_position+direction)
 

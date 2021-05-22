@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://WorldGeneration/planet.gd" type="Script" id=1]
 [ext_resource path="res://Tiles/AltGround/Rocks.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tiles/Solids/RedStone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/FireDude/FireDude.tscn" type="PackedScene" id=4]
 [ext_resource path="res://WorldGeneration/Planets/FireAtmosphere.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Tiles/Ground/FireRocks.png" type="Texture" id=6]
 
@@ -30,6 +31,6 @@ chunkSize = 10
 noiseTexture = SubResource( 2 )
 minNoise = -0.1
 props = [  ]
-enemies = [  ]
-enemyChances = [  ]
-maxEnemies = 5
+enemies = [ ExtResource( 4 ) ]
+enemyChances = [ 2.0 ]
+maxEnemies = 6

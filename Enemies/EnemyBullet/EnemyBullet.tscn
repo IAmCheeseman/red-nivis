@@ -36,7 +36,8 @@ amount = 25
 process_material = SubResource( 3 )
 texture = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="Particles"]
+[node name="Light" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0, 1 )
 show_behind_parent = true
 texture = ExtResource( 5 )
 

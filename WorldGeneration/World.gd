@@ -42,10 +42,10 @@ func _on_player_removeTile(mousePosition):
 	if worldGenerater.tiles.get_cellv(mapMousePos) == -1\
 	and placementTiles.get_cellv(mapMousePos) == -1\
 	and mousePosition.distance_to(player.position) > 16:
-		
+
 		placementTiles.set_cellv(mapMousePos, 0)
 		placementTiles.update_bitmask_area(mapMousePos)
-		
+
 		worldGenerater.shadows.set_cellv(mapMousePos, 0)
 		worldGenerater.shadows.update_bitmask_area(mapMousePos)
 		return
@@ -73,7 +73,7 @@ func _process(_delta):
 func update_queued_chunks():
 	var chunkSize = worldGenerater.planet.chunkSize
 	var currentChunk = ((player.position/chunkSize)/16).round()
-	
+
 	if !currentChunk.is_equal_approx(lastChunk) or firstTime:
 		firstTime = false
 		queuedChunks = get_neighbors(currentChunk, chunkAmount)
@@ -81,7 +81,7 @@ func update_queued_chunks():
 			if !chunk in queuedChunks:
 				queueFreeChunks.append(chunk)
 				generatedChunks.erase(chunk)
-		
+
 		for chunk in queuedChunks:
 			if chunk in generatedChunks:
 				queuedChunks.erase(chunk)
@@ -100,19 +100,19 @@ func add_props():
 	for chunk in generatedChunks:
 		if chunk in propedChunks or worldGenerater.planet.props.size() == 0:
 			continue
-		
-		
+
+
 		yield(get_tree(), "idle_frame")
 		propedChunks.append(chunk)
 		seed(chunk.y+chunk.x+worldGenerater.worldSeed)
-		
-		
+
+
 # warning-ignore:shadowed_variable
 		var tiles = worldGenerater.tiles
 		var chunkx = (chunk.x*10)*16
 		var chunky = (chunk.y*10)*16
 		var spawnRange = worldGenerater.planet.chunkSize*tiles.cell_size.x
-		
+
 		var propPosition = Vector2(rand_range(chunkx, chunkx+spawnRange),\
 		rand_range(chunky, chunky+spawnRange)).round()
 		seed(chunk.y+chunk.x+worldGenerater.worldSeed)
@@ -130,36 +130,36 @@ func ruin_chunks():
 	for chunk in generatedChunks:
 		if chunk in ruinedChunks or !is_inside_tree():
 			continue
-			
+
 		yield(get_tree(), "idle_frame")
 		ruinedChunks.append(chunk)
 		seed(chunk.y+chunk.x+worldGenerater.worldSeed)
-		
-		
+
+
 # warning-ignore:shadowed_variable
 		var tiles = worldGenerater.tiles
 		var chunkx = (chunk.x*10)*16
 		var chunky = (chunk.y*10)*16
 		var spawnRange = worldGenerater.planet.chunkSize*tiles.cell_size.x
-		
+
 		var ruinPosition = Vector2(rand_range(chunkx, chunkx+spawnRange),\
 		rand_range(chunky, chunky+spawnRange)).round()
-		
+
 		if rand_range(0, worldGenerater.planet.ruinChance) > 1\
 		or tiles.get_cellv(tiles.world_to_map(ruinPosition)) != -1:
 			continue
 		var ruinHandler = RuinHandler.new()
 		var ruins = ruinHandler.get_ruins(true)
 		ruins.shuffle()
-		
+
 		var ruin = ruins[0].scene.instance()
-		
+
 		if ruins[0].customPosition != Vector2.LEFT: ruin.position = ruins[0].customPosition.round()
 		else: ruin.position = ruinPosition.round()
 		ruin.worldGenerator = worldGenerater
-		
+
 		props.add_child(ruin)
-		
+
 		ruin.chunk = chunk
 		ruin.set_color(worldGenerater.planet.ruinColor)
 
@@ -180,18 +180,18 @@ func add_enemy():
 		var tiles = worldGenerater.tiles
 		var maxEnemySpawnDist = 16*25
 		var minEnemySpawnDist = 16*15
-		
+
 		var angle = Vector2.RIGHT.rotated(rand_range(0, 360))
 		var distance = rand_range(minEnemySpawnDist, maxEnemySpawnDist)
-		
+
 		var spawnPosition = player.position+(angle*distance)
 		var enemyIndex = rand_range(0, enemies.size())
-		
+
 		var localPos = tiles.to_local(spawnPosition)
 		if tiles.get_cellv(tiles.world_to_map(localPos)) != -1\
 		or rand_range(0, 100) > enemyChances[enemyIndex]:
 			return
-		
+
 		var enemy = enemies[enemyIndex].instance()
 		enemy.position = spawnPosition
 		enemy.tiles = worldGenerater.tiles
@@ -206,10 +206,10 @@ func get_neighbors(pos : Vector2, size : int) -> Array:
 	var yy = -size
 
 	var neighboringPos = []
-	
+
 	for tile in (size*2)*(size*2):
 		neighboringPos.append(Vector2(pos.x+xx, pos.y+yy))
-		
+
 		xx += 1
 		xx = wrapi(xx, -size, size+1)
 		if xx == -size:
