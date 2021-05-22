@@ -7,6 +7,7 @@ export var health = 20
 signal dead
 signal hurt
 
+
 func take_damage(amount):
 	health -= amount-(defense/2)
 	if health <= 0:

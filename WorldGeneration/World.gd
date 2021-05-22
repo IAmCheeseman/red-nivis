@@ -11,6 +11,7 @@ onready var worldGenerater = $WorldGeneration
 onready var atmosphere = $Atmosphere
 onready var placementTiles = $Props/PlaceTiles
 onready var playerShip = $Props/Ship
+onready var tilePlaceSFX = $TilePlaceSFX
 
 var queuedChunks : Array
 var queueFreeChunks : Array
@@ -38,6 +39,10 @@ func _ready():
 
 
 func _on_player_removeTile(mousePosition):
+	GameManager.emit_signal("screenshake", 0, 0, .1, .1, 5)
+	tilePlaceSFX.play()
+	tilePlaceSFX.global_position = mousePosition
+
 	var mapMousePos = worldGenerater.tiles.world_to_map(mousePosition)
 	if worldGenerater.tiles.get_cellv(mapMousePos) == -1\
 	and placementTiles.get_cellv(mapMousePos) == -1\

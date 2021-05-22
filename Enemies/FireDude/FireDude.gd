@@ -16,6 +16,8 @@ export var shotOffset = 16
 
 onready var cooldownTimer = $CooldownTimer
 onready var wanderTimer = $WanderTimer
+onready var sprite = $Sprite
+onready var shootSFX = $ShootSFX
 
 
 var bullet = preload("res://Enemies/EnemyBullet/EnemyBullet.tscn")
@@ -54,6 +56,8 @@ func _physics_process(delta):
 	if global_position.distance_to(player.global_position) >= 16*35:
 		remove()
 
+	sprite.scale.x = 1 if vel.x < 0 else -1
+
 # warning-ignore:return_value_discarded
 	move_and_slide(vel)
 
@@ -76,10 +80,13 @@ func attack_wander_state(delta):
 	var distTarget = global_position.distance_to(targetPosition)
 	if distTarget > 5 and !cooldownTimer.is_stopped():
 		move_in_dir(global_position.direction_to(targetPosition), accelaration, delta)
-	else:
+	elif GameManager.attackingEnemies <= 0:
+		GameManager.attackingEnemies += 1
 		rapidShots = 0
 		cooldownTimer.stop()
 		state = ATTACK_SHOOT
+	else:
+		cooldownTimer.start(5)
 
 
 func attack_shoot_state(delta):
@@ -89,6 +96,7 @@ func attack_shoot_state(delta):
 		cooldownTimer.start(cooldown)
 		rapidShots += 1
 	if rapidShots > maxRapidShots:
+		GameManager.attackingEnemies -= 1
 		get_new_target_position()
 		state = ATTACK_WANDER
 		cooldownTimer.start(5)
@@ -101,6 +109,7 @@ func move_in_dir(dir:Vector2, weight, delta):
 func check_for_player():
 	if global_position.distance_to(player.global_position) < 150:
 		state = ATTACK_SHOOT
+		GameManager.attackingEnemies += 1
 
 
 func shoot():
@@ -115,6 +124,8 @@ func shoot():
 
 	get_tree().root.get_child(3).add_child(newBullet)
 	newBullet.hitbox.damage = damage
+
+	shootSFX.play()
 
 
 func _on_wander_timer_timedout():
@@ -138,3 +149,10 @@ func remove():
 	world.enemyCount -= 1
 	queue_free()
 
+
+func _on_death():
+	queue_free()
+
+
+func _on_hurt():
+	pass # Replace with function body.

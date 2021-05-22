@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemies/FireDude/FireDude.png" type="Texture" id=1]
 [ext_resource path="res://Space/PlanetGlow.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/FireDude/FireDude.gd" type="Script" id=3]
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SoundManager.gd" type="Script" id=5]
+[ext_resource path="res://Enemies/FireDude/Shoot.wav" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 8.0
 
 [sub_resource type="Animation" id=2]
 length = 0.4
@@ -48,12 +53,12 @@ tracks/2/keys = {
 "values": [ 0.1, 0.09 ]
 }
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 8.0
-
 [node name="FireDude" type="KinematicBody2D"]
 collision_layer = 0
 script = ExtResource( 3 )
+damage = 3
+maxRapidShots = 1
+shotSpeed = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -62,14 +67,23 @@ shape = SubResource( 1 )
 position = Vector2( 0, -12 )
 texture = ExtResource( 1 )
 hframes = 4
-frame = 2
+frame = 3
 
 [node name="Light" type="Light2D" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -9 )
 texture = ExtResource( 2 )
-texture_scale = 0.0929507
+texture_scale = 0.0957353
 color = Color( 1, 0.14902, 0.0117647, 1 )
 energy = 0.5
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -8 )
+collision_layer = 4
+defense = 9
+health = 30
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource( 3 )
 
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
@@ -83,14 +97,14 @@ autostart = true
 autoplay = "Idle"
 anims/Idle = SubResource( 2 )
 
-[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, -8 )
-defense = 15
-health = 45
+[node name="ShootSFX" type="Node2D" parent="."]
+script = ExtResource( 5 )
+audio = ExtResource( 6 )
+directional = true
+bus = "SFX"
 
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-shape = SubResource( 3 )
-
+[connection signal="dead" from="Hurtbox" to="." method="_on_death"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurt"]
 [connection signal="timeout" from="CooldownTimer" to="." method="shoot"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timedout"]
 

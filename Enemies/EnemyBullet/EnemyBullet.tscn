@@ -5,21 +5,36 @@
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/Bullet1.png" type="Texture" id=3]
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=4]
 [ext_resource path="res://Items/Weapons/Bullet/Lights/bulletLight1.png" type="Texture" id=5]
+[ext_resource path="res://Items/Weapons/Bullet/Particles.tres" type="Material" id=6]
 
-[sub_resource type="Curve" id=1]
-_data = [ Vector2( 0.00862069, 0.9875 ), 0.0, -1.05455, 0, 0, Vector2( 1, 0 ), -1.09332, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=2]
-curve = SubResource( 1 )
-
-[sub_resource type="ParticlesMaterial" id=3]
-emission_shape = 1
-emission_sphere_radius = 5.06
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale_curve = SubResource( 2 )
+[sub_resource type="Animation" id=7]
+resource_name = "Kill"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 4.0
@@ -27,14 +42,64 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id=5]
 radius = 4.0
 
+[sub_resource type="Animation" id=6]
+resource_name = "Init"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
 [node name="Bullet" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Particles" type="Particles2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )
+emitting = false
 amount = 25
-process_material = SubResource( 3 )
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = ExtResource( 6 )
 texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Particles"]
+autoplay = "Kill"
+anims/Kill = SubResource( 7 )
 
 [node name="Light" type="Sprite" parent="."]
 modulate = Color( 1, 0, 0, 1 )
@@ -57,6 +122,10 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QueueArea"]
 shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Init"
+anims/Init = SubResource( 6 )
 
 [connection signal="hit_object" from="Hitbox" to="." method="_on_Hitbox_hit_object"]
 [connection signal="body_entered" from="QueueArea" to="." method="_on_QueueArea_body_entered"]

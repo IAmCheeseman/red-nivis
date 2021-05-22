@@ -6,6 +6,8 @@ var isDead = false
 var heldItem
 var heldItemStats
 
+var attackingEnemies = 0 setget set_attacking_enemies
+
 
 # warning-ignore:unused_signal
 signal screenshake
@@ -24,6 +26,12 @@ func load_scene(loadPath):
 	yield(get_tree(), "idle_frame")
 # warning-ignore:return_value_discarded
 	get_tree().change_scene(loadPath)
+
+
+func set_attacking_enemies(value:int):
+	attackingEnemies = value
+	attackingEnemies = clamp(attackingEnemies, 0, 1)
+	print(attackingEnemies)
 
 
 func percentage_of(a, b) -> float:

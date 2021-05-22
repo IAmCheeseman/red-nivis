@@ -164,6 +164,8 @@ func _on_Hurtbox_hurt():
 	healthBar.value = GameManager.percentage_of(float(hurtbox.health), 20.0)
 	hurtTimer.start(recoveryTime)
 
+	GameManager.emit_signal("screenshake", 2, 8, .05, .05, 9)
+
 
 func _on_health_vig_tween_all_completed():
 	# Resetting the health flash, so it goes away

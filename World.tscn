@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://WorldGeneration/WorldGenerater.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://WorldGeneration/World.gd" type="Script" id=4]
 [ext_resource path="res://Tiles/Ground/FireRocks.png" type="Texture" id=5]
 [ext_resource path="res://WorldGeneration/Ship.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SoundManager.gd" type="Script" id=7]
+[ext_resource path="res://Player/PlaceTile.wav" type="AudioStream" id=8]
 
 [node name="World" type="Node2D" groups=[
 "world",
@@ -40,6 +42,12 @@ position = Vector2( 8, 8 )
 z_index = 1
 
 [node name="Atmosphere" type="CanvasModulate" parent="."]
+
+[node name="TilePlaceSFX" type="Node2D" parent="."]
+script = ExtResource( 7 )
+audio = ExtResource( 8 )
+directional = true
+bus = "SFX"
 
 [connection signal="tree_entered" from="." to="." method="_on_World_tree_entered"]
 [connection signal="removeTile" from="Props/Player" to="." method="_on_player_removeTile"]
