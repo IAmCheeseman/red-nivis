@@ -6,10 +6,20 @@ var peircing = false
 
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
+onready var light = $Light
+onready var particles = $Particles
 
 
-func set_texture(texture, lightTexture):
+func set_texture(texture:StreamTexture, lightTexture:StreamTexture):
 	sprite.texture = texture
+	light.texture = lightTexture
+	particles.process_material.emission_box_extents = Vector3(float(texture.get_width())/2, float(texture.get_height())/2, 1)
+	remove_child(particles)
+	particles.global_position = global_position
+	particles.scale = scale
+	get_parent().add_child(particles)
+
+
 
 
 func _ready():
