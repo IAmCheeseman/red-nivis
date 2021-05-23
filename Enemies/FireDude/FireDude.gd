@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum {IDLE, WANDER, ATTACK_WANDER, ATTACK_SHOOT}
+enum {IDLE, WANDER, ATTACK_WANDER, ATTACK_SHOOT, DEATH}
 
 export var maxSpeed = 70
 export var accelaration = 300
@@ -18,6 +18,7 @@ onready var cooldownTimer = $CooldownTimer
 onready var wanderTimer = $WanderTimer
 onready var sprite = $Sprite
 onready var shootSFX = $ShootSFX
+onready var deathSFX = $DeathSFX
 
 
 var bullet = preload("res://Enemies/EnemyBullet/EnemyBullet.tscn")
@@ -51,6 +52,8 @@ func _physics_process(delta):
 			attack_shoot_state(delta)
 		ATTACK_WANDER:
 			attack_wander_state(delta)
+		DEATH:
+			pass
 
 	# Removing itself if it's too far away
 	if global_position.distance_to(player.global_position) >= 16*35:
@@ -151,7 +154,8 @@ func remove():
 
 
 func _on_death():
-	queue_free()
+	deathSFX.play()
+	hide()
 
 
 func _on_hurt():

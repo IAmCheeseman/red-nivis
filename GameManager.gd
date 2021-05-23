@@ -31,7 +31,6 @@ func load_scene(loadPath):
 func set_attacking_enemies(value:int):
 	attackingEnemies = value
 	attackingEnemies = clamp(attackingEnemies, 0, 1)
-	print(attackingEnemies)
 
 
 func percentage_of(a, b) -> float:

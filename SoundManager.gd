@@ -6,6 +6,8 @@ export var directional = false
 export(float, -80, 24) var volumeMod = 0
 export(String, "Master", "Ambient", "Music", "SFX") var bus = 0
 
+signal finished
+
 
 func play():
 	# Creating the audio player
@@ -28,6 +30,7 @@ func play():
 
 
 func _on_audio_finished(player):
+	emit_signal("finished")
 	player.queue_free()
 
 

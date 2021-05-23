@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Enemies/FireDude/FireDude.png" type="Texture" id=1]
 [ext_resource path="res://Space/PlanetGlow.png" type="Texture" id=2]
@@ -6,14 +6,15 @@
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://SoundManager.gd" type="Script" id=5]
 [ext_resource path="res://Enemies/FireDude/Shoot.wav" type="AudioStream" id=6]
+[ext_resource path="res://Enemies/FireDude/Death.wav" type="AudioStream" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
 radius = 8.0
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -58,9 +59,10 @@ collision_layer = 0
 script = ExtResource( 3 )
 damage = 3
 maxRapidShots = 1
-shotSpeed = 300
+shotSpeed = 170
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -77,13 +79,14 @@ color = Color( 1, 0.14902, 0.0117647, 1 )
 energy = 0.5
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 0, -8 )
 collision_layer = 4
 defense = 9
 health = 30
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
@@ -95,7 +98,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Idle = SubResource( 2 )
+anims/Idle = SubResource( 3 )
 
 [node name="ShootSFX" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -103,9 +106,16 @@ audio = ExtResource( 6 )
 directional = true
 bus = "SFX"
 
+[node name="DeathSFX" type="Node2D" parent="."]
+script = ExtResource( 5 )
+audio = ExtResource( 7 )
+directional = true
+bus = "SFX"
+
 [connection signal="dead" from="Hurtbox" to="." method="_on_death"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurt"]
 [connection signal="timeout" from="CooldownTimer" to="." method="shoot"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timedout"]
+[connection signal="finished" from="DeathSFX" to="." method="queue_free"]
 
 [editable path="Hurtbox"]

@@ -32,5 +32,5 @@ noiseTexture = SubResource( 2 )
 minNoise = -0.1
 props = [  ]
 enemies = [ ExtResource( 4 ) ]
-enemyChances = [ 2.0 ]
-maxEnemies = 6
+enemyChances = [ 0.5 ]
+maxEnemies = 3

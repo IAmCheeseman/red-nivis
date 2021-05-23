@@ -2,7 +2,7 @@ extends Node2D
 
 export var isBody = false
 export(int, "Common", "Uncommon", "Rare", "Unique") var rarity
-export(int, "Pistol", "Shotgun", "Rifle", "Sniper", "Explosive") var gunType
+export(int, "Pistol", "Shotgun", "Rifle", "Sniper", "Explosive", "Electric", "Bolt") var gunType
 export var bulletSprite : StreamTexture
 export var bulletLight : StreamTexture
 export var shootSound = preload("res://Items/Weapons/Sounds/ShootDefualt.wav")
