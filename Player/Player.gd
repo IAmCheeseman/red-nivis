@@ -196,6 +196,7 @@ func add_item(item=null, stats=null, addTo=null):
 		var gun = itemHolder.get_child(0)
 		itemHolder.remove_child(gun)
 		backItemHolder.add_child(gun)
+		gun.set_logic(false)
 
 	elif backItemHolder.get_child_count() >= 1:
 		# removing the current held item if there is a back item
