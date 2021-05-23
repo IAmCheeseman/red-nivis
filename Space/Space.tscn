@@ -17,7 +17,6 @@
 [ext_resource path="res://Space/PlanetSprites/RegPlanetMoon.png" type="Texture" id=15]
 [ext_resource path="res://Space/PlanetSprites/AcidPlanetMoon.png" type="Texture" id=16]
 
-
 [sub_resource type="CanvasItemMaterial" id=1]
 particles_animation = true
 particles_anim_h_frames = 5
@@ -102,8 +101,8 @@ offset = Vector2( 0, -16 )
 script = ExtResource( 5 )
 
 [node name="SpaceHub" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 470.879, 62.4363 )
-rotation = -3.00767
+position = Vector2( 166.13, 445.001 )
+rotation = -1.92982
 orbitDistance = 475
 faceTravelDir = true
 atmosphereColor = Color( 0.627451, 0.0470588, 0.0470588, 1 )
@@ -123,8 +122,8 @@ process_material = SubResource( 3 )
 texture = ExtResource( 12 )
 
 [node name="RegPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 547.014, -57.2353 )
-rotation = 0.656301
+position = Vector2( 518.259, -184.141 )
+rotation = 0.917259
 orbitSpeed = 35.0
 orbitDistance = 550
 moonTexture = ExtResource( 15 )
@@ -132,13 +131,13 @@ moonRotationSpeed = 45
 moonOrbitSpeed = -30.0
 moonOrbitDistance = 60
 atmosphereColor = Color( 0.32549, 0.619608, 0.901961, 1 )
-atmosphereStrength = 1.741
+atmosphereStrength = 2.259
 atmosphereSize = 0.174
 texture = ExtResource( 3 )
 
 [node name="FirePlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 122.157, -218.123 )
-rotation = -1.3759
+position = Vector2( -40.1304, 246.758 )
+rotation = 1.51396
 rotationSpeed = 27
 orbitSpeed = 23.0
 orbitDistance = 250
@@ -149,8 +148,8 @@ texture = ExtResource( 6 )
 planet = 1
 
 [node name="AcidPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( -267.067, 963.678 )
-rotation = -1.88648
+position = Vector2( 846.614, 532.208 )
+rotation = 1.00338
 rotationSpeed = 27
 orbitSpeed = 13.0
 orbitDistance = 1000
@@ -165,20 +164,20 @@ texture = ExtResource( 7 )
 planet = 2
 
 [node name="WaterPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 512.599, -547.488 )
-rotation = 3.12362
+position = Vector2( 270.968, 699.34 )
+rotation = -1.29294
 rotationSpeed = 37
 orbitSpeed = 30.0
 orbitDistance = 750
 atmosphereColor = Color( 0.333333, 0.376471, 0.878431, 1 )
-atmosphereStrength = 2.203
+atmosphereStrength = 3.314
 atmosphereSize = 0.159
 texture = ExtResource( 8 )
 planet = 3
 
 [node name="Sun" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 0.406695, 0.913564 )
-rotation = -2.71024
+position = Vector2( -0.375459, 0.926839 )
+rotation = -0.401379
 rotationSpeed = 2
 orbitSpeed = 1.0
 orbitDistance = 1

@@ -29,6 +29,7 @@ var player : Node2D
 var targetPosition = Vector2.ZERO
 var tiles
 var world
+var isDead = false
 
 
 func set_player(_player):
@@ -116,6 +117,8 @@ func check_for_player():
 
 
 func shoot():
+	if isDead: return
+
 	# Selects a direction for the bullet to go
 	var bulletAccuracy = deg2rad(rand_range(-accuracy, accuracy))
 	var dir = global_position.direction_to(player.global_position).rotated(bulletAccuracy)
@@ -155,6 +158,7 @@ func remove():
 
 func _on_death():
 	deathSFX.play()
+	isDead = true
 	hide()
 
 

@@ -32,7 +32,7 @@ var world = preload("res://World.tscn")
 
 func _ready():
 	$CollisionShape2D.shape = $CollisionShape2D.shape.duplicate()
-	$CollisionShape2D.shape.radius = float(sprite.texture.get_height())/2
+	$CollisionShape2D.shape.radius = float(sprite.texture.get_height())/4
 	set_tex(texture)
 
 
@@ -43,10 +43,10 @@ func _physics_process(delta):
 
 func orbit(node:Node2D, orbitPoint:Vector2, oSpeed, oDist, rSpeed, oRot, delta):
 	node.global_rotation_degrees += rSpeed*delta
-	
+
 	if !canOrbit:
 		return
-	
+
 	oRots[oRot] += (oSpeed/oDist)*delta
 	var orbit = Vector2.RIGHT.rotated(oRots[oRot])
 	if faceTravelDir: look_at(orbit)
@@ -64,14 +64,14 @@ func _on_Planet_body_entered(body):
 			return
 # warning-ignore:return_value_discarded
 		get_tree().change_scene_to(world)
-		
+
 
 
 func set_tex(_texture):
 	texture = _texture
 	$Sprite.texture = texture
 	$CollisionShape2D.shape = $CollisionShape2D.shape.duplicate()
-	$CollisionShape2D.shape.radius = float($Sprite.texture.get_height())/2
+	$CollisionShape2D.shape.radius = float($Sprite.texture.get_height())/4
 
 
 func set_orbit(orb):
