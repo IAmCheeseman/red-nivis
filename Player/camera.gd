@@ -30,10 +30,13 @@ func _ready():
 	if !mouseWeight: set_process(false)
 
 
-func _process(_delta):
+func _process(delta):
 	# Finding out where the camera should be by
 	# getting the direction and distance to the mouse and
 	# lerping the position to the direction*distance
+
+#	rotation_degrees = lerp(rotation_degrees, 0, (freq*10)*delta)
+#	offset = offset.move_toward(Vector2.ZERO, (freq*10)*delta)
 
 	var mousePosition = get_local_mouse_position()
 	var dirMouse = position.rotated(global_rotation).direction_to(mousePosition)
@@ -90,7 +93,7 @@ func shake():
 
 func _on_Tween_tween_all_completed():
 	# If timer is over, stop, and reset
-	print(timer.time_left)
+
 	if timer.is_stopped():
 		priority = -1
 
@@ -107,3 +110,6 @@ func _on_Tween_tween_all_completed():
 	shake()
 
 
+func _on_Camera_tree_exiting():
+	offsetTween.remove_all()
+	rotTween.remove_all()
