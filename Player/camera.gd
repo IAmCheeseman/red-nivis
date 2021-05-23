@@ -30,13 +30,10 @@ func _ready():
 	if !mouseWeight: set_process(false)
 
 
-func _process(delta):
+func _process(_delta):
 	# Finding out where the camera should be by
 	# getting the direction and distance to the mouse and
 	# lerping the position to the direction*distance
-
-#	rotation_degrees = lerp(rotation_degrees, 0, (freq*10)*delta)
-#	offset = offset.move_toward(Vector2.ZERO, (freq*10)*delta)
 
 	var mousePosition = get_local_mouse_position()
 	var dirMouse = position.rotated(global_rotation).direction_to(mousePosition)
