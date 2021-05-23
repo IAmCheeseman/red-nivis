@@ -118,11 +118,16 @@ func _input(event):
 		itemHolder.remove_child(held)
 		backItemHolder.add_child(held)
 		held.set_logic(false)
+		GameManager.weaponStats[1] = held.stats
 
 		# Back item
 		backItemHolder.remove_child(back)
 		itemHolder.add_child(back)
 		back.set_logic(true)
+		GameManager.weaponStats[0] = back.stats
+
+		camera.maxOffset = camera.baseMaxOffset+back.stats.look
+
 
 
 func add_walk_particles(spawnPos:Vector2):
@@ -176,31 +181,44 @@ func _on_health_vig_tween_all_completed():
 
 
 func _on_Player_tree_entered():
+	yield(get_tree(), "idle_frame")
 	# Adding the items you picked up in the last scene
 	if GameManager.heldItem:
-		yield(get_tree(), "idle_frame")
-		add_item()
+		add_item(null, GameManager.weaponStats[1], backItemHolder)
+		add_item(null, GameManager.weaponStats[0], itemHolder)
 
 
-func add_item(item = null):
+func add_item(item=null, stats=null, addTo=null):
 	# Making sure you can't hold two items at once.
 	if backItemHolder.get_child_count() == 0\
 	and itemHolder.get_child_count() >= 1:
+		# Moving the current held item to your back if no back item
 		var gun = itemHolder.get_child(0)
 		itemHolder.remove_child(gun)
 		backItemHolder.add_child(gun)
+
 	elif backItemHolder.get_child_count() >= 1:
+		# removing the current held item if there is a back item
 		itemHolder.get_child(0).queue_free()
 
 
 	if item:
-		GameManager.heldItemStats = item.stats
+		GameManager.weaponStats[0] = item.stats
 		item.queue_free()
+
 	var newItem = load("res://Items/Weapons/Gun.tscn").instance()
-	newItem.stats = GameManager.heldItemStats
+	# Setting stats
+	newItem.stats = GameManager.weaponStats[0] if !stats else stats
 	newItem.isPickedUp = true
-	itemHolder.call_deferred("add_child", newItem)
-	camera.maxOffset = camera.baseMaxOffset+GameManager.heldItemStats.look
+
+	if !addTo:
+		itemHolder.call_deferred("add_child", newItem)
+	else:
+		if addTo.get_child_count() > 0:
+			addTo.get_child(0).queue_free()
+		addTo.call_deferred("add_child", newItem)
+
+	camera.maxOffset = camera.baseMaxOffset+GameManager.weaponStats[0].look
 
 
 

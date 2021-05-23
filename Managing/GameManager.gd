@@ -5,6 +5,10 @@ var planet = 0
 var isDead = false
 var heldItem
 var heldItemStats
+var backItem
+var backItemStats
+
+var weaponStats = [null, null]
 
 var attackingEnemies = 0 setget set_attacking_enemies
 
