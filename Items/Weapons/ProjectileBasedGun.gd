@@ -89,7 +89,7 @@ func shoot():
 	GameManager.emit_signal("screenshake", 0, strength*2, freq, freq, strength/3, direction)
 
 	# Playing a sound for feedback
-	shootSound.play()
+	get_parent().get_node("ShootSound").play()
 
 	# Creating a bullet shell
 	var shell = load("res://Items/Weapons/Bullet/Shell.tscn").instance()
