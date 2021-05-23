@@ -4,7 +4,7 @@
 [ext_resource path="res://Space/PlanetGlow.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/FireDude/FireDude.gd" type="Script" id=3]
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://SoundManager.gd" type="Script" id=5]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=5]
 [ext_resource path="res://Enemies/FireDude/Shoot.wav" type="AudioStream" id=6]
 [ext_resource path="res://Enemies/FireDude/Death.wav" type="AudioStream" id=7]
 
@@ -123,6 +123,5 @@ bus = "SFX"
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurt"]
 [connection signal="timeout" from="CooldownTimer" to="." method="shoot"]
 [connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timedout"]
-[connection signal="finished" from="DeathSFX" to="." method="queue_free"]
 
 [editable path="Hurtbox"]

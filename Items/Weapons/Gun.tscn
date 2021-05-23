@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/ItemTooltips.tscn" type="PackedScene" id=1]
-[ext_resource path="res://SoundManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Weapons/Sounds/ShootDefualt.wav" type="AudioStream" id=3]
 [ext_resource path="res://Items/Weapons/Gun.gd" type="Script" id=9]
 

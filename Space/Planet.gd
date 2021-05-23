@@ -27,7 +27,7 @@ var oRots = {
 	"planet" : rand_range(0, 360),
 	"moon" : rand_range(0, 360)
 }
-var world = preload("res://World.tscn")
+var world = preload("res://WorldGeneration/World.tscn")
 
 
 func _ready():

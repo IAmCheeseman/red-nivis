@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "DataManager",
 "language": "GDScript",
-"path": "res://DataManager.gd"
+"path": "res://Managing/DataManager.gd"
 }, {
 "base": "Node",
 "class": "DrunkWalker",
@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "SoundManager",
 "language": "GDScript",
-"path": "res://SoundManager.gd"
+"path": "res://Managing/SoundManager.gd"
 } ]
 _global_script_class_icons={
 "BigJumpingBull": "",
@@ -91,9 +91,9 @@ run/main_scene="res://UI/MainMenu.tscn"
 
 [autoload]
 
-GameManager="*res://GameManager.gd"
-Memory="*res://MemoryManager.gd"
-Settings="*res://settings.gd"
+GameManager="*res://Managing/GameManager.gd"
+Memory="*res://Managing/MemoryManager.gd"
+Settings="*res://Managing/settings.gd"
 
 [display]
 
