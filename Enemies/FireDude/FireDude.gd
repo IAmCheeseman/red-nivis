@@ -17,6 +17,7 @@ export var shotOffset = 16
 onready var cooldownTimer = $CooldownTimer
 onready var wanderTimer = $WanderTimer
 onready var sprite = $Sprite
+onready var shadow = $Shadow
 onready var shootSFX = $ShootSFX
 onready var deathSFX = $DeathSFX
 
@@ -55,6 +56,8 @@ func _physics_process(delta):
 			attack_wander_state(delta)
 		DEATH:
 			pass
+
+	shadow.frame = sprite.frame
 
 	# Removing itself if it's too far away
 	if global_position.distance_to(player.global_position) >= 16*35:

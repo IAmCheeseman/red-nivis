@@ -15,15 +15,15 @@ func _ready():
 func _process(_delta):
 	look_at(node.global_position)
 	var dist = global_position.distance_to(node.global_position)
-	
+
 	var scaleWeight = 1700
 	var minScale = .5
-	
+
 	# Starts getting larger at 850 distance
 	var distReduced = dist/scaleWeight
 	distReduced = 1-clamp(distReduced, 0, minScale)
 	sprite.scale = Vector2(distReduced, distReduced)
-	
+
 	sprite.position.x = dist/50
 
 func _on_Ship_changePlanetFinder(planet):

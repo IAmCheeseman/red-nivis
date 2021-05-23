@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://WorldGeneration/WorldGenerater.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://WorldGeneration/Ship.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SoundManager.gd" type="Script" id=7]
 [ext_resource path="res://Player/PlaceTile.wav" type="AudioStream" id=8]
+[ext_resource path="res://Space/PlanetFinderArrow.png" type="Texture" id=9]
+[ext_resource path="res://Space/Pointer.gd" type="Script" id=10]
 
 [node name="World" type="Node2D" groups=[
 "world",
@@ -35,6 +37,16 @@ __meta__ = {
 
 [node name="Player" parent="Props" instance=ExtResource( 2 )]
 position = Vector2( 8, 8 )
+
+[node name="Pointer" type="Node2D" parent="Props/Player"]
+script = ExtResource( 10 )
+nodePool = NodePath("../../Ship")
+
+[node name="Sprite" type="Sprite" parent="Props/Player/Pointer"]
+modulate = Color( 0, 0.760784, 1, 1 )
+rotation = 1.5708
+texture = ExtResource( 9 )
+offset = Vector2( 0, -16 )
 
 [node name="PlaceTiles" parent="Props" instance=ExtResource( 3 )]
 
