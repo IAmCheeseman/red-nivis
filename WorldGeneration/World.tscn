@@ -104,6 +104,7 @@ directional = true
 bus = "SFX"
 
 [connection signal="tree_entered" from="." to="." method="_on_World_tree_entered"]
+[connection signal="dropGun" from="Props/Player" to="." method="_on_drop_gun"]
 [connection signal="removeTile" from="Props/Player" to="." method="_on_player_removeTile"]
 
 [editable path="Props/Player"]

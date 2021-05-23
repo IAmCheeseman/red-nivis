@@ -31,6 +31,7 @@ var walkParticles = preload("res://Player/WalkParticles.tscn")
 
 
 signal removeTile(mousePosition)
+signal dropGun(gun, pos)
 
 
 func _ready():
@@ -200,7 +201,10 @@ func add_item(item=null, stats=null, addTo=null):
 
 	elif backItemHolder.get_child_count() >= 1:
 		# removing the current held item if there is a back item
-		itemHolder.get_child(0).queue_free()
+		var gun = itemHolder.get_child(0)
+		itemHolder.remove_child(gun)
+		if item:
+			emit_signal("dropGun", gun, item.position)
 
 
 	if item:

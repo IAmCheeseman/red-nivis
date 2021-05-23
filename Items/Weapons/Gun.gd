@@ -106,8 +106,7 @@ func _ready():
 		set_gun_logic()
 
 	else:
-		pickUpArea.queue_free()
-		tooltipHolder.queue_free()
+		pickUpArea.monitoring = false
 
 		var newBody = load(stats.body).instance()
 		pivot.add_child(newBody)
@@ -236,8 +235,11 @@ func equipSelf():
 	isPickedUp = true
 	GameManager.heldItem = self.duplicate()
 	set_active()
-	pickUpArea.call_deferred("queue_free")
+	pickUpArea.monitoring = false
 	player.add_item(self)
+
+
+func turn_to_pick_up(): pickUpArea.monitoring = true
 
 
 func set_gun_logic():

@@ -228,3 +228,11 @@ func _on_World_tree_entered():
 	name = "World"
 	yield(get_tree(), "idle_frame")
 	atmosphere.color = GameManager.planet.atmosphereColor
+
+
+func _on_drop_gun(gun, pos):
+	gun.position = pos
+	gun.isPickedUp = false
+	gun.set_logic(false)
+	gun.turn_to_pick_up()
+	props.add_child(gun)
