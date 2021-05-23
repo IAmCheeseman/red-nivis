@@ -48,6 +48,7 @@ func start(priority_=0, strength_=16, freq_=.1, time_=.25, rotStrength_=12, dir=
 	# Check the priority so small actions don't overtake big ones
 	if priority > priority_:
 		return
+
 	# Setting the properties
 	priority = priority_
 	strength = strength_*Settings.screenshake
@@ -57,7 +58,8 @@ func start(priority_=0, strength_=16, freq_=.1, time_=.25, rotStrength_=12, dir=
 	rotStrength = rotStrength_*Settings.screenshake
 
 	# Starting the screenshake
-	timer.start(time)
+	if timer.is_inside_tree():
+		timer.start(time)
 	shake()
 
 
@@ -74,17 +76,21 @@ func shake():
 	if rot > 0: rot = rotStrength; else: rot = -rotStrength
 
 	# Tweening the offset
-	offsetTween.interpolate_property(self, "offset", offset, dir, freq,
-	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	offsetTween.start()
+	if offsetTween.is_inside_tree():
+		offsetTween.interpolate_property(self, "offset", offset, dir, freq,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		offsetTween.start()
 
 	# Tweening the rotation
-	rotTween.interpolate_property(self, "rotation_degrees", rotation_degrees, rot,
-	freq, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	rotTween.start()
+	if rotTween.is_inside_tree():
+		rotTween.interpolate_property(self, "rotation_degrees", rotation_degrees, rot,
+		freq, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		rotTween.start()
+
 
 func _on_Tween_tween_all_completed():
 	# If timer is over, stop, and reset
+	print(timer.time_left)
 	if timer.is_stopped():
 		priority = -1
 
@@ -99,3 +105,5 @@ func _on_Tween_tween_all_completed():
 		rotTween.start()
 		return
 	shake()
+
+
