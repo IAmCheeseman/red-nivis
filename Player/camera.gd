@@ -45,6 +45,7 @@ func _process(_delta):
 
 # SCREENSHAKE
 func start(priority_=0, strength_=16, freq_=.1, time_=.25, rotStrength_=12, dir=Vector2.ZERO):
+	print(name+str(randi()))
 	# Check the priority so small actions don't overtake big ones
 	if priority > priority_:
 		return
