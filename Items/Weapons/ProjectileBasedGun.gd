@@ -41,6 +41,7 @@ func _physics_process(delta):
 
 	# Settling the rotation of the gun down after it's been kicked up
 	body.rotation = lerp_angle(body.rotation, 0, 4*delta)
+	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 12*delta)
 
 	# Shooting
 	if stats.fullyAutomatic:
@@ -76,7 +77,8 @@ func shoot():
 		newBullet.set_texture(stats.bulletSprite, stats.lightTexture)
 
 		# Rotating the gun for juice
-		body.rotation_degrees = -stats.kickUp*3.2
+		body.rotation_degrees = -stats.kickUp*2.2
+		pivot.scale = Vector2(1.7, 1.7)
 
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
