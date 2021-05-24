@@ -77,7 +77,7 @@ func shoot():
 		newBullet.set_texture(stats.bulletSprite, stats.lightTexture)
 
 		# Rotating the gun for juice
-		body.rotation_degrees = -stats.kickUp*2.2
+		body.rotation_degrees = stats.kickUp*2.2 if body.scale.y == -1 else -stats.kickUp*2.2
 		pivot.scale = Vector2(1.7, 1.7)
 
 		# Removing the ability to shoot for X amount of time
