@@ -6,6 +6,7 @@ export var accelaration := 5.0
 export var friction := 3.0
 export var recoveryTime = 1.0
 export var tiltStrength = 5.0
+export var inMenu = false
 
 # Nodes
 onready var sprite = $ScaleHelper/Sprite
@@ -182,6 +183,8 @@ func _on_health_vig_tween_all_completed():
 
 
 func _on_Player_tree_entered():
+	if inMenu:
+		return
 	yield(get_tree(), "idle_frame")
 	# Adding the items you picked up in the last scene
 	if GameManager.heldItem:

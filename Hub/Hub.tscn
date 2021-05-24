@@ -31,6 +31,9 @@ texture = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -181 )
+maxSpeed = 80
+friction = 3.0
+recoveryTime = 1.0
 
 [node name="Shadow" parent="Player/ScaleHelper/Sprite" index="0"]
 z_index = -1

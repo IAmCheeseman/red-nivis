@@ -54,6 +54,10 @@ color = Color( 0.745098, 0.858824, 0.968627, 1 )
 
 [node name="Player" parent="Landscape" instance=ExtResource( 8 )]
 position = Vector2( 152.433, 166.853 )
+maxSpeed = 80
+friction = 3.0
+recoveryTime = 1.0
+inMenu = true
 
 [node name="Camera" parent="Landscape/Player" index="2"]
 current = false
