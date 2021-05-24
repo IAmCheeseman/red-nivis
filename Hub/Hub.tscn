@@ -1,18 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Hub/HubWorld.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hub/HubWorldFloor.png" type="Texture" id=3]
 [ext_resource path="res://Colliders/LoadingZone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NPC/Norg/Norg.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 10 )
 
-[node name="Hub" type="Node2D"]
+[node name="Hub" type="YSort"]
 
 [node name="Floor" type="Sprite" parent="."]
+position = Vector2( 12, -299 )
 z_index = -1
 texture = ExtResource( 3 )
+offset = Vector2( -12, 299 )
 
 [node name="BG" type="ColorRect" parent="Floor"]
 show_behind_parent = true
@@ -26,8 +29,9 @@ __meta__ = {
 }
 
 [node name="HubWorldSolids" type="Sprite" parent="."]
-position = Vector2( 0, 34 )
+position = Vector2( 12, -299 )
 texture = ExtResource( 1 )
+offset = Vector2( -12, 333 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -181 )
@@ -50,6 +54,10 @@ reqiurePrompt = false
 
 [node name="CollisionShape2D" parent="LoadingZone" index="0"]
 shape = SubResource( 1 )
+
+[node name="Norg" parent="." instance=ExtResource( 5 )]
+position = Vector2( -60, -106 )
+script = null
 
 [editable path="Player"]
 [editable path="Player/Hurtbox"]
