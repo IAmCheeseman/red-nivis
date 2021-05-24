@@ -33,14 +33,14 @@ func _physics_process(delta):
 	get_parent().get_parent().show_behind_parent = local.y < 0
 
 	# Setting rotation
-	var pastRot = body.global_rotation_degrees
+	var pastRot = body.global_rotation
 	pivot.look_at(get_global_mouse_position())
-	var targetRot = pivot.global_rotation_degrees
+	var targetRot = pivot.global_rotation
 
-	body.global_rotation_degrees = lerp(pastRot, targetRot, 1.2*delta)
+	body.global_rotation = lerp_angle(pastRot, targetRot, 3.2*delta)
 
 	# Settling the rotation of the gun down after it's been kicked up
-	body.rotation_degrees = lerp_angle(body.rotation_degrees, 0, 4*delta)
+	body.rotation = lerp_angle(body.rotation, 0, 4*delta)
 
 	# Shooting
 	if stats.fullyAutomatic:
@@ -76,7 +76,7 @@ func shoot():
 		newBullet.set_texture(stats.bulletSprite, stats.lightTexture)
 
 		# Rotating the gun for juice
-		body.rotation_degrees = -stats.kickUp*1.2
+		body.rotation_degrees = -stats.kickUp*3.2
 
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
