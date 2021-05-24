@@ -6,6 +6,8 @@ onready var cooldownTimer = get_parent().get_node("Cooldown")
 var shootSound : SoundManager
 var body
 var stats
+var rotVel = 0
+var lastFrameRot = 0
 
 var shellPositions = [
 	Rect2(Vector2(0, 0), Vector2(3, 5)),
@@ -19,21 +21,26 @@ var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 
 
 func _physics_process(delta):
+	body = get_parent().get_node("Pivot/GunBody")
+
 	# Flipping the gun based on rotation
 	var local = barrelEnd.global_position-global_position
 	if local.x < 0:
-		get_parent().scale.y = -1
+		body.scale.y = -1
 	else:
-		get_parent().scale.y = 1
-
+		body.scale.y = 1
 	# Showing the gun behind the parent based on rotation
 	get_parent().get_parent().show_behind_parent = local.y < 0
 
-	# Settling the rotation of the gun down after it's been kicked up
-	body = get_parent().get_node("Pivot/GunBody")
-	body.rotation_degrees = lerp(body.rotation_degrees, 0, 4*delta)
-
+	# Setting rotation
+	var pastRot = body.global_rotation_degrees
 	pivot.look_at(get_global_mouse_position())
+	var targetRot = pivot.global_rotation_degrees
+
+	body.global_rotation_degrees = lerp(pastRot, targetRot, 1.2*delta)
+
+	# Settling the rotation of the gun down after it's been kicked up
+	body.rotation_degrees = lerp_angle(body.rotation_degrees, 0, 4*delta)
 
 	# Shooting
 	if stats.fullyAutomatic:
@@ -42,6 +49,7 @@ func _physics_process(delta):
 	else:
 		if Input.is_action_just_pressed("use_item") and get_parent().canShoot:
 			shoot()
+	lastFrameRot = pivot.rotation_degrees
 
 
 func shoot():
@@ -68,7 +76,7 @@ func shoot():
 		newBullet.set_texture(stats.bulletSprite, stats.lightTexture)
 
 		# Rotating the gun for juice
-		body.rotation_degrees = -stats.kickUp
+		body.rotation_degrees = -stats.kickUp*1.2
 
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
