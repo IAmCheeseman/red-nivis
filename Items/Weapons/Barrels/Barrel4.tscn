@@ -5,7 +5,7 @@
 [node name="Part" instance=ExtResource( 1 )]
 look = -10
 damage = -15.0
-recoil = 15.0
+recoil = 20.0
 cooldown = 25.0
 multishot = 1
 projSpeed = -20.0

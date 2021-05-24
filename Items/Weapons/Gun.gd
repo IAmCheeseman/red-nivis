@@ -26,6 +26,7 @@ var player
 
 var grip
 
+# warning-ignore:unused_signal
 signal onShoot
 
 export(Array, String) var bodies

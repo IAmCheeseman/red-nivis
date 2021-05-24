@@ -6,6 +6,7 @@
 position = Vector2( 2, 1 )
 rarity = 1
 damage = 34.0
+recoil = -20.0
 projSpeed = -15.0
 projScale = -10.0
 accuracy = 25.0

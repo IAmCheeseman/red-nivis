@@ -5,7 +5,7 @@
 [node name="Part" instance=ExtResource( 1 )]
 rarity = 2
 damage = 50.0
-recoil = 10.0
+recoil = 20.0
 projScale = -20.0
 spread = -21.0
 accuracy = -33.33

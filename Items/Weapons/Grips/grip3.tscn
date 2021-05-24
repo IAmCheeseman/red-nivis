@@ -5,6 +5,7 @@
 [node name="Part" instance=ExtResource( 1 )]
 rarity = 2
 damage = 10.0
+recoil = -70.0
 cooldown = -5.0
 projScale = 10.0
 accuracy = -40.0

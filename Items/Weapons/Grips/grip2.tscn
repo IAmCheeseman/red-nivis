@@ -4,6 +4,7 @@
 
 [node name="Part" instance=ExtResource( 1 )]
 rarity = 1
+recoil = -40.0
 accuracy = -25.0
 
 [node name="Sprite" parent="." index="0"]

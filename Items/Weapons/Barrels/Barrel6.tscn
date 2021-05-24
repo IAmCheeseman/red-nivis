@@ -6,7 +6,7 @@
 position = Vector2( 3, 0 )
 rarity = 1
 damage = 45.0
-recoil = 1.2
+recoil = 20.0
 multishot = 1
 projScale = 20.0
 accuracy = 12.0
