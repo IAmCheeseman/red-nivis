@@ -192,6 +192,10 @@ func _on_Player_tree_entered():
 		add_item(null, GameManager.weaponStats[0], itemHolder)
 
 
+func gunShot(dir, recoil):
+	vel += -dir*recoil
+
+
 func add_item(item=null, stats=null, addTo=null):
 	# Making sure you can't hold two items at once.
 	if backItemHolder.get_child_count() == 0\
@@ -225,6 +229,8 @@ func add_item(item=null, stats=null, addTo=null):
 		if addTo.get_child_count() > 0:
 			addTo.get_child(0).queue_free()
 		addTo.call_deferred("add_child", newItem)
+
+	newItem.connect("onShoot", self, "gunShot")
 
 	camera.maxOffset = camera.baseMaxOffset+GameManager.weaponStats[0].look
 

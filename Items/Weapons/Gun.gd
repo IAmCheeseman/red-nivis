@@ -26,6 +26,8 @@ var player
 
 var grip
 
+signal onShoot
+
 export(Array, String) var bodies
 
 var stats = {
