@@ -213,7 +213,6 @@ func add_item(item=null, stats=null, addTo=null):
 		if item:
 			emit_signal("dropGun", gun, item.position)
 
-
 	if item:
 		GameManager.weaponStats[0] = item.stats
 		item.queue_free()
