@@ -57,14 +57,14 @@ func node_set_up():
 		preload("res://WorldGeneration/Planets/Acid.tres"),
 		preload("res://WorldGeneration/Planets/Water.tres")
 	]
-	
+
 	planet = planets[GameManager.planet]
 	GameManager.planet = planet
-	
+
 	background.rect_position = Vector2.ONE*-20000
 	background.rect_size = Vector2(10000, 10000)*3
 	background.texture = planet.backgroundImage
-	
+
 	tiles = planet.solidTiles.instance()
 	shadows = tiles.duplicate()
 	shadows.position.y += 12
@@ -73,38 +73,38 @@ func node_set_up():
 	shadows.cell_y_sort = false
 	shadows.collision_layer = 0
 	tiles.add_child(shadows)
-	
+
 	props.add_child(tiles)
 	if planet.backgroundTiles != null:
 		backgroundTiles = planet.backgroundTiles.instance()
 		props.add_child(backgroundTiles)
-	
+
 	solidNoise = planet.noiseTexture.noise
 	solidNoise.seed = worldSeed
-	
+
 	if planet.miniBiomes.size() > 0:
 		for i in planet.miniBiomes:
 			var solids = i.mainTiles.instance()
 			props.add_child(solids)
 			minibiomeSolids.append(solids)
-		
-	
+
+
 	while solidNoise.get_noise_2d(tiles.world_to_map(player.position).x, 0) < planet.minNoise:
 		player.position.x += 16
 		player.position.y = 0
-	
+
 
 
 func add_human_ruin():
 	if ruinCount > maxRuinCount: return
-	
+
 	var selectedDir = Vector2.RIGHT.rotated(deg2rad(rand_range(0, 360)))
 	var selectedDist = rand_range(minRuinDist, ruinRange)
 	var ruinPosition = (selectedDir*selectedDist+player.position).round()
-	
+
 	if tiles.get_cellv(tiles.world_to_map(ruinPosition)) != -1:
 		return
-	
+
 	var ruinHandler = RuinHandler.new()
 	var ruins = ruinHandler.get_ruins(true)
 	ruins.shuffle()
@@ -113,16 +113,16 @@ func add_human_ruin():
 	ruin.worldGenerator = self
 	props.add_child(ruin)
 	ruin.set_color(planet.ruinColor)
-	
+
 	ruinCount += 1
 
 
 func generate_chunk(chunkx, chunky):
-	# WORLD GENERATION 
+	# WORLD GENERATION
 	# --------------------------------------------------------
 	# Setting Solids
 	# -------------------------------------------
-	
+
 	# Noise Gen
 	for x in planet.chunkSize:
 		for y in planet.chunkSize:
@@ -132,12 +132,12 @@ func generate_chunk(chunkx, chunky):
 				shadows.set_cell(chunkx+x, chunky+y, 0)
 				tiles.update_bitmask_area(Vector2(chunkx+x, chunky+y))
 				shadows.update_bitmask_area(Vector2(chunkx+x, chunky+y))
-	yield(get_tree(), "idle_frame")
+#	yield(get_tree(), "idle_frame")
 	#--------------------------------------------
-	
+
 	# Background
 	# -------------------------------------------
-	
+
 	if planet.backgroundTiles:
 		var altBGNoise = OpenSimplexNoise.new()
 		altBGNoise.octaves = 9
@@ -151,20 +151,20 @@ func generate_chunk(chunkx, chunky):
 					backgroundTiles.update_bitmask_area(Vector2(chunkx+x, chunky+y))
 		backgroundTiles.z_index = -1
 	# -------------------------------------------
-	
+
 	# MINIBIOMES
-	
+
 	for minibiome in planet.miniBiomes:
 		yield(get_tree(), "idle_frame")
 		if minibiome is Minibiome:
 			var generationNoise = minibiome.generationNoise.noise
 			if generationNoise.get_noise_2d(chunkx, chunky) > minibiome.rarity:
 				continue
-			
+
 			var biomeIndex = planet.miniBiomes.find(minibiome)
 			var solids = minibiomeSolids[biomeIndex]
 			var miniSolidNoise = minibiome.solidNoise.noise
-			
+
 			for x in planet.chunkSize:
 				for y in planet.chunkSize:
 					if miniSolidNoise.get_noise_2d(chunkx+x, chunky+y) < minibiome.minNoiseValue\
@@ -172,11 +172,11 @@ func generate_chunk(chunkx, chunky):
 					and tiles.get_cell(chunkx+x, chunky+y) == -1:
 						solids.set_cell(chunkx+x, chunky+y, 0)
 						shadows.set_cell(chunkx+x, chunky+y, 0)
-						
+
 						solids.update_bitmask_area(Vector2(chunkx+x, chunky+y))
 						shadows.update_bitmask_area(Vector2(chunkx+x, chunky+y))
-			
-	
+
+
 	# --------------------------------------------------------
 
 func remove_chunk(chunkx, chunky):
@@ -192,25 +192,25 @@ func remove_chunk(chunkx, chunky):
 func get_neighbors(tilePos : Vector2, tileset : TileMap, getCorners = false) -> Array:
 	var xx = -1
 	var yy = -1
-	
+
 	var CORNERTILES = [
 		Vector2(1, 1),
 		Vector2(1, -1),
 		Vector2(-1, 1),
 		Vector2(-1, -1)
 	]
-	
+
 	var neighboringTiles = []
-	
+
 	for tile in range(9):
 		if tile == 5:
 			continue
-		
+
 		if getCorners:
 			neighboringTiles.append(tileset.get_cell(tilePos.x+xx, tilePos.y+yy))
 		elif !Vector2(xx, yy) in CORNERTILES:
 			neighboringTiles.append(tileset.get_cell(tilePos.x+xx, tilePos.y+yy))
-		
+
 		xx += 1
 		xx = wrapi(xx, -1, 2)
 		if xx == -1:
