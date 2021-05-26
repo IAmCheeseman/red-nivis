@@ -76,7 +76,7 @@ func shoot():
 		get_tree().root.get_child(3).add_child(newBullet)
 		newBullet.hitbox.damage = stats.damage
 		newBullet.set_texture(stats.bulletSprite, stats.lightTexture)
-		if stats.prefix:
+		if stats.has("prefix"):
 			newBullet.prefix = stats.prefix
 		newBullet.stats = stats
 
@@ -90,7 +90,7 @@ func shoot():
 		cooldownTimer.start(stats.cooldown)
 
 	# Creating the prefix effect
-	if stats.prefix:
+	if stats.has("prefix"):
 		if stats.prefix.callMethod == 0:
 			var statEffect = load(stats.prefix.effect).instance()
 			add_child(statEffect)

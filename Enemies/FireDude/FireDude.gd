@@ -18,6 +18,7 @@ onready var cooldownTimer = $CooldownTimer
 onready var wanderTimer = $WanderTimer
 onready var sprite = $Sprite
 onready var shadow = $Shadow
+onready var hitAnim = $Hurt
 onready var shootSFX = $ShootSFX
 onready var deathSFX = $DeathSFX
 
@@ -166,4 +167,4 @@ func _on_death():
 
 
 func _on_hurt():
-	pass # Replace with function body.
+	hitAnim.play("Hurt")

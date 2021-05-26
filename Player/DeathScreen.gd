@@ -8,4 +8,4 @@ func _on_Continue_button_up():
 
 
 func _on_Quit_button_up():
-	get_tree().quit()
+	get_tree().change_scene("res://UI/MainMenu.tscn")

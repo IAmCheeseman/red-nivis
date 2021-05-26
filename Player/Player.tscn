@@ -314,8 +314,8 @@ margin_bottom = 36.0
 alignment = 1
 
 [node name="Continue" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 77.0
-margin_right = 132.0
+margin_left = 83.0
+margin_right = 138.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
@@ -326,15 +326,15 @@ text = "Continue"
 flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 136.0
-margin_right = 223.0
+margin_left = 142.0
+margin_right = 216.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
-text = "Quit to Desktop"
+text = "Quit to Menu"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
