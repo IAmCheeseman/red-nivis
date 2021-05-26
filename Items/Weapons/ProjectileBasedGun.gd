@@ -9,6 +9,8 @@ var stats
 var rotVel = 0
 var lastFrameRot = 0
 
+enum {CALLED_ON_SHOOT, CALLED_ON_HIT}
+
 var shellPositions = [
 	Rect2(Vector2(0, 0), Vector2(3, 5)),
 	Rect2(Vector2(3, 0), Vector2(4, 6)),
@@ -22,7 +24,6 @@ var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 
 func _physics_process(delta):
 	body = get_parent().get_node("Pivot/GunBody")
-
 	# Flipping the gun based on rotation
 	var local = barrelEnd.global_position-global_position
 	if local.x < 0:

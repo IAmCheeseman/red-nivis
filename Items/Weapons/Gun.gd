@@ -106,6 +106,37 @@ func _ready():
 		stats.cooldown = clamp(stats.cooldown, .1, INF)
 		# DON'T USE MULTISHOT IN HITSCAN SCRIPT
 
+
+		var prefixPools = [
+			# COMMON
+			[],
+			# UNCOMMON
+			[
+				"res://Items/Weapons/Prefixes/Poison/Poison.tres"
+			],
+			# RARE
+			[
+				"res://Items/Weapons/Prefixes/Poison/Poison.tres"
+			],
+			# UNIQUE
+			[
+				"res://Items/Weapons/Prefixes/Poison/Poison.tres"
+			]
+		]
+
+		if rand_range(0, 2) < 1:
+			var prefixPool : Array = prefixPools[body.rarity].duplicate()
+
+			if prefixPool.size() == 0: return
+
+			prefixPool.shuffle()
+			var prefix : Prefix = load(prefixPool.pop_front())
+			var particleEffect = prefix.particleEffect.instance()
+			particleEffect.position = body.position
+			add_child(particleEffect)
+
+
+
 		set_gun_logic()
 
 	else:
