@@ -34,6 +34,6 @@ func _on_QueueArea_body_entered(_body):
 	queue_free()
 
 
-func _on_Hitbox_hit_object():
+func _on_Hitbox_hit_object(_object):
 	if !peircing:
 		queue_free()

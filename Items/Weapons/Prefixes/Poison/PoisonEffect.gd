@@ -1,7 +1,9 @@
-extends Node
+extends Node2D
 
 var damage : float
 var hurtboxTarget : Hurtbox
+var maxHurtTime = 10
+var hurtTime = 0
 
 # Setting the stats
 func callEffect(stats:Dictionary, target:Hurtbox):
@@ -11,3 +13,7 @@ func callEffect(stats:Dictionary, target:Hurtbox):
 # Taking damage
 func _on_poison_timeout():
 	hurtboxTarget.take_damage(damage)
+	hurtTime += 1
+	print("damage :D")
+	if hurtTime >= maxHurtTime:
+		queue_free()

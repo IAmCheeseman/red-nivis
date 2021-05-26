@@ -7,7 +7,7 @@
 [ext_resource path="res://Items/Weapons/Bullet/Lights/bulletLight1.png" type="Texture" id=5]
 [ext_resource path="res://Items/Weapons/Bullet/Particles.tres" type="Material" id=6]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "kill"
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -36,13 +36,13 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=2]
 radius = 4.0
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=3]
 radius = 4.0
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Light:scale")
 tracks/0/interp = 1
@@ -98,7 +98,7 @@ texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Particles"]
 autoplay = "kill"
-anims/kill = SubResource( 4 )
+anims/kill = SubResource( 1 )
 
 [node name="Light" type="Sprite" parent="."]
 modulate = Color( 1, 0.662745, 0.196078, 1 )
@@ -115,18 +115,18 @@ collision_mask = 4
 maskedHurtbox = "player"
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="QueueArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QueueArea"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Init"
-anims/Init = SubResource( 7 )
+anims/Init = SubResource( 4 )
 
 [connection signal="hit_object" from="Hitbox" to="." method="_on_Hitbox_hit_object"]
 [connection signal="body_entered" from="QueueArea" to="." method="_on_QueueArea_body_entered"]

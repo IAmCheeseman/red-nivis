@@ -135,6 +135,8 @@ func _ready():
 			particleEffect.position = body.position
 			add_child(particleEffect)
 
+			stats.prefix = prefix
+
 
 
 		set_gun_logic()
@@ -156,6 +158,11 @@ func _ready():
 		add_part(slider, "slider")
 
 		shootSound.audio = stats.shootSound
+
+		if stats.has("prefix"):
+			var particleEffect = stats.prefix.particleEffect.instance()
+			particleEffect.position = newBody.position
+			add_child(particleEffect)
 
 		set_active()
 	tooltipHolder.global_rotation_degrees = 0
