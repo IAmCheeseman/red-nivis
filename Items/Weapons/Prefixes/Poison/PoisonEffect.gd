@@ -14,6 +14,5 @@ func callEffect(stats:Dictionary, target:Hurtbox):
 func _on_poison_timeout():
 	hurtboxTarget.take_damage(damage)
 	hurtTime += 1
-	print("damage :D")
 	if hurtTime >= maxHurtTime:
 		queue_free()
