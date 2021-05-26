@@ -175,9 +175,8 @@ func generate_chunk(chunkx, chunky):
 
 						solids.update_bitmask_area(Vector2(chunkx+x, chunky+y))
 						shadows.update_bitmask_area(Vector2(chunkx+x, chunky+y))
-
-
 	# --------------------------------------------------------
+
 
 func remove_chunk(chunkx, chunky):
 	for x in 10:
