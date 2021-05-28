@@ -60,7 +60,7 @@ shape = SubResource( 4 )
 [node name="LoadingZone" parent="." instance=ExtResource( 3 )]
 position = Vector2( -16.7043, 18.8202 )
 loadPath = "Ruins/Human/Interiors/BaseInterior1.tscn"
-loadPaths = [ "res://Ruins/Human/Interiors/BaseInterior1.tscn", "res://Ruins/Human/Interiors/BaseInterior2.tscn", "res://Ruins/Human/Interiors/BaseInterior3.tscn" ]
+loadPaths = [ "res://Ruins/Human/Interiors/BaseInterior1.tscn", "res://Ruins/Human/Interiors/BaseInterior2.tscn", "res://Ruins/Human/Interiors/BaseInterior3.tscn", "res://Ruins/Human/Interiors/BaseInterior4.tscn" ]
 
 [node name="CollisionShape2D" parent="LoadingZone" index="0"]
 shape = SubResource( 5 )

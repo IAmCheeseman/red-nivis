@@ -2,7 +2,13 @@ extends StaticBody2D
 
 onready var animation = $AnimationPlayer
 
-var pressed = false
+export var pressed = false
+
+func _ready():
+	if pressed:
+		disappear()
+	else:
+		reappear()
 
 func disappear():
 	animation.play("Remove")

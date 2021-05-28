@@ -13,10 +13,10 @@ func _ready():
 	shadows.cell_y_sort = false
 	shadows.collision_layer = 0
 	solids.add_child(shadows)
-	
+
 	# Setting atmosphere
 	if GameManager.planet is Planet:
-		
+
 		atmosphere.color = GameManager.planet.atmosphereColor
 		solids.material.set_shader_param("newColor", GameManager.planet.ruinColor)
 		if GameManager.planet.amosphereParticles:
@@ -24,13 +24,13 @@ func _ready():
 			particleContainer.add_child(atmosphereParticles)
 		else:
 			print("NO AMBIENT PARTICLES DEFINED FOR PLANET")
-	
+
 	# adding weapons
-	
+
 	var invalidCells = solids.get_used_cells()
 	var limits = solids.get_used_rect().end
 	var weaponCount = 3
-	
+
 	var gun = preload("res://Items/Weapons/Gun.tscn")
 	for i in weaponCount:
 		var newWeapon = gun.instance()
