@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemies/BigBull/BigJumpingBull.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ruins/PuzzleElements/Lever/Lever.tscn" type="PackedScene" id=2]
 [ext_resource path="res://TestArea.gd" type="Script" id=3]
+[ext_resource path="res://Ruins/PuzzleElements/Block/Block.tscn" type="PackedScene" id=4]
 
-
-[node name="TestArea" type="Node2D"]
+[node name="TestArea" type="YSort"]
 script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
@@ -19,6 +19,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bull" parent="." instance=ExtResource( 2 )]
-position = Vector2( 68, -127 )
-rotSpeed = 45
+[node name="Lever" parent="." instance=ExtResource( 2 )]
+position = Vector2( 72, 83 )
+
+[node name="Block" parent="." instance=ExtResource( 4 )]
+position = Vector2( 102, 77 )
+
+[connection signal="leverPulled" from="Lever" to="Block" method="disappear"]

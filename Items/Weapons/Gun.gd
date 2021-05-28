@@ -254,7 +254,7 @@ func set_logic(on : bool):
 		grip.get_child(1).set_laser(on)
 	body = get_node("Pivot/GunBody")
 	if on: body.rotation = body.position.direction_to(Vector2.ZERO).angle()
-	elif is_inside_tree(): body.global_rotation = 0
+	elif is_inside_tree(): pivot.global_rotation = 0
 
 
 func _on_PickUpArea_area_entered(area):
