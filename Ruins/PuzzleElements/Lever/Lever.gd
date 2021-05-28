@@ -9,7 +9,7 @@ signal leverPulled
 func _input(event):
 	if event.is_action_pressed("interact") and nearEnough:
 		emit_signal("leverPulled")
-		sprite.frame = 1
+		sprite.frame = wrapi(sprite.frame+1, 0, 2)
 
 
 func _on_Collision_area_entered(area):

@@ -25,4 +25,4 @@ position = Vector2( 72, 83 )
 [node name="Block" parent="." instance=ExtResource( 4 )]
 position = Vector2( 102, 77 )
 
-[connection signal="leverPulled" from="Lever" to="Block" method="disappear"]
+[connection signal="leverPulled" from="Lever" to="Block" method="toggle"]
