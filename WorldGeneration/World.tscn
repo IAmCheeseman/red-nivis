@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Tiles/Ground/Grass.png" type="Texture" id=1]
 [ext_resource path="res://Tiles/Solids/PlaceTiles.tscn" type="PackedScene" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://Space/Pointer.gd" type="Script" id=7]
 [ext_resource path="res://WorldGeneration/WorldGenerater.gd" type="Script" id=8]
 [ext_resource path="res://WorldGeneration/World.gd" type="Script" id=9]
-[ext_resource path="res://Space/PlanetGlow.png" type="Texture" id=10]
+[ext_resource path="res://WorldGeneration/MistSpawner.gd" type="Script" id=12]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -53,25 +53,6 @@ func _on_SoundManager_tree_exiting():
 	for c in get_children():
 		c.queue_free()
 "
-
-[sub_resource type="Shader" id=2]
-code = "shader_type canvas_item;
-
-uniform float strength : hint_range(0.0, 1.0);
-uniform vec4 lightColor : hint_color;
-
-void fragment() {
-	float a = texture(TEXTURE, UV).r;
-	a = clamp(a, 0, .9);
-	vec4 color = vec4(lightColor.r, lightColor.g, lightColor.b, a*strength);
-	
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
-shader_param/strength = 0.524
-shader_param/lightColor = Color( 0.709804, 0.243137, 0.658824, 1 )
 
 [node name="World" type="Node2D" groups=[
 "world",
@@ -123,71 +104,10 @@ audio = ExtResource( 6 )
 directional = true
 bus = "SFX"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource( 3 )
-margin_left = 151.0
-margin_top = -104.0
-margin_right = 265.0
-margin_bottom = 10.0
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MistSpawner" type="Node2D" parent="."]
+script = ExtResource( 12 )
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-material = SubResource( 3 )
-margin_left = 111.0
-margin_top = -106.0
-margin_right = 225.0
-margin_bottom = 8.0
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect3" type="TextureRect" parent="."]
-material = SubResource( 3 )
-margin_left = 169.0
-margin_top = -122.0
-margin_right = 283.0
-margin_bottom = -8.0
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect4" type="TextureRect" parent="."]
-material = SubResource( 3 )
-margin_left = 85.0
-margin_top = -187.0
-margin_right = 282.0
-margin_bottom = -19.0
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect5" type="TextureRect" parent="."]
-material = SubResource( 3 )
-margin_left = 192.0
-margin_top = -144.0
-margin_right = 266.0
-margin_bottom = -69.0
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 353, 3 )
-texture = ExtResource( 10 )
-texture_scale = 0.1
-color = Color( 0.709804, 0.243137, 0.658824, 1 )
+[node name="Timer" type="Timer" parent="MistSpawner"]
 
 [connection signal="tree_entered" from="." to="." method="_on_World_tree_entered"]
 [connection signal="dropGun" from="Props/Player" to="." method="_on_drop_gun"]
