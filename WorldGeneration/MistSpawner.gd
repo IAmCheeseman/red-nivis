@@ -8,6 +8,8 @@ export var clumpSpread = 64
 export var color : Color
 export var strength = .5
 
+var player : Node2D
+
 var mist = preload("res://WorldGeneration/Mist.tscn")
 
 
@@ -18,5 +20,6 @@ func spawn_mist():
 	for nm in clumpSize:
 		var newMist = mist.instance()
 		newMist.rect_global_position = mistPos+Vector2(rand_range(-clumpSpread, clumpSpread), rand_range(-clumpSpread, clumpSpread))
+		newMist.player = player
 		get_parent().get_parent().get_parent().add_child(newMist)
 		newMist.set_param(color, strength)
