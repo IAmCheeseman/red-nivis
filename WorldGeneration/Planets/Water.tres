@@ -19,6 +19,7 @@ backgroundTiles = ExtResource( 5 )
 backgroundImage = ExtResource( 2 )
 atmosphereColor = Color( 0.333333, 0.376471, 0.878431, 1 )
 amosphereParticles = ExtResource( 4 )
+mistStrength = 0.5
 ruinChance = 4
 minRuinDist = 15
 ruinColor = Color( 0.0627451, 0.0980392, 0.752941, 1 )

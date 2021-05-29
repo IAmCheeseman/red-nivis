@@ -6,6 +6,7 @@ export var backgroundTiles : PackedScene
 export var backgroundImage : StreamTexture
 export var atmosphereColor : Color
 export var amosphereParticles : PackedScene
+export var mistStrength = .5
 
 export var ruinChance := 6
 export var minRuinDist := 15

@@ -11,6 +11,7 @@ onready var worldGenerater = $WorldGeneration
 onready var atmosphere = $Atmosphere
 onready var placementTiles = $Props/PlaceTiles
 onready var playerShip = $Props/Ship
+onready var mistSpawner = $Props/Player/MistSpawner
 onready var tilePlaceSFX = $TilePlaceSFX
 
 var queuedChunks : Array
@@ -35,6 +36,8 @@ func _ready():
 	else:
 		print("NO AMBIENT PARTICLES DEFINED FOR PLANET")
 	playerShip.position = player.position
+	mistSpawner.color = worldGenerater.planet.atmosphereColor
+	mistSpawner.strength = worldGenerater.planet.mistStrength
 
 
 
