@@ -188,9 +188,9 @@ func _on_Player_tree_entered():
 	yield(get_tree(), "idle_frame")
 	# Adding the items you picked up in the last scene
 	if GameManager.heldItem:
-		if GameManager.weaponStats[1] != null:
+		if GameManager.weaponStats[1] != null and backItemHolder.get_child_count() == 0:
 			add_item(null, GameManager.weaponStats[1], backItemHolder)
-		if GameManager.weaponStats[0] != null:
+		if GameManager.weaponStats[0] != null and itemHolder.get_child_count() == 0:
 			add_item(null, GameManager.weaponStats[0], itemHolder)
 
 
