@@ -6,7 +6,9 @@ export var backgroundTiles : PackedScene
 export var backgroundImage : StreamTexture
 export var atmosphereColor : Color
 export var amosphereParticles : PackedScene
+
 export var mistStrength = .5
+export var mistColor : Color
 
 export var ruinChance := 6
 export var minRuinDist := 15
@@ -26,4 +28,3 @@ export(Array, PackedScene) var enemies
 export(Array, float) var enemyChances
 export var maxEnemies = 5
 
-# uwu

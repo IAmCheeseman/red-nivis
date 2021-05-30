@@ -15,7 +15,7 @@ void fragment() {
 	vec4 color = vec4(lightColor.r, lightColor.g, lightColor.b, 1);
 	color.a = a*strength;
 	
-	COLOR = color;
+	COLOR *= color;
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -27,7 +27,7 @@ shader_param/lightColor = Color( 0.486275, 0.192157, 0.631373, 1 )
 resource_name = "lifespan"
 length = 12.0
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath(".:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -45,9 +45,12 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.5, 11.5, 12 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 11.5, 12 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
+"args": [ false ],
+"method": "set_process"
+}, {
 "args": [ true ],
 "method": "set_process"
 }, {

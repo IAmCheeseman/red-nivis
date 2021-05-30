@@ -36,7 +36,7 @@ func _ready():
 	else:
 		print("NO AMBIENT PARTICLES DEFINED FOR PLANET")
 	playerShip.position = player.position
-	mistSpawner.color = worldGenerater.planet.atmosphereColor
+	mistSpawner.color = worldGenerater.planet.mistColor
 	mistSpawner.player = player
 	mistSpawner.strength = worldGenerater.planet.mistStrength
 
