@@ -188,8 +188,10 @@ func _on_Player_tree_entered():
 	yield(get_tree(), "idle_frame")
 	# Adding the items you picked up in the last scene
 	if GameManager.heldItem:
-		add_item(null, GameManager.weaponStats[1], backItemHolder)
-		add_item(null, GameManager.weaponStats[0], itemHolder)
+		if GameManager.weaponStats[1] != null:
+			add_item(null, GameManager.weaponStats[1], backItemHolder)
+		if GameManager.weaponStats[0] != null:
+			add_item(null, GameManager.weaponStats[0], itemHolder)
 
 
 func gunShot(dir, recoil):
@@ -206,7 +208,7 @@ func add_item(item=null, stats=null, addTo=null):
 		backItemHolder.add_child(gun)
 		gun.set_logic(false)
 
-	elif backItemHolder.get_child_count() > 0:
+	elif backItemHolder.get_child_count() > 0 and itemHolder.get_child_count() > 0:
 		# removing the current held item if there is a back item
 		var gun = itemHolder.get_child(0)
 		itemHolder.remove_child(gun)
