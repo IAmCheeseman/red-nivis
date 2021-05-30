@@ -129,6 +129,10 @@ func _input(event):
 		GameManager.weaponStats[0] = back.stats
 
 		camera.maxOffset = camera.baseMaxOffset+back.stats.look
+	if Input.is_key_pressed(KEY_M):
+		var newPlayer = load("res://Player/Player.tscn").instance()
+		newPlayer.position = get_global_mouse_position()
+		get_parent().add_child(newPlayer)
 
 
 
