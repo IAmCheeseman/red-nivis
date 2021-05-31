@@ -192,8 +192,12 @@ func _on_Player_tree_entered():
 	yield(get_tree(), "idle_frame")
 	# Adding the items you picked up in the last scene
 	if GameManager.heldItem:
+		# Adding back weapon
 		if GameManager.weaponStats[1] != null and backItemHolder.get_child_count() == 0:
-			add_item(null, GameManager.weaponStats[1], backItemHolder)
+			var weapon = add_item(null, GameManager.weaponStats[1], backItemHolder)
+			yield(get_tree(), "idle_frame")
+			weapon.set_logic(false)
+		# Adding held weapon
 		if GameManager.weaponStats[0] != null and itemHolder.get_child_count() == 0:
 			add_item(null, GameManager.weaponStats[0], itemHolder)
 
@@ -205,7 +209,7 @@ func gunShot(dir, recoil):
 func add_item(item=null, stats=null, addTo=null):
 	# Making sure you can't hold two items at once.
 	if backItemHolder.get_child_count() == 0\
-	and itemHolder.get_child_count() >= 1:
+	and itemHolder.get_child_count() > 0:
 		# Moving the current held item to your back if no back item
 		var gun = itemHolder.get_child(0)
 		itemHolder.remove_child(gun)
@@ -218,6 +222,9 @@ func add_item(item=null, stats=null, addTo=null):
 		itemHolder.remove_child(gun)
 		if item:
 			emit_signal("dropGun", gun, item.position)
+
+	if backItemHolder.get_child_count() > 0:
+		backItemHolder.get_child(0).set_logic(false)
 
 	if item:
 		GameManager.weaponStats[0] = item.stats
@@ -238,6 +245,8 @@ func add_item(item=null, stats=null, addTo=null):
 	newItem.connect("onShoot", self, "gunShot")
 
 	camera.maxOffset = camera.baseMaxOffset+GameManager.weaponStats[0].look
+
+	return newItem
 
 
 
