@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Items/Weapons/Bodies/GunBody.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Weapons/Sights/Sight1.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/Bullet2.png" type="Texture" id=19]
 [ext_resource path="res://Items/Weapons/Bullet/Lights/bulletLight2.png" type="Texture" id=20]
 [ext_resource path="res://Items/Weapons/sliders/Slider3.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Items/Weapons/Barrels/Barrel11.tscn" type="PackedScene" id=22]
 
 [node name="GunBody" instance=ExtResource( 1 )]
 position = Vector2( 11, 0 )
@@ -43,7 +44,7 @@ offset = Vector2( 0.5, 0 )
 
 [node name="Barrel" parent="." index="1"]
 position = Vector2( 7, -2 )
-whitelistedParts = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 16 ) ]
+whitelistedParts = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 22 ) ]
 
 [node name="Grip" parent="." index="2"]
 position = Vector2( 4, 2 )

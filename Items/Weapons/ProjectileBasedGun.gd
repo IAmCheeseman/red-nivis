@@ -68,7 +68,7 @@ func shoot():
 		# Creating the bullet.
 		var newBullet = bullet.instance()
 		newBullet.direction = dir.normalized()
-		newBullet.speed = stats.projSpeed+rand_range(-30, 30)
+		newBullet.speed = stats.projSpeed+rand_range(-50, 60)
 		newBullet.scale = Vector2.ONE*stats.projScale
 		newBullet.peircing = stats.peircing
 		newBullet.global_position = global_position+dir*stats.bulletSpawnDist
