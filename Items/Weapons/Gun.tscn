@@ -12,7 +12,7 @@ radius = 24.0
 
 [node name="Gun" type="Node2D"]
 script = ExtResource( 9 )
-bodies = [ "res://Items/Weapons/Bodies/GunBody1.tscn", "res://Items/Weapons/Bodies/GunBody2.tscn", "res://Items/Weapons/Bodies/GunBody3.tscn", "res://Items/Weapons/Bodies/GunBody4.tscn", "res://Items/Weapons/Bodies/GunBody5.tscn", "res://Items/Weapons/Bodies/GunBody6.tscn", "res://Items/Weapons/Bodies/GunBody7.tscn" ]
+bodies = [ "res://Items/Weapons/Bodies/GunBody1.tscn", "res://Items/Weapons/Bodies/GunBody2.tscn", "res://Items/Weapons/Bodies/GunBody3.tscn", "res://Items/Weapons/Bodies/GunBody4.tscn", "res://Items/Weapons/Bodies/GunBody5.tscn", "res://Items/Weapons/Bodies/GunBody6.tscn", "res://Items/Weapons/Bodies/GunBody7.tscn", "res://Items/Weapons/Bodies/GunBody8.tscn" ]
 
 [node name="GunLogic" type="Node2D" parent="."]
 
