@@ -107,7 +107,7 @@ func update_chunks():
 
 func add_props():
 	for chunk in generatedChunks:
-		if chunk in propedChunks or worldGenerater.Wplanet.props.size() == 0:
+		if chunk in propedChunks or worldGenerater.planet.props.size() == 0:
 			continue
 
 

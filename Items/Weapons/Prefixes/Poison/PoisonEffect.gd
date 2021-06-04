@@ -12,7 +12,7 @@ func callEffect(stats:Dictionary, target:Hurtbox):
 
 # Taking damage
 func _on_poison_timeout():
-	hurtboxTarget.take_damage(damage)
+	hurtboxTarget.take_damage(damage, Vector2.RIGHT.rotated(rand_range(0, 360)))
 	hurtTime += 1
 	if hurtTime >= maxHurtTime:
 		queue_free()

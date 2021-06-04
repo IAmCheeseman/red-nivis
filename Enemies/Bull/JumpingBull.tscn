@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Enemies/Bull/Bull.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Bull/Bull.png" type="Texture" id=2]
 [ext_resource path="res://Colliders/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/BloodManager.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -179,7 +180,10 @@ shape = SubResource( 6 )
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 shape = SubResource( 7 )
 
+[node name="BloodManager" parent="." instance=ExtResource( 6 )]
+
 [connection signal="dead" from="Hurtbox" to="." method="_on_dead"]
+[connection signal="hurt" from="Hurtbox" to="BloodManager" method="emit_blood"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurt"]
 
 [editable path="Hitbox"]

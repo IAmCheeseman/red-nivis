@@ -110,5 +110,5 @@ func _on_dead():
 	queue_free()
 
 
-func _on_hurt():
+func _on_hurt(dir):
 	hurtAnim.play("Hurt")

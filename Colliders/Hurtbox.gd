@@ -8,12 +8,12 @@ signal dead
 signal hurt
 
 
-func take_damage(amount):
+func take_damage(amount, dir):
 	health -= amount-(defense/2)
 	if health <= 0:
 		emit_signal("dead")
 	else:
-		emit_signal("hurt")
+		emit_signal("hurt", dir)
 
 
 func set_defense(value):

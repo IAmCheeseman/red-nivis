@@ -166,5 +166,5 @@ func _on_death():
 	hide()
 
 
-func _on_hurt():
+func _on_hurt(dir):
 	hitAnim.play("Hurt")
