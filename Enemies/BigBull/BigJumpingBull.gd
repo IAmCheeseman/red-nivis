@@ -21,6 +21,7 @@ export var acceleration = 2.0
 export var jumpDist = 120
 export var rotSpeed = 10
 export var friction := 1.5
+export var kbStrength = 4200
 
 onready var sightLine = $Sight
 onready var hitcast = $Hit
@@ -139,6 +140,7 @@ func _on_dead():
 
 func _on_hurt(dir):
 	hurtAnim.play("Hurt")
+	vel += dir*kbStrength
 
 
 func _on_StateTimer_timeout():

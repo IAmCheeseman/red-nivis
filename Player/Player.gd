@@ -4,6 +4,7 @@ extends KinematicBody2D
 export var maxSpeed := 80
 export var accelaration := 5.0
 export var friction := 3.0
+export var kbStrength = 45
 export var recoveryTime = 1.0
 export var tiltStrength = 5.0
 export var inMenu = false
@@ -160,7 +161,7 @@ func _on_death():
 	hurtSFX.play()
 
 
-func _on_Hurtbox_hurt():
+func _on_Hurtbox_hurt(dir):
 	# Health flash
 	var tween = $CanvasLayer/HealthThing/Tween
 	tween.interpolate_property(self, "healthVigIntens", 0, .7, .2, Tween.TRANS_LINEAR)
@@ -176,6 +177,8 @@ func _on_Hurtbox_hurt():
 	hurtTimer.start(recoveryTime)
 
 	GameManager.emit_signal("screenshake", 2, 8, .05, .05, 9)
+
+	dir += dir*kbStrength
 
 
 func _on_health_vig_tween_all_completed():

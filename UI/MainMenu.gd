@@ -5,7 +5,6 @@ onready var space = $Space
 onready var options = $CanvasLayer/OptionsMenu
 onready var buttons = $CanvasLayer/Buttons
 
-#
 
 func _ready():
 	var buttonContainer = $CanvasLayer/Buttons

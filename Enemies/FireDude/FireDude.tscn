@@ -74,6 +74,7 @@ tracks/0/keys = {
 collision_layer = 0
 script = ExtResource( 3 )
 shotSpeed = 170
+kbStrength = 90
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -8,6 +8,7 @@ export var maxHealth := 4
 export var sightDist := 16*6
 export var acceleration = 2.0
 export var friction := 1.5
+export var kbStrength = 4200
 
 onready var sightLine = $Sight
 onready var hitcast = $Hit
@@ -112,3 +113,4 @@ func _on_dead():
 
 func _on_hurt(dir):
 	hurtAnim.play("Hurt")
+	vel = dir*kbStrength

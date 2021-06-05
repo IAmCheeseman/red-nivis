@@ -12,6 +12,7 @@ export var accuracy = 12
 export var shotSpeed = 360
 export var maxWanderDist = 64
 export var shotOffset = 16
+export var kbStrength = 45
 
 
 onready var cooldownTimer = $CooldownTimer
@@ -168,3 +169,4 @@ func _on_death():
 
 func _on_hurt(dir):
 	hitAnim.play("Hurt")
+	vel += dir*kbStrength
