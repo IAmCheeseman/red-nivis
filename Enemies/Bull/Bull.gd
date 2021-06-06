@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name JumpingBull
 
-enum {ATTACK, WANDER}
+enum {ATTACK, WANDER, DEAD}
 
 export var speed := 850
 export var maxHealth := 4
@@ -73,7 +73,7 @@ func AI(delta):
 
 	sightLine.cast_to = player.global_position-global_position
 
-	if knowsPlayer:
+	if knowsPlayer and state != DEAD:
 		state = ATTACK
 
 	match state:
@@ -82,6 +82,8 @@ func AI(delta):
 		ATTACK:
 			target = player.global_position
 			attackState(delta)
+		DEAD:
+			vel = vel.move_toward(Vector2.ZERO, friction*delta)
 
 
 func attackState(_delta):
@@ -108,7 +110,8 @@ func wanderState(delta):
 
 func _on_dead():
 	world.enemyCount -= 1
-	queue_free()
+	state = DEAD
+	animationPlayer.play("die")
 
 
 func _on_hurt(dir):
