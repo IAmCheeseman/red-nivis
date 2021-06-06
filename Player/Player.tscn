@@ -174,8 +174,8 @@ material = SubResource( 2 )
 position = Vector2( 0, -15.1571 )
 texture = ExtResource( 1 )
 flip_h = true
-hframes = 17
-frame = 7
+hframes = 10
+frame = 9
 
 [node name="Shadow" type="Sprite" parent="ScaleHelper/Sprite"]
 modulate = Color( 0, 0, 0, 0.498039 )
@@ -184,7 +184,7 @@ position = Vector2( 0, 25.9836 )
 scale = Vector2( 1, -1 )
 texture = ExtResource( 1 )
 flip_h = true
-hframes = 17
+hframes = 10
 frame = 7
 
 [node name="BackItemHolder" type="Node2D" parent="ScaleHelper/Sprite"]
