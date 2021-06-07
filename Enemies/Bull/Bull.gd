@@ -17,6 +17,7 @@ onready var shadow = $ScaleHelper/Sprite/Shadow
 onready var sprite = $ScaleHelper/Sprite
 onready var hurtAnim = $Hurt
 onready var softCollision = $SoftCollision
+onready var hitbox = $Hitbox
 
 var player : KinematicBody2D
 var world
@@ -112,6 +113,8 @@ func _on_dead():
 	world.enemyCount -= 1
 	state = DEAD
 	animationPlayer.play("die")
+	hitbox.monitoring = false
+	modulate = Color(.2, .2, .2, .5)
 
 
 func _on_hurt(dir):
