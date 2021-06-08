@@ -46,7 +46,7 @@ func _physics_process(delta):
 
 	var distPlayer = global_position.distance_to(player.global_position)
 
-	if distPlayer >= 16*35:
+	if distPlayer >= 16*35 and !state == DEAD:
 		world.enemyCount -= 1
 		queue_free()
 
@@ -110,11 +110,12 @@ func wanderState(delta):
 
 
 func _on_dead():
-	world.enemyCount -= 1
-	state = DEAD
-	animationPlayer.play("die")
-	hitbox.monitoring = false
-	modulate = Color(.2, .2, .2, .5)
+	if state != DEAD:
+		world.enemyCount -= 1
+		state = DEAD
+		animationPlayer.play("die")
+		hitbox.monitoring = false
+		modulate = Color(.2, .2, .2, .5)
 
 
 func _on_hurt(dir):

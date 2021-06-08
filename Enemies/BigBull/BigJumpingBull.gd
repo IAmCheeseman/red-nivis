@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name BigJumpingBull
 
-enum {ATTACK, BOUNCE, WANDER}
+enum {ATTACK, BOUNCE, WANDER, DEAD}
 
 const stateTimes = [
 	2.5,
@@ -31,6 +31,7 @@ onready var sprite = $ScaleHelper/Sprite
 onready var hurtAnim = $Hurt
 onready var stateTimer = $StateTimer
 onready var softCollision = $SoftCollision
+onready var hitbox = $Hitbox
 
 var player : KinematicBody2D
 var world
@@ -56,12 +57,12 @@ func _physics_process(delta):
 	hitcast.cast_to = vel.normalized()*25
 	if hitcast.is_colliding():
 		vel = Vector2.ZERO
-		if state == BOUNCE:
+		if state == BOUNCE and !state == DEAD:
 			state = ATTACK
 
 	var distPlayer = global_position.distance_to(player.global_position)
 
-	if distPlayer >= 16*35:
+	if distPlayer >= 16*35 and !state == DEAD:
 		world.enemyCount -= 1
 		queue_free()
 
@@ -86,6 +87,8 @@ func AI(delta):
 			attackState()
 		BOUNCE:
 			bounceState()
+		DEAD:
+			vel = vel.move_toward(Vector2.ZERO, friction*delta)
 
 
 func bounceState():
@@ -134,8 +137,11 @@ func wanderState(delta):
 
 
 func _on_dead():
-	world.enemyCount -= 1
-	queue_free()
+	if state != DEAD:
+		world.enemyCount -= 1
+		state = DEAD
+		animationPlayer.play("die")
+		hitbox.monitoring = false
 
 
 func _on_hurt(dir):
@@ -144,10 +150,10 @@ func _on_hurt(dir):
 
 
 func _on_StateTimer_timeout():
-	if state == ATTACK:
+	if state == ATTACK and !state == DEAD:
 		state = BOUNCE
 		vel = global_position.direction_to(player.global_position)*(speed*1.4)
-	else: state = ATTACK
+	elif !state == DEAD: state = ATTACK
 	stateTimes.shuffle()
 	stateTimer.start(stateTimes[0])
 

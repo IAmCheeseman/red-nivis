@@ -168,11 +168,10 @@ script = ExtResource( 1 )
 speed = 8400
 sightDist = 112
 acceleration = 75.0
-friction = 75.0
+friction = 4500.0
 
 [node name="ScaleHelper" type="Node2D" parent="."]
 position = Vector2( 0, 8 )
-scale = Vector2( 1.2, 0.8 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
 position = Vector2( 0, -5 )
