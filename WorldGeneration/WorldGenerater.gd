@@ -27,11 +27,6 @@ var minRuinDist = 16*21
 var thread = Thread.new()
 
 
-func _process(_delta):
-	if queuedLoadChunks.size() > 0:
-		thread.start(self, "generate_chunk")
-
-
 # warning-ignore:shadowed_variable
 # warning-ignore:shadowed_variable
 # warning-ignore:shadowed_variable
