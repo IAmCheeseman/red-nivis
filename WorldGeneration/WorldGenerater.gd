@@ -19,20 +19,32 @@ func generate_room():
 
 	var roomPlacementChance = .75
 	var roomOverChance = .20
+	var roomRects = []
 
 	for step in wOutput:
-		if (rand_range(0, 1) <= roomPlacementChance and tilemap.get_cellv(step) == -1)\
-		or (rand_range(0, 1) <= roomOverChance):
 
+		# Checking if it'd place in another room
+		var canPlaceRoom = true
+		for rect in roomRects:
+			if rect.has_point(step):
+				canPlaceRoom = false
+
+		# Creating the room
+		if rand_range(0, 1) <= roomPlacementChance and canPlaceRoom:
 			if rooms.size() == 0:
 				break
 
+			# Selecting a room
 			rooms.shuffle()
 			var room: TileMap = rooms.pop_front()
 			var tiles = room.get_used_cells()
+
+			# Making sure other rooms can't spawn in it.
+			roomRects.append(room.get_used_rect())
+
+			# Setting the tiles
 			for tile in tiles:
-				if tilemap.get_cellv(tile) != -1:
-					print('oi')
+				if tilemap.get_cellv(step+tile) == -1 and !step+tile in wOutput:
 					tilemap.set_cellv(step+tile, 0)
 					tilemap.update_bitmask_area(step+tile)
 

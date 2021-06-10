@@ -4,8 +4,8 @@ class_name DrunkWalker
 const DIRECTIONS = [
 	Vector2.RIGHT,
 	Vector2.LEFT,
-	Vector2.DOWN,
-	Vector2.UP
+	Vector2.DOWN
+#	Vector2.UP
 ]
 
 
@@ -27,7 +27,7 @@ func walk() -> Array:
 	var positions = []
 
 	for walker in amountOfWalkers:
-		var stepPosition = Vector2(rand_range(viableArea.position.x+1, viableArea.end.x-1), rand_range(viableArea.position.y+1, viableArea.end.y-1)).round()
+		var stepPosition = Vector2(Vector2.ONE).round()
 
 		var directions = DIRECTIONS.duplicate()
 		directions.shuffle()
@@ -35,10 +35,6 @@ func walk() -> Array:
 
 		for step in maxSteps:
 			positions.append(stepPosition)
-			if rand_range(0, 2) < 1:
-				positions.append(stepPosition+Vector2.RIGHT)
-				positions.append(stepPosition+Vector2.DOWN)
-				positions.append(stepPosition+Vector2.RIGHT+Vector2.DOWN)
 			var posDir = step(stepPosition, currentDirection)
 			stepPosition = posDir[0]
 			currentDirection = posDir[1]

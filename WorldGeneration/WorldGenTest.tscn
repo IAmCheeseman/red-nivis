@@ -4,7 +4,7 @@
 [ext_resource path="res://WorldGeneration/WorldGenerater.gd" type="Script" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 
-[node name="WorldGenTest" type="Node2D"]
+[node name="WorldGenTest" type="YSort"]
 
 [node name="WorlGen" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -13,4 +13,4 @@ script = ExtResource( 2 )
 tile_data = PoolIntArray(  )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 149.574, 164.898 )
+position = Vector2( 60.1195, 8.66788 )
