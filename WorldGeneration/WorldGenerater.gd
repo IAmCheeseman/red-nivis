@@ -1,11 +1,16 @@
 extends Node
 
-onready var tilemap : TileMap
+onready var tilemap : TileMap = get_parent().get_node("TileMap")
 
 var rooms = preload("res://WorldGeneration/Rooms.tscn").instance().get_children()
 var wmaxSteps = 100
-var wviableArea = Rect2(Vector2.ZERO, Vector2.ONE*100)
+var wviableArea = Rect2(Vector2.ZERO, Vector2.ONE*1000)
 var wturnChance = 75
+
+
+func _ready():
+	randomize()
+	generate_room()
 
 # _init(_maxSteps, _viableArea, _amountOfWalkers, _directionChance)
 func generate_room():
@@ -26,7 +31,8 @@ func generate_room():
 			var room: TileMap = rooms.pop_front()
 			var tiles = room.get_used_cells()
 			for tile in tiles:
-				if tile != -1:
+				if tilemap.get_cellv(tile) != -1:
+					print('oi')
 					tilemap.set_cellv(step+tile, 0)
 					tilemap.update_bitmask_area(step+tile)
 
