@@ -1,11 +1,35 @@
 extends Node
 
+onready var tilemap : TileMap
 
 var rooms = preload("res://WorldGeneration/Rooms.tscn").instance().get_children()
+var wmaxSteps = 100
+var wviableArea = Rect2(Vector2.ZERO, Vector2.ONE*100)
+var wturnChance = 75
 
-
+# _init(_maxSteps, _viableArea, _amountOfWalkers, _directionChance)
 func generate_room():
-	pass
+	var walker = DrunkWalker.new(wmaxSteps, wviableArea, 1, wturnChance)
+	var wOutput = walker.walk()
+
+	var roomPlacementChance = .75
+	var roomOverChance = .20
+
+	for step in wOutput:
+		if (rand_range(0, 1) <= roomPlacementChance and tilemap.get_cellv(step) == -1)\
+		or (rand_range(0, 1) <= roomOverChance):
+
+			if rooms.size() == 0:
+				break
+
+			rooms.shuffle()
+			var room: TileMap = rooms.pop_front()
+			var tiles = room.get_used_cells()
+			for tile in tiles:
+				if tile != -1:
+					tilemap.set_cellv(step+tile, 0)
+					tilemap.update_bitmask_area(step+tile)
+
 
 
 # Gets surrounding tiles
