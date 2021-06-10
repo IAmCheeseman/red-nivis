@@ -1,5 +1,13 @@
 extends Node
 
+
+var rooms = preload("res://WorldGeneration/Rooms.tscn").instance().get_children()
+
+
+func generate_room():
+	pass
+
+
 # Gets surrounding tiles
 func get_neighbors(tilePos : Vector2, tileset : TileMap, getCorners = false) -> Array:
 	var xx = -1
