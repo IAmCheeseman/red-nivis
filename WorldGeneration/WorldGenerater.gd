@@ -24,13 +24,9 @@ func generate_room():
 	for step in wOutput:
 
 		# Checking if it'd place in another room
-		var canPlaceRoom = true
-		for rect in roomRects:
-			if rect.has_point(step):
-				canPlaceRoom = false
 
 		# Creating the room
-		if rand_range(0, 1) <= roomPlacementChance and canPlaceRoom:
+		if rand_range(0, 1) <= roomPlacementChance:
 			if rooms.size() == 0:
 				break
 
@@ -39,12 +35,23 @@ func generate_room():
 			var room: TileMap = rooms.pop_front()
 			var tiles = room.get_used_cells()
 
-			# Making sure other rooms can't spawn in it.
-			roomRects.append(room.get_used_rect())
+			# Making sure it's not placed in another room
+			var roomRect = room.get_used_rect()
+			roomRect.position = step
+			var stop = false
+			for rect in roomRects:
+				if rect.intersects(roomRect):
+					stop = true
+					break
+			if stop:
+				rooms.append(room)
+				continue
+
+			roomRects.append(roomRect)
 
 			# Setting the tiles
 			for tile in tiles:
-				if tilemap.get_cellv(step+tile) == -1 and !step+tile in wOutput:
+				if !step+tile in wOutput:
 					tilemap.set_cellv(step+tile, 0)
 					tilemap.update_bitmask_area(step+tile)
 
