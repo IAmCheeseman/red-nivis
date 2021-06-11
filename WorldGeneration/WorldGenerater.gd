@@ -3,9 +3,8 @@ extends Node
 onready var tilemap : TileMap = get_parent().get_node("TileMap")
 
 var rooms = preload("res://WorldGeneration/Rooms.tscn").instance().get_children()
-var wmaxSteps = 100
-var wviableArea = Rect2(Vector2.ZERO, Vector2.ONE*1000)
-var wturnChance = 75
+var minPrefabs = 2
+var maxPrefabs = 4
 
 
 func _ready():
@@ -14,47 +13,35 @@ func _ready():
 
 # _init(_maxSteps, _viableArea, _amountOfWalkers, _directionChance)
 func generate_room():
-	pass
-#	wviableArea = tilemap.get_used_rect()
-#	var walker = DrunkWalker.new(wmaxSteps, wviableArea, 1, wturnChance, 5)
-#	var wOutput = walker.walk()
-#
-#	var roomPlacementChance = .75
-#	var roomOverChance = .20
-#	var roomRects = []
-#
-#	for step in wOutput:
-#
-#		# Checking if it'd place in another room
-#
-#		# Creating the room
-#		if rand_range(0, 1) <= roomPlacementChance:
-#			if rooms.size() == 0:
-#				break
-#
-#			# Selecting a room
-#			rooms.shuffle()
-#			var room: TileMap = rooms.pop_front()
-#			var tiles = room.get_used_cells()
-#
-#			# Making sure it's not placed in another room
-#			var roomRect = room.get_used_rect()
-#			roomRect.position = step
-#			var stop = false
-#			for rect in roomRects:
-#				if rect.intersects(roomRect):
-#					stop = true
-#					break
-#			if stop:
-#				rooms.append(room)
-#				continue
-#
-#			roomRects.append(roomRect)
-#
-#			# Setting the tiles
-#			for x in roomRect.end.x-1:
-#				for y in roomRect.end.y-1:
-#					var tile = Vector2(x, y)
-#					if room.get_cellv(tile) == -1 or step+tile in wOutput:
-#						tilemap.set_cellv(step+tile, -1)
-#						tilemap.update_bitmask_area(step+tile)
+	var roomCount = rand_range(minPrefabs, maxPrefabs)
+	var nextRoomDir = Vector2.RIGHT
+	var roomSize = Vector2.ONE
+	var lastRoomPos = nextRoomDir*roomSize
+
+	randomize()
+
+	for nr in roomCount:
+		rooms.shuffle()
+		var room:TileMap = rooms.pop_front()
+		var roomPos = (nextRoomDir*roomSize)+lastRoomPos
+		var cells = room.get_used_cells()
+
+		for cell in cells:
+			if room.get_cellv(cell) == 0:
+				tilemap.set_cellv(cell+roomPos, 0)
+				tilemap.update_bitmask_area(cell+roomPos)
+
+		var dirs = [
+			Vector2.RIGHT,
+			Vector2.DOWN,
+			Vector2.UP,
+			Vector2.LEFT
+		]
+		dirs.shuffle()
+
+		lastRoomPos = roomPos
+		roomSize = room.get_used_rect().end
+		nextRoomDir = dirs.pop_front()
+
+		tilemap.set_cellv(Vector2(roomSize.x, roomSize.y+1), -1)
+
