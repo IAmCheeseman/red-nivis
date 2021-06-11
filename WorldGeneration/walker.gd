@@ -4,23 +4,27 @@ class_name DrunkWalker
 const DIRECTIONS = [
 	Vector2.RIGHT,
 	Vector2.LEFT,
-	Vector2.DOWN
-#	Vector2.UP
+	Vector2.DOWN,
+	Vector2.UP
 ]
 
 
 var maxSteps : int
+var maxStepsDir : int
 var viableArea : Rect2
 var amountOfWalkers : int
 var directionChance : float
 
 var stop = false
 
-func _init(_maxSteps, _viableArea, _amountOfWalkers, _directionChance):
+
+func _init(_maxSteps, _viableArea, _amountOfWalkers, _directionChance, _maxStepsDir):
 	maxSteps = _maxSteps
 	viableArea = _viableArea
 	amountOfWalkers = _amountOfWalkers
 	directionChance = _directionChance
+	maxStepsDir = _maxStepsDir
+
 
 
 func walk() -> Array:
@@ -29,11 +33,19 @@ func walk() -> Array:
 	for walker in amountOfWalkers:
 		var stepPosition = Vector2(Vector2.ONE).round()
 
+		var stepsInDir = 0
+
 		var directions = DIRECTIONS.duplicate()
 		directions.shuffle()
 		var currentDirection = directions[0]
 
 		for step in maxSteps:
+			stepsInDir += 1
+
+			if stepsInDir == maxStepsDir:
+				stepsInDir = 0
+				currentDirection = change_direction(stepPosition, currentDirection)
+
 			positions.append(stepPosition)
 			var posDir = step(stepPosition, currentDirection)
 			stepPosition = posDir[0]
@@ -50,6 +62,7 @@ func walk() -> Array:
 	return positions
 
 
+
 func step(stepPosition, direction) -> Array:
 	var newPosition = stepPosition+direction
 	var newDirection = direction
@@ -58,6 +71,7 @@ func step(stepPosition, direction) -> Array:
 		newDirection = change_direction(stepPosition, direction)
 		newPosition = stepPosition+newDirection
 	return [newPosition, newDirection]
+
 
 
 func change_direction(stepPosition, currentDirection) -> Vector2:
@@ -77,5 +91,3 @@ func change_direction(stepPosition, currentDirection) -> Vector2:
 		stop = true
 
 	return direction
-
-

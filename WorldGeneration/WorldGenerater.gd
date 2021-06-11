@@ -14,81 +14,47 @@ func _ready():
 
 # _init(_maxSteps, _viableArea, _amountOfWalkers, _directionChance)
 func generate_room():
-	wviableArea = tilemap.get_used_rect()
-	var walker = DrunkWalker.new(wmaxSteps, wviableArea, 1, wturnChance)
-	var wOutput = walker.walk()
-
-	var roomPlacementChance = .75
-	var roomOverChance = .20
-	var roomRects = []
-
-	for step in wOutput:
-
-		# Checking if it'd place in another room
-
-		# Creating the room
-		if rand_range(0, 1) <= roomPlacementChance:
-			if rooms.size() == 0:
-				break
-
-			# Selecting a room
-			rooms.shuffle()
-			var room: TileMap = rooms.pop_front()
-			var tiles = room.get_used_cells()
-
-			# Making sure it's not placed in another room
-			var roomRect = room.get_used_rect()
-			roomRect.position = step
-			var stop = false
-			for rect in roomRects:
-				if rect.intersects(roomRect):
-					stop = true
-					break
-			if stop:
-				rooms.append(room)
-				continue
-
-			roomRects.append(roomRect)
-
-			# Setting the tiles
-			for x in roomRect.end.x-1:
-				for y in roomRect.end.y-1:
-					var tile = Vector2(x, y)
-					if room.get_cellv(tile) == -1 or step+tile in wOutput:
-						tilemap.set_cellv(step+tile, -1)
-						tilemap.update_bitmask_area(step+tile)
-#			for tile in tiles:
-#				if !step+tile in wOutput:
-#					tilemap.set_cellv(step+tile, -1)
-#					tilemap.update_bitmask_area(step+tile)
-
-
-
-# Gets surrounding tiles
-func get_neighbors(tilePos : Vector2, tileset : TileMap, getCorners = false) -> Array:
-	var xx = -1
-	var yy = -1
-
-	var CORNERTILES = [
-		Vector2(1, 1),
-		Vector2(1, -1),
-		Vector2(-1, 1),
-		Vector2(-1, -1)
-	]
-
-	var neighboringTiles = []
-
-	for tile in range(9):
-		if tile == 5:
-			continue
-
-		if getCorners:
-			neighboringTiles.append(tileset.get_cell(tilePos.x+xx, tilePos.y+yy))
-		elif !Vector2(xx, yy) in CORNERTILES:
-			neighboringTiles.append(tileset.get_cell(tilePos.x+xx, tilePos.y+yy))
-
-		xx += 1
-		xx = wrapi(xx, -1, 2)
-		if xx == -1:
-			yy += 1
-	return neighboringTiles
+	pass
+#	wviableArea = tilemap.get_used_rect()
+#	var walker = DrunkWalker.new(wmaxSteps, wviableArea, 1, wturnChance, 5)
+#	var wOutput = walker.walk()
+#
+#	var roomPlacementChance = .75
+#	var roomOverChance = .20
+#	var roomRects = []
+#
+#	for step in wOutput:
+#
+#		# Checking if it'd place in another room
+#
+#		# Creating the room
+#		if rand_range(0, 1) <= roomPlacementChance:
+#			if rooms.size() == 0:
+#				break
+#
+#			# Selecting a room
+#			rooms.shuffle()
+#			var room: TileMap = rooms.pop_front()
+#			var tiles = room.get_used_cells()
+#
+#			# Making sure it's not placed in another room
+#			var roomRect = room.get_used_rect()
+#			roomRect.position = step
+#			var stop = false
+#			for rect in roomRects:
+#				if rect.intersects(roomRect):
+#					stop = true
+#					break
+#			if stop:
+#				rooms.append(room)
+#				continue
+#
+#			roomRects.append(roomRect)
+#
+#			# Setting the tiles
+#			for x in roomRect.end.x-1:
+#				for y in roomRect.end.y-1:
+#					var tile = Vector2(x, y)
+#					if room.get_cellv(tile) == -1 or step+tile in wOutput:
+#						tilemap.set_cellv(step+tile, -1)
+#						tilemap.update_bitmask_area(step+tile)
