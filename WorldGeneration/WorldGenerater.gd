@@ -14,6 +14,7 @@ func _ready():
 
 # _init(_maxSteps, _viableArea, _amountOfWalkers, _directionChance)
 func generate_room():
+	wviableArea = tilemap.get_used_rect()
 	var walker = DrunkWalker.new(wmaxSteps, wviableArea, 1, wturnChance)
 	var wOutput = walker.walk()
 
@@ -50,10 +51,16 @@ func generate_room():
 			roomRects.append(roomRect)
 
 			# Setting the tiles
-			for tile in tiles:
-				if !step+tile in wOutput:
-					tilemap.set_cellv(step+tile, 0)
-					tilemap.update_bitmask_area(step+tile)
+			for x in roomRect.end.x-1:
+				for y in roomRect.end.y-1:
+					var tile = Vector2(x, y)
+					if room.get_cellv(tile) == -1 :#and !step+tile in wOutput:
+						tilemap.set_cellv(step+tile, -1)
+						tilemap.update_bitmask_area(step+tile)
+#			for tile in tiles:
+#				if !step+tile in wOutput:
+#					tilemap.set_cellv(step+tile, -1)
+#					tilemap.update_bitmask_area(step+tile)
 
 
 
