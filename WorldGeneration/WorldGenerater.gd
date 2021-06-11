@@ -54,7 +54,7 @@ func generate_room():
 			for x in roomRect.end.x-1:
 				for y in roomRect.end.y-1:
 					var tile = Vector2(x, y)
-					if room.get_cellv(tile) == -1 :#and !step+tile in wOutput:
+					if room.get_cellv(tile) == -1 or step+tile in wOutput:
 						tilemap.set_cellv(step+tile, -1)
 						tilemap.update_bitmask_area(step+tile)
 #			for tile in tiles:
