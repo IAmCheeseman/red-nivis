@@ -24,12 +24,14 @@ func generate_room():
 		rooms.shuffle()
 		var room:TileMap = rooms.pop_front()
 		var roomPos = (nextRoomDir*roomSize)+lastRoomPos
-		var cells = room.get_used_cells()
+		var rect = room.get_used_rect()
 
-		for cell in cells:
-			if room.get_cellv(cell) == 0:
-				tilemap.set_cellv(cell+roomPos, 0)
-				tilemap.update_bitmask_area(cell+roomPos)
+		for x in rect.end.x:
+			for y in rect.end.y:
+				if room.get_cell(x, y) == -1:
+					var cell = Vector2(x, y)
+					tilemap.set_cellv(cell+roomPos, -1)
+					tilemap.update_bitmask_area(cell+roomPos)
 
 		var dirs = [
 			Vector2.RIGHT,
@@ -42,6 +44,4 @@ func generate_room():
 		lastRoomPos = roomPos
 		roomSize = room.get_used_rect().end
 		nextRoomDir = dirs.pop_front()
-
-		tilemap.set_cellv(Vector2(roomSize.x, roomSize.y+1), -1)
 
