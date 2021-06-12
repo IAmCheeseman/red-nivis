@@ -23,3 +23,5 @@ func spawn_mist():
 		newMist.player = player
 		get_parent().get_parent().get_parent().add_child(newMist)
 		newMist.set_param(color, strength)
+
+

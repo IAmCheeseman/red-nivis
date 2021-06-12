@@ -6,7 +6,7 @@
 
 [node name="WorldGenTest" type="YSort"]
 
-[node name="WorlGen" type="Node" parent="."]
+[node name="WorldGen" type="Node" parent="."]
 script = ExtResource( 2 )
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
@@ -14,3 +14,10 @@ tile_data = PoolIntArray( -2883627, 0, 0, -2883626, 0, 1, -2883625, 0, 1, -28836
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 16, 16 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
