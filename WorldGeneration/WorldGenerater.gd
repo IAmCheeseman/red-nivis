@@ -1,212 +1,119 @@
 extends Node
+class_name WorldGenerator
 
-var tiles
-var props
-var amountOfRuins
-var shadows
-var background
-var backgroundTiles
-var player
-var planet
-var solidNoise
-
-var worldSeed = 0
-
-var queuedLoadChunks = []
-var queuedFreeChunks = []
-
-var minibiomeSolids = []
-
-var minedTiles = []
-
-var ruinCount = 0
-var maxRuinCount = 4
-var ruinRange = 16*31
-var minRuinDist = 16*21
-
-var thread = Thread.new()
+var rooms = preload("res://WorldGeneration/Rooms.tscn").instance().get_children()
+var minPrefabs = 2
+var maxPrefabs = 4
 
 
-# warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
-func set_up(tiles, props, shadows, background, backgroundTiles, player):
-	self.tiles = tiles
-	self.props = props
-	self.shadows = shadows
-	self.background = background
-	self.backgroundTiles = backgroundTiles
-	self.player = player
-	node_set_up()
-
-
-func node_set_up():
+func generate_room():
 	randomize()
-	worldSeed = randi()
-	var planets = [
-		preload("res://WorldGeneration/Planets/Reg.tres"),
-		preload("res://WorldGeneration/Planets/Fire.tres"),
-		preload("res://WorldGeneration/Planets/Acid.tres"),
-		preload("res://WorldGeneration/Planets/Water.tres")
-	]
 
-	planet = planets[GameManager.planet]
-	GameManager.planet = planet
+	# Colors telling the algorithim what to place in certain spots
+	var enemyColor = Color("#a00c0c")
+	var emptyColor = Color("#ffffff")
+	var solidColor = Color("#000000")
 
-	background.rect_position = Vector2.ONE*-20000
-	background.rect_size = Vector2(10000, 10000)*3
-	background.texture = planet.backgroundImage
+	# Directional colors
+	var northColor = Color("#221f3e")
+	var southColor = Color("#b14926")
+	var eastColor = Color("#490a15")
+	var westColor = Color("#174646")
 
-	tiles = planet.solidTiles.instance()
-	shadows = tiles.duplicate()
-	shadows.position.y += 12
-	shadows.modulate = Color(0, 0, 0, .5)
-	shadows.show_behind_parent = true
-	shadows.cell_y_sort = false
-	shadows.collision_layer = 0
-	tiles.add_child(shadows)
+	var prefabSize = 16
+	var prefabCount = 35
+	var outlineCount = 11
+	var viablePrefabs = []
+	for i in prefabCount:
+		viablePrefabs.append(i+1)
 
-	props.add_child(tiles)
-	if planet.backgroundTiles != null:
-		backgroundTiles = planet.backgroundTiles.instance()
-		props.add_child(backgroundTiles)
+	var roomOutlines = "res://WorldGeneration/RoomOutlines/RO%s.png"
+	var prefabs = "res://WorldGeneration/Prefabs/prefab%s.png"
 
-	solidNoise = planet.noiseTexture.noise
-	solidNoise.seed = worldSeed
+	# Getting an image to be used as a general layout
+	var roomOutline:Image = load(
+		roomOutlines % round(rand_range(1, outlineCount))
+		).get_data()
 
-	if planet.miniBiomes.size() > 0:
-		for i in planet.miniBiomes:
-			var solids = i.mainTiles.instance()
-			props.add_child(solids)
-			minibiomeSolids.append(solids)
+	# Creating the image used to hold the specific details of the room
+	var roomLayout = Image.new()
+	roomLayout.create(
+	(roomOutline.get_width()*prefabSize)+1, (roomOutline.get_height()*prefabSize)+1,
+	false, Image.FORMAT_RGBAH
+	)
 
+	roomLayout.fill(solidColor)
 
-	while solidNoise.get_noise_2d(tiles.world_to_map(player.position).x, 0) < planet.minNoise:
-		player.position.x += 16
-		player.position.y = 0
+	roomOutline.lock()
+	roomLayout.lock()
 
+	var connectionMap = []
 
+	# Creating a connection map
+	for x in roomOutline.get_width():
+		connectionMap.append([])
+		for y in roomOutline.get_height():
+			var roomConnections = {
+# warning-ignore:narrowing_conversion
+				"north" : !roomOutline.get_pixel(x, clamp(y-1, 0, INF)).is_equal_approx(solidColor),
+# warning-ignore:narrowing_conversion
+				"south" : !roomOutline.get_pixel(x, clamp(y+1, -INF, roomOutline.get_height()-1) ).is_equal_approx(solidColor),
+# warning-ignore:narrowing_conversion
+				"west" : !roomOutline.get_pixel(clamp(x-1, 0, INF), y).is_equal_approx(solidColor),
+# warning-ignore:narrowing_conversion
+				"east" : !roomOutline.get_pixel(clamp(x+1, -INF, roomOutline.get_width()-1), y).is_equal_approx(solidColor)
+			}
 
-func add_human_ruin():
-	if ruinCount > maxRuinCount: return
+			connectionMap[x].append(roomConnections)
 
-	var selectedDir = Vector2.RIGHT.rotated(deg2rad(rand_range(0, 360)))
-	var selectedDist = rand_range(minRuinDist, ruinRange)
-	var ruinPosition = (selectedDir*selectedDist+player.position).round()
+	# Creating the room layout
+	for x in roomOutline.get_width():
+		for y in roomOutline.get_height():
 
-	if tiles.get_cellv(tiles.world_to_map(ruinPosition)) != -1:
-		return
+			# Getting the prefab section color
+			var rLayoutP = roomOutline.get_pixel(x, y)
 
-	var ruinHandler = RuinHandler.new()
-	var ruins = ruinHandler.get_ruins(true)
-	ruins.shuffle()
-	var ruin = ruins[0].instance()
-	ruin.position = ruinPosition
-	ruin.worldGenerator = self
-	props.add_child(ruin)
-	ruin.set_color(planet.ruinColor)
+			if !rLayoutP.is_equal_approx(solidColor):
+				# Otherwise, select a prefab to use
+				viablePrefabs.shuffle()
+				var prefab:Image = load(prefabs % viablePrefabs.pop_front()).get_data()
+				prefab.lock()
 
-	ruinCount += 1
+				for xx in prefab.get_width():
+					for yy in prefab.get_height():
+						# Creating the prefab in the room
 
+						var tileColor = prefab.get_pixel(xx, yy)
 
-func generate_chunk(chunkx, chunky):
-	# WORLD GENERATION
-	# --------------------------------------------------------
-	# Setting Solids
-	# -------------------------------------------
+						# Checking for a solid
+						if tileColor.is_equal_approx(solidColor):
+							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), solidColor)
 
-	# Noise Gen
-	for x in planet.chunkSize:
-		for y in planet.chunkSize:
-			if solidNoise.get_noise_2d(chunkx+x, chunky+y) < planet.minNoise\
-			and !Vector2(chunkx+x, chunky+y) in minedTiles:
-				tiles.set_cell(chunkx+x, chunky+y, 0)
-				shadows.set_cell(chunkx+x, chunky+y, 0)
-				tiles.update_bitmask_area(Vector2(chunkx+x, chunky+y))
-				shadows.update_bitmask_area(Vector2(chunkx+x, chunky+y))
-#	yield(get_tree(), "idle_frame")
-	#--------------------------------------------
+						# Checking for ground
+						if tileColor.is_equal_approx(emptyColor):
+							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
 
-	# Background
-	# -------------------------------------------
-
-	if planet.backgroundTiles:
-		var altBGNoise = OpenSimplexNoise.new()
-		altBGNoise.octaves = 9
-		altBGNoise.period = 21.1
-		altBGNoise.persistence = 0
-		altBGNoise.lacunarity = .1
-		for x in planet.chunkSize:
-			for y in planet.chunkSize:
-				if altBGNoise.get_noise_2d(chunkx+x, chunky+y) < -.2:
-					backgroundTiles.set_cell(chunkx+x, chunky+y, 0)
-					backgroundTiles.update_bitmask_area(Vector2(chunkx+x, chunky+y))
-		backgroundTiles.z_index = -1
-	# -------------------------------------------
-
-	# MINIBIOMES
-
-	for minibiome in planet.miniBiomes:
-		yield(get_tree(), "idle_frame")
-		if minibiome is Minibiome:
-			var generationNoise = minibiome.generationNoise.noise
-			if generationNoise.get_noise_2d(chunkx, chunky) > minibiome.rarity:
-				continue
-
-			var biomeIndex = planet.miniBiomes.find(minibiome)
-			var solids = minibiomeSolids[biomeIndex]
-			var miniSolidNoise = minibiome.solidNoise.noise
-
-			for x in planet.chunkSize:
-				for y in planet.chunkSize:
-					if miniSolidNoise.get_noise_2d(chunkx+x, chunky+y) < minibiome.minNoiseValue\
-					and !Vector2(chunkx+x, chunky+y) in minedTiles\
-					and tiles.get_cell(chunkx+x, chunky+y) == -1:
-						solids.set_cell(chunkx+x, chunky+y, 0)
-						shadows.set_cell(chunkx+x, chunky+y, 0)
-
-						solids.update_bitmask_area(Vector2(chunkx+x, chunky+y))
-						shadows.update_bitmask_area(Vector2(chunkx+x, chunky+y))
-	# --------------------------------------------------------
+						# Checking the directions
+						if tileColor.is_equal_approx(northColor) and connectionMap[x][y].north: # NORTH
+							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
+						if tileColor.is_equal_approx(southColor) and connectionMap[x][y].south: # SOUTH
+							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
+						if tileColor.is_equal_approx(eastColor) and connectionMap[x][y].east: # EAST
+							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
+						if tileColor.is_equal_approx(westColor) and connectionMap[x][y].west: # WEST
+							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
 
 
-func remove_chunk(chunkx, chunky):
-	for x in 10:
-		for y in 10:
-			tiles.set_cell(chunkx+x, chunky+y, -1)
-			shadows.set_cell(chunkx+x, chunky+y, -1)
-			if planet.backgroundTiles:
-				backgroundTiles.set_cell(chunkx+x, chunky+y, -1)
+						# Checking for an enemy
+						if tileColor.is_equal_approx(enemyColor):
+							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), enemyColor)
 
 
-# Gets surrounding tiles
-func get_neighbors(tilePos : Vector2, tileset : TileMap, getCorners = false) -> Array:
-	var xx = -1
-	var yy = -1
+	var ca = CellularAutomata.new()
+	roomLayout = ca.iterate(roomLayout, 1, 3, 5, solidColor)
+	ca.queue_free()
 
-	var CORNERTILES = [
-		Vector2(1, 1),
-		Vector2(1, -1),
-		Vector2(-1, 1),
-		Vector2(-1, -1)
-	]
+	roomLayout.save_png("user://output.png")
 
-	var neighboringTiles = []
+	return roomLayout
 
-	for tile in range(9):
-		if tile == 5:
-			continue
-
-		if getCorners:
-			neighboringTiles.append(tileset.get_cell(tilePos.x+xx, tilePos.y+yy))
-		elif !Vector2(xx, yy) in CORNERTILES:
-			neighboringTiles.append(tileset.get_cell(tilePos.x+xx, tilePos.y+yy))
-
-		xx += 1
-		xx = wrapi(xx, -1, 2)
-		if xx == -1:
-			yy += 1
-	return neighboringTiles

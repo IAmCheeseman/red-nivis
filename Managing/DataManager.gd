@@ -3,7 +3,9 @@ class_name DataManager
 
 const SAVE_DIR = "user://saves/"
 
+
 signal game_saved
+signal data_cleared
 
 
 func save_data(data : Dictionary, path):
@@ -44,6 +46,7 @@ func clear_data(path):
 	if error == OK:
 		file.store_var({})
 		file.close()
+	emit_signal("data_cleared")
 
 
 func list_files_in_directory(path):

@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemies/BigBull/BigJumpingBull.gd"
 }, {
+"base": "Node",
+"class": "CellularAutomata",
+"language": "GDScript",
+"path": "res://WorldGeneration/CellularAutomata.gd"
+}, {
 "base": "Resource",
 "class": "DataManager",
 "language": "GDScript",
@@ -68,9 +73,15 @@ _global_script_classes=[ {
 "class": "SoundManager",
 "language": "GDScript",
 "path": "res://Managing/SoundManager.gd"
+}, {
+"base": "Node",
+"class": "WorldGenerator",
+"language": "GDScript",
+"path": "res://WorldGeneration/WorldGenerater.gd"
 } ]
 _global_script_class_icons={
 "BigJumpingBull": "",
+"CellularAutomata": "",
 "DataManager": "",
 "DrunkWalker": "",
 "EnemyBullet": "",
@@ -81,7 +92,8 @@ _global_script_class_icons={
 "Prefix": "",
 "Ruin": "",
 "RuinHandler": "",
-"SoundManager": ""
+"SoundManager": "",
+"WorldGenerator": ""
 }
 
 [application]
