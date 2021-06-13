@@ -1,4 +1,5 @@
 extends Node
+class_name WorldGenerator
 
 onready var tilemap : TileMap = get_parent().get_node("TileMap")
 
@@ -27,6 +28,7 @@ func generate_room():
 	var westColor = Color("#174646")
 
 	var prefabSize = 16
+	var prefabCount = 22
 
 	var roomOutlines = "res://WorldGeneration/RoomOutlines/RO%s.png"
 	var prefabs = "res://WorldGeneration/Prefabs/prefab%s.png"
@@ -55,9 +57,13 @@ func generate_room():
 		connectionMap.append([])
 		for y in roomOutline.get_height():
 			var roomConnections = {
+# warning-ignore:narrowing_conversion
 				"north" : !roomOutline.get_pixel(x, clamp(y-1, 0, INF)).is_equal_approx(solidColor),
+# warning-ignore:narrowing_conversion
 				"south" : !roomOutline.get_pixel(x, clamp(y+1, -INF, roomOutline.get_height()-1) ).is_equal_approx(solidColor),
+# warning-ignore:narrowing_conversion
 				"west" : !roomOutline.get_pixel(clamp(x-1, 0, INF), y).is_equal_approx(solidColor),
+# warning-ignore:narrowing_conversion
 				"east" : !roomOutline.get_pixel(clamp(x+1, -INF, roomOutline.get_width()-1), y).is_equal_approx(solidColor)
 			}
 
@@ -72,11 +78,8 @@ func generate_room():
 
 			if !rLayoutP.is_equal_approx(solidColor):
 				# Otherwise, select a prefab to use
-				var prefab:Image = load(prefabs % round(rand_range(1, 5))).get_data()
+				var prefab:Image = load(prefabs % round(rand_range(1, prefabCount))).get_data()
 				prefab.lock()
-
-#				if rand_range(0, 1) < .5: prefab.flip_x()
-#				if rand_range(0, 1) < .5: prefab.flip_y()
 
 				for xx in prefab.get_width():
 					for yy in prefab.get_height():
@@ -93,16 +96,13 @@ func generate_room():
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
 
 						# Checking the directions
-						if tileColor.is_equal_approx(northColor) and connectionMap[x][y].north:
+						if tileColor.is_equal_approx(northColor) and connectionMap[x][y].north: # NORTH
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-
-						if tileColor.is_equal_approx(southColor) and connectionMap[x][y].south:
+						if tileColor.is_equal_approx(southColor) and connectionMap[x][y].south: # SOUTH
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-
-						if tileColor.is_equal_approx(eastColor) and connectionMap[x][y].east:
+						if tileColor.is_equal_approx(eastColor) and connectionMap[x][y].east: # EAST
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-
-						if tileColor.is_equal_approx(westColor) and connectionMap[x][y].west:
+						if tileColor.is_equal_approx(westColor) and connectionMap[x][y].west: # WEST
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
 
 
@@ -110,9 +110,16 @@ func generate_room():
 						if tileColor.is_equal_approx(enemyColor):
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), enemyColor)
 
-	var streamTex = ImageTexture.new()
-	streamTex.create_from_image(roomLayout)
-	get_parent().get_node("CanvasLayer/TextureRect").texture = streamTex
+
+	var ca = CellularAutomata.new()
+	roomLayout = ca.iterate(roomLayout, 1, 3, 5, solidColor)
+	ca.queue_free()
+
+
+	var texture = ImageTexture.new()
+	texture.create_from_image(roomLayout)
+	get_parent().get_node("CanvasLayer/TextureRect").texture = texture
+	get_parent().get_node("CanvasLayer/TextureRect").rect_position -= Vector2(texture.get_width(), texture.get_height())/2
 	roomLayout.save_png("user://output.png")
 
 

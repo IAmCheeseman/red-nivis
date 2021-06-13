@@ -102,8 +102,8 @@ offset = Vector2( 0, -16 )
 script = ExtResource( 5 )
 
 [node name="SpaceHub" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 353.526, 317.245 )
-rotation = -2.40813
+position = Vector2( -326.541, -344.958 )
+rotation = 0.814846
 orbitDistance = 475
 faceTravelDir = true
 atmosphereColor = Color( 0.627451, 0.0470588, 0.0470588, 1 )
@@ -128,8 +128,8 @@ autoplay = true
 attenuation = 6.9644
 
 [node name="RegPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 144.612, 530.648 )
-rotation = -0.895327
+position = Vector2( 154.957, -527.72 )
+rotation = 2.54287
 orbitSpeed = 35.0
 orbitDistance = 550
 moonTexture = ExtResource( 15 )
@@ -142,8 +142,8 @@ atmosphereSize = 0.174
 texture = ExtResource( 3 )
 
 [node name="FirePlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( -126.992, 215.344 )
-rotation = 2.41868
+position = Vector2( -231.036, -95.5118 )
+rotation = 2.6372
 rotationSpeed = 27
 orbitSpeed = 23.0
 orbitDistance = 250
@@ -154,8 +154,8 @@ texture = ExtResource( 6 )
 planet = 1
 
 [node name="AcidPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 971.525, 236.935 )
-rotation = 1.90811
+position = Vector2( 911.792, 410.653 )
+rotation = 2.12663
 rotationSpeed = 27
 orbitSpeed = 13.0
 orbitDistance = 1000
@@ -170,8 +170,8 @@ texture = ExtResource( 7 )
 planet = 2
 
 [node name="WaterPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 656.282, 363.034 )
-rotation = -1.20366
+position = Vector2( -75.8069, -746.159 )
+rotation = -1.13406
 rotationSpeed = 37
 orbitSpeed = 30.0
 orbitDistance = 750
@@ -182,8 +182,8 @@ texture = ExtResource( 8 )
 planet = 3
 
 [node name="Sun" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 0.570057, -0.821605 )
-rotation = -0.560154
+position = Vector2( 0.998864, -0.0476451 )
+rotation = -3.10229
 rotationSpeed = 2
 orbitSpeed = 1.0
 orbitDistance = 1
