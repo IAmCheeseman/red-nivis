@@ -21,8 +21,8 @@ func generate_room():
 	var westColor = Color("#174646")
 
 	var prefabSize = 16
-	var prefabCount = 35
-	var outlineCount = 11
+	var prefabCount = 48
+	var outlineCount = 20
 	var viablePrefabs = []
 	for i in prefabCount:
 		viablePrefabs.append(i+1)
