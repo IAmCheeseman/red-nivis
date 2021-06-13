@@ -21,7 +21,8 @@ func generate_room():
 	var westColor = Color("#174646")
 
 	var prefabSize = 16
-	var prefabCount = 25
+	var prefabCount = 35
+	var outlineCount = 11
 	var viablePrefabs = []
 	for i in prefabCount:
 		viablePrefabs.append(i+1)
@@ -31,7 +32,7 @@ func generate_room():
 
 	# Getting an image to be used as a general layout
 	var roomOutline:Image = load(
-		roomOutlines % round(rand_range(1, 10))
+		roomOutlines % round(rand_range(1, outlineCount))
 		).get_data()
 
 	# Creating the image used to hold the specific details of the room
@@ -112,16 +113,7 @@ func generate_room():
 	roomLayout = ca.iterate(roomLayout, 1, 3, 5, solidColor)
 	ca.queue_free()
 
+	roomLayout.save_png("user://output.png")
+
 	return roomLayout
-#	var texture = ImageTexture.new()
-#	texture.create_from_image(roomLayout)
-#	get_parent().get_node("CanvasLayer/TextureRect").texture = texture
-#	get_parent().get_node("CanvasLayer/TextureRect").rect_position -= Vector2(texture.get_width(), texture.get_height())/2
-#	roomLayout.save_png("user://output.png")
-
-
-func _input(event):
-	if Input.is_key_pressed(KEY_R):
-		get_tree().reload_current_scene()
-
 

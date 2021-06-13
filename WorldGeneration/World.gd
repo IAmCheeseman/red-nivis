@@ -59,15 +59,21 @@ func generate_room():
 
 	planet = load("res://WorldGeneration/Planets/%s.tres" % planets[GameManager.planet])
 
-	# Setting up the tiles
-	var tiles = planet.solidTiles.instance()
+	# Setting up the tiles & enemies
+
+	var enemyColor = Color("#a00c0c")
+	var solidColor = Color("#000000")
+
+	tiles = planet.solidTiles.instance()
 	props.add_child(tiles)
 
 	for x in world.get_width():
 		for y in world.get_height():
-			if world.get_pixel(x, y).is_equal_approx(Color(0, 0, 0)):
+			if world.get_pixel(x, y).is_equal_approx(solidColor):
 				tiles.set_cell(x, y, 0)
 				tiles.update_bitmask_area(Vector2(x, y))
+			elif world.get_pixel(x, y).is_equal_approx(enemyColor):
+				pass
 	# Shadows
 	shadows = tiles.duplicate()
 	shadows.position.y += 12
@@ -86,32 +92,27 @@ func generate_room():
 
 
 func _on_player_removeTile(mousePosition):
-	pass
-#	GameManager.emit_signal("screenshake", 0, 0, .1, .1, 5)
-#	tilePlaceSFX.play()
-#	tilePlaceSFX.global_position = mousePosition
-#
-#	var mapMousePos = placementTiles.world_to_map(mousePosition)
-#	if tiles.get_cellv(mapMousePos) == -1\
-#	and placementTiles.get_cellv(mapMousePos) == -1\
-#	and mousePosition.distance_to(player.position) > 16:
-#
-#		placementTiles.set_cellv(mapMousePos, 0)
-#		placementTiles.update_bitmask_area(mapMousePos)
-#
-#		shadows.set_cellv(mapMousePos, 0)
-#		shadows.update_bitmask_area(mapMousePos)
-#		return
-#	placementTiles.set_cellv(mapMousePos, -1)
-#	placementTiles.update_bitmask_area(mapMousePos)
-#	tiles.set_cellv(mapMousePos, -1)
-#	tiles.update_bitmask_area(mapMousePos)
-#	shadows.set_cellv(mapMousePos, -1)
-#	shadows.update_bitmask_area(mapMousePos)
-##	minedTiles.append(mapMousePos)
-#	var maxMineStorage = 1048576
-#	if var2bytes(worldGenerater.minedTiles).size() > maxMineStorage:
-#		worldGenerater.minedTiles.pop_front()
+	GameManager.emit_signal("screenshake", 0, 0, .1, .1, 5)
+	tilePlaceSFX.play()
+	tilePlaceSFX.global_position = mousePosition
+
+	var mapMousePos = placementTiles.world_to_map(mousePosition)
+	if tiles.get_cellv(mapMousePos) == -1\
+	and placementTiles.get_cellv(mapMousePos) == -1\
+	and mousePosition.distance_to(player.position) > 16:
+
+		placementTiles.set_cellv(mapMousePos, 0)
+		placementTiles.update_bitmask_area(mapMousePos)
+
+		shadows.set_cellv(mapMousePos, 0)
+		shadows.update_bitmask_area(mapMousePos)
+		return
+	placementTiles.set_cellv(mapMousePos, -1)
+	placementTiles.update_bitmask_area(mapMousePos)
+	tiles.set_cellv(mapMousePos, -1)
+	tiles.update_bitmask_area(mapMousePos)
+	shadows.set_cellv(mapMousePos, -1)
+	shadows.update_bitmask_area(mapMousePos)
 
 
 func _on_World_tree_entered():
