@@ -8,11 +8,6 @@ var minPrefabs = 2
 var maxPrefabs = 4
 
 
-func _ready():
-	randomize()
-	generate_room()
-
-
 func generate_room():
 	randomize()
 
@@ -28,7 +23,10 @@ func generate_room():
 	var westColor = Color("#174646")
 
 	var prefabSize = 16
-	var prefabCount = 22
+	var prefabCount = 25
+	var viablePrefabs = []
+	for i in prefabCount:
+		viablePrefabs.append(i+1)
 
 	var roomOutlines = "res://WorldGeneration/RoomOutlines/RO%s.png"
 	var prefabs = "res://WorldGeneration/Prefabs/prefab%s.png"
@@ -78,7 +76,8 @@ func generate_room():
 
 			if !rLayoutP.is_equal_approx(solidColor):
 				# Otherwise, select a prefab to use
-				var prefab:Image = load(prefabs % round(rand_range(1, prefabCount))).get_data()
+				viablePrefabs.shuffle()
+				var prefab:Image = load(prefabs % viablePrefabs.pop_front()).get_data()
 				prefab.lock()
 
 				for xx in prefab.get_width():
@@ -115,12 +114,12 @@ func generate_room():
 	roomLayout = ca.iterate(roomLayout, 1, 3, 5, solidColor)
 	ca.queue_free()
 
-
-	var texture = ImageTexture.new()
-	texture.create_from_image(roomLayout)
-	get_parent().get_node("CanvasLayer/TextureRect").texture = texture
-	get_parent().get_node("CanvasLayer/TextureRect").rect_position -= Vector2(texture.get_width(), texture.get_height())/2
-	roomLayout.save_png("user://output.png")
+	return roomLayout
+#	var texture = ImageTexture.new()
+#	texture.create_from_image(roomLayout)
+#	get_parent().get_node("CanvasLayer/TextureRect").texture = texture
+#	get_parent().get_node("CanvasLayer/TextureRect").rect_position -= Vector2(texture.get_width(), texture.get_height())/2
+#	roomLayout.save_png("user://output.png")
 
 
 func _input(event):

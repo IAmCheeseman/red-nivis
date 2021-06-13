@@ -25,7 +25,7 @@ func iterate(image:Image, iterations:int=5, starveMin:int=3, overPop:int=5, aliv
 					elif newImage.get_pixelv(neighbor).is_equal_approx(aliveColor):
 						aliveCells += 1
 				# If it meets the minimum requirements, it becomes alive
-				if aliveCells >= starveMin:# and aliveCells < overPop:
+				if aliveCells >= starveMin and aliveCells < overPop:
 					changes.append(Vector2(x, y))
 
 		# Making the changes

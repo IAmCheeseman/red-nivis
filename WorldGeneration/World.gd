@@ -41,6 +41,21 @@ func _ready():
 	mistSpawner.strength = worldGenerater.planet.mistStrength
 
 
+func generate_room():
+	# Getting the room image
+	var worldGenerater = WorldGenerator.new()
+	var world:Image = worldGenerater.generate_room()
+	worldGenerater.queue_free()
+	world.lock()
+
+	# Setting up the tiles and stuff
+	pass
+
+	for x in world.get_width():
+		for y in world.get_height():
+			pass
+
+
 
 func _on_player_removeTile(mousePosition):
 	GameManager.emit_signal("screenshake", 0, 0, .1, .1, 5)
