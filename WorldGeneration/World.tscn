@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Tiles/Ground/Grass.png" type="Texture" id=1]
 [ext_resource path="res://Tiles/Solids/PlaceTiles.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://WorldGeneration/WorldGenerater.gd" type="Script" id=8]
 [ext_resource path="res://WorldGeneration/World.gd" type="Script" id=9]
 [ext_resource path="res://WorldGeneration/MistSpawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/Minimap.tscn" type="PackedScene" id=11]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -106,6 +107,11 @@ script = SubResource( 1 )
 audio = ExtResource( 6 )
 directional = true
 bus = "SFX"
+
+[node name="Minimap" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Minimap" parent="Minimap" instance=ExtResource( 11 )]
 
 [connection signal="tree_entered" from="." to="." method="_on_World_tree_entered"]
 [connection signal="dropGun" from="Props/Player" to="." method="_on_drop_gun"]

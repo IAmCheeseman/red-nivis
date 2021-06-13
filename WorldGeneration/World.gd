@@ -14,6 +14,7 @@ onready var placementTiles = $Props/PlaceTiles
 onready var playerShip = $Props/Ship
 onready var mistSpawner = $Props/Player/MistSpawner
 onready var tilePlaceSFX = $TilePlaceSFX
+onready var minimap = $Minimap/Minimap
 
 var queuedChunks : Array
 var queueFreeChunks : Array
@@ -41,6 +42,10 @@ func _ready():
 	mistSpawner.color = planet.mistColor
 	mistSpawner.player = player
 	mistSpawner.strength = planet.mistStrength
+
+
+func _process(delta):
+	minimap.set_icon_pos(player.position)
 
 
 func generate_room():
@@ -89,6 +94,31 @@ func generate_room():
 	background.rect_size = Vector2(10000, 10000)*3
 	background.texture = planet.backgroundImage
 
+	set_minimap(world)
+
+
+func set_minimap(image:Image):
+	# Cleaning up the image
+
+	var enemyColor = Color("#a00c0c")
+	var solidColor = Color("#000000")
+	var emptyColor = Color("#ffffff")
+
+	image.lock()
+
+	for x in image.get_width():
+		for y in image.get_height():
+			var pixelColor = image.get_pixel(x, y)
+			if pixelColor.is_equal_approx(enemyColor):
+				image.set_pixel(x, y, emptyColor)
+			elif pixelColor.is_equal_approx(solidColor):
+				image.set_pixel(x, y, Color(1, 1, 1, 0))
+
+	# Creating the texture
+	var mapTex = ImageTexture.new()
+	mapTex.create_from_image(image)
+
+	minimap.set_map(mapTex)
 
 
 func _on_player_removeTile(mousePosition):
@@ -109,10 +139,9 @@ func _on_player_removeTile(mousePosition):
 		return
 	placementTiles.set_cellv(mapMousePos, -1)
 	placementTiles.update_bitmask_area(mapMousePos)
-	tiles.set_cellv(mapMousePos, -1)
-	tiles.update_bitmask_area(mapMousePos)
-	shadows.set_cellv(mapMousePos, -1)
-	shadows.update_bitmask_area(mapMousePos)
+	if tiles.get_cellv(mapMousePos) == -1:
+		shadows.set_cellv(mapMousePos, -1)
+		shadows.update_bitmask_area(mapMousePos)
 
 
 func _on_World_tree_entered():
