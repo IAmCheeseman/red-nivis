@@ -1,8 +1,6 @@
 extends Node
 class_name WorldGenerator
 
-onready var tilemap : TileMap = get_parent().get_node("TileMap")
-
 var rooms = preload("res://WorldGeneration/Rooms.tscn").instance().get_children()
 var minPrefabs = 2
 var maxPrefabs = 4
