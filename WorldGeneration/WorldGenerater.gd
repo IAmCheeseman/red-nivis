@@ -1,7 +1,7 @@
 extends Node
 class_name WorldGenerator
 
-var rooms = preload("res://WorldGeneration/Rooms.tscn").instance().get_children()
+
 var minPrefabs = 2
 var maxPrefabs = 4
 
@@ -46,6 +46,9 @@ func generate_room(planet:Planet):
 	)
 
 	var roomRect = Rect2(0, 0, roomLayout.get_width(), roomLayout.get_height())
+	roomRect.end -= Vector2.ONE
+	print(roomRect.end)
+	print("%s, %s" % [roomLayout.get_width(), roomLayout.get_height()])
 
 	roomLayout.fill(solidColor)
 
@@ -58,18 +61,23 @@ func generate_room(planet:Planet):
 	for x in roomOutline.get_width():
 		connectionMap.append([])
 		for y in roomOutline.get_height():
+			var roomP = roomOutline.get_pixel(x, y)
+
 			var roomConnections = {
 # warning-ignore:narrowing_conversion
 				"north" : !roomOutline.get_pixel(x, clamp(y-1, 0, INF)).is_equal_approx(solidColor) and roomRect.has_point(Vector2(x, y-1)),
 # warning-ignore:narrowing_conversion
 				"south" : !roomOutline.get_pixel(x, clamp(y+1, -INF, roomOutline.get_height()-1) ).is_equal_approx(solidColor) and roomRect.has_point(Vector2(x, y+1)),
 # warning-ignore:narrowing_conversion
-				"west" : !roomOutline.get_pixel(clamp(x-1, 0, INF), y).is_equal_approx(solidColor)  and roomRect.has_point(Vector2(x-1, y)),
+				"west" : !roomOutline.get_pixel(clamp(x-1, 0, INF), y).is_equal_approx(solidColor) and roomRect.has_point(Vector2(x-1, y)),
 # warning-ignore:narrowing_conversion
 				"east" : !roomOutline.get_pixel(clamp(x+1, -INF, roomOutline.get_width()-1), y).is_equal_approx(solidColor) and roomRect.has_point(Vector2(x+1, y))
 			}
 
 			connectionMap[x].append(roomConnections)
+
+			if y == roomOutline.get_height()-1:
+				print(connectionMap[x][y])
 
 	# Creating the room layout
 	for x in roomOutline.get_width():
@@ -84,26 +92,26 @@ func generate_room(planet:Planet):
 				var prefab:Image = load(prefabs % viablePrefabs.pop_front()).get_data()
 				prefab.lock()
 
-				var direction = get_dir(rLayoutP)
+				var exitDirection = get_dir(rLayoutP)
 
 				for xx in prefab.get_width():
 					for yy in prefab.get_height():
 						# Creating the prefab in the room
-
 						var tileColor = prefab.get_pixel(xx, yy)
+						var direction = get_dir(tileColor)
 
 						# Checking for ground
 						if tileColor.is_equal_approx(emptyColor):
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
 
 						# Checking the directions
-						if tileColor.is_equal_approx(northColor) and (connectionMap[x][y].north or direction == NORTH): # NORTH
+						if direction == NORTH and (connectionMap[x][y].north or exitDirection == NORTH): # NORTH
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-						if tileColor.is_equal_approx(southColor) and (connectionMap[x][y].south or direction == SOUTH): # SOUTH
+						if direction == SOUTH and (connectionMap[x][y].south or exitDirection == SOUTH): # SOUTH
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-						if tileColor.is_equal_approx(eastColor) and (connectionMap[x][y].east or direction == EAST): # EAST
+						if direction == EAST and (connectionMap[x][y].east or exitDirection == EAST): # EAST
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-						if tileColor.is_equal_approx(westColor) and (connectionMap[x][y].west or direction == WEST): # WEST
+						if direction == WEST and (connectionMap[x][y].west or exitDirection == WEST): # WEST
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
 
 						# Checking for an enemy
