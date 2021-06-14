@@ -162,11 +162,13 @@ func _on_player_removeTile(mousePosition):
 		shadows.set_cellv(mapMousePos, 0)
 		shadows.update_bitmask_area(mapMousePos)
 		return
+
+	tiles.set_cellv(mapMousePos, -1)
+	tiles.update_bitmask_area(mapMousePos)
 	placementTiles.set_cellv(mapMousePos, -1)
 	placementTiles.update_bitmask_area(mapMousePos)
-	if tiles.get_cellv(mapMousePos) == -1:
-		shadows.set_cellv(mapMousePos, -1)
-		shadows.update_bitmask_area(mapMousePos)
+	shadows.set_cellv(mapMousePos, -1)
+	shadows.update_bitmask_area(mapMousePos)
 
 
 func _on_World_tree_entered():

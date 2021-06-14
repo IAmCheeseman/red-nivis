@@ -6,19 +6,22 @@ var minPrefabs = 2
 var maxPrefabs = 4
 
 
+enum {NORTH, SOUTH, EAST, WEST, NONE}
+
+
+# Colors telling the algorithim what to place in certain spots
+var enemyColor = Color("#a00c0c")
+var emptyColor = Color("#ffffff")
+var solidColor = Color("#000000")
+
+# Directional colors
+var northColor = Color("#221f3e")
+var southColor = Color("#b14926")
+var eastColor  = Color("#490a15")
+var westColor  = Color("#174646")
+
 func generate_room(planet:Planet):
 	randomize()
-
-	# Colors telling the algorithim what to place in certain spots
-	var enemyColor = Color("#a00c0c")
-	var emptyColor = Color("#ffffff")
-	var solidColor = Color("#000000")
-
-	# Directional colors
-	var northColor = Color("#221f3e")
-	var southColor = Color("#b14926")
-	var eastColor  = Color("#490a15")
-	var westColor  = Color("#174646")
 
 	var prefabSize = 16
 	var prefabCount = 48
@@ -38,7 +41,7 @@ func generate_room(planet:Planet):
 	# Creating the image used to hold the specific details of the room
 	var roomLayout = Image.new()
 	roomLayout.create(
-	(roomOutline.get_width()*prefabSize)+1, (roomOutline.get_height()*prefabSize)+1,
+	(roomOutline.get_width()*prefabSize), (roomOutline.get_height()*prefabSize),
 	false, Image.FORMAT_RGBAH
 	)
 
@@ -81,30 +84,27 @@ func generate_room(planet:Planet):
 				var prefab:Image = load(prefabs % viablePrefabs.pop_front()).get_data()
 				prefab.lock()
 
+				var direction = get_dir(rLayoutP)
+
 				for xx in prefab.get_width():
 					for yy in prefab.get_height():
 						# Creating the prefab in the room
 
 						var tileColor = prefab.get_pixel(xx, yy)
 
-						# Checking for a solid
-						if tileColor.is_equal_approx(solidColor):
-							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), solidColor)
-
 						# Checking for ground
 						if tileColor.is_equal_approx(emptyColor):
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
 
 						# Checking the directions
-						if tileColor.is_equal_approx(northColor) and connectionMap[x][y].north: # NORTH
+						if tileColor.is_equal_approx(northColor) and (connectionMap[x][y].north or direction == NORTH): # NORTH
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-						if tileColor.is_equal_approx(southColor) and connectionMap[x][y].south: # SOUTH
+						if tileColor.is_equal_approx(southColor) and (connectionMap[x][y].south or direction == SOUTH): # SOUTH
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-						if tileColor.is_equal_approx(eastColor) and connectionMap[x][y].east: # EAST
+						if tileColor.is_equal_approx(eastColor) and (connectionMap[x][y].east or direction == EAST): # EAST
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-						if tileColor.is_equal_approx(westColor) and connectionMap[x][y].west: # WEST
+						if tileColor.is_equal_approx(westColor) and (connectionMap[x][y].west or direction == WEST): # WEST
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-
 
 						# Checking for an enemy
 						if tileColor.is_equal_approx(enemyColor):
@@ -118,4 +118,19 @@ func generate_room(planet:Planet):
 	roomLayout.save_png("user://output.png")
 
 	return roomLayout
+
+
+func get_dir(color:Color):
+	if color.is_equal_approx(northColor):
+		return NORTH
+	if color.is_equal_approx(southColor):
+		return SOUTH
+	if color.is_equal_approx(eastColor):
+		return EAST
+	if color.is_equal_approx(westColor):
+		return WEST
+	return NONE
+
+
+
 
