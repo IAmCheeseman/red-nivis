@@ -8,7 +8,6 @@ onready var background = $BackgroundHelper/BackGround
 onready var player = $Props/Player
 onready var camera = $Props/Player/Camera
 onready var props = $Props
-onready var worldGenerater = $WorldGeneration
 onready var atmosphere = $Atmosphere
 onready var placementTiles = $Props/PlaceTiles
 onready var playerShip = $Props/Ship
@@ -29,8 +28,8 @@ var enemyCount = 0
 
 
 func _ready():
-#	worldGenerater.set_up(tiles, props, shadows, background, backgroundTiles, player)
 	generate_room()
+	set_camera_limits()
 	maxEnemies = planet.maxEnemies
 	atmosphere.color = planet.atmosphereColor
 	if planet.amosphereParticles:
@@ -44,7 +43,7 @@ func _ready():
 	mistSpawner.strength = planet.mistStrength
 
 
-func _process(delta):
+func _process(_delta):
 	minimap.set_icon_pos(player.position)
 
 
@@ -53,6 +52,7 @@ func generate_room():
 	var worldGenerater = WorldGenerator.new()
 	var world:Image = worldGenerater.generate_room()
 	worldGenerater.queue_free()
+
 	world.lock()
 
 	var planets = [
@@ -79,6 +79,20 @@ func generate_room():
 				tiles.update_bitmask_area(Vector2(x, y))
 			elif world.get_pixel(x, y).is_equal_approx(enemyColor):
 				pass
+	# Adding an extra layer to the x axis
+	for x in world.get_width():
+		tiles.set_cell(x, -1, 0)
+		tiles.update_bitmask_area(Vector2(x, -1))
+		tiles.set_cell(x, world.get_height(), 0)
+		tiles.update_bitmask_area(Vector2(x, world.get_height()))
+	# Adding an extra layer to the y axis
+	for y in world.get_height():
+		tiles.set_cell(-1, y, 0)
+		tiles.update_bitmask_area(Vector2(-1, y))
+		tiles.set_cell(world.get_width(), y, 0)
+		tiles.update_bitmask_area(Vector2(world.get_width(), y))
+
+
 	# Shadows
 	shadows = tiles.duplicate()
 	shadows.position.y += 12
@@ -95,6 +109,16 @@ func generate_room():
 	background.texture = planet.backgroundImage
 
 	set_minimap(world)
+
+
+func set_camera_limits():
+	var tileRect:Rect2 = tiles.get_used_rect()
+	var cellSize = tiles.cell_size.x
+
+	camera.limit_bottom      = (tileRect.end.y-1)*cellSize
+	camera.limit_right       = (tileRect.end.x-1)*cellSize
+	camera.limit_top    = (tileRect.position.y+1)*cellSize
+	camera.limit_left   = (tileRect.position.x+1)*cellSize
 
 
 func set_minimap(image:Image):

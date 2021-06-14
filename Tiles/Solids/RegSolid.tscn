@@ -447,4 +447,3 @@ tile_set = SubResource( 47 )
 cell_size = Vector2( 16, 16 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( 393215, 0, 196611 )

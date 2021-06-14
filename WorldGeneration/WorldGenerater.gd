@@ -17,8 +17,8 @@ func generate_room():
 	# Directional colors
 	var northColor = Color("#221f3e")
 	var southColor = Color("#b14926")
-	var eastColor = Color("#490a15")
-	var westColor = Color("#174646")
+	var eastColor  = Color("#490a15")
+	var westColor  = Color("#174646")
 
 	var prefabSize = 16
 	var prefabCount = 48
@@ -42,6 +42,8 @@ func generate_room():
 	false, Image.FORMAT_RGBAH
 	)
 
+	var roomRect = Rect2(0, 0, roomLayout.get_width(), roomLayout.get_height())
+
 	roomLayout.fill(solidColor)
 
 	roomOutline.lock()
@@ -55,13 +57,13 @@ func generate_room():
 		for y in roomOutline.get_height():
 			var roomConnections = {
 # warning-ignore:narrowing_conversion
-				"north" : !roomOutline.get_pixel(x, clamp(y-1, 0, INF)).is_equal_approx(solidColor),
+				"north" : !roomOutline.get_pixel(x, clamp(y-1, 0, INF)).is_equal_approx(solidColor) and roomRect.has_point(Vector2(x, y-1)),
 # warning-ignore:narrowing_conversion
-				"south" : !roomOutline.get_pixel(x, clamp(y+1, -INF, roomOutline.get_height()-1) ).is_equal_approx(solidColor),
+				"south" : !roomOutline.get_pixel(x, clamp(y+1, -INF, roomOutline.get_height()-1) ).is_equal_approx(solidColor) and roomRect.has_point(Vector2(x, y+1)),
 # warning-ignore:narrowing_conversion
-				"west" : !roomOutline.get_pixel(clamp(x-1, 0, INF), y).is_equal_approx(solidColor),
+				"west" : !roomOutline.get_pixel(clamp(x-1, 0, INF), y).is_equal_approx(solidColor)  and roomRect.has_point(Vector2(x-1, y)),
 # warning-ignore:narrowing_conversion
-				"east" : !roomOutline.get_pixel(clamp(x+1, -INF, roomOutline.get_width()-1), y).is_equal_approx(solidColor)
+				"east" : !roomOutline.get_pixel(clamp(x+1, -INF, roomOutline.get_width()-1), y).is_equal_approx(solidColor) and roomRect.has_point(Vector2(x+1, y))
 			}
 
 			connectionMap[x].append(roomConnections)
