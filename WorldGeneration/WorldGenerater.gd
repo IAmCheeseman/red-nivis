@@ -6,7 +6,7 @@ var minPrefabs = 2
 var maxPrefabs = 4
 
 
-func generate_room():
+func generate_room(planet:Planet):
 	randomize()
 
 	# Colors telling the algorithim what to place in certain spots
@@ -28,7 +28,7 @@ func generate_room():
 		viablePrefabs.append(i+1)
 
 	var roomOutlines = "res://WorldGeneration/RoomOutlines/RO%s.png"
-	var prefabs = "res://WorldGeneration/Prefabs/prefab%s.png"
+	var prefabs = planet.prefabs+"prefab%s.png"
 
 	# Getting an image to be used as a general layout
 	var roomOutline:Image = load(
@@ -112,7 +112,7 @@ func generate_room():
 
 
 	var ca = CellularAutomata.new()
-	roomLayout = ca.iterate(roomLayout, 1, 3, 5, solidColor)
+	roomLayout = ca.iterate(roomLayout, planet.CAIterations, planet.CAStarveLimit, planet.CAOverPop, solidColor)
 	ca.queue_free()
 
 	roomLayout.save_png("user://output.png")

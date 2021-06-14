@@ -16,7 +16,6 @@ func _ready():
 	var useLandscape = bool(round(rand_range(0, 1)))
 	if useLandscape: landscape.queue_free()
 	else: space.queue_free()
-#
 
 
 func _on_Quit_pressed():

@@ -48,12 +48,6 @@ func _process(_delta):
 
 
 func generate_room():
-	# Getting the room image
-	var worldGenerater = WorldGenerator.new()
-	var world:Image = worldGenerater.generate_room()
-	worldGenerater.queue_free()
-
-	world.lock()
 
 	var planets = [
 		"Reg",
@@ -63,6 +57,13 @@ func generate_room():
 	]
 
 	planet = load("res://WorldGeneration/Planets/%s.tres" % planets[GameManager.planet])
+
+	# Getting the room image
+	var worldGenerater = WorldGenerator.new()
+	var world:Image = worldGenerater.generate_room(planet)
+	worldGenerater.queue_free()
+
+	world.lock()
 
 	# Setting up the tiles & enemies
 
