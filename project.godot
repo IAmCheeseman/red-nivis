@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Managing/DataManager.gd"
 }, {
-"base": "Node",
-"class": "DrunkWalker",
-"language": "GDScript",
-"path": "res://WorldGeneration/walker.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "EnemyBullet",
 "language": "GDScript",
@@ -83,7 +78,6 @@ _global_script_class_icons={
 "BigJumpingBull": "",
 "CellularAutomata": "",
 "DataManager": "",
-"DrunkWalker": "",
 "EnemyBullet": "",
 "Hurtbox": "",
 "JumpingBull": "",
