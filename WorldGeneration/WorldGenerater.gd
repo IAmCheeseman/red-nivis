@@ -45,10 +45,7 @@ func generate_room(planet:Planet):
 	false, Image.FORMAT_RGBAH
 	)
 
-	var roomRect = Rect2(0, 0, roomLayout.get_width(), roomLayout.get_height())
-	roomRect.end -= Vector2.ONE
-	print(roomRect.end)
-	print("%s, %s" % [roomLayout.get_width(), roomLayout.get_height()])
+	var roomRect = Rect2(0, 0, roomOutline.get_width(), roomOutline.get_height())
 
 	roomLayout.fill(solidColor)
 
@@ -61,8 +58,6 @@ func generate_room(planet:Planet):
 	for x in roomOutline.get_width():
 		connectionMap.append([])
 		for y in roomOutline.get_height():
-			var roomP = roomOutline.get_pixel(x, y)
-
 			var roomConnections = {
 # warning-ignore:narrowing_conversion
 				"north" : !roomOutline.get_pixel(x, clamp(y-1, 0, INF)).is_equal_approx(solidColor) and roomRect.has_point(Vector2(x, y-1)),
