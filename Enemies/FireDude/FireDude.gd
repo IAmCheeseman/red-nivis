@@ -31,16 +31,11 @@ var rapidShots = 0
 var player : Node2D
 var targetPosition = Vector2.ZERO
 var tiles
-var world
 var isDead = false
 
 
 func set_player(_player):
 	player = _player
-
-
-func set_world(_world):
-	world = _world
 
 
 func _physics_process(delta):
@@ -157,7 +152,6 @@ func get_new_target_position():
 
 
 func remove():
-	world.enemyCount -= 1
 	queue_free()
 
 
