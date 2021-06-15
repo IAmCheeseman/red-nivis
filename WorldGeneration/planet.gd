@@ -25,5 +25,5 @@ export(Array, PackedScene) var props
 
 export(Array, PackedScene) var enemies
 export(Array, float) var enemyChances
-export var maxEnemies = 5
+
 

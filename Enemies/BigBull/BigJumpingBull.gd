@@ -34,7 +34,6 @@ onready var softCollision = $SoftCollision
 onready var hitbox = $Hitbox
 
 var player : KinematicBody2D
-var world
 var vel = Vector2.ZERO
 var lastFramePos = Vector2.ZERO
 var state = WANDER
@@ -48,10 +47,6 @@ func set_player(_player):
 	player = _player
 
 
-func set_world(_world):
-	world = _world
-
-
 func _physics_process(delta):
 	shadow.frame = sprite.frame
 	hitcast.cast_to = vel.normalized()*25
@@ -61,10 +56,6 @@ func _physics_process(delta):
 			state = ATTACK
 
 	var distPlayer = global_position.distance_to(player.global_position)
-
-	if distPlayer >= 16*35 and !state == DEAD:
-		world.enemyCount -= 1
-		queue_free()
 
 	var pushVector = softCollision.get_push_vector()
 	vel += pushVector*(float(speed)/5)
@@ -138,7 +129,6 @@ func wanderState(delta):
 
 func _on_dead():
 	if state != DEAD:
-		world.enemyCount -= 1
 		state = DEAD
 		animationPlayer.play("die")
 		hitbox.monitoring = false

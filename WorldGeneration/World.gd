@@ -23,14 +23,12 @@ var propedChunks : Array
 var lastChunk = Vector2.ZERO
 var chunkAmount = 3
 var firstTime = true
-var maxEnemies
 var enemyCount = 0
 
 
 func _ready():
 	generate_room()
 	set_camera_limits()
-	maxEnemies = planet.maxEnemies
 	atmosphere.color = planet.atmosphereColor
 	if planet.amosphereParticles:
 		var atmosphereParticles = planet.amosphereParticles.instance()
@@ -79,7 +77,17 @@ func generate_room():
 				tiles.set_cell(x, y, 0)
 				tiles.update_bitmask_area(Vector2(x, y))
 			elif world.get_pixel(x, y).is_equal_approx(enemyColor):
-				pass
+				var enemies = planet.enemies
+				var enemyChances = planet.enemyChances
+				var selectedEnemy = rand_range(0, enemies.size())
+				while rand_range(0, 100) > enemyChances[selectedEnemy]:
+					selectedEnemy = rand_range(0, enemies.size())
+
+				var enemy = enemies[selectedEnemy].instance()
+				enemy.position = Vector2(x, y)*16
+				enemy.set_player(player)
+				props.add_child(enemy)
+
 	# Adding an extra layer to the x axis
 	for x in world.get_width():
 		tiles.set_cell(x, -1, 0)
