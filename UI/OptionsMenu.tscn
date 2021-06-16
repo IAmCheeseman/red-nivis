@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/CheckButtons.tres" type="Theme" id=2]
 [ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=3]
+[ext_resource path="res://UI/RebindingButton.tscn" type="PackedScene" id=4]
 
 [node name="OptionsMenu" type="Control"]
 anchor_right = 1.0
@@ -22,13 +23,159 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Center"]
 margin_left = 40.0
-margin_top = 120.0
+margin_top = 90.0
 margin_right = 260.0
-margin_bottom = 180.0
+margin_bottom = 210.0
+
+[node name="Interaction" type="HBoxContainer" parent="Center/VBoxContainer"]
+margin_right = 220.0
+margin_bottom = 16.0
+alignment = 1
+
+[node name="Build" type="HBoxContainer" parent="Center/VBoxContainer/Interaction"]
+margin_left = 23.0
+margin_right = 72.0
+margin_bottom = 16.0
+
+[node name="Label" type="Label" parent="Center/VBoxContainer/Interaction/Build"]
+margin_top = 3.0
+margin_right = 27.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+text = "Build:"
+
+[node name="RebindButton" parent="Center/VBoxContainer/Interaction/Build" instance=ExtResource( 4 )]
+margin_left = 31.0
+margin_right = 49.0
+margin_bottom = 16.0
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+action = "remove_tile"
+
+[node name="Shoot" type="HBoxContainer" parent="Center/VBoxContainer/Interaction"]
+margin_left = 76.0
+margin_right = 128.0
+margin_bottom = 16.0
+
+[node name="Label" type="Label" parent="Center/VBoxContainer/Interaction/Shoot"]
+margin_top = 3.0
+margin_right = 30.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+text = "Shoot:"
+
+[node name="RebindButton" parent="Center/VBoxContainer/Interaction/Shoot" instance=ExtResource( 4 )]
+margin_left = 34.0
+margin_right = 52.0
+margin_bottom = 16.0
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+action = "use_item"
+
+[node name="Interact" type="HBoxContainer" parent="Center/VBoxContainer/Interaction"]
+margin_left = 132.0
+margin_right = 196.0
+margin_bottom = 16.0
+
+[node name="Label" type="Label" parent="Center/VBoxContainer/Interaction/Interact"]
+margin_top = 3.0
+margin_right = 42.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+text = "Interact:"
+
+[node name="RebindButton" parent="Center/VBoxContainer/Interaction/Interact" instance=ExtResource( 4 )]
+margin_left = 46.0
+margin_right = 64.0
+margin_bottom = 16.0
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+action = "interact"
+
+[node name="MovementRebindings" type="CenterContainer" parent="Center/VBoxContainer"]
+margin_top = 20.0
+margin_right = 220.0
+margin_bottom = 56.0
+
+[node name="Rebindings" type="GridContainer" parent="Center/VBoxContainer/MovementRebindings"]
+margin_left = 31.0
+margin_right = 188.0
+margin_bottom = 36.0
+columns = 2
+
+[node name="WalkUp" type="HBoxContainer" parent="Center/VBoxContainer/MovementRebindings/Rebindings"]
+margin_right = 77.0
+margin_bottom = 16.0
+
+[node name="Label" type="Label" parent="Center/VBoxContainer/MovementRebindings/Rebindings/WalkUp"]
+margin_top = 3.0
+margin_right = 41.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+text = "Walk Up:"
+
+[node name="RebindButton" parent="Center/VBoxContainer/MovementRebindings/Rebindings/WalkUp" instance=ExtResource( 4 )]
+margin_left = 45.0
+margin_right = 63.0
+margin_bottom = 16.0
+action = "move_up"
+
+[node name="WalkRight" type="HBoxContainer" parent="Center/VBoxContainer/MovementRebindings/Rebindings"]
+margin_left = 81.0
+margin_right = 157.0
+margin_bottom = 16.0
+
+[node name="Label" type="Label" parent="Center/VBoxContainer/MovementRebindings/Rebindings/WalkRight"]
+margin_top = 3.0
+margin_right = 54.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+text = "Walk Right:"
+
+[node name="RebindButton" parent="Center/VBoxContainer/MovementRebindings/Rebindings/WalkRight" instance=ExtResource( 4 )]
+margin_left = 58.0
+margin_right = 76.0
+margin_bottom = 16.0
+action = "move_right"
+
+[node name="WalkDown" type="HBoxContainer" parent="Center/VBoxContainer/MovementRebindings/Rebindings"]
+margin_top = 20.0
+margin_right = 77.0
+margin_bottom = 36.0
+
+[node name="Label" type="Label" parent="Center/VBoxContainer/MovementRebindings/Rebindings/WalkDown"]
+margin_top = 3.0
+margin_right = 55.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+text = "Walk Down:"
+
+[node name="RebindButton" parent="Center/VBoxContainer/MovementRebindings/Rebindings/WalkDown" instance=ExtResource( 4 )]
+margin_left = 59.0
+margin_right = 77.0
+margin_bottom = 16.0
+action = "move_down"
+
+[node name="WalkLeft" type="HBoxContainer" parent="Center/VBoxContainer/MovementRebindings/Rebindings"]
+margin_left = 81.0
+margin_top = 20.0
+margin_right = 157.0
+margin_bottom = 36.0
+
+[node name="Label" type="Label" parent="Center/VBoxContainer/MovementRebindings/Rebindings/WalkLeft"]
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 1 )
+text = "Walk Left:"
+
+[node name="RebindButton" parent="Center/VBoxContainer/MovementRebindings/Rebindings/WalkLeft" instance=ExtResource( 4 )]
+margin_left = 52.0
+margin_right = 70.0
+margin_bottom = 16.0
+action = "move_left"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Center/VBoxContainer"]
+margin_top = 60.0
 margin_right = 220.0
-margin_bottom = 40.0
+margin_bottom = 100.0
 
 [node name="Buttons" type="VBoxContainer" parent="Center/VBoxContainer/HBoxContainer"]
 margin_right = 98.0
@@ -127,9 +274,9 @@ __meta__ = {
 }
 
 [node name="Back" type="Button" parent="Center/VBoxContainer"]
-margin_top = 44.0
+margin_top = 104.0
 margin_right = 220.0
-margin_bottom = 60.0
+margin_bottom = 120.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_disabled = Color( 0.439216, 0, 0, 1 )
 custom_colors/font_color = Color( 0.815686, 0, 0, 1 )

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/RebindButton.gd" type="Script" id=1]
+[ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=2]
+
+[node name="RebindButton" type="Button"]
+margin_right = 21.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+text = "A"
+flat = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
