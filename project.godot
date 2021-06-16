@@ -101,6 +101,10 @@ GameManager="*res://Managing/GameManager.gd"
 Memory="*res://Managing/MemoryManager.gd"
 Settings="*res://Managing/settings.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=300

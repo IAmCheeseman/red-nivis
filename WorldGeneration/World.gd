@@ -49,8 +49,8 @@ func add_visual_stuff():
 	mistSpawner.player = player
 	mistSpawner.strength = planet.mistStrength
 
-func generate_room():
 
+func generate_room():
 	var planets = [
 		"Reg",
 		"Fire",
@@ -67,22 +67,26 @@ func generate_room():
 
 	world.lock()
 
-	# Setting up the tiles & enemies
+	# Setting up the tiles, enemies, & ruins
 
 	var enemyColor = Color("#a00c0c")
 	var solidColor = Color("#000000")
+	var ruinColor  = Color("#44cb30")
 
 	tiles = planet.solidTiles.instance()
 	props.add_child(tiles)
 
 	for x in world.get_width():
 		for y in world.get_height():
+			# Adding tiles
 			if world.get_pixel(x, y).is_equal_approx(solidColor):
 				tiles.set_cell(x, y, 0)
 				tiles.update_bitmask_area(Vector2(x, y))
+			# Enemies
 			elif world.get_pixel(x, y).is_equal_approx(enemyColor):
 				var enemies = planet.enemies
 				var enemyChances = planet.enemyChances
+
 				if enemies.size() > 0:
 					var selectedEnemy = rand_range(0, enemies.size())
 					while rand_range(0, 100) > enemyChances[selectedEnemy]:
@@ -92,6 +96,14 @@ func generate_room():
 					enemy.position = Vector2(x, y)*16
 					enemy.set_player(player)
 					props.add_child(enemy)
+			# Ruins
+			elif world.get_pixel(x, y).is_equal_approx(ruinColor):
+				var ruinCount = 2
+				var newRuin = load("res://Ruins/Human/WorldAppearance/BaseRuins%s.tscn" % rand_range(1, ruinCount)).instance()
+				newRuin.position = Vector2(x, y)*16
+				props.add_child(newRuin)
+
+
 
 	# Adding an extra layer to the x axis
 	for x in world.get_width():
@@ -154,7 +166,7 @@ func set_minimap(image:Image):
 			if pixelColor.is_equal_approx(enemyColor):
 				image.set_pixel(x, y, emptyColor)
 			elif pixelColor.is_equal_approx(solidColor):
-				image.set_pixel(x, y, Color(1, 1, 1, 0))
+				image.set_pixel(x, y, Color.transparent)
 
 	# Creating the texture
 	var mapTex = ImageTexture.new()

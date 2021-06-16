@@ -23,6 +23,9 @@ func _input(_event):
 		var gun = load("res://Items/Weapons/Gun.tscn").instance()
 		gun.global_position = get_global_mouse_position()
 		add_child(gun)
+	if Input.is_key_pressed(KEY_R):
+# warning-ignore:return_value_discarded
+		get_tree().reload_current_scene()
 
 
 

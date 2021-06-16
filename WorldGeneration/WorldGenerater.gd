@@ -13,6 +13,7 @@ enum {NORTH, SOUTH, EAST, WEST, NONE}
 var enemyColor = Color("#a00c0c")
 var emptyColor = Color("#ffffff")
 var solidColor = Color("#000000")
+var ruinColor = Color("#44cb30")
 
 # Directional colors
 var northColor = Color("#221f3e")
@@ -28,7 +29,7 @@ func generate_room(planet:Planet):
 	var outlineCount = 20
 	var viablePrefabs = []
 	for i in prefabCount:
-		viablePrefabs.append(i+1)
+		viablePrefabs.append(50)
 
 	var roomOutlines = "res://WorldGeneration/RoomOutlines/RO%s.png"
 	var prefabs = planet.prefabs+"prefab%s.png"
@@ -71,9 +72,6 @@ func generate_room(planet:Planet):
 
 			connectionMap[x].append(roomConnections)
 
-			if y == roomOutline.get_height()-1:
-				print(connectionMap[x][y])
-
 	# Creating the room layout
 	for x in roomOutline.get_width():
 		for y in roomOutline.get_height():
@@ -98,20 +96,23 @@ func generate_room(planet:Planet):
 						# Checking for ground
 						if tileColor.is_equal_approx(emptyColor):
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
+						# Checking for an enemy
+						elif tileColor.is_equal_approx(ruinColor):
+							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), ruinColor)
+						# Checking for an enemy
+						elif tileColor.is_equal_approx(enemyColor):
+							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), enemyColor)
 
 						# Checking the directions
-						if direction == NORTH and (connectionMap[x][y].north or exitDirection == NORTH): # NORTH
+						elif direction == NORTH and (connectionMap[x][y].north or exitDirection == NORTH): # NORTH
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-						if direction == SOUTH and (connectionMap[x][y].south or exitDirection == SOUTH): # SOUTH
+						elif direction == SOUTH and (connectionMap[x][y].south or exitDirection == SOUTH): # SOUTH
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-						if direction == EAST and (connectionMap[x][y].east or exitDirection == EAST): # EAST
+						elif direction == EAST and (connectionMap[x][y].east or exitDirection == EAST): # EAST
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-						if direction == WEST and (connectionMap[x][y].west or exitDirection == WEST): # WEST
+						elif direction == WEST and (connectionMap[x][y].west or exitDirection == WEST): # WEST
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
 
-						# Checking for an enemy
-						if tileColor.is_equal_approx(enemyColor):
-							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), enemyColor)
 
 
 	var ca = CellularAutomata.new()
