@@ -78,6 +78,8 @@ __meta__ = {
 [node name="Player" parent="Props" instance=ExtResource( 3 )]
 position = Vector2( 8, 8 )
 
+[node name="Minimap" parent="Props/Player/CanvasLayer" index="2" instance=ExtResource( 11 )]
+
 [node name="Pointer" type="Node2D" parent="Props/Player"]
 script = ExtResource( 7 )
 nodePool = NodePath("../../Ship")
@@ -103,11 +105,6 @@ script = SubResource( 1 )
 audio = ExtResource( 6 )
 directional = true
 bus = "SFX"
-
-[node name="Minimap" type="CanvasLayer" parent="."]
-layer = 128
-
-[node name="Minimap" parent="Minimap" instance=ExtResource( 11 )]
 
 [connection signal="tree_entered" from="." to="." method="_on_World_tree_entered"]
 [connection signal="dropGun" from="Props/Player" to="." method="_on_drop_gun"]

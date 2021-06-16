@@ -1,16 +1,9 @@
 extends StaticBody2D
 class_name Ruin
 
-var worldGenerator
-var chunk : Vector2
+
 onready var sprite = $Sprite
 onready var queueCollision = $QueueCollision
-
-
-func _process(_delta):
-	if global_position.distance_to(worldGenerator.player.global_position) >= (10*16)*3:
-		worldGenerator.get_parent().ruinedChunks.erase(chunk)
-		queue_free()
 
 
 func set_color(color):

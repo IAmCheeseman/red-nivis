@@ -25,11 +25,11 @@ func generate_room(planet:Planet):
 	randomize()
 
 	var prefabSize = 16
-	var prefabCount = 48
+	var prefabCount = 52
 	var outlineCount = 20
 	var viablePrefabs = []
 	for i in prefabCount:
-		viablePrefabs.append(50)
+		viablePrefabs.append(i+1)
 
 	var roomOutlines = "res://WorldGeneration/RoomOutlines/RO%s.png"
 	var prefabs = planet.prefabs+"prefab%s.png"

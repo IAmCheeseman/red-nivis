@@ -13,7 +13,7 @@ onready var placementTiles = $Props/PlaceTiles
 onready var playerShip = $Props/Ship
 onready var mistSpawner = $Props/Player/MistSpawner
 onready var tilePlaceSFX = $TilePlaceSFX
-onready var minimap = $Minimap/Minimap
+onready var minimap = $Props/Player/CanvasLayer/Minimap
 
 var queuedChunks : Array
 var queueFreeChunks : Array
@@ -97,13 +97,11 @@ func generate_room():
 					enemy.set_player(player)
 					props.add_child(enemy)
 			# Ruins
-			elif world.get_pixel(x, y).is_equal_approx(ruinColor):
+			elif check_approx(world.get_pixel(x, y),ruinColor):
 				var ruinCount = 2
-				var newRuin = load("res://Ruins/Human/WorldAppearance/BaseRuins%s.tscn" % rand_range(1, ruinCount)).instance()
+				var newRuin = load("res://Ruins/Human/WorldAppearance/BaseRuins%s.tscn" % int(rand_range(1, ruinCount+1))).instance()
 				newRuin.position = Vector2(x, y)*16
 				props.add_child(newRuin)
-
-
 
 	# Adding an extra layer to the x axis
 	for x in world.get_width():
@@ -122,7 +120,6 @@ func generate_room():
 			tiles.set_cell(world.get_width(), y, 0)
 			tiles.update_bitmask_area(Vector2(world.get_width(), y))
 
-
 	# Shadows
 	shadows = tiles.duplicate()
 	shadows.position.y += 12
@@ -139,6 +136,12 @@ func generate_room():
 	background.texture = planet.backgroundImage
 
 	set_minimap(world)
+
+
+func check_approx(color:Color, color2:Color):
+	if color.r-color2.r < .05 and color.g-color2.g < .05 and color.b-color2.b < .05:
+		return true
+	return false
 
 
 func set_camera_limits():
