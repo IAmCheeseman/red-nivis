@@ -1,8 +1,6 @@
 extends Button
 
-# Set this string to the name of the action in the InputMap
 export(String) var action
-export(String) var visualAction
 
 var _editing = false
 
@@ -33,5 +31,5 @@ func _update_button_text(input_event: InputEvent) -> void:
 		text = input_event.as_text()
 
 
-func _on_Button_pressed() -> void:
+func _on_rebind() -> void:
 	_editing = true
