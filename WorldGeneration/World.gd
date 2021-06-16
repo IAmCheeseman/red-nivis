@@ -29,21 +29,25 @@ var enemyCount = 0
 func _ready():
 	generate_room()
 	set_camera_limits()
+	add_visual_stuff()
+
+	playerShip.position = player.position
+
+
+func _process(_delta):
+	minimap.set_icon_pos(player.position)
+
+
+func add_visual_stuff():
 	atmosphere.color = planet.atmosphereColor
 	if planet.amosphereParticles:
 		var atmosphereParticles = planet.amosphereParticles.instance()
 		player.add_child(atmosphereParticles)
 	else:
 		print("NO AMBIENT PARTICLES DEFINED FOR PLANET")
-	playerShip.position = player.position
 	mistSpawner.color = planet.mistColor
 	mistSpawner.player = player
 	mistSpawner.strength = planet.mistStrength
-
-
-func _process(_delta):
-	minimap.set_icon_pos(player.position)
-
 
 func generate_room():
 
@@ -79,27 +83,32 @@ func generate_room():
 			elif world.get_pixel(x, y).is_equal_approx(enemyColor):
 				var enemies = planet.enemies
 				var enemyChances = planet.enemyChances
-				var selectedEnemy = rand_range(0, enemies.size())
-				while rand_range(0, 100) > enemyChances[selectedEnemy]:
-					selectedEnemy = rand_range(0, enemies.size())
+				if enemies.size() > 0:
+					var selectedEnemy = rand_range(0, enemies.size())
+					while rand_range(0, 100) > enemyChances[selectedEnemy]:
+						selectedEnemy = rand_range(0, enemies.size())
 
-				var enemy = enemies[selectedEnemy].instance()
-				enemy.position = Vector2(x, y)*16
-				enemy.set_player(player)
-				props.add_child(enemy)
+					var enemy = enemies[selectedEnemy].instance()
+					enemy.position = Vector2(x, y)*16
+					enemy.set_player(player)
+					props.add_child(enemy)
 
 	# Adding an extra layer to the x axis
 	for x in world.get_width():
-		tiles.set_cell(x, -1, 0)
-		tiles.update_bitmask_area(Vector2(x, -1))
-		tiles.set_cell(x, world.get_height(), 0)
-		tiles.update_bitmask_area(Vector2(x, world.get_height()))
+		if tiles.get_cell(x, 0) != -1:
+			tiles.set_cell(x, -1, 0)
+			tiles.update_bitmask_area(Vector2(x, -1))
+		if tiles.get_cell(x, world.get_height()-1) != -1:
+			tiles.set_cell(x, world.get_height(), 0)
+			tiles.update_bitmask_area(Vector2(x, world.get_height()))
 	# Adding an extra layer to the y axis
 	for y in world.get_height():
-		tiles.set_cell(-1, y, 0)
-		tiles.update_bitmask_area(Vector2(-1, y))
-		tiles.set_cell(world.get_width(), y, 0)
-		tiles.update_bitmask_area(Vector2(world.get_width(), y))
+		if tiles.get_cell(0, y) != -1:
+			tiles.set_cell(-1, y, 0)
+			tiles.update_bitmask_area(Vector2(-1, y))
+		if tiles.get_cell(world.get_width()-1, y) != -1:
+			tiles.set_cell(world.get_width(), y, 0)
+			tiles.update_bitmask_area(Vector2(world.get_width(), y))
 
 
 	# Shadows
