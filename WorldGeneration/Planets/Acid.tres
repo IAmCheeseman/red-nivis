@@ -4,8 +4,9 @@
 [ext_resource path="res://WorldGeneration/Planets/AcidAtmosphere.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tiles/Solids/AcidSolid.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tiles/AltGround/AcidRocks.tscn" type="PackedScene" id=4]
-[ext_resource path="res://WorldGeneration/planet.gd" type="Script" id=5]
+[ext_resource path="res://WorldGeneration/Planets/planet.gd" type="Script" id=5]
 [ext_resource path="res://Tiles/Ground/AcidGround.png" type="Texture" id=6]
+
 
 [sub_resource type="OpenSimplexNoise" id=1]
 

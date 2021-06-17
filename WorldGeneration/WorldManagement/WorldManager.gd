@@ -1,0 +1,40 @@
+extends Node2D
+
+var worldData = preload("res://WorldGeneration/WorldManagement/WorldData.tres")
+
+signal worldGenUpdated(percentage)
+signal worldGenDone()
+
+
+func move_in_direction(direction):
+	worldData.lastUpdatedDir = direction
+	worldData.position.x = wrapi(worldData.position.x-direction.x, 0, worldData.rooms[0].size())
+	worldData.position.y = wrapi(worldData.position.y-direction.y, 0, worldData.rooms.size())
+	get_tree().reload_current_scene()
+
+
+func generate_world(_thread:Thread):
+	var roomGenerator = WorldGenerator.new()
+	var rooms = []
+	var dimensions = Vector2(50, 30)
+	var roomsDone = 0
+	var totalRooms = dimensions.x*dimensions.y
+	var temp = load("res://WorldGeneration/Planets/Reg.tres")
+
+	for x in dimensions.x:
+		rooms.append([])
+		for y in dimensions.y:
+			var roomLayout = roomGenerator.generate_room(temp)
+			var newRoom = {
+				"Layout" : roomLayout,
+				"isLanding" : false,
+			}
+
+			rooms[x].append(newRoom)
+
+			roomsDone += 1
+			emit_signal("worldGenUpdated", GameManager.percentage_of(roomsDone, totalRooms))
+
+	worldData.rooms = rooms
+
+	emit_signal("worldGenDone")

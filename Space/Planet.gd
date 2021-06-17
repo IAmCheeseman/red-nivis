@@ -27,7 +27,6 @@ var oRots = {
 	"planet" : rand_range(0, 360),
 	"moon" : rand_range(0, 360)
 }
-var world = preload("res://WorldGeneration/World.tscn")
 
 
 func _ready():
@@ -63,7 +62,7 @@ func _on_Planet_body_entered(body):
 			get_tree().change_scene(altLoadPath)
 			return
 # warning-ignore:return_value_discarded
-		get_tree().change_scene_to(world)
+		get_tree().change_scene("res://UI/WorldGenerationScreen.tscn")
 
 
 

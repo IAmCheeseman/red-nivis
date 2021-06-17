@@ -21,7 +21,8 @@ var southColor = Color("#b14926")
 var eastColor  = Color("#490a15")
 var westColor  = Color("#174646")
 
-func generate_room(planet:Planet):
+
+func generate_room(planet):
 	randomize()
 
 	var prefabSize = 16
@@ -112,8 +113,6 @@ func generate_room(planet:Planet):
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
 						elif direction == WEST and (connectionMap[x][y].west or exitDirection == WEST): # WEST
 							roomLayout.set_pixel(xx+(x*prefabSize), yy+(y*prefabSize), emptyColor)
-
-
 
 	var ca = CellularAutomata.new()
 	roomLayout = ca.iterate(roomLayout, planet.CAIterations, planet.CAStarveLimit, planet.CAOverPop, solidColor)

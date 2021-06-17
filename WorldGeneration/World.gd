@@ -59,6 +59,7 @@ func generate_room():
 	]
 
 	planet = load("res://WorldGeneration/Planets/%s.tres" % planets[GameManager.planet])
+	var exitAreas = preload("res://WorldGeneration/ExitArea.tscn")
 
 	# Getting the room image
 	var worldGenerater = WorldGenerator.new()
@@ -134,6 +135,10 @@ func generate_room():
 	background.rect_position = Vector2.ONE*-20000
 	background.rect_size = Vector2(10000, 10000)*3
 	background.texture = planet.backgroundImage
+
+	# Setting the exit areas
+
+	# Left Exit Area
 
 	set_minimap(world)
 

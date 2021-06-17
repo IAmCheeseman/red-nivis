@@ -1,11 +1,12 @@
 [gd_resource type="Resource" load_steps=9 format=2]
 
-[ext_resource path="res://WorldGeneration/planet.gd" type="Script" id=1]
+[ext_resource path="res://WorldGeneration/Planets/planet.gd" type="Script" id=1]
 [ext_resource path="res://Tiles/AltGround/Rocks.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tiles/Solids/RedStone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/FireDude/FireDude.tscn" type="PackedScene" id=4]
 [ext_resource path="res://WorldGeneration/Planets/FireAtmosphere.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Tiles/Ground/FireRocks.png" type="Texture" id=6]
+
 
 [sub_resource type="OpenSimplexNoise" id=1]
 period = 42.0
