@@ -17,7 +17,7 @@ func move_in_direction(direction):
 func generate_world(_thread:Thread):
 	var roomGenerator = WorldGenerator.new()
 	var rooms = []
-	var dimensions = Vector2(50, 30)
+	var dimensions = Vector2(30, 20)
 	var roomsDone = 0
 	var totalRooms = dimensions.x*dimensions.y
 	var temp = load("res://WorldGeneration/Planets/Reg.tres")
