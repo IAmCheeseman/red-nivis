@@ -21,13 +21,13 @@ func _ready():
 		Settings.screenshake = settingsData.screenshake
 		Settings.playerTilt = settingsData.playerTilt
 
-	$Center/VBoxContainer/HBoxContainer/Buttons/PixelPerfect.pressed = Settings.pixelPerfect
-	$Center/VBoxContainer/HBoxContainer/Buttons/Vignette.pressed = Settings.vignette
-	$Center/VBoxContainer/HBoxContainer/Sliders/Screenshake/HSlider.value = Settings.screenshake
-	$Center/VBoxContainer/HBoxContainer/Sliders/CameraLook/HSlider.value = Settings.cameraLook
-	$Center/VBoxContainer/HBoxContainer/Buttons/PlayerTilt.pressed = Settings.playerTilt
+	$Center/Options/Visual/Buttons/PixelPerfect.pressed = Settings.pixelPerfect
+	$Center/Options/Visual/Buttons/Vignette.pressed = Settings.vignette
+	$Center/Options/Visual/Buttons/PlayerTilt.pressed = Settings.playerTilt
+	$Center/Options/Visual/Sliders/Screenshake/HSlider.value = Settings.screenshake
+	$Center/Options/Visual/Sliders/CameraLook/HSlider.value = Settings.cameraLook
 
-	$Center/VBoxContainer/Back.set_focus_mode(Control.FOCUS_NONE)
+	$Center/OptionsMenu/Back.set_focus_mode(Control.FOCUS_NONE)
 
 
 func _on_screenshake_value_changed(value):
