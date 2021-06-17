@@ -10,7 +10,7 @@ export var strength = .5
 
 var player : Node2D
 
-var mist = preload("res://WorldGeneration/Mist.tscn")
+var mist = preload("res://WorldGeneration/VisualEffects/Mist.tscn")
 
 
 func spawn_mist():

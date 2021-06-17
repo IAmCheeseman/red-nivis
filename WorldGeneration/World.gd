@@ -11,6 +11,7 @@ onready var props = $Props
 onready var atmosphere = $Atmosphere
 onready var placementTiles = $Props/PlaceTiles
 onready var playerShip = $Props/Ship
+onready var worldManager = $WorldManager
 onready var mistSpawner = $Props/Player/MistSpawner
 onready var tilePlaceSFX = $TilePlaceSFX
 onready var minimap = $Props/Player/CanvasLayer/Minimap
@@ -43,8 +44,8 @@ func add_visual_stuff():
 	if planet.amosphereParticles:
 		var atmosphereParticles = planet.amosphereParticles.instance()
 		player.add_child(atmosphereParticles)
-	else:
-		print("NO AMBIENT PARTICLES DEFINED FOR PLANET")
+#	else:
+#		print("NO AMBIENT PARTICLES DEFINED FOR PLANET")
 	mistSpawner.color = planet.mistColor
 	mistSpawner.player = player
 	mistSpawner.strength = planet.mistStrength
@@ -59,12 +60,10 @@ func generate_room():
 	]
 
 	planet = load("res://WorldGeneration/Planets/%s.tres" % planets[GameManager.planet])
-	var exitAreas = preload("res://WorldGeneration/ExitArea.tscn")
 
 	# Getting the room image
-	var worldGenerater = WorldGenerator.new()
-	var world:Image = worldGenerater.generate_room(planet)
-	worldGenerater.queue_free()
+	var worldPos = worldManager.worldData.position
+	var world:Image = worldManager.worldData.rooms[worldPos.x][worldPos.y].layout
 
 	world.lock()
 
@@ -139,8 +138,32 @@ func generate_room():
 	# Setting the exit areas
 
 	# Left Exit Area
+	var shape = RectangleShape2D.new()
+	shape.extents = Vector2(2, world.get_height()/2*16)
+	setExitArea(Vector2(0, world.get_height()/2), shape, Vector2.LEFT)
+	# Right Exit Area
+	shape = RectangleShape2D.new()
+	shape.extents = Vector2(2, world.get_height()/2*16)
+	setExitArea(Vector2(world.get_width(), world.get_height()/2), shape, Vector2.RIGHT)
+	# Up Exit Area
+	shape = RectangleShape2D.new()
+	shape.extents = Vector2(world.get_width()/2*16, 2)
+	setExitArea(Vector2(world.get_width()/2, 0), shape, Vector2.UP)
+	# Down Exit Area
+	shape = RectangleShape2D.new()
+	shape.extents = Vector2(world.get_width()/2*16, 2)
+	setExitArea(Vector2(world.get_width()/2, world.get_height()), shape, Vector2.DOWN)
 
 	set_minimap(world)
+
+
+func setExitArea(_position, shape, dir):
+	var newExitArea = preload("res://WorldGeneration/ExitArea.tscn").instance()
+	newExitArea.position = _position*16
+	newExitArea.direction = dir
+	add_child(newExitArea)
+	newExitArea.set_collider(shape)
+	newExitArea.connect("move_to_room", worldManager, "move_in_direction")
 
 
 func check_approx(color:Color, color2:Color):

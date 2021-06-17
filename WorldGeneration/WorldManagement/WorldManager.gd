@@ -8,8 +8,9 @@ signal worldGenDone()
 
 func move_in_direction(direction):
 	worldData.lastUpdatedDir = direction
-	worldData.position.x = wrapi(worldData.position.x-direction.x, 0, worldData.rooms[0].size())
-	worldData.position.y = wrapi(worldData.position.y-direction.y, 0, worldData.rooms.size())
+	worldData.position.x = wrapi(worldData.position.x+direction.x, 0, worldData.rooms[0].size())
+	worldData.position.y = wrapi(worldData.position.y+direction.y, 0, worldData.rooms.size())
+	print(worldData.position)
 	get_tree().reload_current_scene()
 
 
@@ -26,7 +27,7 @@ func generate_world(_thread:Thread):
 		for y in dimensions.y:
 			var roomLayout = roomGenerator.generate_room(temp)
 			var newRoom = {
-				"Layout" : roomLayout,
+				"layout" : roomLayout,
 				"isLanding" : false,
 			}
 
