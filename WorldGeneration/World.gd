@@ -63,7 +63,7 @@ func generate_room():
 
 	# Getting the room image
 	var worldPos = worldManager.worldData.position
-	var world:Image = worldManager.worldData.rooms[worldPos.x][worldPos.y].layout
+	var world:Image = worldManager.worldData.rooms[worldPos.x][worldPos.y].layout.duplicate()
 
 	world.lock()
 
