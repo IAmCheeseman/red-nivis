@@ -10,7 +10,6 @@ func move_in_direction(direction):
 	worldData.lastUpdatedDir = direction
 	worldData.position.x = wrapi(worldData.position.x+direction.x, 0, worldData.rooms[0].size())
 	worldData.position.y = wrapi(worldData.position.y+direction.y, 0, worldData.rooms.size())
-	print(worldData.position)
 	get_tree().reload_current_scene()
 
 

@@ -44,8 +44,6 @@ func add_visual_stuff():
 	if planet.amosphereParticles:
 		var atmosphereParticles = planet.amosphereParticles.instance()
 		player.add_child(atmosphereParticles)
-#	else:
-#		print("NO AMBIENT PARTICLES DEFINED FOR PLANET")
 	mistSpawner.color = planet.mistColor
 	mistSpawner.player = player
 	mistSpawner.strength = planet.mistStrength
