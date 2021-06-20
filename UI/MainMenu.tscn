@@ -93,6 +93,10 @@ layer = 4
 [node name="Title" type="VBoxContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -7.55951
+margin_top = 6.29961
+margin_right = -7.55951
+margin_bottom = 6.29962
 __meta__ = {
 "_edit_use_anchors_": false
 }
