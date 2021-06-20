@@ -62,13 +62,12 @@ func generate_room():
 	# Getting the room image
 	var world:Image
 	var worldPos = worldManager.worldData.position
-	var roomImage = worldManager.worldData.rooms[worldPos.x][worldPos.y].layout
-	if roomImage:
-		world = roomImage.duplicate()
-	else:
+	var roomImage = worldManager.worldData.rooms[worldPos.y][worldPos.x].layout
+	if !roomImage:
 		var worldGenerator = WorldGenerator.new()
-		roomImage = worldGenerator.generate_room(planet)
-		world = roomImage.duplicate()
+		worldManager.worldData.rooms[worldPos.y][worldPos.x].layout = worldGenerator.generate_room(planet)
+	roomImage = worldManager.worldData.rooms[worldPos.y][worldPos.x].layout
+	world = roomImage.duplicate()
 
 	world.lock()
 
