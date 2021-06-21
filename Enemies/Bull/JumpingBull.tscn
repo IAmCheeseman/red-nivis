@@ -162,7 +162,9 @@ radius = 5.0
 [sub_resource type="CircleShape2D" id=8]
 radius = 6.0
 
-[node name="Bull" type="KinematicBody2D"]
+[node name="Bull" type="KinematicBody2D" groups=[
+"enemy",
+]]
 collision_layer = 0
 script = ExtResource( 1 )
 speed = 8400

@@ -26,6 +26,8 @@ var knowsPlayer = false
 var lastFramePos = Vector2.ZERO
 var state = WANDER
 var futurePosition = position
+var deathParticles = preload("res://Enemies/Assets/DeathParticles.tscn")
+var bulletDir:Vector2
 
 var tiles : TileMap
 
@@ -103,13 +105,16 @@ func wanderState(delta):
 			state = ATTACK
 
 
-func _on_dead():
+func _on_dead(dir:Vector2):
 	if state != DEAD:
 		state = DEAD
-		animationPlayer.play("die")
-		hitbox.monitoring = false
-		modulate = Color(.2, .2, .2, .5)
+		var newDeathParticles = deathParticles.instance()
+		newDeathParticles.position = position
+		newDeathParticles.rotation = bulletDir.angle()
+		print(newDeathParticles.rotation_degrees)
+		get_parent().add_child(newDeathParticles)
 
+		queue_free()
 
 func _on_hurt(dir):
 	hurtAnim.play("Hurt")

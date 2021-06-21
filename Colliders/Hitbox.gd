@@ -8,5 +8,5 @@ signal hit_object
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("hurtbox") and !area.is_in_group(maskedHurtbox):
-		area.take_damage(damage, global_position.direction_to(area.global_position))
 		emit_signal("hit_object", area)
+		area.take_damage(damage, global_position.direction_to(area.global_position))

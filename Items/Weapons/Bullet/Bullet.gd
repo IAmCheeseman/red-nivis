@@ -42,4 +42,9 @@ func _on_Hitbox_hit_object(object):
 			var newPrefixEffect = prefix.effect.instance()
 			newPrefixEffect.callEffect(stats, object)
 			object.add_child(newPrefixEffect)
+	if object.get_parent().is_in_group("enemy"):
+		object.get_parent().bulletDir = direction
+
+
+
 
