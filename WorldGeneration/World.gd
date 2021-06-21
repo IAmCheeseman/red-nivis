@@ -16,6 +16,7 @@ onready var mistSpawner = $Props/Player/MistSpawner
 onready var tilePlaceSFX = $TilePlaceSFX
 onready var minimap = $Props/Player/CanvasLayer/Minimap
 
+var worldData = preload("res://WorldGeneration/WorldManagement/WorldData.tres")
 var queuedChunks : Array
 var queueFreeChunks : Array
 var generatedChunks : Array
@@ -107,22 +108,36 @@ func generate_room():
 				newRuin.position = Vector2(x, y)*16
 				props.add_child(newRuin)
 
+	var playerOutput = worldData.lastUpdatedDir
+	print(playerOutput)
+
+	# Placing the player and adding padding
+
 	# Adding an extra layer to the x axis
 	for x in world.get_width():
 		if tiles.get_cell(x, 0) != -1:
 			tiles.set_cell(x, -1, 0)
 			tiles.update_bitmask_area(Vector2(x, -1))
+		elif playerOutput == Vector2.DOWN:
+			player.position = Vector2(x, 1)
 		if tiles.get_cell(x, world.get_height()-1) != -1:
 			tiles.set_cell(x, world.get_height(), 0)
 			tiles.update_bitmask_area(Vector2(x, world.get_height()))
+		elif playerOutput == Vector2.UP:
+			player.position = Vector2(x, world.get_height()-1)
 	# Adding an extra layer to the y axis
 	for y in world.get_height():
 		if tiles.get_cell(0, y) != -1:
 			tiles.set_cell(-1, y, 0)
 			tiles.update_bitmask_area(Vector2(-1, y))
+		elif playerOutput == Vector2.RIGHT:
+			player.position = Vector2(1, y)
 		if tiles.get_cell(world.get_width()-1, y) != -1:
 			tiles.set_cell(world.get_width(), y, 0)
 			tiles.update_bitmask_area(Vector2(world.get_width(), y))
+		elif playerOutput == Vector2.LEFT:
+			player.position = Vector2(world.get_width()-1, y)
+	player.position *= tiles.cell_size.x
 
 	# Shadows
 	shadows = tiles.duplicate()
