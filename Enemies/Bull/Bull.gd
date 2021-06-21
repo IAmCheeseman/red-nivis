@@ -105,13 +105,12 @@ func wanderState(delta):
 			state = ATTACK
 
 
-func _on_dead(dir:Vector2):
+func _on_dead():
 	if state != DEAD:
 		state = DEAD
 		var newDeathParticles = deathParticles.instance()
 		newDeathParticles.position = position
 		newDeathParticles.rotation = bulletDir.angle()
-		print(newDeathParticles.rotation_degrees)
 		get_parent().add_child(newDeathParticles)
 
 		queue_free()

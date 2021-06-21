@@ -25,6 +25,7 @@ onready var deathSFX = $DeathSFX
 
 
 var bullet = preload("res://Enemies/EnemyBullet/EnemyBullet.tscn")
+var deathParticles = preload("res://Enemies/Assets/DeathParticles.tscn")
 var vel = Vector2.ZERO
 var state = IDLE
 var rapidShots = 0
@@ -32,6 +33,7 @@ var player : Node2D
 var targetPosition = Vector2.ZERO
 var tiles
 var isDead = false
+var bulletDir:Vector2
 
 
 func set_player(_player):
@@ -158,6 +160,12 @@ func remove():
 func _on_death():
 	deathSFX.play()
 	isDead = true
+	var newDeathParticles = deathParticles.instance()
+	newDeathParticles.position = position
+	newDeathParticles.rotation = bulletDir.angle()
+	get_parent().add_child(newDeathParticles)
+
+	queue_free()
 	hide()
 
 

@@ -10,7 +10,6 @@ onready var camera = $Props/Player/Camera
 onready var props = $Props
 onready var atmosphere = $Atmosphere
 onready var placementTiles = $Props/PlaceTiles
-onready var playerShip = $Props/Ship
 onready var worldManager = $WorldManager
 onready var mistSpawner = $Props/Player/MistSpawner
 onready var tilePlaceSFX = $TilePlaceSFX
@@ -32,8 +31,6 @@ func _ready():
 	generate_room()
 	set_camera_limits()
 	add_visual_stuff()
-
-	playerShip.position = player.position
 
 
 func _process(_delta):

@@ -70,7 +70,9 @@ tracks/0/keys = {
 "values": [ Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="FireDude" type="KinematicBody2D"]
+[node name="FireDude" type="KinematicBody2D" groups=[
+"enemy",
+]]
 collision_layer = 0
 script = ExtResource( 3 )
 shotSpeed = 170
