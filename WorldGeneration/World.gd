@@ -109,7 +109,6 @@ func generate_room():
 				props.add_child(newRuin)
 
 	var playerOutput = worldData.lastUpdatedDir
-	print(playerOutput)
 
 	# Placing the player and adding padding
 
@@ -158,19 +157,27 @@ func generate_room():
 
 	# Left Exit Area
 	var shape = RectangleShape2D.new()
+# warning-ignore:integer_division
 	shape.extents = Vector2(2, world.get_height()/2*16)
+# warning-ignore:integer_division
 	setExitArea(Vector2(0, world.get_height()/2), shape, Vector2.LEFT)
 	# Right Exit Area
 	shape = RectangleShape2D.new()
+# warning-ignore:integer_division
 	shape.extents = Vector2(2, world.get_height()/2*16)
+# warning-ignore:integer_division
 	setExitArea(Vector2(world.get_width(), world.get_height()/2), shape, Vector2.RIGHT)
 	# Up Exit Area
 	shape = RectangleShape2D.new()
+# warning-ignore:integer_division
 	shape.extents = Vector2(world.get_width()/2*16, 2)
+# warning-ignore:integer_division
 	setExitArea(Vector2(world.get_width()/2, 0), shape, Vector2.UP)
 	# Down Exit Area
 	shape = RectangleShape2D.new()
+# warning-ignore:integer_division
 	shape.extents = Vector2(world.get_width()/2*16, 2)
+# warning-ignore:integer_division
 	setExitArea(Vector2(world.get_width()/2, world.get_height()), shape, Vector2.DOWN)
 
 	set_minimap(world)

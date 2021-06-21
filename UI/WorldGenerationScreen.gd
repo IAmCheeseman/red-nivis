@@ -18,4 +18,5 @@ func _on_world_gen_finished():
 
 
 func play():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://WorldGeneration/World.tscn")
