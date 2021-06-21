@@ -314,8 +314,8 @@ margin_bottom = 36.0
 alignment = 1
 
 [node name="Continue" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 83.0
-margin_right = 138.0
+margin_left = 73.0
+margin_right = 128.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
@@ -326,15 +326,30 @@ text = "Continue"
 flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 142.0
-margin_right = 216.0
+margin_left = 132.0
+margin_right = 164.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
-text = "Quit to Menu"
+text = "Quit"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitDesktop" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
+margin_left = 168.0
+margin_right = 227.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
+custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+text = "Rage Quit"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -349,6 +364,7 @@ visible = false
 [connection signal="tween_all_completed" from="CanvasLayer/HealthThing/Tween" to="." method="_on_health_vig_tween_all_completed"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/DeathScreen" method="_on_Continue_button_up"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/DeathScreen" method="_on_Quit_button_up"]
+[connection signal="pressed" from="CanvasLayer/DeathScreen/HBoxContainer/QuitDesktop" to="CanvasLayer/DeathScreen" method="_on_QuitDesktop_pressed"]
 
 [editable path="Hurtbox"]
 [editable path="SoftCollision"]

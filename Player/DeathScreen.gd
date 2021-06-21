@@ -10,5 +10,6 @@ func _on_Continue_button_up():
 func _on_Quit_button_up():
 	var isOK = get_tree().change_scene("res://UI/MainMenu.tscn")
 
-	if isOK != OK:
-		get_tree().quit()
+
+func _on_QuitDesktop_pressed():
+	get_tree().quit()
