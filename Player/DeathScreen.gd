@@ -8,7 +8,8 @@ func _on_Continue_button_up():
 
 
 func _on_Quit_button_up():
-	var isOK = get_tree().change_scene("res://UI/MainMenu.tscn")
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://UI/MainMenu.tscn")
 
 
 func _on_QuitDesktop_pressed():
