@@ -20,10 +20,9 @@ func iterate(image:Image, iterations:int=5, starveMin:int=3, overPop:int=5, aliv
 				var aliveCells = 0
 				# Checking if the cell needs to become alive
 				for neighbor in neighbors:
-					if !imageBorders.has_point(neighbor):
-						aliveCells += 1
-					elif newImage.get_pixelv(neighbor).is_equal_approx(aliveColor):
-						aliveCells += 1
+					if imageBorders.has_point(neighbor):
+						if newImage.get_pixelv(neighbor).is_equal_approx(aliveColor):
+							aliveCells += 1
 				# If it meets the minimum requirements, it becomes alive
 				if aliveCells >= starveMin and aliveCells < overPop:
 					changes.append(Vector2(x, y))
