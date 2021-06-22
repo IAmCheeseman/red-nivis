@@ -100,7 +100,7 @@ func generate_room():
 					props.add_child(enemy)
 			# Ruins
 			elif check_approx(world.get_pixel(x, y),ruinColor):
-				var ruinCount = 2
+				var ruinCount = 3
 				var newRuin = load("res://Ruins/Human/WorldAppearance/BaseRuins%s.tscn" % int(rand_range(1, ruinCount+1))).instance()
 				newRuin.position = Vector2(x, y)*16
 				props.add_child(newRuin)

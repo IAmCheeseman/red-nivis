@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Items/Crates.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ruins/Human/WorldAppearance/BaseRuins3.png" type="Texture" id=2]
+[ext_resource path="res://WorldGeneration/WeaponSpawn.tscn" type="PackedScene" id=3]
+
+[node name="BaseRuins3" type="YSort"]
+
+[node name="Crates" parent="." instance=ExtResource( 1 )]
+position = Vector2( 36, 9 )
+
+[node name="Crates2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -19, -24 )
+
+[node name="Crates3" parent="." instance=ExtResource( 1 )]
+position = Vector2( -37, -19 )
+
+[node name="WeaponSpawn" parent="." instance=ExtResource( 3 )]
+position = Vector2( -40, 17 )
+
+[node name="WeaponSpawn2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 50, -17 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -4 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -20.875, -0.5, -20, 9.625, 9.25, 10.5, 9.5, -0.75, 18.375, -3.125, 18, -6.875, 10.125, -8.625, 3.125, -6.875, 3.38716, -1.00063 )
