@@ -244,8 +244,8 @@ shape = SubResource( 8 )
 [node name="BloodManager" parent="." instance=ExtResource( 6 )]
 
 [connection signal="dead" from="Hurtbox" to="." method="_on_dead"]
-[connection signal="hurt" from="Hurtbox" to="BloodManager" method="emit_blood"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurt"]
+[connection signal="hurt" from="Hurtbox" to="BloodManager" method="emit_blood"]
 
 [editable path="Hitbox"]
 [editable path="Hurtbox"]
