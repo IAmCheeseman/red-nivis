@@ -108,7 +108,7 @@ energy = 0.5
 position = Vector2( 0, -8 )
 collision_layer = 4
 defense = 9
-health = 30
+health = 40
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource( 2 )
