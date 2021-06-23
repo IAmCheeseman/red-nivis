@@ -205,10 +205,11 @@ func add_part_with_stats(partPos : Position2D, statsName : String):
 
 			elif stats[stat] is float:
 				var addAmount
+				var statVal = clamp(partStats[stat], -stats.maxStatIncrease, stats.maxStatIncrease)
 				if partStats[stat] < 0:
-					addAmount = -GameManager.percentage_from(-partStats[stat], stats[stat])
+					addAmount = -GameManager.percentage_from(-statVal, stats[stat])
 				else:
-					addAmount = GameManager.percentage_from(partStats[stat], stats[stat])
+					addAmount = GameManager.percentage_from(statVal, stats[stat])
 				stats[stat] += addAmount
 				stats[stat] = clamp(stats[stat], 0, INF)
 		stats[statsName] = whitelist[0]
