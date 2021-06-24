@@ -29,7 +29,7 @@ shader_param/newColor = Color( 1, 0, 0, 1 )
 extents = Vector2( 39, 19 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 27.0023, 38.9544 )
+extents = Vector2( 16, 8 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 7.92692, 2.6498 )
@@ -53,7 +53,7 @@ shape = SubResource( 3 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QueueCollision"]
-position = Vector2( 2, 13 )
+position = Vector2( -16.73, 18.7974 )
 rotation = 1.5684
 shape = SubResource( 4 )
 

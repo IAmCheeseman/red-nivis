@@ -24,7 +24,7 @@ var westColor  = Color("#174646")
 
 func generate_room(planet):
 	var prefabSize = 16
-	var prefabCount = 52
+	var prefabCount = 56
 	var outlineCount = 20
 	var viablePrefabs = []
 	for i in prefabCount:

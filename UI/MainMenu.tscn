@@ -76,6 +76,7 @@ __meta__ = {
 }
 
 [node name="Ship" parent="Space" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 150, 150 )
 
 [node name="Camera" parent="Space/Ship" index="2"]

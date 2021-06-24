@@ -37,6 +37,7 @@ anim_offset = 0.81
 
 [node name="Poison" type="Particles2D"]
 material = SubResource( 1 )
+amount = 16
 lifetime = 7.0
 local_coords = false
 process_material = SubResource( 6 )
