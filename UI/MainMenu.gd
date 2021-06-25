@@ -1,9 +1,8 @@
 extends Control
 
-onready var landscape = $Landscape
-onready var space = $Space
 onready var options = $CanvasLayer/OptionsMenu
 onready var buttons = $CanvasLayer/Buttons
+onready var anim = $AnimationPlayer
 
 
 func _ready():
@@ -12,10 +11,6 @@ func _ready():
 		c.set_focus_mode(Control.FOCUS_NONE)
 
 	randomize()
-# warning-ignore:narrowing_conversion
-	var useLandscape = bool(round(rand_range(0, 1)))
-	if useLandscape: landscape.queue_free()
-	else: space.queue_free()
 
 
 func _on_Quit_pressed():
@@ -23,6 +18,10 @@ func _on_Quit_pressed():
 
 
 func _on_Play_pressed():
+	anim.play("FadeAway")
+
+
+func play_game():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Space/Space.tscn")
 
