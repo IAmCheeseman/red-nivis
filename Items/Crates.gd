@@ -19,7 +19,7 @@ func _ready():
 	crateNum.play(keys[rand_range(0, keys.size())])
 
 
-func _process(delta):
+func _process(_delta):
 	shadow.region_rect = sprite.region_rect
 	shadow.position.y = sprite.region_rect.size.y/2
 	print(sprite.region_rect.size)

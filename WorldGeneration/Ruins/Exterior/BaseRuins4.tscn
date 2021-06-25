@@ -53,16 +53,17 @@ shape = SubResource( 3 )
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QueueCollision"]
+position = Vector2( 0, 2 )
 rotation = 1.5684
 shape = SubResource( 4 )
 
 [node name="LoadingZone" parent="." instance=ExtResource( 2 )]
 position = Vector2( -16.7043, 18.8202 )
 loadPath = "Ruins/Human/Interiors/BaseInterior1.tscn"
-loadPaths = [ "res://Ruins/Human/Interiors/BaseInterior1.tscn", "res://Ruins/Human/Interiors/BaseInterior2.tscn", "res://Ruins/Human/Interiors/BaseInterior3.tscn", "res://Ruins/Human/Interiors/BaseInterior4.tscn" ]
+loadPaths = [ "res://WorldGeneration/Ruins/Interiors/Interior1.tscn", "res://WorldGeneration/Ruins/Interiors/Interior2.tscn", "res://WorldGeneration/Ruins/Interiors/Interior3.tscn", "res://WorldGeneration/Ruins/Interiors/Interior4.tscn" ]
 
 [node name="CollisionShape2D" parent="LoadingZone" index="0"]
-position = Vector2( 16.7043, -18.8202 )
+position = Vector2( 16.7043, -16.8202 )
 shape = SubResource( 5 )
 
 [node name="Prompt" parent="LoadingZone" index="1"]
