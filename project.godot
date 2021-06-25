@@ -57,12 +57,12 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "Ruin",
 "language": "GDScript",
-"path": "res://Ruins/Ruins.gd"
+"path": "res://WorldGeneration/Ruins/Ruins.gd"
 }, {
 "base": "Resource",
 "class": "RuinHandler",
 "language": "GDScript",
-"path": "res://Ruins/RuinHandler.gd"
+"path": "res://WorldGeneration/Ruins/RuinHandler.gd"
 }, {
 "base": "Node2D",
 "class": "SoundManager",
