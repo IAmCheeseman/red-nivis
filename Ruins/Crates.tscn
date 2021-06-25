@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [ Rect2( 3, 0, 10, 12 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "Crate10"
 length = 0.1
 tracks/0/type = "value"
@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [ Rect2( 13, 97, 17, 21 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "Crate11"
 length = 0.1
 tracks/0/type = "value"
@@ -51,7 +51,7 @@ tracks/0/keys = {
 "values": [ Rect2( 13, 151, 19, 27 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=4]
 resource_name = "Crate12"
 length = 0.1
 tracks/0/type = "value"
@@ -67,7 +67,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 120, 9, 12 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 resource_name = "Crate2"
 length = 0.1
 tracks/0/type = "value"
@@ -83,7 +83,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 12, 13, 18 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 resource_name = "Crate3"
 length = 0.1
 tracks/0/type = "value"
@@ -99,7 +99,7 @@ tracks/0/keys = {
 "values": [ Rect2( 13, 0, 6, 8 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 resource_name = "Crate4"
 length = 0.1
 tracks/0/type = "value"
@@ -115,7 +115,7 @@ tracks/0/keys = {
 "values": [ Rect2( 0, 31, 9, 12 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 resource_name = "Crate5"
 length = 0.1
 tracks/0/type = "value"
@@ -211,7 +211,7 @@ tracks/0/keys = {
 "values": [ Rect2( 30, 0, 17, 29 ) ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=14]
 resource_name = "Crate10"
 length = 0.1
 tracks/0/type = "value"
@@ -227,7 +227,7 @@ tracks/0/keys = {
 "values": [ Rect2( 51, 58, 19, 31 ) ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=15]
 resource_name = "Crate11"
 length = 0.1
 tracks/0/type = "value"
@@ -243,7 +243,7 @@ tracks/0/keys = {
 "values": [ Rect2( 70, 60, 19, 29 ) ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=16]
 resource_name = "Crate12"
 length = 0.1
 tracks/0/type = "value"
@@ -259,7 +259,7 @@ tracks/0/keys = {
 "values": [ Rect2( 30, 89, 17, 29 ) ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=17]
 resource_name = "Crate13"
 length = 0.1
 tracks/0/type = "value"
@@ -275,7 +275,7 @@ tracks/0/keys = {
 "values": [ Rect2( 47, 93, 17, 25 ) ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=18]
 resource_name = "Crate14"
 length = 0.1
 tracks/0/type = "value"
@@ -291,7 +291,7 @@ tracks/0/keys = {
 "values": [ Rect2( 64, 93, 17, 25 ) ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=19]
 resource_name = "Crate15"
 length = 0.1
 tracks/0/type = "value"
@@ -307,7 +307,7 @@ tracks/0/keys = {
 "values": [ Rect2( 81, 93, 17, 25 ) ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=20]
 resource_name = "Crate16"
 length = 0.1
 tracks/0/type = "value"
@@ -323,7 +323,7 @@ tracks/0/keys = {
 "values": [ Rect2( 13, 118, 17, 29 ) ]
 }
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=21]
 resource_name = "Crate17"
 length = 0.1
 tracks/0/type = "value"
@@ -339,7 +339,7 @@ tracks/0/keys = {
 "values": [ Rect2( 30, 123, 17, 24 ) ]
 }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=22]
 resource_name = "Crate18"
 length = 0.1
 tracks/0/type = "value"
@@ -355,7 +355,7 @@ tracks/0/keys = {
 "values": [ Rect2( 47, 118, 17, 29 ) ]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=23]
 resource_name = "Crate19"
 length = 0.1
 tracks/0/type = "value"
@@ -371,7 +371,7 @@ tracks/0/keys = {
 "values": [ Rect2( 32, 149, 19, 29 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=24]
 resource_name = "Crate2"
 length = 0.1
 tracks/0/type = "value"
@@ -387,7 +387,7 @@ tracks/0/keys = {
 "values": [ Rect2( 47, 4, 17, 25 ) ]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=25]
 resource_name = "Crate20"
 length = 0.1
 tracks/0/type = "value"
@@ -403,7 +403,7 @@ tracks/0/keys = {
 "values": [ Rect2( 51, 147, 19, 31 ) ]
 }
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=26]
 resource_name = "Crate21"
 length = 0.1
 tracks/0/type = "value"
@@ -419,7 +419,7 @@ tracks/0/keys = {
 "values": [ Rect2( 70, 149, 19, 29 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=27]
 resource_name = "Crate3"
 length = 0.1
 tracks/0/type = "value"
@@ -435,7 +435,7 @@ tracks/0/keys = {
 "values": [ Rect2( 64, 4, 17, 25 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=28]
 resource_name = "Crate4"
 length = 0.1
 tracks/0/type = "value"
@@ -451,7 +451,7 @@ tracks/0/keys = {
 "values": [ Rect2( 81, 5, 17, 24 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=29]
 resource_name = "Crate5"
 length = 0.1
 tracks/0/type = "value"
@@ -467,7 +467,7 @@ tracks/0/keys = {
 "values": [ Rect2( 13, 29, 17, 29 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=30]
 resource_name = "Crate6"
 length = 0.1
 tracks/0/type = "value"
@@ -483,7 +483,7 @@ tracks/0/keys = {
 "values": [ Rect2( 30, 29, 17, 29 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=31]
 resource_name = "Crate7"
 length = 0.1
 tracks/0/type = "value"
@@ -499,7 +499,7 @@ tracks/0/keys = {
 "values": [ Rect2( 47, 29, 17, 29 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=32]
 resource_name = "Crate8"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:region_rect")
@@ -514,7 +514,7 @@ tracks/0/keys = {
 "values": [ Rect2( 13, 62, 19, 27 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=33]
 resource_name = "Crate9"
 length = 0.1
 tracks/0/type = "value"
@@ -533,20 +533,28 @@ tracks/0/keys = {
 [node name="Crates" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="Shadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.498039 )
+position = Vector2( 0, 4 )
+scale = Vector2( 1, -1 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 13, 0, 6, 8 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 30, 0, 17, 29 )
+region_rect = Rect2( 13, 0, 6, 8 )
 
 [node name="SingleCrates" type="AnimationPlayer" parent="."]
 anims/Crate1 = SubResource( 1 )
-anims/Crate10 = SubResource( 6 )
-anims/Crate11 = SubResource( 7 )
-anims/Crate12 = SubResource( 8 )
-anims/Crate2 = SubResource( 2 )
-anims/Crate3 = SubResource( 3 )
-anims/Crate4 = SubResource( 4 )
-anims/Crate5 = SubResource( 5 )
+anims/Crate10 = SubResource( 2 )
+anims/Crate11 = SubResource( 3 )
+anims/Crate12 = SubResource( 4 )
+anims/Crate2 = SubResource( 5 )
+anims/Crate3 = SubResource( 6 )
+anims/Crate4 = SubResource( 7 )
+anims/Crate5 = SubResource( 8 )
 anims/Crate6 = SubResource( 9 )
 anims/Crate7 = SubResource( 10 )
 anims/Crate8 = SubResource( 11 )
@@ -554,23 +562,23 @@ anims/Crate9 = SubResource( 12 )
 
 [node name="MultipleCrates" type="AnimationPlayer" parent="."]
 anims/Crate1 = SubResource( 13 )
-anims/Crate10 = SubResource( 22 )
-anims/Crate11 = SubResource( 23 )
-anims/Crate12 = SubResource( 24 )
-anims/Crate13 = SubResource( 25 )
-anims/Crate14 = SubResource( 26 )
-anims/Crate15 = SubResource( 27 )
-anims/Crate16 = SubResource( 28 )
-anims/Crate17 = SubResource( 29 )
-anims/Crate18 = SubResource( 30 )
-anims/Crate19 = SubResource( 31 )
-anims/Crate2 = SubResource( 14 )
-anims/Crate20 = SubResource( 32 )
-anims/Crate21 = SubResource( 33 )
-anims/Crate3 = SubResource( 15 )
-anims/Crate4 = SubResource( 16 )
-anims/Crate5 = SubResource( 17 )
-anims/Crate6 = SubResource( 18 )
-anims/Crate7 = SubResource( 19 )
-anims/Crate8 = SubResource( 20 )
-anims/Crate9 = SubResource( 21 )
+anims/Crate10 = SubResource( 14 )
+anims/Crate11 = SubResource( 15 )
+anims/Crate12 = SubResource( 16 )
+anims/Crate13 = SubResource( 17 )
+anims/Crate14 = SubResource( 18 )
+anims/Crate15 = SubResource( 19 )
+anims/Crate16 = SubResource( 20 )
+anims/Crate17 = SubResource( 21 )
+anims/Crate18 = SubResource( 22 )
+anims/Crate19 = SubResource( 23 )
+anims/Crate2 = SubResource( 24 )
+anims/Crate20 = SubResource( 25 )
+anims/Crate21 = SubResource( 26 )
+anims/Crate3 = SubResource( 27 )
+anims/Crate4 = SubResource( 28 )
+anims/Crate5 = SubResource( 29 )
+anims/Crate6 = SubResource( 30 )
+anims/Crate7 = SubResource( 31 )
+anims/Crate8 = SubResource( 32 )
+anims/Crate9 = SubResource( 33 )

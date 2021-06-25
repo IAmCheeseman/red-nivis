@@ -3,7 +3,7 @@
 [ext_resource path="res://Ruins/Ruins.gd" type="Script" id=1]
 [ext_resource path="res://Ruins/Human/WorldAppearance/BaseRuins4.png" type="Texture" id=2]
 [ext_resource path="res://Colliders/LoadingZone.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Items/Crates.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ruins/Crates.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Items/Smoke.tscn" type="PackedScene" id=5]
 [ext_resource path="res://WorldGeneration/WeaponSpawn.tscn" type="PackedScene" id=6]
 
