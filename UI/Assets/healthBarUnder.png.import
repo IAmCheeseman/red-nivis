@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MinimapPlaceHolder.png-d2db11c68f6e7cc51e6d7f088693f918.stex"
+path="res://.import/healthBarUnder.png-314db679be7eade5731d0b4c6854f57f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/MinimapPlaceHolder.png"
-dest_files=[ "res://.import/MinimapPlaceHolder.png-d2db11c68f6e7cc51e6d7f088693f918.stex" ]
+source_file="res://UI/Assets/healthBarUnder.png"
+dest_files=[ "res://.import/healthBarUnder.png-314db679be7eade5731d0b4c6854f57f.stex" ]
 
 [params]
 

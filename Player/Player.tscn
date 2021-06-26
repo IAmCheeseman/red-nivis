@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://UI/healthBar.png" type="Texture" id=3]
+[ext_resource path="res://UI/Assets/healthBar.png" type="Texture" id=3]
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Canvas/vignette.png" type="Texture" id=5]
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=6]
@@ -10,7 +10,7 @@
 [ext_resource path="res://Player/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/Camera.tscn" type="PackedScene" id=10]
-[ext_resource path="res://UI/healthBarUnder.png" type="Texture" id=11]
+[ext_resource path="res://UI/Assets/healthBarUnder.png" type="Texture" id=11]
 [ext_resource path="res://Player/HealthBar.gd" type="Script" id=12]
 [ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Player/BackItemHolder.gd" type="Script" id=14]

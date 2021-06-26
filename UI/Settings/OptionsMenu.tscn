@@ -2,9 +2,9 @@
 
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/CheckButtons.tres" type="Theme" id=2]
-[ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=3]
-[ext_resource path="res://UI/RebindingButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/OptionNav.gd" type="Script" id=5]
+[ext_resource path="res://UI/Settings/OptionsMenu.gd" type="Script" id=3]
+[ext_resource path="res://UI/Settings/RebindingButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/Settings/OptionNav.gd" type="Script" id=5]
 
 [node name="OptionsMenu" type="Control"]
 anchor_right = 1.0

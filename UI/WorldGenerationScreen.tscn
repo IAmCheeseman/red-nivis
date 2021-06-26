@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=1]
-[ext_resource path="res://UI/Loading.png" type="Texture" id=2]
+[ext_resource path="res://UI/Assets/Loading.png" type="Texture" id=2]
 [ext_resource path="res://WorldGeneration/WorldManagement/WorldManager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/WorldGenerationScreen.gd" type="Script" id=4]
 

@@ -34,6 +34,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Colliders/Hurtbox.gd"
 }, {
+"base": "Resource",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://UI/Inventory/Inventory.gd"
+}, {
+"base": "Resource",
+"class": "ItemMap",
+"language": "GDScript",
+"path": "res://UI/Inventory/ItemMap.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "JumpingBull",
 "language": "GDScript",
@@ -85,6 +95,8 @@ _global_script_class_icons={
 "DataManager": "",
 "EnemyBullet": "",
 "Hurtbox": "",
+"Inventory": "",
+"ItemMap": "",
 "JumpingBull": "",
 "Minibiome": "",
 "Planet": "",

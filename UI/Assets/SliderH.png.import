@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlanetFinderPanel.png-7576741b527c88ec810c106d01ab07d0.stex"
+path="res://.import/SliderH.png-acd9c1279b33ce45ed8e41f70f4bcb70.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/PlanetFinderPanel.png"
-dest_files=[ "res://.import/PlanetFinderPanel.png-7576741b527c88ec810c106d01ab07d0.stex" ]
+source_file="res://UI/Assets/SliderH.png"
+dest_files=[ "res://.import/SliderH.png-acd9c1279b33ce45ed8e41f70f4bcb70.stex" ]
 
 [params]
 

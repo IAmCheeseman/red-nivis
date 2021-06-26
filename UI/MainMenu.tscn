@@ -3,7 +3,7 @@
 [ext_resource path="res://UI/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/NokiaCellphone.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://UI/OptionsMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Settings/OptionsMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Space/SpaceTile.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
