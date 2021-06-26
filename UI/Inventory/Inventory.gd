@@ -22,7 +22,6 @@ class sortByAmount:
 			return true
 		return false
 
-
 # So I can make sure the item actually exists before doing anything.
 func check_if_exists(id:String) -> bool:
 	if itemMap.has(id):
@@ -40,7 +39,7 @@ func filter_items(id:String):
 
 func add_item(id:String, amount:int):
 	# Checking if the item can actually be added.
-	if items.size() > maxSlots:
+	if items.size() >= maxSlots:
 		return
 	if !check_if_exists(id):
 		push_error("ITEM DOES NOT EXIST: %s" % id)

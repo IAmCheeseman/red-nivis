@@ -19,5 +19,9 @@ var items = {
 	"Health_Potion" : {
 				"texture" : preload("res://Items/Consumables/HealthPotion.png"),
 				"maxStackSize" : 3
+	},
+	"Sandwhich" : {
+				"texture" : preload("res://Items/Consumables/SandWhich.png"),
+				"maxStackSize" : 5
 	}
 }
