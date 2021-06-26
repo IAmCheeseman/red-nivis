@@ -11,12 +11,12 @@ func get_item(id:String):
 
 var items = {
 
-	"cheese" : {
+	"Cheese" : {
 				"texture" : preload("res://Items/Consumables/Cheese.png"),
 				"maxStackSize" : 5
 	},
 
-	"health_potion" : {
+	"Health_Potion" : {
 				"texture" : preload("res://Items/Consumables/HealthPotion.png"),
 				"maxStackSize" : 3
 	}
