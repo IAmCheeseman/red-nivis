@@ -20,7 +20,7 @@ var items = {
 				"texture" : preload("res://Items/Consumables/HealthPotion.png"),
 				"maxStackSize" : 3
 	},
-	"Sandwhich" : {
+	"Sandwich" : {
 				"texture" : preload("res://Items/Consumables/SandWhich.png"),
 				"maxStackSize" : 5
 	}
