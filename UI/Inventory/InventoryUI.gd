@@ -1,7 +1,9 @@
 extends Control
 
-onready var slots = $CenterContainer/Slots
+onready var slots = $CenterContainer/HBoxContainer/BackGround/Slots
+onready var slotsBG = $CenterContainer/HBoxContainer/BackGround
 onready var slider = $Slider
+onready var itemViewer = $CenterContainer/HBoxContainer/InfoViewer/ItemTexture
 
 var slot = preload("res://UI/Inventory/Slot.tscn")
 var inventory = preload("res://UI/Inventory/Inventory.tres")
@@ -27,7 +29,7 @@ func refresh_items():
 	for i in inventory.items:
 		var newSlot = slot.instance()
 		slots.add_child(newSlot)
-		newSlot.setup(i.id.replace("_", " "), i.amount)
+		newSlot.setup(i.id.replace("_", " "), i.amount, i.id)
 		newSlot.connect("hovering", self, "_on_slot_hover")
 		newSlot.connect("move", self, "_on_slot_rearrange")
 
@@ -38,14 +40,14 @@ func _on_slot_rearrange(rearrangeSlot:TextureButton):
 
 		slots.remove_child(currentSelectedSlot)
 		add_child(currentSelectedSlot)
-		currentSelectedSlot.rect_position.x = 94
+		currentSelectedSlot.rect_position.x = slotsBG.rect_global_position.x + slotsBG.texture.get_width()
 		currentSelectedSlot.disabled = true
 		currentSelectedSlot.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		currentSelectedSlot.modulate.a = .5
 	else:
 		remove_child(currentSelectedSlot)
 		slots.add_child(currentSelectedSlot)
-		slots.move_child(currentSelectedSlot, rearrangeSlot.get_index()+1)
+		slots.move_child(currentSelectedSlot, rearrangeSlot.get_index())
 		currentSelectedSlot.disabled = false
 		currentSelectedSlot.mouse_filter = Control.MOUSE_FILTER_STOP
 		currentSelectedSlot.modulate.a = 1
@@ -55,6 +57,7 @@ func _on_slot_rearrange(rearrangeSlot:TextureButton):
 
 func _on_slot_hover(hoveredSlot:Control):
 	sliderTargetY = hoveredSlot.rect_global_position.y
+	itemViewer.texture = inventory.itemMap[hoveredSlot.item].texture
 
 
 func _input(_event):

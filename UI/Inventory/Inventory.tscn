@@ -1,9 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Inventory/InventoryUI.gd" type="Script" id=1]
 [ext_resource path="res://UI/Inventory/Slot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Assets/InventoryBG.png" type="Texture" id=3]
 [ext_resource path="res://UI/Assets/InventorySlider.png" type="Texture" id=4]
+[ext_resource path="res://UI/Assets/InvenInfo.png" type="Texture" id=5]
+[ext_resource path="res://UI/Assets/InventoryTitle.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1 ), Vector2( -3, -1 ) ]
+}
 
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
@@ -20,77 +39,109 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackGround" type="TextureRect" parent="CenterContainer"]
-margin_left = 90.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 56.0
 margin_top = 62.0
-margin_right = 210.0
+margin_right = 244.0
 margin_bottom = 238.0
+
+[node name="BackGround" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+margin_right = 120.0
+margin_bottom = 176.0
 texture = ExtResource( 3 )
 
-[node name="Slots" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 94.0
-margin_top = 71.0
-margin_right = 206.0
-margin_bottom = 229.0
+[node name="Slots" type="VBoxContainer" parent="CenterContainer/HBoxContainer/BackGround"]
+margin_left = 4.0
+margin_top = 9.0
+margin_right = 116.0
+margin_bottom = 167.0
 custom_constants/separation = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Slot" parent="CenterContainer/Slots" instance=ExtResource( 2 )]
+[node name="Slot" parent="CenterContainer/HBoxContainer/BackGround/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 112.0
 margin_bottom = 18.0
 
-[node name="Slot2" parent="CenterContainer/Slots" instance=ExtResource( 2 )]
+[node name="Slot2" parent="CenterContainer/HBoxContainer/BackGround/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 20.0
 margin_right = 112.0
 margin_bottom = 38.0
 
-[node name="Slot3" parent="CenterContainer/Slots" instance=ExtResource( 2 )]
+[node name="Slot3" parent="CenterContainer/HBoxContainer/BackGround/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 40.0
 margin_right = 112.0
 margin_bottom = 58.0
 
-[node name="Slot4" parent="CenterContainer/Slots" instance=ExtResource( 2 )]
+[node name="Slot4" parent="CenterContainer/HBoxContainer/BackGround/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 60.0
 margin_right = 112.0
 margin_bottom = 78.0
 
-[node name="Slot5" parent="CenterContainer/Slots" instance=ExtResource( 2 )]
+[node name="Slot5" parent="CenterContainer/HBoxContainer/BackGround/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 80.0
 margin_right = 112.0
 margin_bottom = 98.0
 
-[node name="Slot6" parent="CenterContainer/Slots" instance=ExtResource( 2 )]
+[node name="Slot6" parent="CenterContainer/HBoxContainer/BackGround/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 100.0
 margin_right = 112.0
 margin_bottom = 118.0
 
-[node name="Slot7" parent="CenterContainer/Slots" instance=ExtResource( 2 )]
+[node name="Slot7" parent="CenterContainer/HBoxContainer/BackGround/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 120.0
 margin_right = 112.0
 margin_bottom = 138.0
 
-[node name="Slot8" parent="CenterContainer/Slots" instance=ExtResource( 2 )]
+[node name="Slot8" parent="CenterContainer/HBoxContainer/BackGround/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 140.0
 margin_right = 112.0
 margin_bottom = 158.0
 
+[node name="InfoViewer" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+margin_left = 124.0
+margin_right = 188.0
+margin_bottom = 176.0
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="ItemTexture" type="TextureRect" parent="CenterContainer/HBoxContainer/InfoViewer"]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 48.0
+margin_bottom = 96.0
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Slider" type="Sprite" parent="."]
-position = Vector2( 77, 71 )
+position = Vector2( 44, 71 )
 texture = ExtResource( 4 )
 centered = false
-offset = Vector2( 0, -1 )
+offset = Vector2( -1.93141, -1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slider"]
+autoplay = "Idle"
+anims/Idle = SubResource( 1 )
+
+[node name="InventoryTitle" type="Sprite" parent="."]
+position = Vector2( 116, 47 )
+texture = ExtResource( 6 )
