@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Inventory/InventoryUI.gd" type="Script" id=1]
 [ext_resource path="res://UI/Inventory/Slot.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/Assets/InventorySlider.png" type="Texture" id=4]
 [ext_resource path="res://UI/Assets/InvenInfo.png" type="Texture" id=5]
 [ext_resource path="res://UI/Assets/InventoryTitle.png" type="Texture" id=6]
+[ext_resource path="res://UI/Click.wav" type="AudioStream" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -145,3 +146,6 @@ anims/Idle = SubResource( 1 )
 [node name="InventoryTitle" type="Sprite" parent="."]
 position = Vector2( 116, 47 )
 texture = ExtResource( 6 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )

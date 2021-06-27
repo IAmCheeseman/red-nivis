@@ -4,6 +4,7 @@ onready var slots = $CenterContainer/HBoxContainer/BackGround/Slots
 onready var slotsBG = $CenterContainer/HBoxContainer/BackGround
 onready var slider = $Slider
 onready var itemViewer = $CenterContainer/HBoxContainer/InfoViewer/ItemTexture
+onready var clickSFX = $Click
 
 var slot = preload("res://UI/Inventory/Slot.tscn")
 var inventory = preload("res://UI/Inventory/Inventory.tres")
@@ -58,6 +59,7 @@ func _on_slot_rearrange(rearrangeSlot:TextureButton):
 func _on_slot_hover(hoveredSlot:Control):
 	sliderTargetY = hoveredSlot.rect_global_position.y
 	itemViewer.texture = inventory.itemMap[hoveredSlot.item].texture
+	clickSFX.play()
 
 
 func _input(_event):
