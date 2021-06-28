@@ -35,6 +35,8 @@ func _on_QueueArea_body_entered(_body):
 func _on_Hitbox_hit_object(object):
 	if !peircing:
 		queue_free()
+	if object.get_parent().is_in_group("enemy"):
+		object.get_parent().bulletDir = direction
 
 
 
