@@ -98,14 +98,24 @@ func _ready():
 
 
 		# Adjusting stats
-		stats.damage += stats.projSpeed/80*stats.projScale/5
+		stats.damage += (stats.projSpeed/80)*(stats.projScale/5)
+		stats.damage -= (stats.multishot/2)
 		stats.accuracy -= stats.projSpeed/90
 		stats.spread += (stats.multishot/5)*int(stats.multishot > 1)
+		stats.spread = clamp(stats.spread, 0, 45)
 		stats.look -= 8*int(stats.multishot>1)
 		stats.look += 8*int( (stats.peircing and stats.projSpeed>430) or stats.isHitscan)
 		stats.cooldown = clamp(stats.cooldown, .1, INF)
-		# DON'T USE MULTISHOT IN HITSCAN SCRIPT
 
+		stats.recoil = clamp(stats.recoil, 0, stats.multishot/3)
+
+		var decrease = 1-(rarities[body.rarity]/150)
+		stats.damage *= decrease
+		stats.accuracy *= decrease
+		stats.spread *= decrease
+		stats.cooldown *= decrease
+
+		# DON'T USE MULTISHOT IN HITSCAN SCRIPT
 
 		var prefixPools = [
 			# COMMON
