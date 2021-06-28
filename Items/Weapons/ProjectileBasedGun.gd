@@ -70,6 +70,8 @@ func shoot():
 		# Adding it to the tree
 		get_tree().root.get_child(3).add_child(newBullet)
 		newBullet.hitbox.damage = gun.damage
+
+		print(gun.bulletSprite)
 		newBullet.set_texture(gun.bulletSprite, gun.lightTexture)
 
 		# Rotating the gun for juice

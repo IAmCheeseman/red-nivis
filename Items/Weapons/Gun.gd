@@ -13,7 +13,7 @@ var canShoot = true
 var player
 var isPickedUp = false
 
-export(int, "pistol") var gunType = 0
+export(int, "pistol", "shotgun") var gunType = 0
 
 signal onShoot
 
@@ -22,7 +22,7 @@ export var damage = 6.0
 export var accuracy = 8.0
 export var cooldown = 0.2
 export var multishot = 1
-export var spread = 0
+export var spread = 0.0
 export var projSpeed = 340
 export var projScale = 1
 export var peircing = false
@@ -34,6 +34,10 @@ export var bulletSprite : StreamTexture
 export var lightTexture : StreamTexture
 export var kickUp = 25
 export var bulletSpawnDist = 16
+
+
+func _ready():
+	set_logic(isPickedUp)
 
 
 func _on_PickUpArea_area_entered(area):
@@ -53,6 +57,10 @@ func _on_Cooldown_timeout():
 
 func set_active():
 	gunLogic.set_physics_process(true)
+
+
+func set_logic(on:bool):
+	gunLogic.set_physics_process(on)
 
 
 func equip_self():
