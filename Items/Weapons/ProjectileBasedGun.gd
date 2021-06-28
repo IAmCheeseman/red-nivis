@@ -71,9 +71,6 @@ func shoot():
 		get_tree().root.get_child(3).add_child(newBullet)
 		newBullet.hitbox.damage = gun.damage
 		newBullet.set_texture(gun.bulletSprite, gun.lightTexture)
-		if gun.has("prefix"):
-			newBullet.prefix = gun.prefix
-		newBullet.gun = gun
 
 		# Rotating the gun for juice
 		gunSprite.rotation_degrees = gun.kickUp*2.2 if gunSprite.scale.y == -1 else -gun.kickUp*2.2
@@ -83,12 +80,6 @@ func shoot():
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
 		cooldownTimer.start(gun.cooldown)
-
-	# Creating the prefix effect
-	#if gun.has("prefix"):
-	#	if gun.prefix.callMethod == 0:
-	#		var statEffect = load(gun.prefix.effect).instance()
-	#		add_child(statEffect)
 
 	# Screenshake
 

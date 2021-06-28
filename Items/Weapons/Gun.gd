@@ -8,19 +8,61 @@ onready var tooltipsAnim = $TooltipHolder/GunTooltips/AnimationPlayer
 onready var tooltipHolder = $TooltipHolder
 onready var shootSound = $ShootSound
 
+var standingOver = false
 var canShoot = true
+var player
+var isPickedUp = false
 
 export(int, "pistol") var gunType = 0
+
+signal onShoot
 
 # Functionality
 export var damage = 6.0
 export var accuracy = 8.0
 export var cooldown = 0.2
 export var multishot = 1
-export var speed = 340
+export var spread = 0
+export var projSpeed = 340
+export var projScale = 1
 export var peircing = false
 export var recoil = 0.3
+export var look : int
 
 # Visual
 export var bulletSprite : StreamTexture
+export var lightTexture : StreamTexture
 export var kickUp = 25
+export var bulletSpawnDist = 16
+
+
+func _on_PickUpArea_area_entered(area):
+	if area.is_in_group("player"):
+		standingOver = true
+		player = area.get_parent()
+
+
+func _on_PickUpArea_area_exited(area):
+	if area.is_in_group("player"):
+		standingOver = false
+
+
+func _on_Cooldown_timeout():
+	canShoot = true
+
+
+func set_active():
+	gunLogic.set_physics_process(true)
+
+
+func equip_self():
+	isPickedUp = true
+	GameManager.heldItem = self.duplicate()
+	set_active()
+	pickUpArea.monitoring = false
+	player.add_item(self)
+
+
+func _input(event):
+	if event.is_action_pressed("interact") and standingOver:
+		equip_self()

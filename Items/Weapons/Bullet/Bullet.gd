@@ -4,8 +4,6 @@ var direction : Vector2
 var speed : float
 var peircing = false
 var prefix : Prefix
-var stats
-
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
 onready var light = $Light
@@ -37,13 +35,6 @@ func _on_QueueArea_body_entered(_body):
 func _on_Hitbox_hit_object(object):
 	if !peircing:
 		queue_free()
-	if prefix:
-		if prefix.callMethod == 1:
-			var newPrefixEffect = prefix.effect.instance()
-			newPrefixEffect.callEffect(stats, object)
-			object.add_child(newPrefixEffect)
-	if object.get_parent().is_in_group("enemy"):
-		object.get_parent().bulletDir = direction
 
 
 
