@@ -13,6 +13,7 @@ onready var sliderTargetY = slider.position.y
 var currentSelectedSlot = null
 var currentSelectedItem = null
 
+signal inventory_toggled
 
 func _ready():
 	inventory.connect("itemsChanged", self, "refresh_items")
@@ -83,3 +84,4 @@ func _input(_event):
 
 	if Input.is_action_just_pressed("inventory"):
 		visible = !visible
+		emit_signal("inventory_toggled", !visible)

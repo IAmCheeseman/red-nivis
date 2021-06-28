@@ -43,6 +43,10 @@ func _process(_delta):
 	position = lerp(position, dirMouse*mouseDist, lerpSpeed)
 
 
+func set_cam_look(value:bool):
+	maxOffset = baseMaxOffset * int(value)
+
+
 # SCREENSHAKE
 func start(priority_=0, strength_=16, freq_=.1, time_=.25, rotStrength_=12, dir=Vector2.ZERO):
 	# Check the priority so small actions don't overtake big ones

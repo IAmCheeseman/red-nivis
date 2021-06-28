@@ -24,6 +24,7 @@ onready var backItemHolder = $ScaleHelper/Sprite/BackItemHolder
 onready var camera = $Camera
 onready var hurtTimer = $Hurtbox/HurtTimer
 onready var healthBar = $HealthBar
+onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/Hurt
 
 var healthVigIntens = 0
@@ -42,6 +43,7 @@ func _ready():
 		_on_death()
 	if !Settings.vignette:
 		vignette.queue_free()
+	inventory.visible = false
 
 
 func process_input(delta) -> Vector2:
@@ -49,8 +51,8 @@ func process_input(delta) -> Vector2:
 	# ------------------------------------------------
 	var inputDir := Vector2.ZERO
 
-	inputDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
-	inputDir.y = Input.get_action_strength("move_down")-Input.get_action_strength("move_up")
+	inputDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left")) * int(!inventory.visible)
+	inputDir.y = (Input.get_action_strength("move_down")-Input.get_action_strength("move_up")) * int(!inventory.visible)
 	inputDir = inputDir.normalized()
 
 	return inputDir*delta
@@ -105,7 +107,7 @@ func _physics_process(delta):
 
 
 func _input(event):
-	if event.is_action_pressed("remove_tile"):
+	if event.is_action_pressed("remove_tile") and !inventory.visible:
 		emit_signal("removeTile", get_global_mouse_position())
 # warning-ignore:return_value_discarded
 	if Input.is_key_pressed(KEY_K): global_position = get_global_mouse_position()
@@ -130,6 +132,7 @@ func _input(event):
 		GameManager.weaponStats[0] = back.stats
 
 		camera.maxOffset = camera.baseMaxOffset+back.stats.look
+	
 	if Input.is_key_pressed(KEY_M):
 		var newPlayer = load("res://Player/Player.tscn").instance()
 		newPlayer.position = get_global_mouse_position()
