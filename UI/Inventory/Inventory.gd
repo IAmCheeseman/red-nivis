@@ -22,7 +22,7 @@ class sortByAmount:
 			return true
 		return false
 
-# So I can make sure the item actually exists before doing anything.
+
 func check_existence(id:String) -> bool:
 	if itemMap.has(id):
 		return true

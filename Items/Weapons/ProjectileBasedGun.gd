@@ -3,8 +3,8 @@ extends Node2D
 onready var pivot = get_parent().get_node("Pivot")
 onready var barrelEnd = get_parent().get_node("Pivot/BarrelEnd")
 onready var cooldownTimer = get_parent().get_node("Cooldown")
+onready var gunSprite = get_parent().get_node("Pivot/GunSprite")
 var shootSound : SoundManager
-var body
 var stats
 var rotVel = 0
 var lastFrameRot = 0
@@ -23,34 +23,29 @@ var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 
 
 func _physics_process(delta):
-	body = get_parent().get_node("Pivot/GunBody")
 	# Flipping the gun based on rotation
 	var local = barrelEnd.global_position-global_position
 	if local.x < 0:
-		body.scale.y = -1
+		gunSprite.scale.y = -1
 	else:
-		body.scale.y = 1
+		gunSprite.scale.y = 1
 	# Showing the gun behind the parent based on rotation
 	get_parent().get_parent().show_behind_parent = local.y < 0
 
 	# Setting rotation
-	var pastRot = body.global_rotation
+	var pastRot = gunSprite.global_rotation
 	pivot.look_at(get_global_mouse_position())
 	var targetRot = pivot.global_rotation
 
-	body.global_rotation = lerp_angle(pastRot, targetRot, 3.2*delta)
+	gunSprite.global_rotation = lerp_angle(pastRot, targetRot, 3.2*delta)
 
 	# Settling the rotation of the gun down after it's been kicked up
-	body.rotation = lerp_angle(body.rotation, 0, 4*delta)
+	gunSprite.rotation = lerp_angle(gunSprite.rotation, 0, 4*delta)
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 12*delta)
 
 	# Shooting
-	if stats.fullyAutomatic:
-		if Input.is_action_pressed("use_item") and get_parent().canShoot:
-			shoot()
-	else:
-		if Input.is_action_just_pressed("use_item") and get_parent().canShoot:
-			shoot()
+	if Input.is_action_pressed("use_item") and get_parent().canShoot:
+		shoot()
 	lastFrameRot = pivot.rotation_degrees
 
 
@@ -81,7 +76,7 @@ func shoot():
 		newBullet.stats = stats
 
 		# Rotating the gun for juice
-		body.rotation_degrees = stats.kickUp*2.2 if body.scale.y == -1 else -stats.kickUp*2.2
+		gunSprite.rotation_degrees = stats.kickUp*2.2 if gunSprite.scale.y == -1 else -stats.kickUp*2.2
 		var shotScale = rand_range(1.2, 1.9)
 		pivot.scale = Vector2(shotScale, shotScale )
 

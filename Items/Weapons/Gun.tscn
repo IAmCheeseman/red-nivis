@@ -6,13 +6,12 @@
 [ext_resource path="res://Items/Weapons/Gun.gd" type="Script" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 24.0
+radius = 23.0
 
 [sub_resource type="CanvasItemMaterial" id=2]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource( 9 )
-bodies = [ "res://Items/Weapons/Bodies/GunBody1.tscn", "res://Items/Weapons/Bodies/GunBody2.tscn", "res://Items/Weapons/Bodies/GunBody3.tscn", "res://Items/Weapons/Bodies/GunBody4.tscn", "res://Items/Weapons/Bodies/GunBody5.tscn", "res://Items/Weapons/Bodies/GunBody6.tscn", "res://Items/Weapons/Bodies/GunBody7.tscn", "res://Items/Weapons/Bodies/GunBody8.tscn" ]
 
 [node name="GunLogic" type="Node2D" parent="."]
 
@@ -27,6 +26,8 @@ __meta__ = {
 [node name="ShotLine" type="RayCast2D" parent="Pivot"]
 enabled = true
 cast_to = Vector2( 400, 0 )
+
+[node name="GunSprite" type="Sprite" parent="Pivot"]
 
 [node name="PickUpArea" type="Area2D" parent="."]
 collision_layer = 0
