@@ -1,9 +1,9 @@
 extends Control
 
-onready var slots = $CenterContainer/HBoxContainer/BackGround/Slots
-onready var slotsBG = $CenterContainer/HBoxContainer/BackGround
+onready var slots = $Center/HBox/VBox/BackGround/Slots
+onready var slotsBG = $Center/HBox/VBox/BackGround
 onready var slider = $Slider
-onready var itemViewer = $CenterContainer/HBoxContainer/InfoViewer/ItemTexture
+onready var itemViewer = $Center/HBox/InfoViewer/ItemTexture
 onready var clickSFX = $Click
 
 var slot = preload("res://UI/Inventory/Slot.tscn")
@@ -21,6 +21,11 @@ func _process(delta):
 	slider.position.y = lerp(slider.position.y, sliderTargetY, 15*delta)
 	if currentSelectedSlot:
 		currentSelectedSlot.rect_global_position.y = slider.position.y
+		currentSelectedSlot.rect_global_position.x = lerp(
+			currentSelectedSlot.rect_global_position.x,
+			slotsBG.rect_global_position.x + slotsBG.texture.get_width(),
+			10*delta
+			)
 
 
 func refresh_items():
@@ -41,7 +46,7 @@ func _on_slot_rearrange(rearrangeSlot:TextureButton):
 
 		slots.remove_child(currentSelectedSlot)
 		add_child(currentSelectedSlot)
-		currentSelectedSlot.rect_position.x = slotsBG.rect_global_position.x + slotsBG.texture.get_width()
+		currentSelectedSlot.rect_position.x = slotsBG.rect_global_position.x + slotsBG.texture.get_width()/2
 		currentSelectedSlot.disabled = true
 		currentSelectedSlot.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		currentSelectedSlot.modulate.a = .5

@@ -23,7 +23,7 @@ class sortByAmount:
 		return false
 
 # So I can make sure the item actually exists before doing anything.
-func check_if_exists(id:String) -> bool:
+func check_existence(id:String) -> bool:
 	if itemMap.has(id):
 		return true
 	return false
@@ -39,16 +39,24 @@ func filter_items(id:String):
 
 func add_item(id:String, amount:int):
 	# Checking if the item can actually be added.
-	if items.size() >= maxSlots:
+	var filteredItems = filter_items(id)
+	
+	# Making sure all stacks are not full.
+	var stacksFull = true
+	for i in filteredItems:
+		if i.amount < itemMap[id].maxStackSize:
+			stacksFull = false
+			break
+	if items.size() >= maxSlots and stacksFull:
 		return
-	if !check_if_exists(id):
+	
+	if !check_existence(id):
 		push_error("ITEM DOES NOT EXIST: %s" % id)
 		return
+	
 	var maxStackSize = itemMap[id].maxStackSize
 
-	# Add items/stacks until there's none left.
-	var filteredItems = filter_items(id)
-
+	# Adding items
 	if filteredItems.size() != 0:
 		for slot in filteredItems:
 			if amount <= 0:
@@ -56,7 +64,7 @@ func add_item(id:String, amount:int):
 			var amountRemaining = maxStackSize-slot.amount
 			slot.amount = min(slot.amount+amount, maxStackSize)
 			amount -= amountRemaining
-
+	# Adding any stacks that need to be added
 	while amount > 0:
 		items.append({
 			"id" : id,
