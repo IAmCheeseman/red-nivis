@@ -3,7 +3,7 @@ extends Control
 onready var slots = $Center/HBox/VBox/BackGround/Slots
 onready var slotsBG = $Center/HBox/VBox/BackGround
 onready var slider = $Slider
-onready var itemViewer = $Center/HBox/InfoViewer/ItemTexture
+onready var itemViewer = $Center/HBox/InfoViewer/InfoViewerBG/ItemTexture
 onready var clickSFX = $Click
 
 var slot = preload("res://UI/Inventory/Slot.tscn")
@@ -76,3 +76,5 @@ func _input(_event):
 		]
 		items_.shuffle()
 		inventory.add_item(items_.pop_front(), 1)
+	if Input.is_action_just_pressed("inventory"):
+		visible = !visible
