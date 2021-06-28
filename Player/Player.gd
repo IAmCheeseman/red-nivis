@@ -11,7 +11,7 @@ export var inMenu = false
 
 # Nodes
 onready var sprite = $ScaleHelper/Sprite
-onready var shadow = $ScaleHelper/Sprite/Shadow
+onready var shadow = $ScaleHelper/Shadow
 onready var scaleHelper = $ScaleHelper
 onready var hurtbox = $Hurtbox
 onready var healthVignette = $CanvasLayer/HealthThing
@@ -90,6 +90,7 @@ func _physics_process(delta):
 
 	# Tilting the player in the direction they're moving
 	sprite.rotation_degrees = (vel.x*tiltStrength)*int(Settings.playerTilt)
+	shadow.scale.x = sprite.scale.x
 
 # warning-ignore:return_value_discarded
 	move_and_slide(vel*maxSpeed)
@@ -132,7 +133,7 @@ func _input(event):
 		GameManager.weaponStats[0] = back.stats
 
 		camera.maxOffset = camera.baseMaxOffset+back.stats.look
-	
+
 	if Input.is_key_pressed(KEY_M):
 		var newPlayer = load("res://Player/Player.tscn").instance()
 		newPlayer.position = get_global_mouse_position()

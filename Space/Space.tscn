@@ -18,7 +18,6 @@
 [ext_resource path="res://Space/PlanetSprites/AcidPlanetMoon.png" type="Texture" id=16]
 [ext_resource path="res://Player/ShipDrive.wav" type="AudioStream" id=17]
 
-
 [sub_resource type="CanvasItemMaterial" id=1]
 particles_animation = true
 particles_anim_h_frames = 5
@@ -103,8 +102,8 @@ offset = Vector2( 0, -16 )
 script = ExtResource( 5 )
 
 [node name="SpaceHub" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( -372.166, -295.157 )
-rotation = 0.668445
+position = Vector2( -333.306, -338.426 )
+rotation = 0.794981
 orbitDistance = 475
 faceTravelDir = true
 atmosphereColor = Color( 0.627451, 0.0470588, 0.0470588, 1 )
@@ -129,8 +128,8 @@ autoplay = true
 attenuation = 6.9644
 
 [node name="RegPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( -92.3613, -542.189 )
-rotation = -0.186663
+position = Vector2( -392.278, 385.51 )
+rotation = 0.645277
 orbitSpeed = 35.0
 orbitDistance = 550
 moonTexture = ExtResource( 15 )
@@ -143,8 +142,8 @@ atmosphereSize = 0.174
 texture = ExtResource( 3 )
 
 [node name="FirePlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 201.782, -147.594 )
-rotation = -1.85549
+position = Vector2( 156.257, 195.151 )
+rotation = -0.834477
 rotationSpeed = 27
 orbitSpeed = 23.0
 orbitDistance = 250
@@ -155,8 +154,8 @@ texture = ExtResource( 6 )
 planet = 1
 
 [node name="AcidPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 623.515, 781.811 )
-rotation = -2.36606
+position = Vector2( 587.366, 809.322 )
+rotation = -1.34505
 rotationSpeed = 27
 orbitSpeed = 13.0
 orbitDistance = 1000
@@ -171,8 +170,8 @@ texture = ExtResource( 7 )
 planet = 2
 
 [node name="WaterPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 731.373, 166.115 )
-rotation = -2.86878
+position = Vector2( 683.698, -308.312 )
+rotation = -1.4696
 rotationSpeed = 37
 orbitSpeed = 30.0
 orbitDistance = 750
@@ -183,8 +182,8 @@ texture = ExtResource( 8 )
 planet = 3
 
 [node name="Sun" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( -0.080257, -0.996774 )
-rotation = 1.21927
+position = Vector2( -0.0821134, -0.996623 )
+rotation = 1.2949
 rotationSpeed = 2
 orbitSpeed = 1.0
 orbitDistance = 1
