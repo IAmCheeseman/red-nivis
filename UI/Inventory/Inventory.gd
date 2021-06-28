@@ -37,10 +37,16 @@ func filter_items(id:String):
 	return filteredItems
 
 
+func move_item(from:int, to:int):
+	var movedItem = items[from].duplicate()
+	items.remove(from)
+	items.insert(to, movedItem)
+
+
 func add_item(id:String, amount:int):
 	# Checking if the item can actually be added.
 	var filteredItems = filter_items(id)
-	
+
 	# Making sure all stacks are not full.
 	var stacksFull = true
 	for i in filteredItems:
@@ -49,11 +55,10 @@ func add_item(id:String, amount:int):
 			break
 	if items.size() >= maxSlots and stacksFull:
 		return
-	
 	if !check_existence(id):
 		push_error("ITEM DOES NOT EXIST: %s" % id)
 		return
-	
+
 	var maxStackSize = itemMap[id].maxStackSize
 
 	# Adding items

@@ -11,6 +11,7 @@ var inventory = preload("res://UI/Inventory/Inventory.tres")
 
 onready var sliderTargetY = slider.position.y
 var currentSelectedSlot = null
+var currentSelectedItem = null
 
 
 func _ready():
@@ -43,6 +44,7 @@ func refresh_items():
 func _on_slot_rearrange(rearrangeSlot:TextureButton):
 	if !currentSelectedSlot:
 		currentSelectedSlot = rearrangeSlot
+		currentSelectedItem = rearrangeSlot.get_index()
 
 		slots.remove_child(currentSelectedSlot)
 		add_child(currentSelectedSlot)
@@ -57,6 +59,8 @@ func _on_slot_rearrange(rearrangeSlot:TextureButton):
 		currentSelectedSlot.disabled = false
 		currentSelectedSlot.mouse_filter = Control.MOUSE_FILTER_STOP
 		currentSelectedSlot.modulate.a = 1
+
+		inventory.move_item(currentSelectedItem, rearrangeSlot.get_index()-1)
 
 		currentSelectedSlot = null
 
@@ -76,5 +80,6 @@ func _input(_event):
 		]
 		items_.shuffle()
 		inventory.add_item(items_.pop_front(), 1)
+
 	if Input.is_action_just_pressed("inventory"):
 		visible = !visible
