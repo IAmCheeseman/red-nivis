@@ -1,8 +1,7 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://UI/Assets/healthBar.png" type="Texture" id=3]
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Canvas/vignette.png" type="Texture" id=5]
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=6]
@@ -10,13 +9,13 @@
 [ext_resource path="res://Player/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/Camera.tscn" type="PackedScene" id=10]
-[ext_resource path="res://UI/Assets/healthBarUnder.png" type="Texture" id=11]
-[ext_resource path="res://Player/HealthBar.gd" type="Script" id=12]
 [ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Player/BackItemHolder.gd" type="Script" id=14]
 [ext_resource path="res://Player/Hit.wav" type="AudioStream" id=15]
 [ext_resource path="res://Player/Vignette.tres" type="Material" id=16]
 [ext_resource path="res://UI/Inventory/Inventory.tscn" type="PackedScene" id=17]
+[ext_resource path="res://UI/Assets/helthbahfull.png" type="Texture" id=18]
+[ext_resource path="res://UI/Assets/helthbahempty.png" type="Texture" id=19]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -230,20 +229,6 @@ one_shot = true
 [node name="ItemHolder" type="Node2D" parent="."]
 position = Vector2( 0, -7 )
 
-[node name="HealthBar" type="TextureProgress" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = -13.0
-margin_top = -23.0
-margin_right = 13.0
-margin_bottom = -18.0
-value = 70.0
-texture_under = ExtResource( 11 )
-texture_progress = ExtResource( 3 )
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="SoftCollision" parent="." instance=ExtResource( 13 )]
 visible = false
 
@@ -278,11 +263,21 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="CanvasLayer/HealthThing"]
 
+[node name="HealthBar" type="TextureProgress" parent="CanvasLayer"]
+margin_right = 74.0
+margin_bottom = 40.0
+value = 50.0
+texture_under = ExtResource( 19 )
+texture_progress = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label" type="Label" parent="CanvasLayer"]
-margin_left = 3.1158
-margin_top = 3.37119
-margin_right = 43.1158
-margin_bottom = 17.3712
+margin_left = 3.20486
+margin_top = 288.78
+margin_right = 47.2049
+margin_bottom = 302.78
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "FPS: %s"

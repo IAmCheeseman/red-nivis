@@ -23,7 +23,7 @@ onready var itemHolder = $ItemHolder
 onready var backItemHolder = $ScaleHelper/Sprite/BackItemHolder
 onready var camera = $Camera
 onready var hurtTimer = $Hurtbox/HurtTimer
-onready var healthBar = $HealthBar
+onready var healthBar = $CanvasLayer/HealthBar
 onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/Hurt
 
