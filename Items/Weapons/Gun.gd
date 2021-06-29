@@ -37,7 +37,6 @@ export var bulletSpawnDist = 16
 
 
 func _ready():
-	print(isPickedUp)
 	set_logic(isPickedUp)
 	if !isPickedUp:
 		rotation_degrees = rand_range(0, 360)

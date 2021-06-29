@@ -39,5 +39,5 @@ func _on_Hitbox_hit_object(object):
 		object.get_parent().bulletDir = direction
 
 
-
-
+func _on_lifetime_timeout():
+	queue_free()

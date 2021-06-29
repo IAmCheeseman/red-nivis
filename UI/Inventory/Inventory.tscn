@@ -68,9 +68,9 @@ __meta__ = {
 }
 
 [node name="HBox" type="HBoxContainer" parent="Center"]
-margin_left = 76.0
+margin_left = 96.0
 margin_top = 43.0
-margin_right = 264.0
+margin_right = 284.0
 margin_bottom = 256.0
 custom_constants/separation = -1
 
@@ -132,10 +132,10 @@ __meta__ = {
 }
 
 [node name="Slider" type="Sprite" parent="."]
-position = Vector2( 44, 158 )
+position = Vector2( 83, 91 )
 texture = ExtResource( 4 )
 centered = false
-offset = Vector2( -1.93141, -1 )
+offset = Vector2( -0.742559, -1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Slider"]
 autoplay = "Idle"

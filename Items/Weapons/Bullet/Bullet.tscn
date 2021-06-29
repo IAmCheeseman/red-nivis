@@ -131,7 +131,12 @@ shape = SubResource( 3 )
 autoplay = "Init"
 anims/Init = SubResource( 4 )
 
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="hit_object" from="Hitbox" to="." method="_on_Hitbox_hit_object"]
 [connection signal="body_entered" from="QueueArea" to="." method="_on_QueueArea_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
 
 [editable path="Hitbox"]

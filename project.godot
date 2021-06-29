@@ -125,9 +125,9 @@ settings/fps/force_fps=60
 
 [display]
 
-window/size/width=340
+window/size/width=380
 window/size/height=300
-window/size/test_width=680
+window/size/test_width=760
 window/size/test_height=600
 window/vsync/use_vsync=false
 mouse_cursor/custom_image="res://Canvas/cursor.png"

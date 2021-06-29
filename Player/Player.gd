@@ -44,6 +44,7 @@ func _ready():
 	if !Settings.vignette:
 		vignette.queue_free()
 	inventory.visible = false
+	healthBar.value = GameManager.percentage_of(float(hurtbox.health), 20.0)
 
 
 func process_input(delta) -> Vector2:
@@ -123,16 +124,17 @@ func _input(event):
 		# Front item
 		itemHolder.remove_child(held)
 		backItemHolder.add_child(held)
+		held.pivot.rotation = 0
 		held.set_logic(false)
-		GameManager.weaponStats[1] = held.stats
+		GameManager.heldItems[1] = held
 
 		# Back item
 		backItemHolder.remove_child(back)
 		itemHolder.add_child(back)
 		back.set_logic(true)
-		GameManager.weaponStats[0] = back.stats
+		GameManager.heldItems[0] = back
 
-		camera.maxOffset = camera.baseMaxOffset+back.stats.look
+		camera.maxOffset = camera.baseMaxOffset+back.look
 
 	if Input.is_key_pressed(KEY_M):
 		var newPlayer = load("res://Player/Player.tscn").instance()
@@ -176,7 +178,6 @@ func _on_Hurtbox_hurt(dir):
 	flashPlayer.play("flash")
 
 	# Healthbar
-	healthBar.modulate.a = 1
 	healthBar.value = GameManager.percentage_of(float(hurtbox.health), 20.0)
 	hurtTimer.start(recoveryTime)
 
@@ -236,6 +237,7 @@ func add_item(item=null, addTo=null):
 	if item:
 		item.position = Vector2.ZERO
 		item.isPickedUp = true
+		item.rotation = 0
 		GameManager.heldItems[0] = item
 		item.get_parent().remove_child(item)
 
