@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Items/Weapons/WeaponScenes/LaserShotgun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Weapons/WeaponScenes/Pistol.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/Weapons/WeaponScenes/RedPistol.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Items/Weapons/WeaponScenes/Chaingun.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/Weapons/WeaponScenes/LaserPistol.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Items/Weapons/WeaponScenes/Minigun.tscn" type="PackedScene" id=7]
 
 [node name="tset" type="Node2D"]
 
@@ -14,3 +18,15 @@ position = Vector2( 145.471, 57.9351 )
 
 [node name="Gun2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 97.9246, 19.8987 )
+
+[node name="Gun3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 34.0191, 129.644 )
+
+[node name="Gun4" parent="." instance=ExtResource( 5 )]
+position = Vector2( -40.0127, 130.388 )
+
+[node name="Gun5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 31.7218, 214.393 )
+
+[node name="Gun6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 211.529, 35.0564 )

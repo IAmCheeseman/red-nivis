@@ -1,52 +1,12 @@
-extends Node2D
+extends "res://Items/Weapons/WeaponScripts/GunLogic.gd"
 
-onready var pivot = get_parent().get_node("Pivot")
-onready var barrelEnd = get_parent().get_node("Pivot/BarrelEnd")
-onready var cooldownTimer = get_parent().get_node("Cooldown")
-onready var gunSprite = get_parent().get_node("Pivot/GunSprite")
-onready var gun = get_parent()
-var shootSound : SoundManager
-var rotVel = 0
-var lastFrameRot = 0
+export var minCooldown = .1
+onready var startingCooldown = gun.cooldown
+onready var currentCooldown = startingCooldown
 
-enum {CALLED_ON_SHOOT, CALLED_ON_HIT}
-
-var shellPositions = [
-	Rect2(Vector2(0, 0), Vector2(3, 5)),
-	Rect2(Vector2(3, 0), Vector2(4, 6)),
-	Rect2(Vector2(7, 0), Vector2(3, 5)),
-	Rect2(Vector2(7, 0), Vector2(3, 5)),
-	Rect2(Vector2(3, 0), Vector2(4, 6)),
-]
-
-var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
-
-
-func _physics_process(delta):
-	# Flipping the gun based on rotation
-	var local = barrelEnd.global_position-global_position
-	if local.x < 0:
-		gunSprite.scale.y = -1
-	else:
-		gunSprite.scale.y = 1
-	# Showing the gun behind the parent based on rotation
-	get_parent().get_parent().show_behind_parent = local.y < 0
-
-	# Setting rotation
-	var pastRot = gunSprite.global_rotation
-	pivot.look_at(get_global_mouse_position())
-	var targetRot = pivot.global_rotation
-
-	gunSprite.global_rotation = lerp_angle(pastRot, targetRot, 3.2*delta)
-
-	# Settling the rotation of the gun down after it's been kicked up
-	gunSprite.rotation = lerp_angle(gunSprite.rotation, 0, 4*delta)
-	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 12*delta)
-
-	# Shooting
-	if Input.is_action_pressed("use_item") and get_parent().canShoot:
-		shoot()
-	lastFrameRot = pivot.rotation_degrees
+func _input(event):
+	if Input.is_action_just_released("use_item"):
+		currentCooldown = startingCooldown
 
 
 func shoot():
@@ -75,12 +35,14 @@ func shoot():
 
 		# Rotating the gun for juice
 		gunSprite.rotation_degrees = gun.kickUp*2.2 if gunSprite.scale.y == -1 else -gun.kickUp*2.2
-		var shotScale = rand_range(1.2, 1.9)
+		var shotScale = rand_range(1.2, 1.4)
 		pivot.scale = Vector2(shotScale, shotScale )
 
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
-		cooldownTimer.start(gun.cooldown)
+		cooldownTimer.start(currentCooldown)
+		currentCooldown -= GameManager.percentage_from(5, startingCooldown)
+		currentCooldown = clamp(currentCooldown, minCooldown, startingCooldown)
 
 	# Screenshake
 

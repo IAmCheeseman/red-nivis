@@ -6,6 +6,7 @@
 [ext_resource path="res://Items/Weapons/Bullet/Lights/bulletLight2.png" type="Texture" id=5]
 
 [node name="Gun" instance=ExtResource( 2 )]
+cooldown = 0.4
 bulletSprite = ExtResource( 4 )
 lightTexture = ExtResource( 5 )
 

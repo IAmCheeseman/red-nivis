@@ -101,12 +101,12 @@ autoplay = "kill"
 anims/kill = SubResource( 1 )
 
 [node name="Light" type="Sprite" parent="."]
-modulate = Color( 1, 0.662745, 0.196078, 1 )
+modulate = Color( 1, 0.807843, 0.231373, 1 )
 show_behind_parent = true
 texture = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0.572549, 0.160784, 1 )
+modulate = Color( 1, 0.807843, 0.231373, 1 )
 texture = ExtResource( 3 )
 
 [node name="Hitbox" parent="." groups=[

@@ -15,6 +15,7 @@ var isPickedUp = false
 
 export(int, "pistol", "shotgun") var gunType = 0
 
+# warning-ignore:unused_signal
 signal onShoot
 
 # Functionality
@@ -24,14 +25,14 @@ export var cooldown = 0.2
 export var multishot = 1
 export var spread = 0.0
 export var projSpeed = 340
-export var projScale = 1
+export var projScale = 1.0
 export var peircing = false
 export var recoil = 0.3
 export var look : int
 
 # Visual
-export var bulletSprite : StreamTexture
-export var lightTexture : StreamTexture
+export var bulletSprite = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")
+export var lightTexture = preload("res://Items/Weapons/Bullet/Lights/bulletLight2.png")
 export var kickUp = 25
 export var bulletSpawnDist = 16
 

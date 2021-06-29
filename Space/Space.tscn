@@ -86,7 +86,7 @@ __meta__ = {
 }
 
 [node name="Ship" parent="." instance=ExtResource( 2 )]
-position = Vector2( 857, -10 )
+position = Vector2( 857, 0 )
 
 [node name="Pointer" type="Node2D" parent="Ship"]
 script = ExtResource( 10 )
@@ -102,8 +102,8 @@ offset = Vector2( 0, -16 )
 script = ExtResource( 5 )
 
 [node name="SpaceHub" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( -383.965, 279.635 )
-rotation = -0.627408
+position = Vector2( -120.386, -459.491 )
+rotation = 1.31631
 orbitDistance = 475
 faceTravelDir = true
 atmosphereColor = Color( 0.627451, 0.0470588, 0.0470588, 1 )
@@ -128,8 +128,8 @@ autoplay = true
 attenuation = 6.9644
 
 [node name="RegPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( -144.843, -530.585 )
-rotation = -2.32321
+position = Vector2( 87.999, -542.914 )
+rotation = 1.28921
 orbitSpeed = 35.0
 orbitDistance = 550
 moonTexture = ExtResource( 15 )
@@ -142,8 +142,8 @@ atmosphereSize = 0.174
 texture = ExtResource( 3 )
 
 [node name="FirePlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 99.4675, -229.36 )
-rotation = -2.76924
+position = Vector2( 126.758, 215.482 )
+rotation = 0.521346
 rotationSpeed = 27
 orbitSpeed = 23.0
 orbitDistance = 250
@@ -154,8 +154,8 @@ texture = ExtResource( 6 )
 planet = 1
 
 [node name="AcidPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( -851.026, -525.124 )
-rotation = 3.00337
+position = Vector2( -920.019, 391.874 )
+rotation = 0.0107685
 rotationSpeed = 27
 orbitSpeed = 13.0
 orbitDistance = 1000
@@ -170,8 +170,8 @@ texture = ExtResource( 7 )
 planet = 2
 
 [node name="WaterPlanet" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( -572.297, -484.744 )
-rotation = -1.3229
+position = Vector2( 285.121, -693.69 )
+rotation = 1.32521
 rotationSpeed = 37
 orbitSpeed = 30.0
 orbitDistance = 750
@@ -182,8 +182,8 @@ texture = ExtResource( 8 )
 planet = 3
 
 [node name="Sun" parent="Planets" instance=ExtResource( 4 )]
-position = Vector2( 0.867708, -0.497075 )
-rotation = 0.456431
+position = Vector2( -0.16157, -0.986861 )
+rotation = -0.928467
 rotationSpeed = 2
 orbitSpeed = 1.0
 orbitDistance = 1
