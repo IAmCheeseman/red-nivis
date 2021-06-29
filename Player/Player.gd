@@ -232,26 +232,28 @@ func add_item(item=null, addTo=null):
 	if backItemHolder.get_child_count() > 0:
 		backItemHolder.get_child(0).set_logic(false)
 
+	# Adding the gun to your saved guns
 	if item:
-		GameManager.heldItems[0] = item.duplicate()
-		item.queue_free()
+		item.position = Vector2.ZERO
+		item.isPickedUp = true
+		GameManager.heldItems[0] = item
+		item.get_parent().remove_child(item)
 
-	var newItem = load("res://Items/Weapons/Gun.tscn").instance()
-	# Setting stats
-	newItem.isPickedUp = true
-
+	# Adding item to game world
 	if !addTo:
-		itemHolder.call_deferred("add_child", newItem.duplicate())
+		itemHolder.call_deferred("add_child", item)
 	else:
 		if addTo.get_child_count() > 0:
 			addTo.get_child(0).queue_free()
-		addTo.call_deferred("add_child", newItem.duplicate())
+		addTo.call_deferred("add_child", item)
 
-	newItem.connect("onShoot", self, "gunShot")
+	# Setting up the item
+	item.connect("onShoot", self, "gunShot")
+	item.set_logic(true)
 
-	camera.maxOffset = camera.baseMaxOffset+GameManager.heldItems[0].look
+	camera.maxOffset = camera.baseMaxOffset+item.look
 
-	return newItem
+	return item
 
 
 

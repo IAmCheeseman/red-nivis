@@ -37,7 +37,10 @@ export var bulletSpawnDist = 16
 
 
 func _ready():
+	print(isPickedUp)
 	set_logic(isPickedUp)
+	if !isPickedUp:
+		rotation_degrees = rand_range(0, 360)
 
 
 func _on_PickUpArea_area_entered(area):
@@ -55,10 +58,6 @@ func _on_Cooldown_timeout():
 	canShoot = true
 
 
-func set_active():
-	gunLogic.set_physics_process(true)
-
-
 func set_logic(on:bool):
 	gunLogic.set_physics_process(on)
 
@@ -66,7 +65,7 @@ func set_logic(on:bool):
 func equip_self():
 	isPickedUp = true
 	GameManager.heldItem = self.duplicate()
-	set_active()
+	set_logic(true)
 	pickUpArea.monitoring = false
 	player.add_item(self)
 

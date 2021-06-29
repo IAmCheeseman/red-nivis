@@ -51,6 +51,7 @@ audio = ExtResource( 3 )
 volumeMod = -10.0
 bus = "SFX"
 
+[connection signal="tree_entered" from="." to="." method="_ready"]
 [connection signal="area_entered" from="PickUpArea" to="." method="_on_PickUpArea_area_entered"]
 [connection signal="area_exited" from="PickUpArea" to="." method="_on_PickUpArea_area_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
