@@ -3,8 +3,6 @@ extends Node2D
 var planet = 0
 
 var isDead = false
-var heldItem
-var backItem
 
 var heldItems = [null, null]
 

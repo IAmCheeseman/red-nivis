@@ -88,8 +88,9 @@ func generate_room():
 			elif world.get_pixel(x, y).is_equal_approx(enemyColor):
 				var enemies = planet.enemies
 				var enemyChances = planet.enemyChances
+				var weaponInstead = rand_range(0, 1) < .3333333
 
-				if enemies.size() > 0:
+				if enemies.size() > 0 and !weaponInstead:
 					var selectedEnemy = rand_range(0, enemies.size())
 					while rand_range(0, 100) > enemyChances[selectedEnemy]:
 						selectedEnemy = rand_range(0, enemies.size())
@@ -98,6 +99,14 @@ func generate_room():
 					enemy.position = Vector2(x, y)*16
 					enemy.set_player(player)
 					props.add_child(enemy)
+				elif weaponInstead:
+					var itemMap = ItemMap.new()
+					itemMap.weapons.shuffle()
+					var weaponPath = "res://Items/Weapons/WeaponScenes/%s.tscn" % itemMap.weapons[0]
+					var weapon = load(weaponPath).instance()
+					weapon.position = Vector2(x, y)*16
+					props.add_child(weapon)
+
 			# Ruins
 			elif check_approx(world.get_pixel(x, y),ruinColor):
 				var ruinCount = 4
@@ -265,5 +274,4 @@ func _on_drop_gun(gun, pos):
 	gun.position = pos
 	gun.isPickedUp = false
 	gun.set_logic(false)
-	gun.turn_to_pick_up()
 	props.add_child(gun)

@@ -64,7 +64,7 @@ func set_logic(on:bool):
 
 func equip_self():
 	isPickedUp = true
-	GameManager.heldItem = self.duplicate()
+	GameManager.heldItems[0] = self.duplicate()
 	set_logic(true)
 	pickUpArea.monitoring = false
 	player.add_item(self)

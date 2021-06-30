@@ -25,3 +25,12 @@ var items = {
 				"maxStackSize" : 5
 	}
 }
+
+var weapons = [
+	"Chaingun",
+	"LaserPistol",
+	"LaserShotgun",
+	"Minigun",
+	"Pistol",
+	"RedPistol"
+]

@@ -103,7 +103,6 @@ func _physics_process(delta):
 
 	if hurtbox.health != 20.0 and hurtTimer.is_stopped():
 		healthBar.value = GameManager.percentage_of(float(hurtbox.health), 20.0)
-		healthBar.modulate.a = 1
 		hurtbox.health += .01
 		hurtbox.health = clamp(hurtbox.health, 0, 20.0)
 
@@ -200,6 +199,7 @@ func _on_Player_tree_entered():
 	yield(get_tree(), "idle_frame")
 	# Adding the items you picked up in the last scene
 	# Adding back weapon
+	print(GameManager.heldItems)
 	if GameManager.heldItems[1] != null and backItemHolder.get_child_count() == 0:
 		var weapon = add_item(GameManager.heldItems[1], backItemHolder)
 		yield(get_tree(), "idle_frame")
@@ -214,6 +214,7 @@ func gunShot(dir, recoil):
 
 
 func add_item(item=null, addTo=null):
+	print(item)
 	# Making sure you can't hold two items at once.
 	if backItemHolder.get_child_count() == 0\
 	and itemHolder.get_child_count() > 0:
@@ -234,28 +235,28 @@ func add_item(item=null, addTo=null):
 		backItemHolder.get_child(0).set_logic(false)
 
 	# Adding the gun to your saved guns
-	if item:
+	if item and !item in GameManager.heldItems:
 		item.position = Vector2.ZERO
 		item.isPickedUp = true
 		item.rotation = 0
+		item.set_logic(true)
 		GameManager.heldItems[0] = item
 		item.get_parent().remove_child(item)
 
 	# Adding item to game world
+	var newItem = item.duplicate()
 	if !addTo:
-		itemHolder.call_deferred("add_child", item)
+		itemHolder.call_deferred("add_child", newItem)
 	else:
 		if addTo.get_child_count() > 0:
 			addTo.get_child(0).queue_free()
-		addTo.call_deferred("add_child", item)
+		addTo.call_deferred("add_child", newItem)
 
 	# Setting up the item
-	item.connect("onShoot", self, "gunShot")
-	item.set_logic(true)
+	newItem.connect("onShoot", self, "gunShot")
 
-	camera.maxOffset = camera.baseMaxOffset+item.look
-
-	return item
+	camera.maxOffset = camera.baseMaxOffset+newItem.look
+	return newItem
 
 
 
