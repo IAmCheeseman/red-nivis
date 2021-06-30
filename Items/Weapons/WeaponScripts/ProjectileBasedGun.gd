@@ -27,8 +27,7 @@ func shoot():
 
 		# Rotating the gun for juice
 		gunSprite.rotation_degrees = gun.kickUp*2.2 if gunSprite.scale.y == -1 else -gun.kickUp*2.2
-		var shotScale = rand_range(1.2, 1.4)
-		pivot.scale = Vector2(shotScale, shotScale )
+		pivot.scale = Vector2(rand_range(1.2, 1.4), rand_range(1.2, 1.4))
 
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Items/Weapons/WeaponScenes/LaserShotgun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Items/Weapons/WeaponScenes/Chaingun.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Items/Weapons/WeaponScenes/LaserPistol.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Items/Weapons/WeaponScenes/Minigun.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/Weapons/WeaponScenes/NachoChip.tscn" type="PackedScene" id=8]
 
 [node name="tset" type="Node2D"]
 
@@ -30,3 +31,6 @@ position = Vector2( 31.7218, 214.393 )
 
 [node name="Gun6" parent="." instance=ExtResource( 7 )]
 position = Vector2( 211.529, 35.0564 )
+
+[node name="Gun7" parent="." instance=ExtResource( 8 )]
+position = Vector2( 262.498, 271.496 )

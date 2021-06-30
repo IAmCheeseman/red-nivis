@@ -17,7 +17,6 @@ var shellPositions = [
 var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 var shootSound : SoundManager
 var rotVel = 0
-var lastFrameRot = 0
 
 
 func _physics_process(delta):
@@ -44,8 +43,6 @@ func _physics_process(delta):
 	# Shooting
 	if Input.is_action_pressed("use_item") and get_parent().canShoot:
 		shoot()
-	lastFrameRot = pivot.rotation_degrees
-
 
 func shoot():
 	pass

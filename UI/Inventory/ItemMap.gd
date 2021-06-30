@@ -32,5 +32,6 @@ var weapons = [
 	"LaserShotgun",
 	"Minigun",
 	"Pistol",
-	"RedPistol"
+	"RedPistol",
+	"NachoChip"
 ]
