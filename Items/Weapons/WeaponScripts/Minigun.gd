@@ -1,6 +1,7 @@
 extends "res://Items/Weapons/WeaponScripts/GunLogic.gd"
 
 export var minCooldown = .1
+export var cooldownRate = 10
 onready var startingCooldown = gun.cooldown
 onready var currentCooldown = startingCooldown
 
@@ -47,7 +48,7 @@ func shoot():
 	# Screenshake
 
 	# Getting the parameters
-	var strength = 8*GameManager.percentage_from(10, gun.damage)
+	var strength = 8*GameManager.percentage_from(cooldownRate, gun.damage)
 	strength *= gun.cooldown+.5
 	var freq = gun.damage/1000
 	freq *= gun.cooldown+.5

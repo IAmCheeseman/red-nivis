@@ -9,7 +9,6 @@ func _ready():
 	var buttonContainer = $CanvasLayer/Buttons
 	for c in buttonContainer.get_children():
 		c.set_focus_mode(Control.FOCUS_NONE)
-
 	randomize()
 
 
