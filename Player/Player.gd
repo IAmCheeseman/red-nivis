@@ -125,13 +125,13 @@ func _input(event):
 		backItemHolder.add_child(held)
 		held.pivot.rotation = 0
 		held.set_logic(false)
-		GameManager.heldItems[1] = held
+		GameManager.heldItems[1] = held.duplicate()
 
 		# Back item
 		backItemHolder.remove_child(back)
 		itemHolder.add_child(back)
 		back.set_logic(true)
-		GameManager.heldItems[0] = back
+		GameManager.heldItems[0] = back.duplicate()
 
 		camera.maxOffset = camera.baseMaxOffset+back.look
 
@@ -199,7 +199,6 @@ func _on_Player_tree_entered():
 	yield(get_tree(), "idle_frame")
 	# Adding the items you picked up in the last scene
 	# Adding back weapon
-	print(GameManager.heldItems)
 	if GameManager.heldItems[1] != null and backItemHolder.get_child_count() == 0:
 		var weapon = add_item(GameManager.heldItems[1], backItemHolder)
 		yield(get_tree(), "idle_frame")
@@ -214,7 +213,6 @@ func gunShot(dir, recoil):
 
 
 func add_item(item=null, addTo=null):
-	print(item)
 	# Making sure you can't hold two items at once.
 	if backItemHolder.get_child_count() == 0\
 	and itemHolder.get_child_count() > 0:
@@ -222,6 +220,7 @@ func add_item(item=null, addTo=null):
 		var gun = itemHolder.get_child(0)
 		itemHolder.remove_child(gun)
 		backItemHolder.add_child(gun)
+		GameManager.heldItems[1] = gun
 		gun.set_logic(false)
 
 	elif backItemHolder.get_child_count() > 0 and itemHolder.get_child_count() > 0:
@@ -245,6 +244,7 @@ func add_item(item=null, addTo=null):
 
 	# Adding item to game world
 	var newItem = item.duplicate()
+	newItem.isPickedUp = true
 	if !addTo:
 		itemHolder.call_deferred("add_child", newItem)
 	else:
