@@ -10,7 +10,8 @@ cooldown = 0.4
 
 [node name="GunLogic" parent="." index="0"]
 script = ExtResource( 3 )
-maxHitDist = 45
+hitboxHeight = 10
+hitboxWidth = 20
 
 [node name="ShotLine" parent="Pivot" index="1"]
 collision_mask = 4
