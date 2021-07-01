@@ -9,6 +9,7 @@ accuracy = 12.0
 cooldown = 0.1
 projSpeed = 390
 projScale = 0.4
+projLifetime = 0.5
 kickUp = 12
 bulletSpawnDist = 28
 

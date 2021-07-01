@@ -6,12 +6,15 @@
 
 [node name="Gun" instance=ExtResource( 1 )]
 damage = 12.0
+accuracy = 0.0
 cooldown = 0.4
+projLifetime = 0.15
 
 [node name="GunLogic" parent="." index="0"]
 script = ExtResource( 3 )
 hitboxHeight = 10
 hitboxWidth = 20
+shootsProjectile = true
 
 [node name="ShotLine" parent="Pivot" index="1"]
 collision_mask = 4

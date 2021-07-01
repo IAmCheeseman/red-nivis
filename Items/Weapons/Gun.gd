@@ -26,6 +26,7 @@ export var multishot = 1
 export var spread = 0.0
 export var projSpeed = 340
 export var projScale = 1.0
+export var projLifetime = 5.0
 export var peircing = false
 export var recoil = 0.3
 export var look : int

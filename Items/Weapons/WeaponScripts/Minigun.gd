@@ -27,6 +27,7 @@ func shoot():
 		newBullet.speed = gun.projSpeed+rand_range(-50, 60)
 		newBullet.scale = Vector2.ONE*gun.projScale
 		newBullet.peircing = gun.peircing
+		newBullet.lifetime = gun.projLifetime
 		newBullet.global_position = global_position+dir*gun.bulletSpawnDist
 		# Adding it to the tree
 		get_tree().root.get_child(3).add_child(newBullet)

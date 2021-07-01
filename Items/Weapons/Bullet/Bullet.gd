@@ -4,10 +4,14 @@ var direction : Vector2
 var speed : float
 var peircing = false
 var prefix : Prefix
+var lifetime = 5.0
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
 onready var light = $Light
 onready var particles = $Particles
+onready var liftimeTimer = $Lifetime
+
+var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
 
 
 func set_texture(texture:StreamTexture, lightTexture:StreamTexture):
@@ -22,6 +26,7 @@ func set_texture(texture:StreamTexture, lightTexture:StreamTexture):
 
 func _ready():
 	look_at(global_position+direction)
+	liftimeTimer.start(lifetime)
 
 
 func _physics_process(delta):
@@ -32,12 +37,20 @@ func _on_QueueArea_body_entered(_body):
 	queue_free()
 
 
+func add_particles():
+	var newParticles = particleScene.instance()
+	newParticles.position = position
+	get_parent().add_child(newParticles)
+
+
 func _on_Hitbox_hit_object(object):
 	if !peircing:
+		add_particles()
 		queue_free()
 	if object.get_parent().is_in_group("enemy"):
 		object.get_parent().bulletDir = direction
 
 
 func _on_lifetime_timeout():
+	add_particles()
 	queue_free()

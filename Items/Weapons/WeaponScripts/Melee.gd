@@ -8,6 +8,7 @@ onready var weaponSprite = weapon.get_node("Pivot/GunSprite")
 onready var hitCast = weapon.get_node("Pivot/ShotLine")
 
 var hitbox = preload("res://Colliders/MeleeHitbox.tscn")
+var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 var shootSound : SoundManager
 var rotVel = 0
 var lastFrameRot = 0
@@ -17,6 +18,7 @@ var isFlipped = false
 
 export var hitboxHeight = 32
 export var hitboxWidth = 25
+export var shootsProjectile = false
 
 
 func _ready():
@@ -50,18 +52,6 @@ func _physics_process(delta):
 
 
 func shoot():
-	#var hit
-	#hitCast.cast_to = Vector2.RIGHT.rotated(deg2rad(-10))
-	#for i in 3:
-	#	hitCast.cast_to = Vector2.RIGHT.rotated(hitCast.cast_to.angle()+deg2rad(10))*hitboxHeight
-	#	hitCast.force_raycast_update()
-	#	if hit:
-	#		break
-	#	hit = hitCast.get_collider()
-	#if hit:
-	#	if hit.is_in_group("hurtbox") and !hit.is_in_group("enemy"):
-	#		hit.take_damage(weapon.damage, global_position.direction_to(hit.global_position))
-
 	var newHitbox = hitbox.instance()
 	add_child(newHitbox)
 	newHitbox.setup(weapon.damage, hitboxHeight, hitboxWidth, get_local_mouse_position().angle())
@@ -83,6 +73,36 @@ func shoot():
 	freq = clamp(freq, .08, .2)
 
 	var direction = global_position.direction_to(get_global_mouse_position())
+
+	if shootsProjectile:
+		for i in weapon.multishot:
+			# Getting the direction that the bullet needs to go in.
+			var dir = global_position.direction_to(get_global_mouse_position())
+			var spread = deg2rad(weapon.spread*i-(weapon.spread*(weapon.multishot-1)/2))
+			var accuracy = deg2rad(rand_range(-weapon.accuracy, weapon.accuracy))
+			dir = dir.rotated(spread+accuracy)
+
+			# Creating the bullet.
+			var newBullet = bullet.instance()
+			newBullet.direction = dir.normalized()
+			newBullet.speed = weapon.projSpeed+rand_range(-50, 60)
+			newBullet.scale = Vector2.ONE*weapon.projScale
+			newBullet.peircing = weapon.peircing
+			newBullet.lifetime = weapon.projLifetime
+			newBullet.global_position = global_position+dir*weapon.bulletSpawnDist
+			# Adding it to the tree
+			get_tree().root.get_child(3).add_child(newBullet)
+			newBullet.hitbox.damage = weapon.damage
+
+			newBullet.set_texture(weapon.bulletSprite, weapon.lightTexture)
+
+			# Rotating the weapon for juice
+			weaponSprite.rotation_degrees = weapon.kickUp*2.2 if weaponSprite.scale.y == -1 else -weapon.kickUp*2.2
+			pivot.scale = Vector2(rand_range(1.2, 1.4), rand_range(1.2, 1.4))
+
+			# Removing the ability to shoot for X amount of time
+			get_parent().canShoot = false
+			cooldownTimer.start(weapon.cooldown)
 
 	# Shaking the camera
 	GameManager.emit_signal("screenshake", 0, strength*2, freq, freq, strength/3, direction)

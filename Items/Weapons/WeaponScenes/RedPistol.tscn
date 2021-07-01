@@ -1,17 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Weapons/WeaponSprites/RedPistol.png" type="Texture" id=2]
-[ext_resource path="res://Items/Weapons/Bullet/Sprites/Bullet2.png" type="Texture" id=3]
-[ext_resource path="res://Items/Weapons/Bullet/Lights/bulletLight2.png" type="Texture" id=4]
 
 [node name="Gun" instance=ExtResource( 1 )]
 damage = 16.0
 projSpeed = 420
 projScale = 0.7
+projLifetime = 0.5
 recoil = 0.4
-bulletSprite = ExtResource( 3 )
-lightTexture = ExtResource( 4 )
 
 [node name="GunSprite" parent="Pivot" index="2"]
 position = Vector2( 11, 0 )
