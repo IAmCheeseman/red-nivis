@@ -49,7 +49,7 @@ func percentage_from(percent, a) -> float:
 	return a/tinyPercent
 
 
-func is_even(number:int): return true if number % 2 == 0 else false
+func is_even(number:int): return bool(number % 2)
 
 
 onready var root = get_tree().root
@@ -57,6 +57,8 @@ onready var base_size = root.get_visible_rect().size
 
 
 func _ready():
+	print(is_even(1))
+	print(is_even(2))
 # warning-ignore:return_value_discarded
 	get_tree().connect("screen_resized", self, "_on_screen_resized")
 
