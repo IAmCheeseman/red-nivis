@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Colliders/Hitbox.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Curve" id=1]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 68.7273 ), 0.0, -428.727, 0, 1, Vector2( 1, -360 ), -428.727, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.4729, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 48.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 64.86
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 90.8
+angle_random = 1.0
+angle_curve = SubResource( 2 )
+scale = 10.0
+scale_curve = SubResource( 4 )
+color = Color( 0.235294, 0.235294, 0.235294, 1 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 23.79
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 64.86
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 90.8
+angle_random = 1.0
+angle_curve = SubResource( 2 )
+scale = 10.0
+scale_curve = SubResource( 4 )
+color = Color( 0.882353, 0.321569, 0.321569, 1 )
+hue_variation = -0.09
+hue_variation_random = 0.82
+
+[sub_resource type="Animation" id=7]
+resource_name = "Explode"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlackSmoke:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RedSmoke:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 40.0
+
+[node name="Explosion" type="Node2D"]
+
+[node name="BlackSmoke" type="Particles2D" parent="."]
+emitting = false
+amount = 150
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 5 )
+
+[node name="RedSmoke" type="Particles2D" parent="."]
+emitting = false
+amount = 150
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Explode"
+anims/Explode = SubResource( 7 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+collision_mask = 6
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 8 )
+disabled = true
+
+[editable path="Hitbox"]

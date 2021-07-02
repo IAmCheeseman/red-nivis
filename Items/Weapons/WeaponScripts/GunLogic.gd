@@ -14,7 +14,7 @@ var shellPositions = [
 	Rect2(Vector2(3, 0), Vector2(4, 6)),
 ]
 
-var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
+export var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 var shootSound : SoundManager
 var rotVel = 0
 
