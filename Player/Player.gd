@@ -23,13 +23,16 @@ onready var itemHolder = $ItemHolder
 onready var backItemHolder = $ScaleHelper/Sprite/BackItemHolder
 onready var camera = $Camera
 onready var hurtTimer = $Hurtbox/HurtTimer
-onready var healthBar = $CanvasLayer/HealthBar
+onready var healthBar = $CanvasLayer/Bars/HealthBar/Bar
+onready var ammoBar = $CanvasLayer/Bars/Ammobar/Bar
 onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/Hurt
 
 var healthVigIntens = 0
 var vel := Vector2.ZERO
 var lastFramePos = Vector2.ZERO
+var ammo = 100 setget set_ammo
+var maxAmmo = 200
 var walkParticles = preload("res://Player/WalkParticles.tscn")
 
 
@@ -155,6 +158,12 @@ func add_walk_particles(spawnPos:Vector2):
 	add_child(newDust)
 
 
+func set_ammo(amount:int):
+	ammo = amount
+	ammoBar.value = GameManager.percentage_of(ammo, maxAmmo)
+
+
+
 func _on_death():
 	deathScreen.show()
 	sprite.modulate.a = .5
@@ -208,8 +217,9 @@ func _on_Player_tree_entered():
 		add_item(GameManager.heldItems[0], itemHolder)
 
 
-func gunShot(dir, recoil):
+func gunShot(dir, recoil, cost):
 	vel += -dir*recoil
+	ammo -= cost
 
 
 func add_item(item=null, addTo=null):

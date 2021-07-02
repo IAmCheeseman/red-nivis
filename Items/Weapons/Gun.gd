@@ -30,6 +30,7 @@ export var projLifetime = 5.0
 export var peircing = false
 export var recoil = 0.3
 export var look : int
+export var cost = 1
 
 # Visual
 export var bulletSprite = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")

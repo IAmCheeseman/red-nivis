@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Player/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://UI/Assets/helthbahicon.png" type="Texture" id=3]
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Canvas/vignette.png" type="Texture" id=5]
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=6]
@@ -9,6 +10,8 @@
 [ext_resource path="res://Player/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/Camera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/Assets/AmmoBarEmpty.png" type="Texture" id=11]
+[ext_resource path="res://UI/Assets/AmmoBar.png" type="Texture" id=12]
 [ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Player/BackItemHolder.gd" type="Script" id=14]
 [ext_resource path="res://Player/Hit.wav" type="AudioStream" id=15]
@@ -16,6 +19,7 @@
 [ext_resource path="res://UI/Inventory/Inventory.tscn" type="PackedScene" id=17]
 [ext_resource path="res://UI/Assets/helthbahfull.png" type="Texture" id=18]
 [ext_resource path="res://UI/Assets/helthbahempty.png" type="Texture" id=19]
+[ext_resource path="res://UI/Assets/AmmoIcon.png" type="Texture" id=20]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -263,15 +267,66 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="CanvasLayer/HealthThing"]
 
-[node name="HealthBar" type="TextureProgress" parent="CanvasLayer"]
-margin_right = 74.0
+[node name="Bars" type="VBoxContainer" parent="CanvasLayer"]
+margin_right = 40.0
 margin_bottom = 40.0
+custom_constants/separation = -6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer/Bars"]
+margin_right = 86.0
+margin_bottom = 20.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="TextureProgress" parent="CanvasLayer/Bars/HealthBar"]
+margin_right = 74.0
+margin_bottom = 20.0
 value = 50.0
 texture_under = ExtResource( 19 )
 texture_progress = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Bars/HealthBar"]
+margin_left = 74.0
+margin_right = 86.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 12, 20 )
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="Ammobar" type="HBoxContainer" parent="CanvasLayer/Bars"]
+margin_top = 14.0
+margin_right = 86.0
+margin_bottom = 34.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="TextureProgress" parent="CanvasLayer/Bars/Ammobar"]
+margin_right = 44.0
+margin_bottom = 20.0
+value = 50.0
+texture_under = ExtResource( 11 )
+texture_progress = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Bars/Ammobar"]
+margin_left = 44.0
+margin_right = 56.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 12, 20 )
+texture = ExtResource( 20 )
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 margin_left = 3.20486

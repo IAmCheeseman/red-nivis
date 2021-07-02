@@ -50,7 +50,7 @@ func shoot():
 	# Playing a sound for feedback
 	get_parent().get_node("ShootSound").play()
 
-	get_parent().emit_signal("onShoot", global_position.direction_to(get_global_mouse_position()), gun.recoil)
+	get_parent().emit_signal("onShoot", global_position.direction_to(get_global_mouse_position()), gun.recoil, gun.cost)
 
 	# Creating a bullet shell
 	var shell = load("res://Items/Weapons/Bullet/Shell.tscn").instance()
