@@ -49,7 +49,7 @@ func percentage_from(percent, a) -> float:
 	return a/tinyPercent
 
 
-func is_even(number:int): return bool(number % 2)
+func is_even(number:int): return !bool(number % 2)
 
 
 onready var root = get_tree().root
