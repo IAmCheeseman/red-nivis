@@ -49,6 +49,9 @@ func percentage_from(percent, a) -> float:
 	return a/tinyPercent
 
 
+func is_even(number:int): return true if number % 2 == 0 else false
+
+
 onready var root = get_tree().root
 onready var base_size = root.get_visible_rect().size
 
