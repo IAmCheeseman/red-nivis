@@ -41,9 +41,12 @@ func _physics_process(delta):
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 12*delta)
 
 	# Shooting
-	if Input.is_action_pressed("use_item") and get_parent().canShoot and gun.player.ammo-gun.cost > 0:
+	var hasEnoughAmmo = gun.player.ammo-gun.cost > 0
+	if Input.is_action_pressed("use_item") and get_parent().canShoot and hasEnoughAmmo:
 		gun.player.ammo -= gun.cost
 		shoot()
+	elif Input.is_action_just_pressed("use_item") and !hasEnoughAmmo:
+		gun.noAmmoClick.play()
 
 func shoot():
 	pass

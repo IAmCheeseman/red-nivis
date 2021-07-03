@@ -9,6 +9,7 @@ projSpeed = 420
 projScale = 0.7
 projLifetime = 0.5
 recoil = 0.4
+cost = 6
 
 [node name="GunSprite" parent="Pivot" index="2"]
 position = Vector2( 11, 0 )

@@ -10,6 +10,7 @@ cooldown = 0.3
 multishot = 2
 projLifetime = 0.3
 peircing = true
+cost = 2
 bulletSpawnDist = 19
 
 [node name="GunSprite" parent="Pivot" index="2"]

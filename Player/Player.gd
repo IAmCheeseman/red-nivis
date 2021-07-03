@@ -32,7 +32,7 @@ var healthVigIntens = 0
 var vel := Vector2.ZERO
 var lastFramePos = Vector2.ZERO
 var ammo = 100 setget set_ammo
-var maxAmmo = 200
+var maxAmmo = 100
 var walkParticles = preload("res://Player/WalkParticles.tscn")
 
 
@@ -41,6 +41,7 @@ signal dropGun(gun, pos)
 
 
 func _ready():
+	ammo = ammo
 	# Making sure players cannot come back to life by leaving an area
 	if GameManager.isDead:
 		_on_death()

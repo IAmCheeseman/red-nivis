@@ -8,6 +8,7 @@
 cooldown = 0.3
 projSpeed = 690
 projLifetime = 0.25
+cost = 2
 kickUp = 7
 bulletSpawnDist = 30
 
