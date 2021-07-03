@@ -41,7 +41,8 @@ func _physics_process(delta):
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 12*delta)
 
 	# Shooting
-	if Input.is_action_pressed("use_item") and get_parent().canShoot:
+	if Input.is_action_pressed("use_item") and get_parent().canShoot and gun.player.ammo-gun.cost > 0:
+		gun.player.ammo -= gun.cost
 		shoot()
 
 func shoot():

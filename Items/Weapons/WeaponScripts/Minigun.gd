@@ -33,7 +33,7 @@ func shoot():
 		get_tree().root.get_child(3).add_child(newBullet)
 		newBullet.hitbox.damage = gun.damage
 
-		newBullet.set_texture(gun.bulletSprite, gun.lightTexture)
+		newBullet.set_texture(gun.bulletSprite)
 
 		# Rotating the gun for juice
 		gunSprite.rotation_degrees = gun.kickUp*2.2 if gunSprite.scale.y == -1 else -gun.kickUp*2.2
@@ -63,7 +63,7 @@ func shoot():
 	# Playing a sound for feedback
 	get_parent().get_node("ShootSound").play()
 
-	get_parent().emit_signal("onShoot", global_position.direction_to(get_global_mouse_position()), gun.recoil)
+	get_parent().emit_signal("onShoot", global_position.direction_to(get_global_mouse_position()), gun.recoil, gun.cost)
 
 	# Creating a bullet shell
 	var shell = load("res://Items/Weapons/Bullet/Shell.tscn").instance()

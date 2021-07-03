@@ -7,16 +7,16 @@ var prefix : Prefix
 var lifetime = 5.0
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
-onready var light = $Light
 onready var particles = $Particles
 onready var liftimeTimer = $Lifetime
+onready var anim = $AnimationPlayer
+onready var dieTween = $DieTween
 
 var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
 
 
-func set_texture(texture:StreamTexture, lightTexture:StreamTexture):
+func set_texture(texture:StreamTexture):
 	sprite.texture = texture
-	light.texture = lightTexture
 	particles.process_material.emission_box_extents = Vector3(float(texture.get_width())/2, float(texture.get_height())/2, 1)
 	remove_child(particles)
 	particles.global_position = global_position
@@ -26,7 +26,7 @@ func set_texture(texture:StreamTexture, lightTexture:StreamTexture):
 
 func _ready():
 	look_at(global_position+direction)
-	liftimeTimer.start(lifetime)
+	liftimeTimer.start(clamp(lifetime-0.2, .001, INF))
 
 
 func _physics_process(delta):
@@ -34,6 +34,7 @@ func _physics_process(delta):
 
 
 func _on_QueueArea_body_entered(_body):
+	add_particles()
 	queue_free()
 
 
@@ -52,5 +53,10 @@ func _on_Hitbox_hit_object(object):
 
 
 func _on_lifetime_timeout():
-	add_particles()
-	queue_free()
+	dieTween.interpolate_property(self, "speed", speed, 0, .2, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	dieTween.start()
+	modulate = Color.gray
+	anim.play("Free")
+
+
+

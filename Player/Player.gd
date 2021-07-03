@@ -163,7 +163,6 @@ func set_ammo(amount:int):
 	ammoBar.value = GameManager.percentage_of(ammo, maxAmmo)
 
 
-
 func _on_death():
 	deathScreen.show()
 	sprite.modulate.a = .5
@@ -264,6 +263,7 @@ func add_item(item=null, addTo=null):
 
 	# Setting up the item
 	newItem.connect("onShoot", self, "gunShot")
+	newItem.player = self
 
 	camera.maxOffset = camera.baseMaxOffset+newItem.look
 	return newItem

@@ -12,9 +12,8 @@ onready var light = $Light
 onready var particles = $Particles
 
 
-func set_texture(texture:StreamTexture, lightTexture:StreamTexture):
+func set_texture(texture:StreamTexture):
 	sprite.texture = texture
-	light.texture = lightTexture
 	particles.process_material.emission_box_extents = Vector3(float(texture.get_width())/2, float(texture.get_height())/2, 1)
 	remove_child(particles)
 	particles.global_position = global_position

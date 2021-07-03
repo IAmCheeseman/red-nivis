@@ -1,9 +1,7 @@
 extends Node2D
 
 var planet = 0
-
 var isDead = false
-
 var heldItems = [null, null]
 
 var attackingEnemies = 0 setget set_attacking_enemies
@@ -36,7 +34,7 @@ func set_attacking_enemies(value:int):
 	attackingEnemies = clamp(attackingEnemies, 0, 1)
 
 
-func percentage_of(a, b) -> float:
+func percentage_of(a:float, b:float) -> float:
 	if a == 0 or b == 0:
 		return 0.0
 	return (a/b)*100

@@ -94,7 +94,7 @@ func shoot():
 			get_tree().root.get_child(3).add_child(newBullet)
 			newBullet.hitbox.damage = weapon.damage
 
-			newBullet.set_texture(weapon.bulletSprite, weapon.lightTexture)
+			newBullet.set_texture(weapon.bulletSprite)
 
 			# Rotating the weapon for juice
 			weaponSprite.rotation_degrees = weapon.kickUp*2.2 if weaponSprite.scale.y == -1 else -weapon.kickUp*2.2

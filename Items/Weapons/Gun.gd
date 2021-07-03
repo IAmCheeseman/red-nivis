@@ -34,7 +34,6 @@ export var cost = 1
 
 # Visual
 export var bulletSprite = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")
-export var lightTexture = preload("res://Items/Weapons/Bullet/Lights/bulletLight2.png")
 export var kickUp = 25
 export var bulletSpawnDist = 16
 
