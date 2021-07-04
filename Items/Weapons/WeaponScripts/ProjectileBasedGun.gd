@@ -1,9 +1,9 @@
 extends "res://Items/Weapons/WeaponScripts/GunLogic.gd"
 
-
 func shoot():
 	randomize()
 
+	holdShots += 1
 	for i in gun.multishot:
 
 		# Getting the direction that the bullet needs to go in.
@@ -59,3 +59,13 @@ func shoot():
 	shell.shellRect = shellPositions[gun.gunType]
 	get_tree().root.get_child(3).add_child(shell)
 	shell.start(-global_position.direction_to(get_global_mouse_position()).rotated(deg2rad(rand_range(-15, 15) ) ) )
+
+
+func _input(event):
+	if Input.is_action_just_released("use_item"):
+		holdShots = 0
+
+
+
+
+

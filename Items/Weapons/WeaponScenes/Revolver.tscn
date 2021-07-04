@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Items/Weapons/WeaponSprites/Revolver.png" type="Texture" id=1]
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=2]
+
+[node name="Gun" instance=ExtResource( 2 )]
+damage = 2.5
+accuracy = 16.0
+projScale = 0.9
+projLifetime = 0.24
+maxHoldShots = 6
+bulletSpawnDist = 19
+
+[node name="GunSprite" parent="Pivot" index="2"]
+position = Vector2( 10, 0 )
+texture = ExtResource( 1 )

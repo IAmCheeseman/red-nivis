@@ -17,6 +17,7 @@ var shellPositions = [
 export var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 var shootSound : SoundManager
 var rotVel = 0
+var holdShots = 0
 
 
 func _physics_process(delta):
@@ -42,7 +43,7 @@ func _physics_process(delta):
 
 	# Shooting
 	var hasEnoughAmmo = gun.player.ammo-gun.cost > 0
-	if Input.is_action_pressed("use_item") and get_parent().canShoot and hasEnoughAmmo:
+	if Input.is_action_pressed("use_item") and get_parent().canShoot and hasEnoughAmmo and holdShots < gun.maxHoldShots:
 		gun.player.ammo -= gun.cost
 		shoot()
 	elif Input.is_action_just_pressed("use_item") and !hasEnoughAmmo:
