@@ -40,18 +40,7 @@ func start_dialog(setDialog:int = -1):
 			var selectedDialog = dialog.dialog[0]["dialog"+str(currentDialogIndex)]
 			# If it has options to choose, then give those options.
 			if selectedDialog is Dictionary:
-				dialogBox.text = selectedDialog.text
-
-				var dialogOptions = selectedDialog.choice.choices
-				var dialogResponses = selectedDialog.choice.responses
-
-				for choice in dialogOptions:
-					responses[choice] = dialogResponses[choice]
-
-					var newOption = dialogOptionButton.instance()
-					newOption.set_option(choice)
-					optionContainer.add_child(newOption)
-					newOption.connect("optionSelected", self, "advance_current_dialog")
+				set_options(selectedDialog)
 			else:
 				dialogBox.text = selectedDialog
 		else:
@@ -64,6 +53,21 @@ func advance_dialog():
 	dialogBox.visible_characters += 1
 	dialogBox.rect_position.x = -dialogBox.rect_size.x/2
 	dialogAdvanceTimer.start(talkSpeed)
+
+
+func set_options(selectedDialog:Dictionary):
+	dialogBox.text = selectedDialog.text
+
+	var dialogOptions = selectedDialog.choice.choices
+	var dialogResponses = selectedDialog.choice.responses
+
+	for choice in dialogOptions:
+		responses[choice] = dialogResponses[choice]
+
+		var newOption = dialogOptionButton.instance()
+		newOption.set_option(choice)
+		optionContainer.add_child(newOption)
+		newOption.connect("optionSelected", self, "advance_current_dialog")
 
 
 func advance_current_dialog(option=null):
@@ -81,6 +85,12 @@ func advance_current_dialog(option=null):
 		if !currentDialog.has("dialog"+str(currentDialogIndex)):
 			exit_dialog()
 			return
+		var newDialog = currentDialog["dialog"+str(currentDialogIndex)]
+		if newDialog is Dictionary:
+			set_options(newDialog)
+			dialogAdvanceTimer.start()
+			return
+
 		dialogBox.text = currentDialog["dialog"+str(currentDialogIndex)]
 	dialogAdvanceTimer.start()
 

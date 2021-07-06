@@ -28,6 +28,27 @@ var dialog = [
 				}
 			}
 		}
+	},
+	{
+		"dialog1" : "Hello.",
+		"dialog2" : {
+			"text" : "Where are you from?",
+
+			"choice" : {
+				"choices" : [
+					"I have no idea...",
+					"Somewhere, probably"
+				],
+				"responses" : {
+					"I have no idea..." : {
+						"dialog3" : "Idiot."
+					},
+					"Somewhere, probably" : {
+						"dialog3" : "Ok, but where..?"
+					}
+				}
+			}
+		}
 	}
 
 ]
