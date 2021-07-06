@@ -39,9 +39,6 @@ maxSpeed = 80
 friction = 3.0
 recoveryTime = 1.0
 
-[node name="Shadow" parent="Player/ScaleHelper/Sprite" index="0"]
-z_index = -1
-
 [node name="Collision" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
@@ -57,7 +54,6 @@ shape = SubResource( 1 )
 
 [node name="Norg" parent="." instance=ExtResource( 5 )]
 position = Vector2( -60, -106 )
-script = null
 
 [editable path="Player"]
 [editable path="Player/Hurtbox"]
