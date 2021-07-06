@@ -34,6 +34,7 @@ var lastFramePos = Vector2.ZERO
 var ammo = 100 setget set_ammo
 var maxAmmo = 100
 var walkParticles = preload("res://Player/WalkParticles.tscn")
+var lockMovement = false
 
 
 signal removeTile(mousePosition)
@@ -83,27 +84,32 @@ func process_vel(dir, delta) -> void:
 
 func _physics_process(delta):
 	$CanvasLayer/Label.text = "FPS: %s" % Engine.get_frames_per_second()
-
-	var inputDir = process_input(delta)
-	process_vel(inputDir, delta)
 	shadow.frame = sprite.frame
 
-	healthVignette.material.set_shader_param("intensity", healthVigIntens)
+	if !lockMovement:
+		var inputDir = process_input(delta)
+		process_vel(inputDir, delta)
 
-	if backItemHolder.get_child_count() > 0:
-		backItemHolder.get_child(0).scale = Vector2.ONE
+		healthVignette.material.set_shader_param("intensity", healthVigIntens)
 
-	# Tilting the player in the direction they're moving
-	sprite.rotation_degrees = (vel.x*tiltStrength)*int(Settings.playerTilt)
-	shadow.scale.x = sprite.scale.x
+		if backItemHolder.get_child_count() > 0:
+			backItemHolder.get_child(0).scale = Vector2.ONE
 
-# warning-ignore:return_value_discarded
-	move_and_slide(vel*maxSpeed)
+		# Tilting the player in the direction they're moving
+		sprite.rotation_degrees = (vel.x*tiltStrength)*int(Settings.playerTilt)
+		shadow.scale.x = sprite.scale.x
 
-	# Fixing interia issue
-	if lastFramePos.is_equal_approx(position):
-		vel = Vector2.ZERO
-	lastFramePos = position
+	# warning-ignore:return_value_discarded
+		move_and_slide(vel*maxSpeed)
+
+		# Fixing interia issue
+		if lastFramePos.is_equal_approx(position):
+			vel = Vector2.ZERO
+		lastFramePos = position
+	else:
+		sprite.rotation_degrees = 0
+		animationPlayer.play("Idle")
+
 
 	if hurtbox.health != 20.0 and hurtTimer.is_stopped():
 		healthBar.value = GameManager.percentage_of(float(hurtbox.health), 20.0)

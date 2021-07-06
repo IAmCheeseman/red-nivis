@@ -33,4 +33,11 @@ __meta__ = {
 
 [node name="DialogAdvanceTimer" type="Timer" parent="."]
 
+[node name="TalkZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkZone"]
+
 [connection signal="timeout" from="DialogAdvanceTimer" to="." method="advance_dialog"]
+[connection signal="area_entered" from="TalkZone" to="." method="_on_talk_zone_entered"]

@@ -5,13 +5,18 @@ onready var shadow = $ScaleHelper/Shadow
 onready var dialog = $Dialog
 onready var dialogBox = $Label
 onready var dialogAdvanceTimer = $DialogAdvanceTimer
+onready var optionContainer = $DialogOptions/Options
 
 export var talkSpeed = .05
+export var snapPos:Vector2
 
-var currentDialog = 1
+var dialogOptionButton = preload("res://UI/DialogOption.tscn")
+var currentDialogIndex = 1
+var currentDialog : Dictionary
+var inDialog = false
+var player = null
 
-func _ready():
-	start_dialog()
+var responses = {}
 
 
 func _process(_delta):
@@ -19,20 +24,87 @@ func _process(_delta):
 
 
 func start_dialog(setDialog:int = -1):
-	# Resetting the dialog box
-	dialogBox.visible_characters = 0
-	currentDialog = 1
-	# Selecting the dialog to play
-	if setDialog == -1:
-		dialog.dialog.shuffle()
-		dialogBox.text = dialog.dialog[0]["dialog"+str(currentDialog)]
-	else:
-		dialogBox.text = dialog.dialog[setDialog]["dialog"+str(currentDialog)]
-	# Starting the dialog
-	dialogAdvanceTimer.start(talkSpeed)
+	if player:
+		player.lockMovement = true
+		player.position = position+snapPos
+
+		inDialog = true
+
+		# Resetting the dialog box
+		dialogBox.visible_characters = 0
+		currentDialogIndex = 1
+		# Selecting the dialog to play
+		if setDialog == -1:
+			dialog.dialog.shuffle()
+			currentDialog = dialog.dialog[0]
+			var selectedDialog = dialog.dialog[0]["dialog"+str(currentDialogIndex)]
+			# If it has options to choose, then give those options.
+			if selectedDialog is Dictionary:
+				dialogBox.text = selectedDialog.text
+
+				var dialogOptions = selectedDialog.choice.choices
+				var dialogResponses = selectedDialog.choice.responses
+
+				for choice in dialogOptions:
+					responses[choice] = dialogResponses[choice]
+
+					var newOption = dialogOptionButton.instance()
+					newOption.set_option(choice)
+					optionContainer.add_child(newOption)
+					newOption.connect("optionSelected", self, "advance_current_dialog")
+			else:
+				dialogBox.text = selectedDialog
+		else:
+			dialogBox.text = dialog.dialog[setDialog]["dialog"+str(currentDialogIndex)]
+		# Starting the dialog
+		dialogAdvanceTimer.start(talkSpeed)
 
 
 func advance_dialog():
 	dialogBox.visible_characters += 1
 	dialogBox.rect_position.x = -dialogBox.rect_size.x/2
 	dialogAdvanceTimer.start(talkSpeed)
+
+
+func advance_current_dialog(option=null):
+	for c in optionContainer.get_children():
+		c.queue_free()
+
+	dialogBox.visible_characters = 0
+	currentDialogIndex += 1
+	if option:
+		currentDialog = responses[option]
+		dialogBox.text = responses[option]["dialog"+str(currentDialogIndex)]
+		# Starting the dialog
+		dialogAdvanceTimer.start(talkSpeed)
+	else:
+		if !currentDialog.has("dialog"+str(currentDialogIndex)):
+			exit_dialog()
+			return
+		dialogBox.text = currentDialog["dialog"+str(currentDialogIndex)]
+	dialogAdvanceTimer.start()
+
+
+func _input(event):
+	if player and Input.is_action_just_pressed("interact") and !inDialog:
+		start_dialog()
+	if inDialog and Input.is_action_just_pressed("swap_weapons"):
+		advance_current_dialog()
+
+
+func exit_dialog():
+	dialogBox.visible_characters = 0
+	inDialog = false
+	player.lockMovement = false
+	player.vel = Vector2.ZERO
+	dialogAdvanceTimer.stop()
+
+
+func _on_talk_zone_entered(area):
+	if area.is_in_group("player"):
+		player = area.get_parent()
+
+
+
+
+

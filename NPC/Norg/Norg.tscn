@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://NPC/Norg/NorgIdle.png" type="Texture" id=2]
@@ -34,7 +34,11 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.95, 1.05 ), Vector2( 1.05, 0.95 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 27.0185
+
 [node name="Norg" instance=ExtResource( 1 )]
+snapPos = Vector2( 0, 19 )
 
 [node name="ScaleHelper" parent="." index="0"]
 scale = Vector2( 1.00559, 0.994414 )
@@ -59,3 +63,17 @@ script = ExtResource( 3 )
 
 [node name="DialogAdvanceTimer" parent="." index="4"]
 one_shot = true
+
+[node name="CollisionShape2D" parent="TalkZone" index="0"]
+shape = SubResource( 2 )
+
+[node name="DialogOptions" type="CanvasLayer" parent="." index="6"]
+layer = 128
+
+[node name="Options" type="VBoxContainer" parent="DialogOptions" index="0"]
+anchor_bottom = 1.0
+margin_right = 48.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

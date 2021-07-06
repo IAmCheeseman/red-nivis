@@ -7,22 +7,24 @@ var dialog = [
 	},
 	# A how're you doing question
 	{
-		"dialog1" : "How are you doing?",
+		"dialog1" : {
+			"text" : "How are you doing?",
 
-		"choice" : {
-			"choices" : [
-				"Good",
-				"Bad"
-			],
+			"choice" : {
+				"choices" : [
+					"Good",
+					"Bad"
+				],
 
-			"responses" : {
-				"Good" : {
-					"dialog2" : "That's great!",
-					"dialog3" : "I'm doing great too!"
-				},
+				"responses" : {
+					"Good" : {
+						"dialog2" : "That's great!",
+						"dialog3" : "I'm doing good too!"
+					},
 
-				"Bad" : {
-					"dialog2" : "That sucks..."
+					"Bad" : {
+						"dialog2" : "That sucks..."
+					}
 				}
 			}
 		}
