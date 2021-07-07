@@ -39,7 +39,7 @@ shader_param/is_on = 0.0
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 3.99999
-height = 4.37304
+height = 8.00002
 
 [sub_resource type="Animation" id=4]
 resource_name = "Idle"
@@ -188,22 +188,8 @@ rotation = -0.0999827
 scale = Vector2( 1.08749, 0.92554 )
 script = ExtResource( 14 )
 
-[node name="Shadow" type="Sprite" parent="ScaleHelper"]
-modulate = Color( 0, 0, 0, 0.498039 )
-material = SubResource( 2 )
-position = Vector2( 0, -2.1571 )
-scale = Vector2( 1, -1 )
-texture = ExtResource( 1 )
-offset = Vector2( 0, -13 )
-flip_h = true
-hframes = 6
-vframes = 2
-frame = 7
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, 5 )
-rotation = 1.5708
+position = Vector2( 0, -6 )
 shape = SubResource( 3 )
 
 [node name="Camera" parent="." instance=ExtResource( 10 )]
@@ -412,6 +398,10 @@ __meta__ = {
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
 visible = false
+
+[node name="FloorChecker" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 5 )
 
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 [connection signal="dead" from="Hurtbox" to="." method="_on_death"]

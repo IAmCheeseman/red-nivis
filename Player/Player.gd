@@ -3,6 +3,9 @@ extends KinematicBody2D
 # Properties
 export var maxSpeed := 80
 export var accelaration := 5.0
+export var terminalVel = 180
+export var jumpForce = 360
+export var gravity = 6.0
 export var friction := 3.0
 export var kbStrength = 45
 export var recoveryTime = 1.0
@@ -11,7 +14,6 @@ export var inMenu = false
 
 # Nodes
 onready var sprite = $ScaleHelper/Sprite
-onready var shadow = $ScaleHelper/Shadow
 onready var scaleHelper = $ScaleHelper
 onready var hurtbox = $Hurtbox
 onready var healthVignette = $CanvasLayer/HealthThing
@@ -27,6 +29,7 @@ onready var healthBar = $CanvasLayer/Bars/HealthBar/Bar
 onready var ammoBar = $CanvasLayer/Bars/Ammobar/Bar
 onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/Hurt
+onready var floorChecker = $FloorChecker
 
 var healthVigIntens = 0
 var vel := Vector2.ZERO
@@ -52,22 +55,8 @@ func _ready():
 	healthBar.value = GameManager.percentage_of(float(hurtbox.health), 20.0)
 
 
-func process_input(delta) -> Vector2:
-	# INPUT
-	# ------------------------------------------------
-	var inputDir := Vector2.ZERO
-
-	inputDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left")) * int(!inventory.visible)
-	inputDir.y = (Input.get_action_strength("move_down")-Input.get_action_strength("move_up")) * int(!inventory.visible)
-	inputDir = inputDir.normalized()
-
-	return inputDir*delta
-	# ------------------------------------------------
-
-
 func process_vel(dir, delta) -> void:
-	var faceDir = get_global_mouse_position()-global_position
-	sprite.scale.x = 1 if faceDir.x > 0 else -1
+
 
 	# Setting velocity
 	if dir.is_equal_approx(Vector2.ZERO):
@@ -76,7 +65,7 @@ func process_vel(dir, delta) -> void:
 		vel = vel.move_toward(dir*maxSpeed, accelaration*delta)
 
 	# Setting animations
-	if vel.is_equal_approx(Vector2.ZERO):
+	if is_equal_approx(vel.x, 0):
 		animationPlayer.play("Idle")
 	else:
 		animationPlayer.play("Run")
@@ -84,28 +73,28 @@ func process_vel(dir, delta) -> void:
 
 func _physics_process(delta):
 	$CanvasLayer/Label.text = "FPS: %s" % Engine.get_frames_per_second()
-	shadow.frame = sprite.frame
 
 	if !lockMovement:
-		var inputDir = process_input(delta)
-		process_vel(inputDir, delta)
+		# INPUT
+		# ------------------------------------------------
+		var moveDir := Vector2.ZERO
 
-		healthVignette.material.set_shader_param("intensity", healthVigIntens)
+		moveDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left")) * int(!inventory.visible)
+		moveDir = moveDir.normalized()
+		vel.x = lerp(vel.x, moveDir.x*maxSpeed, accelaration*delta)
+		if !floorChecker.is_colliding():
+			vel.y = lerp(vel.y, terminalVel, gravity*delta)
 
-		if backItemHolder.get_child_count() > 0:
-			backItemHolder.get_child(0).scale = Vector2.ONE
+		var faceDir = get_global_mouse_position()-global_position
+		sprite.scale.x = 1 if faceDir.x > 0 else -1
 
-		# Tilting the player in the direction they're moving
-		sprite.rotation_degrees = (vel.x*tiltStrength)*int(Settings.playerTilt)
-		shadow.scale.x = sprite.scale.x
+		# Setting animations
+		if is_equal_approx(moveDir.x, 0):
+			animationPlayer.play("Idle")
+		else:
+			animationPlayer.play("Run")
 
-	# warning-ignore:return_value_discarded
-		move_and_slide(vel*maxSpeed)
-
-		# Fixing interia issue
-		if lastFramePos.is_equal_approx(position):
-			vel = Vector2.ZERO
-		lastFramePos = position
+		move_and_slide(vel)
 	else:
 		sprite.rotation_degrees = 0
 		animationPlayer.play("Idle")
@@ -118,9 +107,16 @@ func _physics_process(delta):
 
 
 func _input(event):
+	# Jumping
+	if Input.is_action_just_pressed("swap_weapons") and floorChecker.is_colliding():
+		vel.y = -jumpForce
+	if Input.is_action_just_released("swap_weapons"):
+		vel.y /= 1.5
+
 	if event.is_action_pressed("remove_tile") and !inventory.visible:
 		emit_signal("removeTile", get_global_mouse_position())
 # warning-ignore:return_value_discarded
+
 	if Input.is_key_pressed(KEY_K): global_position = get_global_mouse_position()
 
 	if event.is_action_pressed("swap_weapons")\
