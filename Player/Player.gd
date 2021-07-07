@@ -55,22 +55,6 @@ func _ready():
 	healthBar.value = GameManager.percentage_of(float(hurtbox.health), 20.0)
 
 
-func process_vel(dir, delta) -> void:
-
-
-	# Setting velocity
-	if dir.is_equal_approx(Vector2.ZERO):
-		vel = vel.move_toward(Vector2.ZERO, friction*delta)
-	else:
-		vel = vel.move_toward(dir*maxSpeed, accelaration*delta)
-
-	# Setting animations
-	if is_equal_approx(vel.x, 0):
-		animationPlayer.play("Idle")
-	else:
-		animationPlayer.play("Run")
-
-
 func _physics_process(delta):
 	$CanvasLayer/Label.text = "FPS: %s" % Engine.get_frames_per_second()
 
@@ -84,9 +68,13 @@ func _physics_process(delta):
 		vel.x = lerp(vel.x, moveDir.x*maxSpeed, accelaration*delta)
 		if !floorChecker.is_colliding():
 			vel.y = lerp(vel.y, terminalVel, gravity*delta)
+		elif vel.y > 0 and (floorChecker.get_collision_point()).distance_to(position)-1 < 2:
+			vel.y = 0
+		print((floorChecker.get_collision_point()).distance_to(position))
 
 		var faceDir = get_global_mouse_position()-global_position
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
+		sprite.rotation_degrees = vel.x/10
 
 		# Setting animations
 		if is_equal_approx(moveDir.x, 0):

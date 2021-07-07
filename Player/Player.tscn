@@ -166,7 +166,6 @@ position = Vector2( 0, -3 )
 collision_layer = 0
 script = ExtResource( 2 )
 maxSpeed = 90
-friction = 5.0
 recoveryTime = 2.0
 
 [node name="ScaleHelper" type="Node2D" parent="."]
@@ -187,6 +186,11 @@ position = Vector2( -0.0264691, 1.07965 )
 rotation = -0.0999827
 scale = Vector2( 1.08749, 0.92554 )
 script = ExtResource( 14 )
+
+[node name="TileChecker" type="RayCast2D" parent="ScaleHelper/Sprite"]
+position = Vector2( 0, 9.1571 )
+enabled = true
+cast_to = Vector2( 2, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -6 )
@@ -400,8 +404,9 @@ __meta__ = {
 visible = false
 
 [node name="FloorChecker" type="RayCast2D" parent="."]
+position = Vector2( 0, 2 )
 enabled = true
-cast_to = Vector2( 0, 5 )
+cast_to = Vector2( 0, 2 )
 
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 [connection signal="dead" from="Hurtbox" to="." method="_on_death"]
