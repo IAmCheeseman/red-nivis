@@ -6,7 +6,7 @@ const SNAP_LENGTH = 5
 
 # Properties
 export var maxSpeed := 80
-export var jumpSpeedMod = 0
+export var jumpSpeedMod = .2
 export var accelaration := 5.0
 export var jumpForce = 180
 export var bunnyHopMult = 2.5
@@ -75,7 +75,7 @@ func _physics_process(delta):
 
 		moveDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left")) * int(!inventory.visible)
 		moveDir = moveDir.normalized()
-		vel.x = lerp(vel.x, moveDir.x*(maxSpeed*( 1 - (jumpSpeedMod*int(!is_grounded() ) )) ), accelaration*delta)
+		vel.x = lerp(vel.x, moveDir.x*(maxSpeed*( 1 + (jumpSpeedMod*int(!is_grounded() ) )) ), accelaration*delta)
 		if !is_grounded():
 			scaleHelper.scale = scaleHelper.scale.move_toward(Vector2.ONE, 3.5*delta)
 			vel.y += gravity
