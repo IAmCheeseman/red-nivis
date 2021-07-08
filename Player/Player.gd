@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
+const averageTileSize = 8
+
 # Properties
 export var maxSpeed := 80
 export var accelaration := 5.0
-export var terminalVel = 180
-export var jumpForce = 360
+export var jumpForce = 180
 export var gravity = 6.0
 export var friction := 3.0
 export var kbStrength = 45
@@ -29,7 +30,8 @@ onready var healthBar = $CanvasLayer/Bars/HealthBar/Bar
 onready var ammoBar = $CanvasLayer/Bars/Ammobar/Bar
 onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/Hurt
-onready var floorChecker = $FloorChecker
+onready var floorCheckers = $FloorCheckers
+onready var tileChecker = $ScaleHelper/Sprite/TileChecker
 
 var healthVigIntens = 0
 var vel := Vector2.ZERO
@@ -66,23 +68,17 @@ func _physics_process(delta):
 		moveDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left")) * int(!inventory.visible)
 		moveDir = moveDir.normalized()
 		vel.x = lerp(vel.x, moveDir.x*maxSpeed, accelaration*delta)
-		if !floorChecker.is_colliding():
-			vel.y = lerp(vel.y, terminalVel, gravity*delta)
-		elif vel.y > 0 and (floorChecker.get_collision_point()).distance_to(position)-1 < 2:
-			vel.y = 0
-		print((floorChecker.get_collision_point()).distance_to(position))
+		if !is_grounded():
+			vel.y += gravity
 
-		var faceDir = get_global_mouse_position()-global_position
+		var faceDir = get_local_mouse_position()
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
 		sprite.rotation_degrees = vel.x/10
 
 		# Setting animations
-		if is_equal_approx(moveDir.x, 0):
-			animationPlayer.play("Idle")
-		else:
-			animationPlayer.play("Run")
+		animate(moveDir)
 
-		move_and_slide(vel)
+		move_and_slide(vel, Vector2.UP)
 	else:
 		sprite.rotation_degrees = 0
 		animationPlayer.play("Idle")
@@ -94,12 +90,36 @@ func _physics_process(delta):
 		hurtbox.health = clamp(hurtbox.health, 0, 20.0)
 
 
+func animate(moveDir:Vector2):
+	if is_grounded():
+		if is_equal_approx(moveDir.x, 0):
+				animationPlayer.play("Idle")
+		else:
+			animationPlayer.play("Run")
+	else:
+		animationPlayer.play("Jump")
+
+
+func push_up_tiles():
+	tileChecker.cast_to.x = sprite.scale.x*6
+	tileChecker.force_raycast_update()
+	if tileChecker.is_colliding():
+		position.y -= averageTileSize
+
+
+func is_grounded():
+	for c in floorCheckers.get_children():
+		if c.is_colliding():
+			return true
+	return false
+
+
 func _input(event):
 	# Jumping
-	if Input.is_action_just_pressed("swap_weapons") and floorChecker.is_colliding():
+	if Input.is_action_just_pressed("swap_weapons") and is_grounded():
 		vel.y = -jumpForce
-	if Input.is_action_just_released("swap_weapons"):
-		vel.y /= 1.5
+	if Input.is_action_just_released("swap_weapons") and vel.y < -(vel.y*.3) and !is_grounded():
+		vel.y = -(jumpForce*0.5)
 
 	if event.is_action_pressed("remove_tile") and !inventory.visible:
 		emit_signal("removeTile", get_global_mouse_position())
