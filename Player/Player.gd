@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 const averageTileSize = 8
+const SNAP_DIRECTION = Vector2.DOWN
+const SNAP_LENGTH = 5
 
 # Properties
 export var maxSpeed := 80
@@ -31,11 +33,13 @@ onready var ammoBar = $CanvasLayer/Bars/Ammobar/Bar
 onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/Hurt
 onready var floorCheckers = $FloorCheckers
-onready var tileChecker = $ScaleHelper/Sprite/TileChecker
+onready var bottomTileChecker = $TileCheckers/BottomTileChecker
+onready var topTileChecker = $TileCheckers/TopTileChecker
 
 var healthVigIntens = 0
 var vel := Vector2.ZERO
-var lastFramePos = Vector2.ZERO
+var snapVector = SNAP_DIRECTION*SNAP_LENGTH
+
 var ammo = 100 setget set_ammo
 var maxAmmo = 100
 var walkParticles = preload("res://Player/WalkParticles.tscn")
@@ -75,10 +79,9 @@ func _physics_process(delta):
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
 		sprite.rotation_degrees = vel.x/10
 
-		# Setting animations
 		animate(moveDir)
 
-		move_and_slide(vel, Vector2.UP)
+		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(46)).y
 	else:
 		sprite.rotation_degrees = 0
 		animationPlayer.play("Idle")
@@ -98,13 +101,6 @@ func animate(moveDir:Vector2):
 			animationPlayer.play("Run")
 	else:
 		animationPlayer.play("Jump")
-
-
-func push_up_tiles():
-	tileChecker.cast_to.x = sprite.scale.x*6
-	tileChecker.force_raycast_update()
-	if tileChecker.is_colliding():
-		position.y -= averageTileSize
 
 
 func is_grounded():
