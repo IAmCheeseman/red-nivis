@@ -6,9 +6,10 @@ const SNAP_LENGTH = 5
 
 # Properties
 export var maxSpeed := 80
-export var jumpSpeedMod = .3
+export var jumpSpeedMod = 0
 export var accelaration := 5.0
 export var jumpForce = 180
+export var bunnyHopMult = 2.5
 export var gravity = 6.0
 export var friction := 3.0
 export var kbStrength = 45
@@ -36,10 +37,12 @@ onready var hurtSFX = $Sounds/Hurt
 onready var floorCheckers = $FloorCheckers
 onready var bottomTileChecker = $TileCheckers/BottomTileChecker
 onready var topTileChecker = $TileCheckers/TopTileChecker
+onready var bunnyHopTimer = $BunnyHopTimer
 
 var healthVigIntens = 0
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
+var lastFrameGroundState = false
 
 var ammo = 100 setget set_ammo
 var maxAmmo = 100
@@ -83,6 +86,9 @@ func _physics_process(delta):
 
 		animate(moveDir)
 
+		if just_landed():
+			bunnyHopTimer.start()
+
 		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(46)).y
 	else:
 		sprite.rotation_degrees = 0
@@ -94,6 +100,8 @@ func _physics_process(delta):
 		hurtbox.health += .01
 		hurtbox.health = clamp(hurtbox.health, 0, 20.0)
 
+	lastFrameGroundState = is_grounded()
+
 
 func animate(moveDir:Vector2):
 	if is_grounded():
@@ -103,6 +111,12 @@ func animate(moveDir:Vector2):
 			animationPlayer.play("Run")
 	else:
 		animationPlayer.play("Jump")
+
+
+func just_landed():
+	if is_grounded() != lastFrameGroundState:
+		return true
+	return false
 
 
 func is_grounded():
@@ -117,10 +131,13 @@ func _input(event):
 	# Jumping
 	if Input.is_action_just_pressed("swap_weapons") and is_grounded():
 		snapVector = Vector2.ZERO
-		scaleHelper.scale = Vector2(.8, 1.2)
+		scaleHelper.scale = Vector2(0.8, 1.2)
+		if !bunnyHopTimer.is_stopped():
+			scaleHelper.scale = Vector2(1.3, 0.7)
+			vel.x *= bunnyHopMult
 		vel.y = -jumpForce
-	if Input.is_action_just_released("swap_weapons") and vel.y < -(jumpForce*0.5) and !is_grounded():
-		vel.y = -(jumpForce*0.5)
+	if Input.is_action_just_released("swap_weapons") and vel.y < 0 and !is_grounded():
+		vel.y *= 0.5
 
 	if event.is_action_pressed("remove_tile") and !inventory.visible:
 		emit_signal("removeTile", get_global_mouse_position())
