@@ -118,7 +118,7 @@ func _input(event):
 	# Jumping
 	if Input.is_action_just_pressed("swap_weapons") and is_grounded():
 		vel.y = -jumpForce
-	if Input.is_action_just_released("swap_weapons") and vel.y < -(vel.y*.3) and !is_grounded():
+	if Input.is_action_just_released("swap_weapons") and vel.y < -(jumpForce*0.5) and !is_grounded():
 		vel.y = -(jumpForce*0.5)
 
 	if event.is_action_pressed("remove_tile") and !inventory.visible:
