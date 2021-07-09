@@ -1,15 +1,15 @@
 [gd_resource type="Resource" load_steps=7 format=2]
 
+[ext_resource path="res://Tiles/Solids/RedStone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Bull/JumpingBull.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tiles/AltGround/Grass.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Tiles/Solids/RegSolid.tscn" type="PackedScene" id=4]
 [ext_resource path="res://WorldGeneration/Planets/planet.gd" type="Script" id=5]
 [ext_resource path="res://Tiles/Ground/Grass.png" type="Texture" id=6]
 [ext_resource path="res://WorldGeneration/Minibiomes/RegPlanetMiniBiome1.tres" type="Resource" id=10]
 
 [resource]
 script = ExtResource( 5 )
-solidTiles = ExtResource( 4 )
+solidTiles = ExtResource( 1 )
 backgroundTiles = ExtResource( 3 )
 backgroundImage = ExtResource( 6 )
 atmosphereColor = Color( 0.745098, 0.858824, 0.968627, 1 )

@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemies/BigBull/BigJumpingBull.gd"
 }, {
-"base": "Node",
-"class": "CellularAutomata",
-"language": "GDScript",
-"path": "res://WorldGeneration/CellularAutomata.gd"
-}, {
 "base": "Resource",
 "class": "DataManager",
 "language": "GDScript",
@@ -84,14 +79,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://WorldGeneration/WorldManagement/WorldData.gd"
 }, {
-"base": "Node",
+"base": "Resource",
 "class": "WorldGenerator",
 "language": "GDScript",
 "path": "res://WorldGeneration/WorldGenerater.gd"
 } ]
 _global_script_class_icons={
 "BigJumpingBull": "",
-"CellularAutomata": "",
 "DataManager": "",
 "EnemyBullet": "",
 "Hurtbox": "",
