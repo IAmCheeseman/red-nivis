@@ -24,6 +24,7 @@ onready var hurtbox = $Hurtbox
 onready var healthVignette = $CanvasLayer/HealthThing
 onready var vignette = $CanvasLayer/Vignette
 onready var animationPlayer = $AnimationPlayer
+onready var SaS = $SquashAndStretch
 onready var flashPlayer = $Flash
 onready var deathScreen = $CanvasLayer/DeathScreen
 onready var itemHolder = $ItemHolder
@@ -76,9 +77,12 @@ func _physics_process(delta):
 		moveDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left")) * int(!inventory.visible)
 		moveDir = moveDir.normalized()
 		vel.x = lerp(vel.x, moveDir.x*(maxSpeed*( 1 + (jumpSpeedMod*int(!is_grounded() ) )) ), accelaration*delta)
+		# Do stuff in the air.
 		if !is_grounded():
-			scaleHelper.scale = scaleHelper.scale.move_toward(Vector2.ONE, 3.5*delta)
+			camera.zoom = camera.zoom.move_toward(Vector2(1.01, 1.01), .1*delta)
 			vel.y += gravity
+		else:
+			camera.zoom = camera.zoom.move_toward(Vector2.ONE, .1*delta)
 
 		var faceDir = get_local_mouse_position()
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
@@ -114,7 +118,8 @@ func animate(moveDir:Vector2):
 
 
 func just_landed():
-	if is_grounded() != lastFrameGroundState:
+	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
+		SaS.play("Land")
 		return true
 	return false
 
@@ -130,11 +135,13 @@ func is_grounded():
 func _input(event):
 	# Jumping
 	if Input.is_action_just_pressed("swap_weapons") and is_grounded():
+		# Setting values
 		snapVector = Vector2.ZERO
-		scaleHelper.scale = Vector2(0.8, 1.2)
+		scaleHelper.scale = Vector2(.8, 1.2)
 		if !bunnyHopTimer.is_stopped():
-			scaleHelper.scale = Vector2(1.3, 0.7)
 			vel.x *= bunnyHopMult
+		# Squash and stretch
+		SaS.play("Jump")
 		vel.y = -jumpForce
 	if Input.is_action_just_released("swap_weapons") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
