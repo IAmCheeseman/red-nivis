@@ -15,6 +15,16 @@ _global_script_classes=[ {
 "path": "res://Enemies/BigBull/BigJumpingBull.gd"
 }, {
 "base": "Resource",
+"class": "BorderedSimplexNoise",
+"language": "GDScript",
+"path": "res://addons/BorderedSimplexNoise/BorderedSimplexNoise.gd"
+}, {
+"base": "ImageTexture",
+"class": "BorderedSimplexNoiseTexture",
+"language": "GDScript",
+"path": "res://addons/BorderedSimplexNoise/BorderedSimplexNoiseTexture.gd"
+}, {
+"base": "Resource",
 "class": "DataManager",
 "language": "GDScript",
 "path": "res://Managing/DataManager.gd"
@@ -86,6 +96,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BigJumpingBull": "",
+"BorderedSimplexNoise": "",
+"BorderedSimplexNoiseTexture": "res://addons/BorderedSimplexNoise/BorderedSimplexNoise.png",
 "DataManager": "",
 "EnemyBullet": "",
 "Hurtbox": "",
@@ -128,6 +140,10 @@ mouse_cursor/custom_image="res://Canvas/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2( 19, 19 )
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/BorderedSimplexNoise/plugin.cfg" )
 
 [importer_defaults]
 

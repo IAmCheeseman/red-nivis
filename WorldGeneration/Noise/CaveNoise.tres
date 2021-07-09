@@ -1,10 +1,10 @@
-[gd_resource type="NoiseTexture" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=2 format=2]
 
-[sub_resource type="OpenSimplexNoise" id=1]
-octaves = 1
-period = 30.3
-persistence = 0.445
-lacunarity = 2.57
+[ext_resource path="res://addons/BorderedSimplexNoise/BorderedSimplexNoise.gd" type="Script" id=1]
 
 [resource]
-noise = SubResource( 1 )
+script = ExtResource( 1 )
+_Seed = 0
+persistence = 1.0
+blobbiness = 1.0
+thickness = 0.2

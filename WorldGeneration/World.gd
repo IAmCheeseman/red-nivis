@@ -59,14 +59,19 @@ func generate_room():
 	var worldGenerator = WorldGenerator.new()
 	var world = worldGenerator.generate_world(
 																	  # NOISE
-		load("res://WorldGeneration/Noise/HeightMap.tres"),           # Height
-		load("res://WorldGeneration/Noise/HeightMap.tres"),           # Shifting
+		load("res://WorldGeneration/Noise/HeightMap.tres").noise,     # Height
+		load("res://WorldGeneration/Noise/HeightMap.tres").noise,     # Shifting
 		load("res://WorldGeneration/Noise/CaveNoise.tres"),           # Caves
 																	  # CURVES
 		load("res://WorldGeneration/Curves/HeightSmoothing.tres"),    # Height
 		load("res://WorldGeneration/Curves/OverHangeSmoothing.tres"), # Shifting
-		load("res://WorldGeneration/Curves/CaveSize.tres")            # Caves
-		)
+		load("res://WorldGeneration/Curves/CaveSize.tres"),           # Caves
+
+		5,
+		300,
+		0,
+		8
+	)
 
 	tiles = planet.solidTiles.instance()
 	props.add_child(tiles)
