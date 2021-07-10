@@ -132,6 +132,7 @@ func _on_player_removeTile(mousePosition):
 	tilePlaceSFX.play()
 	tilePlaceSFX.global_position = mousePosition
 
+	# Setting the tiles
 	var mapMousePos = tiles.world_to_map(mousePosition)
 	if tiles.get_cellv(mapMousePos) == -1\
 	and placementTiles.get_cellv(mapMousePos) == -1\
@@ -140,7 +141,7 @@ func _on_player_removeTile(mousePosition):
 		placementTiles.set_cellv(mapMousePos, 0)
 		placementTiles.update_bitmask_area(mapMousePos)
 		return
-
+	# Removing the tiles
 	tiles.set_cellv(mapMousePos, -1)
 	tiles.update_bitmask_area(mapMousePos)
 	placementTiles.set_cellv(mapMousePos, -1)
@@ -151,7 +152,7 @@ func _on_World_tree_entered():
 	get_tree().current_scene = self
 	name = "World"
 	yield(get_tree(), "idle_frame")
-#	atmosphere.color = GameManager.planet.atmosphereColor
+	atmosphere.color = planet.atmosphereColor
 
 
 func _on_drop_gun(gun, pos):
