@@ -67,8 +67,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	$CanvasLayer/Label.text = "FPS: %s" % Engine.get_frames_per_second()
-
 	if !lockMovement:
 		# INPUT
 		# ------------------------------------------------

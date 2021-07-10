@@ -129,11 +129,10 @@ func set_minimap(image:Image):
 
 
 func _on_player_removeTile(mousePosition):
-	GameManager.emit_signal("screenshake", 0, 0, .1, .1, 5)
 	tilePlaceSFX.play()
 	tilePlaceSFX.global_position = mousePosition
 
-	var mapMousePos = placementTiles.world_to_map(mousePosition)
+	var mapMousePos = tiles.world_to_map(mousePosition)
 	if tiles.get_cellv(mapMousePos) == -1\
 	and placementTiles.get_cellv(mapMousePos) == -1\
 	and mousePosition.distance_to(player.position) > 16:

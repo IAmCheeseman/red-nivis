@@ -33,3 +33,4 @@ func _on_Feedback_pressed():
 func _on_Options_pressed():
 	buttons.hide()
 	options.show()
+

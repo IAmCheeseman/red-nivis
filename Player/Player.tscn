@@ -4,7 +4,7 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://UI/Assets/helthbahicon.png" type="Texture" id=3]
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Canvas/vignette.png" type="Texture" id=5]
+[ext_resource path="res://UI/vignette.png" type="Texture" id=5]
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI/NokiaCellphone.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Player/DeathScreen.gd" type="Script" id=8]
@@ -167,7 +167,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=7]
 resource_name = "Jump"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -182,7 +182,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 1.2 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=8]
 resource_name = "Land"
 length = 0.2
 tracks/0/type = "value"
@@ -198,7 +198,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.5, 0.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:material:shader_param/is_on")
@@ -213,14 +213,14 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=10]
 radius = 4.0
 height = 5.69744
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=11]
 radius = 4.0
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
 
 uniform float intensity : hint_range(0.0, 1.0);
@@ -234,12 +234,12 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
 shader_param/intensity = 0.0
 shader_param/vignette = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=14]
 font_data = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -288,11 +288,11 @@ anims/Jump = SubResource( 5 )
 anims/Run = SubResource( 6 )
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
-anims/Jump = SubResource( 13 )
-anims/Land = SubResource( 14 )
+anims/Jump = SubResource( 7 )
+anims/Land = SubResource( 8 )
 
 [node name="Flash" type="AnimationPlayer" parent="."]
-anims/flash = SubResource( 7 )
+anims/flash = SubResource( 9 )
 
 [node name="Hurtbox" parent="." groups=[
 "player",
@@ -303,7 +303,7 @@ collision_mask = 2147483648
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -1, -4 )
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 
 [node name="HurtTimer" type="Timer" parent="Hurtbox"]
 one_shot = true
@@ -316,7 +316,7 @@ visible = false
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 position = Vector2( 0, -3 )
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="Sounds" type="Node2D" parent="."]
 
@@ -336,7 +336,7 @@ __meta__ = {
 }
 
 [node name="HealthThing" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 11 )
+material = SubResource( 13 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -406,18 +406,6 @@ rect_min_size = Vector2( 12, 20 )
 texture = ExtResource( 20 )
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-margin_left = 3.20486
-margin_top = 288.78
-margin_right = 47.2049
-margin_bottom = 302.78
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "FPS: %s"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="DeathScreen" type="VBoxContainer" parent="CanvasLayer"]
 visible = false
 anchor_right = 1.0
@@ -432,7 +420,7 @@ margin_right = 300.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 14 )
 bbcode_enabled = true
 bbcode_text = "[center][shake]Game Over[/shake]"
 text = "Game Over"
