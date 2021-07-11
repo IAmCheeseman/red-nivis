@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://WorldGeneration/Planets/AcidAtmosphere.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Tiles/Solids/AcidSolid.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Tiles/AltGround/AcidRocks.tscn" type="PackedScene" id=4]
+[ext_resource path="res://EnviormentalArt/Solids/AcidSolid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://EnviormentalArt/AltGround/AcidRocks.tscn" type="PackedScene" id=4]
 [ext_resource path="res://WorldGeneration/Planets/planet.gd" type="Script" id=5]
-[ext_resource path="res://Tiles/Ground/AcidGround.png" type="Texture" id=6]
+[ext_resource path="res://EnviormentalArt/Ground/AcidGround.png" type="Texture" id=6]
 
 [resource]
 script = ExtResource( 5 )

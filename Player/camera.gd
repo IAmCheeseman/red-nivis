@@ -6,6 +6,7 @@ onready var timer = $Timer
 
 
 export var mouseWeight = true
+export var yOffset = 0
 
 
 # Mouse movement
@@ -40,7 +41,7 @@ func _process(_delta):
 	var mouseDist = (position.distance_to(mousePosition)/sensitivity)*Settings.cameraLook
 	mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
 
-	position = lerp(position, dirMouse*mouseDist, lerpSpeed)
+	position = lerp(position, (dirMouse*mouseDist)-Vector2(0,yOffset), lerpSpeed)
 
 
 func set_cam_look(value:bool):

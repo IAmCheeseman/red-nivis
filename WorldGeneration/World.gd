@@ -3,8 +3,8 @@ extends Node2D
 var tiles
 var backgroundTiles
 var planet:Planet
-onready var background = $BackgroundHelper/BackGround
 onready var player = $Props/Player
+onready var backgrounds = $Background
 onready var camera = $Props/Player/Camera
 onready var props = $Props
 onready var atmosphere = $Atmosphere
@@ -81,11 +81,6 @@ func generate_room():
 			# Adding tiles
 			tiles.set_cell(x, y, world[x][y])
 			tiles.update_bitmask_area(Vector2(x, y))
-
-	# Setting the background
-	background.rect_position = Vector2.ONE*-20000
-	background.rect_size = Vector2(10000, 10000)*3
-	background.texture = planet.backgroundImage
 
 
 func check_approx(color:Color, color2:Color):

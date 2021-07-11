@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Tiles/Solids/RegMossySolid.png" type="Texture" id=1]
+[ext_resource path="res://EnviormentalArt/AltGround/rocks.png" type="Texture" id=1]
+
 
 [sub_resource type="TileSet" id=1]
-0/name = "RegMossySolid.png 0"
+0/name = "rocks.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
@@ -30,5 +31,4 @@
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
-cell_y_sort = true
 format = 1

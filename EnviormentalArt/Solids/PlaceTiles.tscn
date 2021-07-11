@@ -1,6 +1,7 @@
 [gd_scene load_steps=50 format=2]
 
-[ext_resource path="res://Tiles/Solids/PlacedTiles.png" type="Texture" id=1]
+[ext_resource path="res://EnviormentalArt/Solids/PlacedTiles.png" type="Texture" id=1]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 6.97926, 16, 6.97926, 16, 16, 0, 16 )

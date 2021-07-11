@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Tiles/Ground/Grass.png" type="Texture" id=1]
-[ext_resource path="res://Tiles/Solids/PlaceTiles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=1]
+[ext_resource path="res://EnviormentalArt/Solids/PlaceTiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=4]
+[ext_resource path="res://EnviormentalArt/BackGrounds/MountainsNear.png" type="Texture" id=5]
 [ext_resource path="res://Player/PlaceTile.wav" type="AudioStream" id=6]
+[ext_resource path="res://CustomNodes/CustomParallax.gd" type="Script" id=7]
 [ext_resource path="res://WorldGeneration/WorldManagement/WorldManager.tscn" type="PackedScene" id=8]
 [ext_resource path="res://WorldGeneration/World.gd" type="Script" id=9]
 [ext_resource path="res://WorldGeneration/VisualEffects/MistSpawner.tscn" type="PackedScene" id=10]
@@ -57,14 +60,39 @@ func _on_SoundManager_tree_exiting():
 ]]
 script = ExtResource( 9 )
 
-[node name="BackgroundHelper" type="Node2D" parent="."]
-z_index = -1
+[node name="Background" type="Node2D" parent="."]
+show_behind_parent = true
 
-[node name="BackGround" type="TextureRect" parent="BackgroundHelper"]
-margin_left = -300.795
-margin_top = -199.735
-margin_right = 599.205
-margin_bottom = 400.265
+[node name="FarParallax" type="Node2D" parent="Background"]
+script = ExtResource( 7 )
+scrollSpeed = Vector2( 0.9, 1 )
+cameraPath = NodePath("../../Props/Player/Camera")
+
+[node name="Far" type="Sprite" parent="Background/FarParallax"]
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( 0, -50 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 760, 350 )
+
+[node name="NearParallax" type="Node2D" parent="Background"]
+script = ExtResource( 7 )
+scrollSpeed = Vector2( 0.65, 1 )
+cameraPath = NodePath("../../Props/Player/Camera")
+
+[node name="Close" type="Sprite" parent="Background/NearParallax"]
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( 0, -50 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 760, 350 )
+
+[node name="Sky" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="Sky" type="TextureRect" parent="Sky"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 1 )
 stretch_mode = 2
 __meta__ = {
@@ -74,14 +102,16 @@ __meta__ = {
 [node name="Props" type="YSort" parent="."]
 
 [node name="Player" parent="Props" instance=ExtResource( 3 )]
-position = Vector2( 57.4441, 58.1933 )
+position = Vector2( 190, 150 )
 
 [node name="Minimap" parent="Props/Player/CanvasLayer" index="2" instance=ExtResource( 11 )]
+visible = false
 
 [node name="MistSpawner" parent="Props/Player" instance=ExtResource( 10 )]
 position = Vector2( -8, -8 )
 
 [node name="PlaceTiles" parent="Props" instance=ExtResource( 2 )]
+tile_data = PoolIntArray( 1179648, 0, 196608, 1179649, 0, 196609, 1179650, 0, 196609, 1179651, 0, 196609, 1179652, 0, 196609, 1179653, 0, 196609, 1179654, 0, 196609, 1179655, 0, 196609, 1179656, 0, 196609, 1179657, 0, 196609, 1179658, 0, 196609, 1179659, 0, 196609, 1179660, 0, 196609, 1179661, 0, 196609, 1179662, 0, 196609, 1179663, 0, 196609, 1179664, 0, 196609, 1179665, 0, 196609, 1179666, 0, 196609, 1179667, 0, 196609, 1179668, 0, 196609, 1179669, 0, 196609, 1179670, 0, 196609, 1179671, 0, 196609, 1179672, 0, 196609, 1179673, 0, 196609, 1179674, 0, 196609, 1179675, 0, 196609, 1179676, 0, 196609, 1179677, 0, 196609, 1179678, 0, 196609, 1179679, 0, 196609, 1179680, 0, 196609, 1179681, 0, 196609, 1179682, 0, 196609, 1179683, 0, 196609, 1179684, 0, 196609, 1179685, 0, 196609, 1179686, 0, 196609, 1179687, 0, 196609, 1179688, 0, 196609, 1179689, 0, 196609, 1179690, 0, 196609, 1179691, 0, 196609, 1179692, 0, 196609, 1179693, 0, 196609, 1179694, 0, 196609, 1179695, 0, 196609, 1179696, 0, 196609, 1179697, 0, 196609, 1179698, 0, 196609, 1179699, 0, 196609, 1179700, 0, 196609, 1179701, 0, 196609, 1179702, 0, 196609, 1179703, 0, 196609, 1179704, 0, 196609, 1179705, 0, 196609, 1179706, 0, 196609, 1179707, 0, 196609, 1179708, 0, 196609, 1179709, 0, 196609, 1179710, 0, 196609, 1179711, 0, 196609, 1179712, 0, 196609, 1179713, 0, 196609, 1179714, 0, 196609, 1179715, 0, 196609, 1179716, 0, 196609, 1179717, 0, 196609, 1179718, 0, 196609, 1179719, 0, 196609, 1179720, 0, 196609, 1179721, 0, 196609, 1179722, 0, 196609, 1179723, 0, 196609, 1179724, 0, 196609, 1179725, 0, 196609, 1179726, 0, 196609, 1179727, 0, 196609, 1179728, 0, 196609, 1179729, 0, 196609, 1179730, 0, 196609, 1179731, 0, 196609, 1179732, 0, 196609, 1179733, 0, 196609, 1179734, 0, 196609, 1179735, 0, 196609, 1179736, 0, 196609, 1179737, 0, 196609, 1179738, 0, 196609, 1179739, 0, 196609, 1179740, 0, 196609, 1179741, 0, 196609, 1179742, 0, 196609, 1179743, 0, 196609, 1179744, 0, 196609, 1179745, 0, 196609, 1179746, 0, 196609, 1179747, 0, 196609, 1179748, 0, 196609, 1179749, 0, 196609, 1179750, 0, 196609, 1179751, 0, 196609, 1179752, 0, 196609, 1179753, 0, 196609, 1179754, 0, 196609, 1179755, 0, 196609, 1179756, 0, 196609, 1179757, 0, 196609, 1179758, 0, 196609, 1179759, 0, 196609, 1179760, 0, 196609, 1179761, 0, 196609, 1179762, 0, 196609, 1179763, 0, 196609, 1179764, 0, 196609, 1179765, 0, 196609, 1179766, 0, 196609, 1179767, 0, 196609, 1179768, 0, 196609, 1179769, 0, 196609, 1179770, 0, 196609, 1179771, 0, 196610 )
 
 [node name="Atmosphere" type="CanvasModulate" parent="."]
 

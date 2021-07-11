@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://WorldGeneration/Planets/planet.gd" type="Script" id=1]
-[ext_resource path="res://Tiles/Ground/sandGround.png" type="Texture" id=2]
-[ext_resource path="res://Tiles/Solids/WaterSolids.tscn" type="PackedScene" id=3]
+[ext_resource path="res://EnviormentalArt/Ground/sandGround.png" type="Texture" id=2]
+[ext_resource path="res://EnviormentalArt/Solids/WaterSolids.tscn" type="PackedScene" id=3]
 [ext_resource path="res://WorldGeneration/Planets/WaterAtmosphere.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Tiles/AltGround/SandRocks.tscn" type="PackedScene" id=5]
+[ext_resource path="res://EnviormentalArt/AltGround/SandRocks.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=6]
 
 [resource]

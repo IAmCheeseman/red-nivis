@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://WorldGeneration/Minibiomes/Minibiome.gd" type="Script" id=1]
-[ext_resource path="res://Tiles/Solids/RegMossySolid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://EnviormentalArt/Solids/RegMossySolid.tscn" type="PackedScene" id=2]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 

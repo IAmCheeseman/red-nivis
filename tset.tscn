@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Tiles/Solids/RedStone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://EnviormentalArt/Solids/RedStone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 
 [node name="tset" type="Node2D"]
