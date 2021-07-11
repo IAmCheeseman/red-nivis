@@ -67,25 +67,29 @@ show_behind_parent = true
 script = ExtResource( 7 )
 scrollSpeed = Vector2( 0.9, 1 )
 cameraPath = NodePath("../../Props/Player/Camera")
+limitsStart = Vector2( -2.34783e+10, 3000 )
+limitsEnd = Vector2( 2.34783e+10, 3300 )
 
 [node name="Far" type="Sprite" parent="Background/FarParallax"]
 texture = ExtResource( 4 )
 centered = false
 offset = Vector2( 0, -50 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 760, 350 )
+region_rect = Rect2( 0, 0, 8.32567e+06, 350 )
 
 [node name="NearParallax" type="Node2D" parent="Background"]
 script = ExtResource( 7 )
 scrollSpeed = Vector2( 0.65, 1 )
 cameraPath = NodePath("../../Props/Player/Camera")
+limitsStart = Vector2( -2.34783e+10, 3050 )
+limitsEnd = Vector2( 2.34783e+10, 3300 )
 
 [node name="Close" type="Sprite" parent="Background/NearParallax"]
 texture = ExtResource( 5 )
 centered = false
 offset = Vector2( 0, -50 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 760, 350 )
+region_rect = Rect2( 0, 0, 8.32567e+06, 350 )
 
 [node name="Sky" type="CanvasLayer" parent="."]
 layer = -128

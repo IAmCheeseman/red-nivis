@@ -274,8 +274,7 @@ position = Vector2( 0, -6 )
 shape = SubResource( 3 )
 
 [node name="Camera" parent="." instance=ExtResource( 10 )]
-process_priority = 1
-smoothing_enabled = true
+process_priority = -1
 smoothing_speed = 12.0
 yOffset = 50
 
