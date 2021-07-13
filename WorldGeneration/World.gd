@@ -108,6 +108,7 @@ func set_camera_limits():
 	camera.limit_right       = (tileRect.end.x-1)*cellSize
 	camera.limit_top    = (tileRect.position.y+1)*cellSize
 	camera.limit_left   = (tileRect.position.x+1)*cellSize
+	camera.limit_top -= 200*cellSize
 
 
 func set_minimap(image:Image):
