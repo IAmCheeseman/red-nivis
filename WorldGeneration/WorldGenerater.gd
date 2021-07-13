@@ -79,9 +79,11 @@ func add_caves(x, y):
 	# Getting a value which needs to pass the threshold to remove a tile.
 	caveNoise.thickness = (y/worldSize.y)*threshold
 	var caveValue = caveNoise.get_noise_2d(x, y)
-	# Setting the value to be false if this is true, which
-	# Converts to 0, we subtract 1 to get our map values.
-	map[x][y] = int(!caveValue > threshold and map[x][y] == 0)-1
+	# Removing tiles
+	var mapVal = map[x][y]
+	if caveValue > threshold and map[x][y] == 0:
+		map[x][y] = 1
+
 
 
 

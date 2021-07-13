@@ -1,7 +1,7 @@
 extends Node2D
 
-var tiles
-var backgroundTiles
+var tiles:TileMap
+var backgroundTiles:TileMap
 var planet:Planet
 onready var player = $Props/Player
 onready var backgrounds = $Background
@@ -75,12 +75,23 @@ func generate_room():
 
 	tiles = planet.solidTiles.instance()
 	props.add_child(tiles)
+	backgroundTiles = tiles.duplicate()
+	backgroundTiles.collision_layer = 0
+	backgroundTiles.modulate = Color.gray
+	backgroundTiles.z_index = -1
+	props.add_child(backgroundTiles)
 
 	for x in world.size():
 		for y in world[x].size():
 			# Adding tiles
+			if world[x][y] == 1:
+				backgroundTiles.set_cell(x, y, 0)
+				backgroundTiles.update_bitmask_area(Vector2(x, y))
+				continue
 			tiles.set_cell(x, y, world[x][y])
 			tiles.update_bitmask_area(Vector2(x, y))
+			backgroundTiles.set_cell(x, y, world[x][y])
+			backgroundTiles.update_bitmask_area(Vector2(x, y))
 
 
 func check_approx(color:Color, color2:Color):

@@ -67,7 +67,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	print(position)
 	if !lockMovement:
 		# INPUT
 		# ------------------------------------------------
@@ -82,7 +81,7 @@ func _physics_process(delta):
 
 		var faceDir = get_local_mouse_position()
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
-#		sprite.rotation_degrees = vel.x/10
+		sprite.rotation_degrees = vel.x/15
 
 		animate(moveDir)
 
