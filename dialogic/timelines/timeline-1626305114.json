@@ -1,0 +1,91 @@
+{
+	"events": [
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hey, I'm Norg!"
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "How are you doin'?"
+		},
+		{
+			"choice": "Good",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah, that's awesome."
+		},
+		{
+			"choice": "Bad",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That sucks."
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Is there anythin' I can do to help?"
+		},
+		{
+			"choice": "Yes",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Well,[shake rate=10 level=3] you're not gettin' any.[/shake]"
+		},
+		{
+			"choice": "No",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I really wanted to help."
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2.4",
+		"file": "timeline-1626305114.json",
+		"name": "NorgDialog2"
+	}
+}

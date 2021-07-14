@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://NPC/Norg/NorgIdle.png" type="Texture" id=2]
-[ext_resource path="res://NPC/Norg/NorgDialog.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -26,7 +25,7 @@ tracks/1/path = NodePath("ScaleHelper:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 1, 0.225313, 1 ),
@@ -34,46 +33,23 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.95, 1.05 ), Vector2( 1.05, 0.95 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 27.0185
+[sub_resource type="CapsuleShape2D" id=2]
+height = 18.0
 
 [node name="Norg" instance=ExtResource( 1 )]
+dialogs = PoolStringArray( "NorgDialog1", "NorgDialog2" )
 snapPos = Vector2( 0, 19 )
-
-[node name="ScaleHelper" parent="." index="0"]
-scale = Vector2( 1.00559, 0.994414 )
 
 [node name="Sprite" parent="ScaleHelper" index="0"]
 position = Vector2( 0, -20 )
 texture = ExtResource( 2 )
 hframes = 4
-frame = 3
-
-[node name="Shadow" parent="ScaleHelper" index="1"]
-position = Vector2( 0, 20 )
-texture = ExtResource( 2 )
-hframes = 4
+frame = 2
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Idle"
 anims/Idle = SubResource( 1 )
 
-[node name="Dialog" parent="." index="2"]
-script = ExtResource( 3 )
-
-[node name="DialogAdvanceTimer" parent="." index="4"]
-one_shot = true
-
 [node name="CollisionShape2D" parent="TalkZone" index="0"]
+position = Vector2( 0, -19 )
 shape = SubResource( 2 )
-
-[node name="DialogOptions" type="CanvasLayer" parent="." index="6"]
-layer = 128
-
-[node name="Options" type="VBoxContainer" parent="DialogOptions" index="0"]
-anchor_bottom = 1.0
-margin_right = 48.0
-alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}

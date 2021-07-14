@@ -1,0 +1,29 @@
+{
+	"events": [
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This globe here is the planet that [wave]gave us[/wave] this ship!"
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's a nice planet. I'd recommend it."
+		},
+		{
+			"emit_signal": "0",
+			"event_id": "dialogic_040"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2.4",
+		"file": "timeline-1626303190.json",
+		"name": "NorgDialog1"
+	}
+}

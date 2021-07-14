@@ -16,7 +16,7 @@ onready var prompt = $Prompt
 
 
 func _ready():
-	if inWorld: worldRoot = get_tree().root.get_child(3)
+	if inWorld: worldRoot = get_tree().root.get_child(4)
 
 
 func _on_LoadingZone_area_entered(area):
@@ -24,7 +24,7 @@ func _on_LoadingZone_area_entered(area):
 		closeEnough = true
 		prompt.show()
 		return
-	
+
 	if area.is_in_group("player"):
 		load_area()
 
@@ -45,7 +45,7 @@ func load_area():
 		get_tree().root.call_deferred("add_child", Memory.inMemory[memorySlot])
 		get_parent().queue_free()
 		return
-	
+
 	if inWorld and worldRoot:
 		if loadPaths.size() > 0:
 			loadPaths.shuffle()
