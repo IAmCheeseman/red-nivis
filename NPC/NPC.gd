@@ -25,11 +25,13 @@ func _input(event):
 	if Input.is_action_just_pressed("interact") and player:
 		if !player.lockMovement and player.is_on_floor():
 			player.lockMovement = true
+			player.global_position = global_position+snapPos
 			start_dialog()
 
 
 func _on_dialog_finished(timeline:String):
 	player.lockMovement = false
+	player = null
 
 
 func _on_talk_zone_entered(area):
