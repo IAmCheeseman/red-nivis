@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Hub/HubTiles.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Hub/Globe.png" type="Texture" id=10]
 [ext_resource path="res://Hub/MedShop.png" type="Texture" id=11]
 [ext_resource path="res://Hub/GunShop.png" type="Texture" id=12]
+[ext_resource path="res://Hub.gd" type="Script" id=13]
 [ext_resource path="res://Items/Weapons/Bullet/BulletManagement.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -448,6 +449,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 0/z_index = 0
 
 [node name="Hub" type="Node2D"]
+script = ExtResource( 13 )
 
 [node name="BulletManagement" parent="." instance=ExtResource( 14 )]
 position = Vector2( 297, 403 )
