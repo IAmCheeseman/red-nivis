@@ -1,7 +1,6 @@
 extends Control
 
-onready var itemName = $ItemName
-onready var itemAmount = $ItemAmount
+onready var slotTexture = $TextureRect
 
 var item:String
 
@@ -9,10 +8,14 @@ signal hovering
 signal move
 
 
-func setup(name_:String, amount:int, itemID:String):
-	itemName.text = " %s" % name_
-	itemAmount.text = "x%s " % amount
+func setup(texture:StreamTexture, itemID:String):
+	slotTexture.texture = texture
 	item = itemID
+
+
+func clear():
+	slotTexture.texture = null
+	item = ""
 
 
 func _on_press():

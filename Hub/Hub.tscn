@@ -452,7 +452,6 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 script = ExtResource( 13 )
 
 [node name="BulletManagement" parent="." instance=ExtResource( 14 )]
-position = Vector2( 297, 403 )
 
 [node name="LoadingZone" parent="." instance=ExtResource( 4 )]
 position = Vector2( 234, 491 )
@@ -640,6 +639,9 @@ color = Color( 0.192157, 0.188235, 0.313726, 1 )
 position = Vector2( 277, 508 )
 maxSpeed = 80
 recoveryTime = 1.0
+
+[node name="Camera" parent="Player" index="2"]
+zoom = Vector2( 0.7, 0.7 )
 
 [editable path="LoadingZone"]
 [editable path="Player"]

@@ -6,7 +6,8 @@
 		"Characters": {
 			"files": [
 				"character-1626303185.json",
-				"character-1626320411.json"
+				"character-1626320411.json",
+				"json_dock.gd"
 			],
 			"folders": {
 

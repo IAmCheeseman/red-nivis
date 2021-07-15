@@ -2,7 +2,7 @@ extends Resource
 class_name Inventory
 
 # Inventory stuff
-export var maxSlots = 8
+export var maxSlots = 5
 var items = []
 
 # Item map
@@ -29,6 +29,12 @@ func check_existence(id:String) -> bool:
 	return false
 
 
+func get_item(id:String):
+	if check_existence(id):
+		return itemMap[id]
+	push_error("ITEM DOES NOT EXIST: %s" % id)
+
+
 func filter_items(id:String):
 	var filteredItems = []
 	for item in items:
@@ -43,39 +49,8 @@ func move_item(from:int, to:int):
 	items.insert(to, movedItem)
 
 
-func add_item(id:String, amount:int):
-	# Checking if the item can actually be added.
-	var filteredItems = filter_items(id)
-
-	# Making sure all stacks are not full.
-	var stacksFull = true
-	for i in filteredItems:
-		if i.amount < itemMap[id].maxStackSize:
-			stacksFull = false
-			break
-	if items.size() >= maxSlots and stacksFull:
-		return
-	if !check_existence(id):
-		push_error("ITEM DOES NOT EXIST: %s" % id)
-		return
-
-	var maxStackSize = itemMap[id].maxStackSize
-
-	# Adding items
-	if filteredItems.size() != 0:
-		for slot in filteredItems:
-			if amount <= 0:
-				break
-			var amountRemaining = maxStackSize-slot.amount
-			slot.amount = min(slot.amount+amount, maxStackSize)
-			amount -= amountRemaining
-	# Adding any stacks that need to be added
-	while amount > 0:
-		items.append({
-			"id" : id,
-			"amount" : min(amount, maxStackSize)
-		})
-		amount -= maxStackSize
+func add_item(id:String):
+	items.append(id)
 
 	emit_signal("itemsChanged")
 	emit_signal("itemAdded", id)

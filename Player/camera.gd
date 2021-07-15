@@ -4,17 +4,14 @@ onready var offsetTween = $OffsetTween
 onready var rotTween = $RotTween
 onready var timer = $Timer
 
-
 export var mouseWeight = true
 export var yOffset = 0
-
 
 # Mouse movement
 var lerpSpeed = 1
 var maxOffset = 32
 var baseMaxOffset = maxOffset
 var sensitivity = 6
-
 
 # Screenshake
 var priority = -1
@@ -35,7 +32,6 @@ func _process(_delta):
 	# Finding out where the camera should be by
 	# getting the direction and distance to the mouse and
 	# lerping the position to the direction*distance
-
 	var mousePosition = get_local_mouse_position()
 	var dirMouse = position.rotated(global_rotation).direction_to(mousePosition)
 	var mouseDist = (position.distance_to(mousePosition)/sensitivity)*Settings.cameraLook
@@ -95,7 +91,6 @@ func shake():
 
 func _on_Tween_tween_all_completed():
 	# If timer is over, stop, and reset
-
 	if timer.is_stopped():
 		priority = -1
 

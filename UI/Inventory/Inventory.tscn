@@ -1,148 +1,71 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/Inventory/InventoryUI.gd" type="Script" id=1]
-[ext_resource path="res://UI/Assets/InventoryBG.png" type="Texture" id=3]
-[ext_resource path="res://UI/Assets/InventorySlider.png" type="Texture" id=4]
-[ext_resource path="res://UI/Assets/InvenInfo.png" type="Texture" id=5]
-[ext_resource path="res://UI/Assets/InventoryTitle.png" type="Texture" id=6]
-[ext_resource path="res://UI/Click.wav" type="AudioStream" id=7]
-
-[sub_resource type="Animation" id=1]
-resource_name = "Idle"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -1 ), Vector2( -3, -1 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "In"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Center:rect_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Center:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 150, 150 ), Vector2( 0, 0 ) ]
-}
+[ext_resource path="res://UI/Inventory/Slot.tscn" type="PackedScene" id=2]
 
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBox" type="HBoxContainer" parent="Center"]
-margin_left = 96.0
-margin_top = 43.0
-margin_right = 284.0
-margin_bottom = 256.0
-custom_constants/separation = -1
-
-[node name="VBox" type="VBoxContainer" parent="Center/HBox"]
-margin_right = 120.0
-margin_bottom = 213.0
-custom_constants/separation = -7
-
-[node name="Title" type="TextureRect" parent="Center/HBox/VBox"]
-margin_right = 120.0
-margin_bottom = 44.0
-texture = ExtResource( 6 )
-stretch_mode = 4
-
-[node name="BackGround" type="TextureRect" parent="Center/HBox/VBox"]
-show_behind_parent = true
-margin_top = 37.0
-margin_right = 120.0
-margin_bottom = 213.0
-texture = ExtResource( 3 )
-
-[node name="Slots" type="VBoxContainer" parent="Center/HBox/VBox/BackGround"]
-margin_left = 4.0
-margin_top = 9.0
-margin_right = 116.0
-margin_bottom = 167.0
-custom_constants/separation = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="InfoViewer" type="VBoxContainer" parent="Center/HBox"]
-margin_left = 119.0
-margin_right = 188.0
-margin_bottom = 213.0
+[node name="Slots" type="HBoxContainer" parent="VBox"]
+margin_top = 278.0
+margin_right = 380.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 22 )
+mouse_filter = 2
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Center/HBox/InfoViewer"]
-margin_top = 50.0
-margin_right = 69.0
-margin_bottom = 79.0
-custom_constants/margin_top = 29
+[node name="Slot1" parent="VBox/Slots" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 126.0
+margin_right = 144.0
+margin_bottom = 22.0
 
-[node name="InfoViewerBG" type="TextureRect" parent="Center/HBox/InfoViewer"]
-margin_top = 83.0
-margin_right = 69.0
-margin_bottom = 163.0
-texture = ExtResource( 5 )
-stretch_mode = 4
+[node name="Slot2" parent="VBox/Slots" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 148.0
+margin_right = 166.0
+margin_bottom = 22.0
 
-[node name="ItemTexture" type="TextureRect" parent="Center/HBox/InfoViewer/InfoViewerBG"]
-margin_left = 21.0
-margin_top = 16.0
-margin_right = 53.0
-margin_bottom = 48.0
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Slot3" parent="VBox/Slots" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 170.0
+margin_right = 188.0
+margin_bottom = 22.0
 
-[node name="Slider" type="Sprite" parent="."]
-position = Vector2( 83, 91 )
-texture = ExtResource( 4 )
-centered = false
-offset = Vector2( -0.742559, -1 )
+[node name="Slot4" parent="VBox/Slots" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_right = 210.0
+margin_bottom = 22.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Slider"]
-autoplay = "Idle"
-anims/Idle = SubResource( 1 )
+[node name="Slot5" parent="VBox/Slots" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 214.0
+margin_right = 232.0
+margin_bottom = 22.0
 
-[node name="IvenAnim" type="AnimationPlayer" parent="."]
-anims/In = SubResource( 2 )
-
-[node name="Click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+[node name="Slot6" parent="VBox/Slots" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 236.0
+margin_right = 254.0
+margin_bottom = 22.0

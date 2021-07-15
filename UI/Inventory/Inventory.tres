@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-maxSlots = 8
+maxSlots = 5

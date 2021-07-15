@@ -62,7 +62,6 @@ func _ready():
 		_on_death()
 	if !Settings.vignette:
 		vignette.queue_free()
-	inventory.visible = false
 	healthBar.value = GameManager.percentage_of(float(hurtbox.health), 20.0)
 
 
@@ -72,7 +71,7 @@ func _physics_process(delta):
 		# ------------------------------------------------
 		var moveDir := Vector2.ZERO
 
-		moveDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left")) * int(!inventory.visible)
+		moveDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left"))
 		moveDir = moveDir.normalized()
 		vel.x = lerp(vel.x, moveDir.x*(maxSpeed*( 1 + (jumpSpeedMod*int(!is_grounded() ) )) ), accelaration*delta)
 		# Do stuff in the air.

@@ -1,42 +1,41 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/Inventory/Slot.gd" type="Script" id=1]
-[ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=2]
-[ext_resource path="res://UI/Assets/Slot.png" type="Texture" id=3]
-[ext_resource path="res://UI/Assets/SlotHover.png" type="Texture" id=4]
-[ext_resource path="res://UI/Assets/SlotPressed.png" type="Texture" id=5]
+[ext_resource path="res://Items/Weapons/WeaponSprites/Bazooka.png" type="Texture" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/Slot.png-c3dabab1b9471a34cb3fe7bec0b47623.stex"
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/SlotPressed.png-ddbacac1a489c10b58df20bf6827b85e.stex"
+
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/SlotHover.png-7d9bc903ca922261bf7278352f84965b.stex"
 
 [node name="Slot" type="TextureButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -188.0
-margin_bottom = -284.0
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 4 )
+margin_right = -362.0
+margin_bottom = -281.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 2 )
+texture_hover = SubResource( 3 )
+texture_disabled = SubResource( 2 )
+texture_focused = SubResource( 3 )
 stretch_mode = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemName" type="Label" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 2 )
-text = " Item Name"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ItemAmount" type="Label" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 2 )
-text = "x2 "
-align = 2
-valign = 1
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 17.0
+margin_bottom = 18.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

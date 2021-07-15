@@ -25,7 +25,7 @@ func _ready():
 func _input(event):
 	# Picking up the item
 	if player and event.is_action_pressed("interact"):
-		inventory.add_item(item, stackSize)
+		inventory.add_item(item)
 		anim.play("PickUp")
 
 
