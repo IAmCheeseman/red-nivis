@@ -7,6 +7,12 @@
 			"text": "Hey, I'm Norg!"
 		},
 		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hey, Norg!"
+		},
+		{
 			"character": "character-1626303185.json",
 			"event_id": "dialogic_010",
 			"options": [
@@ -23,6 +29,12 @@
 			"value": ""
 		},
 		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I'm doing good!"
+		},
+		{
 			"character": "character-1626303185.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -34,6 +46,12 @@
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
+		},
+		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Not great."
 		},
 		{
 			"character": "character-1626303185.json",
@@ -58,10 +76,22 @@
 			"value": ""
 		},
 		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah!"
+		},
+		{
 			"character": "character-1626303185.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Well,[shake rate=10 level=3] you're not gettin' any.[/shake]"
+			"text": "Well, [shake rate=10 level=7]you're not gettin' any.[/shake]"
+		},
+		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[shake rate=10 level=7]Wha... [/shake]"
 		},
 		{
 			"choice": "No",
@@ -71,16 +101,32 @@
 			"value": ""
 		},
 		{
-			"character": "",
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Not really..."
+		},
+		{
+			"character": "character-1626303185.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "I really wanted to help."
 		},
 		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I bet."
+		},
+		{
 			"event_id": "dialogic_013"
 		},
 		{
 			"event_id": "dialogic_013"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.1
 		}
 	],
 	"metadata": {

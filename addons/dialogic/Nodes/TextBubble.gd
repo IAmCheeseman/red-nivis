@@ -12,6 +12,7 @@ var _finished := false
 var _theme
 
 signal text_completed()
+signal text_advanced()
 
 
 ## *****************************************************************************

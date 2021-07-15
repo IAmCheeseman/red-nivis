@@ -15,6 +15,7 @@ var shellPositions = [
 ]
 
 export var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
+export var shell = preload("res://Items/Weapons/Bullet/Shell.tscn")
 var shootSound : SoundManager
 var rotVel = 0
 var holdShots = 0
@@ -28,7 +29,7 @@ func _physics_process(delta):
 	else:
 		gunSprite.scale.y = 1
 	# Showing the gun behind the parent based on rotation
-	get_parent().get_parent().show_behind_parent = local.y < 0
+	gun.get_parent().show_behind_parent = local.y < 0
 
 	# Setting rotation
 	var pastRot = gunSprite.global_rotation
@@ -43,10 +44,15 @@ func _physics_process(delta):
 
 	# Shooting
 	var hasEnoughAmmo = gun.player.ammo-gun.cost > 0
-	if Input.is_action_pressed("use_item") and get_parent().canShoot and hasEnoughAmmo and holdShots < gun.maxHoldShots:
+
+	if Input.is_action_pressed("use_item")\
+	and gun.canShoot\
+	and hasEnoughAmmo\
+	and holdShots < gun.maxHoldShots:
 		gun.player.ammo -= gun.cost
 		shoot()
-	elif Input.is_action_just_pressed("use_item") and !hasEnoughAmmo:
+	elif Input.is_action_just_pressed("use_item")\
+	and !hasEnoughAmmo:
 		gun.noAmmoClick.play()
 
 func shoot():

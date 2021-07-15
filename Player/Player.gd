@@ -122,23 +122,22 @@ func just_landed():
 func is_grounded():
 	for c in floorCheckers.get_children():
 		if c.is_colliding():
-			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_pressed("swap_weapons") else Vector2.ZERO
+			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_pressed("jump") else Vector2.ZERO
 			return true
 	return false
 
 
 func _input(event):
 	# Jumping
-	if Input.is_action_just_pressed("swap_weapons") and is_grounded():
+	if Input.is_action_just_pressed("jump") and is_grounded():
 		# Setting values
 		snapVector = Vector2.ZERO
-		scaleHelper.scale = Vector2(.8, 1.2)
 		if !bunnyHopTimer.is_stopped():
 			vel.x *= bunnyHopMult
 		# Squash and stretch
 		SaS.play("Jump")
 		vel.y = -jumpForce
-	if Input.is_action_just_released("swap_weapons") and vel.y < 0 and !is_grounded():
+	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
 
 	if event.is_action_pressed("remove_tile") and !inventory.visible:

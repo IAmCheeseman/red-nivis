@@ -1,0 +1,77 @@
+{
+	"events": [
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Have you found anything cool recently?"
+		},
+		{
+			"choice": "Yeah",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yes!"
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What was it?"
+		},
+		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I forget... but it was cool!"
+		},
+		{
+			"choice": "No",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Nah. Nothing interesting."
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That sucks. I was hoping to see a cool rock or somthing."
+		},
+		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah, that would've been cool."
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah. Could've [shake rate=10 level=7]BASHED SOMEONE'S HEAD IN[/shake]"
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2.4",
+		"file": "timeline-1626321501.json",
+		"name": "NorgDialog3"
+	}
+}

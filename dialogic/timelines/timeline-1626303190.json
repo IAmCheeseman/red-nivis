@@ -4,17 +4,25 @@
 			"character": "character-1626303185.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "This globe here is the planet that [wave]gave us[/wave] this ship!"
+			"text": "This [color=#75d1e4]globe[/color] here is the planet that [wave]gave us[/wave] this ship!"
+		},
+		{
+			"character": "character-1626320411.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "They just [wave]gave[/wave] it to you?"
+		},
+		{
+			"character": "character-1626303185.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah."
 		},
 		{
 			"character": "character-1626303185.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "It's a nice planet. I'd recommend it."
-		},
-		{
-			"emit_signal": "0",
-			"event_id": "dialogic_040"
 		},
 		{
 			"event_id": "dialogic_022",

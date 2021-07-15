@@ -6,7 +6,7 @@
 [node name="tset" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -901.195, 110.713 )
+position = Vector2( 134.029, 59.0409 )
 maxSpeed = 120
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]

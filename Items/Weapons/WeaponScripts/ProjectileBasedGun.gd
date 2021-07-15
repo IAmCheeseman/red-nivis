@@ -21,7 +21,7 @@ func shoot():
 		newBullet.lifetime = gun.projLifetime
 		newBullet.global_position = global_position+dir*gun.bulletSpawnDist
 		# Adding it to the tree
-		get_tree().root.get_child(3).add_child(newBullet)
+		GameManager.spawnManager.add_bullet(newBullet)
 		newBullet.hitbox.damage = gun.damage
 
 		newBullet.set_texture(gun.bulletSprite)
@@ -53,12 +53,12 @@ func shoot():
 	get_parent().emit_signal("onShoot", global_position.direction_to(get_global_mouse_position()), gun.recoil, gun.cost)
 
 	# Creating a bullet shell
-	var shell = load("res://Items/Weapons/Bullet/Shell.tscn").instance()
-	shell.global_position = global_position
-	shell.dist = rand_range(16, 32)
-	shell.shellRect = shellPositions[gun.gunType]
-	get_tree().root.get_child(3).add_child(shell)
-	shell.start(-global_position.direction_to(get_global_mouse_position()).rotated(deg2rad(rand_range(-15, 15) ) ) )
+	var newShell = shell.instance()
+	newShell.global_position = global_position
+	newShell.dist = rand_range(16, 32)
+	newShell.shellRect = shellPositions[gun.gunType]
+	GameManager.spawnManager.add_bullet(shell)
+	newShell.start(-global_position.direction_to(get_global_mouse_position()).rotated(deg2rad(rand_range(-15, 15) ) ) )
 
 
 func _input(event):

@@ -6,21 +6,16 @@ var heldItems = [null, null]
 
 var attackingEnemies = 0 setget set_attacking_enemies
 
+var spawnManager:Node2D
+var itemManager = ItemManagement.new()
 
 # warning-ignore:unused_signal
 signal screenshake
 
 
 func _input(_event):
-	if Input.is_action_just_pressed("toggle_fullscreen"): OS.window_fullscreen = !OS.window_fullscreen
-	if Input.is_action_just_pressed("spawnGun"):
-		var gun = load("res://Items/Weapons/Gun.tscn").instance()
-		gun.global_position = get_global_mouse_position()
-		add_child(gun)
-	if Input.is_key_pressed(KEY_R):
-# warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
-
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
 
 
 func load_scene(loadPath):

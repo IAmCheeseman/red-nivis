@@ -10,19 +10,25 @@ func get_item(id:String):
 
 
 var items = {
-
 	"Cheese" : {
-				"texture" : preload("res://Items/Consumables/Cheese.png"),
-				"maxStackSize" : 5
+		"texture" : preload("res://Items/Consumables/Cheese.png"),
+		"maxStackSize" : 5,
+		"scene" : null,
+		"script" : null
 	},
 
 	"Health_Potion" : {
-				"texture" : preload("res://Items/Consumables/HealthPotion.png"),
-				"maxStackSize" : 3
+		"texture" : preload("res://Items/Consumables/HealthPotion.png"),
+		"maxStackSize" : 3,
+		"scene" : null,
+		"script" : null
 	},
+
 	"Sandwich" : {
-				"texture" : preload("res://Items/Consumables/SandWhich.png"),
-				"maxStackSize" : 5
+		"texture" : preload("res://Items/Consumables/SandWhich.png"),
+		"maxStackSize" : 5,
+		"scene" : null,
+		"script" : null
 	}
 }
 

@@ -1,0 +1,20 @@
+{
+  "Cheese": {
+    "maxStackSize": 5,
+    "scene": null,
+    "script": null,
+    "texture": "res://Items/Consumables/Cheese.png"
+  },
+  "Health_Potion": {
+    "maxStackSize": 3,
+    "scene": null,
+    "script": null,
+    "texture": "res://Items/Consumables/HealthPotion.png"
+  },
+  "Sandwich": {
+    "maxStackSize": 5,
+    "scene": null,
+    "script": null,
+    "texture": "res://Items/Consumables/SandWhich.png"
+  }
+}

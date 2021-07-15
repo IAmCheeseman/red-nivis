@@ -2,7 +2,7 @@ extends Node2D
 
 enum Signals {DONE}
 
-onready var sprite = $ScaleHelper/Sprite
+onready var scaleHelper = $ScaleHelper
 
 export var talkSpeed = .05
 export var dialogs:PoolStringArray = []
@@ -21,7 +21,7 @@ func start_dialog(setDialog:String=""):
 	dialog.connect("timeline_end", self, "_on_dialog_finished")
 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("interact") and player:
 		if !player.lockMovement and player.is_on_floor():
 			player.lockMovement = true
@@ -29,7 +29,11 @@ func _input(event):
 			start_dialog()
 
 
-func _on_dialog_finished(timeline:String):
+func _on_dialog_advanced():
+	scaleHelper.scale = Vector2(1.1, .9)
+
+
+func _on_dialog_finished(_timeline:String):
 	player.lockMovement = false
 	player = null
 
