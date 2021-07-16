@@ -16,7 +16,7 @@ onready var prompt = $Prompt
 
 
 func _ready():
-	if inWorld: worldRoot = get_tree().root.get_child(4)
+	if inWorld: worldRoot = get_tree().root.get_child(5)
 
 
 func _on_LoadingZone_area_entered(area):

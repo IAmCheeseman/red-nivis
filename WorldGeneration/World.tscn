@@ -5,7 +5,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=4]
 [ext_resource path="res://EnviormentalArt/BackGrounds/MountainsNear.png" type="Texture" id=5]
-[ext_resource path="res://Player/PlaceTile.wav" type="AudioStream" id=6]
+[ext_resource path="res://Player/Assets/PlaceTile.wav" type="AudioStream" id=6]
 [ext_resource path="res://CustomNodes/CustomParallax.gd" type="Script" id=7]
 [ext_resource path="res://WorldGeneration/WorldManagement/WorldManager.tscn" type="PackedScene" id=8]
 [ext_resource path="res://WorldGeneration/World.gd" type="Script" id=9]
@@ -114,6 +114,8 @@ visible = false
 
 [node name="MistSpawner" parent="Props/Player" instance=ExtResource( 10 )]
 position = Vector2( -8, -8 )
+worldPath = NodePath("../../..")
+playerPath = NodePath("..")
 
 [node name="PlaceTiles" parent="Props" instance=ExtResource( 2 )]
 

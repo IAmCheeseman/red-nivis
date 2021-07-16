@@ -50,6 +50,7 @@ func _physics_process(delta):
 	and hasEnoughAmmo\
 	and holdShots < gun.maxHoldShots:
 		gun.player.ammo -= gun.cost
+		Cursor.scale = Vector2(1.2, 1.2)
 		shoot()
 	elif Input.is_action_just_pressed("use_item")\
 	and !hasEnoughAmmo:

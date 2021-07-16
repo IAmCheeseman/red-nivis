@@ -4,7 +4,7 @@
 			"character": "character-1626395947.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Pickle Pickle Pickle Pickle."
+			"text": "Pickle pickle pickle pickle."
 		},
 		{
 			"character": "character-1626395947.json",
@@ -26,7 +26,7 @@
 			"character": "character-1626395947.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Pickle Pickle Pickle [shake rate=10 level=7]Pickle Pickle Pickle Pickle Pickle.[/shake]"
+			"text": "Pickle pickle pickle [shake rate=15 level=7]pickle pickle pickle pickle pickle.[/shake]"
 		},
 		{
 			"choice": "Pickle",
@@ -39,7 +39,7 @@
 			"character": "character-1626395947.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Pickle! Pickle Pickle Pickle Pickle, Pickle Pickle Pickle, Pickle."
+			"text": "Pickle! Pickle pickle pickle pickle, pickle pickle pickle, pickle."
 		},
 		{
 			"event_id": "dialogic_013"

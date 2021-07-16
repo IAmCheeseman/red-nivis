@@ -2,8 +2,8 @@ extends Resource
 class_name Inventory
 
 # Inventory stuff
-export var maxSlots = 5
-var items = []
+export var maxSlots:int = 5
+var items:Array = []
 
 # Item map
 var itemMapR = preload("res://UI/Inventory/ItemMap.tres")

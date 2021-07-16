@@ -21,7 +21,6 @@ export var inMenu = false
 onready var sprite = $ScaleHelper/Sprite
 onready var scaleHelper = $ScaleHelper
 onready var hurtbox = $Hurtbox
-onready var healthVignette = $CanvasLayer/HealthThing
 onready var vignette = $CanvasLayer/Vignette
 onready var animationPlayer = $AnimationPlayer
 onready var SaS = $SquashAndStretch
@@ -40,7 +39,6 @@ onready var bottomTileChecker = $TileCheckers/BottomTileChecker
 onready var topTileChecker = $TileCheckers/TopTileChecker
 onready var bunnyHopTimer = $BunnyHopTimer
 
-var healthVigIntens = 0
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
 var lastFrameGroundState = false
@@ -139,7 +137,7 @@ func _input(event):
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
 
-	if event.is_action_pressed("remove_tile") and !inventory.visible:
+	if event.is_action_pressed("remove_tile"):
 		emit_signal("removeTile", get_global_mouse_position())
 # warning-ignore:return_value_discarded
 
@@ -208,11 +206,9 @@ func _on_Hurtbox_hurt(dir):
 	var tween = $CanvasLayer/HealthThing/Tween
 	tween.interpolate_property(self, "healthVigIntens", 0, .7, .2, Tween.TRANS_LINEAR)
 	tween.start()
-
 	# Feedback
 	hurtSFX.play()
 	flashPlayer.play("flash")
-
 	# Healthbar
 	healthBar.value = GameManager.percentage_of(float(hurtbox.health), 20.0)
 	hurtTimer.start(recoveryTime)
@@ -220,14 +216,6 @@ func _on_Hurtbox_hurt(dir):
 	GameManager.emit_signal("screenshake", 2, 8, .05, .05, 9)
 
 	dir += dir*kbStrength
-
-
-func _on_health_vig_tween_all_completed():
-	# Resetting the health flash, so it goes away
-	if hurtbox.health != 1 and is_equal_approx(healthVigIntens, .7):
-		var tween = $CanvasLayer/HealthThing/Tween
-		tween.interpolate_property(self, "healthVigIntens", .7, 0, .2, Tween.TRANS_LINEAR)
-		tween.start()
 
 
 func _on_Player_tree_entered():

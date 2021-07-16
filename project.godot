@@ -167,6 +167,7 @@ GameManager="*res://Managing/GameManager.gd"
 Memory="*res://Managing/MemoryManager.gd"
 Settings="*res://Managing/settings.gd"
 DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
+Cursor="*res://UI/Cursor/Cursor.tscn"
 
 [debug]
 
@@ -179,7 +180,6 @@ window/size/height=300
 window/size/test_width=760
 window/size/test_height=600
 window/vsync/use_vsync=false
-mouse_cursor/custom_image="res://UI/cursor.png"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

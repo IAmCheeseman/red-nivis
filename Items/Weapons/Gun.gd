@@ -17,10 +17,10 @@ export(int, "pistol", "shotgun") var gunType = 0
 signal onShoot
 
 # Functionality
-export var damage = 6.0
-export var accuracy = 8.0
-export var cooldown = 0.2
-export var multishot = 1
+export var damage:float = 6.0
+export var accuracy:float = 8.0
+export var cooldown:float = 0.2
+export var multishot:int = 1
 export var spread = 0.0
 export var projSpeed = 340
 export var projScale = 1.0

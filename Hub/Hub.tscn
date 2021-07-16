@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Hub.gd" type="Script" id=1]
 [ext_resource path="res://Hub/Entrance.png" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://NPC/Pickle/Pickle.tscn" type="PackedScene" id=14]
 [ext_resource path="res://NPC/Norg/Norg.tscn" type="PackedScene" id=15]
 [ext_resource path="res://NPC/Horace/Horace.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Hub/Props/Lantern/Lantern.tscn" type="PackedScene" id=17]
+[ext_resource path="res://WorldGeneration/VisualEffects/MistSpawner.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25, 28 )
@@ -559,9 +561,9 @@ texture = ExtResource( 3 )
 hframes = 4
 
 [node name="Light" type="Light2D" parent="Shops/Globe"]
-position = Vector2( 0, -9 )
+position = Vector2( 0, -12 )
 texture = ExtResource( 9 )
-texture_scale = 0.1
+texture_scale = 0.11
 color = Color( 0.184314, 0.537255, 0.572549, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shops/Globe"]
@@ -589,6 +591,9 @@ snapPos = Vector2( -24, -3 )
 [node name="Horace" parent="NPCs" instance=ExtResource( 16 )]
 position = Vector2( 40, 496 )
 snapPos = Vector2( 24, -3 )
+
+[node name="Lantern" parent="NPCs/Horace" instance=ExtResource( 17 )]
+position = Vector2( 7, 0 )
 
 [node name="TilesMain" type="TileMap" parent="."]
 tile_set = SubResource( 41 )
@@ -652,6 +657,13 @@ recoveryTime = 1.0
 
 [node name="Camera" parent="Player" index="2"]
 zoom = Vector2( 0.7, 0.7 )
+
+[node name="MistSpawner" parent="Player" instance=ExtResource( 18 )]
+position = Vector2( -277, -508 )
+worldPath = NodePath("../..")
+playerPath = NodePath("..")
+color = Color( 1, 1, 1, 1 )
+strength = 0.35
 
 [editable path="LoadingZone"]
 [editable path="Player"]

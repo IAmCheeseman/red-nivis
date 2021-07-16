@@ -1,6 +1,8 @@
 extends Node2D
 tool
 
+export var worldPath:NodePath
+export var playerPath:NodePath
 export var mistRarity = 2
 export var mistClumpSize = 4
 export var mistClumRange = 4
@@ -8,7 +10,8 @@ export var clumpSpread = 64
 export var color : Color
 export var strength = .5
 
-var player : Node2D
+onready var world = get_node(worldPath)
+onready var player:Node2D = get_node(playerPath)
 
 var mist = preload("res://WorldGeneration/VisualEffects/Mist.tscn")
 
@@ -21,7 +24,7 @@ func spawn_mist():
 		var newMist = mist.instance()
 		newMist.rect_global_position = mistPos+Vector2(rand_range(-clumpSpread, clumpSpread), rand_range(-clumpSpread, clumpSpread))
 		newMist.player = player
-		get_parent().get_parent().get_parent().add_child(newMist)
+		world.add_child(newMist)
 		newMist.set_param(color, strength)
 
 

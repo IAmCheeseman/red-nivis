@@ -1,21 +1,20 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://Player/player_sheet.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Player/Assets/player_sheet.png" type="Texture" id=1]
+[ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://UI/Assets/helthbahicon.png" type="Texture" id=3]
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/vignette.png" type="Texture" id=5]
 [ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI/NokiaCellphone.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://Player/DeathScreen.gd" type="Script" id=8]
+[ext_resource path="res://Player/Scripts/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://UI/PauseMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/Camera.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Assets/AmmoBarEmpty.png" type="Texture" id=11]
 [ext_resource path="res://UI/Assets/AmmoBar.png" type="Texture" id=12]
 [ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Player/BackItemHolder.gd" type="Script" id=14]
-[ext_resource path="res://Player/Hit.wav" type="AudioStream" id=15]
-[ext_resource path="res://Player/Vignette.tres" type="Material" id=16]
+[ext_resource path="res://Player/Scripts/BackItemHolder.gd" type="Script" id=14]
+[ext_resource path="res://Player/Assets/Hit.wav" type="AudioStream" id=15]
+[ext_resource path="res://Player/Assets/Vignette.tres" type="Material" id=16]
 [ext_resource path="res://UI/Inventory/Inventory.tscn" type="PackedScene" id=17]
 [ext_resource path="res://UI/Assets/helthbahfull.png" type="Texture" id=18]
 [ext_resource path="res://UI/Assets/helthbahempty.png" type="Texture" id=19]
@@ -220,26 +219,9 @@ height = 5.69744
 [sub_resource type="CircleShape2D" id=11]
 radius = 4.0
 
-[sub_resource type="Shader" id=12]
-code = "shader_type canvas_item;
-
-uniform float intensity : hint_range(0.0, 1.0);
-uniform sampler2D vignette;
-
-void fragment() {
-	vec3 vignetteColor = texture(vignette, UV).rgb;
-	vec4 finalColor = vec4(.6*intensity, .15, .15, (1.0-vignetteColor.r)*intensity);
-	
-	COLOR = finalColor;
-}
-"
-
-[sub_resource type="ShaderMaterial" id=13]
-shader = SubResource( 12 )
-shader_param/intensity = 0.0
-shader_param/vignette = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=12]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -337,17 +319,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthThing" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 13 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Tween" type="Tween" parent="CanvasLayer/HealthThing"]
-
 [node name="Bars" type="VBoxContainer" parent="CanvasLayer"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -410,7 +381,6 @@ texture = ExtResource( 20 )
 stretch_mode = 4
 
 [node name="DeathScreen" type="VBoxContainer" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 8 )
@@ -419,25 +389,25 @@ __meta__ = {
 }
 
 [node name="GameOverLabel" type="RichTextLabel" parent="CanvasLayer/DeathScreen"]
-margin_right = 300.0
+margin_right = 380.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 14 )
+custom_fonts/normal_font = SubResource( 12 )
 bbcode_enabled = true
-bbcode_text = "[center][shake]Game Over[/shake]"
+bbcode_text = "[center][shake rate=15 level=8]Game Over[/shake]"
 text = "Game Over"
 scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DeathScreen"]
 margin_top = 20.0
-margin_right = 300.0
+margin_right = 380.0
 margin_bottom = 36.0
 alignment = 1
 
 [node name="Continue" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 73.0
-margin_right = 128.0
+margin_left = 113.0
+margin_right = 168.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
@@ -448,8 +418,8 @@ text = "Continue"
 flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 132.0
-margin_right = 164.0
+margin_left = 172.0
+margin_right = 204.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
@@ -463,8 +433,8 @@ __meta__ = {
 }
 
 [node name="QuitDesktop" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 168.0
-margin_right = 227.0
+margin_left = 208.0
+margin_right = 267.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
@@ -515,7 +485,6 @@ cast_to = Vector2( 6, 0 )
 [connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 [connection signal="dead" from="Hurtbox" to="." method="_on_death"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_Hurtbox_hurt"]
-[connection signal="tween_all_completed" from="CanvasLayer/HealthThing/Tween" to="." method="_on_health_vig_tween_all_completed"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/DeathScreen" method="_on_Continue_button_up"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/DeathScreen" method="_on_Quit_button_up"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/HBoxContainer/QuitDesktop" to="CanvasLayer/DeathScreen" method="_on_QuitDesktop_pressed"]
