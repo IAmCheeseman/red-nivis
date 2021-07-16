@@ -61,7 +61,7 @@ func shoot():
 	newShell.start(-global_position.direction_to(get_global_mouse_position()).rotated(deg2rad(rand_range(-15, 15) ) ) )
 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_released("use_item"):
 		holdShots = 0
 

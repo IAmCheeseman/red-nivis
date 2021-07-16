@@ -10,5 +10,5 @@ func _ready():
 
 func _process(delta):
 	rotation += rotSpeed*delta
-	scale = scale.move_toward(Vector2.ONE, 1*delta)
+	scale = scale.move_toward(Vector2.ONE, scaleSpeed*delta)
 	global_position = get_global_mouse_position()

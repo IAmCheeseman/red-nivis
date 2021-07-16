@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Colliders/LoadingZone.gd" type="Script" id=1]
-[ext_resource path="res://UI/NokiaCellphone.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
+
 
 [node name="LoadingZone" type="Area2D" groups=[
 "LoadingZone",

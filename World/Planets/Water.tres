@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://World/Planets/planet.gd" type="Script" id=1]
+[ext_resource path="res://EnviormentalArt/Solids/WaterSolids.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Planets/WaterAtmosphere.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=6]
+
+[resource]
+script = ExtResource( 1 )
+solidTiles = ExtResource( 3 )
+backgroundImages = [  ]
+atmosphereColor = Color( 0.333333, 0.376471, 0.878431, 1 )
+atmosphereParticles = ExtResource( 4 )
+mistStrength = 0.6
+mistColor = Color( 0.411765, 0.513726, 0.866667, 1 )
+ruinChance = 4
+minRuinDist = 15
+ruinColor = Color( 0.0627451, 0.0980392, 0.752941, 1 )
+miniBiomes = [  ]
+CAIterations = 2
+CAStarveLimit = 3
+CAOverPop = 4
+prefabs = "res://WorldGeneration/Prefabs/"
+props = [ ExtResource( 6 ) ]
+enemies = [  ]
+enemyChances = [  ]

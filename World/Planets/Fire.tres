@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://World/Planets/planet.gd" type="Script" id=1]
+[ext_resource path="res://EnviormentalArt/Solids/RedStone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/FireDude/FireDude.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Planets/FireAtmosphere.tscn" type="PackedScene" id=5]
+
+[resource]
+script = ExtResource( 1 )
+solidTiles = ExtResource( 3 )
+backgroundImages = [  ]
+atmosphereColor = Color( 0.65098, 0.317647, 0.317647, 1 )
+atmosphereParticles = ExtResource( 5 )
+mistStrength = 0.5
+mistColor = Color( 0.231373, 0.0235294, 0.0235294, 1 )
+ruinChance = 6
+minRuinDist = 15
+ruinColor = Color( 0.52549, 0.0666667, 0.0666667, 1 )
+miniBiomes = [  ]
+CAIterations = 2
+CAStarveLimit = 3
+CAOverPop = 4
+prefabs = "res://WorldGeneration/Prefabs/"
+props = [  ]
+enemies = [ ExtResource( 4 ) ]
+enemyChances = [ 0.5 ]

@@ -10,18 +10,15 @@ func _ready():
 		"screenshake",
 		"cameraLook",
 		"vignette",
-		"pixelPerfect",
 		"playerTilt"
 	]
 
 	if settingsData and settingsData.keys() == validSettingsKey:
 		Settings.cameraLook = settingsData.cameraLook
 		Settings.vignette = settingsData.vignette
-		Settings.pixelPerfect = settingsData.pixelPerfect
 		Settings.screenshake = settingsData.screenshake
 		Settings.playerTilt = settingsData.playerTilt
 
-	$Center/Options/Visual/Buttons/PixelPerfect.pressed = Settings.pixelPerfect
 	$Center/Options/Visual/Buttons/Vignette.pressed = Settings.vignette
 	$Center/Options/Visual/Buttons/PlayerTilt.pressed = Settings.playerTilt
 	$Center/Options/Visual/Sliders/Screenshake/HSlider.value = Settings.screenshake
@@ -38,10 +35,6 @@ func _on_cameralook_value_changed(value):
 	Settings.cameraLook = value
 
 
-func _on_PixelPerfect_toggled(button_pressed):
-	Settings.pixelPerfect = button_pressed
-
-
 func _on_Vignette_toggled(button_pressed):
 	Settings.vignette = button_pressed
 
@@ -55,7 +48,6 @@ func _on_Play_pressed():
 		"screenshake"  : Settings.screenshake,
 		"cameraLook"   : Settings.cameraLook,
 		"vignette"     : Settings.vignette,
-		"pixelPerfect" : Settings.pixelPerfect,
 		"playerTilt"   : Settings.playerTilt
 	}
 	dataManager.save_data(settings, "save.dat")

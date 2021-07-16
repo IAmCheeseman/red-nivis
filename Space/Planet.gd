@@ -62,7 +62,7 @@ func _on_Planet_body_entered(body):
 			get_tree().change_scene(altLoadPath)
 			return
 # warning-ignore:return_value_discarded
-		get_tree().change_scene("res://UI/WorldGenerationScreen.tscn")
+		var error = get_tree().change_scene("res://World/World.tscn")
 
 
 

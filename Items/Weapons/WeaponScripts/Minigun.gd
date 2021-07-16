@@ -5,7 +5,7 @@ export var cooldownRate = 10
 onready var startingCooldown = gun.cooldown
 onready var currentCooldown = startingCooldown
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_released("use_item"):
 		currentCooldown = startingCooldown
 

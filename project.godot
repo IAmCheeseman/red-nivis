@@ -92,12 +92,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Minibiome",
 "language": "GDScript",
-"path": "res://WorldGeneration/Minibiomes/Minibiome.gd"
+"path": "res://World/Minibiomes/Minibiome.gd"
 }, {
 "base": "Resource",
 "class": "Planet",
 "language": "GDScript",
-"path": "res://WorldGeneration/Planets/planet.gd"
+"path": "res://World/Planets/planet.gd"
 }, {
 "base": "Resource",
 "class": "Prefix",
@@ -107,12 +107,7 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "Ruin",
 "language": "GDScript",
-"path": "res://WorldGeneration/Ruins/Ruins.gd"
-}, {
-"base": "Resource",
-"class": "RuinHandler",
-"language": "GDScript",
-"path": "res://WorldGeneration/Ruins/RuinHandler.gd"
+"path": "res://World/Ruins/Ruins.gd"
 }, {
 "base": "Node2D",
 "class": "SoundManager",
@@ -120,14 +115,9 @@ _global_script_classes=[ {
 "path": "res://Managing/SoundManager.gd"
 }, {
 "base": "Resource",
-"class": "WorldData",
-"language": "GDScript",
-"path": "res://WorldGeneration/WorldManagement/WorldData.gd"
-}, {
-"base": "Resource",
 "class": "WorldGenerator",
 "language": "GDScript",
-"path": "res://WorldGeneration/WorldGenerater.gd"
+"path": "res://World/WorldGenerater.gd"
 } ]
 _global_script_class_icons={
 "BigJumpingBull": "",
@@ -150,9 +140,7 @@ _global_script_class_icons={
 "Planet": "",
 "Prefix": "",
 "Ruin": "",
-"RuinHandler": "",
 "SoundManager": "",
-"WorldData": "",
 "WorldGenerator": ""
 }
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=44 format=2]
 
-[ext_resource path="res://WorldGeneration/Ruins/ChangeColor.tres" type="Material" id=1]
+[ext_resource path="res://World/Ruins/Assets/ChangeColor.tres" type="Material" id=1]
 [ext_resource path="res://EnviormentalArt/Solids/RuinSolids.png" type="Texture" id=2]
 
 
