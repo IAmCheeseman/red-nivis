@@ -1,0 +1,53 @@
+{
+	"events": [
+		{
+			"character": "character-1626395947.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Pickle Pickle Pickle Pickle."
+		},
+		{
+			"character": "character-1626395947.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Pickle?"
+		},
+		{
+			"choice": "Pickle",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1626395947.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Pickle Pickle Pickle [shake rate=10 level=7]Pickle Pickle Pickle Pickle Pickle.[/shake]"
+		},
+		{
+			"choice": "Pickle",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1626395947.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Pickle! Pickle Pickle Pickle Pickle, Pickle Pickle Pickle, Pickle."
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2.4",
+		"file": "timeline-1626396585.json",
+		"name": "PickleDialog2"
+	}
+}

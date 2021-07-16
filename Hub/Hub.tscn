@@ -1,19 +1,21 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
-[ext_resource path="res://Hub/HubTiles.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Space/PlanetGlow.png" type="Texture" id=3]
-[ext_resource path="res://Colliders/LoadingZone.tscn" type="PackedScene" id=4]
-[ext_resource path="res://NPC/Norg/Norg.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hub.gd" type="Script" id=1]
+[ext_resource path="res://Hub/Entrance.png" type="Texture" id=2]
+[ext_resource path="res://Hub/Globe.png" type="Texture" id=3]
+[ext_resource path="res://Hub/FoodShop.png" type="Texture" id=4]
+[ext_resource path="res://Hub/GunShop.png" type="Texture" id=5]
 [ext_resource path="res://Hub/HubTilesDark.png" type="Texture" id=6]
-[ext_resource path="res://Hub/Pipes.png" type="Texture" id=7]
-[ext_resource path="res://Hub/Entrance.png" type="Texture" id=8]
-[ext_resource path="res://Hub/FoodShop.png" type="Texture" id=9]
-[ext_resource path="res://Hub/Globe.png" type="Texture" id=10]
-[ext_resource path="res://Hub/MedShop.png" type="Texture" id=11]
-[ext_resource path="res://Hub/GunShop.png" type="Texture" id=12]
-[ext_resource path="res://Hub.gd" type="Script" id=13]
-[ext_resource path="res://Items/Weapons/Bullet/BulletManagement.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Hub/HubTiles.png" type="Texture" id=7]
+[ext_resource path="res://Hub/Pipes.png" type="Texture" id=8]
+[ext_resource path="res://Space/PlanetGlow.png" type="Texture" id=9]
+[ext_resource path="res://Hub/MedShop.png" type="Texture" id=10]
+[ext_resource path="res://Items/Weapons/Bullet/BulletManagement.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Colliders/LoadingZone.tscn" type="PackedScene" id=13]
+[ext_resource path="res://NPC/Pickle/Pickle.tscn" type="PackedScene" id=14]
+[ext_resource path="res://NPC/Norg/Norg.tscn" type="PackedScene" id=15]
+[ext_resource path="res://NPC/Horace/Horace.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25, 28 )
@@ -151,7 +153,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="TileSet" id=41]
 0/name = "HubTiles.png 0"
-0/texture = ExtResource( 1 )
+0/texture = ExtResource( 7 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 112, 80 )
@@ -375,7 +377,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="TileSet" id=42]
 0/name = "Pipes.png 0"
-0/texture = ExtResource( 7 )
+0/texture = ExtResource( 8 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 96, 64 )
@@ -425,7 +427,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="TileSet" id=44]
 0/name = "Pipes.png 0"
-0/texture = ExtResource( 7 )
+0/texture = ExtResource( 8 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 96, 64 )
@@ -449,11 +451,11 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 0/z_index = 0
 
 [node name="Hub" type="Node2D"]
-script = ExtResource( 13 )
+script = ExtResource( 1 )
 
-[node name="BulletManagement" parent="." instance=ExtResource( 14 )]
+[node name="BulletManagement" parent="." instance=ExtResource( 11 )]
 
-[node name="LoadingZone" parent="." instance=ExtResource( 4 )]
+[node name="LoadingZone" parent="." instance=ExtResource( 13 )]
 position = Vector2( 234, 491 )
 z_index = 1
 loadPath = "res://Space/Space.tscn"
@@ -473,22 +475,22 @@ valign = 1
 
 [node name="Entrance" type="Sprite" parent="."]
 position = Vector2( 232, 488 )
-texture = ExtResource( 8 )
+texture = ExtResource( 2 )
 
 [node name="Light" type="Light2D" parent="Entrance"]
 position = Vector2( 3, -8 )
-texture = ExtResource( 3 )
+texture = ExtResource( 9 )
 texture_scale = 0.35
 
 [node name="Shops" type="Node2D" parent="."]
 
 [node name="FoodShop" type="Sprite" parent="Shops"]
 position = Vector2( 95, 375 )
-texture = ExtResource( 9 )
+texture = ExtResource( 4 )
 
 [node name="Light" type="Light2D" parent="Shops/FoodShop"]
 position = Vector2( 18, 3 )
-texture = ExtResource( 3 )
+texture = ExtResource( 9 )
 texture_scale = 0.17
 color = Color( 0.113725, 1, 0.270588, 1 )
 
@@ -517,22 +519,22 @@ one_way_collision = true
 
 [node name="GunShop" type="Sprite" parent="Shops"]
 position = Vector2( 367, 464 )
-texture = ExtResource( 12 )
+texture = ExtResource( 5 )
 
 [node name="Light" type="Light2D" parent="Shops/GunShop"]
 position = Vector2( 14, 1 )
-texture = ExtResource( 3 )
+texture = ExtResource( 9 )
 texture_scale = 0.2
 color = Color( 0.647059, 0.219608, 0.219608, 1 )
 
 [node name="MedShop" type="Sprite" parent="Shops"]
 position = Vector2( 100, 462 )
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
 [node name="Light" type="Light2D" parent="Shops/MedShop"]
-position = Vector2( -28, 9 )
-texture = ExtResource( 3 )
-texture_scale = 0.25
+position = Vector2( -1, 9 )
+texture = ExtResource( 9 )
+texture_scale = 0.15
 color = Color( 0.494118, 0.796078, 0.776471, 1 )
 
 [node name="Platform1" type="StaticBody2D" parent="Shops/MedShop"]
@@ -553,12 +555,12 @@ one_way_collision = true
 
 [node name="Globe" type="Sprite" parent="Shops"]
 position = Vector2( 232, 389 )
-texture = ExtResource( 10 )
+texture = ExtResource( 3 )
 hframes = 4
 
 [node name="Light" type="Light2D" parent="Shops/Globe"]
 position = Vector2( 0, -9 )
-texture = ExtResource( 3 )
+texture = ExtResource( 9 )
 texture_scale = 0.1
 color = Color( 0.184314, 0.537255, 0.572549, 1 )
 
@@ -576,9 +578,17 @@ one_way_collision = true
 [node name="NPCs" type="Node2D" parent="."]
 position = Vector2( 2, 0 )
 
-[node name="Norg" parent="NPCs" instance=ExtResource( 5 )]
+[node name="Norg" parent="NPCs" instance=ExtResource( 15 )]
 position = Vector2( 258, 417 )
 snapPos = Vector2( -24, -4 )
+
+[node name="Pickle" parent="NPCs" instance=ExtResource( 14 )]
+position = Vector2( 129, 400 )
+snapPos = Vector2( -24, -3 )
+
+[node name="Horace" parent="NPCs" instance=ExtResource( 16 )]
+position = Vector2( 40, 496 )
+snapPos = Vector2( 24, -3 )
 
 [node name="TilesMain" type="TileMap" parent="."]
 tile_set = SubResource( 41 )
@@ -635,7 +645,7 @@ __meta__ = {
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.192157, 0.188235, 0.313726, 1 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
+[node name="Player" parent="." instance=ExtResource( 12 )]
 position = Vector2( 277, 508 )
 maxSpeed = 80
 recoveryTime = 1.0

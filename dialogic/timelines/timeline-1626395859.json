@@ -1,0 +1,15 @@
+{
+	"events": [
+		{
+			"character": "character-1626395947.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Pickle Pickle Pickle Pickle, Pickle [wave]Pickle Pickle Pickle [/wave]Pickle Pickle."
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2.4",
+		"file": "timeline-1626395859.json",
+		"name": "PickleDialog1"
+	}
+}

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/Inventory/Slot.gd" type="Script" id=1]
-[ext_resource path="res://Items/Weapons/WeaponSprites/Bazooka.png" type="Texture" id=2]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/Slot.png-c3dabab1b9471a34cb3fe7bec0b47623.stex"
@@ -17,11 +16,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -362.0
 margin_bottom = -281.0
+focus_mode = 1
+enabled_focus_mode = 1
 texture_normal = SubResource( 1 )
 texture_pressed = SubResource( 2 )
 texture_hover = SubResource( 3 )
 texture_disabled = SubResource( 2 )
-texture_focused = SubResource( 3 )
 stretch_mode = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -29,16 +29,14 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 1.0
-margin_top = 2.0
-margin_right = 17.0
-margin_bottom = 18.0
-texture = ExtResource( 2 )
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 16.0
+margin_bottom = 17.0
 expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_press"]

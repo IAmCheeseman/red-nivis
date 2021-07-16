@@ -8,6 +8,9 @@ var selectedSlot = 0
 func _ready():
 	inventory.maxSlots = slots.get_child_count()
 	inventory.connect("itemsChanged", self, "refresh_items")
+	# Connected the pressed signal of buttons
+	for slot in slots.get_children():
+		slot.connect("selected", self, "_on_button_pressed")
 
 
 func refresh_items():
@@ -18,6 +21,10 @@ func refresh_items():
 		var item = inventory.get_item(id)
 		slot.clear()
 		slot.setup(item.texture, id)
+
+
+func _on_button_pressed(button:TextureButton):
+	print(button.item)
 
 
 func _input(_event):

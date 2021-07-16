@@ -4,8 +4,7 @@ onready var slotTexture = $TextureRect
 
 var item:String
 
-signal hovering
-signal move
+signal selected(button)
 
 
 func setup(texture:StreamTexture, itemID:String):
@@ -19,8 +18,4 @@ func clear():
 
 
 func _on_press():
-	emit_signal("move", self)
-
-
-func _on_mouse_entered():
-	emit_signal("hovering", self)
+	emit_signal("selected", self)

@@ -8,6 +8,7 @@ export var talkSpeed = .05
 export var dialogs:PoolStringArray = []
 export var snapPos:Vector2
 
+var dialogOn = false
 var player = null
 
 
@@ -26,6 +27,7 @@ func _input(_event):
 		if !player.lockMovement and player.is_on_floor():
 			player.lockMovement = true
 			player.global_position = global_position+snapPos
+			dialogOn = true
 			start_dialog()
 
 
@@ -36,6 +38,7 @@ func _on_dialog_advanced():
 func _on_dialog_finished(_timeline:String):
 	player.lockMovement = false
 	player = null
+	dialogOn = false
 
 
 func _on_talk_zone_entered(area):
@@ -43,6 +46,6 @@ func _on_talk_zone_entered(area):
 		player = area.get_parent()
 
 
-
-
-
+func _on_talk_zone_area_exited(area):
+	if area.get_parent() == player and !dialogOn:
+		player = null
