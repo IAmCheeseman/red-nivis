@@ -9,6 +9,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Testing
-	var item = GameManager.itemManager.create_item("Laser_Shotgun")
-	item.position = Vector2(95, 375)
-	add_child(item)
+	for i in 10:
+		var item = GameManager.itemManager.create_item("Laser_Shotgun")
+		item.position = Vector2(95+(i*32), 375)
+		add_child(item)

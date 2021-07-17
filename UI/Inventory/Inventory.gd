@@ -4,7 +4,7 @@ class_name Inventory
 # TODO: make inventory work with predefined slots.
 
 # Inventory stuff
-export var maxSlots:int = 5
+export var maxSlots:int = 6
 var items:Array = []
 
 # Item map
@@ -34,6 +34,12 @@ class sortByAmount:
 func check_existence(id:String) -> bool:
 	if itemMap.has(id):
 		return true
+	return false
+
+
+func has_space() -> bool:
+	for item in items:
+		if item == null: return true
 	return false
 
 

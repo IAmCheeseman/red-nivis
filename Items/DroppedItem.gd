@@ -4,7 +4,7 @@ onready var sprite = $Sprite
 onready var collision = $CollisionShape2D
 onready var pickUpArea = $PickUpZone
 onready var pickUpCollision = $PickUpZone/CollisionShape2D
-onready var anim = $AnimationPlayer
+onready var pickUpAnim = $PickUp
 
 export var item:String = "Cheese"
 export var stackSize:int = 1
@@ -24,9 +24,9 @@ func _ready():
 
 func _input(event):
 	# Picking up the item
-	if player and event.is_action_pressed("interact"):
+	if player and event.is_action_pressed("interact") and inventory.has_space():
 		inventory.add_item(item)
-		anim.play("PickUp")
+		pickUpAnim.play("PickUp")
 
 
 func _on_player_close(area):
