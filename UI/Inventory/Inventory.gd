@@ -1,8 +1,6 @@
 extends Resource
 class_name Inventory
 
-# TODO: make inventory work with predefined slots.
-
 # Inventory stuff
 export var maxSlots:int = 6
 var items:Array = []
@@ -20,14 +18,6 @@ signal itemAdded
 func _init():
 	for slot in maxSlots:
 		items.append(null)
-
-
-# Sorting class
-class sortByAmount:
-	static func sort_descending(a, b):
-		if a.amount > b.amount:
-			return true
-		return false
 
 
 func check_existence(id:String) -> bool:

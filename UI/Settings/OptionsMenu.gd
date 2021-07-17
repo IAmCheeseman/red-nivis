@@ -2,10 +2,8 @@ extends Control
 
 var dataManager = DataManager.new()
 
-
 func _ready():
 	var settingsData = dataManager.load_data("save.dat")
-
 	var validSettingsKey = [
 		"screenshake",
 		"cameraLook",

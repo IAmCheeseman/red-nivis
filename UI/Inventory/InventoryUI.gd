@@ -17,7 +17,19 @@ func _ready():
 func _process(delta):
 	if movingSlot:
 		movingSlot.rect_position.x = get_local_mouse_position().x-8
-
+		var hotbarBegin = slots.get_child(0).rect_global_position.x
+		var hotbarEnd = slots.get_child_count()*18
+		hotbarEnd += slots.get_child_count()+hotbarBegin
+		movingSlot.rect_position.x = clamp(
+			movingSlot.rect_position.x,
+			hotbarBegin,
+			hotbarEnd-7
+		)
+		movingSlot.rect_position.y = lerp(
+			movingSlot.rect_position.y,
+			get_viewport_rect().end.y-16*3,
+			8*delta
+		)
 
 func _on_button_pressed(button:TextureButton):
 	if movingSlot:
@@ -28,7 +40,7 @@ func _on_button_pressed(button:TextureButton):
 	else:
 		slots.remove_child(button)
 		movingSlot = button
-		movingSlot.rect_position.y = get_viewport_rect().end.y-16*3
+		movingSlot.rect_position.y = get_viewport_rect().end.y-21
 		add_child(movingSlot)
 
 
