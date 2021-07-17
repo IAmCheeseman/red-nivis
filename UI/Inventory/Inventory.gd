@@ -1,7 +1,7 @@
 extends Resource
 class_name Inventory
 
-#TODO: make inventory work with predefined slots.
+# TODO: make inventory work with predefined slots.
 
 # Inventory stuff
 export var maxSlots:int = 5
@@ -15,6 +15,12 @@ var itemMap = itemMapR.items
 signal itemsChanged
 signal itemDeleted
 signal itemAdded
+
+
+func _init():
+	for slot in maxSlots:
+		items.append(null)
+	print(items)
 
 
 # Sorting class
@@ -52,7 +58,11 @@ func move_item(from:int, to:int):
 
 
 func add_item(id:String):
-	items.append(id)
+	for item in items.size():
+		if items[item] == null:
+			items[item] = id
+			break
+	print(items)
 
 	emit_signal("itemsChanged")
 	emit_signal("itemAdded", id)

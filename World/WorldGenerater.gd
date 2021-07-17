@@ -20,7 +20,7 @@ func generate_world(size:Vector2, horizen:int, elevationNoise:OpenSimplexNoise) 
 	var emptyColor := Color("#ffffff")
 
 	# Creating a global size
-	var templateSize:int = 16
+	var templateSize:float = 16
 	var globalSize = size*templateSize
 
 	# Getting the templates
@@ -65,10 +65,12 @@ func generate_world(size:Vector2, horizen:int, elevationNoise:OpenSimplexNoise) 
 
 	# Adding in the templates
 	for x in size.x:
-		var pasteDest = Vector2(x*templateSize, templateYs[x])
+		# FIXME: Sometimes it does not generate templates/slopes correctly
+		var templateY = templateYs[x]
+		var pasteDest = Vector2(x*templateSize, templateY)
 		# Checking if it should be a flat land template
-		var leftFlat = templateYs[clamp(x-1, 0, size.x-1)] >= templateYs[x]
-		var rightFlat = templateYs[clamp(x+1, 0, size.x-1)] >= templateYs[x]
+		var leftFlat = templateYs[clamp(x-1, 0, size.x-1)] >= templateY
+		var rightFlat = templateYs[clamp(x+1, 0, size.x-1)] >= templateY
 		var isValley = !leftFlat and !rightFlat
 
 		if (leftFlat and rightFlat) or isValley:
@@ -88,8 +90,9 @@ func generate_world(size:Vector2, horizen:int, elevationNoise:OpenSimplexNoise) 
 			if !leftFlat: connectionTemplates.flip_x()
 			map.blit_rect(connectionTemplates, copyRect, pasteDest)
 			if !leftFlat: connectionTemplates.flip_x()
+	map.unlock()
 
-	map.save_png("user://output.png")
+	var _error = map.save_png("user://output.png")
 
 	return map
 
