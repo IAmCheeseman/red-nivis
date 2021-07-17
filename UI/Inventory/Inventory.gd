@@ -20,7 +20,6 @@ signal itemAdded
 func _init():
 	for slot in maxSlots:
 		items.append(null)
-	print(items)
 
 
 # Sorting class
@@ -40,6 +39,12 @@ func check_existence(id:String) -> bool:
 func has_space() -> bool:
 	for item in items:
 		if item == null: return true
+	return false
+
+
+func has_item(id:String) -> bool:
+	for item in items:
+		if item == id: return true
 	return false
 
 
@@ -68,33 +73,18 @@ func add_item(id:String):
 		if items[item] == null:
 			items[item] = id
 			break
-	print(items)
 
 	emit_signal("itemsChanged")
 	emit_signal("itemAdded", id)
 
 
-func destroy_item(id:String, amount:int) -> bool:
+func destroy_item(id:String, amount:int):
 	# Filtering out all the items I don't need
-	var filteredItems = filter_items(id)
-	# Stopping if there's no items to destroy
-	if filteredItems.size() == 0:
-		return false
-
-	# Sorting the items by the amount from highest to lowest
-	# Then going through and removing as many stacks as I need.
-	filteredItems.sort_custom(sortByAmount, "sort_descending")
-
-	while amount != 0 :
-		var selectedStack = filteredItems.pop_front()
-		var amountRemaining = amount - selectedStack.amount
-		selectedStack.amount -= amount
-		if selectedStack.amount <= 0:
-			items.remove(selectedStack)
-		amount = amountRemaining
-
+	if !has_item(id):
+		return
+	for i in amount:
+		items.remove(items.find(id))
 	# Finishing up
 	emit_signal("itemsChanged")
 	emit_signal("itemDeleted", id)
-	return true
 

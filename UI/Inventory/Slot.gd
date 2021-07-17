@@ -16,6 +16,5 @@ func clear():
 	slotTexture.texture = null
 	item = ""
 
-
 func _on_press():
 	emit_signal("selected", self)

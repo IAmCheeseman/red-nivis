@@ -4,6 +4,7 @@ onready var slots = $VBox/Slots
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 var selectedSlot = 0
+var movingSlot:TextureButton
 
 func _ready():
 	inventory.maxSlots = slots.get_child_count()
@@ -11,6 +12,24 @@ func _ready():
 	# Connected the pressed signal of buttons
 	for slot in slots.get_children():
 		slot.connect("selected", self, "_on_button_pressed")
+
+
+func _process(delta):
+	if movingSlot:
+		movingSlot.rect_position.x = get_local_mouse_position().x-8
+
+
+func _on_button_pressed(button:TextureButton):
+	if movingSlot:
+		remove_child(movingSlot)
+		slots.add_child(movingSlot)
+		slots.move_child(movingSlot, button.get_index())
+		movingSlot = null
+	else:
+		slots.remove_child(button)
+		movingSlot = button
+		movingSlot.rect_position.y = get_viewport_rect().end.y-16*3
+		add_child(movingSlot)
 
 
 func refresh_items():
@@ -23,10 +42,6 @@ func refresh_items():
 		var item = inventory.get_item(id)
 		slot.clear()
 		slot.setup(item.texture, id)
-
-
-func _on_button_pressed(button:TextureButton):
-	print(button.item)
 
 
 func _input(_event):

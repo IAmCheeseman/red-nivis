@@ -22,12 +22,22 @@ func _ready():
 	pickUpCollision.shape = collision.shape
 
 
+func _process(delta):
+	if pickUpAnim.is_playing():
+		position += position.direction_to(player.position-Vector2(0, 16))
+
+
 func _input(event):
 	# Picking up the item
 	if player and event.is_action_pressed("interact") and inventory.has_space():
 		inventory.add_item(item)
 		pickUpAnim.play("PickUp")
+		pickUpArea.disconnect("area_exited", self, "_on_player_far")
 
 
 func _on_player_close(area):
 	player = area.get_parent()
+
+
+func _on_player_far(area):
+	player = null

@@ -98,7 +98,7 @@ collision_layer = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -2.84923 )
+position = Vector2( 0, -0.116983 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -121,3 +121,4 @@ autoplay = "Idle"
 anims/Idle = SubResource( 4 )
 
 [connection signal="area_entered" from="PickUpZone" to="." method="_on_player_close"]
+[connection signal="area_exited" from="PickUpZone" to="." method="_on_player_far"]
