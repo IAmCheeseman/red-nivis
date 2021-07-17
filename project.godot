@@ -173,7 +173,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/BorderedSimplexNoise/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/BorderedSimplexNoise/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
 
 [importer_defaults]
 

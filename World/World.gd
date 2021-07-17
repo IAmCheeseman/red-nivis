@@ -70,20 +70,10 @@ func generate_room():
 
 	var worldGenerator = WorldGenerator.new()
 	var world = worldGenerator.generate_world(
-																	  # NOISE
-		load("res://World/Noise/HeightMap.tres").noise,     # Height
-		load("res://World/Noise/HeightMap.tres").noise,     # Shifting
-		load("res://World/Noise/CaveNoise.tres"),           # Caves
-																	  # CURVES
-		load("res://World/Curves/HeightSmoothing.tres"),    # Height
-		load("res://World/Curves/OverHangeSmoothing.tres"), # Shifting
-		load("res://World/Curves/CaveSize.tres"),           # Caves
-
-		5,
-		300,
-		0,
-		8
-	)
+		Vector2(20, 10), # World size
+		5*16, # Horizen
+		preload("res://World/Noise/HeightMap.tres").noise # HeightNoise
+		)
 
 	tiles = planet.solidTiles.instance()
 	props.add_child(tiles)
@@ -93,17 +83,20 @@ func generate_room():
 	backgroundTiles.z_index = -1
 	props.add_child(backgroundTiles)
 
-	for x in world.size():
-		for y in world[x].size():
-			# Adding tiles
-			if world[x][y] == 1:
+	var solidColor := Color("#000000")
+	var wallColor := Color("#34315b")
+
+	world.lock()
+	for x in world.get_width():
+		for y in world.get_height():
+			if world.get_pixel(x, y).is_equal_approx(solidColor):
+				tiles.set_cell(x, y, 0)
+				backgroundTiles.set_cell(x, y, 0)
+				tiles.update_bitmask_area(Vector2(x, y))
+				backgroundTiles.update_bitmask_area(Vector2(x, y))
+			if world.get_pixel(x, y).is_equal_approx(wallColor):
 				backgroundTiles.set_cell(x, y, 0)
 				backgroundTiles.update_bitmask_area(Vector2(x, y))
-				continue
-			tiles.set_cell(x, y, world[x][y])
-			tiles.update_bitmask_area(Vector2(x, y))
-			backgroundTiles.set_cell(x, y, world[x][y])
-			backgroundTiles.update_bitmask_area(Vector2(x, y))
 
 
 func check_approx(color:Color, color2:Color):

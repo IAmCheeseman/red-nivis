@@ -9,18 +9,18 @@ var use_advanced_themes : bool = false
 var preview_character_selected : String = 'random'
 var current_choice_modifier_selected = 'hover'
 
-# When loading the variables to the input fields in the 
+# When loading the variables to the input fields in the
 # load_theme function, every element thinks the value was updated
-# so it has to perform a "saving" of that property. 
+# so it has to perform a "saving" of that property.
 # The loading variable is a way to check if the values should be saved
 # or not.
-var loading : bool = true 
+var loading : bool = true
 
 
 # If the first time you open a theme it is a "full_width" one, the editor
 # doesn't trigger the Panel resized() signal before the dialog resize_main()
 # So what I do here, is doing a check for the first time and force a double
-# refresh that will make sure that the full_width background will display 
+# refresh that will make sure that the full_width background will display
 # as expected.
 
 # The stuff used for this hack are:
@@ -56,7 +56,7 @@ onready var n : Dictionary = {
 	'theme_text_speed': $"VBoxContainer/TabContainer/Dialog Text/Column3/GridContainer/TextSpeed",
 	'alignment': $"VBoxContainer/TabContainer/Dialog Text/Column3/GridContainer/HBoxContainer3/Alignment",
 	'single_portrait_mode': $"VBoxContainer/TabContainer/Dialog Text/Column3/GridContainer/SinglePortraitModeCheckBox",
-	
+
 	# Dialog box
 	'background_texture_button_visible': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer3/CheckBox",
 	'theme_background_image': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer3/BackgroundTextureButton",
@@ -71,13 +71,13 @@ onready var n : Dictionary = {
 	'theme_text_margin': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer/TextOffsetV",
 	'theme_text_margin_h': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer/TextOffsetH",
 	'size_w': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer4/BoxSizeW",
-	'size_h': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer4/BoxSizeH", 
+	'size_h': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer4/BoxSizeH",
 	'bottom_gap': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer5/BottomGap",
 	'background_modulation': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer6/CheckBox",
 	'background_modulation_color': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer6/ColorPickerButton",
 	'background_full_width': $"VBoxContainer/TabContainer/Dialog Box/Column/GridContainer/HBoxContainer7/CheckBox",
 	'animation_show_time': $"VBoxContainer/TabContainer/Dialog Box/Column3/GridContainer/ShowTime/SpinBox",
-	
+
 	# Character Names
 	'name_font': $"VBoxContainer/TabContainer/Name Label/Column/GridContainer/RegularFont/NameFontButton",
 	'name_auto_color': $"VBoxContainer/TabContainer/Name Label/Column/GridContainer/CharacterColor",
@@ -96,10 +96,10 @@ onready var n : Dictionary = {
 	'name_padding_x': $"VBoxContainer/TabContainer/Name Label/Column2/GridContainer/HBoxContainer/NamePaddingX",
 	'name_padding_y': $"VBoxContainer/TabContainer/Name Label/Column2/GridContainer/HBoxContainer/NamePaddingY",
 	'name_position': $"VBoxContainer/TabContainer/Name Label/Column3/GridContainer/HBoxContainer/Positions",
-	
-	
+
+
 	# Choice Buttons
-	
+
 	'button_fixed': $"VBoxContainer/TabContainer/Choice Buttons/Column2/GridContainer/HBoxContainer2/FixedSize",
 	'button_fixed_x': $"VBoxContainer/TabContainer/Choice Buttons/Column2/GridContainer/HBoxContainer2/ButtonSizeX",
 	'button_fixed_y': $"VBoxContainer/TabContainer/Choice Buttons/Column2/GridContainer/HBoxContainer2/ButtonSizeY",
@@ -110,13 +110,13 @@ onready var n : Dictionary = {
 	'button_offset_x': $"VBoxContainer/TabContainer/Choice Buttons/Column2/GridContainer/HBoxContainer/TextOffsetH",
 	'button_offset_y': $"VBoxContainer/TabContainer/Choice Buttons/Column2/GridContainer/HBoxContainer/TextOffsetV",
 	'button_separation': $"VBoxContainer/TabContainer/Choice Buttons/Column2/GridContainer/VerticalSeparation",
-	
+
 	# Button modifiers (Inherited scenes)
 	'button_normal': $"VBoxContainer/TabContainer/Choice Buttons/Column/TabContainer/Normal",
 	'button_hover': $"VBoxContainer/TabContainer/Choice Buttons/Column/TabContainer/Hover",
 	'button_pressed': $"VBoxContainer/TabContainer/Choice Buttons/Column/TabContainer/Pressed",
 	'button_disabled': $"VBoxContainer/TabContainer/Choice Buttons/Column/TabContainer/Disabled",
-	
+
 	# Glossary
 	'glossary_title_font': $VBoxContainer/TabContainer/Glossary/Column3/GridContainer/TitleFont/TitleFontButton,
 	'glossary_text_font': $VBoxContainer/TabContainer/Glossary/Column3/GridContainer/TextFont/TextFontButton,
@@ -125,11 +125,11 @@ onready var n : Dictionary = {
 	'glossary_title_color': $VBoxContainer/TabContainer/Glossary/Column3/GridContainer/TitleColorPicker,
 	'glossary_text_color': $VBoxContainer/TabContainer/Glossary/Column3/GridContainer/TextColorPicker,
 	'glossary_extra_color': $VBoxContainer/TabContainer/Glossary/Column3/GridContainer/ExtraColorPicker,
-	
+
 	'glossary_background_panel': $VBoxContainer/TabContainer/Glossary/Column/GridContainer/BackgroundPanel/BgPanelButton,
-	
+
 	'glossary_enabled': $VBoxContainer/TabContainer/Glossary/Column2/GridContainer/ShowGlossaryCheckBox,
-	
+
 	# Audio
 	'typing_sfx_enabled': $"VBoxContainer/TabContainer/Audio/Column/GridContainer/TypingCheckBox",
 	'typing_sfx_path': $"VBoxContainer/TabContainer/Audio/Column/GridContainer/TypingPathButton",
@@ -138,11 +138,11 @@ onready var n : Dictionary = {
 	'typing_sfx_pitch_range': $"VBoxContainer/TabContainer/Audio/Column/GridContainer/HBoxContainer3/TypingPitchRandRange",
 	'typing_sfx_allow_interrupt': $"VBoxContainer/TabContainer/Audio/Column/GridContainer/TypingInterruptCheckBox",
 	'typing_sfx_audio_bus': $"VBoxContainer/TabContainer/Audio/Column/GridContainer/AudioBusButton",
-	
+
 	# Text preview
 	'text_preview': $VBoxContainer/HBoxContainer3/TextEdit,
 	'character_picker': $VBoxContainer/HBoxContainer3/CharacterPicker,
-	
+
 }
 
 
@@ -158,13 +158,13 @@ func _ready() -> void:
 		$VBoxContainer/HBoxContainer3/PreviewButton.icon = load("res://addons/dialogic/Images/Plugin/plugin-editor-icon-dark-theme.svg")
 	else:
 		$VBoxContainer/HBoxContainer3/PreviewButton.icon = load("res://addons/dialogic/Images/Plugin/plugin-editor-icon-light-theme.svg")
-	
+
 	$DelayPreviewTimer.one_shot = true
 	$DelayPreviewTimer.connect("timeout", self, '_on_DelayPreview_timer_timeout')
-	
+
 	var title_style = $"VBoxContainer/TabContainer/Dialog Text/Column/SectionTitle".get('custom_styles/normal')
 	title_style.set('bg_color', get_color("prop_category", "Editor"))
-	
+
 	$"VBoxContainer/TabContainer/Name Label/Column/GridContainer/RegularFont/NameFontOpen".icon = get_icon("Edit", "EditorIcons")
 	$"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/BoldFont/BoldFontOpen".icon = get_icon("Edit", "EditorIcons")
 	$"VBoxContainer/TabContainer/Dialog Text/Column/GridContainer/ItalicFont/ItalicFontOpen".icon = get_icon("Edit", "EditorIcons")
@@ -173,15 +173,15 @@ func _ready() -> void:
 	$"VBoxContainer/TabContainer/Glossary/Column3/GridContainer/TextFont/TextFontOpen".icon = get_icon("Edit", "EditorIcons")
 	$"VBoxContainer/TabContainer/Glossary/Column3/GridContainer/ExtraFont/ExtraFontOpen".icon = get_icon("Edit", "EditorIcons")
 	$"VBoxContainer/TabContainer/Glossary/Column/GridContainer/BackgroundPanel/BGPanelOpen".icon = get_icon("Edit", "EditorIcons")
-	
+
 	n['text_preview'].syntax_highlighting = true
 	n['text_preview'].add_color_region('[', ']', get_color("axis_z_color", "Editor"))
-	
+
 	# Dialog Text tab
 	n['theme_text_shadow'].connect('toggled', self, '_on_generic_checkbox', ['text', 'shadow'])
 	n['single_portrait_mode'].connect('toggled', self, '_on_generic_checkbox', ['settings', 'single_portrait_mode'])
 	n['theme_text_speed'].connect('value_changed', self, '_on_generic_value_change', ['text','speed'])
-	
+
 	# Dialog Box tab
 	n['theme_background_color_visible'].connect('toggled', self, '_on_generic_checkbox', ['background', 'use_color'])
 	n['background_texture_button_visible'].connect('toggled', self, '_on_generic_checkbox', ['background', 'use_image'])
@@ -199,18 +199,18 @@ func _ready() -> void:
 
 	# Buttons tab
 	n['button_fixed'].connect('toggled', self, '_on_generic_checkbox', ['buttons', 'fixed'])
-	
+
 	# Choice button style modifiers
 	n['button_normal'].connect('picking_background', self, '_on_ButtonTextureButton_pressed')
 	n['button_hover'].connect('picking_background', self, '_on_ButtonTextureButton_pressed')
 	n['button_pressed'].connect('picking_background', self, '_on_ButtonTextureButton_pressed')
 	n['button_disabled'].connect('picking_background', self, '_on_ButtonTextureButton_pressed')
-	
+
 	n['button_normal'].connect('style_modified', self, '_on_choice_style_modified')
 	n['button_hover'].connect('style_modified', self, '_on_choice_style_modified')
 	n['button_pressed'].connect('style_modified', self, '_on_choice_style_modified')
 	n['button_disabled'].connect('style_modified', self, '_on_choice_style_modified')
-	
+
 	n['name_position'].text = 'Left'
 	n['name_position'].connect('item_selected', self, '_on_name_position_selected')
 	var name_positions_popup = n['name_position'].get_popup()
@@ -219,7 +219,7 @@ func _ready() -> void:
 	name_positions_popup.add_radio_check_item('Center')
 	name_positions_popup.add_radio_check_item('Right')
 	n['name_position'].select(0)
-	
+
 	# Glossary tab
 	n['glossary_enabled'].connect('toggled', self, '_on_generic_checkbox', ['definitions','show_glossary'])
 
@@ -232,7 +232,7 @@ func _ready() -> void:
 	# Character Picker
 	n['character_picker'].connect('about_to_show', self, 'character_picker_about_to_show')
 	n['character_picker'].get_popup().connect('index_pressed', self, 'character_picker_selected')
-	
+
 	# Force preview update
 	_on_visibility_changed()
 
@@ -258,7 +258,7 @@ func character_picker_selected(index):
 
 func setup_advanced_containers():
 	use_advanced_themes = DialogicResources.get_settings_config().get_value('dialog', 'advanced_themes', false)
-	
+
 	for key in advanced_containers:
 		var c = advanced_containers[key]
 		if use_advanced_themes:
@@ -278,7 +278,7 @@ func load_theme(filename):
 	# Settings
 	n['theme_action_key'].text = theme.get_value('settings', 'action_key', 'ui_accept')
 	n['single_portrait_mode'].pressed = theme.get_value('settings', 'single_portrait_mode', false) # Currently in Dialog Text tab
-	
+
 	# Background
 	n['theme_background_image'].text = DialogicResources.get_filename_from_path(theme.get_value('background', 'image', default_background))
 	n['background_texture_button_visible'].pressed = theme.get_value('background', 'use_image', true)
@@ -293,14 +293,14 @@ func load_theme(filename):
 	n['background_modulation'].pressed = theme.get_value('background', 'modulation', false)
 	n['background_modulation_color'].color = Color(theme.get_value('background', 'modulation_color', '#ffffffff'))
 	n['background_full_width'].pressed = theme.get_value('background', 'full_width', false)
-	
-	
+
+
 	var size_value = theme.get_value('box', 'size', Vector2(910, 167))
 	n['size_w'].value = size_value.x
 	n['size_h'].value = size_value.y
-	
+
 	n['bottom_gap'].value = theme.get_value('box', 'bottom_gap', 40)
-	
+
 	# Buttons
 	n['button_use_native'].pressed = theme.get_value('buttons', 'use_native', false)
 	n['button_use_custom'].pressed = theme.get_value('buttons', 'use_custom', false)
@@ -311,33 +311,33 @@ func load_theme(filename):
 	n['button_fixed'].pressed = theme.get_value('buttons', 'fixed', false)
 	n['button_fixed_x'].value = theme.get_value('buttons', 'fixed_size', Vector2(130,40)).x
 	n['button_fixed_y'].value = theme.get_value('buttons', 'fixed_size', Vector2(130,40)).y
-	
-	
-	
+
+
+
 	var default_style = [false, Color.white, false, Color.black, true, default_background, false, Color.white]
 	n['button_normal'].load_style(theme.get_value('buttons', 'normal', default_style))
 	n['button_hover'].load_style(theme.get_value('buttons', 'hover', default_style))
 	n['button_pressed'].load_style(theme.get_value('buttons', 'pressed', default_style))
 	n['button_disabled'].load_style(theme.get_value('buttons', 'disabled', default_style))
-	
+
 	toggle_button_customization_fields(theme.get_value('buttons', 'use_native', false), theme.get_value('buttons', 'use_custom', false))
-	
+
 	# Definitions
 	n['glossary_highlight_color'].color = Color(theme.get_value('definitions', 'color', "#ffffffff"))
-	
+
 	n['glossary_title_font'].text = DialogicResources.get_filename_from_path(theme.get_value('definitions', 'font', "res://addons/dialogic/Example Assets/Fonts/GlossaryFont.tres"))
 	n['glossary_title_color'].color = Color(theme.get_value('definitions', 'title_color', "#ffffffff"))
-	
+
 	n['glossary_text_font'].text = DialogicResources.get_filename_from_path(theme.get_value('definitions', 'text_font', "res://addons/dialogic/Example Assets/Fonts/GlossaryFont.tres"))
 	n['glossary_text_color'].color = Color(theme.get_value('definitions', 'text_color', "#ffffffff"))
-	
+
 	n['glossary_extra_font'].text = DialogicResources.get_filename_from_path(theme.get_value('definitions', 'extra_font', "res://addons/dialogic/Example Assets/Fonts/GlossaryFont.tres"))
 	n['glossary_extra_color'].color = Color(theme.get_value('definitions', 'extra_color', "#ffffffff"))
-	
+
 	n['glossary_background_panel'].text = DialogicResources.get_filename_from_path(theme.get_value('definitions', 'background_panel', "res://addons/dialogic/Example Assets/backgrounds/GlossaryBackground.tres"))
-	
+
 	n['glossary_enabled'].pressed = theme.get_value('definitions', 'show_glossary', true)
-	
+
 	# Text
 	n['theme_text_speed'].value = theme.get_value('text','speed', 2)
 	n['theme_font'].text = DialogicResources.get_filename_from_path(theme.get_value('text', 'font', 'res://addons/dialogic/Example Assets/Fonts/DefaultFont.tres'))
@@ -358,8 +358,8 @@ func load_theme(filename):
 			n['alignment'].select(1)
 		'Right':
 			n['alignment'].select(2)
-	
-	
+
+
 	# Name
 	n['name_font'].text = DialogicResources.get_filename_from_path(theme.get_value('name', 'font', 'res://addons/dialogic/Example Assets/Fonts/NameFont.tres'))
 	n['name_auto_color'].pressed = theme.get_value('name', 'auto_color', true)
@@ -373,16 +373,16 @@ func load_theme(filename):
 
 	n['name_padding_x'].value = theme.get_value('name', 'name_padding', Vector2(10,0)).x
 	n['name_padding_y'].value = theme.get_value('name', 'name_padding', Vector2(10,0)).y
-	
+
 	n['name_shadow'].color = Color(theme.get_value('name', 'shadow', "#9e000000"))
 	n['name_shadow_visible'].pressed = theme.get_value('name', 'shadow_visible', true)
 	n['name_shadow_offset_x'].value = theme.get_value('name', 'shadow_offset', Vector2(2,2)).x
 	n['name_shadow_offset_y'].value = theme.get_value('name', 'shadow_offset', Vector2(2,2)).y
 	n['name_bottom_gap'].value = theme.get_value('name', 'bottom_gap', 48)
 	n['name_horizontal_offset'].value = theme.get_value('name', 'horizontal_offset', 0)
-	
+
 	n['name_position'].select(theme.get_value('name', 'position', 0))
-	
+
 	# Audio
 	n['typing_sfx_enabled'].pressed = theme.get_value('typing_sfx', 'enable', false)
 	n['typing_sfx_path'].text = DialogicResources.get_filename_from_path(theme.get_value('typing_sfx', 'path', "res://addons/dialogic/Example Assets/Sound Effects/Keyboard Noises"))
@@ -390,11 +390,11 @@ func load_theme(filename):
 	n['typing_sfx_volume_range'].value = theme.get_value('typing_sfx', 'random_volume_range', 5)
 	n['typing_sfx_pitch_range'].value = theme.get_value('typing_sfx', 'random_pitch_range', 0.2)
 	n['typing_sfx_allow_interrupt'].pressed = theme.get_value('typing_sfx', 'allow_interrupt', true)
-	
+
 	update_audio_bus_option_buttons()
-	
+
 	# Next indicator animations
-	var animations = ['Up and down', 'Pulse', 'Static'] # TODO: dynamically get all the animations from the Dialog.tscn NextIndicator
+	var animations = ['Up and down', 'Pulse', 'Static']
 	n['next_animation'].clear()
 	var next_animation_selected = theme.get_value('next_indicator', 'animation', 'Up and down')
 	var nix = 0
@@ -403,10 +403,10 @@ func load_theme(filename):
 		if a == next_animation_selected:
 			n['next_animation'].select(nix)
 		nix += 1
-	
+
 	# Preview text
 	n['text_preview'].text = theme.get_value('text', 'preview', 'This is preview text. You can use  [color=#A5EFAC]BBCode[/color] to style it.\n[wave amp=50 freq=2]You can even use effects![/wave]')
-	
+
 	# Finished loading
 	loading = false
 	# Updating the preview
@@ -434,7 +434,7 @@ func duplicate_theme(from_filename) -> void:
 
 func _on_visibility_changed() -> void:
 	if visible:
-		# Refreshing the dialog 
+		# Refreshing the dialog
 		_on_PreviewButton_pressed()
 		if first_time_loading_theme_full_size_bug == 0:
 			yield(get_tree().create_timer(0.01), "timeout")
@@ -457,7 +457,7 @@ func _on_PreviewButton_pressed() -> void:
 		i.free()
 	var preview_dialog = Dialogic.start('', true, "res://addons/dialogic/Dialog.tscn", false, false)
 	preview_dialog.preview = true
-	
+
 	if n['character_picker']: # Sometimes it can't find the node
 		if n['character_picker'].text == 'Random Character':
 			var characters : Array = DialogicUtil.get_character_list()
@@ -473,7 +473,7 @@ func _on_PreviewButton_pressed() -> void:
 		}
 	preview_dialog.parse_characters(preview_dialog.dialog_script)
 	$VBoxContainer/Panel.add_child(preview_dialog)
-	
+
 	# maintaining the preview panel big enough for the dialog box
 	var box_size = preview_dialog.current_theme.get_value('box', 'size', Vector2(910, 167)).y
 	var bottom_gap = preview_dialog.current_theme.get_value('box', 'bottom_gap', 40)
@@ -766,7 +766,7 @@ func _on_name_shadow_color_changed(color) -> void:
 func _on_name_ShadowOffset_value_changed(_value) -> void:
 	if loading:
 		return
-	DialogicResources.set_theme_value(current_theme, 'name','shadow_offset', 
+	DialogicResources.set_theme_value(current_theme, 'name','shadow_offset',
 			Vector2(n['name_shadow_offset_x'].value, n['name_shadow_offset_y'].value))
 	_on_PreviewButton_pressed() # Refreshing the preview
 
@@ -774,7 +774,7 @@ func _on_name_ShadowOffset_value_changed(_value) -> void:
 func _on_name_padding_value_changed(_value) -> void:
 	if loading:
 		return
-	DialogicResources.set_theme_value(current_theme, 'name','name_padding', 
+	DialogicResources.set_theme_value(current_theme, 'name','name_padding',
 			Vector2(n['name_padding_x'].value, n['name_padding_y'].value))
 	_on_PreviewButton_pressed() # Refreshing the preview
 
@@ -840,7 +840,7 @@ func _on_modifier_button_image_selected(path, _target):
 	n['button_' + current_choice_modifier_selected].real_file_path = path
 	n['button_' + current_choice_modifier_selected].get_node('BackgroundTexture/Button').text = DialogicResources.get_filename_from_path(path)
 	_on_choice_style_modified(current_choice_modifier_selected)
-	
+
 
 func _on_choice_style_modified(section):
 	DialogicResources.set_theme_value(current_theme, 'buttons', section, n['button_' + section].get_style_array())

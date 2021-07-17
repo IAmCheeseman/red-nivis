@@ -1,6 +1,8 @@
 extends Resource
 class_name Inventory
 
+#TODO: make inventory work with predefined slots.
+
 # Inventory stuff
 export var maxSlots:int = 5
 var items:Array = []
