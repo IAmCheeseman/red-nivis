@@ -17,7 +17,13 @@ func add_item():
 	var id = inventory.items[inventory.selectedSlot]
 	if id == null: return
 	var item = inventory.get_item(id)
-	if item.scene == null: return
+	if item.scene == null:
+		var newItem = load("res://Items/Item.tscn").instance()
+		itemHolder.add_child(newItem)
+		newItem.sprite.texture = item.texture
+		newItem.sprite.offset.x = item.texture.get_width()/2
+		return
+
 	var newItem = item.scene.instance()
 	newItem.player = get_parent()
 	itemHolder.add_child(newItem)
