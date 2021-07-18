@@ -13,7 +13,7 @@ func shoot():
 		dir = dir.rotated(spread+accuracy)
 
 		# Creating the bullet.
-		var newBullet = bullet.instance()
+		var newBullet = bullet.instance() if !gun.customBullet else gun.customBullet.instance()
 		newBullet.direction = dir.normalized()
 		newBullet.speed = gun.projSpeed+rand_range(-50, 60)
 		newBullet.scale = Vector2.ONE*gun.projScale
@@ -22,9 +22,9 @@ func shoot():
 		newBullet.global_position = global_position+dir*gun.bulletSpawnDist
 		# Adding it to the tree
 		GameManager.spawnManager.add_bullet(newBullet)
-		newBullet.hitbox.damage = gun.damage
+		if newBullet.has_meta("hitbox"): newBullet.hitbox.damage = gun.damage
 
-		newBullet.set_texture(gun.bulletSprite)
+		if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
 
 		# Rotating the gun for juice
 		gunSprite.rotation_degrees = gun.kickUp*2.2 if gunSprite.scale.y == -1 else -gun.kickUp*2.2
@@ -48,9 +48,11 @@ func shoot():
 	GameManager.emit_signal("screenshake", 0, strength*2, freq, freq, strength/3, direction)
 
 	# Playing a sound for feedback
-	get_parent().get_node("ShootSound").play()
+	gun.get_node("ShootSound").play()
 
-	get_parent().emit_signal("onShoot", global_position.direction_to(get_global_mouse_position()), gun.recoil, gun.cost)
+	gun.player.vel += -global_position.direction_to(get_global_mouse_position())*gun.recoil
+	playerData.ammo -= gun.cost
+
 
 
 func _input(_event):

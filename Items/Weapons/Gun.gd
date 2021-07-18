@@ -19,6 +19,7 @@ export var recoil = 0.3
 export var look : int
 export var cost = 1
 export var maxHoldShots = -1
+export var customBullet:PackedScene
 
 # Visual
 export var bulletSprite = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")

@@ -11,34 +11,28 @@ var slotSelectorTarget = 0
 func _ready():
 	inventory.maxSlots = slots.get_child_count()
 	inventory.connect("itemsChanged", self, "refresh_items")
-	inventory.connect("selectedSlotChanged", self, "_on_selected_slot_changed")
 	# Connected the pressed signal of buttons
 	for slot in slots.get_children():
 		slot.connect("selected", self, "_on_button_pressed")
 
-	_on_selected_slot_changed()
+	set_slot_cursor_position()
 
 
 func _process(delta):
-	slotSelector.rect_position.x = lerp(
-		slotSelector.rect_position.x, slotSelectorTarget, 20*delta
-	)
+	slotSelector.rect_position.x = lerp(slotSelector.rect_position.x, slotSelectorTarget, 20*delta)
+	set_slot_cursor_position()
+
 	if movingSlot:
 		var movingSlotTexWidth = movingSlot.texture_pressed.get_width()
 		movingSlot.rect_position.x = get_local_mouse_position().x-(movingSlotTexWidth/2)
 		var hotbarBegin = slots.get_child(0).rect_global_position.x
 		var hotbarEnd = slots.get_child_count()*movingSlotTexWidth
 		hotbarEnd += slots.get_child_count()+hotbarBegin
-		movingSlot.rect_position.x = clamp(
-			movingSlot.rect_position.x,
-			hotbarBegin,
-			hotbarEnd-7
-		)
-		movingSlot.rect_position.y = lerp(
-			movingSlot.rect_position.y,
-			get_viewport_rect().end.y-16*3,
-			8*delta
-		)
+		# Clamping the position of the moving slot to stay within the bounds of the hotbar
+		movingSlot.rect_position.x = clamp(movingSlot.rect_position.x, hotbarBegin, hotbarEnd-7)
+		# Moving the slot to it's final y position
+		movingSlot.rect_position.y = lerp(movingSlot.rect_position.y, get_viewport_rect().end.y-16*3, 8*delta)
+
 
 func _on_button_pressed(button:TextureButton):
 	if movingSlot:
@@ -49,9 +43,7 @@ func _on_button_pressed(button:TextureButton):
 		refresh_items()
 		movingSlot = null
 	else:
-		if inventory.selectedSlot == slots.get_child_count():
-			inventory.selectedSlot = 0
-		_on_selected_slot_changed()
+		inventory.selectedSlot = clamp(inventory.selectedSlot-1, 0, INF)
 		oldSlotIndex = button.get_index()
 		slots.remove_child(button)
 		movingSlot = button
@@ -71,9 +63,9 @@ func refresh_items():
 		slot.setup(item.texture, id)
 
 
-func _on_selected_slot_changed():
+func set_slot_cursor_position():
 	# Positioning the slot section sprite
-	var slotTexWidth = 18
+	var slotTexWidth = slots.get_child(0).texture_pressed.get_width()
 	var hotbarBegin = slots.get_child(0).rect_global_position.x-1
 	slotSelectorTarget = inventory.selectedSlot*slotTexWidth
 	slotSelectorTarget += inventory.selectedSlot+hotbarBegin
@@ -94,3 +86,7 @@ func _input(event):
 	if event.is_action_released("hotbar_scroll_right"):
 		inventory.selectedSlot = wrapi(inventory.selectedSlot+1,
 								0, slots.get_child_count())
+	# Selecting the slot with numbers
+	for key in range(KEY_1, KEY_1+slots.get_child_count()):
+		if Input.is_key_pressed(key):
+			inventory.selectedSlot = key-KEY_1

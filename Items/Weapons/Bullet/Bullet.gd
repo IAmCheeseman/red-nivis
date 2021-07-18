@@ -17,7 +17,7 @@ var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
 
 func set_texture(texture:StreamTexture):
 	sprite.texture = texture
-	particles.process_material.emission_box_extents = Vector3(float(texture.get_width())/2, float(texture.get_height())/2, 1)
+	particles.process_material.emission_box_extents = Vector3(float(texture.get_width()), float(texture.get_height()), 2)/(2+sprite.hframes)
 	remove_child(particles)
 	particles.global_position = global_position
 	particles.scale = scale

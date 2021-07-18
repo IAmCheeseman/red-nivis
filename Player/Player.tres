@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Player/Scripts/PlayerResource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+maxHealth = 100
+maxAmmo = 255
+maxSpeed = 90.0
+jumpSpeedMod = 0.2
+accelaration = 5.0
+jumpForce = 195
+bunnyHopMult = 2.5
+gravity = 6.0
+friction = 3.0
+kbStrength = 45
+recoveryTime = 2.0
+tiltStrength = 5.0

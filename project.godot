@@ -100,6 +100,11 @@ _global_script_classes=[ {
 "path": "res://World/Planets/planet.gd"
 }, {
 "base": "Resource",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player/Scripts/PlayerResource.gd"
+}, {
+"base": "Resource",
 "class": "Prefix",
 "language": "GDScript",
 "path": "res://Items/Weapons/Prefixes.gd"
@@ -138,6 +143,7 @@ _global_script_class_icons={
 "JumpingBull": "",
 "Minibiome": "",
 "Planet": "",
+"Player": "",
 "Prefix": "",
 "Ruin": "",
 "SoundManager": "",

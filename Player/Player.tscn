@@ -4,7 +4,7 @@
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://UI/Assets/helthbahicon.png" type="Texture" id=3]
 [ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/ItemManagement.gd" type="Script" id=5]
+[ext_resource path="res://Player/Scripts/ItemManagement.gd" type="Script" id=5]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Player/Scripts/DeathScreen.gd" type="Script" id=8]
@@ -224,12 +224,9 @@ tracks/0/keys = {
 position = Vector2( 0, -3 )
 collision_layer = 0
 script = ExtResource( 2 )
-maxSpeed = 90
-recoveryTime = 2.0
 
 [node name="ScaleHelper" type="Node2D" parent="."]
 position = Vector2( 0, 5 )
-scale = Vector2( 1.25, 0.75 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
 material = SubResource( 2 )
@@ -476,8 +473,6 @@ anims/Land = SubResource( 11 )
 [node name="Flash" type="AnimationPlayer" parent="."]
 anims/flash = SubResource( 12 )
 
-[connection signal="dead" from="Hurtbox" to="." method="_on_death"]
-[connection signal="hurt" from="Hurtbox" to="." method="_on_Hurtbox_hurt"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/DeathScreen" method="_on_Continue_button_up"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/DeathScreen" method="_on_Quit_button_up"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/HBoxContainer/QuitDesktop" to="CanvasLayer/DeathScreen" method="_on_QuitDesktop_pressed"]

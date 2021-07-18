@@ -58,6 +58,7 @@ func move_item(from:int, to:int):
 	var movedItem = items[from]
 	items.remove(from)
 	items.insert(to, movedItem)
+	emit_signal("itemsChanged")
 
 
 func add_item(id:String):

@@ -22,7 +22,7 @@ func _ready():
 	pickUpCollision.shape = collision.shape
 
 
-func _process(delta):
+func _process(_delta):
 	if pickUpAnim.is_playing():
 		position += position.direction_to(player.position-Vector2(0, 16))
 
@@ -39,5 +39,5 @@ func _on_player_close(area):
 	player = area.get_parent()
 
 
-func _on_player_far(area):
+func _on_player_far(_area):
 	player = null

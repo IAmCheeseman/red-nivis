@@ -34,6 +34,7 @@ tracks/1/keys = {
 
 [node name="Particles" type="Particles2D"]
 modulate = Color( 1, 0.662745, 0.196078, 1 )
+z_index = 2
 emitting = false
 amount = 12
 lifetime = 0.5

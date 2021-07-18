@@ -1,16 +1,44 @@
-extends Node
+extends Resource
+class_name Player
+
+# Stats
+export var maxHealth:int = 100
+export var maxAmmo:int = 100
+
+# Movement
+export var maxSpeed:float = 90
+export var jumpSpeedMod:float = .2
+export var accelaration:float = 5.0
+export var jumpForce:int = 180
+export var bunnyHopMult:float = 2.5
+export var gravity:float = 6.0
+export var friction:float = 3.0
+export var kbStrength:int = 45
+export var recoveryTime:float = 2.0
+export var tiltStrength:float = 5.0
+
+var health:int
+var ammo:int setget set_ammo
+
+var isDead = false
+
+signal healthChanged
+signal ammoChanged
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func _init():
+	health = maxHealth
+	ammo = maxAmmo
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _on_damage_taken(damage, kbDir):
+	health -= damage
+	emit_signal("healthChanged", kbDir)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func set_ammo(value:int):
+	ammo = value
+	emit_signal("ammoChanged")
+
+
+

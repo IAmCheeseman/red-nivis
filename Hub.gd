@@ -9,6 +9,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Testing
+	randomize()
 	for i in 10:
 		var map = preload("res://UI/Inventory/ItemMap.tres")
 		var keys = map.items.keys()
