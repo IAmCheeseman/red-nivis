@@ -39,20 +39,19 @@ shader_param/is_on = 0.0
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 8 )
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 4.0
 height = 5.69744
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=5]
 radius = 4.0
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=6]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "Idle"
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -92,8 +91,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Jump"
+[sub_resource type="Animation" id=8]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -121,7 +119,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ), Vector2( 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -178,8 +176,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Jump"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
 tracks/0/interp = 1
@@ -193,8 +190,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Land"
+[sub_resource type="Animation" id=11]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -209,7 +205,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.5, 0.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:material:shader_param/is_on")
@@ -271,7 +267,7 @@ collision_mask = 2147483648
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -1, -4 )
-shape = SubResource( 10 )
+shape = SubResource( 4 )
 
 [node name="HurtTimer" type="Timer" parent="Hurtbox"]
 one_shot = true
@@ -281,7 +277,7 @@ visible = false
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 position = Vector2( 0, -3 )
-shape = SubResource( 11 )
+shape = SubResource( 5 )
 
 [node name="FloorCheckers" type="Node2D" parent="."]
 visible = false
@@ -408,7 +404,7 @@ margin_right = 380.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[center][shake rate=15 level=8]Game Over[/shake]"
 text = "Game Over"
@@ -469,16 +465,16 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Idle = SubResource( 4 )
-anims/Jump = SubResource( 5 )
-anims/Run = SubResource( 6 )
+anims/Idle = SubResource( 7 )
+anims/Jump = SubResource( 8 )
+anims/Run = SubResource( 9 )
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
-anims/Jump = SubResource( 7 )
-anims/Land = SubResource( 8 )
+anims/Jump = SubResource( 10 )
+anims/Land = SubResource( 11 )
 
 [node name="Flash" type="AnimationPlayer" parent="."]
-anims/flash = SubResource( 9 )
+anims/flash = SubResource( 12 )
 
 [connection signal="dead" from="Hurtbox" to="." method="_on_death"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_Hurtbox_hurt"]
