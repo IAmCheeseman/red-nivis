@@ -10,6 +10,9 @@ extends Node2D
 func _ready():
 	# Testing
 	for i in 10:
-		var item = GameManager.itemManager.create_item("Laser_Shotgun")
+		var map = preload("res://UI/Inventory/ItemMap.tres")
+		var keys = map.items.keys()
+		keys.shuffle()
+		var item = GameManager.itemManager.create_item(keys.pop_front())
 		item.position = Vector2(95+(i*32), 375)
 		add_child(item)

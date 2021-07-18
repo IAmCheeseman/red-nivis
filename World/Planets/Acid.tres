@@ -1,16 +1,18 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
-[ext_resource path="res://World/Planets/AcidAtmosphere.tscn" type="PackedScene" id=2]
 [ext_resource path="res://EnviormentalArt/Solids/AcidSolid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://EnviormentalArt/BackGrounds/MountainsAcidNear.png" type="Texture" id=4]
 [ext_resource path="res://World/Planets/planet.gd" type="Script" id=5]
+[ext_resource path="res://EnviormentalArt/BackGrounds/CloudsAcid.png" type="Texture" id=6]
+[ext_resource path="res://EnviormentalArt/BackGrounds/MountainsAcidFar.png" type="Texture" id=7]
 
 [resource]
 script = ExtResource( 5 )
 solidTiles = ExtResource( 3 )
-backgroundImages = [  ]
+backgroundImages = [ ExtResource( 7 ), ExtResource( 4 ) ]
+sky = ExtResource( 6 )
 atmosphereColor = Color( 0.333333, 0.443137, 0.313726, 1 )
-atmosphereParticles = ExtResource( 2 )
 mistStrength = 0.8
 mistColor = Color( 0.192157, 0.788235, 0.0862745, 1 )
 ruinChance = 6

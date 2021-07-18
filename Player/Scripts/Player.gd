@@ -218,19 +218,19 @@ func _on_Hurtbox_hurt(dir):
 	dir += dir*kbStrength
 
 
-func _on_Player_tree_entered():
-	if inMenu:
-		return
-	yield(get_tree(), "idle_frame")
-	# Adding the items you picked up in the last scene
-	# Adding back weapon
-	if GameManager.heldItems[1] != null and backItemHolder.get_child_count() == 0:
-		var weapon = add_item(GameManager.heldItems[1], backItemHolder)
-		yield(get_tree(), "idle_frame")
-		weapon.set_logic(false)
-	# Adding held weapon
-	if GameManager.heldItems[0] != null and itemHolder.get_child_count() == 0:
-		add_item(GameManager.heldItems[0], itemHolder)
+#func _on_Player_tree_entered():
+#	if inMenu:
+#		return
+#	yield(get_tree(), "idle_frame")
+#	# Adding the items you picked up in the last scene
+#	# Adding back weapon
+#	if GameManager.heldItems[1] != null and backItemHolder.get_child_count() == 0:
+#		var weapon = add_item(GameManager.heldItems[1], backItemHolder)
+#		yield(get_tree(), "idle_frame")
+#		weapon.set_logic(false)
+#	# Adding held weapon
+#	if GameManager.heldItems[0] != null and itemHolder.get_child_count() == 0:
+#		add_item(GameManager.heldItems[0], itemHolder)
 
 
 func gunShot(dir, recoil, cost):
@@ -238,52 +238,52 @@ func gunShot(dir, recoil, cost):
 	ammo -= cost
 
 
-func add_item(item=null, addTo=null):
-	# Making sure you can't hold two items at once.
-	if backItemHolder.get_child_count() == 0\
-	and itemHolder.get_child_count() > 0:
-		# Moving the current held item to your back if no back item
-		var gun = itemHolder.get_child(0)
-		itemHolder.remove_child(gun)
-		backItemHolder.add_child(gun)
-		GameManager.heldItems[1] = gun
-		gun.set_logic(false)
-
-	elif backItemHolder.get_child_count() > 0 and itemHolder.get_child_count() > 0:
-		# removing the current held item if there is a back item
-		var gun = itemHolder.get_child(0)
-		itemHolder.remove_child(gun)
-		if item:
-			emit_signal("dropGun", gun, item.position)
-
-	if backItemHolder.get_child_count() > 0:
-		backItemHolder.get_child(0).set_logic(false)
-
-	# Adding the gun to your saved guns
-	if item and !item in GameManager.heldItems:
-		item.position = Vector2.ZERO
-		item.isPickedUp = true
-		item.rotation = 0
-		item.set_logic(true)
-		GameManager.heldItems[0] = item
-		item.get_parent().remove_child(item)
-
-	# Adding item to game world
-	var newItem = item.duplicate()
-	newItem.isPickedUp = true
-	if !addTo:
-		itemHolder.call_deferred("add_child", newItem)
-	else:
-		if addTo.get_child_count() > 0:
-			addTo.get_child(0).queue_free()
-		addTo.call_deferred("add_child", newItem)
-
-	# Setting up the item
-	newItem.connect("onShoot", self, "gunShot")
-	newItem.player = self
-
-	camera.maxOffset = camera.baseMaxOffset+newItem.look
-	return newItem
+#func add_item(item=null, addTo=null):
+#	# Making sure you can't hold two items at once.
+#	if backItemHolder.get_child_count() == 0\
+#	and itemHolder.get_child_count() > 0:
+#		# Moving the current held item to your back if no back item
+#		var gun = itemHolder.get_child(0)
+#		itemHolder.remove_child(gun)
+#		backItemHolder.add_child(gun)
+#		GameManager.heldItems[1] = gun
+#		gun.set_logic(false)
+#
+#	elif backItemHolder.get_child_count() > 0 and itemHolder.get_child_count() > 0:
+#		# removing the current held item if there is a back item
+#		var gun = itemHolder.get_child(0)
+#		itemHolder.remove_child(gun)
+#		if item:
+#			emit_signal("dropGun", gun, item.position)
+#
+#	if backItemHolder.get_child_count() > 0:
+#		backItemHolder.get_child(0).set_logic(false)
+#
+#	# Adding the gun to your saved guns
+#	if item and !item in GameManager.heldItems:
+#		item.position = Vector2.ZERO
+#		item.isPickedUp = true
+#		item.rotation = 0
+#		item.set_logic(true)
+#		GameManager.heldItems[0] = item
+#		item.get_parent().remove_child(item)
+#
+#	# Adding item to game world
+#	var newItem = item.duplicate()
+#	newItem.isPickedUp = true
+#	if !addTo:
+#		itemHolder.call_deferred("add_child", newItem)
+#	else:
+#		if addTo.get_child_count() > 0:
+#			addTo.get_child(0).queue_free()
+#		addTo.call_deferred("add_child", newItem)
+#
+#	# Setting up the item
+#	newItem.connect("onShoot", self, "gunShot")
+#	newItem.player = self
+#
+#	camera.maxOffset = camera.baseMaxOffset+newItem.look
+#	return newItem
 
 
 

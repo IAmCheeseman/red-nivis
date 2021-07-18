@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Items/Weapons/Sounds/NoAmmoClick.wav" type="AudioStream" id=1]
 [ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Weapons/Sounds/ShootDefualt.wav" type="AudioStream" id=3]
 [ext_resource path="res://Items/Weapons/WeaponScripts/ProjectileBasedGun.gd" type="Script" id=4]
 [ext_resource path="res://Items/Weapons/Gun.gd" type="Script" id=9]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 23.0
 
 [node name="Gun" type="Node2D"]
 script = ExtResource( 9 )
@@ -29,13 +26,6 @@ cast_to = Vector2( 400, 0 )
 
 [node name="GunSprite" type="Sprite" parent="Pivot"]
 
-[node name="PickUpArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
-shape = SubResource( 1 )
-
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
 
@@ -49,7 +39,4 @@ audio = ExtResource( 1 )
 volumeMod = -10.0
 bus = "SFX"
 
-[connection signal="tree_entered" from="." to="." method="_ready"]
-[connection signal="area_entered" from="PickUpArea" to="." method="_on_PickUpArea_area_entered"]
-[connection signal="area_exited" from="PickUpArea" to="." method="_on_PickUpArea_area_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

@@ -10,4 +10,4 @@ layer = 128
 pause_mode = 2
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-scaleSpeed = 3
+rotSpeed = 0.5

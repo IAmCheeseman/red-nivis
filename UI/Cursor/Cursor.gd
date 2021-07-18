@@ -1,10 +1,11 @@
 extends Sprite
 
-export var rotSpeed = 1
-export var scaleSpeed = 1
+export var rotSpeed:float = 1
+export var scaleSpeed:float = 1
 
 
 func _ready():
+	yield(get_tree(), "idle_frame")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 

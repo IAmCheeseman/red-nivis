@@ -4,6 +4,7 @@ class_name Inventory
 # Inventory stuff
 export var maxSlots:int = 6
 var items:Array = []
+var selectedSlot:int = 0 setget _on_selected_slot_changed
 
 # Item map
 var itemMapR = preload("res://UI/Inventory/ItemMap.tres")
@@ -13,6 +14,7 @@ var itemMap = itemMapR.items
 signal itemsChanged
 signal itemDeleted
 signal itemAdded
+signal selectedSlotChanged
 
 
 func _init():
@@ -53,7 +55,7 @@ func filter_items(id:String):
 
 
 func move_item(from:int, to:int):
-	var movedItem = items[from].duplicate()
+	var movedItem = items[from]
 	items.remove(from)
 	items.insert(to, movedItem)
 
@@ -77,4 +79,13 @@ func destroy_item(id:String, amount:int):
 	# Finishing up
 	emit_signal("itemsChanged")
 	emit_signal("itemDeleted", id)
+
+
+func _on_selected_slot_changed(value):
+	selectedSlot = value
+	emit_signal("selectedSlotChanged")
+
+
+
+
 
