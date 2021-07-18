@@ -64,11 +64,3 @@ func shoot():
 	get_parent().get_node("ShootSound").play()
 
 	get_parent().emit_signal("onShoot", global_position.direction_to(get_global_mouse_position()), gun.recoil, gun.cost)
-
-	# Creating a bullet shell
-	var newShell = shell.instance()
-	newShell.global_position = global_position
-	newShell.dist = rand_range(16, 32)
-	newShell.shellRect = shellPositions[gun.gunType]
-	GameManager.spawnManager.add_bullet(newShell)
-	newShell.start(-global_position.direction_to(get_global_mouse_position()).rotated(deg2rad(rand_range(-15, 15) ) ) )

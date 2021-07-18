@@ -315,6 +315,7 @@ cast_to = Vector2( 6, 0 )
 
 [node name="ItemManagement" type="Node" parent="."]
 script = ExtResource( 5 )
+itemHolderPath = NodePath("../ItemHolder")
 
 [node name="BunnyHopTimer" type="Timer" parent="."]
 wait_time = 0.085
@@ -479,7 +480,6 @@ anims/Land = SubResource( 8 )
 [node name="Flash" type="AnimationPlayer" parent="."]
 anims/flash = SubResource( 9 )
 
-[connection signal="tree_entered" from="." to="." method="_on_Player_tree_entered"]
 [connection signal="dead" from="Hurtbox" to="." method="_on_death"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_Hurtbox_hurt"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/DeathScreen" method="_on_Continue_button_up"]

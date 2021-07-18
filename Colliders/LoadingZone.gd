@@ -20,13 +20,13 @@ func _ready():
 
 
 func _on_LoadingZone_area_entered(area):
+	if !area.is_in_group("player"):
+		return
 	if reqiurePrompt:
 		closeEnough = true
 		prompt.show()
 		return
-
-	if area.is_in_group("player"):
-		load_area()
+	load_area()
 
 
 func _on_LoadingZone_area_exited(area):

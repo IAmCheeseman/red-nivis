@@ -26,7 +26,6 @@ export var kickUp = 25
 export var bulletSpawnDist = 16
 
 # Nodes
-onready var pickUpArea = $PickUpArea
 onready var gunLogic = $GunLogic
 onready var pivot = $Pivot
 onready var shootSound = $ShootSound

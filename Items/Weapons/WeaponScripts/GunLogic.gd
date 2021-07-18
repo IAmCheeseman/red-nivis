@@ -6,16 +6,7 @@ onready var cooldownTimer = get_parent().get_node("Cooldown")
 onready var gunSprite = get_parent().get_node("Pivot/GunSprite")
 onready var gun = get_parent()
 
-var shellPositions = [
-	Rect2(Vector2(0, 0), Vector2(3, 5)),
-	Rect2(Vector2(3, 0), Vector2(4, 6)),
-	Rect2(Vector2(7, 0), Vector2(3, 5)),
-	Rect2(Vector2(7, 0), Vector2(3, 5)),
-	Rect2(Vector2(3, 0), Vector2(4, 6)),
-]
-
 export var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
-export var shell = preload("res://Items/Weapons/Bullet/Shell.tscn")
 var shootSound : SoundManager
 var rotVel = 0
 var holdShots = 0

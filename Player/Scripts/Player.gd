@@ -27,7 +27,6 @@ onready var SaS = $SquashAndStretch
 onready var flashPlayer = $Flash
 onready var deathScreen = $CanvasLayer/DeathScreen
 onready var itemHolder = $ItemHolder
-onready var backItemHolder = $ScaleHelper/Sprite/BackItemHolder
 onready var camera = $Camera
 onready var hurtTimer = $Hurtbox/HurtTimer
 onready var healthBar = $CanvasLayer/Bars/HealthBar/Bar
@@ -141,29 +140,8 @@ func _input(event):
 		emit_signal("removeTile", get_global_mouse_position())
 # warning-ignore:return_value_discarded
 
-	if Input.is_key_pressed(KEY_K): global_position = get_global_mouse_position()
-
-	if event.is_action_pressed("swap_weapons")\
-	and backItemHolder.get_child_count() == 1\
-	and itemHolder.get_child_count() == 1:
-		# Swapping weapons
-		var held = itemHolder.get_child(0)
-		var back = backItemHolder.get_child(0)
-
-		# Front item
-		itemHolder.remove_child(held)
-		backItemHolder.add_child(held)
-		held.pivot.rotation = 0
-		held.set_logic(false)
-		GameManager.heldItems[1] = held.duplicate()
-
-		# Back item
-		backItemHolder.remove_child(back)
-		itemHolder.add_child(back)
-		back.set_logic(true)
-		GameManager.heldItems[0] = back.duplicate()
-
-		camera.maxOffset = camera.baseMaxOffset+back.look
+	if Input.is_key_pressed(KEY_K):
+		global_position = get_global_mouse_position()
 
 	if Input.is_key_pressed(KEY_M):
 		var newPlayer = load("res://Player/Player.tscn").instance()
