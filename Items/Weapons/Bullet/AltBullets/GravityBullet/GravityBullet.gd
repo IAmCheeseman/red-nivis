@@ -12,7 +12,7 @@ onready var liftimeTimer = $Lifetime
 onready var anim = $AnimationPlayer
 onready var dieTween = $DieTween
 
-var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
+var explosion = preload("res://Enemies/Explosion.tscn")
 var vel:Vector2 = Vector2.ZERO
 var bounces = 0
 
@@ -44,19 +44,19 @@ func _on_QueueArea_body_entered(_body):
 	vel = -vel/2
 	bounces += 1
 	if bounces == 3:
-		add_particles()
+		add_explosion()
 		queue_free()
 
 
-func add_particles():
-	var newParticles = particleScene.instance()
-	newParticles.position = position
-	get_parent().add_child(newParticles)
+func add_explosion():
+	var newExplosion = explosion.instance()
+	newExplosion.position = position
+	get_parent().call_deferred("add_child", newExplosion)
 
 
 func _on_Hitbox_hit_object(object):
 	if !peircing:
-		add_particles()
+		add_explosion()
 		queue_free()
 	if object.get_parent().is_in_group("enemy"):
 		object.get_parent().bulletDir = direction
