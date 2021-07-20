@@ -67,7 +67,7 @@ func _physics_process(delta):
 		)
 		# Do stuff in the air.
 		if !is_grounded():
-			vel.y += playerData.gravity
+			vel.y += GameManager.gravity*delta
 
 		var faceDir = get_local_mouse_position()
 		sprite.scale.x = 1 if faceDir.x > 0 else -1

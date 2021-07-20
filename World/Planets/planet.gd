@@ -16,10 +16,8 @@ export var ruinColor: Color
 
 export(Array, Resource) var miniBiomes
 
-export var CAIterations := 2
-export var CAStarveLimit := 3
-export var CAOverPop := 4
-export var prefabs := "res://WorldGeneration/Prefabs/"
+export var flatTemplates:String = "res://World/Templates/FlatTemplates.png"
+export var connectionTemplates:String = "res://World/Templates/ConnectionTemplates.png"
 
 export(Array, PackedScene) var props
 

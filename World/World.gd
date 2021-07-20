@@ -60,7 +60,8 @@ func add_visual_stuff():
 
 func generate_room():
 	var planets = [
-		"Reg",
+		"Acid",
+#		"Reg",
 		"Fire",
 		"Acid",
 		"Water"
@@ -70,9 +71,11 @@ func generate_room():
 
 	var worldGenerator = WorldGenerator.new()
 	var world = worldGenerator.generate_world(
-		Vector2(20, 10), # World size
-		5*16, # Horizen
-		preload("res://World/Noise/HeightMap.tres").noise # HeightNoise
+		Vector2(20, 10),
+		5*16,
+		preload("res://World/Noise/HeightMap.tres").noise,
+		load(planet.flatTemplates).get_data(),
+		load(planet.connectionTemplates).get_data()
 		)
 
 	tiles = planet.solidTiles.instance()

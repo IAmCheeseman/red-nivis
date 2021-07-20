@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://CustomNodes/CustomParallax.gd" type="Script" id=2]
 [ext_resource path="res://UI/Minimap/Minimap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://EnviormentalArt/Solids/PlaceTiles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/Weapons/Bullet/BulletManagement.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/VisualEffects/MistSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Assets/PlaceTile.wav" type="AudioStream" id=9]
 
@@ -69,7 +70,7 @@ limitsEnd = Vector2( 2.34783e+10, 3300 )
 
 [node name="NearParallax" type="Node2D" parent="Background"]
 script = ExtResource( 2 )
-scrollSpeed = Vector2( 0.65, 1 )
+scrollSpeed = Vector2( 0.8, 1 )
 cameraPath = NodePath("../../Props/Player/Camera")
 limitsStart = Vector2( -2.34783e+10, 3050 )
 limitsEnd = Vector2( 2.34783e+10, 3300 )
@@ -85,7 +86,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Props" type="YSort" parent="."]
+[node name="Props" type="Node2D" parent="."]
 
 [node name="Player" parent="Props" instance=ExtResource( 4 )]
 position = Vector2( 190, 150 )
@@ -99,6 +100,8 @@ worldPath = NodePath("../../..")
 playerPath = NodePath("..")
 
 [node name="PlaceTiles" parent="Props" instance=ExtResource( 5 )]
+
+[node name="SpawningManagment" parent="Props" instance=ExtResource( 6 )]
 
 [node name="Atmosphere" type="CanvasModulate" parent="."]
 

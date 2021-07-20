@@ -1,0 +1,27 @@
+{
+	"events": [
+		{
+			"character": "character-1626807891.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Must..."
+		},
+		{
+			"character": "character-1626807891.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Get..."
+		},
+		{
+			"character": "character-1626807891.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[shake rate=15 level=7]MORE MUSCLE.[/shake]"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2.4",
+		"file": "timeline-1626807926.json",
+		"name": "MeatheadDialog1"
+	}
+}

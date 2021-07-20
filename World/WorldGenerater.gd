@@ -1,17 +1,11 @@
 extends Resource
 class_name WorldGenerator
 
-#var worldSize:Vector2 = Vector2(1000, 700)
-#var hillSize :float = 5
-#var horizen:int = 500
-#var roughness:int = 1
-#var tileSize:int = 8
-#var heightSmoothing:Curve
-#var overHangSmoothing:Curve
-#var caveSize:Curve
-
-
-func generate_world(size:Vector2, horizen:int, elevationNoise:OpenSimplexNoise) -> Image:
+func generate_world(size:Vector2,
+					horizen:int,
+					elevationNoise:OpenSimplexNoise,
+					flatTemplates:Image,
+					connectionTemplates:Image) -> Image:
 	randomize()
 	elevationNoise.seed = randi()
 
@@ -24,11 +18,11 @@ func generate_world(size:Vector2, horizen:int, elevationNoise:OpenSimplexNoise) 
 	var globalSize = size*templateSize
 
 	# Getting the templates
-	var flatTemplates:Image = preload("res://World/Templates/FlatTemplates.png").get_data()
-	var connectionTemplates:Image = preload("res://World/Templates/ConnectionTemplates.png").get_data()
 	# Getting the template amounts
 	var flatTemplateAmount := flatTemplates.get_width()/templateSize
 	var connectionTemplateAmount := connectionTemplates.get_width()/templateSize
+	flatTemplateAmount -= 1
+	connectionTemplateAmount -= 1
 	# Making sure that the templates are in the correct format
 	flatTemplates.convert(Image.FORMAT_RGB8)
 	connectionTemplates.convert(Image.FORMAT_RGB8)
@@ -44,7 +38,6 @@ func generate_world(size:Vector2, horizen:int, elevationNoise:OpenSimplexNoise) 
 	# Creating the horizen
 	map.lock()
 	var groundToSkyDist:int = globalSize.y-horizen
-	print(groundToSkyDist)
 	for x in globalSize.x:
 		for y in horizen:
 			map.set_pixel(x, y+groundToSkyDist, solidColor)
@@ -65,7 +58,6 @@ func generate_world(size:Vector2, horizen:int, elevationNoise:OpenSimplexNoise) 
 
 	# Adding in the templates
 	for x in size.x:
-		# FIXME: Sometimes it does not generate templates/slopes correctly
 		var templateY = templateYs[x]
 		var pasteDest = Vector2(x*templateSize, templateY)
 		# Checking if it should be a flat land template

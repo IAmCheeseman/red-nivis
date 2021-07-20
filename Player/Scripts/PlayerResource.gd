@@ -3,7 +3,7 @@ class_name Player
 
 # Stats
 export var maxHealth:int = 100
-export var maxAmmo:int = 100
+export var maxAmmo:int = 255
 
 # Movement
 export var maxSpeed:float = 90

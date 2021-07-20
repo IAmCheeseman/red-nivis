@@ -80,5 +80,11 @@ var items = {
 		"texture" : preload("res://Items/Weapons/WeaponSprites/RocketLauncher.png"),
 		"scene" : preload("res://Items/Weapons/WeaponScenes/RocketLauncher.tscn"),
 		"script" : null
+	},
+
+	"Grenade_Launcher" : {
+		"texture" : preload("res://Items/Weapons/WeaponSprites/GrenadeLauncher.png"),
+		"scene" : preload("res://Items/Weapons/WeaponScenes/GrenadeLauncher.tscn"),
+		"script" : null
 	}
 }
