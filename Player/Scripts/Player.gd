@@ -24,7 +24,6 @@ onready var floorCheckers = $FloorCheckers
 onready var bottomTileChecker = $TileCheckers/BottomTileChecker
 onready var topTileChecker = $TileCheckers/TopTileChecker
 onready var bunnyHopTimer = $BunnyHopTimer
-onready var ammoCounter = $AmmoCount
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -54,7 +53,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	ammoCounter.modulate.a = lerp(ammoCounter.modulate.a, 0, 1*delta)
 	if !lockMovement:
 		# INPUT
 		# ------------------------------------------------
@@ -147,8 +145,6 @@ func add_walk_particles(spawnPos:Vector2):
 
 func _on_ammo_changed():
 	ammoBar.value = GameManager.percentage_of(playerData.ammo, playerData.maxAmmo)
-	ammoCounter.text = "%s/%s" % [playerData.ammo, playerData.maxAmmo]
-	ammoCounter.modulate.a = 1
 
 
 func die():

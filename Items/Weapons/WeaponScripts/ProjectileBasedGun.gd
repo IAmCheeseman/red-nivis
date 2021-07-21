@@ -36,11 +36,6 @@ func shoot():
 	# Screenshake
 
 	# Getting the parameters
-#	var strength = 8*GameManager.percentage_from(10, gun.damage)
-#	strength *= gun.cooldown+.5
-#	var freq = gun.damage/1000
-#	freq *= gun.cooldown+.5
-#	freq = clamp(freq, .08, .2)
 
 	var direction = -global_position.direction_to(get_global_mouse_position())
 

@@ -34,11 +34,19 @@ onready var gunLogic = $GunLogic
 onready var pivot = $Pivot
 onready var shootSound = $ShootSound
 onready var noAmmoClick = $NoAmmoClickSFX
+onready var ammoLabel = $Pivot/GunSprite/AmmoCount
+onready var sprite = $Pivot/GunSprite
 
 # Properties
 var standingOver = false
 var canShoot = true
 var player
+
+
+func _ready():
+	ammoLabel.rect_position.y = -sprite.texture.get_height()
+	ammoLabel.text = "%s/%s" % [player.playerData.ammo, player.playerData.maxAmmo]
+
 
 func _on_Cooldown_timeout():
 	canShoot = true

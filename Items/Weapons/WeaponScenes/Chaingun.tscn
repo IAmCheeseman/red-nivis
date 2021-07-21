@@ -18,3 +18,8 @@ ssStrength = 5
 position = Vector2( 2, 0 )
 texture = ExtResource( 2 )
 offset = Vector2( 8, 2 )
+
+[node name="AmmoCount" parent="Pivot/GunSprite" index="0"]
+margin_left = -2.0
+margin_right = 38.0
+align = 0

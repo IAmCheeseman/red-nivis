@@ -338,4 +338,3 @@ hotbar_scroll_right={
 [rendering]
 
 threads/thread_model=2
-quality/dynamic_fonts/use_oversampling=false
