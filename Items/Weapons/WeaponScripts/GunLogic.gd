@@ -34,17 +34,6 @@ func _physics_process(delta):
 	gunSprite.rotation = lerp_angle(gunSprite.rotation, 0, 4*delta)
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 12*delta)
 
-	# making sure the ammo counter is correctly positioned
-	if gunSprite.scale.y == 1:
-		gun.ammoLabel.rect_scale.y = 1
-		gun.ammoLabel.rect_rotation = 0
-		gun.ammoLabel.rect_position.x = gunSprite.texture.get_width()\
-		-gun.ammoLabel.rect_size.x
-	else:
-		gun.ammoLabel.rect_scale.y = -1
-		gun.ammoLabel.rect_rotation = 180
-		gun.ammoLabel.rect_position.x = gunSprite.texture.get_width()
-
 	# Shooting
 	var hasEnoughAmmo = playerData.ammo-gun.cost > 0
 
@@ -56,7 +45,7 @@ func _physics_process(delta):
 #		gun.emit_signal("onShoot")
 		Cursor.get_node("Sprite").scale = Vector2(1.2, 1.2)
 		shoot()
-		gun.ammoLabel.text = "%s/%s" % [gun.player.playerData.ammo, gun.player.playerData.maxAmmo]
+		gun.ammoLabel.text = "%s/%s" % [clamp(gun.player.playerData.ammo, 0, INF), gun.player.playerData.maxAmmo]
 	elif Input.is_action_just_pressed("use_item")\
 	and !hasEnoughAmmo:
 		gun.noAmmoClick.play()

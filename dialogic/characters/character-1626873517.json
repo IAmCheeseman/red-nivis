@@ -1,0 +1,20 @@
+{
+	"color": "#ff195228",
+	"description": "",
+	"display_name": "Old Hag",
+	"display_name_bool": true,
+	"id": "character-1626873517.json",
+	"mirror_portraits": false,
+	"name": "OldHag_",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 100
+}

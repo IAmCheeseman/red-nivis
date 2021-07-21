@@ -34,7 +34,7 @@ onready var gunLogic = $GunLogic
 onready var pivot = $Pivot
 onready var shootSound = $ShootSound
 onready var noAmmoClick = $NoAmmoClickSFX
-onready var ammoLabel = $Pivot/GunSprite/AmmoCount
+onready var ammoLabel = $AmmoCount
 onready var sprite = $Pivot/GunSprite
 
 # Properties
@@ -44,8 +44,13 @@ var player
 
 
 func _ready():
-	ammoLabel.rect_position.y = -sprite.texture.get_height()
-	ammoLabel.text = "%s/%s" % [player.playerData.ammo, player.playerData.maxAmmo]
+	ammoLabel.text = "%s/%s" % [clamp(player.playerData.ammo, 0, INF), player.playerData.maxAmmo]
+
+
+func _process(delta):
+	ammoLabel.rect_global_position = sprite.global_position
+	ammoLabel.rect_position.y -= sprite.texture.get_height()
+	ammoLabel.rect_position.x -= sprite.texture.get_width()/2
 
 
 func _on_Cooldown_timeout():

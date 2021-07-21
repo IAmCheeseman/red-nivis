@@ -10,7 +10,7 @@ cooldown = 1.2
 multishot = 8
 spread = 0.5
 projLifetime = 0.15
-cost = 6
+cost = 3
 maxHoldShots = 1
 ssStrength = 12
 

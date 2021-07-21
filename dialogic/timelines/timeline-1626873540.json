@@ -1,0 +1,33 @@
+{
+	"events": [
+		{
+			"character": "character-1626873517.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[shake rate=15 level=7]Get out of my face or face the wrath of my cane![/shake]"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "..."
+		},
+		{
+			"character": "character-1626873517.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "[shake rate=25 level=8]AND MY 24 AK-47s![/shake]"
+		},
+		{
+			"character": "character-1626807891.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yeah, what she said! "
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.2.4",
+		"file": "timeline-1626873540.json",
+		"name": "OldHagDialog1"
+	}
+}

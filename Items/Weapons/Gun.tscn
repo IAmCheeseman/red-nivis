@@ -34,7 +34,7 @@ cast_to = Vector2( 400, 0 )
 
 [node name="GunSprite" type="Sprite" parent="Pivot"]
 
-[node name="AmmoCount" type="Label" parent="Pivot/GunSprite"]
+[node name="AmmoCount" type="Label" parent="."]
 margin_right = 23.0
 margin_bottom = 6.0
 custom_fonts/font = SubResource( 1 )

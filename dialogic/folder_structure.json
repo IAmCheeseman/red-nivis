@@ -9,7 +9,8 @@
 				"character-1626320411.json",
 				"character-1626395947.json",
 				"character-1626400266.json",
-				"character-1626807891.json"
+				"character-1626807891.json",
+				"character-1626873517.json"
 			],
 			"folders": {
 
@@ -71,7 +72,7 @@
 					},
 					"metadata": {
 						"color": null,
-						"folded": false
+						"folded": true
 					}
 				},
 				"Norg": {
@@ -86,6 +87,18 @@
 					"metadata": {
 						"color": null,
 						"folded": true
+					}
+				},
+				"OldHag": {
+					"files": [
+						"timeline-1626873540.json"
+					],
+					"folders": {
+
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
 					}
 				},
 				"Pickle": {
