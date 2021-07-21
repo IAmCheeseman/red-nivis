@@ -58,6 +58,12 @@ var items = {
 		"script" : null
 	},
 
+	"Shotgun" : {
+		"texture" : preload("res://Items/Weapons/WeaponSprites/Shotgun.png"),
+		"scene" : preload("res://Items/Weapons/WeaponScenes/Shotgun.tscn"),
+		"script" : null
+	},
+
 	"Revolver" : {
 		"texture" : preload("res://Items/Weapons/WeaponSprites/Revolver.png"),
 		"scene" : preload("res://Items/Weapons/WeaponScenes/Revolver.tscn"),
