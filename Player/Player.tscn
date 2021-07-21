@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
@@ -48,6 +48,12 @@ radius = 4.0
 
 [sub_resource type="DynamicFont" id=6]
 outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 8
+outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
@@ -459,6 +465,19 @@ __meta__ = {
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
 visible = false
+
+[node name="AmmoCount" type="Label" parent="."]
+margin_left = -59.0
+margin_top = -35.0
+margin_right = 59.0
+margin_bottom = -21.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.8, 0.439216, 0.184314, 1 )
+text = "255/255"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"

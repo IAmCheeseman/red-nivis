@@ -36,16 +36,16 @@ func shoot():
 	# Screenshake
 
 	# Getting the parameters
-	var strength = 8*GameManager.percentage_from(10, gun.damage)
-	strength *= gun.cooldown+.5
-	var freq = gun.damage/1000
-	freq *= gun.cooldown+.5
-	freq = clamp(freq, .08, .2)
+#	var strength = 8*GameManager.percentage_from(10, gun.damage)
+#	strength *= gun.cooldown+.5
+#	var freq = gun.damage/1000
+#	freq *= gun.cooldown+.5
+#	freq = clamp(freq, .08, .2)
 
 	var direction = -global_position.direction_to(get_global_mouse_position())
 
 	# Shaking the camera
-	GameManager.emit_signal("screenshake", 0, strength*2, freq, freq, strength/3, direction)
+	GameManager.emit_signal("screenshake", 0, gun.ssStrength, gun.ssFreq, gun.ssFreq, gun.ssStrength/3, direction)
 
 	# Playing a sound for feedback
 	gun.get_node("ShootSound").play()

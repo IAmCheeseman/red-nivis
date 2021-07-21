@@ -14,6 +14,8 @@ export var ruinChance := 6
 export var minRuinDist := 15
 export var ruinColor: Color
 
+export var gravity = 350
+
 export(Array, Resource) var miniBiomes
 
 export var flatTemplates:String = "res://World/Templates/FlatTemplates.png"

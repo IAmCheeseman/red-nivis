@@ -9,6 +9,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	GameManager.gravity = GameManager.DEFAULT_GRAVITY
 	var itemMap = ItemMap.new()
 	var keys = itemMap.items.keys()
 	keys.shuffle()

@@ -26,6 +26,9 @@ export var bulletSprite = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.pn
 export var kickUp = 25
 export var bulletSpawnDist = 16
 
+export var ssFreq = .05
+export var ssStrength = 7
+
 # Nodes
 onready var gunLogic = $GunLogic
 onready var pivot = $Pivot

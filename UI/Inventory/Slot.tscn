@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Inventory/Slot.gd" type="Script" id=1]
+[ext_resource path="res://UI/Assets/SlotFont.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/Slot.png-c3dabab1b9471a34cb3fe7bec0b47623.stex"
@@ -10,6 +11,10 @@ load_path = "res://.import/SlotPressed.png-ddbacac1a489c10b58df20bf6827b85e.stex
 
 [sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/SlotHover.png-7d9bc903ca922261bf7278352f84965b.stex"
+
+[sub_resource type="DynamicFont" id=4]
+size = 4
+font_data = ExtResource( 2 )
 
 [node name="Slot" type="TextureButton"]
 anchor_right = 1.0
@@ -35,6 +40,18 @@ margin_right = 16.0
 margin_bottom = 17.0
 expand = true
 stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Index" type="Label" parent="."]
+margin_left = 13.0
+margin_top = 3.0
+margin_right = 17.0
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "1"
 __meta__ = {
 "_edit_use_anchors_": false
 }

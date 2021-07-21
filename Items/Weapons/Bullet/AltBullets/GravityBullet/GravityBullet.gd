@@ -9,8 +9,6 @@ onready var hitbox = $Hitbox
 onready var sprite = $Sprite
 onready var particles = $Particles
 onready var liftimeTimer = $Lifetime
-onready var anim = $AnimationPlayer
-onready var dieTween = $DieTween
 
 var explosion = preload("res://Enemies/Explosion.tscn")
 var vel:Vector2 = Vector2.ZERO
@@ -51,6 +49,7 @@ func _on_QueueArea_body_entered(_body):
 func add_explosion():
 	var newExplosion = explosion.instance()
 	newExplosion.position = position
+	newExplosion.get_node("Hitbox").damage = hitbox.damage
 	get_parent().call_deferred("add_child", newExplosion)
 
 
@@ -63,8 +62,5 @@ func _on_Hitbox_hit_object(object):
 
 
 func _on_lifetime_timeout():
-	dieTween.interpolate_property(self, "speed", speed, 0, .2, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	dieTween.start()
-	modulate = Color.gray
+	add_explosion()
 	queue_free()
-#	anim.play("Free")

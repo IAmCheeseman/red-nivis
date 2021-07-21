@@ -12,6 +12,7 @@ projScale = 0.4
 projLifetime = 0.5
 kickUp = 12
 bulletSpawnDist = 28
+ssStrength = 5
 
 [node name="GunSprite" parent="Pivot" index="2"]
 position = Vector2( 2, 0 )

@@ -18,6 +18,7 @@ mistColor = Color( 0.192157, 0.788235, 0.0862745, 1 )
 ruinChance = 6
 minRuinDist = 15
 ruinColor = Color( 0.0627451, 0.364706, 0.196078, 1 )
+gravity = 225
 miniBiomes = [  ]
 flatTemplates = "res://World/Templates/AcidFlatTemplates.png"
 connectionTemplates = "res://World/Templates/ConnectionTemplates.png"

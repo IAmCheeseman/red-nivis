@@ -69,6 +69,8 @@ func generate_room():
 
 	planet = load("res://World/Planets/%s.tres" % planets[GameManager.planet])
 
+	GameManager.gravity = planet.gravity
+
 	var worldGenerator = WorldGenerator.new()
 	var world = worldGenerator.generate_world(
 		Vector2(20, 10),

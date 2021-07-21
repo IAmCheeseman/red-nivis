@@ -1,5 +1,7 @@
 extends Node2D
 
+const DEFAULT_GRAVITY = 350
+
 var planet = 0
 var isDead = false
 var heldItems = [null, null]
