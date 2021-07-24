@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Enemies/Bull/Bull.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Bull/Bull.png" type="Texture" id=2]
-[ext_resource path="res://Colliders/Hitbox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Colliders/Hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Colliders/SoftCollision.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/BloodManager.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]

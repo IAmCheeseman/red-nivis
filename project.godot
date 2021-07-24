@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Hurtbox",
 "language": "GDScript",
-"path": "res://Colliders/Hurtbox.gd"
+"path": "res://Managing/Colliders/Hurtbox.gd"
 }, {
 "base": "Resource",
 "class": "Inventory",

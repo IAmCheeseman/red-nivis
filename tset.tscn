@@ -6,7 +6,18 @@
 [node name="tset" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 134.029, 59.0409 )
-maxSpeed = 120
+position = Vector2( 101, 153 )
 
 [node name="TileMap" parent="." instance=ExtResource( 1 )]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 200, 115, 100, 215, 0, 215, 0, 271, 360, 271, 360, 115 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 360, 221 )
+scale = Vector2( -1, -1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PoolVector2Array( 200, 115, 100, 215, 0, 215, 0, 271, 360, 271, 360, 115 )

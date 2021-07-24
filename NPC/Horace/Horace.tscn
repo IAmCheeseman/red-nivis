@@ -19,12 +19,27 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScaleHelper:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.9, 1.1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 18.0
 
 [node name="Horace" instance=ExtResource( 1 )]
 dialogs = PoolStringArray( "HoraceDialog1", "HoraceDialog2", "HoraceDialog3" )
+
+[node name="ScaleHelper" parent="." index="0"]
+scale = Vector2( 1.00992, 0.990081 )
 
 [node name="Sprite" parent="ScaleHelper" index="0"]
 position = Vector2( 0, -16 )

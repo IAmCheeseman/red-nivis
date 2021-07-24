@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Colliders/Hitbox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Colliders/MeleeHitbox.gd" type="Script" id=2]
+[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Managing/Colliders/MeleeHitbox.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "init"

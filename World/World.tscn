@@ -95,7 +95,6 @@ position = Vector2( 190, 150 )
 visible = false
 
 [node name="MistSpawner" parent="Props/Player" instance=ExtResource( 7 )]
-position = Vector2( -8, -8 )
 worldPath = NodePath("../../..")
 playerPath = NodePath("..")
 

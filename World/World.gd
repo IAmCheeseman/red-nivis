@@ -26,7 +26,7 @@ var enemyCount = 0
 
 
 func _ready():
-	generate_room()
+	generate_world()
 	set_camera_limits()
 	add_visual_stuff()
 
@@ -58,10 +58,9 @@ func add_visual_stuff():
 
 
 
-func generate_room():
+func generate_world():
 	var planets = [
-		"Acid",
-#		"Reg",
+		"Reg",
 		"Fire",
 		"Acid",
 		"Water"
@@ -70,10 +69,10 @@ func generate_room():
 	planet = load("res://World/Planets/%s.tres" % planets[GameManager.planet])
 
 	GameManager.gravity = planet.gravity
-
+	var worldSize = Vector2(20, 10)
 	var worldGenerator = WorldGenerator.new()
 	var world = worldGenerator.generate_world(
-		Vector2(20, 10),
+		worldSize,
 		5*16,
 		preload("res://World/Noise/HeightMap.tres").noise,
 		load(planet.flatTemplates).get_data(),
@@ -102,6 +101,43 @@ func generate_room():
 			if world.get_pixel(x, y).is_equal_approx(wallColor):
 				backgroundTiles.set_cell(x, y, 0)
 				backgroundTiles.update_bitmask_area(Vector2(x, y))
+	generate_ruins(worldSize*16, 5)
+
+
+func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
+	var ruinRects = []
+	for r in ruinCount:
+		var newRuinPos = Vector2.ZERO
+		var maxAttempts = 500
+		var attempts = 0
+		var isOverlapping = false
+		# Making sure it's generating on the ground
+		while (tiles.get_cellv(newRuinPos) == -1 or tiles.get_cellv(newRuinPos+Vector2.UP) != -1)\
+			and !isOverlapping:
+			newRuinPos.x = rand_range(0, worldSize.x)
+			newRuinPos.y = rand_range(0, worldSize.y)
+			newRuinPos = newRuinPos.snapped(Vector2(1, 1))
+			attempts += 1
+			for rect in ruinRects:
+				isOverlapping = rect.has_point(newRuinPos)
+
+			if attempts == maxAttempts: break
+		if attempts == maxAttempts: continue
+
+		# If everything goes well
+		var newRuin = load("res://World/Ruins/Layouts/Ruin%s.tscn" % rand_range(1, 1)).instance()
+		newRuin.position = newRuinPos*16
+		newRuin.show_behind_parent = true
+		props.add_child(newRuin)
+		# Removing any overlapping tiles
+		for i in newRuin.tiles.get_used_cells():
+			tiles.set_cellv(newRuinPos+i, -1)
+			tiles.update_bitmask_area(newRuinPos+i)
+		for i in newRuin.fgProps.get_used_cells():
+			if tiles.get_cellv(newRuinPos+i) != -1:
+				newRuin.fgProps.set_cellv(i, -1)
+
+		ruinRects.append(newRuin.tiles.get_used_rect())
 
 
 func check_approx(color:Color, color2:Color):

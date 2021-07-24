@@ -78,7 +78,7 @@ func _physics_process(delta):
 		if just_landed():
 			bunnyHopTimer.start()
 
-		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(46)).y
+		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 	else:
 		sprite.rotation_degrees = 0
 		animationPlayer.play("Idle")
@@ -101,10 +101,11 @@ func just_landed():
 		if vel.y > 0: SaS.play("Land")
 		return true
 	return false
+
 func is_grounded():
 	for c in floorCheckers.get_children():
 		if c.is_colliding():
-			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_pressed("jump") else Vector2.ZERO
+			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump") else Vector2.ZERO
 			return true
 	return false
 

@@ -7,7 +7,7 @@ onready var cooldownTimer = weapon.get_node("Cooldown")
 onready var weaponSprite = weapon.get_node("Pivot/GunSprite")
 onready var hitCast = weapon.get_node("Pivot/ShotLine")
 
-var hitbox = preload("res://Colliders/MeleeHitbox.tscn")
+var hitbox = preload("res://Managing/Colliders/MeleeHitbox.tscn")
 var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 var shootSound : SoundManager
 var rotVel = 0
