@@ -125,7 +125,7 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 		if attempts == maxAttempts: continue
 
 		# If everything goes well
-		var newRuin = load("res://World/Ruins/Layouts/Ruin%s.tscn" % rand_range(1, 1)).instance()
+		var newRuin = load("res://World/Ruins/Layouts/Ruin%s.tscn" % round(rand_range(1, 2))).instance()
 		newRuin.position = newRuinPos*16
 		newRuin.show_behind_parent = true
 		props.add_child(newRuin)

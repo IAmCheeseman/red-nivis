@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 tool
 
 export var rotationSpeed = 90 setget set_rot_speed
@@ -21,7 +21,7 @@ export var altLoadPath : String
 onready var atmosphere = $Atmosphere
 onready var sprite = $Sprite
 onready var moon = $Moon
-onready var collision = $CollisionShape2D
+onready var button = $Button
 
 var oRots = {
 	"planet" : rand_range(0, 360),
@@ -30,14 +30,19 @@ var oRots = {
 
 
 func _ready():
-	$CollisionShape2D.shape = $CollisionShape2D.shape.duplicate()
-	$CollisionShape2D.shape.radius = float(sprite.texture.get_height())/4
 	set_tex(texture)
 
 
 func _physics_process(delta):
 	orbit(self, Vector2.ZERO, orbitSpeed, orbitDistance, rotationSpeed, "planet", delta)
 	orbit($Moon, global_position, moonOrbitSpeed, moonOrbitDistance, moonRotationSpeed, "moon", delta)
+	if button.get_rect().has_point(get_local_mouse_position())\
+	and name != "Sun":
+		scale = scale.move_toward(Vector2.ONE*1.2, 6*delta)
+		if Input.is_action_just_pressed("use_item"):
+			go_to_planet()
+	else:
+		scale = scale.move_toward(Vector2.ONE, 6*delta)
 
 
 func orbit(node:Node2D, orbitPoint:Vector2, oSpeed, oDist, rSpeed, oRot, delta):
@@ -46,31 +51,30 @@ func orbit(node:Node2D, orbitPoint:Vector2, oSpeed, oDist, rSpeed, oRot, delta):
 	if !canOrbit:
 		return
 
-	oRots[oRot] += (oSpeed/oDist)*delta
+	oRots[oRot] += (oSpeed/(oDist+1))*delta
 	var orbit = Vector2.RIGHT.rotated(oRots[oRot])
 	if faceTravelDir: look_at(orbit)
 	orbit *= oDist
 	orbit += orbitPoint
-	node.global_position = orbit
+	node.position = orbit
 
 
-func _on_Planet_body_entered(body):
-	if body.is_in_group("playerShip") and planet != -1:
-		GameManager.planet = planet
+func go_to_planet():
+	GameManager.planet = planet
 # warning-ignore:return_value_discarded
-		if altLoadPath != "":
-			get_tree().change_scene(altLoadPath)
-			return
+	if altLoadPath != "":
+		get_tree().change_scene(altLoadPath)
+		return
 # warning-ignore:return_value_discarded
-		var error = get_tree().change_scene("res://World/World.tscn")
+	var error = get_tree().change_scene("res://World/World.tscn")
+	if error != OK:
+		get_tree().quit()
 
 
 
 func set_tex(_texture):
 	texture = _texture
 	$Sprite.texture = texture
-	$CollisionShape2D.shape = $CollisionShape2D.shape.duplicate()
-	$CollisionShape2D.shape.radius = float($Sprite.texture.get_height())/4
 
 
 func set_orbit(orb):

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Items/LootTable.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+loot = PoolStringArray( "Revolver", "Cheese", "Health_Potion", "Sandwich", "Pistol", "Shotgun", "Nacho_Chip" )
+rarites = [ 0.5, 0.333, 0.75, 0.65, 1.0, 0.64, 0.2 ]

@@ -3,6 +3,6 @@ extends Node2D
 func _ready():
 	GameManager.spawnManager = self
 
-func add_bullet(bullet:Node2D):
-	add_child(bullet)
+func spawn_object(object:Node):
+	add_child(object)
 

@@ -30,7 +30,7 @@ func shoot():
 		newBullet.lifetime = gun.projLifetime
 		newBullet.global_position = global_position+dir*gun.bulletSpawnDist
 		# Adding it to the tree
-		GameManager.spawnManager.add_bullet(newBullet)
+		GameManager.spawnManager.spawn_object(newBullet)
 		newBullet.hitbox.damage = gun.damage
 
 		newBullet.set_texture(gun.bulletSprite)

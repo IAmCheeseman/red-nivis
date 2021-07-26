@@ -47,7 +47,7 @@ func _ready():
 	ammoLabel.text = "%s/%s" % [clamp(player.playerData.ammo, 0, INF), player.playerData.maxAmmo]
 
 
-func _process(delta):
+func _process(_delta):
 	ammoLabel.rect_global_position = sprite.global_position
 	ammoLabel.rect_position.y -= sprite.texture.get_height()
 	ammoLabel.rect_position.x -= sprite.texture.get_width()/2
