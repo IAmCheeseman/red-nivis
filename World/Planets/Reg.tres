@@ -1,7 +1,6 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://EnviormentalArt/Solids/RedStone.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemies/Bull/JumpingBull.tscn" type="PackedScene" id=2]
 [ext_resource path="res://EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=3]
 [ext_resource path="res://EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=4]
 [ext_resource path="res://World/Planets/planet.gd" type="Script" id=5]
@@ -18,11 +17,10 @@ mistColor = Color( 0.772549, 0.772549, 0.772549, 1 )
 ruinChance = 6
 minRuinDist = 15
 ruinColor = Color( 0.341176, 0.623529, 0.145098, 1 )
+gravity = 350
 miniBiomes = [  ]
-CAIterations = 2
-CAStarveLimit = 3
-CAOverPop = 4
-prefabs = "res://WorldGeneration/Prefabs/"
+flatTemplates = "res://World/Templates/FlatTemplates.png"
+connectionTemplates = "res://World/Templates/ConnectionTemplates.png"
 props = [  ]
-enemies = [ ExtResource( 2 ) ]
-enemyChances = [ 50.0 ]
+enemies = [  ]
+enemyChances = [  ]

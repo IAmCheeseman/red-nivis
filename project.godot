@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody2D",
-"class": "BigJumpingBull",
-"language": "GDScript",
-"path": "res://Enemies/BigBull/BigJumpingBull.gd"
-}, {
 "base": "Resource",
 "class": "BorderedSimplexNoise",
 "language": "GDScript",
@@ -84,11 +79,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Inventory/ItemMap.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "JumpingBull",
-"language": "GDScript",
-"path": "res://Enemies/Bull/Bull.gd"
-}, {
 "base": "Resource",
 "class": "LootTable",
 "language": "GDScript",
@@ -130,7 +120,6 @@ _global_script_classes=[ {
 "path": "res://World/WorldGenerater.gd"
 } ]
 _global_script_class_icons={
-"BigJumpingBull": "",
 "BorderedSimplexNoise": "",
 "BorderedSimplexNoiseTexture": "res://addons/BorderedSimplexNoise/BorderedSimplexNoise.png",
 "CustomParallax": "",
@@ -145,7 +134,6 @@ _global_script_class_icons={
 "Inventory": "",
 "ItemManagement": "",
 "ItemMap": "",
-"JumpingBull": "",
 "LootTable": "",
 "Minibiome": "",
 "Planet": "",
@@ -185,7 +173,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/BorderedSimplexNoise/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/BorderedSimplexNoise/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
 
 [importer_defaults]
 
