@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Enemies/Jumpling/Jumpling.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Jumpling/Jumpling.png" type="Texture" id=2]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -37,11 +38,32 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "Jump"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 11.0114
+
 [node name="Jumpling" type="KinematicBody2D"]
+collision_layer = 0
 script = ExtResource( 1 )
+jumpForce = 320
+friction = 12
 
 [node name="ScaleHelper" type="Node2D" parent="."]
-scale = Vector2( 1.01284, 0.987159 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
 position = Vector2( 0, -12 )
@@ -81,10 +103,21 @@ shape = SubResource( 2 )
 
 [node name="JumpPause" type="Timer" parent="."]
 one_shot = true
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 3 )
+anims/Jump = SubResource( 5 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+visible = false
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -11 )
+shape = SubResource( 4 )
 
 [connection signal="timeout" from="JumpPause" to="." method="_on_jump_pause_timeout"]
 
 [editable path="PlayerDetection"]
+[editable path="Hurtbox"]

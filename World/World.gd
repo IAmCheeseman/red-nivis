@@ -137,7 +137,9 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 			if tiles.get_cellv(newRuinPos+i) != -1:
 				newRuin.fgProps.set_cellv(i, -1)
 
-		ruinRects.append(newRuin.tiles.get_used_rect())
+		var ruinRect = newRuin.tiles.get_used_rect()
+		ruinRect.position = newRuin.position/16
+		ruinRects.append(ruinRect)
 
 
 func check_approx(color:Color, color2:Color):

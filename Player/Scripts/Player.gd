@@ -28,6 +28,7 @@ onready var bunnyHopTimer = $BunnyHopTimer
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
 var lastFrameGroundState = false
+var triedJumpRecent = false
 
 
 var walkParticles = preload("res://Player/WalkParticles.tscn")
@@ -75,8 +76,7 @@ func _physics_process(delta):
 
 		animate(moveDir)
 
-		if just_landed():
-			bunnyHopTimer.start()
+		if just_landed(): bunnyHopTimer.start()
 
 		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 	else:
@@ -99,6 +99,11 @@ func animate(moveDir:Vector2):
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
 		if vel.y > 0: SaS.play("Land")
+		if triedJumpRecent:
+			jump()
+			bunnyHopTimer.start()
+			bunny_hop()
+			triedJumpRecent = false
 		return true
 	return false
 
@@ -112,14 +117,10 @@ func is_grounded():
 
 func _input(event):
 	# Jumping
-	if Input.is_action_just_pressed("jump") and is_grounded():
-		# Setting values
-		snapVector = Vector2.ZERO
-		vel.y = -playerData.jumpForce
-		if !bunnyHopTimer.is_stopped():
-			vel.x *= playerData.bunnyHopMult
-		# Squash and stretch
-		SaS.play("Jump")
+	if Input.is_action_just_pressed("jump"):
+		triedJumpRecent = true
+		if is_grounded():
+			jump()
 	# Adjustable jump height
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
@@ -143,10 +144,21 @@ func add_walk_particles(spawnPos:Vector2):
 
 	add_child(newDust)
 
+func bunny_hop(): if !bunnyHopTimer.is_stopped(): vel.x *= playerData.bunnyHopMult
 
-func _on_ammo_changed():
-	ammoBar.value = GameManager.percentage_of(playerData.ammo, playerData.maxAmmo)
+func jump():
+	# Setting values
+	snapVector = Vector2.ZERO
+	vel.y = -playerData.jumpForce
+	bunny_hop()
+	triedJumpRecent = false
+	# Squash and stretch
+	SaS.play("Jump")
 
+
+func _on_a_press_window_timeout(): triedJumpRecent = false
+
+func _on_ammo_changed(): ammoBar.value = GameManager.percentage_of(playerData.ammo, playerData.maxAmmo)
 
 func die():
 	deathScreen.show()

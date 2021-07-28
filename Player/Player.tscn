@@ -312,7 +312,11 @@ script = ExtResource( 5 )
 itemHolderPath = NodePath("../ItemHolder")
 
 [node name="BunnyHopTimer" type="Timer" parent="."]
-wait_time = 0.085
+wait_time = 0.185
+one_shot = true
+
+[node name="APressWindow" type="Timer" parent="."]
+wait_time = 0.05
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -474,6 +478,7 @@ anims/Land = SubResource( 11 )
 [node name="Flash" type="AnimationPlayer" parent="."]
 anims/flash = SubResource( 12 )
 
+[connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/DeathScreen" method="_on_Continue_button_up"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/DeathScreen" method="_on_Quit_button_up"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/HBoxContainer/QuitDesktop" to="CanvasLayer/DeathScreen" method="_on_QuitDesktop_pressed"]
