@@ -13,6 +13,7 @@ onready var placementTiles = $Props/PlaceTiles
 onready var mistSpawner = $Props/Player/MistSpawner
 onready var tilePlaceSFX = $TilePlaceSFX
 onready var minimap = $Props/Player/CanvasLayer/Minimap
+onready var enemySpawner = $Props/EnemySpawner
 
 var queuedChunks : Array
 var queueFreeChunks : Array
@@ -29,6 +30,7 @@ func _ready():
 	generate_world()
 	set_camera_limits()
 	add_visual_stuff()
+	enemySpawner.tiles = tiles
 
 
 func _process(_delta):

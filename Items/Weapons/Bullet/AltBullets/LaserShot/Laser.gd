@@ -23,7 +23,7 @@ func _ready():
 			raycast.force_raycast_update()
 
 		if collider.is_in_group("hurtbox"):
-			collider.take_damage(damage)
+			collider.take_damage(damage, raycast.cast_to.normalized())
 	var collisionPoint = raycast.get_collision_point()-position
 	if !raycast.is_colliding(): collisionPoint = raycast.cast_to
 

@@ -4,7 +4,7 @@
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=2]
 
 [node name="Gun" instance=ExtResource( 2 )]
-damage = 2.5
+damage = 25.0
 accuracy = 12.0
 projScale = 0.9
 projLifetime = 0.24

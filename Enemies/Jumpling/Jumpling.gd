@@ -6,6 +6,7 @@ export var jumpForce:int = 320
 export var forceRange:Vector2 = Vector2(-200, 0)
 export var terminalVelocity:int = 750
 export var speed:int = 120
+export var health = 70
 export var speedRange:Vector2 = Vector2(-30, 30)
 export var friction:int = 750
 export var pauseRange:Vector2 = Vector2(.5, 1.2)
@@ -17,12 +18,14 @@ onready var playerDetection = $PlayerDetection
 onready var jumpPause = $JumpPause
 onready var anim = $AnimationPlayer
 onready var gdTimer = $GroundDetectDisable
+onready var hurtAnim = $Hurt
 
 var player:Node2D
-
 var vel:Vector2 = Vector2.ZERO
-
 var state = IDLE setget set_state
+
+
+signal dead
 
 
 func _process(delta):
@@ -36,7 +39,10 @@ func _process(delta):
 			anim.play("Jump")
 			if is_on_ground(): set_state(IDLE)
 	if !player: player = playerDetection.get_player()
-
+	else:
+		if global_position.distance_to(player.global_position) > get_viewport_rect().end.x*3:
+			emit_signal("dead")
+			queue_free()
 	vel.y = move_and_slide(vel, Vector2.UP).y
 
 
@@ -65,6 +71,8 @@ func set_state(value):
 	# Idle
 	if value == IDLE and state == JUMPING:
 		jumpPause.start(rand_range(pauseRange.x, pauseRange.y))
+		if player:
+			GameManager.emit_signal("screenshake", 0, 4, .05, .05, 0, Vector2.DOWN)
 		if landingScene:
 			var newIdleScene = landingScene.instance()
 			newIdleScene.position = position
@@ -79,3 +87,25 @@ func set_ground_detect_state(gdstate:bool):
 
 func _on_jump_pause_timeout():
 	set_state(JUMPING)
+
+
+func _hit(damage, kbDir):
+	health -= damage
+	vel += kbDir*speed/3
+	if health <= 0:
+		emit_signal("dead")
+		hurtAnim.play("Hurt")
+		queue_free()
+
+
+
+
+
+
+
+
+
+
+
+
+

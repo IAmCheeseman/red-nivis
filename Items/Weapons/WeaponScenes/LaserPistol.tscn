@@ -6,7 +6,7 @@
 [ext_resource path="res://Items/Weapons/Bullet/AltBullets/LaserShot/LaserShoot.wav" type="AudioStream" id=4]
 
 [node name="Gun" instance=ExtResource( 2 )]
-damage = 8.0
+damage = 32.0
 accuracy = 6.0
 cooldown = 0.3
 projLifetime = 0.3
@@ -19,5 +19,5 @@ bulletSpawnDist = 19
 position = Vector2( 11, 0 )
 texture = ExtResource( 1 )
 
-[node name="ShootSound" parent="." index="3"]
+[node name="ShootSound" parent="." index="4"]
 audio = ExtResource( 4 )
