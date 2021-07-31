@@ -101,8 +101,8 @@ func _on_WalkTimer_timeout():
 	targetWalk = position.x+rand_range(-walkRange, walkRange)
 
 
-func _on_hurt(damage, dir):
-	health -= damage
+func _on_hurt(edamage, _kbdir):
+	health -= edamage
 	hurtAnim.play("Hurt")
 	if health <= 0:
 		emit_signal("dead")

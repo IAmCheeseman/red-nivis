@@ -23,7 +23,7 @@ func _ready():
 	spawnTimer.start()
 
 
-func spawn_enemy(enemy=null) -> void:
+func spawn_enemy() -> void:
 	if enemyCount >= maxEnemies:
 		return
 

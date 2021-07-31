@@ -103,35 +103,55 @@ func generate_world():
 			if world.get_pixel(x, y).is_equal_approx(wallColor):
 				backgroundTiles.set_cell(x, y, 0)
 				backgroundTiles.update_bitmask_area(Vector2(x, y))
-	generate_ruins(worldSize*16, 5)
+	generate_ruins(worldSize*16, 15)
+	place_player(worldSize*16, (worldSize.x*16)/2)
+
+
+func place_player(worldSize:Vector2, x:int):
+#	print(structurePlacements[0])
+	var playerPlaced = false
+	var y = 0
+#	for y in worldSize.y:
+	while true:
+# warning-ignore:narrowing_conversion
+		if tiles.get_cell(x, y) != -1:
+			var worldPos = tiles.map_to_world(Vector2(x, y))
+			player.global_position = worldPos+(Vector2.RIGHT*8)
+			return
+		y += 1
 
 
 func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
-	var ruinRects = []
+	var ruinRects = [
+		Rect2((worldSize.x/2)-3, 0, 6, worldSize.y)
+	]
 	for r in ruinCount:
 		var newRuinPos = Vector2.ZERO
 		var maxAttempts = 500
 		var attempts = 0
 		var isOverlapping = false
+
+		var newRuin = load("res://World/Ruins/Layouts/Ruin%s.tscn" % round(rand_range(1, 2))).instance()
+		props.add_child(newRuin)
+		var ruinRect = newRuin.tiles.get_used_rect()
 		# Making sure it's generating on the ground
 		while (tiles.get_cellv(newRuinPos) == -1 or tiles.get_cellv(newRuinPos+Vector2.UP) != -1)\
 			or isOverlapping:
 			newRuinPos.x = rand_range(0, worldSize.x)
 			newRuinPos.y = rand_range(0, worldSize.y)
 			newRuinPos = newRuinPos.snapped(Vector2(1, 1))
+			ruinRect.position = newRuinPos
 			attempts += 1
 			for rect in ruinRects:
-				isOverlapping = rect.has_point(newRuinPos)
+				isOverlapping = rect.intersects(ruinRect)
 				if isOverlapping: break
 
 			if attempts == maxAttempts: break
 		if attempts == maxAttempts: continue
 
 		# If everything goes well
-		var newRuin = load("res://World/Ruins/Layouts/Ruin%s.tscn" % round(rand_range(1, 2))).instance()
 		newRuin.position = newRuinPos*16
 		newRuin.show_behind_parent = true
-		props.add_child(newRuin)
 		# Removing any overlapping tiles
 		for i in newRuin.tiles.get_used_cells():
 			tiles.set_cellv(newRuinPos+i, -1)
@@ -140,9 +160,9 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 			if tiles.get_cellv(newRuinPos+i) != -1:
 				newRuin.fgProps.set_cellv(i, -1)
 
-		var ruinRect = newRuin.tiles.get_used_rect()
 		ruinRect.position = newRuinPos
 		ruinRects.append(ruinRect)
+
 
 
 func check_approx(color:Color, color2:Color):

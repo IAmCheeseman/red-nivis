@@ -92,7 +92,7 @@ collision_layer = 0
 script = ExtResource( 3 )
 speed = 1950
 jumpForce = 195
-cooldownTime = 0.5
+cooldownTime = 0.7
 
 [node name="ScaleHelper" type="Node2D" parent="."]
 

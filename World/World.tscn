@@ -92,7 +92,6 @@ __meta__ = {
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Player" parent="Props" instance=ExtResource( 4 )]
-position = Vector2( 190, 150 )
 
 [node name="Minimap" parent="Props/Player/CanvasLayer" index="2" instance=ExtResource( 3 )]
 visible = false
@@ -102,7 +101,6 @@ worldPath = NodePath("../../..")
 playerPath = NodePath("..")
 
 [node name="PlaceTiles" parent="Props" instance=ExtResource( 5 )]
-tile_data = PoolIntArray( 655371, 0, 196611 )
 
 [node name="SpawningManagment" parent="Props" instance=ExtResource( 6 )]
 
