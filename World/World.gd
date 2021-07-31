@@ -115,13 +115,14 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 		var isOverlapping = false
 		# Making sure it's generating on the ground
 		while (tiles.get_cellv(newRuinPos) == -1 or tiles.get_cellv(newRuinPos+Vector2.UP) != -1)\
-			and !isOverlapping:
+			or isOverlapping:
 			newRuinPos.x = rand_range(0, worldSize.x)
 			newRuinPos.y = rand_range(0, worldSize.y)
 			newRuinPos = newRuinPos.snapped(Vector2(1, 1))
 			attempts += 1
 			for rect in ruinRects:
 				isOverlapping = rect.has_point(newRuinPos)
+				if isOverlapping: break
 
 			if attempts == maxAttempts: break
 		if attempts == maxAttempts: continue
@@ -140,7 +141,7 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 				newRuin.fgProps.set_cellv(i, -1)
 
 		var ruinRect = newRuin.tiles.get_used_rect()
-		ruinRect.position = newRuin.position/16
+		ruinRect.position = newRuinPos
 		ruinRects.append(ruinRect)
 
 

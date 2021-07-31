@@ -24,6 +24,7 @@ onready var floorCheckers = $FloorCheckers
 onready var bottomTileChecker = $TileCheckers/BottomTileChecker
 onready var topTileChecker = $TileCheckers/TopTileChecker
 onready var bunnyHopTimer = $BunnyHopTimer
+onready var jumpWindow = $APressWindow
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -119,6 +120,7 @@ func _input(event):
 	# Jumping
 	if Input.is_action_just_pressed("jump"):
 		triedJumpRecent = true
+		jumpWindow.start()
 		if is_grounded():
 			jump()
 	# Adjustable jump height

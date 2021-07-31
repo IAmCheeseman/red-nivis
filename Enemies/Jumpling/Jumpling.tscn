@@ -1,14 +1,17 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Enemies/Jumpling/Jumpling.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Jumpling/Jumpling.png" type="Texture" id=2]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 11.0114
+
+[sub_resource type="CircleShape2D" id=7]
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 128.565
@@ -129,6 +132,13 @@ collision_layer = 4
 position = Vector2( 0, -11 )
 shape = SubResource( 2 )
 
+[node name="Hitbox" parent="." instance=ExtResource( 5 )]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, -13 )
+shape = SubResource( 7 )
+
 [node name="PlayerDetection" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 0, -12 )
@@ -157,4 +167,5 @@ anims/Hurt = SubResource( 6 )
 [connection signal="timeout" from="GroundDetectDisable" to="." method="set_ground_detect_state" binds= [ true ]]
 
 [editable path="Hurtbox"]
+[editable path="Hitbox"]
 [editable path="PlayerDetection"]

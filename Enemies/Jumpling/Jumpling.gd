@@ -92,9 +92,9 @@ func _on_jump_pause_timeout():
 func _hit(damage, kbDir):
 	health -= damage
 	vel += kbDir*speed/3
+	hurtAnim.play("Hurt")
 	if health <= 0:
 		emit_signal("dead")
-		hurtAnim.play("Hurt")
 		queue_free()
 
 

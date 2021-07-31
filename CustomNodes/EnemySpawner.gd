@@ -26,15 +26,21 @@ func _ready():
 func spawn_enemy(enemy=null) -> void:
 	if enemyCount >= maxEnemies:
 		return
+
 	enemyPool.shuffle()
 	var newEnemy = enemyPool.front().instance()
 	var _position = Vector2(-1, -1)
+	var tries = 0
+	# Selecting a position
 	while _position == Vector2(-1, -1)\
 	or tiles.get_cellv(tiles.world_to_map(_position)) != -1\
 	or tiles.get_cellv(tiles.world_to_map(_position+Vector2(0, 16))) == -1:
 		var relativePos = Vector2.RIGHT.rotated(deg2rad(rand_range(0, 360)))
 		relativePos *= stepify(rand_range(get_viewport_rect().end.x, spawnRange), tiles.cell_size.x)
 		_position = player.position+relativePos
+		tries += 1
+		if tries >= 100:
+			return
 	newEnemy.position = _position
 	newEnemy.connect("dead", self, "_on_enemy_dead")
 	GameManager.spawnManager.spawn_object(newEnemy)
