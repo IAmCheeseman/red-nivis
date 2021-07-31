@@ -12,6 +12,7 @@ func generate_world(size:Vector2,
 	# Defining colors
 	var solidColor := Color("#000000")
 	var emptyColor := Color("#ffffff")
+	var wallColor := Color("#34315b")
 
 	# Creating a global size
 	var templateSize:float = 16
@@ -82,6 +83,13 @@ func generate_world(size:Vector2,
 			if !leftFlat: connectionTemplates.flip_x()
 			map.blit_rect(connectionTemplates, copyRect, pasteDest)
 			if !leftFlat: connectionTemplates.flip_x()
+
+	# Adding caves
+	var caveNoise = BorderedSimplexNoise.new()
+	for x in map.get_width():
+		for y in map.get_height():
+			if caveNoise.get_noise_2d(x, y) > .5 and map.get_pixel(x, y).is_equal_approx(solidColor):
+				map.set_pixel(x, y, wallColor)
 	map.unlock()
 
 	var _error = map.save_png("user://output.png")
