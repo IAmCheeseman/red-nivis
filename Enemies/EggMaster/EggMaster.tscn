@@ -93,6 +93,7 @@ script = ExtResource( 3 )
 speed = 1950
 jumpForce = 195
 cooldownTime = 0.7
+bulletSpeed = 220
 
 [node name="ScaleHelper" type="Node2D" parent="."]
 

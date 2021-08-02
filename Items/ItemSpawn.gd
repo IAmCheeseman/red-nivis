@@ -17,6 +17,7 @@ func _ready():
 
 		var itemManager = ItemManagement.new()
 		var item = itemManager.create_item(selectedItem)
-		item.global_position = global_position
-		GameManager.spawnManager.spawn_object(item)
+		item.global_position = position
+		yield(get_tree(), "idle_frame")
+		get_parent().add_child(item)
 	queue_free()

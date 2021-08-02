@@ -20,6 +20,7 @@ export(Array, Resource) var miniBiomes
 
 export var flatTemplates:String = "res://World/Templates/FlatTemplates.png"
 export var connectionTemplates:String = "res://World/Templates/ConnectionTemplates.png"
+export var caveSizeCurve:Curve = preload("res://World/Curves/DefaultCaveSize.tres")
 
 export(Array, PackedScene) var props
 

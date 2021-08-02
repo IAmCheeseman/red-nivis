@@ -5,7 +5,8 @@ func generate_world(size:Vector2,
 					horizen:int,
 					elevationNoise:OpenSimplexNoise,
 					flatTemplates:Image,
-					connectionTemplates:Image) -> Image:
+					connectionTemplates:Image,
+					caveSizeCurve:Curve) -> Image:
 	randomize()
 	elevationNoise.seed = randi()
 
@@ -86,16 +87,18 @@ func generate_world(size:Vector2,
 
 	# Adding caves
 	var caveNoise = BorderedSimplexNoise.new()
+	caveNoise.thickness = caveSizeCurve.interpolate_baked(0)
+	print(caveNoise.thickness)
 	for x in map.get_width():
 		for y in map.get_height():
+			caveNoise.thickness = caveSizeCurve.interpolate_baked(float(y)/float(map.get_height()))
 			if caveNoise.get_noise_2d(x, y) > .5 and map.get_pixel(x, y).is_equal_approx(solidColor):
 				map.set_pixel(x, y, wallColor)
+	print(caveNoise.thickness)
+
 	map.unlock()
 
 	var _error = map.save_png("user://output.png")
 
 	return map
-
-
-
 

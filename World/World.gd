@@ -78,7 +78,8 @@ func generate_world():
 		5*16,
 		preload("res://World/Noise/HeightMap.tres").noise,
 		load(planet.flatTemplates).get_data(),
-		load(planet.connectionTemplates).get_data()
+		load(planet.connectionTemplates).get_data(),
+		planet.caveSizeCurve
 		)
 
 	tiles = planet.solidTiles.instance()
@@ -108,10 +109,8 @@ func generate_world():
 
 
 func place_player(worldSize:Vector2, x:int):
-#	print(structurePlacements[0])
 	var playerPlaced = false
 	var y = 0
-#	for y in worldSize.y:
 	while true:
 # warning-ignore:narrowing_conversion
 		if tiles.get_cell(x, y) != -1:
@@ -127,8 +126,6 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 	]
 	for r in ruinCount:
 		var newRuinPos = Vector2.ZERO
-		var maxAttempts = 500
-		var attempts = 0
 		var isOverlapping = false
 
 		var newRuin = load("res://World/Ruins/Layouts/Ruin%s.tscn" % round(rand_range(1, 2))).instance()
@@ -141,14 +138,9 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 			newRuinPos.y = rand_range(0, worldSize.y)
 			newRuinPos = newRuinPos.snapped(Vector2(1, 1))
 			ruinRect.position = newRuinPos
-			attempts += 1
 			for rect in ruinRects:
 				isOverlapping = rect.intersects(ruinRect)
 				if isOverlapping: break
-
-			if attempts == maxAttempts: break
-		if attempts == maxAttempts: continue
-
 		# If everything goes well
 		newRuin.position = newRuinPos*16
 		newRuin.show_behind_parent = true
