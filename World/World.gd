@@ -105,11 +105,10 @@ func generate_world():
 				backgroundTiles.set_cell(x, y, 0)
 				backgroundTiles.update_bitmask_area(Vector2(x, y))
 	generate_ruins(worldSize*16, 15)
-	place_player(worldSize*16, (worldSize.x*16)/2)
+	place_player((worldSize.x*16)/2)
 
 
-func place_player(worldSize:Vector2, x:int):
-	var playerPlaced = false
+func place_player(x:int):
 	var y = 0
 	while true:
 # warning-ignore:narrowing_conversion

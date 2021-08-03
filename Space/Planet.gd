@@ -30,6 +30,7 @@ var oRots = {
 
 
 func _ready():
+	button.set_focus_mode(Control.FOCUS_NONE)
 	set_tex(texture)
 
 
