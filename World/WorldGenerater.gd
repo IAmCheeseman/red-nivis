@@ -89,12 +89,19 @@ func generate_world(size:Vector2,
 	# Adding caves
 	var caveNoise = BorderedSimplexNoise.new()
 	caveNoise.thickness = caveSizeCurve.interpolate_baked(0)
-	print(caveNoise.thickness)
 	for x in map.get_width():
 		for y in map.get_height():
 			caveNoise.thickness = caveSizeCurve.interpolate_baked(float(y)/float(map.get_height()))
 			if caveNoise.get_noise_2d(x, y) > .5 and map.get_pixel(x, y).is_equal_approx(solidColor):
 				map.set_pixel(x, y, wallColor)
+
+	GameManager.worldLayers = {
+		"Sky" : -16,
+		"Surface" : horizen-(map.get_height()*.3),
+		"Underground" : map.get_height()*.55,
+		"Caverns" : map.get_height()*.8
+	}
+	print(GameManager.worldLayers)
 
 	for mb in minibiomes:
 		if mb is Minibiome:

@@ -5,10 +5,10 @@ var map:Image
 
 
 func generate_biome():
-	var startingPoint = Vector2(
-		round(rand_range(0, map.get_width())),
-		round(rand_range(0, map.get_height()))
-	)
+	var startingPoint = get_starting_point()
+	var genLayer = minibiome.generationLayer
+	while !GameManager.get_world_layer(startingPoint.y)[genLayer]:
+		startingPoint = get_starting_point()
 
 	# getting tile limits
 	var size = Vector2(
@@ -18,13 +18,13 @@ func generate_biome():
 
 	var noise = OpenSimplexNoise.new()
 	noise.seed = minibiome.minSize.x
-	noise.period = 15.5
+	noise.period = 15.5/2
 	noise.persistence = .5
 	noise.octaves = 1
 
 	for x in size.x:
 		for y in size.y:
-			if noise.get_noise_2d(startingPoint.x+x, startingPoint.y+y) < .5:
+			if noise.get_noise_2d(startingPoint.x+x, startingPoint.y+y) < .25:
 				map.set_pixel(
 					clamp(startingPoint.x+x, 0, map.get_width()-1),
 					clamp(startingPoint.y+y, 0, map.get_height()-1),
@@ -35,6 +35,12 @@ func generate_biome():
 					clamp(startingPoint.y+y, 0, map.get_height()-1),
 					minibiome.tilesColor)
 
+
+func get_starting_point() -> Vector2:
+	return Vector2(
+		round(rand_range(0, map.get_width())),
+		round(rand_range(0, map.get_height()))
+	)
 
 
 

@@ -6,11 +6,11 @@ export var maxTileSpace:int = 32
 export var minTileSpace:int = 16
 export var maxSize:Vector2 = Vector2(32, 32)
 export var minSize:Vector2 = Vector2(16, 16)
-export(int,
+export(String,
 "Sky",
 "Surface",
 "Underground",
-"Caverns") var generationLayer = 2
+"Caverns") var generationLayer = "Underground"
 export var generationScript:Script
 export var tilesColor:Color = Color.cyan
 export var bgColor:Color = Color.darkcyan

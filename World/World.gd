@@ -106,6 +106,7 @@ func generate_world():
 				backgroundTiles.set_cell(x, y, 0)
 				backgroundTiles.update_bitmask_area(Vector2(x, y))
 	generate_ruins(worldSize*16, 15)
+	add_minibiomes(world)
 	place_player((worldSize.x*16)/2)
 
 
@@ -156,11 +157,27 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 		ruinRects.append(ruinRect)
 
 
-
-func check_approx(color:Color, color2:Color):
-	if color.r-color2.r < .05 and color.g-color2.g < .05 and color.b-color2.b < .05:
-		return true
-	return false
+func add_minibiomes(map:Image):
+	for mb in planet.minibiomes:
+		if mb is Minibiome:
+			var newTiles = mb.mainTiles.instance()
+			var newBGTiles = mb.mainTiles.instance()
+			newBGTiles.modulate = Color.gray
+			newBGTiles.collision_layer = 0
+			newBGTiles.z_index = -1
+			# Setting the tiles
+			for x in map.get_width():
+				for y in map.get_height():
+					if map.get_pixel(x, y).is_equal_approx(mb.tilesColor):
+						newTiles.set_cell(x, y, 0)
+						newBGTiles.set_cell(x, y, 0)
+						newTiles.update_bitmask_area(Vector2(x, y))
+						newBGTiles.update_bitmask_area(Vector2(x, y))
+					elif map.get_pixel(x, y).is_equal_approx(mb.bgColor):
+						newBGTiles.set_cell(x, y, 0)
+						newBGTiles.update_bitmask_area(Vector2(x, y))
+			props.add_child(newTiles)
+			props.add_child(newBGTiles)
 
 
 func set_camera_limits():

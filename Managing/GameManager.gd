@@ -1,8 +1,14 @@
 extends Node2D
 
 const DEFAULT_GRAVITY = 350
+const SKY = "Sky"
+const SURFACE = "Surface"
+const UNDERGROUND = "Underground"
+const CAVERNS = "Caverns"
 
 var planet = 0
+var worldLayers:Dictionary
+var worldSize:Vector2
 var isDead = false
 var heldItems = [null, null]
 
@@ -22,10 +28,19 @@ func _input(_event):
 		OS.window_fullscreen = !OS.window_fullscreen
 
 
-func load_scene(loadPath):
-	yield(get_tree(), "idle_frame")
-# warning-ignore:return_value_discarded
-	get_tree().change_scene(loadPath)
+#func load_scene(loadPath):
+#	yield(get_tree(), "idle_frame")
+## warning-ignore:return_value_discarded
+#	get_tree().change_scene(loadPath)
+
+
+func get_world_layer(y:float):
+	return {
+		"Sky" : y >= worldLayers[SKY] and y < worldLayers[SURFACE],
+		"Surface" : y >= worldLayers[SURFACE] and y < worldLayers[UNDERGROUND],
+		"Underground": y >= worldLayers[UNDERGROUND] and y < worldLayers[CAVERNS],
+		"Caverns" : y >= worldLayers[CAVERNS]
+	}
 
 
 func set_attacking_enemies(value:int):
@@ -39,7 +54,7 @@ func percentage_of(a:float, b:float) -> float:
 	return (a/b)*100
 
 
-func percentage_from(percent, a) -> float:
+func percentage_from(percent:float, a:float) -> float:
 	if percent == 0 or a == 0:
 		return 0.0
 	var tinyPercent = 100/percent
