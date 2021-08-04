@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://EnviormentalArt/Solids/RedStone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Curves/DefaultCaveSize.tres" type="Curve" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=4]
 [ext_resource path="res://World/Planets/planet.gd" type="Script" id=5]
 [ext_resource path="res://EnviormentalArt/BackGrounds/MountainsNear.png" type="Texture" id=6]
+[ext_resource path="res://World/Minibiomes/RegPlanetMiniBiomes/RegPlanetMiniBiome1.tres" type="Resource" id=7]
 
 [resource]
 script = ExtResource( 5 )
@@ -19,7 +20,7 @@ ruinChance = 6
 minRuinDist = 15
 ruinColor = Color( 0.341176, 0.623529, 0.145098, 1 )
 gravity = 350
-miniBiomes = [  ]
+minibiomes = [ ExtResource( 7 ) ]
 flatTemplates = "res://World/Templates/FlatTemplates.png"
 connectionTemplates = "res://World/Templates/ConnectionTemplates.png"
 caveSizeCurve = ExtResource( 2 )

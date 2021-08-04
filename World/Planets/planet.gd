@@ -16,7 +16,7 @@ export var ruinColor: Color
 
 export var gravity = 350
 
-export(Array, Resource) var miniBiomes
+export(Array, Resource) var minibiomes
 
 export var flatTemplates:String = "res://World/Templates/FlatTemplates.png"
 export var connectionTemplates:String = "res://World/Templates/ConnectionTemplates.png"

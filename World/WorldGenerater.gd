@@ -6,7 +6,8 @@ func generate_world(size:Vector2,
 					elevationNoise:OpenSimplexNoise,
 					flatTemplates:Image,
 					connectionTemplates:Image,
-					caveSizeCurve:Curve) -> Image:
+					caveSizeCurve:Curve,
+					minibiomes:Array) -> Image:
 	randomize()
 	elevationNoise.seed = randi()
 
@@ -94,7 +95,21 @@ func generate_world(size:Vector2,
 			caveNoise.thickness = caveSizeCurve.interpolate_baked(float(y)/float(map.get_height()))
 			if caveNoise.get_noise_2d(x, y) > .5 and map.get_pixel(x, y).is_equal_approx(solidColor):
 				map.set_pixel(x, y, wallColor)
-	print(caveNoise.thickness)
+
+	for mb in minibiomes:
+		if mb is Minibiome:
+			for nmb in 50:
+				if rand_range(0, 1) > mb.rarity:
+					continue
+
+				var mbScriptNode = Node.new()
+				mbScriptNode.set_script(mb.generationScript)
+				mbScriptNode.minibiome = mb
+				mbScriptNode.map = map
+
+				mbScriptNode.generate_biome()
+
+				mbScriptNode.queue_free()
 
 	map.unlock()
 

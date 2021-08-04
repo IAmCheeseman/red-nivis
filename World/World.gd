@@ -79,7 +79,8 @@ func generate_world():
 		preload("res://World/Noise/HeightMap.tres").noise,
 		load(planet.flatTemplates).get_data(),
 		load(planet.connectionTemplates).get_data(),
-		planet.caveSizeCurve
+		planet.caveSizeCurve,
+		planet.minibiomes
 		)
 
 	tiles = planet.solidTiles.instance()
