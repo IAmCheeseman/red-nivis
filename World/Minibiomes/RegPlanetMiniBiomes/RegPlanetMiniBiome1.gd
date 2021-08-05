@@ -16,6 +16,12 @@ func generate_biome():
 		rand_range(minibiome.minSize.x, minibiome.maxSize.x)
 	)
 
+	var imgManip = ImageManipulation.new()
+
+	map.unlock()
+	imgManip.draw_circle(map, startingPoint, size, minibiome.bgColor)
+	map.lock()
+
 	var noise = OpenSimplexNoise.new()
 	noise.seed = minibiome.minSize.x
 	noise.period = 15.5/2
@@ -24,16 +30,17 @@ func generate_biome():
 
 	for x in size.x:
 		for y in size.y:
-			if noise.get_noise_2d(startingPoint.x+x, startingPoint.y+y) < .25:
-				map.set_pixel(
-					clamp(startingPoint.x+x, 0, map.get_width()-1),
-					clamp(startingPoint.y+y, 0, map.get_height()-1),
-					minibiome.bgColor)
-			else:
-				map.set_pixel(
-					clamp(startingPoint.x+x, 0, map.get_width()-1),
-					clamp(startingPoint.y+y, 0, map.get_height()-1),
-					minibiome.tilesColor)
+			if map.get_pixel(startingPoint.x+x, startingPoint.y+y).is_equal_approx(minibiome.bgColor):
+				if noise.get_noise_2d(startingPoint.x+x, startingPoint.y+y) > .25:
+	#					map.set_pixel(
+	#						clamp(startingPoint.x+x, 0, map.get_width()-1),
+	#						clamp(startingPoint.y+y, 0, map.get_height()-1),
+	#						minibiome.bgColor)
+	#				else:
+					map.set_pixel(
+						clamp(startingPoint.x+x, 0, map.get_width()-1),
+						clamp(startingPoint.y+y, 0, map.get_height()-1),
+						minibiome.tilesColor)
 
 
 func get_starting_point() -> Vector2:

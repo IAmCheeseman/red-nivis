@@ -27,12 +27,12 @@ func generate_world(size:Vector2,
 	flatTemplateAmount -= 1
 	connectionTemplateAmount -= 1
 	# Making sure that the templates are in the correct format
-	flatTemplates.convert(Image.FORMAT_RGB8)
-	connectionTemplates.convert(Image.FORMAT_RGB8)
+	flatTemplates.convert(Image.FORMAT_RGBA8)
+	connectionTemplates.convert(Image.FORMAT_RGBA8)
 
 	# Creating the map
 	var map:Image = Image.new()
-	map.create(globalSize.x, globalSize.y, false, Image.FORMAT_RGB8)
+	map.create(globalSize.x, globalSize.y, false, Image.FORMAT_RGBA8)
 
 	map.lock()
 	map.fill(emptyColor)

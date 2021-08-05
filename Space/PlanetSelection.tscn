@@ -32,8 +32,8 @@ position = Vector2( 190, 150 )
 
 [node name="Reg" parent="Planets" instance=ExtResource( 2 )]
 modulate = Color( 0.501961, 0.152941, 0.152941, 1 )
-position = Vector2( -158.832, -142.75 )
-rotation = -1.48796
+position = Vector2( -203.216, -120.856 )
+rotation = 1.93106
 rotationSpeed = 25
 orbitSpeed = 3.0
 orbitDistance = 32
@@ -44,8 +44,8 @@ texture = ExtResource( 3 )
 
 [node name="Acid" parent="Planets" instance=ExtResource( 2 )]
 modulate = Color( 0.286275, 0.564706, 0.262745, 1 )
-position = Vector2( -139.024, -267.412 )
-rotation = 0.914269
+position = Vector2( -65.249, -121.344 )
+rotation = -2.61074
 rotationSpeed = 22
 orbitSpeed = 5.0
 orbitDistance = 128
@@ -56,13 +56,13 @@ texture = ExtResource( 3 )
 planet = 2
 
 [node name="Ship" parent="Planets" instance=ExtResource( 2 )]
-position = Vector2( -126.559, -141.56 )
-rotation = 1.70268
+position = Vector2( -251.223, -168.648 )
+rotation = -1.27564
 rotationSpeed = 22
 orbitSpeed = 2.0
 orbitDistance = 64
 faceTravelDir = true
-atmosphereColor = Color( 1, 0, 0, 1 )
+atmosphereColor = Color( 1, 0, 0, 0 )
 atmosphereStrength = 1.441
 atmosphereSize = 0.025
 texture = ExtResource( 5 )
@@ -72,7 +72,7 @@ altLoadPath = "res://Hub/Hub.tscn"
 [node name="Sun" parent="Planets" instance=ExtResource( 2 )]
 modulate = Color( 1, 0.980392, 0.498039, 1 )
 position = Vector2( -190, -150 )
-rotation = -1.04404
+rotation = 1.49347
 rotationSpeed = 2
 orbitSpeed = 17.0
 orbitDistance = 0
@@ -91,8 +91,8 @@ energy = 0.511
 texture = ExtResource( 4 )
 
 [node name="Moon" parent="Planets/Sun" index="2"]
-position = Vector2( 81.9971, 37.1008 )
-rotation = 3.66589
+position = Vector2( 61.6455, 65.5731 )
+rotation = -1.62216
 
 [node name="Button" parent="Planets/Sun" index="3"]
 focus_mode = 0

@@ -37,7 +37,7 @@ shader = SubResource( 1 )
 shader_param/is_on = 0.0
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 4, 8 )
+extents = Vector2( 4, 7.5 )
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 4.0
@@ -241,13 +241,11 @@ frame = 11
 position = Vector2( 0, -7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, -6 )
+position = Vector2( 0, -5.5 )
 shape = SubResource( 3 )
 
 [node name="Camera" parent="." instance=ExtResource( 10 )]
 process_priority = -1
-smoothing_speed = 12.0
 yOffset = 50
 
 [node name="Sounds" type="Node2D" parent="."]
