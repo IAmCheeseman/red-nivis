@@ -38,8 +38,8 @@ func generate_biome():
 
 func get_starting_point() -> Vector2:
 	return Vector2(
-		round(rand_range(0, map.get_width())),
-		round(rand_range(0, map.get_height()))
+		round(rand_range(0, map.get_width()-1)),
+		round(rand_range(0, map.get_height()-1))
 	)
 
 

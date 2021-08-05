@@ -54,10 +54,11 @@ func orbit(node:Node2D, orbitPoint:Vector2, oSpeed, oDist, rSpeed, oRot, delta):
 
 	oRots[oRot] += (oSpeed/(oDist+1))*delta
 	var orbit = Vector2.RIGHT.rotated(oRots[oRot])
-	if faceTravelDir: look_at(orbit)
 	orbit *= oDist
 	orbit += orbitPoint
-	node.position = orbit
+	if faceTravelDir:
+		node.look_at(orbit)
+	node.global_position = orbit
 
 
 func go_to_planet():

@@ -1,6 +1,7 @@
 extends Node2D
 
 var tiles:TileMap
+var altTiles:Array
 var backgroundTiles:TileMap
 var planet:Planet
 onready var player = $Props/Player
@@ -105,8 +106,8 @@ func generate_world():
 			if world.get_pixel(x, y).is_equal_approx(wallColor):
 				backgroundTiles.set_cell(x, y, 0)
 				backgroundTiles.update_bitmask_area(Vector2(x, y))
-	generate_ruins(worldSize*16, 15)
 	add_minibiomes(world)
+	generate_ruins(worldSize*16, 15)
 	place_player((worldSize.x*16)/2)
 
 
@@ -133,7 +134,8 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 		props.add_child(newRuin)
 		var ruinRect = newRuin.tiles.get_used_rect()
 		# Making sure it's generating on the ground
-		while (tiles.get_cellv(newRuinPos) == -1 or tiles.get_cellv(newRuinPos+Vector2.UP) != -1)\
+		var isOnGround = false
+		while !isOnGround\
 			or isOverlapping:
 			newRuinPos.x = rand_range(0, worldSize.x)
 			newRuinPos.y = rand_range(0, worldSize.y)
@@ -142,6 +144,12 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 			for rect in ruinRects:
 				isOverlapping = rect.intersects(ruinRect)
 				if isOverlapping: break
+			isOnGround = tiles.get_cellv(newRuinPos) == -1 or tiles.get_cellv(newRuinPos+Vector2.UP) != -1
+			if !isOnGround:
+				for t in altTiles:
+					isOnGround = t.get_cellv(newRuinPos) == -1 or t.get_cellv(newRuinPos+Vector2.UP) != -1
+					if isOnGround:
+						break
 		# If everything goes well
 		newRuin.position = newRuinPos*16
 		newRuin.show_behind_parent = true
@@ -149,9 +157,15 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 		for i in newRuin.tiles.get_used_cells():
 			tiles.set_cellv(newRuinPos+i, -1)
 			tiles.update_bitmask_area(newRuinPos+i)
+			for t in altTiles:
+				t.set_cellv(newRuinPos+i, -1)
+				t.update_bitmask_area(newRuinPos+i)
 		for i in newRuin.fgProps.get_used_cells():
 			if tiles.get_cellv(newRuinPos+i) != -1:
 				newRuin.fgProps.set_cellv(i, -1)
+			for t in altTiles:
+				if t.get_cellv(newRuinPos+i) != -1:
+					newRuin.fgProps.set_cellv(i, -1)
 
 		ruinRect.position = newRuinPos
 		ruinRects.append(ruinRect)
@@ -178,6 +192,7 @@ func add_minibiomes(map:Image):
 						newBGTiles.update_bitmask_area(Vector2(x, y))
 			props.add_child(newTiles)
 			props.add_child(newBGTiles)
+			altTiles.append(newTiles)
 
 
 func set_camera_limits():
@@ -196,18 +211,26 @@ func _on_player_removeTile(mousePosition):
 	tilePlaceSFX.global_position = mousePosition
 	Cursor.get_node("Sprite").scale = Vector2(.8, .8)
 
-	# Setting the tiles
 	var mapMousePos = tiles.world_to_map(mousePosition)
-	if tiles.get_cellv(mapMousePos) == -1\
+	var placeTile = tiles.get_cellv(mapMousePos) == -1\
 	and placementTiles.get_cellv(mapMousePos) == -1\
-	and mousePosition.distance_to(player.position) > 16:
+	and mousePosition.distance_to(player.position) > 16
+	for t in altTiles:
+		if t.get_cellv(mapMousePos) == 0:
+			placeTile = false
+			break
 
+	# Setting the tiles
+	if placeTile:
 		placementTiles.set_cellv(mapMousePos, 0)
 		placementTiles.update_bitmask_area(mapMousePos)
 		return
 	# Removing the tiles
 	tiles.set_cellv(mapMousePos, -1)
 	tiles.update_bitmask_area(mapMousePos)
+	for t in altTiles:
+		t.set_cellv(mapMousePos, -1)
+		t.update_bitmask_area(mapMousePos)
 	placementTiles.set_cellv(mapMousePos, -1)
 	placementTiles.update_bitmask_area(mapMousePos)
 

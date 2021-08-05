@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Space/Assets/SpaceTile.png" type="Texture" id=1]
 [ext_resource path="res://Space/Planet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Space/Assets/Planet.png" type="Texture" id=3]
 [ext_resource path="res://Space/Assets/Sun.png" type="Texture" id=4]
+[ext_resource path="res://Space/Assets/Ship.png" type="Texture" id=5]
 
 [node name="PlanetSelection" type="Control"]
 anchor_right = 1.0
@@ -15,6 +16,10 @@ __meta__ = {
 [node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -190.0
+margin_top = -150.0
+margin_right = -190.0
+margin_bottom = -150.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
@@ -27,20 +32,20 @@ position = Vector2( 190, 150 )
 
 [node name="Reg" parent="Planets" instance=ExtResource( 2 )]
 modulate = Color( 0.501961, 0.152941, 0.152941, 1 )
-position = Vector2( -25.0219, 19.9475 )
-rotation = -2.31077
+position = Vector2( -158.832, -142.75 )
+rotation = -1.48796
 rotationSpeed = 25
 orbitSpeed = 3.0
 orbitDistance = 32
-atmosphereColor = Color( 0.415686, 0.219608, 0.027451, 1 )
-atmosphereStrength = 2.769
-atmosphereSize = 0.023
+atmosphereColor = Color( 1, 0, 0, 1 )
+atmosphereStrength = 1.74
+atmosphereSize = 0.031
 texture = ExtResource( 3 )
 
 [node name="Acid" parent="Planets" instance=ExtResource( 2 )]
 modulate = Color( 0.286275, 0.564706, 0.262745, 1 )
-position = Vector2( 32.5299, 123.797 )
-rotation = -0.313223
+position = Vector2( -139.024, -267.412 )
+rotation = 0.914269
 rotationSpeed = 22
 orbitSpeed = 5.0
 orbitDistance = 128
@@ -50,10 +55,24 @@ atmosphereSize = 0.025
 texture = ExtResource( 3 )
 planet = 2
 
+[node name="Ship" parent="Planets" instance=ExtResource( 2 )]
+position = Vector2( -126.559, -141.56 )
+rotation = 1.70268
+rotationSpeed = 22
+orbitSpeed = 2.0
+orbitDistance = 64
+faceTravelDir = true
+atmosphereColor = Color( 1, 0, 0, 1 )
+atmosphereStrength = 1.441
+atmosphereSize = 0.025
+texture = ExtResource( 5 )
+planet = -1
+altLoadPath = "res://Hub/Hub.tscn"
+
 [node name="Sun" parent="Planets" instance=ExtResource( 2 )]
 modulate = Color( 1, 0.980392, 0.498039, 1 )
-position = Vector2( 0, 0 )
-rotation = -2.87133
+position = Vector2( -190, -150 )
+rotation = -1.04404
 rotationSpeed = 2
 orbitSpeed = 17.0
 orbitDistance = 0
@@ -72,7 +91,13 @@ energy = 0.511
 texture = ExtResource( 4 )
 
 [node name="Moon" parent="Planets/Sun" index="2"]
-position = Vector2( 207.899, 61.7979 )
-rotation = 3.22058
+position = Vector2( 81.9971, 37.1008 )
+rotation = 3.66589
+
+[node name="Button" parent="Planets/Sun" index="3"]
+focus_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
 [editable path="Planets/Sun"]
