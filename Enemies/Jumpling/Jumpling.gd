@@ -71,8 +71,6 @@ func set_state(value):
 	# Idle
 	if value == IDLE and state == JUMPING:
 		jumpPause.start(rand_range(pauseRange.x, pauseRange.y))
-		if player:
-			GameManager.emit_signal("screenshake", 0, 4, .05, .05, 0, Vector2.DOWN)
 		if landingScene:
 			var newIdleScene = landingScene.instance()
 			newIdleScene.position = position

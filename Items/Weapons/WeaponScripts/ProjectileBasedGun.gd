@@ -41,7 +41,7 @@ func shoot():
 	var direction = -global_position.direction_to(get_global_mouse_position())
 
 	# Shaking the camera
-	GameManager.emit_signal("screenshake", 0, gun.ssStrength, gun.ssFreq, gun.ssFreq, gun.ssStrength/3, direction)
+	GameManager.emit_signal("screenshake", 0, gun.ssStrength, gun.ssFreq, gun.ssFreq, direction)
 
 	# Playing a sound for feedback
 	gun.get_node("ShootSound").play()

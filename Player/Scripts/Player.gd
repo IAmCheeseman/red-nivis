@@ -180,6 +180,6 @@ func _on_health_changed(dir):
 	healthBar.value = GameManager.percentage_of(float(playerData.health), float(playerData.maxHealth))
 	hurtTimer.start(playerData.recoveryTime)
 	# Screenshake
-	GameManager.emit_signal("screenshake", 2, 8, .05, .05, 9)
+	GameManager.emit_signal("screenshake", 2, 6, .05, .05)
 	# Knockback
 	dir += dir*playerData.kbStrength

@@ -45,7 +45,7 @@ func set_cam_look(value:bool):
 
 
 # SCREENSHAKE
-func start(priority_=0, strength_=16, freq_=.1, time_=.25, rotStrength_=12, dir=Vector2.ZERO):
+func start(priority_=0, strength_=16, freq_=.1, time_=.25, dir=Vector2.ZERO):
 	# Check the priority so small actions don't overtake big ones
 	if priority > priority_:
 		return
@@ -56,7 +56,6 @@ func start(priority_=0, strength_=16, freq_=.1, time_=.25, rotStrength_=12, dir=
 	freq = freq_
 	time = time_
 	shakeDir = dir
-	rotStrength = rotStrength_*Settings.screenshake
 
 	# Starting the screenshake
 	if timer.is_inside_tree():
@@ -72,21 +71,11 @@ func shake():
 	else:
 		dir = shakeDir*strength
 
-	# Getting the rotation
-	var rot = rand_range(-rotStrength, rotStrength)
-	if rot > 0: rot = rotStrength; else: rot = -rotStrength
-
 	# Tweening the offset
 	if offsetTween.is_inside_tree():
 		offsetTween.interpolate_property(self, "offset", offset, dir, freq,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		offsetTween.start()
-
-	# Tweening the rotation
-	if rotTween.is_inside_tree():
-		rotTween.interpolate_property(self, "rotation_degrees", rotation_degrees, rot,
-		freq, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		rotTween.start()
 
 
 func _on_Tween_tween_all_completed():
@@ -99,10 +88,6 @@ func _on_Tween_tween_all_completed():
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		offsetTween.start()
 
-		# Resetting the rotation
-		rotTween.interpolate_property(self, "rotation_degrees", rotation_degrees, 0,
-		freq, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		rotTween.start()
 		return
 	shake()
 
