@@ -105,4 +105,4 @@ func shoot():
 			cooldownTimer.start(weapon.cooldown)
 
 	# Shaking the camera
-	GameManager.emit_signal("screenshake", 0, strength*2, freq, freq, strength/3, direction)
+	GameManager.emit_signal("screenshake", 0, strength*2, freq, freq, direction)

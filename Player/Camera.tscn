@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 
 [node name="OffsetTween" type="Tween" parent="."]
 
-[node name="RotTween" type="Tween" parent="."]
+[node name="ZoomTween" type="Tween" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

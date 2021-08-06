@@ -7,7 +7,6 @@ onready var pickUpCollision = $PickUpZone/CollisionShape2D
 onready var pickUpAnim = $PickUp
 
 export var item:String = "Cheese"
-export var stackSize:int = 1
 
 var inventory:Inventory = preload("res://UI/Inventory/Inventory.tres")
 var player = null
@@ -20,6 +19,7 @@ func _ready():
 		sprite.texture.get_width(), sprite.texture.get_height()
 	)/2
 	pickUpCollision.shape = collision.shape
+	bounce = .5
 
 
 func _process(_delta):
