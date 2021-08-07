@@ -20,7 +20,7 @@ func _process(_delta):
 
 	if player and Input.is_action_just_pressed("interact") and itemSpawner:
 		sprite.play("open")
-		GameManager.emit_signal("screenshake", 1, 0, .05, .05, Vector2.ZERO, .95)
+		GameManager.emit_signal("screenshake", 1, 5, .05, .05)
 		itemSpawner.add_item()
 		itemSpawner = null
 

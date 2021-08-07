@@ -12,6 +12,7 @@ export var item:String = "Cheese"
 
 var inventory:Inventory = preload("res://UI/Inventory/Inventory.tres")
 var player = null
+var isPickedUp = false
 
 func _ready():
 	# Setting the sprite
@@ -24,29 +25,26 @@ func _ready():
 
 	var tierColor = GameManager.itemManager.tierColors[inventory.itemMap[item].rarity]
 
-	itemGlow.distNear = sprite.texture.get_width()*1.25
+	itemGlow.distNear = sprite.texture.get_width()*.625
 	itemGlow.distFar = itemGlow.distNear*1.25
 	itemGlow.color = tierColor
 	trail.default_color = tierColor
 
 
-
-func _process(_delta):
-	if pickUpAnim.is_playing():
-		position += position.direction_to(player.position-Vector2(0, 16))
-
-
 func _input(event):
 	# Picking up the item
-	if player and event.is_action_pressed("interact") and inventory.has_space():
+	if player and event.is_action_pressed("interact") and inventory.has_space() and !isPickedUp:
 		inventory.add_item(item)
 		pickUpAnim.play("PickUp")
 		pickUpArea.disconnect("area_exited", self, "_on_player_far")
+		isPickedUp = true
 
 
 func _on_player_close(area):
-	player = area.get_parent()
+	if area.is_in_group("player"):
+		player = area.get_parent()
 
 
-func _on_player_far(_area):
-	player = null
+func _on_player_far(area):
+	if area.is_in_group("player"):
+		player = null
