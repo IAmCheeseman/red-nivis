@@ -6,6 +6,7 @@ onready var pickUpArea = $PickUpZone
 onready var pickUpCollision = $PickUpZone/CollisionShape2D
 onready var pickUpAnim = $PickUp
 onready var itemGlow = $ItemGlow
+onready var trail = $Trail
 
 export var item:String = "Cheese"
 
@@ -21,9 +22,13 @@ func _ready():
 	)/2
 	pickUpCollision.shape = collision.shape
 
+	var tierColor = GameManager.itemManager.tierColors[inventory.itemMap[item].rarity]
+
 	itemGlow.distNear = sprite.texture.get_width()*1.25
 	itemGlow.distFar = itemGlow.distNear*1.25
-	itemGlow.color = GameManager.itemManager.tierColors[inventory.itemMap[item].rarity]
+	itemGlow.color = tierColor
+	trail.default_color = tierColor
+
 
 
 func _process(_delta):
