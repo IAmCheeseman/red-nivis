@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Items/ItemGlow/ItemGlow.gd" type="Script" id=1]
+
+[node name="ItemGlow" type="Node2D"]
+show_behind_parent = true
+script = ExtResource( 1 )
+pointCount = 16
+color = Color( 0.894118, 0.607843, 0.207843, 1 )

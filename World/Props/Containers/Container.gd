@@ -15,7 +15,7 @@ func _ready():
 	itemSpawner.itemPool = itemPools
 
 
-func _process(delta):
+func _process(_delta):
 	player = playerDetection.get_player()
 
 	if player and Input.is_action_just_pressed("interact") and itemSpawner:

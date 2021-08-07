@@ -5,6 +5,7 @@ onready var collision = $CollisionShape2D
 onready var pickUpArea = $PickUpZone
 onready var pickUpCollision = $PickUpZone/CollisionShape2D
 onready var pickUpAnim = $PickUp
+onready var itemGlow = $ItemGlow
 
 export var item:String = "Cheese"
 
@@ -19,7 +20,10 @@ func _ready():
 		sprite.texture.get_width(), sprite.texture.get_height()
 	)/2
 	pickUpCollision.shape = collision.shape
-	bounce = .5
+
+	itemGlow.distNear = sprite.texture.get_width()*1.25
+	itemGlow.distFar = itemGlow.distNear*1.25
+	itemGlow.color = GameManager.itemManager.tierColors[inventory.itemMap[item].rarity]
 
 
 func _process(_delta):

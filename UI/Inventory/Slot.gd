@@ -10,6 +10,7 @@ signal selected(button)
 
 func _ready():
 	update_index()
+	set_focus_mode(Control.FOCUS_CLICK)
 
 
 func setup(texture:StreamTexture, itemID:String):
