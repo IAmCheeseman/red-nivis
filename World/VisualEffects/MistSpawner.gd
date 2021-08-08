@@ -26,7 +26,11 @@ func spawn_mist():
 		var newMist = mist.instance()
 		newMist.rect_global_position = mistPos+Vector2(rand_range(-clumpSpread, clumpSpread), rand_range(-clumpSpread, clumpSpread))
 		newMist.player = player
-		GameManager.spawnManager.spawn_object(newMist)
+		var node = Node2D.new()
+		node.name = "MistHolder"
+		node.z_index = 3
+		GameManager.spawnManager.spawn_object(node)
+		node.add_child(newMist)
 		newMist.set_param(color, strength)
 
 

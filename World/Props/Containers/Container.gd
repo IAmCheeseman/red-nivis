@@ -4,6 +4,7 @@ onready var sprite = $Sprite
 onready var playerDetection = $PlayerDetection
 onready var itemSpawner = $ItemSpawn
 onready var animationPlayer = $AnimationPlayer
+onready var queueCollision = $QueueCollision
 
 onready var itemSpawnerPath = itemSpawner.get_path()
 
@@ -17,7 +18,10 @@ signal containerOpened
 
 func _ready():
 	itemSpawner.itemPool = itemPools
-	if test_move(transform, Vector2.ZERO): queue_free()
+	if queueCollision.get_overlapping_bodies().size() > 0:
+		queue_free()
+	queueCollision.queue_free()
+
 
 
 func _process(delta):

@@ -39,6 +39,10 @@ appearOnready = false
 [node name="Sight" parent="PlayerDetection" index="1"]
 position = Vector2( 0, -10 )
 
+[node name="QueueCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QueueCollision"]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "IdleBounce"
 anims/IdleBounce = SubResource( 1 )

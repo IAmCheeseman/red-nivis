@@ -139,7 +139,7 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 			newRuinPos = newRuinPos.snapped(Vector2(1, 1))
 			ruinRect.position = newRuinPos
 			for rect in ruinRects:
-				isOverlapping = rect.intersects(ruinRect)
+				isOverlapping = rect.intersects(ruinRect, true)
 				if isOverlapping: break
 			isOnGround = tiles.get_cellv(newRuinPos) != -1 and tiles.get_cellv(newRuinPos+Vector2.UP) == -1
 			if !isOnGround:
@@ -157,12 +157,19 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 			for t in altTiles:
 				t.set_cellv(newRuinPos+i, -1)
 				t.update_bitmask_area(newRuinPos+i)
-		for i in newRuin.fgProps.get_used_cells():
-			if tiles.get_cellv(newRuinPos+i) != -1:
-				newRuin.fgProps.set_cellv(i, -1)
-			for t in altTiles:
-				if t.get_cellv(newRuinPos+i) != -1:
-					newRuin.fgProps.set_cellv(i, -1)
+
+		var usedArea = newRuin.bg.get_used_rect()
+		for x in usedArea.end.x:
+			for y in abs(usedArea.end.y+usedArea.position.y):
+				var setPos = Vector2(
+					usedArea.position.x+x+newRuinPos.x,
+					usedArea.position.y+y+newRuinPos.y
+				)
+				tiles.set_cellv(setPos, -1)
+				tiles.update_bitmask_area(setPos)
+				for t in altTiles:
+					t.set_cellv(setPos, -1)
+					t.update_bitmask_area(setPos)
 
 		ruinRect.position = newRuinPos
 		ruinRects.append(ruinRect)
