@@ -49,6 +49,8 @@ func _ready():
 	if !Settings.vignette:
 		vignette.queue_free()
 	healthBar.value = GameManager.percentage_of(float(playerData.health), float(playerData.maxHealth))
+	playerData.playerObject = self
+
 	playerData.connect("ammoChanged", self, "_on_ammo_changed")
 	playerData.connect("healthChanged", self, "_on_health_changed")
 	hurtbox.connect("hurt", playerData, "_on_damage_taken")

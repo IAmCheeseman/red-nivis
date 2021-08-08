@@ -41,16 +41,5 @@ func _input(event):
 
 
 func load_area():
-	if loadFromMemory:
-		get_tree().root.call_deferred("add_child", Memory.inMemory[memorySlot])
-		get_parent().queue_free()
-		return
-
-	if inWorld and worldRoot:
-		if loadPaths.size() > 0:
-			loadPaths.shuffle()
-			loadPath = loadPaths[0]
-		GameManager.load_scene(loadPath)
-		Memory.inMemory.insert(0, worldRoot)
-		worldRoot.get_parent().call_deferred("remove_child", worldRoot)
+	get_tree().change_scene("res://Space/PlanetSelection.tscn")
 

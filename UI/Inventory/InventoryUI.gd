@@ -14,6 +14,8 @@ func _ready():
 	# Connected the pressed signal of buttons
 	for slot in slots.get_children():
 		slot.connect("selected", self, "_on_button_pressed")
+		slot.connect("mouse_entered", self, "_on_mouse_entered")
+		slot.connect("mouse_exited", self, "_on_mouse_exited")
 
 	refresh_items()
 	set_slot_cursor_position()
@@ -94,3 +96,10 @@ func _input(event):
 	for key in range(KEY_1, KEY_1+slots.get_child_count()):
 		if Input.is_key_pressed(key):
 			inventory.selectedSlot = key-KEY_1
+
+
+func _on_mouse_entered():
+	GameManager.editingInventory = true
+
+func _on_mouse_exited():
+	GameManager.editingInventory = false

@@ -27,7 +27,6 @@ margin_top = 278.0
 margin_right = 380.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 0, 22 )
-mouse_filter = 2
 alignment = 1
 
 [node name="Slot1" parent="VBox/Slots" instance=ExtResource( 2 )]

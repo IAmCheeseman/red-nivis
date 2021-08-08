@@ -19,6 +19,7 @@ export var tiltStrength:float = 5.0
 
 var health:int
 var ammo:int setget set_ammo
+var playerObject:KinematicBody2D
 
 var isDead = false
 

@@ -40,15 +40,17 @@ func _physics_process(delta):
 	if Input.is_action_pressed("use_item")\
 	and gun.canShoot\
 	and hasEnoughAmmo\
-	and holdShots != gun.maxHoldShots:
+	and holdShots != gun.maxHoldShots\
+	and !GameManager.editingInventory\
+	and !playerData.playerObject.lockMovement:
 		playerData.ammo -= gun.cost
-#		gun.emit_signal("onShoot")
 		Cursor.get_node("Sprite").scale = Vector2(1.2, 1.2)
 		shoot()
 		gun.ammoLabel.text = "%s/%s" % [clamp(gun.player.playerData.ammo, 0, INF), gun.player.playerData.maxAmmo]
 	elif Input.is_action_just_pressed("use_item")\
 	and !hasEnoughAmmo:
 		gun.noAmmoClick.play()
+
 
 func shoot():
 	pass
