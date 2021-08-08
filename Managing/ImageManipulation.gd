@@ -5,6 +5,8 @@ class_name ImageManipulation
 func draw_circle(img:Image, dst:Vector2, size:Vector2, color:Color):
 	img.lock()
 	var circleImg:Image = preload("res://Managing/Circle.png").get_data()
+# warning-ignore:narrowing_conversion
+# warning-ignore:narrowing_conversion
 	circleImg.resize(size.x, size.y, Image.INTERPOLATE_NEAREST)
 	circleImg.convert(img.get_format())
 
@@ -14,6 +16,8 @@ func draw_circle(img:Image, dst:Vector2, size:Vector2, color:Color):
 			if !is_equal_approx(circleImg.get_pixel(x, y).a, 0):
 				circleImg.set_pixel(x, y, color)
 			else:
+# warning-ignore:narrowing_conversion
+# warning-ignore:narrowing_conversion
 				circleImg.set_pixel(x, y, img.get_pixel(
 					clamp(x+dst.x, 0, img.get_width()-1),
 					clamp(y+dst.y, 0, img.get_height()-1)

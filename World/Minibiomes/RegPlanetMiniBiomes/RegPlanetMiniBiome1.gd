@@ -30,13 +30,15 @@ func generate_biome():
 
 	for x in size.x:
 		for y in size.y:
-			if map.get_pixel(startingPoint.x+x, startingPoint.y+y).is_equal_approx(minibiome.bgColor):
+# warning-ignore:narrowing_conversion
+# warning-ignore:narrowing_conversion
+			if map.get_pixel(
+				clamp(startingPoint.x+x, 0, map.get_width()-1),
+				clamp(startingPoint.y+y, 0, map.get_height()-1)
+				).is_equal_approx(minibiome.bgColor):
 				if noise.get_noise_2d(startingPoint.x+x, startingPoint.y+y) > .25:
-	#					map.set_pixel(
-	#						clamp(startingPoint.x+x, 0, map.get_width()-1),
-	#						clamp(startingPoint.y+y, 0, map.get_height()-1),
-	#						minibiome.bgColor)
-	#				else:
+# warning-ignore:narrowing_conversion
+# warning-ignore:narrowing_conversion
 					map.set_pixel(
 						clamp(startingPoint.x+x, 0, map.get_width()-1),
 						clamp(startingPoint.y+y, 0, map.get_height()-1),

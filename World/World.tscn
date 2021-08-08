@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://CustomNodes/CustomParallax.gd" type="Script" id=2]
-[ext_resource path="res://UI/Minimap/Minimap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://EnviormentalArt/Solids/PlaceTiles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Items/Weapons/Bullet/BulletManagement.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/VisualEffects/MistSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://CustomNodes/EnemySpawner.gd" type="Script" id=8]
 [ext_resource path="res://Player/Assets/PlaceTile.wav" type="AudioStream" id=9]
@@ -92,9 +91,6 @@ __meta__ = {
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Player" parent="Props" instance=ExtResource( 4 )]
-
-[node name="Minimap" parent="Props/Player/CanvasLayer" index="2" instance=ExtResource( 3 )]
-visible = false
 
 [node name="MistSpawner" parent="Props/Player" instance=ExtResource( 7 )]
 worldPath = NodePath("../../..")

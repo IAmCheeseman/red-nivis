@@ -15,6 +15,7 @@ func _ready():
 	for slot in slots.get_children():
 		slot.connect("selected", self, "_on_button_pressed")
 
+	refresh_items()
 	set_slot_cursor_position()
 
 
@@ -59,8 +60,11 @@ func refresh_items():
 		if id == null:
 			continue
 		var item = inventory.get_item(id)
+
+		var tierColor = GameManager.itemManager.tierColors[inventory.itemMap[id].rarity]
+
 		slot.clear()
-		slot.setup(item.texture, id)
+		slot.setup(item.texture, id, tierColor)
 
 
 func set_slot_cursor_position():

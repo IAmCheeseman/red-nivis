@@ -89,8 +89,9 @@ func _physics_process(delta):
 
 func animate(moveDir:Vector2):
 	if is_grounded():
-		if is_equal_approx(moveDir.x, 0):
-				animationPlayer.play("Idle")
+		if is_equal_approx(moveDir.x, 0) or test_move(transform, vel.normalized()):
+			sprite.rotation_degrees = 0
+			animationPlayer.play("Idle")
 		else:
 			animationPlayer.play("Run")
 	else:
@@ -107,6 +108,7 @@ func just_landed():
 			triedJumpRecent = false
 		return true
 	return false
+
 
 func is_grounded():
 	for c in floorCheckers.get_children():

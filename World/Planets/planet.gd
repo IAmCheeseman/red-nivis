@@ -5,6 +5,7 @@ export var solidTiles : PackedScene
 export(Array, StreamTexture) var backgroundImages
 export var sky:StreamTexture
 export var atmosphereColor : Color
+export var atmosphereEffectsSky:bool = true
 export var atmosphereParticles : PackedScene
 
 export var mistStrength:float = .5

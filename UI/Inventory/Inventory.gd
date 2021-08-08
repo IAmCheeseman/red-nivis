@@ -20,6 +20,7 @@ signal selectedSlotChanged
 func _init():
 	for slot in maxSlots:
 		items.append(null)
+	add_item("Pistol")
 
 
 func check_existence(id:String) -> bool:

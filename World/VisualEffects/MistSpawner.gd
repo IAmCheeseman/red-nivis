@@ -18,7 +18,9 @@ var mist = load("res://World/VisualEffects/Mist.tscn")
 
 func spawn_mist():
 	var clumpSize = rand_range(clamp(mistClumpSize-mistClumRange, 1, INF), mistClumpSize+mistClumRange)
-	var mistPos = global_position+Vector2(rand_range(-600, 600), rand_range(-600, 600))
+	var camSize = get_viewport_rect().end
+	var mistPos = global_position+Vector2(
+		rand_range(-camSize.x*.5, camSize.x*.5), rand_range(-camSize.y*.5, camSize.y*.5))
 
 	for nm in clumpSize:
 		var newMist = mist.instance()

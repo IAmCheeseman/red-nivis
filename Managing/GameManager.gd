@@ -10,7 +10,6 @@ var planet = 0
 var worldLayers:Dictionary
 var worldSize:Vector2
 var isDead = false
-var heldItems = [null, null]
 
 var attackingEnemies = 0 setget set_attacking_enemies
 

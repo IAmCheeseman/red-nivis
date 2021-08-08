@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Inventory/Slot.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/SlotFont.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Items/Outline.shader" type="Shader" id=3]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/Slot.png-c3dabab1b9471a34cb3fe7bec0b47623.stex"
@@ -11,6 +12,11 @@ load_path = "res://.import/SlotPressed.png-ddbacac1a489c10b58df20bf6827b85e.stex
 
 [sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/SlotHover.png-7d9bc903ca922261bf7278352f84965b.stex"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 3 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
 
 [sub_resource type="DynamicFont" id=4]
 size = 4
@@ -32,6 +38,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 5 )
 margin_left = 2.0
 margin_top = 3.0
 margin_right = 16.0

@@ -3,22 +3,22 @@
 [ext_resource path="res://EnviormentalArt/Solids/MushroomSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Props/Containers/Locker/Locker.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Items/Weapons/Bullet/BulletManagement.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/Planets/Assets/RegPlanetLootTable_Ruin.tres" type="Resource" id=5]
+[ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Props/Containers/Safe/Safe.tscn" type="PackedScene" id=5]
 
 [node name="tset" type="Node2D"]
 
-[node name="Locker" parent="." instance=ExtResource( 3 )]
-position = Vector2( 180, 256 )
-itemPools = [ ExtResource( 5 ) ]
+[node name="Locker1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 211, 132.425 )
 
 [node name="Locker2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 205, 256 )
-itemPools = [ ExtResource( 5 ) ]
+position = Vector2( 174.614, 107.198 )
 
 [node name="Locker3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 230, 256 )
-itemPools = [ ExtResource( 5 ) ]
+position = Vector2( 257.304, 89.0883 )
+
+[node name="Safe" parent="." instance=ExtResource( 5 )]
+position = Vector2( 303.564, 130.03 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 101, 153 )
@@ -26,4 +26,5 @@ position = Vector2( 101, 153 )
 [node name="SpawningManagment" parent="." instance=ExtResource( 4 )]
 
 [node name="MushroomSolids" parent="." instance=ExtResource( 1 )]
+collision_mask = 0
 tile_data = PoolIntArray( 1114110, 0, 0, 1114111, 0, 1, 1048576, 0, 1, 1048577, 0, 1, 1048578, 0, 1, 1048579, 0, 1, 1048580, 0, 1, 1048581, 0, 1, 1048582, 0, 1, 1048583, 0, 1, 1048584, 0, 1, 1048585, 0, 1, 1048586, 0, 1, 1048587, 0, 1, 1048588, 0, 1, 1048589, 0, 1, 1048590, 0, 1, 1048591, 0, 1, 1048592, 0, 1, 1048593, 0, 1, 1048594, 0, 1, 1048595, 0, 1, 1048596, 0, 1, 1048597, 0, 1, 1048598, 0, 1, 1048599, 0, 1, 1048600, 0, 2, 1179646, 0, 65536, 1179647, 0, 65537, 1114112, 0, 65537, 1114113, 0, 65537, 1114114, 0, 65537, 1114115, 0, 65537, 1114116, 0, 65537, 1114117, 0, 65537, 1114118, 0, 65537, 1114119, 0, 65537, 1114120, 0, 65537, 1114121, 0, 65537, 1114122, 0, 65537, 1114123, 0, 65537, 1114124, 0, 65537, 1114125, 0, 65537, 1114126, 0, 65537, 1114127, 0, 65537, 1114128, 0, 65537, 1114129, 0, 65537, 1114130, 0, 65537, 1114131, 0, 65537, 1114132, 0, 65537, 1114133, 0, 65537, 1114134, 0, 65537, 1114135, 0, 65537, 1114136, 0, 65538, 1245182, 0, 131072, 1245183, 0, 131073, 1179648, 0, 131073, 1179649, 0, 131073, 1179650, 0, 131073, 1179651, 0, 131073, 1179652, 0, 131073, 1179653, 0, 131073, 1179654, 0, 131073, 1179655, 0, 131073, 1179656, 0, 131073, 1179657, 0, 131073, 1179658, 0, 131073, 1179659, 0, 131073, 1179660, 0, 131073, 1179661, 0, 131073, 1179662, 0, 131073, 1179663, 0, 131073, 1179664, 0, 131073, 1179665, 0, 131073, 1179666, 0, 131073, 1179667, 0, 131073, 1179668, 0, 131073, 1179669, 0, 131073, 1179670, 0, 131073, 1179671, 0, 131073, 1179672, 0, 131074 )

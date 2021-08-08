@@ -13,7 +13,6 @@ onready var atmosphere = $Atmosphere
 onready var placementTiles = $Props/PlaceTiles
 onready var mistSpawner = $Props/Player/MistSpawner
 onready var tilePlaceSFX = $TilePlaceSFX
-onready var minimap = $Props/Player/CanvasLayer/Minimap
 onready var enemySpawner = $Props/EnemySpawner
 
 var queuedChunks : Array
@@ -34,12 +33,9 @@ func _ready():
 	enemySpawner.tiles = tiles
 
 
-func _process(_delta):
-	minimap.set_icon_pos(player.position)
-
-
 func add_visual_stuff():
 	atmosphere.color = planet.atmosphereColor
+	if planet.atmosphereEffectsSky: sky.modulate = planet.atmosphereColor
 	# Atmosphere particles
 	if planet.atmosphereParticles:
 		var atmosphereParticles = planet.amosphereParticles.instance()
@@ -86,6 +82,7 @@ func generate_world():
 
 	tiles = planet.solidTiles.instance()
 	props.add_child(tiles)
+
 	backgroundTiles = tiles.duplicate()
 	backgroundTiles.collision_layer = 0
 	backgroundTiles.modulate = Color.gray
@@ -144,10 +141,10 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 			for rect in ruinRects:
 				isOverlapping = rect.intersects(ruinRect)
 				if isOverlapping: break
-			isOnGround = tiles.get_cellv(newRuinPos) == -1 or tiles.get_cellv(newRuinPos+Vector2.UP) != -1
+			isOnGround = tiles.get_cellv(newRuinPos) != -1 and tiles.get_cellv(newRuinPos+Vector2.UP) == -1
 			if !isOnGround:
 				for t in altTiles:
-					isOnGround = t.get_cellv(newRuinPos) == -1 or t.get_cellv(newRuinPos+Vector2.UP) != -1
+					isOnGround = t.get_cellv(newRuinPos) != -1 and t.get_cellv(newRuinPos+Vector2.UP) == -1
 					if isOnGround:
 						break
 		# If everything goes well

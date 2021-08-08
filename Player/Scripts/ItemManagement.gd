@@ -10,6 +10,7 @@ var inventory = preload("res://UI/Inventory/Inventory.tres")
 func _ready():
 	inventory.connect("selectedSlotChanged", self, "add_item")
 	inventory.connect("itemsChanged", self, "add_item")
+	add_item()
 
 
 func add_item():

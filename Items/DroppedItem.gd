@@ -30,6 +30,9 @@ func _ready():
 	itemGlow.color = tierColor
 	trail.default_color = tierColor
 
+	sprite.material = sprite.material.duplicate()
+	sprite.material.set_shader_param("line_color", tierColor)
+
 
 func _input(event):
 	# Picking up the item

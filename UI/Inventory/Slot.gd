@@ -12,9 +12,12 @@ func _ready():
 	update_index()
 	set_focus_mode(Control.FOCUS_CLICK)
 
+	slotTexture.material = slotTexture.material.duplicate()
 
-func setup(texture:StreamTexture, itemID:String):
+
+func setup(texture:StreamTexture, itemID:String, outlineColor:Color):
 	slotTexture.texture = texture
+	slotTexture.material.set_shader_param("line_color", outlineColor)
 	item = itemID
 	update_index()
 

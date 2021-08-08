@@ -4,6 +4,7 @@ export(float, 0, 1) var failChance:float = 1.0
 export(Array, Resource) var itemPool
 export var addForce:bool = false
 export var appearOnready:bool = true
+export var freeWhenDone = true
 
 
 func _process(_delta):
@@ -23,6 +24,7 @@ func add_item():
 
 		var itemManager = ItemManagement.new()
 		var item = itemManager.create_item(selectedItem, addForce)
-		item.global_position = position
-		get_parent().add_child(item)
-	queue_free()
+		item.global_position = global_position
+		GameManager.spawnManager.spawn_object(item)
+	if freeWhenDone:
+		queue_free()
