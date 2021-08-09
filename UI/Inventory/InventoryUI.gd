@@ -38,13 +38,20 @@ func _process(delta):
 
 
 func _on_button_pressed(button:TextureButton):
-	if movingSlot:
-		remove_child(movingSlot)
-		slots.add_child(movingSlot)
-		slots.move_child(movingSlot, button.get_index())
-		inventory.move_item(oldSlotIndex, movingSlot.get_index())
+	if button == movingSlot:
+		var itemManager = ItemManagement.new()
+
+		var newItem = itemManager.create_item(movingSlot.item, true)
+		newItem.global_position = get_global_mouse_position()
+		GameManager.spawnManager.spawn_object(newItem)
+
+		# Making sure everything works properly
+		add_moving_slot_back(slots.get_child_count())
+		inventory.items[slots.get_child_count()-1] = null
 		refresh_items()
-		movingSlot = null
+
+	elif movingSlot:
+		add_moving_slot_back(button.get_index())
 	else:
 		inventory.selectedSlot = clamp(inventory.selectedSlot-1, 0, INF)
 		oldSlotIndex = button.get_index()
@@ -52,6 +59,15 @@ func _on_button_pressed(button:TextureButton):
 		movingSlot = button
 		movingSlot.rect_position.y = get_viewport_rect().end.y-21
 		add_child(movingSlot)
+
+
+func add_moving_slot_back(index):
+	remove_child(movingSlot)
+	slots.add_child(movingSlot)
+	slots.move_child(movingSlot, index)
+	inventory.move_item(oldSlotIndex, movingSlot.get_index())
+	refresh_items()
+	movingSlot = null
 
 
 func refresh_items():
@@ -96,7 +112,6 @@ func _input(event):
 	for key in range(KEY_1, KEY_1+slots.get_child_count()):
 		if Input.is_key_pressed(key):
 			inventory.selectedSlot = key-KEY_1
-
 
 func _on_mouse_entered():
 	GameManager.editingInventory = true
