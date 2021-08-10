@@ -4,6 +4,7 @@ onready var slots = $VBox/Slots
 onready var slotSelector = $SlotSelector
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
+var playerData = preload("res://Player/Player.tres")
 var movingSlot:TextureButton
 var oldSlotIndex = -1
 var slotSelectorTarget = 0
@@ -39,19 +40,20 @@ func _process(delta):
 
 func _on_button_pressed(button:TextureButton):
 	if button == movingSlot:
-		var itemManager = ItemManagement.new()
 
+		var itemManager = ItemManagement.new()
 		var newItem = itemManager.create_item(movingSlot.item, true)
-		newItem.global_position = get_global_mouse_position()
+		newItem.global_position = playerData.playerObject.global_position+Vector2(0, -8)
 		GameManager.spawnManager.spawn_object(newItem)
 
 		# Making sure everything works properly
-		add_moving_slot_back(slots.get_child_count())
-		inventory.items[slots.get_child_count()-1] = null
-		refresh_items()
+		var item = movingSlot.item
+		add_moving_slot_back(oldSlotIndex)
+		inventory.remove_item(item, 1)
 
 	elif movingSlot:
 		add_moving_slot_back(button.get_index())
+		refresh_items()
 	else:
 		inventory.selectedSlot = clamp(inventory.selectedSlot-1, 0, INF)
 		oldSlotIndex = button.get_index()
@@ -66,7 +68,6 @@ func add_moving_slot_back(index):
 	slots.add_child(movingSlot)
 	slots.move_child(movingSlot, index)
 	inventory.move_item(oldSlotIndex, movingSlot.get_index())
-	refresh_items()
 	movingSlot = null
 
 
@@ -76,6 +77,7 @@ func refresh_items():
 			return
 		var id = inventory.items[slot.get_index()]
 		if id == null:
+			slot.clear()
 			continue
 		var item = inventory.get_item(id)
 

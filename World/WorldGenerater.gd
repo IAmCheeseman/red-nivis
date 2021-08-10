@@ -50,7 +50,7 @@ func generate_world(size:Vector2,
 	for x in size.x:
 		# Getting the block height
 		var globalX = x*templateSize
-		var height = stepify(elevationNoise.get_noise_1d(globalX)+1, .5)*2
+		var height = stepify(elevationNoise.get_noise_1d(globalX), .5)*3
 		height = clamp(height, 0, 3)
 		var y = horizen-(height*templateSize)
 		templateYs.append(y)

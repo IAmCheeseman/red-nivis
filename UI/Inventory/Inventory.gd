@@ -36,8 +36,7 @@ func has_space() -> bool:
 
 
 func has_item(id:String) -> bool:
-	for item in items:
-		if item == id: return true
+	if items.has(id): return true
 	return false
 
 
@@ -60,6 +59,20 @@ func move_item(from:int, to:int):
 	items.remove(from)
 	items.insert(to, movedItem)
 	emit_signal("itemsChanged")
+
+
+func remove_item(id:String, count:int):
+	if !has_item(id):
+		return false
+	for item in items.size():
+		if items[item] == id:
+			items[item]  = null
+
+	emit_signal("itemsChanged")
+	emit_signal("itemDeleted", id)
+
+	return true
+
 
 
 func add_item(id:String):
