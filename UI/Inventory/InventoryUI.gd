@@ -39,19 +39,7 @@ func _process(delta):
 
 
 func _on_button_pressed(button:TextureButton):
-	if button == movingSlot:
-
-		var itemManager = ItemManagement.new()
-		var newItem = itemManager.create_item(movingSlot.item, true)
-		newItem.global_position = playerData.playerObject.global_position+Vector2(0, -8)
-		GameManager.spawnManager.spawn_object(newItem)
-
-		# Making sure everything works properly
-		var item = movingSlot.item
-		add_moving_slot_back(oldSlotIndex)
-		inventory.remove_item(item, 1)
-
-	elif movingSlot:
+	if movingSlot:
 		add_moving_slot_back(button.get_index())
 		refresh_items()
 	else:
@@ -114,6 +102,17 @@ func _input(event):
 	for key in range(KEY_1, KEY_1+slots.get_child_count()):
 		if Input.is_key_pressed(key):
 			inventory.selectedSlot = key-KEY_1
+
+	if event.is_action_pressed("drop_item"):
+		var item = inventory.items[inventory.selectedSlot]
+
+		# Spawning the item
+		var itemManager = ItemManagement.new()
+		var newItem = itemManager.create_item(item, true)
+		newItem.global_position = playerData.playerObject.global_position+Vector2(0, -8)
+		GameManager.spawnManager.spawn_object(newItem)
+
+		inventory.remove_item(inventory.selectedSlot)
 
 func _on_mouse_entered():
 	GameManager.editingInventory = true

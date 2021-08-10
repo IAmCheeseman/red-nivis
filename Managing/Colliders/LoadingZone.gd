@@ -41,5 +41,6 @@ func _input(event):
 
 
 func load_area():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Space/PlanetSelection.tscn")
 

@@ -7,10 +7,10 @@ onready var gunSprite = get_parent().get_node("Pivot/GunSprite")
 onready var gun = get_parent()
 
 export var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
+var playerData = preload("res://Player/Player.tres")
 var shootSound : SoundManager
 var rotVel = 0
 var holdShots = 0
-var playerData = preload("res://Player/Player.tres")
 
 
 func _physics_process(delta):

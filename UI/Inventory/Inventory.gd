@@ -61,12 +61,15 @@ func move_item(from:int, to:int):
 	emit_signal("itemsChanged")
 
 
-func remove_item(id:String, count:int):
-	if !has_item(id):
-		return false
-	for item in items.size():
-		if items[item] == id:
-			items[item]  = null
+func remove_item(id):
+	if id is String:
+		if !has_item(id):
+			return false
+		for item in items.size():
+			if items[item] == id:
+				items[item] = null
+	elif id is int:
+		items[id] = null
 
 	emit_signal("itemsChanged")
 	emit_signal("itemDeleted", id)

@@ -9,6 +9,7 @@ onready var hitCast = weapon.get_node("Pivot/ShotLine")
 
 var hitbox = preload("res://Managing/Colliders/MeleeHitbox.tscn")
 var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
+var playerData = preload("res://Player/Player.tres")
 var shootSound : SoundManager
 var rotVel = 0
 var lastFrameRot = 0
@@ -47,7 +48,10 @@ func _physics_process(delta):
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 12*delta)
 
 	# Shooting
-	if Input.is_action_pressed("use_item") and weapon.canShoot:
+	if Input.is_action_pressed("use_item")\
+	and weapon.canShoot\
+	and !GameManager.editingInventory\
+	and !playerData.playerObject.lockMovement:
 		shoot()
 
 
