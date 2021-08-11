@@ -15,6 +15,7 @@ export var bulletSpeed = 320
 
 onready var gun = $Gun
 onready var walkTimer = $WalkTimer
+onready var walkGiveUp = $WalkGiveUpTimer
 onready var scaleHelper = $ScaleHelper
 onready var jumpRay = $ScaleHelper/Jumper
 onready var gunY = $GunY
@@ -59,6 +60,7 @@ func _process(delta) -> void:
 	vel.y = move_and_slide(vel).y
 
 
+
 func idle_state(delta) -> void:
 	anim.play("Idle")
 	vel.x = lerp(vel.x, 0, friction*delta)
@@ -68,10 +70,12 @@ func walk_state(delta) -> void:
 	vel.x = 1 if targetWalk > position.x else -1
 	scaleHelper.scale.x = -vel.x
 	vel.x *= speed*delta
+
 	if global_position.distance_to(Vector2(targetWalk, global_position.y)) < 5:
 		state = IDLE
 		walkTimer.start(rand_range(1, 3.5))
-	if jumpRay.is_colliding():
+
+	if jumpRay.is_colliding() and is_on_floor():
 		vel.y = -jumpForce
 		vel.x *= 4
 
@@ -99,6 +103,12 @@ func shoot():
 func _on_WalkTimer_timeout():
 	state = WALK
 	targetWalk = position.x+rand_range(-walkRange, walkRange)
+	walkGiveUp.start()
+
+
+func _on_WalkGiveUpTimer_timeout():
+	state = IDLE
+	walkTimer.start(rand_range(1, 3.5))
 
 
 func _on_hurt(edamage, _kbdir):
@@ -107,6 +117,9 @@ func _on_hurt(edamage, _kbdir):
 	if health <= 0:
 		emit_signal("dead")
 		queue_free()
+
+
+
 
 
 

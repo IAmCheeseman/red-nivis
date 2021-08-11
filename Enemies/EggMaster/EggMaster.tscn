@@ -93,7 +93,7 @@ script = ExtResource( 3 )
 speed = 1950
 jumpForce = 195
 cooldownTime = 0.7
-bulletSpeed = 220
+bulletSpeed = 150
 
 [node name="ScaleHelper" type="Node2D" parent="."]
 
@@ -147,6 +147,9 @@ position = Vector2( 8, -37 )
 one_shot = true
 autostart = true
 
+[node name="WalkGiveUpTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
 
@@ -159,6 +162,7 @@ anims/Hurt = SubResource( 6 )
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurt"]
 [connection signal="timeout" from="WalkTimer" to="." method="_on_WalkTimer_timeout"]
+[connection signal="timeout" from="WalkGiveUpTimer" to="." method="_on_WalkGiveUpTimer_timeout"]
 
 [editable path="PlayerDetection"]
 [editable path="Hurtbox"]
