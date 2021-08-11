@@ -2,6 +2,7 @@ extends Control
 
 onready var slots = $VBox/Slots
 onready var slotSelector = $SlotSelector
+onready var itemName = $VBox/ItemName
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 var playerData = preload("res://Player/Player.tres")
@@ -83,6 +84,11 @@ func set_slot_cursor_position():
 	slotSelectorTarget += inventory.selectedSlot+hotbarBegin
 	slotSelectorTarget += (inventory.selectedSlot*4)-inventory.selectedSlot
 
+	var item = inventory.items[inventory.selectedSlot]
+	if item:
+		itemName.text = item.replace("_", " ")
+	else:
+		itemName.text = ""
 
 func _input(event):
 	randomize()

@@ -21,6 +21,7 @@ func _init():
 	for slot in maxSlots:
 		items.append(null)
 	add_item("Pistol")
+	add_item("Health_Potion")
 
 
 func check_existence(id:String) -> bool:
