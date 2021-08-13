@@ -7,7 +7,7 @@
 damage = 25.0
 accuracy = 12.0
 projScale = 0.9
-projLifetime = 0.24
+projLifetime = 0.35
 maxHoldShots = 6
 bulletSpawnDist = 19
 

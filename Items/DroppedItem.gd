@@ -36,7 +36,8 @@ func _ready():
 
 func _input(event):
 	# Picking up the item
-	if player and event.is_action_pressed("interact") and inventory.has_space() and !isPickedUp:
+	if player and event.is_action_pressed("interact")\
+	and inventory.has_space() and !isPickedUp:
 		inventory.add_item(item)
 		pickUpAnim.play("PickUp")
 		pickUpArea.disconnect("area_exited", self, "_on_player_far")

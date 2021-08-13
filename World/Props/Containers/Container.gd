@@ -12,6 +12,7 @@ export(Array, Resource) var itemPools
 export var itemCountRange:Vector2 = Vector2(1, 2)
 
 var player
+var vel = Vector2.ZERO
 
 signal containerOpened
 
@@ -40,7 +41,8 @@ func _process(delta):
 		GameManager.emit_signal("screenshake", 1, 5, .05, .05)
 
 # warning-ignore:return_value_discarded
-	move_and_collide(Vector2.DOWN*(GameManager.gravity*delta))
+	vel.y += (Vector2.DOWN*(GameManager.gravity*delta)).y
+	vel.y = move_and_slide(vel).y
 	position = position.round()
 
 

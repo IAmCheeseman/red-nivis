@@ -6,7 +6,7 @@
 [node name="Gun" instance=ExtResource( 2 )]
 damage = 20.0
 cooldown = 0.4
-projLifetime = 0.25
+projLifetime = 0.5
 
 [node name="GunSprite" parent="Pivot" index="2"]
 position = Vector2( 12, 0 )

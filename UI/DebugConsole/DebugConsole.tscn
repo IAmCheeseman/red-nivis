@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/DebugConsole/DebugConsole.gd" type="Script" id=1]
+[ext_resource path="res://UI/DebugConsole/Commands.gd" type="Script" id=2]
+
+[node name="DebugConsole" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Output" type="TextEdit" parent="."]
+margin_left = 50.0
+margin_top = 25.0
+margin_right = 330.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 48, 48 )
+text = "Debug Console"
+readonly = true
+wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Input" type="LineEdit" parent="."]
+margin_left = 50.0
+margin_top = 251.0
+margin_right = 330.0
+margin_bottom = 275.0
+
+[node name="HideButton" type="Button" parent="."]
+margin_left = 332.148
+margin_top = 24.8993
+margin_right = 374.148
+margin_bottom = 44.8993
+text = "Hide"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CommandsDefinitions" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[connection signal="text_changed" from="Input" to="." method="_on_input_text_changed"]
+[connection signal="text_entered" from="Input" to="." method="_on_input_text_entered"]
+[connection signal="pressed" from="HideButton" to="." method="_on_hide_button_pressed"]
