@@ -23,6 +23,7 @@ onready var anim = $AnimationPlayer
 onready var hurtAnim = $Hurt
 onready var playerDetection = $PlayerDetection
 onready var cooldown = $Cooldown
+onready var groundDetection = $Ground
 
 var bullet = preload("res://Enemies/EnemyBullet/EnemyBullet.tscn")
 var target:Node2D
@@ -74,8 +75,7 @@ func walk_state(delta) -> void:
 	if global_position.distance_to(Vector2(targetWalk, global_position.y)) < 5:
 		state = IDLE
 		walkTimer.start(rand_range(1, 3.5))
-
-	if jumpRay.is_colliding() and is_on_floor():
+	if jumpRay.is_colliding() and groundDetection.is_colliding():
 		vel.y = -jumpForce
 		vel.x *= 4
 

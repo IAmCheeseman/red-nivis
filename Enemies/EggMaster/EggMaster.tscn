@@ -108,6 +108,10 @@ position = Vector2( 0, -3 )
 enabled = true
 cast_to = Vector2( -15, 0 )
 
+[node name="Ground" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 1 )
+
 [node name="PlayerDetection" parent="." instance=ExtResource( 4 )]
 visible = false
 
