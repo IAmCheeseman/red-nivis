@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://EnviormentalArt/Solids/MushroomSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Props/Containers/Locker/Locker.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Props/Containers/Safe/Safe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/AmmoPickup/AmmoPickup.tscn" type="PackedScene" id=6]
 
 [node name="tset" type="Node2D"]
 
@@ -19,6 +20,9 @@ position = Vector2( 257.304, 89.0883 )
 
 [node name="Safe" parent="." instance=ExtResource( 5 )]
 position = Vector2( 303.564, 130.03 )
+
+[node name="AmmoPickup" parent="." instance=ExtResource( 6 )]
+position = Vector2( 62.0804, 157.687 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 106.297, 247.292 )
