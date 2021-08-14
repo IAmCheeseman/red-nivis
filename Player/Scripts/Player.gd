@@ -26,6 +26,7 @@ onready var topTileChecker = $TileCheckers/TopTileChecker
 onready var bunnyHopTimer = $BunnyHopTimer
 onready var jumpWindow = $APressWindow
 onready var buildModeTimer = $BuildModeTimer
+onready var buildModeNotifier = $CanvasLayer/BuildModeNotifier
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -73,8 +74,8 @@ func _physics_process(delta):
 			playerData.accelaration*delta
 		)
 		# Do stuff in the air.
-		if !is_grounded():
-			vel.y += GameManager.gravity*delta
+#		if !is_grounded():
+		vel.y += GameManager.gravity*delta
 
 		var faceDir = get_local_mouse_position()
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
@@ -94,7 +95,7 @@ func _physics_process(delta):
 
 func animate(moveDir:Vector2):
 	if is_grounded():
-		if is_equal_approx(moveDir.x, 0) or test_move(transform, vel.normalized()):
+		if is_equal_approx(moveDir.x, 0) or test_move(transform, Vector2(vel.normalized().x, 0)):
 			sprite.rotation_degrees = 0
 			animationPlayer.play("Idle")
 		else:
@@ -105,7 +106,7 @@ func animate(moveDir:Vector2):
 
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
-		if vel.y > 0: SaS.play("Land")
+		if vel.y > -playerData.jumpForce*0.15: SaS.play("Land")
 		if triedJumpRecent:
 			jump()
 			bunnyHopTimer.start()
@@ -138,12 +139,15 @@ func _input(event):
 	or (playerData.mode == playerData.BUILD_MODE and event.is_action_pressed("use_item")):
 		emit_signal("removeTile", get_global_mouse_position())
 
+
+	# Controller Controls
+
 	# Build mode
 	if event.is_action_pressed("build_mode"):
 		playerData.mode = playerData.BUILD_MODE if\
 		playerData.mode == playerData.DEFAULT_MODE else playerData.DEFAULT_MODE
 
-	# Twin stick aiming
+	# Aiming
 	if event is InputEventJoypadMotion:
 		match playerData.mode:
 			playerData.DEFAULT_MODE:
@@ -162,7 +166,6 @@ func _input(event):
 					var moveVector = Vector2(Input.get_joy_axis(0, JOY_ANALOG_RX),
 					Input.get_joy_axis(0, JOY_ANALOG_RY)).normalized()*16
 					mouseTarget += moveVector
-					mouseTarget = mouseTarget.snapped(Vector2.ONE*16)
 
 					Input.warp_mouse_position(mouseTarget)
 

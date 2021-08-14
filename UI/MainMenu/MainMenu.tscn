@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=4]
+[ext_resource path="res://EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=5]
+[ext_resource path="res://EnviormentalArt/BackGrounds/MountainsNear.png" type="Texture" id=6]
 [ext_resource path="res://UI/Settings/OptionsMenu.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Space/Assets/SpaceTile.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
@@ -48,10 +50,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="."]
-margin_right = 380.0
-margin_bottom = 300.0
-texture = ExtResource( 9 )
+[node name="BG" type="Control" parent="."]
+modulate = Color( 0.784314, 0.521569, 0.486275, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sky" type="TextureRect" parent="BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Far" type="TextureRect" parent="BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Near" type="TextureRect" parent="BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 2
 __meta__ = {

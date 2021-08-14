@@ -470,6 +470,19 @@ mouse_filter = 2
 [node name="DebugConsole" parent="CanvasLayer" instance=ExtResource( 14 )]
 visible = false
 
+[node name="BuildModeNotifier" type="Label" parent="CanvasLayer"]
+margin_left = 3.0
+margin_top = 288.0
+margin_right = 80.0
+margin_bottom = 302.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = -1
+text = "Builld Mode"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ItemHolder" type="Node2D" parent="."]
 position = Vector2( 0, -7 )
 

@@ -127,7 +127,7 @@ func generate_ruins(worldSize:Vector2, ruinCount:int=5) -> void:
 		var newRuinPos = Vector2.ZERO
 		var isOverlapping = false
 
-		var newRuin = load("res://World/Ruins/Layouts/Ruin%s.tscn" % round(rand_range(1, 2))).instance()
+		var newRuin = load("res://World/Ruins/Layouts/Ruin%s.tscn" % round(rand_range(1, 3))).instance()
 		props.add_child(newRuin)
 		var ruinRect = newRuin.tiles.get_used_rect()
 		# Making sure it's generating on the ground
