@@ -27,6 +27,9 @@ func _process(delta):
 	slotSelector.rect_position.x = lerp(slotSelector.rect_position.x, slotSelectorTarget, 20*delta)
 	set_slot_cursor_position()
 
+	inventory.allowSlotChange = playerData.mode == playerData.DEFAULT_MODE
+	slotSelector.visible = inventory.allowSlotChange
+
 	if movingSlot:
 		var movingSlotTexWidth = movingSlot.texture_pressed.get_width()
 		movingSlot.rect_position.x = get_local_mouse_position().x-(movingSlotTexWidth/2)
@@ -111,6 +114,8 @@ func _input(event):
 
 	if event.is_action_pressed("drop_item"):
 		var item = inventory.items[inventory.selectedSlot]
+		if item == null:
+			return
 
 		# Spawning the item
 		var itemManager = ItemManagement.new()
@@ -119,6 +124,10 @@ func _input(event):
 		GameManager.spawnManager.spawn_object(newItem)
 
 		inventory.remove_item(inventory.selectedSlot)
+
+	# Item moving for controller
+	if event.is_action_pressed("move_item"):
+		_on_button_pressed(slots.get_child(inventory.selectedSlot))
 
 func _on_mouse_entered():
 	GameManager.editingInventory = true

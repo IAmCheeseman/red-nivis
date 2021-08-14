@@ -7,7 +7,7 @@ export var mouseWeight = true
 export var yOffset = 0
 
 # Mouse movement
-var lerpSpeed = 1
+var lerpSpeed = .3
 var maxOffset = 32
 var baseMaxOffset = maxOffset
 var sensitivity = 6

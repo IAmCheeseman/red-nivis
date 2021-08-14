@@ -9,6 +9,7 @@ var selectedSlot:int = 0 setget _on_selected_slot_changed
 # Item map
 var itemMapR = preload("res://UI/Inventory/ItemMap.tres")
 var itemMap = itemMapR.items
+var allowSlotChange = true
 
 # Signals
 signal itemsChanged
@@ -100,8 +101,9 @@ func destroy_item(id:String, amount:int):
 
 
 func _on_selected_slot_changed(value):
-	selectedSlot = value
-	emit_signal("selectedSlotChanged")
+	if allowSlotChange:
+		selectedSlot = value
+		emit_signal("selectedSlotChanged")
 
 
 

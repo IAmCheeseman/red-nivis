@@ -1,6 +1,8 @@
 extends Resource
 class_name Player
 
+enum {DEFAULT_MODE, BUILD_MODE}
+
 # Stats
 export var maxHealth:int = 100
 export var maxAmmo:int = 255
@@ -21,6 +23,8 @@ var health:int
 var ammo:int setget set_ammo
 var playerObject:KinematicBody2D
 
+var mode = DEFAULT_MODE setget set_mode
+
 var isDead = false
 
 signal healthChanged
@@ -40,6 +44,16 @@ func _on_damage_taken(damage, kbDir):
 func set_ammo(value:int):
 	ammo = value
 	emit_signal("ammoChanged")
+
+
+func set_mode(value):
+	mode = value
+	if mode == BUILD_MODE and playerObject.itemHolder.get_child_count() > 0:
+		playerObject.itemHolder.get_child(0).queue_free()
+	elif mode == DEFAULT_MODE:
+		playerObject.get_node("ItemManagement").add_item()
+
+
 
 
 
