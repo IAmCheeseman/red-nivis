@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Space/Assets/PlanetGlow.png" type="Texture" id=1]
 [ext_resource path="res://World/VisualEffects/Mist.gd" type="Script" id=2]
@@ -8,9 +8,12 @@ code = "shader_type canvas_item;
 
 uniform float strength : hint_range(0.0, 1.0);
 uniform vec4 lightColor : hint_color;
+uniform sampler2D displaceMap;
 
 void fragment() {
-	float a = texture(TEXTURE, UV).r;
+	float amod = texture(displaceMap, UV).r*clamp(sin(TIME)+1.8, .5, 100.0);
+	
+	float a = texture(TEXTURE, UV).r*amod;
 	a = clamp(a, 0, .9);
 	vec4 color = vec4(lightColor.r, lightColor.g, lightColor.b, 1);
 	color.a = a*strength;
@@ -18,10 +21,16 @@ void fragment() {
 	COLOR *= color;
 }"
 
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+noise = SubResource( 4 )
+
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/strength = 0.4
 shader_param/lightColor = Color( 0.486275, 0.192157, 0.631373, 1 )
+shader_param/displaceMap = SubResource( 5 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "lifespan"
