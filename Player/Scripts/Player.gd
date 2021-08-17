@@ -6,6 +6,7 @@ const SNAP_LENGTH = 5
 
 # Nodes
 onready var sprite = $ScaleHelper/Sprite
+onready var rightHand = $ScaleHelper/Sprite/Arm/Hand
 onready var scaleHelper = $ScaleHelper
 onready var hurtbox = $Hurtbox
 onready var vignette = $CanvasLayer/Vignette
@@ -97,6 +98,9 @@ func animate(moveDir:Vector2):
 	var noHand = ""
 	if itemHolder.get_child_count() > 0:
 		noHand = "NoHand" if itemHolder.get_child(0).isTwoHanded else ""
+		rightHand.hide()
+	else:
+		rightHand.show()
 	if is_grounded():
 		if is_equal_approx(moveDir.x, 0) or test_move(transform, Vector2(vel.normalized().x, 0)):
 			sprite.rotation_degrees = 0

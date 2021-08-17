@@ -23,5 +23,11 @@ ssStrength = 12
 position = Vector2( 8, 0 )
 texture = ExtResource( 2 )
 
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( -3, 2 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( 5, 1 )
+
 [node name="ShootSound" parent="." index="4"]
 audio = ExtResource( 4 )

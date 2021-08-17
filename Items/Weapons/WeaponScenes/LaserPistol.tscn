@@ -19,5 +19,11 @@ bulletSpawnDist = 19
 position = Vector2( 11, 0 )
 texture = ExtResource( 1 )
 
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( -3, 1 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( -3, 1 )
+
 [node name="ShootSound" parent="." index="4"]
 audio = ExtResource( 4 )

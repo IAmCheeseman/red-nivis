@@ -4,6 +4,7 @@
 [ext_resource path="res://Items/Weapons/WeaponSprites/RedPistol.png" type="Texture" id=2]
 
 [node name="Gun" instance=ExtResource( 1 )]
+position = Vector2( 0, -2 )
 damage = 75.0
 projSpeed = 420
 projScale = 0.7
@@ -14,3 +15,9 @@ cost = 6
 [node name="GunSprite" parent="Pivot" index="2"]
 position = Vector2( 11, 0 )
 texture = ExtResource( 2 )
+
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( -2, 2 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( -2, 2 )

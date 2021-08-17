@@ -70,6 +70,7 @@ func generate_world():
 	GameManager.gravity = planet.gravity
 	var worldSize = Vector2(20, 10)
 	var worldGenerator = WorldGenerator.new()
+	
 	var world = worldGenerator.generate_world(
 		worldSize,
 		5*16,
@@ -78,7 +79,7 @@ func generate_world():
 		load(planet.connectionTemplates).get_data(),
 		planet.caveSizeCurve,
 		planet.minibiomes
-		)
+	)
 
 	tiles = planet.solidTiles.instance()
 	props.add_child(tiles)

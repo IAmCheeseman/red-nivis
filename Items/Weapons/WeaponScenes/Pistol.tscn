@@ -4,6 +4,7 @@
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=2]
 
 [node name="Gun" instance=ExtResource( 2 )]
+position = Vector2( 0, -2 )
 damage = 20.0
 cooldown = 0.4
 projLifetime = 0.5
@@ -13,7 +14,7 @@ position = Vector2( 12, 0 )
 texture = ExtResource( 1 )
 
 [node name="Hand1" parent="Pivot/GunSprite" index="0"]
-position = Vector2( -3, 2 )
+position = Vector2( -4, 2 )
 
 [node name="Hand2" parent="Pivot/GunSprite" index="1"]
-position = Vector2( -3, 2 )
+position = Vector2( -4, 2 )

@@ -3,6 +3,8 @@ extends Node2D
 onready var flipPos = $FlipPos
 onready var sprite = $Sprite
 
+var isTwoHanded = false
+
 
 func _physics_process(delta):
 	# Flipping the gun based on rotation
