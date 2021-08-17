@@ -13,7 +13,14 @@ projLifetime = 0.5
 kickUp = 12
 bulletSpawnDist = 28
 ssStrength = 5
+isTwoHanded = true
 
 [node name="GunSprite" parent="Pivot" index="2"]
 position = Vector2( 10, 1 )
 texture = ExtResource( 2 )
+
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( 5, -5 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( -11, -1 )

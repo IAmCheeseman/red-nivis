@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Items/Weapons/Sounds/NoAmmoClick.wav" type="AudioStream" id=1]
 [ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Weapons/Sounds/ShootDefualt1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Items/Weapons/WeaponScripts/ProjectileBasedGun.gd" type="Script" id=4]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Player/Assets/Hand.png" type="Texture" id=6]
 [ext_resource path="res://Items/Weapons/Gun.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
@@ -34,7 +35,14 @@ cast_to = Vector2( 400, 0 )
 
 [node name="GunSprite" type="Sprite" parent="Pivot"]
 
+[node name="Hand1" type="Sprite" parent="Pivot/GunSprite"]
+texture = ExtResource( 6 )
+
+[node name="Hand2" type="Sprite" parent="Pivot/GunSprite"]
+texture = ExtResource( 6 )
+
 [node name="AmmoCount" type="Label" parent="."]
+visible = false
 margin_right = 23.0
 margin_bottom = 6.0
 custom_fonts/font = SubResource( 1 )

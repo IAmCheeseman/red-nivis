@@ -94,14 +94,17 @@ func _physics_process(delta):
 
 
 func animate(moveDir:Vector2):
+	var noHand = ""
+	if itemHolder.get_child_count() > 0:
+		noHand = "NoHand" if itemHolder.get_child(0).isTwoHanded else ""
 	if is_grounded():
 		if is_equal_approx(moveDir.x, 0) or test_move(transform, Vector2(vel.normalized().x, 0)):
 			sprite.rotation_degrees = 0
-			animationPlayer.play("Idle")
+			animationPlayer.play("Idle%s" % noHand)
 		else:
-			animationPlayer.play("Run")
+			animationPlayer.play("Run%s" % noHand)
 	else:
-		animationPlayer.play("Jump")
+		animationPlayer.play("Jump%s" % noHand)
 
 
 func just_landed():

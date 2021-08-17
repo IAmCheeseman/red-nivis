@@ -28,6 +28,7 @@ export var bulletSpawnDist = 16
 
 export var ssFreq = .05
 export var ssStrength = 7
+export var isTwoHanded = false
 
 # Nodes
 onready var gunLogic = $GunLogic
