@@ -16,12 +16,15 @@ var isPickedUp = false
 
 func _ready():
 	# Setting the sprite
-	sprite.texture = inventory.itemMap[item].texture
+	if item.is_valid_integer():
+		sprite.add_child()
+	else:
+		sprite.texture = inventory.itemMap[item].texture
 	# Setting collisions
-	collision.shape.extents = Vector2(
-		sprite.texture.get_width(), sprite.texture.get_height()
-	)/2
-	pickUpCollision.shape = collision.shape
+		collision.shape.extents = Vector2(
+			sprite.texture.get_width(), sprite.texture.get_height()
+		)/2
+		pickUpCollision.shape = collision.shape
 
 	var tierColor = GameManager.itemManager.tierColors[inventory.itemMap[item].rarity]
 

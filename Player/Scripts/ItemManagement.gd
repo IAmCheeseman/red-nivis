@@ -18,7 +18,14 @@ func add_item():
 		i.queue_free()
 	var id = inventory.items[inventory.selectedSlot]
 	if id == null: return
+
 	var item = inventory.get_item(id)
+	if item == null and id.is_valid_integer():
+		var newItem = load("res://Items/Weapons/Gun.tscn").instance()
+		newItem._seed = int(id)
+		itemHolder.add_child(newItem)
+		return
+
 	if item.scene == null:
 		var newItem = load("res://Items/Item.tscn").instance()
 		itemHolder.add_child(newItem)

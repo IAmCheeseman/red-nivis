@@ -5,6 +5,8 @@ export(Array, Resource) var itemPool
 export var addForce:bool = false
 export var appearOnready:bool = true
 export var freeWhenDone = true
+export var canGenerateWeapons = true
+export var weaponChance = .6
 
 
 func _process(_delta):
@@ -13,6 +15,17 @@ func _process(_delta):
 
 func add_item():
 	if rand_range(0, 1) > failChance:
+		if rand_range(0, 1) < weaponChance:
+			var weaponSeed = randi()
+			var weaponGenerator = WeaponConstructor.new()
+			var weapon = weaponGenerator.generate_weapon()
+
+			# Creating the dropped item
+			var itemManager = ItemManagement.new()
+			var item = itemManager.create_item(weapon, addForce)
+
+			return
+
 		var selectedTable:LootTable = itemPool[rand_range(0, itemPool.size())]
 
 		var selectedIndex = rand_range(0, selectedTable.loot.size())

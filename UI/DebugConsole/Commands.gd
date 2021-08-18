@@ -15,6 +15,8 @@ const VALID_COMMANDS = {
 		[ARG_FLOAT],
 	"give" :
 		[ARG_STR],
+	"giveweapon":
+		[ARG_INT],
 	"getitems" :
 		[],
 	"setspeed" :
@@ -41,6 +43,16 @@ func give(item:String):
 
 	inventory.add_item(item)
 	return "Added item '%s'." % item
+
+
+func giveweapon(_seed:int):
+	var seedOut = _seed
+	if _seed == 0:
+		seedOut = str(WeaponConstructor.new().generate_weapon().seed)
+		inventory.add_item(seedOut)
+	else:
+		inventory.add_item(str(seedOut))
+	return "Added weapon with seed %s." % seedOut
 
 
 func setspeed(amount:int):

@@ -4,13 +4,19 @@ class_name ItemManagement
 var tierColors = {
 	"common" : Color("#ffffff"),
 	"uncommon" : Color("#e49b35"),
-	"rare" : Color("#5bb031"),
-	"legendary" : Color("#952008")
+	"rare" : Color("#5bb031")
 }
 
-enum {COMMON, UNCOMMON, RARE, LEGENDARY}
+enum {COMMON, UNCOMMON, RARE}
 
 var itemDropped = preload("res://Items/DroppedItem.tscn")
+
+
+func convert_tier_to_str(tier:int):
+	match tier:
+		COMMON: return "common"
+		UNCOMMON: return "uncommon"
+		RARE: return "rare"
 
 
 func create_item(ID:String, withForce:bool=false):

@@ -3,7 +3,7 @@ extends Node2D
 onready var flipPos = $FlipPos
 onready var sprite = $Sprite
 
-var isTwoHanded = false
+var stats = {"isTwoHanded" : false}
 
 
 func _physics_process(delta):

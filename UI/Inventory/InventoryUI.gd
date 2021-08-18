@@ -73,10 +73,14 @@ func refresh_items():
 			continue
 		var item = inventory.get_item(id)
 
-		var tierColor = GameManager.itemManager.tierColors[inventory.itemMap[id].rarity]
-
 		slot.clear()
-		slot.setup(item.texture, id, tierColor)
+		if id.is_valid_integer():
+			var weapon = WeaponConstructor.new().generate_weapon()
+			var tierColor = Color.black
+			slot.setup(weapon.scene, str(weapon.seed), tierColor)
+		else:
+			var tierColor = GameManager.itemManager.tierColors[inventory.itemMap[id].rarity]
+			slot.setup(item.texture, id, tierColor)
 
 
 func set_slot_cursor_position():

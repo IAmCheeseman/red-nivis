@@ -21,7 +21,8 @@ signal selectedSlotChanged
 func _init():
 	for slot in maxSlots:
 		items.append(null)
-	add_item("Pistol")
+	randomize()
+	add_item(str(WeaponConstructor.new().generate_weapon().seed))
 
 
 func check_existence(id:String) -> bool:
@@ -44,6 +45,8 @@ func has_item(id:String) -> bool:
 func get_item(id:String):
 	if check_existence(id):
 		return itemMap[id]
+	if id.is_valid_integer():
+		return null
 	push_error("ITEM DOES NOT EXIST: %s" % id)
 
 
@@ -80,11 +83,8 @@ func remove_item(id):
 
 
 func add_item(id:String):
-	for item in items.size():
-		if items[item] == null:
-			items[item] = id
-			break
-
+	if !has_space(): return
+	items[items.find(null)] = id
 	emit_signal("itemsChanged")
 	emit_signal("itemAdded", id)
 

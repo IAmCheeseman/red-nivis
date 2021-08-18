@@ -6,29 +6,30 @@ export(int, "pistol", "shotgun") var gunType = 0
 signal onShoot
 
 # Functionality
-export var damage:float = 6.0
-export var accuracy:float = 8.0
-export var cooldown:float = 0.2
-export var multishot:int = 1
-export var spread = 0.0
-export var projSpeed = 340
-export var projScale = 1.0
-export var projLifetime = 5.0
-export var peircing = false
-export var recoil = 0.3
-export var look : int
-export var cost = 1
-export var maxHoldShots = -1
-export var customBullet:PackedScene
+var stats = {
+	"damage" : 6.0,
+	"accuracy" : 8.0,
+	"cooldown" : 0.2,
+	"multishot" : 1,
+	"spread" : 0.0,
+	"projSpeed" : 340,
+	"projScale" : 1.0,
+	"projLifetime" : 5.0,
+	"peircing" : false,
+	"recoil" : 0.3,
+	"cost" : 1.0,
+	"maxHoldShots" : -1,
+	"customBullet" : null,
 
-# Visual
-export var bulletSprite = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")
-export var kickUp = 25
-export var bulletSpawnDist = 16
+	# Visual
+	"bulletSprite" : preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png"),
+	"kickUp" : 25,
+	"bulletSpawnDist" : 16,
 
-export var ssFreq = .05
-export var ssStrength = 7
-export var isTwoHanded = false
+	"ssFreq" : .05,
+	"ssStrength" : 7,
+	"isTwoHanded" : false
+}
 
 # Nodes
 onready var gunLogic = $GunLogic
@@ -42,16 +43,23 @@ onready var sprite = $Pivot/GunSprite
 var standingOver = false
 var canShoot = true
 var player
+var _seed = randi()
 
 
 func _ready():
-	ammoLabel.text = "%s/%s" % [clamp(player.playerData.ammo, 0, INF), player.playerData.maxAmmo]
+	sprite.self_modulate.a = 0
+	var gunGenerator = WeaponConstructor.new()
+	var newStats = gunGenerator.generate_weapon(_seed)
+	stats = newStats
+	sprite.add_child(stats.scene)
+	stats.scene.position.x = stats.scene.get_node("Sprite").texture.get_width()*.5
+	ammoLabel.hide()
 
 
-func _process(_delta):
-	ammoLabel.rect_global_position = sprite.global_position
-	ammoLabel.rect_position.y -= sprite.texture.get_height()
-	ammoLabel.rect_position.x -= sprite.texture.get_width()/2
+#func _process(_delta):
+#	ammoLabel.rect_global_position = sprite.global_position
+#	ammoLabel.rect_position.y -= sprite.texture.get_height()
+#	ammoLabel.rect_position.x -= sprite.texture.get_width()/2
 
 
 func _on_Cooldown_timeout():

@@ -97,7 +97,7 @@ func _physics_process(delta):
 func animate(moveDir:Vector2):
 	var noHand = ""
 	if itemHolder.get_child_count() > 0:
-		noHand = "NoHand" if itemHolder.get_child(0).isTwoHanded else ""
+		noHand = "NoHand" if itemHolder.get_child(0).stats.isTwoHanded else ""
 		rightHand.hide()
 	else:
 		rightHand.show()

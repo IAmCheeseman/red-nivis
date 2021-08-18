@@ -70,7 +70,7 @@ func generate_world():
 	GameManager.gravity = planet.gravity
 	var worldSize = Vector2(20, 10)
 	var worldGenerator = WorldGenerator.new()
-	
+
 	var world = worldGenerator.generate_world(
 		worldSize,
 		5*16,
