@@ -17,9 +17,7 @@ func _ready():
 
 func setup(texture, itemID:String, outlineColor:Color=Color.white):
 	if texture is Node2D:
-		slotTexture.add_child(texture.duplicate())
-		texture.material = slotTexture.material.duplicate()
-		texture.material.set_shader_param("line_color", outlineColor)
+		$WeaponHolder.add_child(texture.duplicate())
 	else:
 		slotTexture.texture = texture
 		slotTexture.material.set_shader_param("line_color", outlineColor)

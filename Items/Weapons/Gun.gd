@@ -52,7 +52,7 @@ func _ready():
 	var newStats = gunGenerator.generate_weapon(_seed)
 	stats = newStats
 	sprite.add_child(stats.scene)
-	stats.scene.position.x = stats.scene.get_node("Sprite").texture.get_width()*.5
+	stats.scene.position.x = stats.scene.get_node("Sprite").texture.get_width()*.3
 	ammoLabel.hide()
 
 

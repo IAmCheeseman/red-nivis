@@ -84,7 +84,9 @@ func _physics_process(delta):
 
 		animate(moveDir)
 
-		if just_landed(): bunnyHopTimer.start()
+		if just_landed():
+			playerData.dashesLeft = playerData.maxDashes
+			bunnyHopTimer.start()
 
 		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 	else:
@@ -141,10 +143,26 @@ func _input(event):
 	# Adjustable jump height
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
+	# Dashing
+	if Input.is_action_just_pressed("remove_tile") and playerData.dashesLeft > 0:
+		var dashDir = Vector2.ZERO
+		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
+		dashDir.y = Input.get_action_strength("down")-Input.get_action_strength("up")
+		dashDir.normalized()
+		dashDir *= playerData.dashSpeed
+		
+		dashDir.y = clamp(dashDir.y, -playerData.jumpForce, INF)
+		
+		if dashDir == Vector2.ZERO:
+			return
+		
+		vel = dashDir
+		playerData.dashesLeft -= 1
+	
 	# Destroying tiles and stuff :)
-	if event.is_action_pressed("remove_tile")\
-	or (playerData.mode == playerData.BUILD_MODE and event.is_action_pressed("use_item")):
-		emit_signal("removeTile", get_global_mouse_position())
+#	if event.is_action_pressed("remove_tile")\
+#	or (playerData.mode == playerData.BUILD_MODE and event.is_action_pressed("use_item")):
+#		emit_signal("removeTile", get_global_mouse_position())
 
 
 	# Controller Controls

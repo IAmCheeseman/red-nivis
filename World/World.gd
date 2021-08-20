@@ -212,6 +212,7 @@ func set_camera_limits():
 
 
 func _on_player_removeTile(mousePosition):
+	return
 	tilePlaceSFX.play()
 	tilePlaceSFX.global_position = mousePosition
 	Cursor.get_node("Sprite").scale = Vector2(.8, .8)

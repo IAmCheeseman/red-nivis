@@ -20,7 +20,7 @@ func _ready():
 	add_child(spawnTimer)
 	spawnTimer.connect("timeout", self, "spawn_enemy")
 	spawnTimer.wait_time = spawnInterval
-	spawnTimer.start()
+#	spawnTimer.start()
 
 
 func spawn_enemy() -> void:

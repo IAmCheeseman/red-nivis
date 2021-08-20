@@ -7,5 +7,4 @@ func _ready():
 	var weapon = weaponConstructor.generate_weapon()
 
 	add_child(weapon.scene)
-	$Sprite.texture = weapon.sprite
 
