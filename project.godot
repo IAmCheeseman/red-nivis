@@ -100,11 +100,6 @@ _global_script_classes=[ {
 "path": "res://World/Minibiomes/Minibiome.gd"
 }, {
 "base": "Resource",
-"class": "Planet",
-"language": "GDScript",
-"path": "res://World/Planets/planet.gd"
-}, {
-"base": "Resource",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/Scripts/PlayerResource.gd"
@@ -153,7 +148,6 @@ _global_script_class_icons={
 "ItemMap": "",
 "LootTable": "",
 "Minibiome": "",
-"Planet": "",
 "Player": "",
 "Prefix": "",
 "SoundManager": "",

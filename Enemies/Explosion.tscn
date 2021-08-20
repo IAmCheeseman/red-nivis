@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Space/Assets/PlanetGlow.png" type="Texture" id=2]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=2]
 
 [sub_resource type="Curve" id=1]
 min_value = -360.0

@@ -21,7 +21,8 @@ func _on_Play_pressed():
 
 func play_game():
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Space/PlanetSelection.tscn")
+#	get_tree().change_scene("res://Space/PlanetSelection.tscn")
+	get_tree().change_scene("res://World/World.tscn")
 
 
 func _on_Feedback_pressed():
