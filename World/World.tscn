@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://World/WorldGeneration.gd" type="Script" id=2]
@@ -7,10 +7,7 @@
 [ext_resource path="res://EnviormentalArt/Solids/LabBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/VisualEffects/MistSpawner.tscn" type="PackedScene" id=7]
-[ext_resource path="res://CustomNodes/EnemySpawner.gd" type="Script" id=8]
 [ext_resource path="res://Player/Assets/PlaceTile.wav" type="AudioStream" id=9]
-[ext_resource path="res://Enemies/Jumpling/Jumpling.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemies/EggMaster/EggMaster.tscn" type="PackedScene" id=11]
 [ext_resource path="res://EnviormentalArt/Solids/OneWayPlatforms.tscn" type="PackedScene" id=12]
 [ext_resource path="res://EnviormentalArt/Decor/RuinProps.tscn" type="PackedScene" id=13]
 
@@ -96,11 +93,6 @@ color = Color( 0.45098, 0.298039, 0.227451, 1 )
 strength = 0.1
 
 [node name="SpawningManagment" parent="Props" instance=ExtResource( 6 )]
-
-[node name="EnemySpawner" type="Node2D" parent="Props"]
-script = ExtResource( 8 )
-playerPath = NodePath("../Player")
-enemyPool = [ ExtResource( 10 ), ExtResource( 11 ) ]
 
 [node name="Tiles" type="Node2D" parent="Props"]
 

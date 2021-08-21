@@ -16,5 +16,12 @@ func spawn_object(object:Node):
 func spawn_item(item:Node2D):
 	add_child(item)
 	items.append(item)
+	item.connect("tree_exiting", self, "_on_item_exiting_tree", [item])
+	
 	while items.size() > maxItems:
 		items.pop_front().queue_free()
+
+
+func _on_item_exiting_tree(item):
+	items.erase(item)
+

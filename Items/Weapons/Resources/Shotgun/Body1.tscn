@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Items/Weapons/Resources/Shotgun/Shotgun.png" type="Texture" id=1]
+[ext_resource path="res://Items/Weapons/WeaponGeneration/Body.tscn" type="PackedScene" id=2]
+
+[node name="Body" instance=ExtResource( 2 )]
+accuracy = 18.0
+cooldown = 0.8
+multishot = 8.0
+projLifetime = 0.3
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 1 )
+region_rect = Rect2( 2, 15, 14, 8 )
+
+[node name="Handle" parent="." index="1"]
+position = Vector2( -4, 2 )
+
+[node name="Sight" parent="." index="2"]
+position = Vector2( 2, -2 )
+
+[node name="Barrel" parent="." index="3"]
+position = Vector2( 5, 0 )

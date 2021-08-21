@@ -58,7 +58,7 @@ func _on_lifetime_timeout():
 	dieTween.interpolate_property(self, "speed", speed, 0, .2, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	dieTween.start()
 	modulate = Color.gray
-#	anim.play("Free")
+	anim.play("Free")
 
 
 

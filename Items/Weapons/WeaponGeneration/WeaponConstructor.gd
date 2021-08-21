@@ -1,4 +1,4 @@
-extends Resource
+extends Reference
 class_name WeaponConstructor
 
 enum {
@@ -115,5 +115,6 @@ func select_tier():
 
 
 var parts = [
-	'Pistol'
+	'Pistol',
+	'Shotgun'
 ]

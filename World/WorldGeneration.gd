@@ -24,7 +24,7 @@ func generate_world() -> void:
 
 
 func pad() -> void:
-	var solids = get_node(solidsPath)
+	var solids:TileMap = get_node(solidsPath)
 	var rect = solids.get_used_rect()
 	var left = rect.position.x
 	var right = rect.end.x-1
@@ -34,8 +34,6 @@ func pad() -> void:
 		solids.set_cell(right, y, 0)
 		solids.update_bitmask_area(Vector2(left, y))
 		solids.update_bitmask_area(Vector2(right, y))
-#		solids.set_cell(left, y, 1)
-#		solids.set_cell(right, y, 1)
 
 
 func add_template_to_world(template:Node2D, offset:int) -> void:

@@ -22,6 +22,8 @@ onready var healthBar = $CanvasLayer/Bars/HealthBar/Bar
 onready var ammoBar = $CanvasLayer/Bars/Ammobar/Bar
 onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/Hurt
+onready var jumpSFX = $Sounds/JumpSFX
+onready var walkSFX = $Sounds/WalkSFX
 onready var floorCheckers = $FloorCheckers
 onready var bottomTileChecker = $TileCheckers/BottomTileChecker
 onready var topTileChecker = $TileCheckers/TopTileChecker
@@ -117,6 +119,7 @@ func animate(moveDir:Vector2):
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
 		if vel.y > -playerData.jumpForce*0.15: SaS.play("Land")
+		walkSFX.play(5)
 		if triedJumpRecent:
 			jump()
 			bunnyHopTimer.start()
@@ -230,6 +233,7 @@ func bunny_hop(): if !bunnyHopTimer.is_stopped(): vel.x *= playerData.bunnyHopMu
 
 func jump():
 	# Setting values
+	jumpSFX.play()
 	snapVector = Vector2.ZERO
 	vel.y = -playerData.jumpForce
 	bunny_hop()
