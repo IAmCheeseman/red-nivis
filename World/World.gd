@@ -4,14 +4,14 @@ var tiles:TileMap
 var altTiles:Array
 var backgroundTiles:TileMap
 onready var player = $Props/Player
-onready var backgrounds = $Background
-onready var sky = $Sky/Sky
 onready var camera = $Props/Player/Camera
 onready var props = $Props
 onready var atmosphere = $Atmosphere
 onready var mistSpawner = $Props/Player/MistSpawner
 onready var tilePlaceSFX = $TilePlaceSFX
 onready var enemySpawner = $Props/EnemySpawner
+onready var worldGenerator = $WorldGeneration
+onready var solids = $Props/Tiles/LabSolids
 
 var queuedChunks : Array
 var queueFreeChunks : Array
@@ -25,7 +25,24 @@ var enemyCount = 0
 
 
 func _ready():
-	pass
+	worldGenerator.generate_world()
+	worldGenerator.queue_free()
+	
+	# Setting camera limits
+	var limits = solids.get_used_rect()
+	
+	limits.position.x += 1
+	limits.end.x -= 1
+	
+	limits.position *= solids.cell_size.x
+	limits.end *= solids.cell_size.x
+
+	var centering = abs(get_viewport_rect().end.x-limits.end.x)
+	limits.position.x += centering*.15
+	limits.end.x -= centering
+	
+	camera.limit_left = limits.position.x
+	camera.limit_right = limits.end.x
 
 
 func _on_drop_gun(gun, pos):

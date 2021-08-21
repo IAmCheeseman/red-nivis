@@ -24,6 +24,7 @@ __meta__ = {
 }
 
 [node name="ItemName" type="Label" parent="VBox"]
+visible = false
 margin_top = 264.0
 margin_right = 380.0
 margin_bottom = 274.0

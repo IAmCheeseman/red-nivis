@@ -33,7 +33,9 @@ func _physics_process(delta):
 	position += (direction*speed)*delta
 
 
-func _on_QueueArea_body_entered(_body):
+func _on_QueueArea_body_entered(body):
+	if body.is_in_group("Platform"):
+		return
 	add_particles()
 	queue_free()
 

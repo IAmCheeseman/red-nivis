@@ -26,9 +26,7 @@ centered = false
 region_rect = Rect2( 21, 20, 5, 6 )
 
 [node name="Hand1" parent="." index="1"]
-visible = false
 position = Vector2( -1, 2 )
 
 [node name="Hand2" parent="." index="2"]
-visible = false
 position = Vector2( -1, 2 )

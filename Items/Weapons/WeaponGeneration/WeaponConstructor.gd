@@ -7,7 +7,7 @@ enum {
 	RARE
 }
 
-var tierChances = [.10, .20, .70]
+var tierChances = [.70, .20, .10]
 
 
 func generate_weapon(_seed:int=randi()):
@@ -31,11 +31,14 @@ func generate_weapon(_seed:int=randi()):
 	constructedWeapon.get_node("Handle").add_child(handle)
 	var barrel = selectedParts.barrel.instance()
 	constructedWeapon.get_node("Barrel").add_child(barrel)
-	print(constructedWeapon.get_node("Handle").position)
 	var data = generate_stats(selectedParts, constructedWeapon)
 
 	data.scene = constructedWeapon
 	data.isTwoHanded = handle.isTwoHanded
+	data.bulletSpawnDist = barrel.get_node("Sprite").texture.get_width()
+	
+	var textureWidth = constructedWeapon.get_node("Sprite").texture.get_width()
+	data.holdDist = (textureWidth*.3)-(int(data.isTwoHanded)*(textureWidth*.1))
 	data.seed = _seed
 
 	return data
@@ -64,7 +67,6 @@ func generate_stats(selectedParts:Dictionary, body:Node2D):
 
 	data.bulletSprite = body.bulletSprite
 	data.kickUp = body.kickUp
-	data.bulletSpawnDist = body.bulletSpawnDist
 
 	data.ssFreq = body.ssFreq
 	data.ssStrength = body.ssStrength

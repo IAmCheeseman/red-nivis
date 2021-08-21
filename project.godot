@@ -79,7 +79,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Inventory/Inventory.gd"
 }, {
-"base": "Resource",
+"base": "Node",
 "class": "ItemManagement",
 "language": "GDScript",
 "path": "res://Managing/ItemManaging.gd"
@@ -123,11 +123,6 @@ _global_script_classes=[ {
 "class": "WeaponConstructor",
 "language": "GDScript",
 "path": "res://Items/Weapons/WeaponGeneration/WeaponConstructor.gd"
-}, {
-"base": "Resource",
-"class": "WorldGenerator",
-"language": "GDScript",
-"path": "res://World/WorldGenerater.gd"
 } ]
 _global_script_class_icons={
 "BorderedSimplexNoise": "",
@@ -152,8 +147,7 @@ _global_script_class_icons={
 "Prefix": "",
 "SoundManager": "",
 "Trail": "",
-"WeaponConstructor": "",
-"WorldGenerator": ""
+"WeaponConstructor": ""
 }
 
 [application]

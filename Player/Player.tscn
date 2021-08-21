@@ -496,7 +496,6 @@ shape = SubResource( 3 )
 
 [node name="Camera" parent="." instance=ExtResource( 10 )]
 process_priority = -1
-yOffset = 50
 
 [node name="Sounds" type="Node2D" parent="."]
 

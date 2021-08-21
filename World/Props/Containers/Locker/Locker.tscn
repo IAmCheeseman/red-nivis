@@ -45,7 +45,7 @@ extents = Vector2( 6, 12 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 13 )
 
-[node name="Container" instance=ExtResource( 1 )]
+[node name="Locker" instance=ExtResource( 1 )]
 itemPools = [ ExtResource( 3 ) ]
 
 [node name="Sprite" parent="." index="0"]

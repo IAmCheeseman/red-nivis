@@ -1,4 +1,4 @@
-extends Resource
+extends Node
 class_name ItemManagement
 
 var tierColors = {
@@ -19,9 +19,9 @@ func convert_tier_to_str(tier:int):
 		RARE: return "rare"
 
 
-func create_item(ID:String, withForce:bool=false):
+func create_item(item, withForce:bool=false):
 	var newItem = itemDropped.instance()
-	newItem.item = ID
+	newItem.item = item
 	if withForce:
 		var force = (Vector2.UP+Vector2(rand_range(-.25, .25), 0)).normalized()*70
 		newItem.apply_central_impulse(force)

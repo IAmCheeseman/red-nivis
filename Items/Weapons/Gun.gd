@@ -37,29 +37,20 @@ onready var pivot = $Pivot
 onready var shootSound = $ShootSound
 onready var noAmmoClick = $NoAmmoClickSFX
 onready var ammoLabel = $AmmoCount
-onready var sprite = $Pivot/GunSprite
+var visuals
 
 # Properties
 var standingOver = false
 var canShoot = true
 var player
-var _seed = randi()
+
 
 
 func _ready():
-	sprite.self_modulate.a = 0
-	var gunGenerator = WeaponConstructor.new()
-	var newStats = gunGenerator.generate_weapon(_seed)
-	stats = newStats
-	sprite.add_child(stats.scene)
-	stats.scene.position.x = stats.scene.get_node("Sprite").texture.get_width()*.3
+	visuals = stats.scene.duplicate()
+	pivot.add_child(visuals)
+	visuals.position.x = stats.holdDist
 	ammoLabel.hide()
-
-
-#func _process(_delta):
-#	ammoLabel.rect_global_position = sprite.global_position
-#	ammoLabel.rect_position.y -= sprite.texture.get_height()
-#	ammoLabel.rect_position.x -= sprite.texture.get_width()/2
 
 
 func _on_Cooldown_timeout():

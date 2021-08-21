@@ -67,20 +67,15 @@ func refresh_items():
 	for slot in slots.get_children():
 		if slot.get_index() > inventory.items.size()-1:
 			return
-		var id = inventory.items[slot.get_index()]
-		if id == null:
+		var item = inventory.items[slot.get_index()]
+		if item == null:
 			slot.clear()
 			continue
-		var item = inventory.get_item(id)
+#		var item = inventory.get_item(id)
 
 		slot.clear()
-		if id.is_valid_integer():
-			var weapon = WeaponConstructor.new().generate_weapon()
-			var tierColor = Color.black
-			slot.setup(weapon.scene, str(weapon.seed), tierColor)
-		else:
-			var tierColor = GameManager.itemManager.tierColors[inventory.itemMap[id].rarity]
-			slot.setup(item.texture, id, tierColor)
+		var tierColor = Color.black
+		slot.setup(item.scene, str(item.seed), tierColor)
 
 
 func set_slot_cursor_position():
@@ -92,10 +87,10 @@ func set_slot_cursor_position():
 	slotSelectorTarget += (inventory.selectedSlot*4)-inventory.selectedSlot
 
 	var item = inventory.items[inventory.selectedSlot]
-	if item:
-		itemName.text = item.replace("_", " ")
-	else:
-		itemName.text = ""
+#	if item:
+#		itemName.text = item.seed.replace("_", " ")
+#	else:
+#		itemName.text = ""
 
 func _input(event):
 	randomize()

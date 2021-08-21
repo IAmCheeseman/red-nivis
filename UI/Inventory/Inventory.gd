@@ -22,7 +22,7 @@ func _init():
 	for slot in maxSlots:
 		items.append(null)
 	randomize()
-	add_item(str(WeaponConstructor.new().generate_weapon().seed))
+	add_item(WeaponConstructor.new().generate_weapon())
 
 
 func check_existence(id:String) -> bool:
@@ -82,7 +82,7 @@ func remove_item(id):
 
 
 
-func add_item(id:String):
+func add_item(id):
 	if !has_space(): return
 	items[items.find(null)] = id
 	emit_signal("itemsChanged")

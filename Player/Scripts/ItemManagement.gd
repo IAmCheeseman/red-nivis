@@ -16,23 +16,23 @@ func _ready():
 func add_item():
 	for i in itemHolder.get_children():
 		i.queue_free()
-	var id = inventory.items[inventory.selectedSlot]
-	if id == null: return
+	var item = inventory.items[inventory.selectedSlot]
+	if item == null: return
 
-	var item = inventory.get_item(id)
-	if item == null and id.is_valid_integer():
+#	var item = inventory.get_item(id)
+	if item is Dictionary:
 		var newItem = load("res://Items/Weapons/Gun.tscn").instance()
-		newItem._seed = int(id)
+		newItem.stats = item
 		itemHolder.add_child(newItem)
 		return
 
-	if item.scene == null:
-		var newItem = load("res://Items/Item.tscn").instance()
-		itemHolder.add_child(newItem)
-		newItem.sprite.texture = item.texture
-		newItem.sprite.offset.x = item.texture.get_width()/2
-		return
+#	if item.scene == null:
+#		var newItem = load("res://Items/Item.tscn").instance()
+#		itemHolder.add_child(newItem)
+#		newItem.sprite.texture = item.texture
+#		newItem.sprite.offset.x = item.texture.get_width()/2
+#		return
 
-	var newItem = item.scene.instance()
-	newItem.player = get_parent()
-	itemHolder.add_child(newItem)
+#	var newItem = item.scene.instance()
+#	newItem.player = get_parent()
+#	itemHolder.add_child(newItem)

@@ -34,7 +34,6 @@ func _draw():
 			a = .75
 			dist = distFar
 			pointOffset = pointOffsetFar
-
 		var drawPoints:PoolVector2Array = [point]
 		drawPoints.append((Vector2(1, pointOffset).rotated(point.angle()))*dist)
 		drawPoints.append((Vector2(1, -pointOffset).rotated(point.angle()))*dist)

@@ -10,6 +10,7 @@ onready var itemSpawnerPath = itemSpawner.get_path()
 
 export(Array, Resource) var itemPools
 export var itemCountRange:Vector2 = Vector2(1, 2)
+export(float, 0, 1) var deathChance = .5
 
 var player
 var vel = Vector2.ZERO
@@ -20,6 +21,8 @@ signal containerOpened
 func _ready():
 	itemSpawner.itemPool = itemPools
 	if queueCollision.get_overlapping_bodies().size() > 0:
+		queue_free()
+	if rand_range(0, 1) < deathChance:
 		queue_free()
 	queueCollision.queue_free()
 
