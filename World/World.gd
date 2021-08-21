@@ -41,12 +41,12 @@ func _ready():
 	limits.position.x += centering*.15
 	limits.end.x -= centering
 	
-	camera.limit_left = limits.position.x
-	camera.limit_right = limits.end.x
+#	camera.limit_left = limits.position.x
+#	camera.limit_right = limits.end.x
 
 
 func _on_drop_gun(gun, pos):
 	gun.position = pos
 	gun.isPickedUp = false
 	gun.set_logic(false)
-	props.add_child(gun)
+	GameManager.spawnManager.add_item(gun)

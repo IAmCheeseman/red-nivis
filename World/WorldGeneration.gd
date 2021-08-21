@@ -34,6 +34,8 @@ func pad() -> void:
 		solids.set_cell(right, y, 0)
 		solids.update_bitmask_area(Vector2(left, y))
 		solids.update_bitmask_area(Vector2(right, y))
+#		solids.set_cell(left, y, 1)
+#		solids.set_cell(right, y, 1)
 
 
 func add_template_to_world(template:Node2D, offset:int) -> void:

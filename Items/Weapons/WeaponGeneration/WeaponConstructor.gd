@@ -7,7 +7,7 @@ enum {
 	RARE
 }
 
-var tierChances = [.70, .20, .10]
+var tierChances = [.45, .35, .20]
 
 
 func generate_weapon(_seed:int=randi()):
@@ -35,7 +35,7 @@ func generate_weapon(_seed:int=randi()):
 
 	data.scene = constructedWeapon
 	data.isTwoHanded = handle.isTwoHanded
-	data.bulletSpawnDist = barrel.get_node("Sprite").texture.get_width()
+	data.bulletSpawnDist = barrel.get_node("Sprite").texture.get_width()/2
 	
 	var textureWidth = constructedWeapon.get_node("Sprite").texture.get_width()
 	data.holdDist = (textureWidth*.3)-(int(data.isTwoHanded)*(textureWidth*.1))

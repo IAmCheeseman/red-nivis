@@ -7,6 +7,7 @@ const SNAP_LENGTH = 5
 # Nodes
 onready var sprite = $ScaleHelper/Sprite
 onready var rightHand = $ScaleHelper/Sprite/Arm/Hand
+onready var collision = $CollisionShape2D
 onready var scaleHelper = $ScaleHelper
 onready var hurtbox = $Hurtbox
 onready var vignette = $CanvasLayer/Vignette
@@ -53,7 +54,7 @@ func _ready():
 		die()
 	if !Settings.vignette:
 		vignette.queue_free()
-	healthBar.value = GameManager.percentage_of(float(playerData.health), float(playerData.maxHealth))
+	healthBar.value = Utils.percentage_of(float(playerData.health), float(playerData.maxHealth))
 	playerData.playerObject = self
 
 	playerData.connect("ammoChanged", self, "_on_ammo_changed")
@@ -133,6 +134,14 @@ func is_grounded():
 	return false
 
 
+func is_on_platform():
+	for c in floorCheckers.get_children():
+		if c.is_colliding():
+			if c.get_collider().is_in_group("Platform"):
+				return true
+	return false
+
+
 func _input(event):
 	# Jumping
 	if Input.is_action_just_pressed("jump"):
@@ -143,6 +152,9 @@ func _input(event):
 	# Adjustable jump height
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
+	
+	collision.disabled = Input.is_action_pressed("down") and is_on_platform() and !test_move(transform, Vector2(vel.normalized().x, 0))
+	
 	# Dashing
 	if Input.is_action_just_pressed("remove_tile") and playerData.dashesLeft > 0:
 		var dashDir = Vector2.ZERO
@@ -228,7 +240,7 @@ func jump():
 
 func _on_a_press_window_timeout(): triedJumpRecent = false
 
-func _on_ammo_changed(): ammoBar.value = GameManager.percentage_of(playerData.ammo, playerData.maxAmmo)
+func _on_ammo_changed(): ammoBar.value = Utils.percentage_of(playerData.ammo, playerData.maxAmmo)
 
 func die():
 	deathScreen.show()

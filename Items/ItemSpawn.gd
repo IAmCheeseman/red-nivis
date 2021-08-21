@@ -17,12 +17,12 @@ func add_item():
 	if rand_range(0, 1) > failChance:
 		var weaponGenerator = WeaponConstructor.new()
 		var weapon = weaponGenerator.generate_weapon()
-
+		
 		# Creating the dropped item
 		randomize()
 		var itemManager = ItemManagement.new()
 		var item = itemManager.create_item(weapon, addForce)
 		item.item = weapon
-		GameManager.spawnManager.spawn_object(item)
+		GameManager.spawnManager.spawn_item(item)
 		item.global_position = global_position
 		queue_free()

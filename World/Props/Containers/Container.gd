@@ -5,6 +5,7 @@ onready var playerDetection = $PlayerDetection
 onready var itemSpawner = $ItemSpawn
 onready var animationPlayer = $AnimationPlayer
 onready var queueCollision = $QueueCollision
+onready var openSFX = $OpenSound
 
 onready var itemSpawnerPath = itemSpawner.get_path()
 
@@ -31,6 +32,7 @@ func _ready():
 func _process(delta):
 	player = playerDetection.get_player()
 	if player and Input.is_action_just_pressed("interact") and itemSpawner:
+		openSFX.play()
 		for i in round(rand_range(itemCountRange.x, itemCountRange.y)):
 			itemSpawner.add_item()
 		itemSpawner.queue_free()

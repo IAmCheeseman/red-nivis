@@ -28,12 +28,6 @@ func _input(_event):
 		OS.window_fullscreen = !OS.window_fullscreen
 
 
-#func load_scene(loadPath):
-#	yield(get_tree(), "idle_frame")
-## warning-ignore:return_value_discarded
-#	get_tree().change_scene(loadPath)
-
-
 func get_world_layer(y:float):
 	return {
 		"Sky" : y >= worldLayers[SKY] and y < worldLayers[SURFACE],
@@ -46,21 +40,5 @@ func get_world_layer(y:float):
 func set_attacking_enemies(value:int):
 	attackingEnemies = value
 	attackingEnemies = clamp(attackingEnemies, 0, 1)
-
-
-func percentage_of(a:float, b:float) -> float:
-	if a == 0 or b == 0:
-		return 0.0
-	return (a/b)*100
-
-
-func percentage_from(percent:float, a:float) -> float:
-	if percent == 0 or a == 0:
-		return 0.0
-	var tinyPercent = 100/percent
-	return a/tinyPercent
-
-
-func is_even(number): return !(number % 2)
 
 

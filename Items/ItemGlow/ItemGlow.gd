@@ -19,7 +19,7 @@ func _ready():
 func _process(delta):
 	for point in points.size():
 		var angle = spinSpeed*delta
-		if GameManager.is_even(point): angle *= .5
+		if Utils.is_even(point): angle *= .5
 		points[point] = points[point].rotated(angle)
 	update()
 
@@ -30,7 +30,7 @@ func _draw():
 		var a = .5
 		var dist = distNear
 		var pointOffset = pointOffsetNear
-		if GameManager.is_even(i):
+		if Utils.is_even(i):
 			a = .75
 			dist = distFar
 			pointOffset = pointOffsetFar
