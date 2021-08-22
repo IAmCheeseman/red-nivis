@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Player/Scripts/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Player/Camera.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Assets/AmmoBarEmpty.png" type="Texture" id=11]
 [ext_resource path="res://UI/Assets/AmmoBar.png" type="Texture" id=12]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=13]
@@ -531,9 +530,6 @@ offset = Vector2( 0.5, 0 )
 position = Vector2( 0, -5 )
 shape = SubResource( 3 )
 
-[node name="Camera" parent="." instance=ExtResource( 10 )]
-process_priority = -1
-
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Hurt" type="AudioStreamPlayer" parent="Sounds"]
@@ -704,7 +700,7 @@ __meta__ = {
 }
 
 [node name="GameOverLabel" type="RichTextLabel" parent="CanvasLayer/DeathScreen"]
-margin_right = 380.0
+margin_right = 384.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
@@ -716,13 +712,13 @@ scroll_active = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DeathScreen"]
 margin_top = 20.0
-margin_right = 380.0
+margin_right = 384.0
 margin_bottom = 36.0
 alignment = 1
 
 [node name="Continue" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 113.0
-margin_right = 168.0
+margin_left = 115.0
+margin_right = 170.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
@@ -733,8 +729,8 @@ text = "Continue"
 flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 172.0
-margin_right = 204.0
+margin_left = 174.0
+margin_right = 206.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
@@ -748,8 +744,8 @@ __meta__ = {
 }
 
 [node name="QuitDesktop" type="Button" parent="CanvasLayer/DeathScreen/HBoxContainer"]
-margin_left = 208.0
-margin_right = 267.0
+margin_left = 210.0
+margin_right = 269.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
@@ -763,6 +759,7 @@ __meta__ = {
 }
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource( 17 )]
+script = null
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
 visible = false
@@ -770,19 +767,6 @@ mouse_filter = 2
 
 [node name="DebugConsole" parent="CanvasLayer" instance=ExtResource( 14 )]
 visible = false
-
-[node name="BuildModeNotifier" type="Label" parent="CanvasLayer"]
-margin_left = 3.0
-margin_top = 288.0
-margin_right = 80.0
-margin_bottom = 302.0
-custom_fonts/font = ExtResource( 6 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = -1
-text = "Builld Mode"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ItemHolder" type="Node2D" parent="."]
 position = Vector2( 0, -6 )

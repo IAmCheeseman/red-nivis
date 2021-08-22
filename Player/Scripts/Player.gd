@@ -16,7 +16,6 @@ onready var SaS = $SquashAndStretch
 onready var flashPlayer = $Flash
 onready var deathScreen = $CanvasLayer/DeathScreen
 onready var itemHolder = $ItemHolder
-onready var camera = $Camera
 onready var hurtTimer = $Hurtbox/HurtTimer
 onready var healthBar = $CanvasLayer/Bars/HealthBar/Bar
 onready var ammoBar = $CanvasLayer/Bars/Ammobar/Bar
@@ -30,7 +29,6 @@ onready var topTileChecker = $TileCheckers/TopTileChecker
 onready var bunnyHopTimer = $BunnyHopTimer
 onready var jumpWindow = $APressWindow
 onready var buildModeTimer = $BuildModeTimer
-onready var buildModeNotifier = $CanvasLayer/BuildModeNotifier
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -197,7 +195,7 @@ func _input(event):
 					return
 
 				mouseTarget = joystickVector+(OS.window_size/2)
-				mouseTarget.y += camera.yOffset
+#				mouseTarget.y += camera.yOffset
 
 				Input.warp_mouse_position(mouseTarget)
 

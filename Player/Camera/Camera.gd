@@ -5,6 +5,10 @@ onready var timer = $Timer
 
 export var mouseWeight = true
 export var yOffset = 0
+export var limits:Rect2 = Rect2(-1000000, -1000000, 1000000, 1000000)
+export var trackNodePath:NodePath
+
+onready var trackNode = get_node(trackNodePath)
 
 # Mouse movement
 var lerpSpeed = .3
@@ -20,23 +24,31 @@ var freq = 0
 var time = 0
 var shakeDir = Vector2.ZERO
 
+var playerData = preload("res://Player/Player.tres")
+
 
 func _ready():
 # warning-ignore:return_value_discarded
+	GameManager.currentCamera = self
 	GameManager.connect("screenshake", self, "start")
 	if !mouseWeight: set_process(false)
 
 
-func _process(_delta):
+func _process(delta):
 	# Finding out where the camera should be by
 	# getting the direction and distance to the mouse and
 	# lerping the position to the direction*distance
 	var mousePosition = get_local_mouse_position()
 	var dirMouse = position.rotated(global_rotation).direction_to(mousePosition)
 	var mouseDist = (position.distance_to(mousePosition)/sensitivity)*Settings.cameraLook
-	mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
-
-	position = lerp(position, (dirMouse*mouseDist)-Vector2(0,yOffset), lerpSpeed)
+	
+	global_position = trackNode.global_position+(dirMouse*mouseDist)
+	
+	var vs = get_viewport_rect().end*.5
+	global_position.x = clamp(global_position.x, limits.position.x+vs.x, limits.end.x-vs.x)
+	global_position.y = clamp(global_position.y, limits.position.y+vs.y, limits.end.y-vs.y)
+	print("vs: %s" % vs)
+	print((limits.end-limits.position)/2)
 
 
 func set_cam_look(value:bool):

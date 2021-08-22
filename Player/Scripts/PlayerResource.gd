@@ -53,10 +53,9 @@ func set_mode(value):
 	mode = value
 	if mode == BUILD_MODE and playerObject.itemHolder.get_child_count() > 0:
 		playerObject.itemHolder.get_child(0).queue_free()
-		playerObject.buildModeNotifier.show()
 	elif mode == DEFAULT_MODE:
 		playerObject.get_node("ItemManagement").add_item()
-		playerObject.buildModeNotifier.hide()
+
 
 
 
