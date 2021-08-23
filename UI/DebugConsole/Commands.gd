@@ -46,13 +46,14 @@ func give(item:String):
 
 
 func giveweapon(_seed:int):
-	var seedOut = _seed
+	var weapon
 	if _seed == 0:
-		seedOut = str(WeaponConstructor.new().generate_weapon().seed)
-		inventory.add_item(seedOut)
+		weapon = WeaponConstructor.new().generate_weapon()
+		inventory.add_item(weapon)
 	else:
-		inventory.add_item(str(seedOut))
-	return "Added weapon with seed %s." % seedOut
+		weapon = WeaponConstructor.new().generate_weapon(_seed)
+		inventory.add_item(weapon)
+	return "Added weapon with seed %s." % _seed
 
 
 func setspeed(amount:int):

@@ -160,6 +160,8 @@ _global_script_class_icons={
 
 config/name="Astronaut Game"
 run/main_scene="res://Managing/Init.tscn"
+config/icon="res://UI/Assets/Icon.png"
+config/windows_native_icon="res://UI/Assets/Icon.ico"
 
 [autoload]
 

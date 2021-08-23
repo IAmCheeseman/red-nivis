@@ -117,7 +117,6 @@ func animate(moveDir:Vector2):
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
 		if vel.y > -playerData.jumpForce*0.15: SaS.play("Land")
-		walkSFX.play(5)
 		if triedJumpRecent:
 			jump()
 			bunnyHopTimer.start()

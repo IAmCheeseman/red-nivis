@@ -12,12 +12,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Output" type="TextEdit" parent="."]
-margin_left = 50.0
-margin_top = 25.0
-margin_right = 330.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 48, 48 )
+[node name="CommandsDefinitions" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 32.0
+margin_top = 7.0
+margin_right = 352.0
+margin_bottom = 209.0
+
+[node name="HideButton" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 20.0
+text = "Hide"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Output" type="TextEdit" parent="CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 320.0
+margin_bottom = 174.0
+rect_min_size = Vector2( 320, 150 )
 text = "Debug Console"
 readonly = true
 wrap_enabled = true
@@ -25,25 +48,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Input" type="LineEdit" parent="."]
-margin_left = 50.0
-margin_top = 251.0
-margin_right = 330.0
-margin_bottom = 275.0
+[node name="Input" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+margin_top = 178.0
+margin_right = 320.0
+margin_bottom = 202.0
 
-[node name="HideButton" type="Button" parent="."]
-margin_left = 332.148
-margin_top = 24.8993
-margin_right = 374.148
-margin_bottom = 44.8993
-text = "Hide"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CommandsDefinitions" type="Node" parent="."]
-script = ExtResource( 2 )
-
-[connection signal="text_changed" from="Input" to="." method="_on_input_text_changed"]
-[connection signal="text_entered" from="Input" to="." method="_on_input_text_entered"]
-[connection signal="pressed" from="HideButton" to="." method="_on_hide_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HideButton" to="." method="_on_hide_button_pressed"]
+[connection signal="text_changed" from="CenterContainer/VBoxContainer/Input" to="." method="_on_input_text_changed"]
+[connection signal="text_entered" from="CenterContainer/VBoxContainer/Input" to="." method="_on_input_text_entered"]

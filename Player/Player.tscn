@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Player/Scripts/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/Scripts/BlurVignette.tres" type="Material" id=10]
 [ext_resource path="res://UI/Assets/AmmoBarEmpty.png" type="Texture" id=11]
 [ext_resource path="res://UI/Assets/AmmoBar.png" type="Texture" id=12]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=13]
@@ -621,6 +622,15 @@ one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="Blur" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource( 10 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Vignette" type="ColorRect" parent="CanvasLayer"]
 material = ExtResource( 16 )

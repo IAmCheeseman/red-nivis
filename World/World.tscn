@@ -13,25 +13,6 @@
 [ext_resource path="res://EnviormentalArt/Solids/OneWayPlatforms.tscn" type="PackedScene" id=12]
 [ext_resource path="res://EnviormentalArt/Decor/RuinProps.tscn" type="PackedScene" id=13]
 
-[sub_resource type="Shader" id=2]
-code = "shader_type canvas_item;
-
-uniform float minBlur;
-uniform float edgeBlur;
-
-void fragment() {
-	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
-	color = textureLod(SCREEN_TEXTURE, SCREEN_UV, clamp(1.0-sin(3.14 * SCREEN_UV.x)*edgeBlur, minBlur, 100.0));
-	color = textureLod(SCREEN_TEXTURE, SCREEN_UV, clamp(1.0-sin(3.14 * SCREEN_UV.y)*edgeBlur, minBlur, 100.0));
-	
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
-shader_param/minBlur = 0.333
-shader_param/edgeBlur = 0.463
-
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 class_name SoundManager
@@ -75,6 +56,30 @@ func _on_SoundManager_tree_exiting():
 		c.queue_free()
 "
 
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+
+float deepfryColorEle(float num) {
+	float deepfriedNumber = 1.0-sin(3.14*num);
+	return deepfriedNumber;
+}
+
+
+void fragment() {
+	// `sin(pi*x)` for bring colors closer to extremes
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	color.r = deepfryColorEle(color.r);
+	color.g = deepfryColorEle(color.g);
+	color.b = deepfryColorEle(color.b);
+	
+	COLOR = color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+
 [node name="World" type="Node2D" groups=[
 "world",
 ]]
@@ -88,16 +93,6 @@ bgPath = NodePath("../Props/Tiles/LabBackground")
 platformsPath = NodePath("../Props/Tiles/OneWayPlatforms")
 propsPath = NodePath("../Props/Tiles/Props")
 worldNode = NodePath("../Props")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Water" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 3 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -128
@@ -156,3 +151,18 @@ directional = true
 bus = "SFX"
 
 [node name="Atmosphere" type="CanvasModulate" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_top = -117.0
+margin_right = -12.0
+margin_bottom = -117.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

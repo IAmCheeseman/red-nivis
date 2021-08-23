@@ -1,7 +1,7 @@
 extends Control
 
-onready var input = $Input
-onready var output = $Output
+onready var input = $CenterContainer/VBoxContainer/Input
+onready var output = $CenterContainer/VBoxContainer/Output
 onready var definitions = $CommandsDefinitions
 
 
