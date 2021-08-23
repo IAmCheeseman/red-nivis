@@ -27,7 +27,7 @@ func _process(delta):
 	slotSelector.rect_position.y = lerp(slotSelector.rect_position.y, slotSelectorTarget, 20*delta)
 	set_slot_cursor_position()
 
-	inventory.allowSlotChange = playerData.mode == playerData.DEFAULT_MODE
+#	inventory.allowSlotChange = playerData.mode == playerData.DEFAULT_MODE
 	slotSelector.visible = inventory.allowSlotChange
 
 	if movingSlot:
@@ -81,7 +81,6 @@ func refresh_items():
 
 func set_slot_cursor_position():
 	# Positioning the slot section sprite
-	
 	slotSelectorTarget = slots.get_child(inventory.selectedSlot).rect_position.y-1
 
 	var item = inventory.items[inventory.selectedSlot]

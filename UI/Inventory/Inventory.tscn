@@ -68,9 +68,9 @@ margin_bottom = 214.0
 
 [node name="SlotSelector" type="TextureRect" parent="."]
 margin_left = -1.0
-margin_top = 80.0
+margin_top = 73.0
 margin_right = 19.0
-margin_bottom = 101.0
+margin_bottom = 95.0
 mouse_filter = 2
 texture = ExtResource( 3 )
 stretch_mode = 4

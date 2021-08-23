@@ -31,6 +31,9 @@ func generate_weapon(_seed:int=randi()):
 	constructedWeapon.get_node("Handle").add_child(handle)
 	var barrel = selectedParts.barrel.instance()
 	constructedWeapon.get_node("Barrel").add_child(barrel)
+	if selectedParts.has("sight"):
+		var sight = selectedParts.sight.instance()
+		constructedWeapon.get_node("Sight").add_child(sight)
 	var data = generate_stats(selectedParts, constructedWeapon)
 
 	data.scene = constructedWeapon
@@ -89,6 +92,7 @@ func generate_stats(selectedParts:Dictionary, body:Node2D):
 
 func select_parts(selectedWeapon):
 	var weaponPath = "res://Items/Weapons/Resources/%s/" % selectedWeapon
+	var sightPath = "res://Items/Weapons/Resources/GlobalParts/Sight%s.tscn"
 	var weaponParts = {}
 	# Body
 	weaponParts.body = load(weaponPath+"Body%s.tscn" % select_tier())
@@ -97,7 +101,8 @@ func select_parts(selectedWeapon):
 	# Barrel
 	weaponParts.barrel = load(weaponPath+"Barrel%s.tscn" % select_tier())
 	# Sight
-	# TODO: Add sights
+	if rand_range(0, 1) < .5:
+		weaponParts.sight = load(sightPath % round(rand_range(0, 2)))
 	return weaponParts
 
 

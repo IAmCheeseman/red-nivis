@@ -12,6 +12,7 @@ onready var tilePlaceSFX = $TilePlaceSFX
 #onready var enemySpawner = $Props/EnemySpawner
 onready var worldGenerator = $WorldGeneration
 onready var solids = $Props/Tiles/LabSolids
+onready var mainCamMove = $Props/CameraZones/CameraMoveZone
 
 var queuedChunks : Array
 var queueFreeChunks : Array
@@ -25,27 +26,24 @@ var enemyCount = 0
 
 
 func _ready():
+	var entranceSize = solids.map_to_world(solids.get_used_rect().position)
+	entranceSize.x = 0
+	
 	worldGenerator.generate_world()
 	worldGenerator.queue_free()
 	
-	print(solids.tile_set.get_tiles_ids())
-	
 	# Setting camera limits
+	var camMoveShape = mainCamMove.collisionShape.shape
 	var limits = solids.get_used_rect()
 	
-	limits.position.x += 1
-	limits.end.x -= 1
+	limits.position = solids.map_to_world(limits.position)
+	limits.end = solids.map_to_world(limits.end)
+	limits.end.x = get_viewport_rect().end.x
 	
-	limits.position *= solids.cell_size.x
-	limits.end *= solids.cell_size.x
-
-	var centering = abs(get_viewport_rect().end.x-limits.end.x)
-	limits.position.x += centering*.15
-	limits.end.x -= centering
+	mainCamMove.position = (limits.end*.5).abs()+entranceSize
+	camMoveShape.extents = (limits.end*.5).abs()
 	
-	camera.limits = limits
-#	camera.limit_left = limits.position.x
-#	camera.limit_right = limits.end.x
+#	camera.limits = limits
 
 
 func _on_drop_gun(gun, pos):

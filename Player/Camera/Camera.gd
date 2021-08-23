@@ -35,18 +35,17 @@ func _ready():
 
 
 func _process(delta):
-	# Finding out where the camera should be by
-	# getting the direction and distance to the mouse and
-	# lerping the position to the direction*distance
-	var mousePosition = get_local_mouse_position()
-	var dirMouse = position.rotated(global_rotation).direction_to(mousePosition)
-	var mouseDist = (position.distance_to(mousePosition)/sensitivity)*Settings.cameraLook
-	
-	global_position = trackNode.global_position+(dirMouse*mouseDist)
+	global_position = trackNode.global_position
 	
 	var vs = get_viewport_rect().end*.5
 	global_position.x = clamp(global_position.x, limits.position.x+vs.x, limits.end.x-vs.x)
 	global_position.y = clamp(global_position.y, limits.position.y+vs.y, limits.end.y-vs.y)
+	
+	var mousePosition = get_global_mouse_position()
+	var dirMouse = global_position.direction_to(mousePosition)
+	var mouseDist = (global_position.distance_to(mousePosition)/sensitivity)*Settings.cameraLook
+	mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
+	global_position += dirMouse*mouseDist
 
 
 func set_cam_look(value:bool):

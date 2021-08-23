@@ -171,43 +171,16 @@ func _input(event):
 		
 		vel = dashDir
 		playerData.dashesLeft -= 1
-	
-	# Destroying tiles and stuff :)
-#	if event.is_action_pressed("remove_tile")\
-#	or (playerData.mode == playerData.BUILD_MODE and event.is_action_pressed("use_item")):
-#		emit_signal("removeTile", get_global_mouse_position())
-
 
 	# Controller Controls
-
-	# Build mode
-	if event.is_action_pressed("build_mode"):
-		playerData.mode = playerData.BUILD_MODE if\
-		playerData.mode == playerData.DEFAULT_MODE else playerData.DEFAULT_MODE
-
 	# Aiming
 	if event is InputEventJoypadMotion:
-		match playerData.mode:
-			playerData.DEFAULT_MODE:
-				var joystickVector = Vector2(Input.get_joy_axis(0, JOY_ANALOG_RX),
-				Input.get_joy_axis(0, JOY_ANALOG_RY)).normalized()*128
-				if joystickVector.length() < 64:
-					return
-
-				mouseTarget = joystickVector+(OS.window_size/2)
-#				mouseTarget.y += camera.yOffset
-
-				Input.warp_mouse_position(mouseTarget)
-
-			playerData.BUILD_MODE:
-				if buildModeTimer.is_stopped():
-					var moveVector = Vector2(Input.get_joy_axis(0, JOY_ANALOG_RX),
-					Input.get_joy_axis(0, JOY_ANALOG_RY)).normalized()*16
-					mouseTarget += moveVector
-
-					Input.warp_mouse_position(mouseTarget)
-
-					buildModeTimer.start()
+		var joystickVector = Vector2(Input.get_joy_axis(0, JOY_ANALOG_RX),
+		Input.get_joy_axis(0, JOY_ANALOG_RY)).normalized()*128
+		if joystickVector.length() < 64:
+			return
+		mouseTarget = joystickVector+(OS.window_size/2)
+		Input.warp_mouse_position(mouseTarget)
 
 
 

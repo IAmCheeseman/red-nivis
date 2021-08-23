@@ -30,10 +30,11 @@ func pad() -> void:
 	var right = rect.end.x-1
 	
 	for y in rect.end.y:
-		solids.set_cell(left, y, 0)
-		solids.set_cell(right, y, 0)
-		solids.update_bitmask_area(Vector2(left, y))
-		solids.update_bitmask_area(Vector2(right, y))
+		for i in 3:
+			solids.set_cell(left-i, y, 0)
+			solids.set_cell(right+i, y, 0)
+			solids.update_bitmask_area(Vector2(left-i, y))
+			solids.update_bitmask_area(Vector2(right+i, y))
 
 
 func add_template_to_world(template:Node2D, offset:int) -> void:

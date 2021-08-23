@@ -600,6 +600,9 @@ position = Vector2( 0, -8 )
 enabled = true
 cast_to = Vector2( 6, 0 )
 
+[node name="ItemHolder" type="Node2D" parent="."]
+position = Vector2( 0, -6 )
+
 [node name="ItemManagement" type="Node" parent="."]
 script = ExtResource( 5 )
 itemHolderPath = NodePath("../ItemHolder")
@@ -759,7 +762,6 @@ __meta__ = {
 }
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource( 17 )]
-script = null
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
 visible = false
@@ -767,9 +769,6 @@ mouse_filter = 2
 
 [node name="DebugConsole" parent="CanvasLayer" instance=ExtResource( 14 )]
 visible = false
-
-[node name="ItemHolder" type="Node2D" parent="."]
-position = Vector2( 0, -6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
