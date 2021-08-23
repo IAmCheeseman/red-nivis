@@ -7,7 +7,8 @@ var subtitles = [
 	"Go hydrate, you coward!",
 	"Go take a shower!",
 	"https://discord.gg/v99ryga",
-	"Ur dewin gr8!"
+	"Ur dewin gr8!",
+	"You cahn dew eet!"
 ]
 
 
