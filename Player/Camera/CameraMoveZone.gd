@@ -16,3 +16,4 @@ func _on_area_entered(area):
 		limits.end.x = global_position.x+shapeExtents.x
 		limits.end.y = global_position.y+shapeExtents.y
 		cam.limits = limits
+		$SoundManager.play()

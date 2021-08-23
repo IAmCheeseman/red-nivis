@@ -47,8 +47,6 @@ func _process(delta):
 	var vs = get_viewport_rect().end*.5
 	global_position.x = clamp(global_position.x, limits.position.x+vs.x, limits.end.x-vs.x)
 	global_position.y = clamp(global_position.y, limits.position.y+vs.y, limits.end.y-vs.y)
-	print("vs: %s" % vs)
-	print((limits.end-limits.position)/2)
 
 
 func set_cam_look(value:bool):

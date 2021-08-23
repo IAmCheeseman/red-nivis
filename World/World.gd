@@ -4,7 +4,7 @@ var tiles:TileMap
 var altTiles:Array
 var backgroundTiles:TileMap
 onready var player = $Props/Player
-onready var camera = $Props/Player/Camera
+onready var camera = $Props/Camera
 onready var props = $Props
 onready var atmosphere = $Atmosphere
 onready var mistSpawner = $Props/Player/MistSpawner
@@ -43,8 +43,9 @@ func _ready():
 	limits.position.x += centering*.15
 	limits.end.x -= centering
 	
-	camera.limit_left = limits.position.x
-	camera.limit_right = limits.end.x
+	camera.limits = limits
+#	camera.limit_left = limits.position.x
+#	camera.limit_right = limits.end.x
 
 
 func _on_drop_gun(gun, pos):
