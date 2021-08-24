@@ -130,6 +130,7 @@ tile_data = PoolIntArray( -1835000, 0, 0, -1834999, 0, 2, -1834994, 0, 0, -18349
 z_index = -1
 
 [node name="Props" parent="Props/Tiles" instance=ExtResource( 13 )]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
 z_index = -1
 
 [node name="LabSolids" parent="Props/Tiles" instance=ExtResource( 4 )]

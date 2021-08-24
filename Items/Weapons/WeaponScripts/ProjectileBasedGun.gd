@@ -44,6 +44,7 @@ func shoot():
 	GameManager.emit_signal("screenshake",
 	0, gun.stats.ssStrength,
 	gun.stats.ssFreq, gun.stats.ssFreq, direction)
+	Cursor.get_node("Sprite").rotate_cursor(gun.stats.cooldown)
 
 	# Playing a sound for feedback
 	gun.get_node("ShootSound").play()

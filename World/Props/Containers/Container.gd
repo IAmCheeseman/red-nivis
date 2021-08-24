@@ -26,11 +26,19 @@ func _ready():
 	if rand_range(0, 1) < deathChance:
 		queue_free()
 	queueCollision.queue_free()
+	sprite.material = sprite.material.duplicate()
 
 
 
 func _process(delta):
 	player = playerDetection.get_player()
+	
+	# Outlining it if you're close enough
+	if player and itemSpawner:
+		sprite.material.set_shader_param("line_thickness", 1)
+	else:
+		sprite.material.set_shader_param("line_thickness", 0)
+	
 	if player and Input.is_action_just_pressed("interact") and itemSpawner:
 		openSFX.play()
 		for i in round(rand_range(itemCountRange.x, itemCountRange.y)):
