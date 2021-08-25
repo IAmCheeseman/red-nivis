@@ -35,7 +35,8 @@ func _process(delta):
 	
 	# Outlining it if you're close enough
 	if player and itemSpawner:
-		sprite.material.set_shader_param("line_thickness", 1)
+		var currentOutlineLength = sprite.material.get_shader_param("line_thickness")
+		sprite.material.set_shader_param("line_thickness", lerp(currentOutlineLength, 1, 3.0*delta))
 	else:
 		sprite.material.set_shader_param("line_thickness", 0)
 	
