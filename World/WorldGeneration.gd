@@ -1,18 +1,29 @@
 extends Node
 
+# Main Area
 export var depth:int = 10
 export var templateHeight:int = 19
 export var templateAmount:int = 1
 export var templatesPath:String = "res://World/LabRuins/"
 export var templateFileName:String = "Template%s.tscn"
+
+# Walker
+export var branchAmount:int = 5
+export var maxSteps:int = 12
+export var stepJump:int = 5
+export var turnChance:float = .25
+
+# Tiles
 export var solidsPath:NodePath
 export var bgPath:NodePath
 export var platformsPath:NodePath
 export var propsPath:NodePath
+export var stonePath:NodePath 
 export var worldNode:NodePath
 
 
 func generate_world() -> void:
+	# Lab Generation
 	for x in depth:
 		var offset = x*templateHeight
 		
@@ -21,6 +32,22 @@ func generate_world() -> void:
 		
 		add_template_to_world(selectedTemplate.instance(), offset)
 	pad()
+	
+	var stone:TileMap = get_node(stonePath)
+	
+	for cb in branchAmount:
+		seed(randi())
+		
+		var walker:Resource = Walker.new(Vector2.ZERO, Rect2(0,-100,100,100))
+		walker.maxSteps = maxSteps
+		walker.stepJump = stepJump
+		walker.turnChance = turnChance
+		var steps:Array = walker.walk()
+		
+		for step in steps:
+			stone.set_cellv(step, 0)
+			stone.update_bitmask_area(step)
+			print(step)
 
 
 func pad() -> void:

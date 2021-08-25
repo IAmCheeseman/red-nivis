@@ -34,11 +34,11 @@ func _process(delta):
 	player = playerDetection.get_player()
 	
 	# Outlining it if you're close enough
+	var currentOutlineLength = sprite.material.get_shader_param("line_thickness")
 	if player and itemSpawner:
-		var currentOutlineLength = sprite.material.get_shader_param("line_thickness")
-		sprite.material.set_shader_param("line_thickness", lerp(currentOutlineLength, 1, 3.0*delta))
+		sprite.material.set_shader_param("line_thickness", lerp(currentOutlineLength, 1, 5.0*delta))
 	else:
-		sprite.material.set_shader_param("line_thickness", 0)
+		sprite.material.set_shader_param("line_thickness", lerp(currentOutlineLength, 0, 7.0*delta))
 	
 	if player and Input.is_action_just_pressed("interact") and itemSpawner:
 		openSFX.play()
