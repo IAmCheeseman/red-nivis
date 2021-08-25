@@ -616,8 +616,8 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
-[node name="BuildModeTimer" type="Timer" parent="."]
-wait_time = 0.1
+[node name="DashCooldown" type="Timer" parent="."]
+wait_time = 0.9
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -797,6 +797,7 @@ anims/Land = SubResource( 14 )
 anims/flash = SubResource( 15 )
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/DeathScreen" method="_on_Continue_button_up"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/DeathScreen" method="_on_Quit_button_up"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/HBoxContainer/QuitDesktop" to="CanvasLayer/DeathScreen" method="_on_QuitDesktop_pressed"]

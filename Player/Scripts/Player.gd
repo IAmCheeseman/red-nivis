@@ -28,7 +28,7 @@ onready var bottomTileChecker = $TileCheckers/BottomTileChecker
 onready var topTileChecker = $TileCheckers/TopTileChecker
 onready var bunnyHopTimer = $BunnyHopTimer
 onready var jumpWindow = $APressWindow
-onready var buildModeTimer = $BuildModeTimer
+onready var dashCooldown = $DashCooldown
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -86,7 +86,7 @@ func _physics_process(delta):
 		animate(moveDir)
 
 		if just_landed():
-			playerData.dashesLeft = playerData.maxDashes
+			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
 			bunnyHopTimer.start()
 
 		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
@@ -169,7 +169,10 @@ func _input(event):
 			return
 		
 		vel = dashDir
+		
 		playerData.dashesLeft -= 1
+		dashCooldown.start()
+		
 
 	# Controller Controls
 	# Aiming
@@ -186,6 +189,10 @@ func _input(event):
 # warning-ignore:return_value_discarded
 	if Input.is_key_pressed(KEY_K):
 		global_position = get_global_mouse_position()
+
+
+func _on_dash_cooldown_timeout():
+	if is_grounded(): playerData.dashesLeft = playerData.maxDashes
 
 
 func add_walk_particles(spawnPos:Vector2):
@@ -237,3 +244,4 @@ func _on_health_changed(dir):
 	GameManager.emit_signal("screenshake", 2, 6, .05, .05)
 	# Knockback
 	dir += dir*playerData.kbStrength
+
