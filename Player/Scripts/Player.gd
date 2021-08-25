@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
-const averageTileSize = 8
+enum states {WALK, DASH}
+
+const averageTileSize = 16
 const SNAP_DIRECTION = Vector2.DOWN
 const SNAP_LENGTH = 5
 
@@ -36,9 +38,11 @@ var lastFrameGroundState = false
 var triedJumpRecent = false
 var mouseTarget = Vector2.ZERO
 var lastUsedMouse = true
+var state = states.WALK
 
 
 var walkParticles = preload("res://Player/WalkParticles.tscn")
+var dashParticles = preload("res://Player/Assets/Dash.tscn")
 var playerData = preload("res://Player/Player.tres")
 var lockMovement = false
 
@@ -63,6 +67,20 @@ func _ready():
 
 
 func _physics_process(delta):
+	match state:
+		states.WALK:
+			hurtbox.monitorable = true
+			sprite.material.set_shader_param("is_on", 0)
+			walk_state(delta)
+		states.DASH:
+			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
+			if test_move(transform, vel): state = states.WALK
+			hurtbox.monitorable = false
+
+	lastFrameGroundState = is_grounded()
+
+
+func walk_state(delta):
 	if !lockMovement:
 		# INPUT
 		# ------------------------------------------------
@@ -94,8 +112,6 @@ func _physics_process(delta):
 		sprite.rotation_degrees = 0
 		animationPlayer.play("Idle")
 
-	lastFrameGroundState = is_grounded()
-
 
 func animate(moveDir:Vector2):
 	var noHand = ""
@@ -125,14 +141,12 @@ func just_landed():
 		return true
 	return false
 
-
 func is_grounded():
 	for c in floorCheckers.get_children():
 		if c.is_colliding():
 			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump") else Vector2.ZERO
 			return true
 	return false
-
 
 func is_on_platform():
 	for c in floorCheckers.get_children():
@@ -159,7 +173,7 @@ func _input(event):
 	if Input.is_action_just_pressed("remove_tile") and playerData.dashesLeft > 0:
 		var dashDir = Vector2.ZERO
 		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
-		dashDir.y = Input.get_action_strength("down")-Input.get_action_strength("up")
+		dashDir.y = Input.get_action_strength("down")
 		dashDir.normalized()
 		dashDir *= playerData.dashSpeed
 		
@@ -170,9 +184,15 @@ func _input(event):
 		
 		vel = dashDir
 		
+		state = states.DASH
 		playerData.dashesLeft -= 1
 		dashCooldown.start()
 		
+		SaS.play("Dash")
+		
+		var newDashPar = dashParticles.instance()
+		sprite.add_child(newDashPar)
+		newDashPar.emitting = true
 
 	# Controller Controls
 	# Aiming
@@ -192,6 +212,9 @@ func _input(event):
 
 
 func _on_dash_cooldown_timeout():
+	state = states.WALK
+	vel.x *= .5
+	vel.y = GameManager.gravity*.25
 	if is_grounded(): playerData.dashesLeft = playerData.maxDashes
 
 
