@@ -69,6 +69,7 @@ func generate_branches():
 		var branchRemoval:TileMap = newBranch.get_node("LabTileRemoval")
 		var labTiles:TileMap = newBranch.get_node("LabSolids")
 		var containers:Node2D = newBranch.get_node("Containers")
+		var enemies:Node2D = newBranch.get_node("Enemies")
 		var camMoveZone:Area2D = newBranch.get_node("CameraMoveZone")
 		
 		var offset = get_offset()
@@ -133,6 +134,15 @@ func generate_branches():
 			c.position.x = -c.position.x if !leftSide else c.position.x
 			c.position += offset*stone.cell_size.x
 			world.add_child(c)
+			
+		for e in enemies.get_children():
+			enemies.remove_child(e)
+
+			e.z_index = -1
+			e.position.x = -e.position.x if !leftSide else e.position.x
+			e.position += offset*stone.cell_size.x
+			world.add_child(e)
+			e.spawn_enemy(round(rand_range(4, 8)))
 		
 		branchAreas.append(rect)
 		
@@ -160,6 +170,14 @@ func add_template_to_world(template:Node2D, offset:int) -> void:
 		c.position.y += offset*16
 		c.z_index = -1
 		get_node(worldNode).add_child(c)
+	
+	for e in template.enemies.get_children():
+		template.enemies.remove_child(e)
+		e.position.y += offset*16
+		e.z_index = -1
+		get_node(worldNode).add_child(e)
+		
+		e.spawn_enemy(round(rand_range(1, 3)))
 	
 	template.queue_free()
 

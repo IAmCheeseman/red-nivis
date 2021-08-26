@@ -9,7 +9,6 @@ damage = 15.0
 accuracy = 10.0
 recoil = 0.2
 maxHoldShots = 1
-ssStrength = 4
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

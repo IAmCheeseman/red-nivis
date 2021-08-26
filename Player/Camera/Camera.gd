@@ -34,7 +34,7 @@ func _ready():
 	if !mouseWeight: set_process(false)
 
 
-func _process(delta):
+func _process(_delta):
 	global_position = trackNode.global_position
 	
 	var vs = get_viewport_rect().end*.5

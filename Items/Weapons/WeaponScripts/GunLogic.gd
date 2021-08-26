@@ -7,6 +7,7 @@ onready var gunSprite = get_parent().get_node("Pivot/GunSprite")
 onready var gun = get_parent()
 
 export var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
+var shell = preload("res://Items/Weapons/Bullet/Shells/Shell.tscn")
 var playerData = preload("res://Player/Player.tres")
 var shootSound : SoundManager
 var rotVel = 0
@@ -44,6 +45,14 @@ func _physics_process(delta):
 		playerData.ammo -= gun.stats.cost
 		Cursor.get_node("Sprite").scale = Vector2(1.2, 1.2)
 		shoot()
+		
+		var newShell = shell.instance()
+		var dir = -global_position.direction_to(get_global_mouse_position())-Vector2(0, 2)
+		newShell.direction = -global_position.direction_to(get_global_mouse_position())-Vector2(0, 2)
+		newShell.position = global_position+(dir*2)
+		GameManager.spawnManager.spawn_shell(newShell)
+		newShell.sprite.texture = gun.stats.shellSprite
+		
 	elif Input.is_action_just_pressed("use_item")\
 	and !hasEnoughAmmo:
 		gun.noAmmoClick.play()

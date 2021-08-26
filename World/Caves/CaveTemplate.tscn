@@ -50,4 +50,6 @@ format = 1
 
 [node name="Containers" type="Node2D" parent="."]
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [editable path="CameraMoveZone"]

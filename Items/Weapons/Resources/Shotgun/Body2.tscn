@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Items/Weapons/Resources/Shotgun/Shotgun.png" type="Texture" id=1]
 [ext_resource path="res://Items/Weapons/WeaponGeneration/Body.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Weapons/Bullet/Shells/shellShotgun.png" type="Texture" id=3]
 
 [node name="Body" instance=ExtResource( 2 )]
 accuracy = 23.0
 cooldown = 0.8
 multishot = 12.0
 projLifetime = 0.35
+shellSprite = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )

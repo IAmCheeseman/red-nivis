@@ -39,6 +39,7 @@ func generate_weapon(_seed:int=randi()):
 	data.scene = constructedWeapon
 	data.isTwoHanded = handle.isTwoHanded
 	data.bulletSpawnDist = barrel.get_node("Sprite").texture.get_width()/2
+	data.shellSprite = constructedWeapon.shellSprite
 	
 	var textureWidth = constructedWeapon.get_node("Sprite").texture.get_width()
 	data.holdDist = (textureWidth*.3)-(int(data.isTwoHanded)*(textureWidth*.1))

@@ -13,7 +13,7 @@
 [ext_resource path="res://EnviormentalArt/Solids/OneWayPlatforms.tscn" type="PackedScene" id=12]
 [ext_resource path="res://EnviormentalArt/Decor/RuinProps.tscn" type="PackedScene" id=13]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 
@@ -34,8 +34,8 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 
 [node name="World" type="Node2D" groups=[
 "world",
@@ -113,7 +113,7 @@ trackNodePath = NodePath("../Player")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
-material = SubResource( 3 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -12.0

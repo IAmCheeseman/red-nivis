@@ -2,7 +2,7 @@
 
 [ext_resource path="res://UI/Inventory/Slot.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/SlotFont.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Items/Outline.shader" type="Shader" id=3]
+[ext_resource path="res://General/Outline.shader" type="Shader" id=3]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/Slot.png-c3dabab1b9471a34cb3fe7bec0b47623.stex"

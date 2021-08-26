@@ -19,3 +19,5 @@ tile_data = PoolIntArray( 0, 0, 3, 23, 0, 3, 65536, 0, 65539, 65559, 0, 65539, 1
 [node name="Props" parent="." instance=ExtResource( 5 )]
 
 [node name="Containers" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]

@@ -47,7 +47,6 @@ var playerData = preload("res://Player/Player.tres")
 var lockMovement = false
 
 
-signal removeTile(mousePosition)
 # warning-ignore:unused_signal
 signal dropGun(gun, pos)
 
@@ -69,13 +68,11 @@ func _ready():
 func _physics_process(delta):
 	match state:
 		states.WALK:
-			hurtbox.monitorable = true
 			sprite.material.set_shader_param("is_on", 0)
 			walk_state(delta)
 		states.DASH:
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 			if test_move(transform, vel): state = states.WALK
-			hurtbox.monitorable = false
 
 	lastFrameGroundState = is_grounded()
 
@@ -94,7 +91,6 @@ func walk_state(delta):
 			playerData.accelaration*delta
 		)
 		# Do stuff in the air.
-#		if !is_grounded():
 		vel.y += GameManager.gravity*delta
 
 		var faceDir = get_local_mouse_position()
@@ -193,6 +189,7 @@ func _input(event):
 		var newDashPar = dashParticles.instance()
 		sprite.add_child(newDashPar)
 		newDashPar.emitting = true
+		jumpSFX.play()
 
 	# Controller Controls
 	# Aiming
@@ -256,12 +253,15 @@ func die():
 
 func _on_health_changed(dir):
 	# Feedback
+	if !dashCooldown.is_stopped():
+		return
+	
 	hurtSFX.play()
 	flashPlayer.play("flash")
 	if playerData.health <= 0:
 		die()
 	# Healthbar
-	healthBar.value = GameManager.percentage_of(float(playerData.health), float(playerData.maxHealth))
+	healthBar.value = Utils.percentage_of(float(playerData.health), float(playerData.maxHealth))
 	hurtTimer.start(playerData.recoveryTime)
 	# Screenshake
 	GameManager.emit_signal("screenshake", 2, 6, .05, .05)

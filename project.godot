@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "CustomParallax",
 "language": "GDScript",
-"path": "res://CustomNodes/CustomParallax.gd"
+"path": "res://General/CustomParallax.gd"
 }, {
 "base": "Resource",
 "class": "DataManager",
@@ -62,7 +62,12 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "EnemySpawner",
 "language": "GDScript",
-"path": "res://CustomNodes/EnemySpawner.gd"
+"path": "res://General/EnemySpawner.gd"
+}, {
+"base": "Resource",
+"class": "EnemyTable",
+"language": "GDScript",
+"path": "res://Enemies/Assets/EnemyTable.gd"
 }, {
 "base": "Area2D",
 "class": "Hurtbox",
@@ -117,7 +122,7 @@ _global_script_classes=[ {
 "base": "Line2D",
 "class": "Trail",
 "language": "GDScript",
-"path": "res://CustomNodes/Trail.gd"
+"path": "res://General/Trail.gd"
 }, {
 "base": "Reference",
 "class": "Utils",
@@ -146,6 +151,7 @@ _global_script_class_icons={
 "DialogicUtil": "",
 "EnemyBullet": "",
 "EnemySpawner": "",
+"EnemyTable": "",
 "Hurtbox": "",
 "ImageManipulation": "",
 "Inventory": "",

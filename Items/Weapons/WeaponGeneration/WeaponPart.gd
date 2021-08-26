@@ -26,6 +26,7 @@ export var customBullet:PackedScene
 
 # Visual
 export var bulletSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")
+export var shellSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Shells/shellPistol.png")
 export var kickUp:float = 25
 export var bulletSpawnDist:float = 16
 

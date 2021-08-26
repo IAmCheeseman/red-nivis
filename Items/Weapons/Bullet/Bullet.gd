@@ -26,6 +26,7 @@ func set_texture(texture:StreamTexture):
 
 func _ready():
 	look_at(global_position+direction)
+	hitbox.setDirection = direction
 	liftimeTimer.start(clamp(lifetime-0.2, .001, INF))
 
 

@@ -7,3 +7,4 @@ onready var solids = $LabSolids
 onready var platforms = $OneWayPlatforms
 onready var props = $Props
 onready var containers = $Containers
+onready var enemies = $Enemies

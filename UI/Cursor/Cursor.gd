@@ -25,6 +25,6 @@ func rotate_cursor(time:float):
 		tween.stop_all()
 		target += rotAmount
 	tween.interpolate_property(self, "rotation_degrees",
-	rotation_degrees, target, time)
+	rotation_degrees, target, time-.05)
 	tween.start()
 
