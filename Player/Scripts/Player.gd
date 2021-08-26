@@ -241,7 +241,8 @@ func jump():
 
 func _on_a_press_window_timeout(): triedJumpRecent = false
 
-func _on_ammo_changed(): ammoBar.value = Utils.percentage_of(playerData.ammo, playerData.maxAmmo)
+func _on_ammo_changed():
+	ammoBar.value = Utils.percentage_of(playerData.ammo, playerData.maxAmmo)
 
 func die():
 	deathScreen.show()
@@ -261,10 +262,14 @@ func _on_health_changed(dir):
 	if playerData.health <= 0:
 		die()
 	# Healthbar
-	healthBar.value = Utils.percentage_of(float(playerData.health), float(playerData.maxHealth))
+	update_healthbar()
 	hurtTimer.start(playerData.recoveryTime)
 	# Screenshake
 	GameManager.emit_signal("screenshake", 2, 6, .05, .05)
 	# Knockback
 	dir += dir*playerData.kbStrength
+
+
+func update_healthbar() -> void:
+	healthBar.value = Utils.percentage_of(float(playerData.health), float(playerData.maxHealth))
 

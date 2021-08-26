@@ -30,17 +30,17 @@ signal healthChanged
 signal ammoChanged
 
 
-func _init():
+func _init() -> void:
 	health = maxHealth
 	ammo = maxAmmo
 
 
-func _on_damage_taken(damage, kbDir):
+func _on_damage_taken(damage, kbDir) -> void:
 	health -= damage
 	emit_signal("healthChanged", kbDir)
 
 
-func set_ammo(value:int):
+func set_ammo(value:int) -> void:
 	ammo = value
 	emit_signal("ammoChanged")
 

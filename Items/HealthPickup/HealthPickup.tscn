@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Items/HealthPickup/HealthPickup.png" type="Texture" id=1]
+[ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/HealthPickup/HealthPickup.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5, 5 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 14.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "Default"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="HealthPickup" type="RigidBody2D"]
+collision_layer = 0
+mode = 2
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 4
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="PlayerDetection" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" parent="PlayerDetection" index="0"]
+shape = SubResource( 2 )
+
+[node name="Sight" parent="PlayerDetection" index="1"]
+position = Vector2( 0, -10 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "Default"
+anims/Default = SubResource( 4 )
+
+[connection signal="area_entered" from="PlayerDetection" to="." method="_on_player_detection_area_entered"]
+
+[editable path="PlayerDetection"]

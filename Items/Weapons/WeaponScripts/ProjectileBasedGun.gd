@@ -5,7 +5,6 @@ func shoot():
 
 	holdShots += 1
 	for i in gun.stats.multishot:
-
 		# Getting the direction that the bullet needs to go in.
 		var dir = global_position.direction_to(get_global_mouse_position())
 		var spread = deg2rad(gun.stats.spread*i-(gun.stats.spread*(gun.stats.multishot-1)/2))*int(gun.stats.spread != 0)
