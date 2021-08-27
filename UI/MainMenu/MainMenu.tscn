@@ -7,39 +7,11 @@
 [ext_resource path="res://EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=5]
 [ext_resource path="res://EnviormentalArt/BackGrounds/MountainsNear.png" type="Texture" id=6]
 [ext_resource path="res://UI/Settings/OptionsMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 1
 font_data = ExtResource( 3 )
-
-[sub_resource type="Animation" id=2]
-resource_name = "FadeAway"
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_game"
-} ]
-}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -88,6 +60,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ScreenTransition" parent="." instance=ExtResource( 8 )]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 4
 follow_viewport_enable = true
@@ -100,7 +74,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Title"]
-margin_right = 380.0
+margin_right = 384.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 0, 45 )
 custom_fonts/font = SubResource( 1 )
@@ -118,9 +92,9 @@ __meta__ = {
 }
 
 [node name="Play" type="Button" parent="CanvasLayer/Buttons"]
-margin_top = 112.0
-margin_right = 380.0
-margin_bottom = 128.0
+margin_top = 70.0
+margin_right = 384.0
+margin_bottom = 86.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Feedback")
 custom_fonts/font = ExtResource( 2 )
@@ -132,9 +106,9 @@ text = "Play"
 flat = true
 
 [node name="Feedback" type="Button" parent="CanvasLayer/Buttons"]
-margin_top = 132.0
-margin_right = 380.0
-margin_bottom = 148.0
+margin_top = 90.0
+margin_right = 384.0
+margin_bottom = 106.0
 focus_neighbour_top = NodePath("../Play")
 focus_neighbour_bottom = NodePath("../Options")
 custom_fonts/font = ExtResource( 2 )
@@ -146,9 +120,9 @@ text = "Feedback"
 flat = true
 
 [node name="Options" type="Button" parent="CanvasLayer/Buttons"]
-margin_top = 152.0
-margin_right = 380.0
-margin_bottom = 168.0
+margin_top = 110.0
+margin_right = 384.0
+margin_bottom = 126.0
 focus_neighbour_top = NodePath("../Feedback")
 focus_neighbour_bottom = NodePath("../Quit")
 custom_fonts/font = ExtResource( 2 )
@@ -160,9 +134,9 @@ text = "Options"
 flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/Buttons"]
-margin_top = 172.0
-margin_right = 380.0
-margin_bottom = 188.0
+margin_top = 130.0
+margin_right = 384.0
+margin_bottom = 146.0
 focus_neighbour_top = NodePath("../Options")
 focus_neighbour_bottom = NodePath("../Play")
 custom_fonts/font = ExtResource( 2 )
@@ -185,10 +159,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FadeAway = SubResource( 2 )
+[node name="PlayTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
 
 [connection signal="pressed" from="CanvasLayer/Buttons/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/Feedback" to="." method="_on_Feedback_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="timeout" from="PlayTimer" to="." method="play_game"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://World/WorldGeneration.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/VisualEffects/MistSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Camera/Camera.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=10]
 [ext_resource path="res://EnviormentalArt/Solids/Stone.tscn" type="PackedScene" id=11]
 [ext_resource path="res://EnviormentalArt/Solids/OneWayPlatforms.tscn" type="PackedScene" id=12]
@@ -123,3 +124,5 @@ margin_bottom = -117.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScreenTransition" parent="." instance=ExtResource( 9 )]
