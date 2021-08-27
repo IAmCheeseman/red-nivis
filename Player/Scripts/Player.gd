@@ -31,6 +31,9 @@ onready var topTileChecker = $TileCheckers/TopTileChecker
 onready var bunnyHopTimer = $BunnyHopTimer
 onready var jumpWindow = $APressWindow
 onready var dashCooldown = $DashCooldown
+onready var justLostTween = $CanvasLayer/Bars/HealthBar/Bar/Tween
+onready var justLostBar = $CanvasLayer/Bars/HealthBar/Bar/JustLost
+onready var justLostTimer = $CanvasLayer/Bars/HealthBar/Bar/JustLostTimer
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -271,5 +274,13 @@ func _on_health_changed(dir):
 
 
 func update_healthbar() -> void:
+	justLostTween.stop_all()
+	if justLostBar.value <= healthBar.value: justLostBar.value = healthBar.value
 	healthBar.value = Utils.percentage_of(float(playerData.health), float(playerData.maxHealth))
+	justLostTimer.start()
 
+
+func _on_JustLostTimer_timeout() -> void:
+	justLostTween.interpolate_property(justLostBar, "value",
+	justLostBar.value, healthBar.value, .1)
+	justLostTween.start()

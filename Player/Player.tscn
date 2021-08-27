@@ -691,11 +691,28 @@ __meta__ = {
 margin_right = 74.0
 margin_bottom = 20.0
 value = 50.0
-texture_under = ExtResource( 19 )
 texture_progress = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="JustLost" type="TextureProgress" parent="CanvasLayer/Bars/HealthBar/Bar"]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+value = 75.0
+texture_under = ExtResource( 19 )
+texture_progress = ExtResource( 18 )
+tint_progress = Color( 100, 100, 100, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JustLostTimer" type="Timer" parent="CanvasLayer/Bars/HealthBar/Bar"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Tween" type="Tween" parent="CanvasLayer/Bars/HealthBar/Bar"]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Bars/HealthBar"]
 margin_left = 74.0
@@ -829,6 +846,7 @@ anims/flash = SubResource( 16 )
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="CanvasLayer/Bars/HealthBar/Bar/JustLostTimer" to="." method="_on_JustLostTimer_timeout"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/DeathScreen" method="_on_Continue_button_up"]
 [connection signal="button_up" from="CanvasLayer/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/DeathScreen" method="_on_Quit_button_up"]
 [connection signal="pressed" from="CanvasLayer/DeathScreen/HBoxContainer/QuitDesktop" to="CanvasLayer/DeathScreen" method="_on_QuitDesktop_pressed"]

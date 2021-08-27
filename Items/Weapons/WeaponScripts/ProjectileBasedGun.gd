@@ -21,8 +21,7 @@ func shoot():
 		newBullet.global_position = global_position+dir*gun.stats.bulletSpawnDist
 		# Adding it to the tree
 		GameManager.spawnManager.spawn_object(newBullet)
-		if newBullet.has_node("Hitbox"): newBullet.hitbox.damage = gun.stats.damage
-		else: newBullet.damage = gun.stats.damage
+		newBullet.damage = gun.stats.damage
 
 		if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
 

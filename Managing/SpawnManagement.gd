@@ -11,7 +11,7 @@ func _ready():
 
 
 func spawn_object(object:Node):
-	add_child(object)
+	call_deferred("add_child", object)
 
 
 func spawn_item(item:Node2D):
