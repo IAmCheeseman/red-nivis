@@ -21,7 +21,7 @@ func _on_continue_pressed():
 func _on_quittm_pressed():
 	get_tree().paused = false
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")
+	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
 
 
 func _on_quittd_pressed():

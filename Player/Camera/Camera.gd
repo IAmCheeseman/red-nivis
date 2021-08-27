@@ -31,7 +31,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	GameManager.currentCamera = self
 	GameManager.connect("screenshake", self, "start")
-	if !mouseWeight: set_process(false)
+#	if !mouseWeight: set_process(false)
 
 
 func _process(_delta):
@@ -45,7 +45,7 @@ func _process(_delta):
 	var dirMouse = global_position.direction_to(mousePosition)
 	var mouseDist = (global_position.distance_to(mousePosition)/sensitivity)*Settings.cameraLook
 	mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
-	global_position += dirMouse*mouseDist
+	global_position += (dirMouse*mouseDist)*int(mouseWeight)
 
 
 func set_cam_look(value:bool):

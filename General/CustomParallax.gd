@@ -15,9 +15,6 @@ func _process(_delta):
 	var newPos:Vector2 = (camera.global_position+camera.offset)-(viewportSize*.5)
 	newPos *= scrollSpeed
 
-	newPos.x = clamp(newPos.x, camera.limit_left, camera.limit_right-(viewportSize.x)*2)
-	newPos.y = clamp(newPos.y, camera.limit_top, camera.limit_bottom-viewportSize.y)
-
 	# Applying the final position
 	global_position = newPos
 
