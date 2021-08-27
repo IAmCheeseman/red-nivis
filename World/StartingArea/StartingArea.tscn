@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://EnviormentalArt/Solids/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -10,8 +10,14 @@
 [ext_resource path="res://Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/StartingArea/Lab.tscn" type="PackedScene" id=9]
 [ext_resource path="res://EnviormentalArt/Decor/RuinProps.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Managing/Colliders/LoadingZone.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/StartingArea/StartingArea.gd" type="Script" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 49, 10 )
 
 [node name="StartingArea" type="Node2D"]
+script = ExtResource( 12 )
 
 [node name="Lab" parent="." instance=ExtResource( 9 )]
 position = Vector2( 322, -72 )
@@ -56,4 +62,17 @@ position = Vector2( 2, -5 )
 position = Vector2( -63, -87 )
 trackNodePath = NodePath("../Player")
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
+[node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
+
+[node name="LoadingZone" parent="." instance=ExtResource( 11 )]
+position = Vector2( 320, 272 )
+loadPath = "res://World/World.tscn"
+reqiurePrompt = false
+emitSignalInstead = true
+
+[node name="CollisionShape2D" parent="LoadingZone" index="0"]
+shape = SubResource( 1 )
+
+[connection signal="loadArea" from="LoadingZone" to="." method="_on_lab_loading_zone_loadArea"]
+
+[editable path="LoadingZone"]
