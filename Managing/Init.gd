@@ -18,6 +18,7 @@ var subtitles = [
 func _ready():
 	randomize()
 	
+	
 	subtitles.shuffle()
 	OS.set_window_title("Astronaut Game: %s" % subtitles.front())
 
