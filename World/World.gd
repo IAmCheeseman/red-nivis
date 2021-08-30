@@ -41,7 +41,7 @@ func _ready():
 	limits.end.x = get_viewport_rect().end.x
 	
 	mainCamMove.position = (limits.end*.5).abs()+entranceSize
-	camMoveShape.extents = (limits.end*.5).abs()
+	camMoveShape.extents = (limits.end*.5).abs()-entranceSize
 	
 #	camera.limits = limits
 

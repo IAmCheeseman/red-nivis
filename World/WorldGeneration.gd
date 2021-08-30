@@ -4,8 +4,10 @@ extends Node
 export var depth:int = 10
 export var templateHeight:int = 19
 export var templateAmount:int = 1
+export var outTemplateAmount:int = 1
 export var templatesPath:String = "res://World/LabRuins/"
 export var templateFileName:String = "Template%s.tscn"
+export var outTemplateFileName:String = "OutTemplate%s.tscn"
 
 # Walker
 export var branchAmount:int = 5
@@ -33,8 +35,16 @@ func generate_world() -> void:
 		
 		add_template_to_world(selectedTemplate.instance(), offset)
 	worldWidth = get_node(solidsPath).get_used_rect().end.x-1
-	pad()
 	
+	# Adding Exit
+	var offset = depth*templateHeight
+	
+	var templatePath = templatesPath+outTemplateFileName % round(rand_range(1, outTemplateAmount))
+	var selectedTemplate = load(templatePath)
+	
+	add_template_to_world(selectedTemplate.instance(), offset)
+
+	pad()
 	generate_branches()
 
 
@@ -43,6 +53,7 @@ func pad() -> void:
 	var rect = solids.get_used_rect()
 	var left = rect.position.x
 	var right = rect.end.x-1
+	var bottom = rect.end.y-1
 	
 	for y in rect.end.y:
 		for i in 3:
@@ -50,6 +61,13 @@ func pad() -> void:
 			solids.set_cell(right+i, y, 0)
 			solids.update_bitmask_area(Vector2(left-i, y))
 			solids.update_bitmask_area(Vector2(right+i, y))
+	for x in rect.end.x:
+		for i in 6:
+			if solids.get_cell(x, bottom) != -1:
+				solids.set_cell(x, bottom+i, 0)
+				solids.set_cell(x, bottom+i, 0)
+				solids.update_bitmask_area(Vector2(x, bottom+i))
+				solids.update_bitmask_area(Vector2(x, bottom+i))
 
 
 func generate_branches():
