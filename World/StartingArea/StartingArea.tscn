@@ -132,7 +132,7 @@ shape = SubResource( 1 )
 
 [node name="LoadingZone" parent="Managing" instance=ExtResource( 11 )]
 position = Vector2( 320, 333 )
-loadPath = "res://World/World.tscn"
+loadPath = "res://World/World1.tscn"
 reqiurePrompt = false
 emitSignalInstead = true
 

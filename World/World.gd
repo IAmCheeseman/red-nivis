@@ -14,6 +14,8 @@ onready var worldGenerator = $WorldGeneration
 onready var solids = $Props/Tiles/LabSolids
 onready var mainCamMove = $Props/CameraZones/CameraMoveZone
 
+export var solidPath:NodePath
+
 var queuedChunks : Array
 var queueFreeChunks : Array
 var generatedChunks : Array
@@ -26,6 +28,9 @@ var enemyCount = 0
 
 
 func _ready():
+	if solidPath:
+		solids = get_node(solidPath)
+	
 	var entranceSize = solids.map_to_world(solids.get_used_rect().position)
 	entranceSize.x = 0
 	
