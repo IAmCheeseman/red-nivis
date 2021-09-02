@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://World/World0.tscn" type="PackedScene" id=1]
 [ext_resource path="res://EnviormentalArt/Solids/Area2Tiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://EnviormentalArt/Solids/Area2BG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://EnviormentalArt/Solids/Area2Platforms.tscn" type="PackedScene" id=4]
 
 [node name="World1" instance=ExtResource( 1 )]
 solidPath = NodePath("Props/Tiles/LabSolids/Area2Tiles")
@@ -10,8 +11,14 @@ solidPath = NodePath("Props/Tiles/LabSolids/Area2Tiles")
 [node name="WorldGeneration" parent="." index="0"]
 solidsPath = NodePath("../Props/Tiles/LabSolids/Area2Tiles")
 bgPath = NodePath("../Props/Tiles/LabBackground/Area2BG")
+platformsPath = NodePath("../Props/Tiles/OneWayPlatforms/Area2Platforms")
+
+[node name="MistSpawner" parent="Props/Player" index="16"]
+color = Color( 0.407843, 0.105882, 0.388235, 1 )
 
 [node name="Area2BG" parent="Props/Tiles/LabBackground" index="0" instance=ExtResource( 3 )]
+
+[node name="Area2Platforms" parent="Props/Tiles/OneWayPlatforms" index="0" instance=ExtResource( 4 )]
 
 [node name="LabSolids" parent="Props/Tiles" index="3"]
 tile_data = PoolIntArray(  )
