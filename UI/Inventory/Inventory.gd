@@ -22,7 +22,7 @@ func _init():
 	for slot in maxSlots:
 		items.append(null)
 	randomize()
-	add_item(WeaponConstructor.new().generate_weapon())
+	add_item(WeaponConstructor.new().generate_weapon(randi(), 'Pistol'))
 
 
 func check_existence(id:String) -> bool:

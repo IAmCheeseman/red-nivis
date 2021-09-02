@@ -10,7 +10,7 @@ enum {
 var tierChances = [.45, .35, .20]
 
 
-func generate_weapon(_seed:int=randi()):
+func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 	seed(_seed)
 
 	var selectedParts = {
@@ -22,6 +22,8 @@ func generate_weapon(_seed:int=randi()):
 
 	parts.shuffle()
 	var selectedWeapon = parts.front()
+	if _selectedType != "": 
+		selectedWeapon = _selectedType
 
 	selectedParts = select_parts(selectedWeapon)
 

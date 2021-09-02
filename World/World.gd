@@ -13,8 +13,11 @@ onready var mistSpawner = $Props/Player/MistSpawner
 onready var worldGenerator = $WorldGeneration
 onready var solids = $Props/Tiles/LabSolids
 onready var mainCamMove = $Props/CameraZones/CameraMoveZone
+onready var loadingZone = $LoadingZone
+onready var screenTrans = $ScreenTransition
 
 export var solidPath:NodePath
+export var zoneNumber:int = 0
 
 var queuedChunks : Array
 var queueFreeChunks : Array
@@ -47,6 +50,9 @@ func _ready():
 	
 	mainCamMove.position = (limits.end*.5).abs()+entranceSize
 	camMoveShape.extents = (limits.end*.5).abs()-entranceSize
+
+	loadingZone.position.y = abs(limits.end.y)+(16*5)
+	loadingZone.loadPath = "res://World/World%s.tscn" % str(zoneNumber+1)
 	
 #	camera.limits = limits
 
@@ -56,3 +62,14 @@ func _on_drop_gun(gun, pos):
 	gun.isPickedUp = false
 	gun.set_logic(false)
 	GameManager.spawnManager.add_item(gun)
+
+
+func _on_load_rea() -> void:
+	var timer = Timer.new()
+	timer.wait_time = .4
+	timer.connect("timeout", get_tree(), "change_scene", [loadingZone.loadPath])
+	add_child(timer)
+	timer.start()
+
+	screenTrans.out()
+

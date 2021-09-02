@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World/World.gd" type="Script" id=1]
 [ext_resource path="res://World/WorldGeneration.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://EnviormentalArt/Solids/Stone.tscn" type="PackedScene" id=11]
 [ext_resource path="res://EnviormentalArt/Solids/OneWayPlatforms.tscn" type="PackedScene" id=12]
 [ext_resource path="res://EnviormentalArt/Decor/RuinProps.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Managing/Colliders/LoadingZone.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -38,7 +39,10 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 
-[node name="World" type="Node2D" groups=[
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 192, 10 )
+
+[node name="World0" type="Node2D" groups=[
 "world",
 ]]
 script = ExtResource( 1 )
@@ -126,3 +130,15 @@ __meta__ = {
 }
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 9 )]
+
+[node name="LoadingZone" parent="." instance=ExtResource( 14 )]
+position = Vector2( 192, 0 )
+reqiurePrompt = false
+emitSignalInstead = true
+
+[node name="CollisionShape2D" parent="LoadingZone" index="0"]
+shape = SubResource( 3 )
+
+[connection signal="loadArea" from="LoadingZone" to="." method="_on_load_rea"]
+
+[editable path="LoadingZone"]

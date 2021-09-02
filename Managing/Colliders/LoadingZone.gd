@@ -48,5 +48,5 @@ func load_area():
 	if emitSignalInstead:
 		emit_signal("loadArea")
 		return
-	get_tree().change_scene("res://Space/PlanetSelection.tscn")
+	get_tree().change_scene(loadPath)
 

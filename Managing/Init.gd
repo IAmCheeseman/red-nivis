@@ -22,5 +22,4 @@ func _ready():
 	OS.set_window_title("Astronaut Game: %s" % subtitles.front())
 
 # warning-ignore:return_value_discarded
-#	get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")
 	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")

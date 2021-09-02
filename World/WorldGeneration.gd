@@ -78,7 +78,7 @@ func generate_branches():
 	var branchAreas:Array = []
 	
 	for cb in branchAmount:
-		var selection:int = round(rand_range(1, branchTemplateAmount))
+		var selection:float = round(rand_range(1, branchTemplateAmount))
 		var selectedBranch:PackedScene = load(branchPath+templateFileName % selection)
 		var newBranch:Node2D = selectedBranch.instance()
 		
