@@ -11,7 +11,8 @@ var subtitles = [
 	"You cahn dew eet!",
 	"The best top down shooter.",
 	"lmao",
-	"Who took my pickles?"
+	"Who took my pickles?",
+	"I like my pasta how I like my code."
 ]
 
 

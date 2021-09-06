@@ -45,9 +45,6 @@ ATTACK STATE:
 	The MDM charges at the player. Hitboxes enabled.
 DEFEND STATE:
 	The MDM hangs back. Hitboxes disabled.
-RETREAT STATE:
-	An inbetween state for transitioning from attack to defend, just
-	moves away from the player in this state. Hitboxes disabled.
 """
 
 func _ready():

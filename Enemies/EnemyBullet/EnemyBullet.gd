@@ -5,6 +5,7 @@ class_name EnemyBullet
 var direction : Vector2
 var speed : float
 var peircing = false
+var damage:float = 0
 
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
@@ -22,6 +23,7 @@ func set_texture(texture:StreamTexture):
 
 
 func _ready():
+	if damage != 0: hitbox.damage = damage
 	look_at(global_position+direction)
 
 
@@ -29,8 +31,8 @@ func _physics_process(delta):
 	position += (direction*speed)*delta
 
 
-func _on_QueueArea_body_entered(_body):
-	queue_free()
+func _on_QueueArea_body_entered(body):
+	if !body.is_in_group("Platform"): queue_free()
 
 
 func _on_Hitbox_hit_object(_object):
