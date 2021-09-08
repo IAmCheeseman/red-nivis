@@ -399,4 +399,5 @@ down={
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 threads/thread_model=2

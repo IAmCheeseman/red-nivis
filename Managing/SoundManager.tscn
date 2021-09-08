@@ -12,7 +12,7 @@ export(String, \"Master\", \"Ambient\", \"Music\", \"SFX\") var bus = 0
 signal finished
 
 
-func play(volMod=volumeMod):
+func play(volMod=volumeMod) -> void:
 	# Creating the audio player
 	
 	var newAudioPlayer

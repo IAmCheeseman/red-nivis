@@ -19,5 +19,5 @@ void fragment() {
 
 [resource]
 shader = SubResource( 1 )
-shader_param/darkness = 0.096
+shader_param/darkness = 0.364
 shader_param/vignette = ExtResource( 1 )

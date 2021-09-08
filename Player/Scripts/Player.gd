@@ -34,6 +34,7 @@ onready var dashCooldown = $DashCooldown
 onready var justLostTween = $CanvasLayer/Bars/HealthBar/Bar/Tween
 onready var justLostBar = $CanvasLayer/Bars/HealthBar/Bar/JustLost
 onready var justLostTimer = $CanvasLayer/Bars/HealthBar/Bar/JustLostTimer
+onready var healthVig = $CanvasLayer/HealthVig
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -42,7 +43,6 @@ var triedJumpRecent = false
 var mouseTarget = Vector2.ZERO
 var lastUsedMouse = true
 var state = states.WALK
-var frameFreezer = FrameFreezer.new()
 
 
 var walkParticles = preload("res://Player/WalkParticles.tscn")
@@ -56,6 +56,7 @@ signal dropGun(gun, pos)
 
 
 func _ready():
+	
 	# Making sure players cannot come back to life by leaving an area
 	if playerData.isDead:
 		die()
@@ -70,6 +71,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
 	match state:
 		states.WALK:
 			sprite.material.set_shader_param("is_on", 0)
@@ -260,7 +262,8 @@ func _on_health_changed(dir):
 	# Feedback
 	if !dashCooldown.is_stopped():
 		return
-	frameFreezer.freeze_frames(.2)
+	GameManager.frameFreezer.freeze_frames(.2)
+	healthVig.modulate.a = 1
 	
 	hurtSFX.play()
 	flashPlayer.play("flash")

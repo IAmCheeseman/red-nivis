@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Player/Assets/Walk.wav" type="AudioStream" id=24]
 [ext_resource path="res://Player/Assets/Jump.wav" type="AudioStream" id=25]
+[ext_resource path="res://UI/Assets/vignette.png" type="Texture" id=26]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -52,12 +53,34 @@ height = 5.69744
 [sub_resource type="CircleShape2D" id=5]
 radius = 4.0
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+uniform float darkness;
+uniform sampler2D vignette;
+uniform vec4 color : hint_color;
+
+void fragment() {
+	vec3 vignetteColor = texture(vignette, UV).rgb;
+	vignetteColor += darkness;
+	
+	COLOR.a = 1.0-clamp(vignetteColor.r, 0.0, 1.0);
+	COLOR.rgb = color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/darkness = 0.489
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/vignette = ExtResource( 26 )
+
+[sub_resource type="DynamicFont" id=8]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -121,8 +144,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "IdleNoHand"
+[sub_resource type="Animation" id=10]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -174,7 +196,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -226,8 +248,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "JumpNoHand"
+[sub_resource type="Animation" id=12]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -267,7 +288,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 length = 0.6
 loop = true
 step = 0.05
@@ -366,8 +387,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "RunNoHand"
+[sub_resource type="Animation" id=14]
 length = 0.6
 loop = true
 step = 0.05
@@ -454,8 +474,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "Dash"
+[sub_resource type="Animation" id=15]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -483,7 +502,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
 tracks/0/interp = 1
@@ -497,7 +516,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=17]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -512,7 +531,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.5, 0.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=18]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:material:shader_param/is_on")
@@ -655,6 +674,7 @@ one_shot = true
 layer = 2
 
 [node name="Blur" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = ExtResource( 10 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -668,6 +688,17 @@ material = ExtResource( 16 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthVig" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+material = SubResource( 7 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -765,7 +796,7 @@ margin_right = 384.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 8 )
 bbcode_enabled = true
 bbcode_text = "[center][shake rate=15 level=8]Game Over[/shake]"
 text = "Game Over"
@@ -830,20 +861,20 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Idle = SubResource( 7 )
-anims/IdleNoHand = SubResource( 8 )
-anims/Jump = SubResource( 9 )
-anims/JumpNoHand = SubResource( 10 )
-anims/Run = SubResource( 11 )
-anims/RunNoHand = SubResource( 12 )
+anims/Idle = SubResource( 9 )
+anims/IdleNoHand = SubResource( 10 )
+anims/Jump = SubResource( 11 )
+anims/JumpNoHand = SubResource( 12 )
+anims/Run = SubResource( 13 )
+anims/RunNoHand = SubResource( 14 )
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
-anims/Dash = SubResource( 13 )
-anims/Jump = SubResource( 14 )
-anims/Land = SubResource( 15 )
+anims/Dash = SubResource( 15 )
+anims/Jump = SubResource( 16 )
+anims/Land = SubResource( 17 )
 
 [node name="Flash" type="AnimationPlayer" parent="."]
-anims/flash = SubResource( 16 )
+anims/flash = SubResource( 18 )
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

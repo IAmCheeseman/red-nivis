@@ -123,14 +123,14 @@ align = 0
 
 [node name="Spacer" type="Control" parent="ToolBar"]
 margin_left = 140.0
-margin_right = 820.0
+margin_right = 180.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="Docs" type="ToolButton" parent="ToolBar"]
 self_modulate = Color( 0.870588, 0.870588, 0.870588, 1 )
-margin_left = 820.0
-margin_right = 930.0
+margin_left = 180.0
+margin_right = 290.0
 margin_bottom = 32.0
 hint_tooltip = "Theme Editor"
 mouse_default_cursor_shape = 2
@@ -139,9 +139,9 @@ icon = SubResource( 2 )
 
 [node name="Version" type="Label" parent="ToolBar"]
 self_modulate = Color( 1, 1, 1, 0.631373 )
-margin_left = 930.0
+margin_left = 290.0
 margin_top = 9.0
-margin_right = 1024.0
+margin_right = 384.0
 margin_bottom = 23.0
 text = "Dialogic v1.2.4"
 
@@ -155,7 +155,7 @@ __meta__ = {
 
 [node name="MasterTreeContainer" type="VBoxContainer" parent="MainPanel"]
 margin_right = 150.0
-margin_bottom = 562.0
+margin_bottom = 178.0
 
 [node name="FilterMasterTreeEdit" type="LineEdit" parent="MainPanel/MasterTreeContainer"]
 margin_right = 150.0
@@ -169,7 +169,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 30.0
 margin_right = 150.0
-margin_bottom = 562.0
+margin_bottom = 178.0
 size_flags_vertical = 3
 
 [node name="TimelineEditor" parent="MainPanel" instance=ExtResource( 2 )]
@@ -202,14 +202,13 @@ margin_bottom = 661.0
 
 [node name="Empty" type="CenterContainer" parent="MainPanel"]
 margin_left = 162.0
-margin_right = 1024.0
-margin_bottom = 562.0
+margin_right = 442.0
+margin_bottom = 178.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/Empty"]
-margin_left = 291.0
-margin_top = 274.0
-margin_right = 571.0
-margin_bottom = 288.0
+margin_top = 82.0
+margin_right = 280.0
+margin_bottom = 96.0
 
 [node name="Label" type="Label" parent="MainPanel/Empty/VBoxContainer"]
 margin_right = 280.0
