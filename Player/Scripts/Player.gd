@@ -42,6 +42,7 @@ var triedJumpRecent = false
 var mouseTarget = Vector2.ZERO
 var lastUsedMouse = true
 var state = states.WALK
+var frameFreezer = FrameFreezer.new()
 
 
 var walkParticles = preload("res://Player/WalkParticles.tscn")
@@ -259,6 +260,7 @@ func _on_health_changed(dir):
 	# Feedback
 	if !dashCooldown.is_stopped():
 		return
+	frameFreezer.freeze_frames(.2)
 	
 	hurtSFX.play()
 	flashPlayer.play("flash")
@@ -271,6 +273,7 @@ func _on_health_changed(dir):
 	GameManager.emit_signal("screenshake", 2, 6, .05, .05)
 	# Knockback
 	dir += dir*playerData.kbStrength
+	vel = dir
 
 
 func update_healthbar() -> void:

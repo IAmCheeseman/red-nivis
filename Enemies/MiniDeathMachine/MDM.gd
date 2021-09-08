@@ -157,6 +157,7 @@ func _on_hurt(amount:float, dir:Vector2) -> void:
 		newDP.position = position
 		newDP.rotation = dir.angle()
 		GameManager.spawnManager.spawn_object(newDP)
+		GameManager.frameFreezer.freeze_frames(.07)
 		
 		if rand_range(0, 1) > .5:
 			if rand_range(0, 1) > .5:

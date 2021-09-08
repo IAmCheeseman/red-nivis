@@ -16,7 +16,8 @@ var editingInventory = false
 var attackingEnemies = 0 setget set_attacking_enemies
 
 var spawnManager:Node2D
-var itemManager = ItemManagement.new()
+var itemManager:ItemManagement = ItemManagement.new()
+var frameFreezer:FrameFreezer = FrameFreezer.new()
 
 var gravity = 350
 

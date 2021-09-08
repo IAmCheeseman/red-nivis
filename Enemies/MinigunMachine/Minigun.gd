@@ -3,7 +3,7 @@ extends Node2D
 
 export var startCooldown:float = 2.3
 export var minCooldown:float = .5
-export var overheatShotCount:int = 10
+export var overheatShotCount:int = 7
 export var damage = 5
 
 onready var cooldown = $Cooldown
@@ -33,7 +33,7 @@ func shoot():
 	
 	var newBullet = bullet.instance()
 	newBullet.direction = Vector2.RIGHT.rotated(sprite.global_rotation)
-	newBullet.speed = 180
+	newBullet.speed = 180*.5
 	newBullet.damage = damage
 	newBullet.global_position = global_position+(newBullet.direction*16)
 	GameManager.spawnManager.spawn_object(newBullet)
