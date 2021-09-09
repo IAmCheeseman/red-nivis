@@ -8,6 +8,7 @@ rarity = 1
 damage = 15.0
 accuracy = 1.0
 recoil = 0.25
+magazineSize = 6
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

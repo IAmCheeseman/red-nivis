@@ -83,6 +83,7 @@ func set_slot_cursor_position():
 	# Positioning the slot section sprite
 	slotSelectorTarget = slots.get_child(inventory.selectedSlot).rect_position.y-1
 
+
 func _input(event):
 	randomize()
 	if Input.is_key_pressed(KEY_P):

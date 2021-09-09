@@ -70,6 +70,8 @@ func generate_stats(selectedParts:Dictionary, body:Node2D):
 	data.cost = body.cost
 	data.maxHoldShots = body.maxHoldShots
 	data.customBullet = body.customBullet
+	data.magazineSize = body.magazineSize
+	data.reloadSpeed = body.reloadSpeed
 
 	data.bulletSprite = body.bulletSprite
 	data.kickUp = body.kickUp

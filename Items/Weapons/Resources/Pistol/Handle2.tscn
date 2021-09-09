@@ -12,6 +12,7 @@ projLifetime = 0.0
 recoil = -0.333
 cost = 0
 maxHoldShots = 0
+reloadSpeed = -0.2
 kickUp = 0
 bulletSpawnDist = 0
 ssFreq = 0.0

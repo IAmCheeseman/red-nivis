@@ -49,6 +49,11 @@ func shoot():
 
 #	gun.player.vel += -global_position.direction_to(get_global_mouse_position())*gun.stats.recoil
 	playerData.ammo -= gun.stats.cost
+	if playerData.ammo <= 0:
+		cooldownTimer.stop()
+		cooldownTimer.start(gun.stats.reloadSpeed)
+		gun.isReloading = true
+		gun.visuals.rotation_degrees = 180
 
 
 

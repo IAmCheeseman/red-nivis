@@ -12,6 +12,7 @@ var playerData = preload("res://Player/Player.tres")
 var shootSound : SoundManager
 var rotVel = 0
 var holdShots = 0
+var isReloading = false
 
 
 func _physics_process(delta):
@@ -34,7 +35,7 @@ func _physics_process(delta):
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 12*delta)
 
 	# Shooting
-	var hasEnoughAmmo = playerData.ammo-gun.stats.cost > 0
+	var hasEnoughAmmo = playerData.ammo > 0
 
 	if Input.is_action_pressed("use_item")\
 	and gun.canShoot\
@@ -42,7 +43,7 @@ func _physics_process(delta):
 	and holdShots != gun.stats.maxHoldShots\
 	and !GameManager.editingInventory\
 	and !playerData.playerObject.lockMovement:
-		playerData.ammo -= gun.stats.cost
+		playerData.ammo -= 0
 		Cursor.get_node("Sprite").scale = Vector2(1.2, 1.2)
 		shoot()
 		

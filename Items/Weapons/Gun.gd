@@ -42,6 +42,7 @@ var visuals
 # Properties
 var standingOver = false
 var canShoot = true
+var isReloading = false
 var player
 
 
@@ -55,4 +56,7 @@ func _ready():
 
 func _on_Cooldown_timeout():
 	canShoot = true
-
+	if isReloading:
+		isReloading = false
+		player.ammo = player.maxAmmo
+		
