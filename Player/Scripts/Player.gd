@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum states {WALK, DASH}
+enum states {WALK, DASH, DEAD}
 
 const averageTileSize = 16
 const SNAP_DIRECTION = Vector2.DOWN
@@ -16,7 +16,7 @@ onready var vignette = $CanvasLayer/Vignette
 onready var animationPlayer = $AnimationPlayer
 onready var SaS = $SquashAndStretch
 onready var flashPlayer = $Flash
-onready var deathScreen = $CanvasLayer/DeathScreen
+onready var deathScreen = $CanvasLayer/GameOverScreen
 onready var itemHolder = $ItemHolder
 onready var hurtTimer = $Hurtbox/HurtTimer
 onready var healthBar = $CanvasLayer/Bars/HealthBar/Bar
@@ -79,6 +79,19 @@ func _physics_process(delta):
 		states.DASH:
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 			if test_move(transform, vel): state = states.WALK
+		states.DEAD:
+			if just_landed():
+				animationPlayer.play("Dead")
+			if is_grounded():
+				vel.x = lerp(
+					vel.x,
+					0,
+					playerData.accelaration*delta
+				)
+			vel.y += GameManager.gravity*delta
+			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
+			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
+
 
 	lastFrameGroundState = is_grounded()
 
@@ -251,12 +264,20 @@ func _on_ammo_changed():
 	ammoBar.value = Utils.percentage_of(playerData.ammo, playerData.maxAmmo)
 
 func die():
-	deathScreen.show()
+	state = states.DEAD
 	playerData.isDead = true
 	hurtbox.set_deferred("monitorable", false)
-	sprite.modulate.a = .5
 	healthBar.value = 0
+	animationPlayer.play("Die")
+	
+	var defTimah = Timer.new()
+	defTimah.connect("timeout", self, "show_death_screen", [defTimah])
+	add_child(defTimah)
+	defTimah.start(.8)
 
+func show_death_screen(timer:Timer) -> void:
+	deathScreen.show()
+	timer.queue_free()
 
 func _on_health_changed(dir):
 	# Feedback
@@ -268,6 +289,7 @@ func _on_health_changed(dir):
 	hurtSFX.play()
 	flashPlayer.play("flash")
 	if playerData.health <= 0:
+		vel = dir * playerData.dashSpeed
 		die()
 	# Healthbar
 	update_healthbar()
