@@ -31,6 +31,8 @@ var enemyCount = 0
 
 
 func _ready():
+	AudioServer.set_bus_effect_enabled(4, 0, true)
+	
 	if solidPath:
 		solids = get_node(solidPath)
 	

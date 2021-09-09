@@ -205,7 +205,7 @@ window/stretch/aspect="keep"
 
 [editor]
 
-main_run_args="--verbose"
+search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
@@ -405,3 +405,4 @@ down={
 
 2d/snapping/use_gpu_pixel_snap=true
 threads/thread_model=2
+quality/dynamic_fonts/use_oversampling=false

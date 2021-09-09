@@ -273,7 +273,7 @@ func die():
 	var defTimah = Timer.new()
 	defTimah.connect("timeout", self, "show_death_screen", [defTimah])
 	add_child(defTimah)
-	defTimah.start(.8)
+	defTimah.start(.4)
 
 func show_death_screen(timer:Timer) -> void:
 	deathScreen.show()

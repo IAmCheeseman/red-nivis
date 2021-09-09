@@ -9,6 +9,7 @@ accuracy = 12.0
 cooldown = 0.8
 multishot = 5.0
 projLifetime = 0.1
+cost = 2
 shellSprite = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]

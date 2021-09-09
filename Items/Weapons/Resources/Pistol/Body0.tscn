@@ -5,9 +5,8 @@
 
 [node name="Body0" instance=ExtResource( 1 )]
 damage = 11.0
-accuracy = 12.0
-cooldown = 0.12
-maxHoldShots = 1
+accuracy = 5.0
+cooldown = 0.4
 ssStrength = 4
 
 [node name="Sprite" parent="." index="0"]

@@ -6,7 +6,6 @@
 [node name="Barrel0" instance=ExtResource( 1 )]
 rarity = 2
 damage = 0.333
-accuracy = 0.3
 cooldown = 0.0
 projSpeed = 0
 projScale = 0.0
