@@ -9,7 +9,7 @@
 [ext_resource path="res://Enemies/MinigunMachine/Minigun.gd" type="Script" id=7]
 [ext_resource path="res://Enemies/Assets/EnemyOutline.tres" type="Material" id=8]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=1]
 resource_name = "cooldown"
 length = 4.0
 tracks/0/type = "value"
@@ -25,20 +25,19 @@ tracks/0/keys = {
 "values": [ Color( 1, 0.721569, 0.721569, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 4.12311
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=4]
 radius = 112.0
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=5]
 radius = 11.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "default"
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -97,7 +96,7 @@ position = Vector2( 0, 13 )
 script = ExtResource( 7 )
 startCooldown = 1.6
 minCooldown = 0.2
-damage = 8
+damage = 1
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper/Sprite/Minigun"]
 material = ExtResource( 8 )
@@ -115,11 +114,11 @@ wait_time = 3.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScaleHelper/Sprite/Minigun"]
-anims/cooldown = SubResource( 6 )
+anims/cooldown = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Collisions" type="Node2D" parent="."]
 visible = false
@@ -133,12 +132,12 @@ shape = SubResource( 3 )
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 6 )]
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="SoftCollision" parent="Collisions" instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" parent="Collisions/SoftCollision" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="BounceRay" type="RayCast2D" parent="Collisions"]
 enabled = true
@@ -151,7 +150,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 2 )
+anims/default = SubResource( 6 )
 
 [connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
 [connection signal="timeout" from="Timers/WanderTimer" to="." method="_on_wander_timer_timeout"]

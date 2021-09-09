@@ -2,7 +2,7 @@ extends Resource
 class_name Player
 
 # Stats
-export var maxHealth:int = 100
+export var maxHealth:int = 5
 export var maxAmmo:int = 255
 
 # Movement
@@ -38,6 +38,7 @@ func _init() -> void:
 func _on_damage_taken(damage, kbDir) -> void:
 	health -= damage
 	emit_signal("healthChanged", kbDir)
+
 
 
 func set_ammo(value:int) -> void:

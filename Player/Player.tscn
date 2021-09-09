@@ -1,8 +1,8 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://UI/Assets/helthbahicon.png" type="Texture" id=3]
+[ext_resource path="res://UI/GameOverlay/GameOverlay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Scripts/ItemManagement.gd" type="Script" id=5]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=6]
@@ -10,16 +10,11 @@
 [ext_resource path="res://Player/Scripts/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/Scripts/BlurVignette.tres" type="Material" id=10]
-[ext_resource path="res://UI/Assets/AmmoBarEmpty.png" type="Texture" id=11]
-[ext_resource path="res://UI/Assets/AmmoBar.png" type="Texture" id=12]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=13]
 [ext_resource path="res://UI/DebugConsole/DebugConsole.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Player/Assets/Hit.wav" type="AudioStream" id=15]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=15]
 [ext_resource path="res://Player/Assets/Vignette.tres" type="Material" id=16]
 [ext_resource path="res://UI/Inventory/Inventory.tscn" type="PackedScene" id=17]
-[ext_resource path="res://UI/Assets/helthbahfull.png" type="Texture" id=18]
-[ext_resource path="res://UI/Assets/helthbahempty.png" type="Texture" id=19]
-[ext_resource path="res://UI/Assets/AmmoIcon.png" type="Texture" id=20]
 [ext_resource path="res://Player/Assets/Arm1.png" type="Texture" id=21]
 [ext_resource path="res://Player/Assets/Hand.png" type="Texture" id=22]
 [ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=23]
@@ -27,6 +22,7 @@
 [ext_resource path="res://Player/Assets/Jump.wav" type="AudioStream" id=25]
 [ext_resource path="res://UI/Assets/vignette.png" type="Texture" id=26]
 [ext_resource path="res://UI/Assets/MenuBG.png" type="Texture" id=27]
+[ext_resource path="res://Player/Assets/Hit.wav" type="AudioStream" id=28]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -629,9 +625,10 @@ shape = SubResource( 3 )
 
 [node name="Sounds" type="Node2D" parent="."]
 
-[node name="Hurt" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 15 )
-volume_db = -8.0
+[node name="HurtSFX" type="Node2D" parent="Sounds"]
+script = ExtResource( 15 )
+audio = ExtResource( 28 )
+volumeMod = -2.0
 bus = "SFXMain"
 
 [node name="WalkSFX" parent="Sounds" instance=ExtResource( 23 )]
@@ -750,83 +747,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bars" type="VBoxContainer" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
-custom_constants/separation = -6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer/Bars"]
-margin_right = 86.0
-margin_bottom = 20.0
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bar" type="TextureProgress" parent="CanvasLayer/Bars/HealthBar"]
-margin_right = 74.0
-margin_bottom = 20.0
-value = 50.0
-texture_progress = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="JustLost" type="TextureProgress" parent="CanvasLayer/Bars/HealthBar/Bar"]
-show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
-value = 75.0
-texture_under = ExtResource( 19 )
-texture_progress = ExtResource( 18 )
-tint_progress = Color( 100, 100, 100, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="JustLostTimer" type="Timer" parent="CanvasLayer/Bars/HealthBar/Bar"]
-wait_time = 0.5
-one_shot = true
-
-[node name="Tween" type="Tween" parent="CanvasLayer/Bars/HealthBar/Bar"]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Bars/HealthBar"]
-margin_left = 74.0
-margin_right = 86.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 12, 20 )
-texture = ExtResource( 3 )
-stretch_mode = 4
-
-[node name="Ammobar" type="HBoxContainer" parent="CanvasLayer/Bars"]
-margin_top = 14.0
-margin_right = 86.0
-margin_bottom = 34.0
-custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bar" type="TextureProgress" parent="CanvasLayer/Bars/Ammobar"]
-margin_right = 44.0
-margin_bottom = 20.0
-value = 100.0
-texture_under = ExtResource( 11 )
-texture_progress = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Bars/Ammobar"]
-margin_left = 44.0
-margin_right = 56.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 12, 20 )
-texture = ExtResource( 20 )
-stretch_mode = 4
+[node name="GameOverlay" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [node name="GameOverScreen" type="CenterContainer" parent="CanvasLayer"]
 visible = false
@@ -967,7 +888,6 @@ anims/flash = SubResource( 20 )
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
-[connection signal="timeout" from="CanvasLayer/Bars/HealthBar/Bar/JustLostTimer" to="." method="_on_JustLostTimer_timeout"]
 [connection signal="button_up" from="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen" method="_on_Continue_button_up"]
 [connection signal="button_up" from="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen" method="_on_Quit_button_up"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen/HBoxContainer/QuitDesktop" to="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen" method="_on_QuitDesktop_pressed"]

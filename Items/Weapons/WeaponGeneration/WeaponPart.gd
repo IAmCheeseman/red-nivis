@@ -22,7 +22,8 @@ export var recoil: float = 0.3
 export var look: int
 export var cost: int = 1
 export var maxHoldShots: int = -1
-export var customBullet:PackedScene
+export var customBullet: PackedScene
+export var magazineSize: int = 0
 
 # Visual
 export var bulletSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")

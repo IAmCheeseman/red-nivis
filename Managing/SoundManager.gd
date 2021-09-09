@@ -4,14 +4,15 @@ class_name SoundManager
 export var audio : AudioStream
 export var directional = false
 export(float, -80, 24) var volumeMod = 0
-export(String, "Master", "Ambient", "Music", "SFX") var bus = 0
+export var pitchShiftRange:float = 1
+export(String, "Master", "Ambient", "Music", "SFXMain", "SFX") var bus = 0
 
 signal finished
 
 
-func play():
+func play(volMod=volumeMod) -> void:
 	# Creating the audio player
-
+	
 	var newAudioPlayer
 	match directional:
 		true:
@@ -23,7 +24,8 @@ func play():
 	newAudioPlayer.stream = audio
 	newAudioPlayer.bus = bus
 	newAudioPlayer.autoplay = true
-	newAudioPlayer.volume_db = volumeMod
+	newAudioPlayer.volume_db = volMod
+	newAudioPlayer.pitch_scale = rand_range(1, pitchShiftRange)
 	newAudioPlayer.connect("finished", self, "_on_audio_finished", [newAudioPlayer])
 
 	add_child(newAudioPlayer)

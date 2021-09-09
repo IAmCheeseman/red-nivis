@@ -19,10 +19,8 @@ onready var flashPlayer = $Flash
 onready var deathScreen = $CanvasLayer/GameOverScreen
 onready var itemHolder = $ItemHolder
 onready var hurtTimer = $Hurtbox/HurtTimer
-onready var healthBar = $CanvasLayer/Bars/HealthBar/Bar
-onready var ammoBar = $CanvasLayer/Bars/Ammobar/Bar
 onready var inventory = $CanvasLayer/Inventory
-onready var hurtSFX = $Sounds/Hurt
+onready var hurtSFX = $Sounds/HurtSFX
 onready var jumpSFX = $Sounds/JumpSFX
 onready var walkSFX = $Sounds/WalkSFX
 onready var floorCheckers = $FloorCheckers
@@ -31,10 +29,8 @@ onready var topTileChecker = $TileCheckers/TopTileChecker
 onready var bunnyHopTimer = $BunnyHopTimer
 onready var jumpWindow = $APressWindow
 onready var dashCooldown = $DashCooldown
-onready var justLostTween = $CanvasLayer/Bars/HealthBar/Bar/Tween
-onready var justLostBar = $CanvasLayer/Bars/HealthBar/Bar/JustLost
-onready var justLostTimer = $CanvasLayer/Bars/HealthBar/Bar/JustLostTimer
 onready var healthVig = $CanvasLayer/HealthVig
+onready var gameOverlay = $CanvasLayer/GameOverlay
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -62,10 +58,8 @@ func _ready():
 		die()
 	if !Settings.vignette:
 		vignette.queue_free()
-	healthBar.value = Utils.percentage_of(float(playerData.health), float(playerData.maxHealth))
 	playerData.playerObject = self
 
-	playerData.connect("ammoChanged", self, "_on_ammo_changed")
 	playerData.connect("healthChanged", self, "_on_health_changed")
 	hurtbox.connect("hurt", playerData, "_on_damage_taken")
 
@@ -260,14 +254,10 @@ func jump():
 
 func _on_a_press_window_timeout(): triedJumpRecent = false
 
-func _on_ammo_changed():
-	ammoBar.value = Utils.percentage_of(playerData.ammo, playerData.maxAmmo)
-
 func die():
 	state = states.DEAD
 	playerData.isDead = true
 	hurtbox.set_deferred("monitorable", false)
-	healthBar.value = 0
 	animationPlayer.play("Die")
 	
 	var defTimah = Timer.new()
@@ -292,7 +282,6 @@ func _on_health_changed(dir):
 		vel = dir * playerData.dashSpeed
 		die()
 	# Healthbar
-	update_healthbar()
 	hurtTimer.start(playerData.recoveryTime)
 	# Screenshake
 	GameManager.emit_signal("screenshake", 2, 6, .05, .05)
@@ -301,14 +290,3 @@ func _on_health_changed(dir):
 	vel = dir
 
 
-func update_healthbar() -> void:
-	justLostTween.stop_all()
-	if justLostBar.value <= healthBar.value: justLostBar.value = healthBar.value
-	healthBar.value = Utils.percentage_of(float(playerData.health), float(playerData.maxHealth))
-	justLostTimer.start()
-
-
-func _on_JustLostTimer_timeout() -> void:
-	justLostTween.interpolate_property(justLostBar, "value",
-	justLostBar.value, healthBar.value, .1)
-	justLostTween.start()

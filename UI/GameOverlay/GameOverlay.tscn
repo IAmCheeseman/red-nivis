@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
+[ext_resource path="res://UI/Assets/HeartFull.png" type="Texture" id=2]
+[ext_resource path="res://UI/Assets/HeartEmpty.png" type="Texture" id=3]
+[ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://UI/Assets/AmmoFull.png" type="Texture" id=5]
+[ext_resource path="res://UI/Assets/AmmoEmpty.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=3]
+size = 4
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "Flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Shake"
+length = 0.25
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 8 ), Vector2( 2, 8 ), Vector2( -2, 6 ), Vector2( 1, 9 ), Vector2( 2, 5 ) ]
+}
+
+[node name="GameOverlay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureRect" parent="."]
+margin_top = 8.0
+margin_right = 45.0
+margin_bottom = 20.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Empty" type="TextureRect" parent="HealthBar"]
+show_behind_parent = true
+margin_top = 1.0
+margin_right = 75.0
+margin_bottom = 13.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPLabel" type="Label" parent="HealthBar"]
+margin_left = 4.0
+margin_top = -6.0
+margin_right = 51.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 3 )
+text = "HP: 5/5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HealthBar"]
+anims/Flash = SubResource( 1 )
+
+[node name="ShakeAnim" type="AnimationPlayer" parent="HealthBar"]
+anims/Shake = SubResource( 2 )
+
+[node name="AmmoBar" type="TextureRect" parent="."]
+margin_top = 24.0
+margin_right = 42.0
+margin_bottom = 36.0
+texture = ExtResource( 5 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Empty" type="TextureRect" parent="AmmoBar"]
+show_behind_parent = true
+margin_top = 1.0
+margin_right = 56.0
+margin_bottom = 13.0
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
