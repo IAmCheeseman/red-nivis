@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/HeartFull.png" type="Texture" id=2]
@@ -7,14 +7,26 @@
 [ext_resource path="res://UI/Assets/AmmoFull.png" type="Texture" id=5]
 [ext_resource path="res://UI/Assets/AmmoEmpty.png" type="Texture" id=6]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = vec3(1.0, 1.0, 1.0);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=1]
 size = 4
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "Flash"
+[sub_resource type="Animation" id=2]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -29,8 +41,7 @@ tracks/0/keys = {
 "values": [ Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Shake"
+[sub_resource type="Animation" id=3]
 length = 0.25
 loop = true
 step = 0.05
@@ -77,27 +88,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="JustLost" type="TextureRect" parent="HealthBar"]
+show_behind_parent = true
+material = SubResource( 5 )
+margin_right = 75.0
+margin_bottom = 12.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JustLostTween" type="Tween" parent="HealthBar/JustLost"]
+
+[node name="JustLostTimer" type="Timer" parent="HealthBar/JustLost"]
+wait_time = 0.4
+one_shot = true
+
 [node name="HPLabel" type="Label" parent="HealthBar"]
 margin_left = 4.0
 margin_top = -6.0
 margin_right = 51.0
 margin_bottom = 8.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "HP: 5/5"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HealthBar"]
-anims/Flash = SubResource( 1 )
+anims/Flash = SubResource( 2 )
 
 [node name="ShakeAnim" type="AnimationPlayer" parent="HealthBar"]
-anims/Shake = SubResource( 2 )
+anims/Shake = SubResource( 3 )
 
 [node name="AmmoBar" type="TextureRect" parent="."]
 margin_top = 24.0
-margin_right = 42.0
-margin_bottom = 36.0
+margin_right = 36.0
+margin_bottom = 34.0
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 2
@@ -109,10 +138,12 @@ __meta__ = {
 show_behind_parent = true
 margin_top = 1.0
 margin_right = 56.0
-margin_bottom = 13.0
+margin_bottom = 11.0
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="timeout" from="HealthBar/JustLost/JustLostTimer" to="." method="_on_just_lost_timer_timeout"]

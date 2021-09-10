@@ -264,6 +264,8 @@ func die():
 	defTimah.connect("timeout", self, "show_death_screen", [defTimah])
 	add_child(defTimah)
 	defTimah.start(.4)
+	
+	itemHolder.queue_free()
 
 func show_death_screen(timer:Timer) -> void:
 	deathScreen.show()

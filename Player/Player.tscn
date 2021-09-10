@@ -806,7 +806,7 @@ rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 8 )
 bbcode_enabled = true
-bbcode_text = "[center][shake rate=15 level=8]Game Over[/shake]"
+bbcode_text = "[center][shake rate=45 level=8]Game Over[/shake]"
 text = "Game Over"
 scroll_active = false
 

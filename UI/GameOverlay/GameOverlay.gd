@@ -9,11 +9,15 @@ onready var hbAnim = $HealthBar/AnimationPlayer
 onready var hbShakeAnim = $HealthBar/ShakeAnim
 onready var hpLabel = $HealthBar/HPLabel
 
+onready var justLostBar = $HealthBar/JustLost
+onready var justLostTween = $HealthBar/JustLost/JustLostTween
+onready var justLostTimer = $HealthBar/JustLost/JustLostTimer
+
 # Ammo bar
 onready var ammoBar = $AmmoBar
 onready var ammoBarEmpty = $AmmoBar/Empty
 
-
+var JLTarget:Vector2
 var healthBarTexSize:Vector2
 var ammoBarTexSize:Vector2
 
@@ -34,10 +38,9 @@ func update_health(_kb:Vector2) -> void:
 	hpLabel.text = "HP: %s/%s" % [playerData.health, playerData.maxHealth]
 	
 	hbAnim.play("Flash")
+	justLostTimer.start()
 	if playerData.health == 1:
 		hbShakeAnim.play("Shake")
-	elif playerData.health <= 0:
-		healthBar.rect_size.x = 0
 	else:
 		hbShakeAnim.stop(true)
 
@@ -45,3 +48,12 @@ func update_health(_kb:Vector2) -> void:
 func update_ammo():
 	ammoBar.rect_size.x = playerData.ammo*ammoBarTexSize.x
 	ammoBarEmpty.rect_size.x = playerData.maxAmmo*ammoBarTexSize.x
+
+
+func _on_just_lost_timer_timeout() -> void:
+	justLostTween.stop_all()
+	justLostTween.interpolate_property(
+		justLostBar, "rect_size", justLostBar.rect_size,
+		healthBar.rect_size, .2
+	)
+	justLostTween.start()

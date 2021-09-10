@@ -92,29 +92,30 @@ func _input(event):
 		inventory.add_item(items_.pop_front())
 
 	# Slot scrolling
-	if event.is_action_released("hotbar_scroll_left"):
-		inventory.selectedSlot = wrapi(inventory.selectedSlot-1,
-								0, slots.get_child_count())
-	if event.is_action_released("hotbar_scroll_right"):
-		inventory.selectedSlot = wrapi(inventory.selectedSlot+1,
-								0, slots.get_child_count())
-	# Selecting the slot with numbers
-	for key in range(KEY_1, KEY_1+slots.get_child_count()):
-		if Input.is_key_pressed(key):
-			inventory.selectedSlot = key-KEY_1
+	if !playerData.isDead:
+		if event.is_action_released("hotbar_scroll_left"):
+			inventory.selectedSlot = wrapi(inventory.selectedSlot-1,
+									0, slots.get_child_count())
+		if event.is_action_released("hotbar_scroll_right"):
+			inventory.selectedSlot = wrapi(inventory.selectedSlot+1,
+									0, slots.get_child_count())
+		# Selecting the slot with numbers
+		for key in range(KEY_1, KEY_1+slots.get_child_count()):
+			if Input.is_key_pressed(key):
+				inventory.selectedSlot = key-KEY_1
 
-	if event.is_action_pressed("drop_item"):
-		var item = inventory.items[inventory.selectedSlot]
-		if item == null:
-			return
+		if event.is_action_pressed("drop_item"):
+			var item = inventory.items[inventory.selectedSlot]
+			if item == null:
+				return
 
-		# Spawning the item
-		var itemManager = ItemManagement.new()
-		var newItem = itemManager.create_item(item, true)
-		newItem.global_position = playerData.playerObject.global_position+Vector2(0, -8)
-		GameManager.spawnManager.spawn_object(newItem)
+			# Spawning the item
+			var itemManager = ItemManagement.new()
+			var newItem = itemManager.create_item(item, true)
+			newItem.global_position = playerData.playerObject.global_position+Vector2(0, -8)
+			GameManager.spawnManager.spawn_object(newItem)
 
-		inventory.remove_item(inventory.selectedSlot)
+			inventory.remove_item(inventory.selectedSlot)
 
 	# Item moving for controller
 	if event.is_action_pressed("move_item"):
