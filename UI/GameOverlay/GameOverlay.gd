@@ -15,7 +15,6 @@ onready var justLostTimer = $HealthBar/JustLost/JustLostTimer
 
 # Ammo bar
 onready var ammoBar = $AmmoBar
-onready var ammoBarEmpty = $AmmoBar/Empty
 
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
@@ -24,7 +23,7 @@ var ammoBarTexSize:Vector2
 
 func _ready() -> void:
 	healthBarTexSize = healthBar.texture.get_size()
-	ammoBarTexSize = ammoBar.texture.get_size()
+#	ammoBarTexSize = ammoBar.texture.get_size()
 	
 	playerData.connect("healthChanged", self, "update_health")
 	playerData.connect("ammoChanged", self, "update_ammo")
@@ -33,7 +32,7 @@ func _ready() -> void:
 
 
 func update_health(_kb:Vector2) -> void:
-	healthBar.rect_size.x = playerData.health*healthBarTexSize.x
+	healthBar.rect_min_size.x = playerData.health*healthBarTexSize.x
 	healthBarEmpty.rect_size.x = playerData.maxHealth*healthBarTexSize.x
 	hpLabel.text = "HP: %s/%s" % [playerData.health, playerData.maxHealth]
 	
@@ -46,9 +45,22 @@ func update_health(_kb:Vector2) -> void:
 
 
 func update_ammo():
-	ammoBar.rect_size.x = playerData.ammo*ammoBarTexSize.x
-	ammoBarEmpty.rect_size.x = playerData.maxAmmo*ammoBarTexSize.x
-	update()
+	if ammoBar.get_child_count() != playerData.maxAmmo:
+		for c in ammoBar.get_children():
+			c.queue_free()
+
+		var ammoPoint = preload("res://UI/GameOverlay/AmmoPoint.tscn")
+		for i in playerData.maxAmmo:
+			var newAmmoPoint = ammoPoint.instance()
+			ammoBar.add_child(newAmmoPoint)
+			print("ayo")
+	else:
+		for i in ammoBar.get_children():
+			if i.get_index()+1 > playerData.ammo:
+				i.self_modulate.a = 0
+			else:
+				i.self_modulate.a = 1
+
 
 
 func _on_just_lost_timer_timeout() -> void:
@@ -58,30 +70,4 @@ func _on_just_lost_timer_timeout() -> void:
 		healthBar.rect_size, .2
 	)
 	justLostTween.start()
-
-
-func _draw() -> void:
-	var ammo:float = playerData.maxAmmo
-	var rowSize:float = 8
-	var rowAmounts:Array = []
-	
-	for i in ceil(ammo/rowSize):
-		rowAmounts.append(min(rowSize, ammo-(rowSize*i)))
-	
-	var seperation:int = 1
-	var offset:Vector2 = Vector2(2, 28)
-	var ammoCount = 1
-	
-	for row in rowAmounts.size():
-		var cRowSize = rowAmounts[row]
-		for i in cRowSize:
-			var position = Vector2(
-				i*ammoBarTexSize.x+(seperation*i),
-				(row*ammoBarTexSize.y)
-			)+offset
-			draw_texture(ammoBarEmpty.texture, position+Vector2.DOWN)
-			if ammoCount <= playerData.ammo:
-				draw_texture(ammoBar.texture, position)
-			ammoCount += 1
-	
 

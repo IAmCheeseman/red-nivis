@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/HeartFull.png" type="Texture" id=2]
 [ext_resource path="res://UI/Assets/HeartEmpty.png" type="Texture" id=3]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://UI/Assets/AmmoFull.png" type="Texture" id=5]
-[ext_resource path="res://UI/Assets/AmmoEmpty.png" type="Texture" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -67,9 +65,11 @@ __meta__ = {
 }
 
 [node name="HealthBar" type="TextureRect" parent="."]
-margin_top = 13.0
-margin_right = 45.0
-margin_bottom = 25.0
+margin_left = 3.0
+margin_top = 12.0
+margin_right = 48.0
+margin_bottom = 24.0
+rect_rotation = 2.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
@@ -109,8 +109,8 @@ one_shot = true
 [node name="HPLabel" type="Label" parent="HealthBar"]
 margin_left = 4.0
 margin_top = -10.0
-margin_right = 51.0
-margin_bottom = 4.0
+margin_right = 42.0
+margin_bottom = -1.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
@@ -125,26 +125,15 @@ anims/Flash = SubResource( 4 )
 [node name="ShakeAnim" type="AnimationPlayer" parent="HealthBar"]
 anims/Shake = SubResource( 5 )
 
-[node name="AmmoBar" type="TextureRect" parent="."]
-visible = false
-margin_top = 28.0
-margin_right = 32.0
-margin_bottom = 38.0
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Empty" type="TextureRect" parent="AmmoBar"]
-show_behind_parent = true
-margin_top = 1.0
-margin_right = 56.0
-margin_bottom = 11.0
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 2
+[node name="AmmoBar" type="GridContainer" parent="."]
+margin_left = 6.0
+margin_top = 29.0
+margin_right = 106.0
+margin_bottom = 129.0
+rect_rotation = 3.0
+custom_constants/vseparation = 3
+custom_constants/hseparation = 0
+columns = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
