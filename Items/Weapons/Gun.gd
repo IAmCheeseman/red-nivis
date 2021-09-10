@@ -37,11 +37,12 @@ onready var pivot = $Pivot
 onready var shootSound = $ShootSound
 onready var noAmmoClick = $NoAmmoClickSFX
 onready var ammoLabel = $AmmoCount
+onready var cooldown = $Cooldown
 var visuals
 
 # Properties
 var standingOver = false
-var canShoot = true
+var canShoot = false
 var isReloading = false
 var player
 
@@ -52,6 +53,8 @@ func _ready():
 	pivot.add_child(visuals)
 	visuals.position.x = stats.holdDist
 	ammoLabel.hide()
+	cooldown.start(stats.reloadSpeed*.333)
+	
 
 
 func _on_Cooldown_timeout():

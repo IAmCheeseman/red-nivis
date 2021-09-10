@@ -3,15 +3,22 @@ class_name Hurtbox
 
 signal hurt(amount, dir)
 
-var immune = false
+onready var immunityTimer = $ImmunityTimer
+
+
+export var immTime:float = 0
+
+var immune:bool = false
 
 
 func take_damage(amount:float, dir:Vector2) -> void:
-	if !immune:
-		emit_signal("hurt", amount, dir)
+	if immune:
+		return
+	emit_signal("hurt", amount, dir)
+	if immTime > 0:
+		immunityTimer.start(immTime)
 		immune = true
 
-func _process(_delta):
+
+func _on_immunity_timeout() -> void:
 	immune = false
-	if Input.is_key_pressed(KEY_I):
-		take_damage(1, Vector2.LEFT)

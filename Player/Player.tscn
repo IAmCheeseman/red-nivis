@@ -649,13 +649,11 @@ bus = "SFX"
 visible = false
 collision_layer = 2
 collision_mask = 2147483648
+immTime = 0.8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -1, -4 )
 shape = SubResource( 4 )
-
-[node name="HurtTimer" type="Timer" parent="Hurtbox"]
-one_shot = true
 
 [node name="SoftCollision" parent="." instance=ExtResource( 13 )]
 visible = false

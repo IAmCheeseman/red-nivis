@@ -18,7 +18,6 @@ onready var SaS = $SquashAndStretch
 onready var flashPlayer = $Flash
 onready var deathScreen = $CanvasLayer/GameOverScreen
 onready var itemHolder = $ItemHolder
-onready var hurtTimer = $Hurtbox/HurtTimer
 onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/HurtSFX
 onready var jumpSFX = $Sounds/JumpSFX
@@ -283,8 +282,6 @@ func _on_health_changed(dir):
 	if playerData.health <= 0:
 		vel = dir * playerData.dashSpeed
 		die()
-	# Healthbar
-	hurtTimer.start(playerData.recoveryTime)
 	# Screenshake
 	GameManager.emit_signal("screenshake", 2, 6, .05, .05)
 	# Knockback
