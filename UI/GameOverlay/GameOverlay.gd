@@ -53,7 +53,6 @@ func update_ammo():
 		for i in playerData.maxAmmo:
 			var newAmmoPoint = ammoPoint.instance()
 			ammoBar.add_child(newAmmoPoint)
-			print("ayo")
 	else:
 		for i in ammoBar.get_children():
 			if i.get_index()+1 > playerData.ammo:

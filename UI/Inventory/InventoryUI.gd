@@ -72,7 +72,6 @@ func refresh_items():
 		if item == null:
 			slot.clear()
 			continue
-#		var item = inventory.get_item(id)
 
 		slot.clear()
 		var tierColor = Color.black

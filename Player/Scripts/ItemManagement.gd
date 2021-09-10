@@ -25,7 +25,7 @@ func add_item():
 		newItem.stats = item
 		newItem.player = playerData
 		
-#		yield(get_tree(), "idle_frame")
+		yield(get_tree(), "idle_frame")
 		playerData.maxAmmo = item.magazineSize
 		playerData.ammo = playerData.maxAmmo
 		

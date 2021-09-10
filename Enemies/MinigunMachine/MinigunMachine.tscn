@@ -130,6 +130,7 @@ collision_layer = 4
 shape = SubResource( 3 )
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 6 )]
+mustBeInSight = false
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
 shape = SubResource( 4 )

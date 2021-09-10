@@ -13,7 +13,7 @@ load_path = "res://.import/SlotPressed.png-ddbacac1a489c10b58df20bf6827b85e.stex
 [sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/SlotHover.png-7d9bc903ca922261bf7278352f84965b.stex"
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
 
 uniform vec4 color : hint_color; 
@@ -26,17 +26,17 @@ void fragment() {
 	COLOR = newColor;
 }"
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
 shader_param/color = null
 shader_param/fadeStart = 1.0
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 3 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 4
 font_data = ExtResource( 2 )
 
@@ -58,7 +58,7 @@ __meta__ = {
 
 [node name="BackGround" type="ColorRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0.490196 )
-material = SubResource( 7 )
+material = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
@@ -67,7 +67,9 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource( 4 )
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+material = SubResource( 6 )
 margin_left = 2.0
 margin_top = 3.0
 margin_right = 16.0
@@ -79,10 +81,11 @@ __meta__ = {
 }
 
 [node name="Index" type="Label" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "1"
 valign = 1
