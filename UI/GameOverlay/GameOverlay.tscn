@@ -21,7 +21,7 @@ void fragment() {
 shader = SubResource( 4 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 4
+size = 7
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
@@ -67,9 +67,9 @@ __meta__ = {
 }
 
 [node name="HealthBar" type="TextureRect" parent="."]
-margin_top = 8.0
+margin_top = 13.0
 margin_right = 45.0
-margin_bottom = 20.0
+margin_bottom = 25.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
@@ -108,10 +108,12 @@ one_shot = true
 
 [node name="HPLabel" type="Label" parent="HealthBar"]
 margin_left = 4.0
-margin_top = -6.0
+margin_top = -10.0
 margin_right = 51.0
-margin_bottom = 8.0
+margin_bottom = 4.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
 text = "HP: 5/5"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,9 +126,10 @@ anims/Flash = SubResource( 2 )
 anims/Shake = SubResource( 3 )
 
 [node name="AmmoBar" type="TextureRect" parent="."]
-margin_top = 24.0
-margin_right = 36.0
-margin_bottom = 34.0
+visible = false
+margin_top = 28.0
+margin_right = 32.0
+margin_bottom = 38.0
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 2

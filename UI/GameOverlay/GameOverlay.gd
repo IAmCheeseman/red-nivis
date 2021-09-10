@@ -48,6 +48,7 @@ func update_health(_kb:Vector2) -> void:
 func update_ammo():
 	ammoBar.rect_size.x = playerData.ammo*ammoBarTexSize.x
 	ammoBarEmpty.rect_size.x = playerData.maxAmmo*ammoBarTexSize.x
+	update()
 
 
 func _on_just_lost_timer_timeout() -> void:
@@ -57,3 +58,30 @@ func _on_just_lost_timer_timeout() -> void:
 		healthBar.rect_size, .2
 	)
 	justLostTween.start()
+
+
+func _draw() -> void:
+	var ammo:float = playerData.maxAmmo
+	var rowSize:float = 8
+	var rowAmounts:Array = []
+	
+	for i in ceil(ammo/rowSize):
+		rowAmounts.append(min(rowSize, ammo-(rowSize*i)))
+	
+	var seperation:int = 1
+	var offset:Vector2 = Vector2(2, 28)
+	var ammoCount = 1
+	
+	for row in rowAmounts.size():
+		var cRowSize = rowAmounts[row]
+		for i in cRowSize:
+			var position = Vector2(
+				i*ammoBarTexSize.x+(seperation*i),
+				(row*ammoBarTexSize.y)
+			)+offset
+			draw_texture(ammoBarEmpty.texture, position+Vector2.DOWN)
+			if ammoCount <= playerData.ammo:
+				draw_texture(ammoBar.texture, position)
+			ammoCount += 1
+	
+
