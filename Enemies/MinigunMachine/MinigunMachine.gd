@@ -19,7 +19,6 @@ onready var wanderTimer = $Timers/WanderTimer
 
 
 var deathParticles = preload("res://Enemies/Assets/DeathParticles.tscn")
-var ammoPickup = preload("res://Items/AmmoPickup/AmmoPickup.tscn")
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var player:Node2D
 var vel:Vector2 = Vector2.ZERO
@@ -89,15 +88,10 @@ func _on_hurt(amount:float, dir:Vector2) -> void:
 		GameManager.spawnManager.spawn_object(newDP)
 		GameManager.frameFreezer.freeze_frames(.07)
 		
-		if rand_range(0, 1) > .5:
-			if rand_range(0, 1) > .5:
-				var newAmmo = ammoPickup.instance()
-				newAmmo.position = position
-				GameManager.spawnManager.spawn_object(newAmmo)
-			else:
-				var newHealth = healthPickup.instance()
-				newHealth.position = position
-				GameManager.spawnManager.spawn_object(newHealth)
+		if rand_range(0, 1) > GameManager.HEART_CHANCE:
+			var newHealth = healthPickup.instance()
+			newHealth.position = position
+			GameManager.spawnManager.spawn_object(newHealth)
 		
 		queue_free()
 	

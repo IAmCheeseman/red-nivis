@@ -16,3 +16,8 @@ static func percentage_from(percent:float, a:float):
 
 
 static func is_even(number:int): return !(number % 2)
+
+
+static func free_children(node:Node):
+	for i in node.get_children():
+		i.queue_free()

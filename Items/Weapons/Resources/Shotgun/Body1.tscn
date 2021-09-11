@@ -10,6 +10,8 @@ cooldown = 0.8
 multishot = 8.0
 projLifetime = 0.3
 cost = 3
+magazineSize = 4
+reloadSpeed = 0.7
 shellSprite = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]

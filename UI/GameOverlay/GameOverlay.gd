@@ -32,7 +32,7 @@ func _ready() -> void:
 
 
 func update_health(_kb:Vector2) -> void:
-	healthBar.rect_min_size.x = playerData.health*healthBarTexSize.x
+	healthBar.rect_size.x = playerData.health*healthBarTexSize.x
 	healthBarEmpty.rect_size.x = playerData.maxHealth*healthBarTexSize.x
 	hpLabel.text = "HP: %s/%s" % [playerData.health, playerData.maxHealth]
 	
@@ -46,8 +46,7 @@ func update_health(_kb:Vector2) -> void:
 
 func update_ammo():
 	if ammoBar.get_child_count() != playerData.maxAmmo:
-		for c in ammoBar.get_children():
-			c.queue_free()
+		Utils.free_children(ammoBar)
 
 		var ammoPoint = preload("res://UI/GameOverlay/AmmoPoint.tscn")
 		for i in playerData.maxAmmo:

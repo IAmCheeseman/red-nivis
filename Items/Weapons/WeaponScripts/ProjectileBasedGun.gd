@@ -48,7 +48,6 @@ func shoot():
 	gun.get_node("ShootSound").play()
 
 #	gun.player.vel += -global_position.direction_to(get_global_mouse_position())*gun.stats.recoil
-	playerData.ammo -= gun.stats.cost
 	if playerData.ammo <= 0:
 		cooldownTimer.stop()
 		cooldownTimer.start(gun.stats.reloadSpeed)

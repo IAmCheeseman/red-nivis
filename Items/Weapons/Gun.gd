@@ -54,7 +54,6 @@ func _ready():
 	visuals.position.x = stats.holdDist
 	ammoLabel.hide()
 	cooldown.start(stats.reloadSpeed*.333)
-	
 
 
 func _on_Cooldown_timeout():

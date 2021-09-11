@@ -1,6 +1,7 @@
 extends Node2D
 
 const DEFAULT_GRAVITY = 350
+const HEART_CHANCE = .10
 const SKY = "Sky"
 const SURFACE = "Surface"
 const UNDERGROUND = "Underground"
