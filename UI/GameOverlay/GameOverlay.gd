@@ -7,7 +7,7 @@ onready var healthBar = $HealthBar
 onready var healthBarEmpty = $HealthBar/Empty
 onready var hbAnim = $HealthBar/AnimationPlayer
 onready var hbShakeAnim = $HealthBar/ShakeAnim
-onready var hpLabel = $HealthBar/HPLabel
+onready var hpLabel = $HPLabel
 
 onready var justLostBar = $HealthBar/JustLost
 onready var justLostTween = $HealthBar/JustLost/JustLostTween
@@ -15,6 +15,7 @@ onready var justLostTimer = $HealthBar/JustLost/JustLostTimer
 
 # Ammo bar
 onready var ammoBar = $AmmoBar
+onready var ammoLabel = $AmmoLabel
 
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
@@ -29,6 +30,7 @@ func _ready() -> void:
 	playerData.connect("ammoChanged", self, "update_ammo")
 	
 	update_health(Vector2.ZERO)
+	update_ammo()
 
 
 func update_health(_kb:Vector2) -> void:
@@ -53,6 +55,8 @@ func update_ammo():
 			var newAmmoPoint = ammoPoint.instance()
 			ammoBar.add_child(newAmmoPoint)
 	else:
+		ammoLabel.text = "Ammo: %s/%s" % [playerData.ammo, playerData.maxAmmo]
+		if playerData.ammo == 0: ammoLabel.text = "Reloading..."
 		for i in ammoBar.get_children():
 			if i.get_index()+1 > playerData.ammo:
 				i.self_modulate.a = 0

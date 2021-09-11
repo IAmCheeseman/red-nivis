@@ -95,11 +95,6 @@ _global_script_classes=[ {
 "path": "res://Managing/ItemManaging.gd"
 }, {
 "base": "Resource",
-"class": "ItemMap",
-"language": "GDScript",
-"path": "res://UI/Inventory/ItemMap.gd"
-}, {
-"base": "Resource",
 "class": "LootTable",
 "language": "GDScript",
 "path": "res://Items/LootTable.gd"
@@ -162,7 +157,6 @@ _global_script_class_icons={
 "ImageManipulation": "",
 "Inventory": "",
 "ItemManagement": "",
-"ItemMap": "",
 "LootTable": "",
 "Minibiome": "",
 "Player": "",
@@ -311,11 +305,6 @@ move_left={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
-remove_tile={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
- ]
-}
 toggle_fullscreen={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"unicode":0,"echo":false,"script":null)
@@ -342,7 +331,7 @@ use_item={
 }
 dash={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 jump={

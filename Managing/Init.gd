@@ -20,6 +20,10 @@ var subtitles = [
 func _ready():
 	randomize()
 	
+	var playerData = preload("res://Player/Player.tres")
+	playerData.health = playerData.maxHealth
+	playerData.ammo = playerData.maxAmmo
+	
 	subtitles.shuffle()
 	OS.set_window_title("Astronaut Game: %s" % subtitles.front())
 

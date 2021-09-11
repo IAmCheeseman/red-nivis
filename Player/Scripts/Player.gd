@@ -65,13 +65,15 @@ func _ready():
 
 func _physics_process(delta):
 	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
+	playerData.isDashing = state == states.DASH
+	
 	match state:
 		states.WALK:
 			sprite.material.set_shader_param("is_on", 0)
 			walk_state(delta)
 		states.DASH:
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
-			if test_move(transform, vel): state = states.WALK
+			if test_move(transform, Vector2(vel.x, 0).normalized()): state = states.WALK
 		states.DEAD:
 			if just_landed():
 				animationPlayer.play("Dead")
@@ -178,7 +180,7 @@ func _input(event):
 	collision.disabled = Input.is_action_pressed("down") and is_on_platform() and !test_move(transform, Vector2(vel.normalized().x, 0))
 	
 	# Dashing
-	if Input.is_action_just_pressed("remove_tile") and playerData.dashesLeft > 0:
+	if Input.is_action_just_pressed("dash") and playerData.dashesLeft > 0:
 		var dashDir = Vector2.ZERO
 		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
 		dashDir.y = Input.get_action_strength("down")

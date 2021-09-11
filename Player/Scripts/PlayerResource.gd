@@ -25,17 +25,15 @@ var dashesLeft = 1
 var playerObject:KinematicBody2D
 
 var isDead = false
+var isDashing = false
 
 signal healthChanged
 signal ammoChanged
 
 
-func _init() -> void:
-	health = maxHealth
-	ammo = maxAmmo
-
-
 func _on_damage_taken(damage, kbDir) -> void:
+	if isDashing:
+		return
 	health -= damage
 	emit_signal("healthChanged", kbDir)
 
