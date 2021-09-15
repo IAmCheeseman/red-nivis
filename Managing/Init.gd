@@ -20,7 +20,7 @@ var subtitles = [
 func _ready():
 	randomize()
 	
-	var playerData = preload("res://Player/Player.tres")
+	var playerData = preload("res://Entities/Player/Player.tres")
 	playerData.health = playerData.maxHealth
 	playerData.ammo = playerData.maxAmmo
 	

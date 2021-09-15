@@ -8,7 +8,7 @@ enum {
 }
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
-var player = preload("res://Player/Player.tres")
+var player = preload("res://Entities/Player/Player.tres")
 
 const VALID_COMMANDS = {
 	"timescale" :

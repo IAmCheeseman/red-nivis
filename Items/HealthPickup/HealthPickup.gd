@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var player = preload("res://Player/Player.tres")
+var player = preload("res://Entities/Player/Player.tres")
 
 func _on_player_detection_area_entered(area):
 	if area.is_in_group("player"):

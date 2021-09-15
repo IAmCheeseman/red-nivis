@@ -8,7 +8,7 @@ onready var gun = get_parent()
 
 export var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 var shell = preload("res://Items/Weapons/Bullet/Shells/Shell.tscn")
-var playerData = preload("res://Player/Player.tres")
+var playerData = preload("res://Entities/Player/Player.tres")
 var shootSound : SoundManager
 var rotVel = 0
 var holdShots = 0

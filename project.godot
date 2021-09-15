@@ -57,7 +57,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "EnemyBullet",
 "language": "GDScript",
-"path": "res://Enemies/EnemyBullet/EnemyBullet.gd"
+"path": "res://Entities/Enemies/EnemyBullet/EnemyBullet.gd"
 }, {
 "base": "Node2D",
 "class": "EnemySpawner",
@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "EnemyTable",
 "language": "GDScript",
-"path": "res://Enemies/Assets/EnemyTable.gd"
+"path": "res://Entities/Enemies/Assets/EnemyTable.gd"
 }, {
 "base": "Resource",
 "class": "FrameFreezer",
@@ -107,7 +107,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player/Scripts/PlayerResource.gd"
+"path": "res://Entities/Player/Scripts/PlayerResource.gd"
 }, {
 "base": "Resource",
 "class": "Prefix",
@@ -178,10 +178,10 @@ config/windows_native_icon="res://UI/Assets/Icon.ico"
 [autoload]
 
 GameManager="*res://Managing/GameManager.gd"
-Memory="*res://Managing/MemoryManager.gd"
 Settings="*res://Managing/settings.gd"
 DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
 Cursor="*res://UI/Cursor/Cursor.tscn"
+Memory="*res://Managing/MemoryManager.gd"
 
 [debug]
 
@@ -381,6 +381,8 @@ up={
 down={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
  ]
 }
 

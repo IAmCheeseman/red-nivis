@@ -4,7 +4,7 @@ var tiles:TileMap
 var altTiles:Array
 var backgroundTiles:TileMap
 onready var player = $Props/Player
-onready var camera = $Props/Camera
+#onready var camera = $Props/Camera
 onready var props = $Props
 onready var atmosphere = $Atmosphere
 onready var mistSpawner = $Props/Player/MistSpawner

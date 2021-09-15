@@ -3,9 +3,9 @@
 [ext_resource path="res://UI/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=4]
-[ext_resource path="res://EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=5]
-[ext_resource path="res://EnviormentalArt/BackGrounds/MountainsNear.png" type="Texture" id=6]
+[ext_resource path="res://World/EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=4]
+[ext_resource path="res://World/EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=5]
+[ext_resource path="res://World/EnviormentalArt/BackGrounds/MountainsNear.png" type="Texture" id=6]
 [ext_resource path="res://UI/Settings/OptionsMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=8]
 

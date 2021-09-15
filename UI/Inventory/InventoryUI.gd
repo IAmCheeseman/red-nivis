@@ -5,7 +5,7 @@ onready var slotSelector = $SlotSelector
 #onready var itemName = $VBox/ItemName
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
-var playerData = preload("res://Player/Player.tres")
+var playerData = preload("res://Entities/Player/Player.tres")
 var movingSlot:TextureButton
 var oldSlotIndex = -1
 var slotSelectorTarget = 0

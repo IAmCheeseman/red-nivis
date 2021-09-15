@@ -11,7 +11,7 @@ multishot = 5.0
 projLifetime = 0.1
 cost = 2
 magazineSize = 2
-reloadSpeed = 0.6
+reloadSpeed = 0.8
 shellSprite = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]

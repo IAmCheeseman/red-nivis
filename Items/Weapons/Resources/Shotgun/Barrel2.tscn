@@ -12,6 +12,7 @@ projScale = 0.2
 projLifetime = 0.1
 cost = 0
 maxHoldShots = 0
+reloadSpeed = 0.0
 kickUp = 0.0
 bulletSpawnDist = 0
 ssFreq = 0.2

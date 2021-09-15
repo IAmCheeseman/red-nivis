@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectReverb" id=1]
 resource_name = "Reverb"
-room_size = 0.4
+room_size = 0.2
 damping = 0.55
 hipass = 0.24
 
