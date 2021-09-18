@@ -89,7 +89,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Inventory/Inventory.gd"
 }, {
-"base": "Node",
+"base": "Resource",
 "class": "ItemManagement",
 "language": "GDScript",
 "path": "res://Managing/ItemManaging.gd"
@@ -134,7 +134,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://World/Walker.gd"
 }, {
-"base": "Reference",
+"base": "Resource",
 "class": "WeaponConstructor",
 "language": "GDScript",
 "path": "res://Items/Weapons/WeaponGeneration/WeaponConstructor.gd"
@@ -172,16 +172,14 @@ _global_script_class_icons={
 
 config/name="Astronaut Game"
 run/main_scene="res://Managing/Init.tscn"
-config/icon="res://UI/Assets/Icon.png"
-config/windows_native_icon="res://UI/Assets/Icon.ico"
 
 [autoload]
 
 GameManager="*res://Managing/GameManager.gd"
+Memory="*res://Managing/MemoryManager.gd"
 Settings="*res://Managing/settings.gd"
 DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
 Cursor="*res://UI/Cursor/Cursor.tscn"
-Memory="*res://Managing/MemoryManager.gd"
 
 [debug]
 
@@ -303,6 +301,11 @@ move_left={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+remove_tile={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 toggle_fullscreen={
