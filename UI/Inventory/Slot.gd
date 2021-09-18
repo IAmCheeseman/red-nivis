@@ -2,6 +2,7 @@ extends Control
 
 onready var slotTexture = $TextureRect
 onready var indexLabel = $Index
+onready var weaponHolder = $WeaponHolder
 
 var item:String
 
@@ -12,12 +13,12 @@ func _ready():
 	update_index()
 	set_focus_mode(Control.FOCUS_CLICK)
 
-	slotTexture.material = slotTexture.material.duplicate()
+	#slotTexture.material = slotTexture.material.duplicate()
 
 
 func setup(texture, itemID:String, outlineColor:Color=Color.white):
 	if texture is Node2D:
-		$WeaponHolder.add_child(texture.duplicate())
+		weaponHolder.add_child(texture.duplicate())
 	else:
 		slotTexture.texture = texture
 		slotTexture.material.set_shader_param("line_color", outlineColor)
@@ -29,6 +30,7 @@ func clear():
 	if slotTexture.get_child_count() > 0:
 		slotTexture.get_child(0).queue_free()
 	slotTexture.texture = null
+	for i in weaponHolder.get_children(): i.queue_free()
 	update_index()
 	item = ""
 

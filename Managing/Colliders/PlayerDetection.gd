@@ -1,5 +1,7 @@
 extends Area2D
 
+export var mustBeInSight:bool = true
+
 onready var sight = $Sight
 
 func get_player():
@@ -10,6 +12,8 @@ func get_player():
 	for c in collisions:
 		sight.cast_to = c.global_position-global_position
 		sight.force_raycast_update()
-		if c.is_in_group("player") and !sight.is_colliding():
+		if c.is_in_group("player"):
+			if sight.is_colliding() and mustBeInSight:
+				continue
 			return c
 	return null

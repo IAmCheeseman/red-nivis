@@ -4,6 +4,7 @@ var direction : Vector2
 var speed : float
 var peircing = false
 var prefix : Prefix
+var damage : float 
 var lifetime = 5.0
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
@@ -21,11 +22,13 @@ func set_texture(texture:StreamTexture):
 	remove_child(particles)
 	particles.global_position = global_position
 	particles.scale = scale
+	hitbox.damage = damage
 	get_parent().add_child(particles)
 
 
 func _ready():
 	look_at(global_position+direction)
+	hitbox.setDirection = direction
 	liftimeTimer.start(clamp(lifetime-0.2, .001, INF))
 
 
@@ -33,7 +36,9 @@ func _physics_process(delta):
 	position += (direction*speed)*delta
 
 
-func _on_QueueArea_body_entered(_body):
+func _on_QueueArea_body_entered(body):
+	if body.is_in_group("Platform"):
+		return
 	add_particles()
 	queue_free()
 
@@ -56,7 +61,7 @@ func _on_lifetime_timeout():
 	dieTween.interpolate_property(self, "speed", speed, 0, .2, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	dieTween.start()
 	modulate = Color.gray
-#	anim.play("Free")
+	anim.play("Free")
 
 
 

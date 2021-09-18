@@ -7,35 +7,35 @@ onready var gunSprite = get_parent().get_node("Pivot/GunSprite")
 onready var gun = get_parent()
 
 export var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
-var playerData = preload("res://Player/Player.tres")
+var shell = preload("res://Items/Weapons/Bullet/Shells/Shell.tscn")
+var playerData = preload("res://Entities/Player/Player.tres")
 var shootSound : SoundManager
 var rotVel = 0
 var holdShots = 0
+var isReloading = false
 
 
 func _physics_process(delta):
 	# Flipping the gun based on rotation
 	var local = barrelEnd.global_position-global_position
 	if local.x < 0:
-		gunSprite.scale.y = -1
+		gun.visuals.scale.y = -1
 	else:
-		gunSprite.scale.y = 1
+		gun.visuals.scale.y = 1
 	# Showing the gun behind the parent based on rotation
 	gun.get_parent().show_behind_parent = local.y < 0
 
 	# Setting rotation
-	var pastRot = gunSprite.global_rotation
 	pivot.look_at(get_global_mouse_position())
-	var targetRot = pivot.global_rotation
 
-	gunSprite.global_rotation = lerp_angle(pastRot, targetRot, 3.2*delta)
+#	gun.visuals.global_rotation = lerp_angle(pastRot, targetRot, 3.2*delta)
 
 	# Settling the rotation of the gun down after it's been kicked up
-	gunSprite.rotation = lerp_angle(gunSprite.rotation, 0, 4*delta)
+	gun.visuals.rotation = lerp_angle(gun.visuals.rotation, 0, 4*delta)
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 12*delta)
 
 	# Shooting
-	var hasEnoughAmmo = playerData.ammo-gun.stats.cost > 0
+	var hasEnoughAmmo = playerData.ammo > 0
 
 	if Input.is_action_pressed("use_item")\
 	and gun.canShoot\
@@ -43,9 +43,17 @@ func _physics_process(delta):
 	and holdShots != gun.stats.maxHoldShots\
 	and !GameManager.editingInventory\
 	and !playerData.playerObject.lockMovement:
-		playerData.ammo -= gun.stats.cost
+		playerData.ammo -= 1
 		Cursor.get_node("Sprite").scale = Vector2(1.2, 1.2)
 		shoot()
+		
+		var newShell = shell.instance()
+		var dir = -global_position.direction_to(get_global_mouse_position())-Vector2(0, 2)
+		newShell.direction = -global_position.direction_to(get_global_mouse_position())-Vector2(0, 2)
+		newShell.position = global_position+(dir*2)
+		GameManager.spawnManager.spawn_shell(newShell)
+		newShell.sprite.texture = gun.stats.shellSprite
+		
 	elif Input.is_action_just_pressed("use_item")\
 	and !hasEnoughAmmo:
 		gun.noAmmoClick.play()

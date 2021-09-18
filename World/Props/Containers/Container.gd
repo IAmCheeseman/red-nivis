@@ -5,11 +5,13 @@ onready var playerDetection = $PlayerDetection
 onready var itemSpawner = $ItemSpawn
 onready var animationPlayer = $AnimationPlayer
 onready var queueCollision = $QueueCollision
+onready var openSFX = $OpenSound
 
 onready var itemSpawnerPath = itemSpawner.get_path()
 
 export(Array, Resource) var itemPools
 export var itemCountRange:Vector2 = Vector2(1, 2)
+export(float, 0, 1) var deathChance = .5
 
 var player
 var vel = Vector2.ZERO
@@ -21,13 +23,25 @@ func _ready():
 	itemSpawner.itemPool = itemPools
 	if queueCollision.get_overlapping_bodies().size() > 0:
 		queue_free()
+	if rand_range(0, 1) < deathChance:
+		queue_free()
 	queueCollision.queue_free()
+	sprite.material = sprite.material.duplicate()
 
 
 
 func _process(delta):
 	player = playerDetection.get_player()
+	
+	# Outlining it if you're close enough
+	var currentOutlineLength = sprite.material.get_shader_param("line_thickness")
+	if player and itemSpawner:
+		sprite.material.set_shader_param("line_thickness", lerp(currentOutlineLength, 1, 5.0*delta))
+	else:
+		sprite.material.set_shader_param("line_thickness", lerp(currentOutlineLength, 0, 7.0*delta))
+	
 	if player and Input.is_action_just_pressed("interact") and itemSpawner:
+		openSFX.play()
 		for i in round(rand_range(itemCountRange.x, itemCountRange.y)):
 			itemSpawner.add_item()
 		itemSpawner.queue_free()

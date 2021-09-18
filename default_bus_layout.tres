@@ -1,4 +1,10 @@
-[gd_resource type="AudioBusLayout" format=2]
+[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+
+[sub_resource type="AudioEffectReverb" id=1]
+resource_name = "Reverb"
+room_size = 0.2
+damping = 0.55
+hipass = 0.24
 
 [resource]
 bus/1/name = "Ambient"
@@ -13,9 +19,17 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = "Master"
-bus/3/name = "SFX"
+bus/3/name = "SFXMain"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = "Master"
+bus/4/name = "SFX"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 3.04474
+bus/4/send = "SFXMain"
+bus/4/effect/0/effect = SubResource( 1 )
+bus/4/effect/0/enabled = true

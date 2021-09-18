@@ -10,4 +10,5 @@ layer = 128
 pause_mode = 2
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-rotSpeed = 0.5
+
+[node name="Tween" type="Tween" parent="Sprite"]

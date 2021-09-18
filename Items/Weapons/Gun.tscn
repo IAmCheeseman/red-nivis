@@ -52,11 +52,13 @@ one_shot = true
 [node name="ShootSound" parent="." instance=ExtResource( 2 )]
 audio = ExtResource( 3 )
 volumeMod = -10.0
+pitchShiftRange = 1.75
 bus = "SFX"
 
 [node name="NoAmmoClickSFX" parent="." instance=ExtResource( 2 )]
 audio = ExtResource( 1 )
 volumeMod = -10.0
+pitchShiftRange = 1.1
 bus = "SFX"
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

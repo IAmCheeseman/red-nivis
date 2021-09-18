@@ -1,4 +1,4 @@
-extends Resource
+extends Reference
 class_name WeaponConstructor
 
 enum {
@@ -7,10 +7,10 @@ enum {
 	RARE
 }
 
-var tierChances = [.10, .20, .70]
+var tierChances = [.45, .35, .20]
 
 
-func generate_weapon(_seed:int=randi()):
+func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 	seed(_seed)
 
 	var selectedParts = {
@@ -22,6 +22,8 @@ func generate_weapon(_seed:int=randi()):
 
 	parts.shuffle()
 	var selectedWeapon = parts.front()
+	if _selectedType != "": 
+		selectedWeapon = _selectedType
 
 	selectedParts = select_parts(selectedWeapon)
 
@@ -31,11 +33,18 @@ func generate_weapon(_seed:int=randi()):
 	constructedWeapon.get_node("Handle").add_child(handle)
 	var barrel = selectedParts.barrel.instance()
 	constructedWeapon.get_node("Barrel").add_child(barrel)
-	print(constructedWeapon.get_node("Handle").position)
+	if selectedParts.has("sight"):
+		var sight = selectedParts.sight.instance()
+		constructedWeapon.get_node("Sight").add_child(sight)
 	var data = generate_stats(selectedParts, constructedWeapon)
 
 	data.scene = constructedWeapon
 	data.isTwoHanded = handle.isTwoHanded
+	data.bulletSpawnDist = barrel.get_node("Sprite").texture.get_width()/2
+	data.shellSprite = constructedWeapon.shellSprite
+	
+	var textureWidth = constructedWeapon.get_node("Sprite").texture.get_width()
+	data.holdDist = (textureWidth*.3)-(int(data.isTwoHanded)*(textureWidth*.1))
 	data.seed = _seed
 
 	return data
@@ -61,10 +70,11 @@ func generate_stats(selectedParts:Dictionary, body:Node2D):
 	data.cost = body.cost
 	data.maxHoldShots = body.maxHoldShots
 	data.customBullet = body.customBullet
+	data.magazineSize = body.magazineSize
+	data.reloadSpeed = body.reloadSpeed
 
 	data.bulletSprite = body.bulletSprite
 	data.kickUp = body.kickUp
-	data.bulletSpawnDist = body.bulletSpawnDist
 
 	data.ssFreq = body.ssFreq
 	data.ssStrength = body.ssStrength
@@ -87,6 +97,7 @@ func generate_stats(selectedParts:Dictionary, body:Node2D):
 
 func select_parts(selectedWeapon):
 	var weaponPath = "res://Items/Weapons/Resources/%s/" % selectedWeapon
+	var sightPath = "res://Items/Weapons/Resources/GlobalParts/Sight%s.tscn"
 	var weaponParts = {}
 	# Body
 	weaponParts.body = load(weaponPath+"Body%s.tscn" % select_tier())
@@ -95,7 +106,8 @@ func select_parts(selectedWeapon):
 	# Barrel
 	weaponParts.barrel = load(weaponPath+"Barrel%s.tscn" % select_tier())
 	# Sight
-	# TODO: Add sights
+	if rand_range(0, 1) < .5:
+		weaponParts.sight = load(sightPath % round(rand_range(0, 2)))
 	return weaponParts
 
 
@@ -113,5 +125,6 @@ func select_tier():
 
 
 var parts = [
-	'Pistol'
+	'Pistol',
+	'Shotgun'
 ]

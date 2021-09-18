@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://UI/Assets/vignette.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float darkness;
+uniform sampler2D vignette;
+
+void fragment() {
+	vec3 vignette_color = texture(vignette, UV).rgb;
+	vignette_color += darkness;
+	
+	COLOR.a -= vignette_color.r;
+	COLOR.rgb *= vec3(0, 0, 0);
+}
+"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/darkness = 0.364
+shader_param/vignette = ExtResource( 1 )

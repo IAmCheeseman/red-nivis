@@ -5,6 +5,7 @@ export(Array, String) var loadPaths
 export var outputVec : Vector2
 export var inWorld = true
 export var reqiurePrompt = true
+export var emitSignalInstead = false
 export var loadFromMemory = false
 export var memorySlot = 0
 
@@ -13,6 +14,8 @@ var closeEnough = false
 
 
 onready var prompt = $Prompt
+
+signal loadArea
 
 
 func _ready():
@@ -42,5 +45,8 @@ func _input(event):
 
 func load_area():
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Space/PlanetSelection.tscn")
+	if emitSignalInstead:
+		emit_signal("loadArea")
+		return
+	get_tree().change_scene(loadPath)
 

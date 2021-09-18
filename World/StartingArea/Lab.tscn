@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World/StartingArea/Lab.png" type="Texture" id=1]
+
+[node name="Lab" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 1, 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 1, 1 )
+polygon = PoolVector2Array( -100, 24, -100, 20, -95, 20, -95, -84, 96, -84, 96, -44, 91, -44, 91, 9, 97, 9, 97, 13, 95, 13, 95, 20, 100, 20, 100, 24, 79, 24, 79, 20, 84, 20, 84, 13, 82, 13, 82, 9, 88, 9, 88, -43, -84, -16, -84, 20, -79, 20, -79, 24 )

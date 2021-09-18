@@ -2,36 +2,36 @@
 
 [ext_resource path="res://World/Props/Containers/Container.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Props/Containers/Locker/Locker.png" type="Texture" id=2]
-[ext_resource path="res://World/Planets/Assets/RegPlanetLootTable_Ruin.tres" type="Resource" id=3]
+[ext_resource path="res://World/DefaultLootTable.tres" type="Resource" id=3]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 22, 25 )
+region = Rect2( 0, 0, 24, 27 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 22, 25 )
+region = Rect2( 0, 0, 24, 27 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 2 )
-region = Rect2( 22, 0, 22, 25 )
+region = Rect2( 24, 0, 24, 27 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )
-region = Rect2( 44, 0, 22, 25 )
+region = Rect2( 48, 0, 24, 27 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
-region = Rect2( 66, 0, 22, 25 )
+region = Rect2( 72, 0, 24, 27 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
+"frames": [ SubResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "open",
 "speed": 10.0
@@ -45,13 +45,13 @@ extents = Vector2( 6, 12 )
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 13 )
 
-[node name="Container" instance=ExtResource( 1 )]
+[node name="Locker" instance=ExtResource( 1 )]
 itemPools = [ ExtResource( 3 ) ]
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2( 4, -12 )
+scale = Vector2( 1, 0.985696 )
 frames = SubResource( 6 )
-animation = "open"
-offset = Vector2( 3.22801, -12.1424 )
 
 [node name="ItemSpawn" parent="." index="1"]
 position = Vector2( 2, -12 )
@@ -67,6 +67,9 @@ visible = false
 [node name="CollisionShape2D" parent="PlayerDetection" index="0"]
 position = Vector2( -1, -12 )
 shape = SubResource( 8 )
+
+[node name="QueueCollision" parent="." index="4"]
+visible = false
 
 [node name="CollisionShape2D" parent="QueueCollision" index="0"]
 position = Vector2( 0, -13 )

@@ -2,7 +2,8 @@ extends Control
 
 onready var options = $CanvasLayer/OptionsMenu
 onready var buttons = $CanvasLayer/Buttons
-onready var anim = $AnimationPlayer
+onready var screenTrans = $ScreenTransition
+onready var playTimer = $PlayTimer
 
 
 func _ready():
@@ -16,12 +17,14 @@ func _on_Quit_pressed():
 
 
 func _on_Play_pressed():
-	anim.play("FadeAway")
+#	anim.play("FadeAway")
+	screenTrans.out()
+	playTimer.start()
 
 
 func play_game():
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Space/PlanetSelection.tscn")
+	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
 
 
 func _on_Feedback_pressed():
@@ -32,4 +35,5 @@ func _on_Feedback_pressed():
 func _on_Options_pressed():
 	buttons.hide()
 	options.show()
+
 

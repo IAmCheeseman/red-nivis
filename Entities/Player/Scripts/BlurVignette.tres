@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float minBlur  = 0.333;
+uniform float edgeBlur = 0.463;
+
+void fragment() {
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	color = textureLod(SCREEN_TEXTURE, SCREEN_UV, clamp(1.0-sin(3.14 * SCREEN_UV.x)*edgeBlur, minBlur, 100.0));
+	color = textureLod(SCREEN_TEXTURE, SCREEN_UV, clamp(1.0-sin(3.14 * SCREEN_UV.y)*edgeBlur, minBlur, 100.0));
+	
+	COLOR = color;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/minBlur = 0.333
+shader_param/edgeBlur = 1.0

@@ -2,13 +2,13 @@ extends Resource
 class_name Inventory
 
 # Inventory stuff
-export var maxSlots:int = 6
+export var maxSlots:int = 2
 var items:Array = []
 var selectedSlot:int = 0 setget _on_selected_slot_changed
 
 # Item map
-var itemMapR = preload("res://UI/Inventory/ItemMap.tres")
-var itemMap = itemMapR.items
+#var itemMapR = preload("res://UI/Inventory/ItemMap.tres")
+#var itemMap = itemMapR.items
 var allowSlotChange = true
 
 # Signals
@@ -22,13 +22,7 @@ func _init():
 	for slot in maxSlots:
 		items.append(null)
 	randomize()
-	add_item(str(WeaponConstructor.new().generate_weapon().seed))
-
-
-func check_existence(id:String) -> bool:
-	if itemMap.has(id):
-		return true
-	return false
+	add_item(WeaponConstructor.new().generate_weapon(randi(), 'Pistol'))
 
 
 func has_space() -> bool:
@@ -43,8 +37,6 @@ func has_item(id:String) -> bool:
 
 
 func get_item(id:String):
-	if check_existence(id):
-		return itemMap[id]
 	if id.is_valid_integer():
 		return null
 	push_error("ITEM DOES NOT EXIST: %s" % id)
@@ -82,7 +74,7 @@ func remove_item(id):
 
 
 
-func add_item(id:String):
+func add_item(id):
 	if !has_space(): return
 	items[items.find(null)] = id
 	emit_signal("itemsChanged")

@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform vec4 waterColor : hint_color;
+uniform float waveLength = 0.002;
+uniform float waveSize = 75.0;
+uniform float blurAmount = .5;
+
+void fragment() {
+	float UVyMinimized = UV.y*waveSize;
+	float sinY = sin(UVyMinimized+TIME);
+	vec2 sinedUV = SCREEN_UV+(vec2(sinY, 0)*waveLength);
+	vec4 color = texture(SCREEN_TEXTURE, sinedUV);
+	
+	color = textureLod(SCREEN_TEXTURE, sinedUV, blurAmount);
+	color *= waterColor;
+	
+	COLOR = color;
+}"
+
+[resource]
+shader = SubResource( 2 )
+shader_param/waterColor = Color( 0.486275, 0.576471, 0.921569, 1 )
+shader_param/waveLength = 0.002
+shader_param/waveSize = 75.0
+shader_param/blurAmount = 0.5

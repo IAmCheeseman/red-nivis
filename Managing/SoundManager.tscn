@@ -1,49 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-class_name SoundManager
-
-export var audio : AudioStream
-export var directional = false
-export(float, -80, 24) var volumeMod = 0
-export(String, \"Master\", \"Ambient\", \"Music\", \"SFX\") var bus = 0
-
-signal finished
-
-
-func play():
-	# Creating the audio player
-
-	var newAudioPlayer
-	match directional:
-		true:
-			newAudioPlayer = AudioStreamPlayer2D.new()
-		false:
-			newAudioPlayer = AudioStreamPlayer.new()
-
-	# Setting parameters
-	newAudioPlayer.stream = audio
-	newAudioPlayer.bus = bus
-	newAudioPlayer.autoplay = true
-	newAudioPlayer.volume_db = volumeMod
-	newAudioPlayer.connect(\"finished\", self, \"_on_audio_finished\", [newAudioPlayer])
-
-	add_child(newAudioPlayer)
-
-
-func _on_audio_finished(player):
-	emit_signal(\"finished\")
-	player.queue_free()
-
-
-# Making sure sounds can't pile up and play all at once.
-func _on_SoundManager_tree_exiting():
-	for c in get_children():
-		c.queue_free()
-"
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=1]
 
 [node name="SoundManager" type="Node2D"]
-script = SubResource( 1 )
+pause_mode = 2
+script = ExtResource( 1 )
 
 [connection signal="tree_exiting" from="." to="." method="_on_SoundManager_tree_exiting"]
