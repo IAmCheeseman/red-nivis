@@ -4,34 +4,34 @@
 [ext_resource path="res://World/Props/Containers/Locker/Locker.png" type="Texture" id=2]
 [ext_resource path="res://World/DefaultLootTable.tres" type="Resource" id=3]
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 24, 27 )
-
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 24, 27 )
+region = Rect2( 0, 0, 22, 25 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 2 )
-region = Rect2( 24, 0, 24, 27 )
+region = Rect2( 0, 0, 22, 25 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 24, 27 )
+region = Rect2( 22, 0, 22, 25 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
-region = Rect2( 72, 0, 24, 27 )
+region = Rect2( 44, 0, 22, 25 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 66, 0, 22, 25 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 14 ) ],
+"frames": [ SubResource( 10 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "open",
 "speed": 10.0
@@ -50,7 +50,6 @@ itemPools = [ ExtResource( 3 ) ]
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 4, -12 )
-scale = Vector2( 1, 0.985696 )
 frames = SubResource( 6 )
 
 [node name="ItemSpawn" parent="." index="1"]

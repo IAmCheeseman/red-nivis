@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Solids/Stone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/EnviormentalArt/Solids/Placeholder.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Solids/LabSolids.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/EnviormentalArt/Solids/StoneBG.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Placeholder.png 0"
@@ -36,6 +37,8 @@
 1/z_index = 0
 
 [node name="Caves" type="Node2D"]
+
+[node name="StoneBG" parent="." instance=ExtResource( 5 )]
 
 [node name="Stone" parent="." instance=ExtResource( 1 )]
 

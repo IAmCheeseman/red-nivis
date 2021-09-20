@@ -20,6 +20,7 @@ export var bgPath:NodePath
 export var platformsPath:NodePath
 export var propsPath:NodePath
 export var stonePath:NodePath 
+export var stoneBGPath:NodePath
 export var worldNode:NodePath
 
 var worldWidth = 0
@@ -72,6 +73,7 @@ func pad() -> void:
 
 func generate_branches():
 	var stone:TileMap = get_node(stonePath)
+	var stoneBG:TileMap = get_node(stoneBGPath)
 	var lab:TileMap = get_node(solidsPath)
 	var world = get_node(worldNode)
 	
@@ -84,6 +86,7 @@ func generate_branches():
 		
 		# Getting my nodes :>
 		var branchStone:TileMap = newBranch.get_node("Stone")
+		var branchBG:TileMap = newBranch.get_node("StoneBG")
 		var branchRemoval:TileMap = newBranch.get_node("LabTileRemoval")
 		var labTiles:TileMap = newBranch.get_node("LabSolids")
 		var containers:Node2D = newBranch.get_node("Containers")
@@ -122,20 +125,13 @@ func generate_branches():
 		camMoveZone.position += offset*stone.cell_size.x
 
 		# Adding stone
-		for tile in branchStone.get_used_cells():
-			var t = tile
-			t.x = -t.x if !leftSide else t.x
-			stone.set_cellv(t+offset, branchStone.get_cellv(tile))
-			stone.update_bitmask_area(t+offset)
-			lab.set_cellv(t+offset, -1)
-			lab.update_bitmask_area(t+offset)
+		copy_tiles_branch(branchStone, stone, lab, offset, leftSide)
+		
+		# Adding stone BG
+		copy_tiles_branch(branchBG, stoneBG, lab, offset, leftSide)
 		
 		# Adding labtiles
-		for tile in labTiles.get_used_cells():
-			var t = tile
-			t.x = -t.x if !leftSide else t.x
-			lab.set_cellv(t+offset, labTiles.get_cellv(tile))
-			lab.update_bitmask_area(t+offset)
+		copy_tiles_branch(labTiles, lab, stone, offset, leftSide)
 		
 		# Removing tiles
 		for tile in branchRemoval.get_used_cells():
@@ -198,6 +194,16 @@ func add_template_to_world(template:Node2D, offset:int) -> void:
 		e.spawn_enemy(round(rand_range(1, 3)))
 	
 	template.queue_free()
+
+
+func copy_tiles_branch(from:TileMap, to:TileMap, lab:TileMap, offset:Vector2, leftSide:bool) -> void:
+	for tile in from.get_used_cells():
+		var t = tile
+		t.x = -t.x if !leftSide else t.x
+		lab.set_cellv(t+offset, -1)
+		lab.update_bitmask_area(t+offset)
+		to.set_cellv(t+offset, from.get_cellv(tile))
+		to.update_bitmask_area(t+offset)
 
 
 func copy_tiles(from:TileMap, to:TileMap, offset:int) -> void:
