@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FirePlanet.png-66cb6eb9af6cb7f1c37b151f2db538a8.stex"
+path="res://.import/Coin.png-8457809334aa563dce1c405dabff79b1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Space/Assets/PlanetSprites/FirePlanet.png"
-dest_files=[ "res://.import/FirePlanet.png-66cb6eb9af6cb7f1c37b151f2db538a8.stex" ]
+source_file="res://Items/Money/Coin.png"
+dest_files=[ "res://.import/Coin.png-8457809334aa563dce1c405dabff79b1.stex" ]
 
 [params]
 

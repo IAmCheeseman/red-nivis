@@ -20,6 +20,7 @@ export var recoveryTime:float = 2.0
 export var tiltStrength:float = 5.0
 
 var health:int
+var money = 0
 var ammo:int setget set_ammo
 var dashesLeft = 1
 var playerObject:KinematicBody2D

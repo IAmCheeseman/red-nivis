@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Locker.png-95c437a811d6988b7f5ad3084b0ccfcf.stex"
+path="res://.import/Locker.png-a108daf6fcc10518b987cc5067186783.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Props/Containers/Locker/Locker.png"
-dest_files=[ "res://.import/Locker.png-95c437a811d6988b7f5ad3084b0ccfcf.stex" ]
+source_file="res://Entities/Enemies/World/Props/Containers/Locker/Locker.png"
+dest_files=[ "res://.import/Locker.png-a108daf6fcc10518b987cc5067186783.stex" ]
 
 [params]
 

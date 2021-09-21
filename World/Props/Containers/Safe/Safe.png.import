@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Safe.png-273e07c98d6eda1e1a4114ec9d86ee26.stex"
+path="res://.import/Safe.png-da9686707ebc955066b4992098a709f1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Props/Containers/Safe/Safe.png"
-dest_files=[ "res://.import/Safe.png-273e07c98d6eda1e1a4114ec9d86ee26.stex" ]
+source_file="res://Entities/Enemies/World/Props/Containers/Safe/Safe.png"
+dest_files=[ "res://.import/Safe.png-da9686707ebc955066b4992098a709f1.stex" ]
 
 [params]
 
