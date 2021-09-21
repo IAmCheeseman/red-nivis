@@ -3,19 +3,22 @@ extends Control
 var playerData = preload("res://Entities/Player/Player.tres")
 
 # Health Bar
-onready var healthBar = $HealthBar
-onready var healthBarEmpty = $HealthBar/Empty
-onready var hbAnim = $HealthBar/AnimationPlayer
-onready var hbShakeAnim = $HealthBar/ShakeAnim
-onready var hpLabel = $HPLabel
+onready var healthBar = $VBox/HealthBar
+onready var healthBarEmpty = $VBox/HealthBar/Empty
+onready var hbAnim = $VBox/HealthBar/AnimationPlayer
+onready var hbShakeAnim = $VBox/HealthBar/ShakeAnim
+onready var hpLabel = $VBox/HPLabel
 
-onready var justLostBar = $HealthBar/JustLost
-onready var justLostTween = $HealthBar/JustLost/JustLostTween
-onready var justLostTimer = $HealthBar/JustLost/JustLostTimer
+onready var justLostBar = $VBox/HealthBar/JustLost
+onready var justLostTween = $VBox/HealthBar/JustLost/JustLostTween
+onready var justLostTimer = $VBox/HealthBar/JustLost/JustLostTimer
 
 # Ammo bar
-onready var ammoBar = $AmmoBar
-onready var ammoLabel = $AmmoLabel
+onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
+onready var ammoLabel = $VBox/Bottom/AmmoBar/Label
+
+# Money Counter
+onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
 
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
@@ -28,9 +31,11 @@ func _ready() -> void:
 	
 	playerData.connect("healthChanged", self, "update_health")
 	playerData.connect("ammoChanged", self, "update_ammo")
+	playerData.connect("moneyChanged", self, "update_money")
 	
 	update_health(Vector2.ZERO)
 	update_ammo()
+	update_money()
 
 
 func update_health(_kb:Vector2) -> void:
@@ -44,6 +49,10 @@ func update_health(_kb:Vector2) -> void:
 		hbShakeAnim.play("Shake")
 	else:
 		hbShakeAnim.stop(true)
+
+
+func update_money():
+	moneyLabel.text = "%s" % playerData.money
 
 
 func update_ammo():

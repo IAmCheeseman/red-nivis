@@ -20,7 +20,7 @@ export var recoveryTime:float = 2.0
 export var tiltStrength:float = 5.0
 
 var health:int
-var money = 0
+var money = 0 setget set_money
 var ammo:int setget set_ammo
 var dashesLeft = 1
 var playerObject:KinematicBody2D
@@ -30,6 +30,7 @@ var isDashing = false
 
 signal healthChanged
 signal ammoChanged
+signal moneyChanged
 
 
 func _on_damage_taken(damage, kbDir) -> void:
@@ -38,6 +39,10 @@ func _on_damage_taken(damage, kbDir) -> void:
 	health -= damage
 	emit_signal("healthChanged", kbDir)
 
+
+func set_money(val):
+	money = val
+	emit_signal("moneyChanged")
 
 
 func set_ammo(value:int) -> void:
