@@ -13,8 +13,8 @@ onready var liftimeTimer = $Lifetime
 onready var anim = $AnimationPlayer
 onready var dieTween = $DieTween
 
-var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
-
+#var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
+var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
 
 
 func set_texture(texture:StreamTexture):

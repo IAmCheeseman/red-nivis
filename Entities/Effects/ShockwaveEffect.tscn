@@ -3,4 +3,7 @@
 [ext_resource path="res://Entities/Effects/ShockwaveEffect.gd" type="Script" id=1]
 
 [node name="ShockwaveEffect" type="Node2D"]
+position = Vector2( 120.779, 103.298 )
 script = ExtResource( 1 )
+targetRadius = 24.0
+time = 0.1

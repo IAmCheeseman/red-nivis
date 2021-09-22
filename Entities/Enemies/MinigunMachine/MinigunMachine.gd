@@ -47,7 +47,6 @@ func _process(delta: float) -> void:
 		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
 		minigunSprite.scale.y = -1 if angleVec.x > 0 else 1
 		healthBar.show()
-#		minigun.shoot()
 		
 	accel_to_point(targetPosition, delta)
 	vel += softCollision.get_push_vector()*(kbAmount*.05)
