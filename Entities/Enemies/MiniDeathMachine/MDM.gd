@@ -36,6 +36,8 @@ var health:int
 
 var alerted = false
 
+signal death
+
 
 """
 WANDER STATE:
@@ -162,6 +164,7 @@ func _on_hurt(amount:float, dir:Vector2) -> void:
 			var newHealth = healthPickup.instance()
 			newHealth.position = position
 			GameManager.spawnManager.spawn_object(newHealth)
+		emit_signal("death")
 		
 		queue_free()
 	

@@ -25,6 +25,9 @@ var vel:Vector2 = Vector2.ZERO
 var targetPosition:Vector2 = position
 var startingPosition:Vector2 = position
 
+signal death
+
+
 func _ready() -> void:
 	startingPosition = position
 
@@ -92,7 +95,8 @@ func _on_hurt(amount:float, dir:Vector2) -> void:
 			var newHealth = healthPickup.instance()
 			newHealth.position = position
 			GameManager.spawnManager.spawn_object(newHealth)
-		
+			
+		emit_signal("death")
 		queue_free()
 	
 #	update_healthbar()
