@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-maxHealth = 4
+maxHealth = 5
 maxAmmo = 255
 maxSpeed = 90.0
 jumpSpeedMod = 0.2
