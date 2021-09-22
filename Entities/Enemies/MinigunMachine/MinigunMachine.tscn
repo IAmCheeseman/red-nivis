@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Entities/Enemies/MinigunMachine/Minigun.gd" type="Script" id=7]
 [ext_resource path="res://Entities/Enemies/Assets/EnemyOutline.tres" type="Material" id=8]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=9]
+[ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=10]
+[ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "cooldown"
@@ -147,6 +149,18 @@ enabled = true
 
 [node name="MoneyDropper" type="Node2D" parent="."]
 script = ExtResource( 9 )
+
+[node name="Healthbar" type="TextureProgress" parent="."]
+margin_left = -9.0
+margin_top = -21.0
+margin_right = 9.0
+margin_bottom = -16.0
+max_value = 50.0
+texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Timers" type="Node" parent="."]
 

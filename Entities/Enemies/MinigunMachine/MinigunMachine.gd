@@ -16,6 +16,7 @@ onready var bounceRay = $Collisions/BounceRay
 onready var sprite = $ScaleHelper/Sprite
 onready var minigunSprite = $ScaleHelper/Sprite/Minigun/Sprite
 onready var wanderTimer = $Timers/WanderTimer
+onready var healthBar = $Healthbar
 
 
 var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
@@ -30,6 +31,8 @@ signal death
 
 func _ready() -> void:
 	startingPosition = position
+	healthBar.max_value = health
+	healthBar.value = health
 
 
 func _process(delta: float) -> void:
@@ -38,11 +41,12 @@ func _process(delta: float) -> void:
 	
 	if !player:
 		player = playerDetection.get_player()
-		
+		healthBar.hide()
 	else:
 		minigunSprite.look_at(player.global_position)
 		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
 		minigunSprite.scale.y = -1 if angleVec.x > 0 else 1
+		healthBar.show()
 #		minigun.shoot()
 		
 	accel_to_point(targetPosition, delta)
@@ -82,6 +86,7 @@ func _on_wander_timer_timeout() -> void:
 func _on_hurt(amount:float, dir:Vector2) -> void:
 # warning-ignore:narrowing_conversion
 	health -= amount
+	healthBar.value = health
 	vel = dir*kbAmount
 	
 	if health <= 0:
