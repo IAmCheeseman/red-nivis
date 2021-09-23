@@ -1,8 +1,8 @@
 extends Node2D
 class_name MoneyDropper
 
-export var moneyRange:Vector2 = Vector2(2, 5)
-export var valueRange:Vector2 = Vector2(1, 5)
+export var moneyRange:Vector2 = Vector2(1, 4)
+export var valueRange:Vector2 = Vector2(1, 2)
 
 var money = preload("res://Items/Money/Money.tscn")
 

@@ -11,7 +11,7 @@ var coinSprite:StreamTexture = preload("res://Items/Money/Coin.png")
 var playerData = preload("res://Entities/Player/Player.tres")
 var vel:Vector2 = Vector2.ZERO
 var player:Node2D
-var speed = 1600
+var speed = 1600*12
 
 
 func _ready():
@@ -31,8 +31,8 @@ func _process(delta):
 			queue_free()
 		speed += 10*delta
 		friction += 250*delta
-		var targetVel = position.direction_to(player.position)*speed
-		vel = vel.move_toward(targetVel, friction*delta)
+		var targetVel = position.direction_to(player.position)*speed*delta
+		vel = targetVel #vel.move_toward(targetVel, friction*delta)
 	else:
 		vel = vel.move_toward(Vector2.ZERO, friction*delta)
 	vel = move_and_slide(vel)
