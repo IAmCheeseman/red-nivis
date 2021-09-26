@@ -665,6 +665,8 @@ visible = false
 position = Vector2( 0, -3 )
 shape = SubResource( 5 )
 
+[node name="GrappleRay" type="RayCast2D" parent="."]
+
 [node name="FloorCheckers" type="Node2D" parent="."]
 visible = false
 position = Vector2( 0, 1 )
