@@ -54,7 +54,7 @@ func remove_2x2_areas() -> void:
 	for i in removalPointCount:
 		var dropPlace:Vector2
 		var attempts := 0
-		6
+		
 		while true:
 			dropPlace = Vector2(
 				rand_range(1, rooms.size()-1),
@@ -170,7 +170,7 @@ func get_biome_by_color(color:Color):
 
 
 func select_template() -> Image:
-	return load("res://World/Templates/WorldTemplates/Template%s.png" % round(rand_range(1, 4))).get_data()
+	return load("res://World/Templates/WorldTemplates/Template%s.png" % ceil(rand_range(0, 5))).get_data()
 
 
 func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array:
