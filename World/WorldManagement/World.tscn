@@ -1,0 +1,129 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://World/VisualEffects/MistSpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/EnviormentalArt/Solids/Stone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Managing/Colliders/LoadingZone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/EnviormentalArt/Solids/LabBackground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/EnviormentalArt/Solids/StoneBG.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/EnviormentalArt/Solids/LabSolids.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/WorldManagement/World.gd" type="Script" id=10]
+[ext_resource path="res://World/EnviormentalArt/Decor/RuinProps.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/EnviormentalArt/Solids/OneWayPlatforms.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+
+float deepfryColorEle(float num) {
+	float deepfriedNumber = 1.0-sin(3.14*num);
+	return deepfriedNumber;
+}
+
+
+void fragment() {
+	// `sin(pi*x)` for bring colors closer to extremes
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	color.r = deepfryColorEle(color.r);
+	color.g = deepfryColorEle(color.g);
+	color.b = deepfryColorEle(color.b);
+	
+	COLOR = color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 192, 10 )
+
+[node name="World0" type="Node2D" groups=[
+"world",
+]]
+script = ExtResource( 10 )
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="BGColor" type="ColorRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.101961, 0.0941176, 0.141176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Player" parent="Props" instance=ExtResource( 7 )]
+position = Vector2( 192, -276 )
+
+[node name="MistSpawner" parent="Props/Player" instance=ExtResource( 1 )]
+worldPath = NodePath("../..")
+playerPath = NodePath("..")
+mistRarity = 5
+mistClumpSize = 2
+color = Color( 0.45098, 0.298039, 0.227451, 1 )
+strength = 0.1
+
+[node name="SpawningManagment" parent="Props" instance=ExtResource( 12 )]
+
+[node name="Tiles" type="Node2D" parent="Props"]
+
+[node name="LabBackground" parent="Props/Tiles" instance=ExtResource( 5 )]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+z_index = -1
+
+[node name="OneWayPlatforms" parent="Props/Tiles" instance=ExtResource( 13 )]
+z_index = -1
+
+[node name="Props" parent="Props/Tiles" instance=ExtResource( 11 )]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+z_index = -1
+
+[node name="LabSolids" parent="Props/Tiles" instance=ExtResource( 8 )]
+z_index = 2
+
+[node name="Stone" parent="Props/Tiles" instance=ExtResource( 3 )]
+
+[node name="StoneBG" parent="Props/Tiles" instance=ExtResource( 6 )]
+z_index = -1
+
+[node name="CameraZones" type="Node2D" parent="Props"]
+
+[node name="CameraMoveZone" parent="Props/CameraZones" instance=ExtResource( 9 )]
+
+[node name="Atmosphere" type="CanvasModulate" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -12.0
+margin_top = -117.0
+margin_right = -12.0
+margin_bottom = -117.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
+
+[node name="LoadingZone" parent="." instance=ExtResource( 4 )]
+position = Vector2( 192, 0 )
+reqiurePrompt = false
+emitSignalInstead = true
+
+[node name="CollisionShape2D" parent="LoadingZone" index="0"]
+shape = SubResource( 3 )
+
+[connection signal="loadArea" from="LoadingZone" to="." method="_on_load_rea"]
+
+[editable path="LoadingZone"]

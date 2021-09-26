@@ -137,12 +137,17 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Walker",
 "language": "GDScript",
-"path": "res://World/Walker.gd"
+"path": "res://World/WorldManagement/Walker.gd"
 }, {
 "base": "Resource",
 "class": "WeaponConstructor",
 "language": "GDScript",
 "path": "res://Items/Weapons/WeaponGeneration/WeaponConstructor.gd"
+}, {
+"base": "Resource",
+"class": "WorldData",
+"language": "GDScript",
+"path": "res://World/WorldManagement/WorldResource.gd"
 } ]
 _global_script_class_icons={
 "BorderedSimplexNoise": "",
@@ -171,7 +176,8 @@ _global_script_class_icons={
 "Trail": "",
 "Utils": "",
 "Walker": "",
-"WeaponConstructor": ""
+"WeaponConstructor": "",
+"WorldData": ""
 }
 
 [application]

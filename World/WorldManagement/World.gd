@@ -4,13 +4,9 @@ var tiles:TileMap
 var altTiles:Array
 var backgroundTiles:TileMap
 onready var player = $Props/Player
-#onready var camera = $Props/Camera
 onready var props = $Props
 onready var atmosphere = $Atmosphere
 onready var mistSpawner = $Props/Player/MistSpawner
-#onready var tilePlaceSFX = $TilePlaceSFX
-#onready var enemySpawner = $Props/EnemySpawner
-onready var worldGenerator = $WorldGeneration
 onready var solids = $Props/Tiles/LabSolids
 onready var mainCamMove = $Props/CameraZones/CameraMoveZone
 onready var loadingZone = $LoadingZone
@@ -37,10 +33,6 @@ func _ready():
 		solids = get_node(solidPath)
 	
 	var entranceSize = solids.map_to_world(solids.get_used_rect().position)
-	entranceSize.x = 0
-	
-	worldGenerator.generate_world()
-	worldGenerator.queue_free()
 	
 	# Setting camera limits
 	var camMoveShape = mainCamMove.collisionShape.shape
@@ -55,8 +47,6 @@ func _ready():
 
 	loadingZone.position.y = abs(limits.end.y)+(16*5)
 	loadingZone.loadPath = "res://World/World%s.tscn" % str(zoneNumber+1)
-	
-#	camera.limits = limits
 
 
 func _on_drop_gun(gun, pos):
