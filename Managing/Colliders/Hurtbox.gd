@@ -6,7 +6,7 @@ signal hurt(amount, dir)
 onready var immunityTimer = $ImmunityTimer
 
 
-export var immTime:float = 0
+export var immTime:float = .01
 
 var immune:bool = false
 
