@@ -10,9 +10,11 @@ export var platForms:PackedScene
 # World Gen
 export var biomeIndex:int = 0
 export var mapColor:Color = Color.white
-export var roomTemplates:String = "res://World/Templates/"
 
-#export var growLoops:int = 3
 export var growChance:float = .5
 export var middleRemovalChance:float = .666
 export var connectionChance:float = .05
+
+# Room Gen
+export var roomTemplates:String = "res://World/Templates/LabTemplates"
+export var split:Vector2 = Vector2.ONE*16

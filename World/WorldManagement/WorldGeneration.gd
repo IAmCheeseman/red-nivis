@@ -1,9 +1,7 @@
 extends Node2D
 
 export var blowUpSize := 3
-export var growChance := .5
-export var growLoops := 5
-export var middleRemovalChance := .333
+export var growLoops := 2
 export var removalPointCount := 100
 
 var rooms = []
@@ -12,7 +10,7 @@ var rooms = []
 func _ready() -> void:
 	randomize()
 	generate_world()
-	update()
+#	update()
 
 
 func generate_world() -> void:
@@ -37,14 +35,12 @@ func generate_world() -> void:
 	remove_surrounded_tiles()
 	
 	# Connecting rooms to make bigger rooms
-	connect_rooms()
+#	connect_rooms()
 	
 	for x in rooms.size():
 		for y in rooms[0].size():
 			if get_neighbors(Vector2(x, y), false, false).size() <= 1:
 				rooms[x][y].biome = null
-	
-	grow_world(1)
 	
 
 
@@ -66,7 +62,7 @@ func remove_2x2_areas() -> void:
 			for p in points:
 				farEnough = dropPlace.distance_to(p) > 3.25
 				if !farEnough: break
-			var valid = get_neighbors(dropPlace).size() == 8 and farEnough
+			var valid = farEnough#get_neighbors(dropPlace).size() == 8 and farEnough
 			
 			# Adding the point if the spot if valid
 			if rooms[dropPlace.x][dropPlace.y].biome and valid:
@@ -161,7 +157,11 @@ func connect_rooms() -> void:
 
 
 func get_biome_by_color(color:Color):
-	var biomes = ["res://World/Biomes/Lab.tres", "res://World/Biomes/DeepLabs.tres"]
+	var biomes = [
+		"res://World/Biomes/Lab.tres", 
+		"res://World/Biomes/DeepLabs.tres",
+		"res://World/Biomes/Caves.tres"
+	]
 	for b in biomes:
 		var biome = load(b)
 		if biome.mapColor.is_equal_approx(color):
@@ -192,6 +192,7 @@ func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array
 
 
 func _draw() -> void:
+	return
 	for x in rooms.size():
 		for y in rooms[x].size():
 			if !rooms[x][y].biome:
