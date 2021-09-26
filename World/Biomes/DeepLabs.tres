@@ -10,4 +10,4 @@ mapColor = Color( 0.756863, 0.54902, 0.337255, 1 )
 roomTemplates = "res://World/Templates/"
 growChance = 0.5
 middleRemovalChance = 0.333
-connectionChance = 0.15
+connectionChance = 0.08

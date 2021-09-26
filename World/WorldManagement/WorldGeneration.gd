@@ -34,33 +34,21 @@ func generate_world() -> void:
 	
 	remove_2x2_areas()
 	grow_world()
-#	remove_2x2_areas()
 	remove_surrounded_tiles()
-#	grow_world()
-#	remove_surrounded_tiles()
-	
 	
 	# Connecting rooms to make bigger rooms
-	for x in rooms.size():
-		for y in rooms[0].size():
-			var neighbors = get_neighbors(Vector2(x, y), false, false)
-			neighbors.shuffle()
-			for i in neighbors:
-				if rooms[i.x][i.y].biome == rooms[x][y].biome:
-					if rand_range(0, 1) > rooms[i.x][i.y].biome.connectionChance:
-						continue
-					var connection = i-Vector2(x, y)
-					rooms[x][y].connections.append(connection)
-					rooms[i.x][i.y].connections.append(-connection)
-					break
+	connect_rooms()
 	
 	for x in rooms.size():
 		for y in rooms[0].size():
-			if get_neighbors(Vector2(x, y), false, false).size() == 0:
+			if get_neighbors(Vector2(x, y), false, false).size() <= 1:
 				rooms[x][y].biome = null
+	
+	grow_world(1)
+	
 
 
-func remove_2x2_areas():
+func remove_2x2_areas() -> void:
 	var points := []
 	
 	for i in removalPointCount:
@@ -98,8 +86,8 @@ func remove_2x2_areas():
 		rooms[x][y].biome = null
 
 
-func grow_world():
-	for i in growLoops:
+func grow_world(growLoops_:int=growLoops) -> void:
+	for i in growLoops_:
 		var changes = []
 		for x in rooms.size():
 			for y in rooms[0].size():
@@ -140,7 +128,7 @@ func grow_world():
 			rooms[c.pos.x][c.pos.y].biome = c.to
 
 
-func remove_surrounded_tiles():
+func remove_surrounded_tiles() -> void:
 	var removals = []
 	# Finding unneeded rooms
 	for x in rooms.size():
@@ -155,6 +143,21 @@ func remove_surrounded_tiles():
 	# Removing rooms
 	for i in removals:
 		rooms[i.x][i.y].biome = null
+
+
+func connect_rooms() -> void:
+	for x in rooms.size():
+		for y in rooms[0].size():
+			var neighbors = get_neighbors(Vector2(x, y), false, false)
+			neighbors.shuffle()
+			for i in neighbors:
+				if rooms[i.x][i.y].biome == rooms[x][y].biome:
+					if rand_range(0, 1) > rooms[i.x][i.y].biome.connectionChance:
+						continue
+					var connection = i-Vector2(x, y)
+					rooms[x][y].connections.append(connection)
+					rooms[i.x][i.y].connections.append(-connection)
+					break
 
 
 func get_biome_by_color(color:Color):
