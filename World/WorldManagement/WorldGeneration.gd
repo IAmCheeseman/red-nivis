@@ -32,8 +32,11 @@ func generate_world() -> void:
 						"connections" : []
 					})
 	
-	grow_world()
 	remove_2x2_areas()
+	grow_world()
+#	remove_2x2_areas()
+	remove_surrounded_tiles()
+#	grow_world()
 #	remove_surrounded_tiles()
 	
 	
@@ -43,7 +46,9 @@ func generate_world() -> void:
 			var neighbors = get_neighbors(Vector2(x, y), false, false)
 			neighbors.shuffle()
 			for i in neighbors:
-				if rooms[i.x][i.y].biome and rand_range(0, 1) < .05:
+				if rooms[i.x][i.y].biome == rooms[x][y].biome:
+					if rand_range(0, 1) > rooms[i.x][i.y].biome.connectionChance:
+						continue
 					var connection = i-Vector2(x, y)
 					rooms[x][y].connections.append(connection)
 					rooms[i.x][i.y].connections.append(-connection)
@@ -52,7 +57,7 @@ func generate_world() -> void:
 	for x in rooms.size():
 		for y in rooms[0].size():
 			if get_neighbors(Vector2(x, y), false, false).size() == 0:
-				rooms[x][y].color.a = 0
+				rooms[x][y].biome = null
 
 
 func remove_2x2_areas():
@@ -61,7 +66,7 @@ func remove_2x2_areas():
 	for i in removalPointCount:
 		var dropPlace:Vector2
 		var attempts := 0
-		
+		6
 		while true:
 			dropPlace = Vector2(
 				rand_range(1, rooms.size()-1),
@@ -69,10 +74,11 @@ func remove_2x2_areas():
 			).round()
 			
 			# Checking if the spot is valid
-			var valid = true
+			var farEnough = true
 			for p in points:
-				valid = dropPlace.distance_to(p) > 2.9
-				if !valid: break
+				farEnough = dropPlace.distance_to(p) > 3.25
+				if !farEnough: break
+			var valid = get_neighbors(dropPlace).size() == 8 and farEnough
 			
 			# Adding the point if the spot if valid
 			if rooms[dropPlace.x][dropPlace.y].biome and valid:
@@ -84,10 +90,12 @@ func remove_2x2_areas():
 			attempts += 1
 
 	for i in points:
-		rooms[i.x][i.y].color.a = 0
-		rooms[clamp(i.x+1, 0, rooms.size()-1)][i.y].color.a = 0
-		rooms[i.x][clamp(i.y+1, 0, rooms[0].size()-1)].color.a = 0
-		rooms[clamp(i.x+1, 0, rooms.size()-1)][clamp(i.y+1, 0, rooms[0].size()-1)].color.a = 0
+		var x := clamp(i.x+1, 0, rooms.size()-1)
+		var y := clamp(i.y+1, 0, rooms[0].size()-1)
+		rooms[i.x][i.y].biome = null
+		rooms[x][i.y].biome = null
+		rooms[i.x][y].biome = null
+		rooms[x][y].biome = null
 
 
 func grow_world():

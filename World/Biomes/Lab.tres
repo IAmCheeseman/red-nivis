@@ -9,4 +9,5 @@ biomeIndex = 0
 mapColor = Color( 0.356863, 0.690196, 0.192157, 1 )
 roomTemplates = "res://World/Templates/"
 growChance = 0.5
-middleRemovalChance = 0.333
+middleRemovalChance = 0.666
+connectionChance = 0.05

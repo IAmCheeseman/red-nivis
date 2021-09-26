@@ -15,3 +15,4 @@ export var roomTemplates:String = "res://World/Templates/"
 #export var growLoops:int = 3
 export var growChance:float = .5
 export var middleRemovalChance:float = .666
+export var connectionChance:float = .05
