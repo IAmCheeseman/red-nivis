@@ -99,11 +99,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Items/LootTable.gd"
 }, {
-"base": "Resource",
-"class": "Minibiome",
-"language": "GDScript",
-"path": "res://World/Minibiomes/Minibiome.gd"
-}, {
 "base": "Node2D",
 "class": "MoneyDropper",
 "language": "GDScript",
@@ -145,6 +140,11 @@ _global_script_classes=[ {
 "path": "res://Items/Weapons/WeaponGeneration/WeaponConstructor.gd"
 }, {
 "base": "Resource",
+"class": "WorldArea",
+"language": "GDScript",
+"path": "res://World/WorldManagement/WorldArea.gd"
+}, {
+"base": "Resource",
 "class": "WorldData",
 "language": "GDScript",
 "path": "res://World/WorldManagement/WorldResource.gd"
@@ -168,7 +168,6 @@ _global_script_class_icons={
 "Inventory": "",
 "ItemManagement": "",
 "LootTable": "",
-"Minibiome": "",
 "MoneyDropper": "",
 "Player": "",
 "Prefix": "",
@@ -177,6 +176,7 @@ _global_script_class_icons={
 "Utils": "",
 "Walker": "",
 "WeaponConstructor": "",
+"WorldArea": "",
 "WorldData": ""
 }
 

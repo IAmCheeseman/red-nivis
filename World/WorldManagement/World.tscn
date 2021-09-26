@@ -4,15 +4,15 @@
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/EnviormentalArt/Solids/Stone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Managing/Colliders/LoadingZone.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/EnviormentalArt/Solids/LabBackground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Solids/StoneBG.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://World/EnviormentalArt/Solids/LabSolids.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabSolids.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/WorldManagement/World.gd" type="Script" id=10]
 [ext_resource path="res://World/EnviormentalArt/Decor/RuinProps.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=12]
-[ext_resource path="res://World/EnviormentalArt/Solids/OneWayPlatforms.tscn" type="PackedScene" id=13]
+[ext_resource path="res://World/EnviormentalArt/Solids/Lab/OneWayPlatforms.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RuinSolids.png-538053aee75f6a01085131757c8452ff.stex"
+path="res://.import/LabSolids.png-d511f28a1c2b995de2d5801523c151fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/EnviormentalArt/Solids/RuinSolids.png"
-dest_files=[ "res://.import/RuinSolids.png-538053aee75f6a01085131757c8452ff.stex" ]
+source_file="res://World/EnviormentalArt/Solids/Lab/LabSolids.png"
+dest_files=[ "res://.import/LabSolids.png-d511f28a1c2b995de2d5801523c151fa.stex" ]
 
 [params]
 

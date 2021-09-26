@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LabBackground.png-7a3ef70615dd75d6aa6d7e3b1be26f6d.stex"
+path="res://.import/OneWayPlatforms.png-333780bbd72a3c81b0f2d0a627a1783a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/EnviormentalArt/Solids/LabBackground.png"
-dest_files=[ "res://.import/LabBackground.png-7a3ef70615dd75d6aa6d7e3b1be26f6d.stex" ]
+source_file="res://World/EnviormentalArt/Solids/Lab/OneWayPlatforms.png"
+dest_files=[ "res://.import/OneWayPlatforms.png-333780bbd72a3c81b0f2d0a627a1783a.stex" ]
 
 [params]
 

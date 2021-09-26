@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Lab"
+biomeIndex = 0
+mapColor = Color( 0.729412, 0.909804, 0.921569, 1 )
+roomTemplates = "res://World/Templates/"
+growLoops = 3
+growChance = 0.5
+middleRemovalChance = 0.666

@@ -123,6 +123,10 @@ func remove_surrounded_tiles():
 		rooms[i.x][i.y].color.a = 0
 
 
+func find_biome_with_color(color:Color):
+	var biomes = ["res://World/Biomes/Lab.tres", "res://World/Biomes/DeepLabs.tres"]
+
+
 func select_template() -> Image:
 	return load("res://Template%s.png" % round(rand_range(1, 4))).get_data()
 

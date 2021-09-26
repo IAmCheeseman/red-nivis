@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Area2Platforms.png-db47bc8544b41ba60293f1409e1b3711.stex"
+path="res://.import/DeepLabsBG.png-177ea905408ee43ed7c7edad5542f47c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/EnviormentalArt/Solids/Area2Platforms.png"
-dest_files=[ "res://.import/Area2Platforms.png-db47bc8544b41ba60293f1409e1b3711.stex" ]
+source_file="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsBG.png"
+dest_files=[ "res://.import/DeepLabsBG.png-177ea905408ee43ed7c7edad5542f47c.stex" ]
 
 [params]
 
