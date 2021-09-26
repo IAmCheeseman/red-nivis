@@ -6,8 +6,7 @@
 script = ExtResource( 1 )
 name = "Lab"
 biomeIndex = 0
-mapColor = Color( 0.729412, 0.909804, 0.921569, 1 )
+mapColor = Color( 0.356863, 0.690196, 0.192157, 1 )
 roomTemplates = "res://World/Templates/"
-growLoops = 3
 growChance = 0.5
-middleRemovalChance = 0.666
+middleRemovalChance = 0.333

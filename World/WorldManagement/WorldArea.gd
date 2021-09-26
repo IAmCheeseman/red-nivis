@@ -12,6 +12,6 @@ export var biomeIndex:int = 0
 export var mapColor:Color = Color.white
 export var roomTemplates:String = "res://World/Templates/"
 
-export var growLoops:int = 3
+#export var growLoops:int = 3
 export var growChance:float = .5
 export var middleRemovalChance:float = .666
