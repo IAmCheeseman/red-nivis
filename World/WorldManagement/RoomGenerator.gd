@@ -18,22 +18,21 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 	var image:Image = Image.new()
 	image.create(int(size.x*TEMPLATE_SIZE), int(size.y*TEMPLATE_SIZE), true, Image.FORMAT_RGBA8)
 	
-	var templates = load(TEMPLATE_PATH+templatesName)
+	var templates:Image = load(TEMPLATE_PATH+templatesName).get_data()
 	
 	image.lock()
 	for x in size.x:
 		for y in size.y:
 			var template = get_random_template(templates, templateAmount)
-			image.blit_rect(image, template.solids, Vector2(x*TEMPLATE_SIZE, y*TEMPLATE_SIZE))
+			image.blit_rect(templates, template.solids, Vector2(x*TEMPLATE_SIZE, y*TEMPLATE_SIZE))
 	image.unlock()
 	
 	return image
 
 
-static func get_random_template(template:StreamTexture, templateAmount:int) -> Dictionary:
-	var image := template.get_data()
+static func get_random_template(template:Image, templateAmount:int) -> Dictionary:
 # warning-ignore:integer_division
-	var templatex := int(rand_range(0, image.get_width()/templateAmount))*TEMPLATE_SIZE
+	var templatex := int(rand_range(0, template.get_width()/templateAmount))*TEMPLATE_SIZE
 	
 	return {
 		"solids" : Rect2(

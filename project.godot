@@ -9,16 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Resource",
-"class": "BorderedSimplexNoise",
-"language": "GDScript",
-"path": "res://addons/BorderedSimplexNoise/BorderedSimplexNoise.gd"
-}, {
-"base": "ImageTexture",
-"class": "BorderedSimplexNoiseTexture",
-"language": "GDScript",
-"path": "res://addons/BorderedSimplexNoise/BorderedSimplexNoiseTexture.gd"
-}, {
 "base": "Node2D",
 "class": "CustomParallax",
 "language": "GDScript",
@@ -28,31 +18,6 @@ _global_script_classes=[ {
 "class": "DataManager",
 "language": "GDScript",
 "path": "res://Managing/DataManager.gd"
-}, {
-"base": "Node",
-"class": "Dialogic",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/DialogicClass.gd"
-}, {
-"base": "Control",
-"class": "DialogicBackgroundMusic",
-"language": "GDScript",
-"path": "res://addons/dialogic/Nodes/BackgroundMusic.gd"
-}, {
-"base": "Node",
-"class": "DialogicDefinitionsUtil",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/DialogicDefinitionsUtil.gd"
-}, {
-"base": "Reference",
-"class": "DialogicResources",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/DialogicResources.gd"
-}, {
-"base": "Reference",
-"class": "DialogicUtil",
-"language": "GDScript",
-"path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "EnemyBullet",
@@ -155,15 +120,8 @@ _global_script_classes=[ {
 "path": "res://World/WorldManagement/WorldResource.gd"
 } ]
 _global_script_class_icons={
-"BorderedSimplexNoise": "",
-"BorderedSimplexNoiseTexture": "res://addons/BorderedSimplexNoise/BorderedSimplexNoise.png",
 "CustomParallax": "",
 "DataManager": "",
-"Dialogic": "",
-"DialogicBackgroundMusic": "",
-"DialogicDefinitionsUtil": "",
-"DialogicResources": "",
-"DialogicUtil": "",
 "EnemyBullet": "",
 "EnemySpawner": "",
 "EnemyTable": "",
@@ -196,7 +154,6 @@ run/main_scene="res://Managing/Init.tscn"
 GameManager="*res://Managing/GameManager.gd"
 Memory="*res://Managing/MemoryManager.gd"
 Settings="*res://Managing/settings.gd"
-DialogicSingleton="*res://addons/dialogic/Other/DialogicSingleton.gd"
 Cursor="*res://UI/Cursor/Cursor.tscn"
 
 [debug]
@@ -219,7 +176,7 @@ search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/BorderedSimplexNoise/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/BorderedSimplexNoise/plugin.cfg" )
 
 [importer_defaults]
 
