@@ -11,10 +11,12 @@ const DOWN = Color("#e089e0")
 const RIGHT = Color("#75d1e4")
 const LEFT = Color("#952008")
 
+enum {IS_UP, IS_DOWN, IS_RIGHT, IS_LEFT, IS_TILE}
+
 
 static func generate(seed_:int, templatesName:String, templateAmount:int) -> Image:
 	seed(seed_)
-	var size:Vector2 = Vector2(rand_range(2, 2), rand_range(2, 2)).round()
+	var size:Vector2 = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
 	var image:Image = Image.new()
 	image.create(int(size.x*TEMPLATE_SIZE), int(size.y*TEMPLATE_SIZE), true, Image.FORMAT_RGBA8)
 	
@@ -24,7 +26,35 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 	for x in size.x:
 		for y in size.y:
 			var template = get_random_template(templates, templateAmount)
-			image.blit_rect(templates, template.solids, Vector2(x*TEMPLATE_SIZE, y*TEMPLATE_SIZE))
+			var room = templates.get_rect(template.solids)
+			room.lock()
+			for xx in room.get_width():
+				for yy in room.get_height():
+					var color:Color = room.get_pixel(xx, yy)
+					var pixelDir := get_tile_dir(color)
+					var doTheThing:bool = false
+					
+					if pixelDir == IS_UP and y != 0:
+						color = EMPTY
+					elif pixelDir == IS_DOWN and y != size.y-1:
+						color = EMPTY
+					elif pixelDir == IS_RIGHT and x != size.x-1:
+						color = EMPTY
+					elif pixelDir == IS_LEFT and x != 0:
+						color = EMPTY
+					elif color.is_equal_approx(EMPTY):
+						color = EMPTY
+					else:
+						color = TILE
+					
+					image.set_pixel(
+						xx+(x*TEMPLATE_SIZE),
+						yy+(y*TEMPLATE_SIZE),
+						color
+					)
+					
+			room.unlock()
+			
 	image.unlock()
 	
 	return image
@@ -45,3 +75,16 @@ static func get_random_template(template:Image, templateAmount:int) -> Dictionar
 		)
 	}
 
+
+static func get_tile_dir(color:Color) -> int:
+	match color:
+		UP:
+			return IS_UP
+		DOWN:
+			return IS_DOWN
+		RIGHT:
+			return IS_RIGHT
+		LEFT:
+			return IS_LEFT
+		_:
+			return IS_TILE
