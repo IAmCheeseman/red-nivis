@@ -24,6 +24,8 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 	
 	var canBlockOffy = size.x != 1
 	var canBlockOffx = size.y != 1
+	if canBlockOffx: canBlockOffx = size != Vector2.ONE*2
+	if canBlockOffy: canBlockOffy = size != Vector2.ONE*2
 	var blocksy = 0
 	var blocksx = 0
 	
@@ -33,17 +35,24 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 			var template = get_random_template(templates, templateAmount)
 			var room = templates.get_rect(template.solids)
 			room.lock()
+			
+			# Deciding whether or not to block off this template in a certain direction
 			var blockDir = int(rand_range(0, 3))
-			var doBlock = rand_range(0, 1) < .666
+			var doBlock = rand_range(0, 1) < .5
 			
 			match blockDir in [IS_RIGHT, IS_LEFT]:
 				true:
-					if !canBlockOffx or blocksx > 0: doBlock = false
-					blocksx += 1
+					if !canBlockOffx or blocksx > size.y-1:
+						doBlock = false
+					else:
+						blocksx += 1
 				false:
-					if !canBlockOffy or blocksy > 0: doBlock = false
-					blocksy += 1
+					if !canBlockOffy or blocksy > size.x-1:
+						doBlock = false
+					else:
+						blocksy += 1
 			
+			# Adding the template
 			for xx in room.get_width():
 				for yy in room.get_height():
 					var color:Color = room.get_pixel(xx, yy)
@@ -62,7 +71,7 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 					else:
 						color = TILE
 					
-					if pixelDir == blockDir and doBlock:
+					if doBlock and pixelDir == blockDir:
 						color = TILE
 					
 					image.set_pixel(
