@@ -22,17 +22,32 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 	
 	var templates:Image = load(TEMPLATE_PATH+templatesName).get_data()
 	
+	var canBlockOffy = size.x != 1
+	var canBlockOffx = size.y != 1
+	var blocksy = 0
+	var blocksx = 0
+	
 	image.lock()
 	for x in size.x:
 		for y in size.y:
 			var template = get_random_template(templates, templateAmount)
 			var room = templates.get_rect(template.solids)
 			room.lock()
+			var blockDir = int(rand_range(0, 3))
+			var doBlock = rand_range(0, 1) < .666
+			
+			match blockDir in [IS_RIGHT, IS_LEFT]:
+				true:
+					if !canBlockOffx or blocksx > 0: doBlock = false
+					blocksx += 1
+				false:
+					if !canBlockOffy or blocksy > 0: doBlock = false
+					blocksy += 1
+			
 			for xx in room.get_width():
 				for yy in room.get_height():
 					var color:Color = room.get_pixel(xx, yy)
 					var pixelDir := get_tile_dir(color)
-					var doTheThing:bool = false
 					
 					if pixelDir == IS_UP and y != 0:
 						color = EMPTY
@@ -47,12 +62,15 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 					else:
 						color = TILE
 					
+					if pixelDir == blockDir and doBlock:
+						color = TILE
+					
 					image.set_pixel(
 						xx+(x*TEMPLATE_SIZE),
 						yy+(y*TEMPLATE_SIZE),
 						color
 					)
-					
+		
 			room.unlock()
 			
 	image.unlock()
