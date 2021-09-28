@@ -176,7 +176,7 @@ search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/BorderedSimplexNoise/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 

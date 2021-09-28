@@ -42,12 +42,12 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 			
 			match blockDir in [IS_RIGHT, IS_LEFT]:
 				true:
-					if !canBlockOffx or blocksx > size.y-1:
+					if !canBlockOffx or blocksx > 0:
 						doBlock = false
 					else:
 						blocksx += 1
 				false:
-					if !canBlockOffy or blocksy > size.x-1:
+					if !canBlockOffy or blocksy > 0:
 						doBlock = false
 					else:
 						blocksy += 1
