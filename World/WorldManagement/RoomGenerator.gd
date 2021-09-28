@@ -6,6 +6,7 @@ const TEMPLATE_PATH = "res://World/Templates/"
 
 const EMPTY = Color("#ffffff")
 const TILE = Color("#000000")
+const PLATFORM = Color("#3b486d")
 const UP = Color("#5bb031")
 const DOWN = Color("#e089e0")
 const RIGHT = Color("#75d1e4")
@@ -34,7 +35,9 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 		for y in size.y:
 			var template = get_random_template(templates, templateAmount)
 			var room = templates.get_rect(template.solids)
+			var platforms = templates.get_rect(template.platforms)
 			room.lock()
+			platforms.lock()
 			
 			# Deciding whether or not to block off this template in a certain direction
 			var blockDir = int(rand_range(0, 3))
@@ -56,7 +59,9 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 			for xx in room.get_width():
 				for yy in room.get_height():
 					var color:Color = room.get_pixel(xx, yy)
+					var pColor = platforms.get_pixel(xx, yy)
 					var pixelDir := get_tile_dir(color)
+					var pPixelDir := get_tile_dir(pColor)
 					
 					if pixelDir == IS_UP and y != 0:
 						color = EMPTY
@@ -70,6 +75,9 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 						color = EMPTY
 					else:
 						color = TILE
+					if (pColor.is_equal_approx(UP) or pColor.is_equal_approx(DOWN))\
+					and !color.is_equal_approx(TILE):
+						color = PLATFORM
 					
 					if doBlock and pixelDir == blockDir:
 						color = TILE
@@ -79,8 +87,8 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 						yy+(y*TEMPLATE_SIZE),
 						color
 					)
-		
 			room.unlock()
+			platforms.unlock()
 			
 	image.unlock()
 	
