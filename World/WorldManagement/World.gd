@@ -35,6 +35,8 @@ func _ready():
 	if platformPath:
 		platforms = get_node(platformPath)
 	
+	var roofProps := [preload("res://World/Props/Foliage/Vine/Vine.tscn")]
+	
 	var room := RoomGenerator.generate(randi(), "LabTemplates.png", 11)
 	room.lock()
 	for x in room.get_width():
@@ -43,6 +45,15 @@ func _ready():
 			if pixel.is_equal_approx(RoomGenerator.TILE):
 				solids.set_cell(x, y, 0)
 				solids.update_bitmask_area(Vector2(x, y))
+				
+				if rand_range(0, 1) < .5 and room.get_pixel(x, y+1).is_equal_approx(RoomGenerator.EMPTY):
+					roofProps.shuffle()
+					var prop = roofProps.front().instance()
+					prop.position = Vector2(x, y)*solids.cell_size
+					prop.position.y += solids.cell_size.y*1.5
+					prop.position.x += solids.cell_size.x*.5
+					props.add_child(prop)
+				
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				platforms.set_cell(x, y, 0)
 				platforms.update_bitmask_area(Vector2(x, y))

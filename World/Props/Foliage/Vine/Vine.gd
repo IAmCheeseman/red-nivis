@@ -11,6 +11,8 @@ func _ready() -> void:
 	shape.extents = shapeVec
 	
 	collision.shape = shape
+	
+	material = material.duplicate()
 
 
 func _process(delta: float) -> void:

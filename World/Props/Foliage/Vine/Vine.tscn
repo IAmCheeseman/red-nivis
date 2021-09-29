@@ -6,11 +6,12 @@
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
-shader_param/sway = 4.0
+shader_param/sway = 0.0
 shader_param/strength = 4.0
 
 [node name="Vine" type="Sprite"]
 material = SubResource( 2 )
+position = Vector2( 0, 14 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
