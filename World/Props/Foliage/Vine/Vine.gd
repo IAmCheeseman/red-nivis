@@ -6,6 +6,8 @@ var targetSway = 0
 var slowDown = 2
 
 func _ready() -> void:
+	texture = load("res://World/Props/Foliage/Vine/Vine%s.png" % round(rand_range(1, 2)))
+	
 	var shape = RectangleShape2D.new()
 	var shapeVec = Vector2(texture.get_width()*.5, texture.get_height()*.5)
 	shape.extents = shapeVec
