@@ -47,18 +47,19 @@ func _ready():
 				platforms.set_cell(x, y, 0)
 				platforms.update_bitmask_area(Vector2(x, y))
 
-	var entranceSize = solids.map_to_world(solids.get_used_rect().position)
-
 	# Setting camera limits
 	var camMoveShape = mainCamMove.collisionShape.shape
 	var limits = solids.get_used_rect()
 
 	limits.position = solids.map_to_world(limits.position)
 	limits.end = solids.map_to_world(limits.end)
-	limits.end.x = get_viewport_rect().end.x
+	limits.end.x = clamp(limits.end.x, get_viewport_rect().end.x, INF)
+	limits.end.y = clamp(limits.end.y, get_viewport_rect().end.y, INF)
 
-	mainCamMove.position = (limits.end*.5).abs()+entranceSize
-	camMoveShape.extents = (limits.end*.5).abs()-entranceSize
+	mainCamMove.position = (limits.end*.5).abs()
+	camMoveShape.extents = (limits.end*.5).abs()
+	
+	mainCamMove.collisionShape.shape = camMoveShape
 
 
 func _on_drop_gun(gun, pos):

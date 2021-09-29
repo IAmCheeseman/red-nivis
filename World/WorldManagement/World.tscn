@@ -89,7 +89,6 @@ z_index = 2
 z_index = -1
 
 [node name="CameraZones" type="Node2D" parent="Props"]
-visible = false
 
 [node name="CameraMoveZone" parent="Props/CameraZones" instance=ExtResource( 9 )]
 
