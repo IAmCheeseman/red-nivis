@@ -4,6 +4,7 @@ const DEFAULT_GRAVITY = 350
 const HEART_CHANCE = .05
 
 var isDead = false
+var editingInventory = false
 var currentCamera:Camera2D
 
 var attackingEnemies = 0 setget set_attacking_enemies
