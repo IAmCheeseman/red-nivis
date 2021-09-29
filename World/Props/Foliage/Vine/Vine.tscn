@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://World/Props/Foliage/Vine/Vine1.png" type="Texture" id=1]
+[ext_resource path="res://World/Props/Foliage/Vine/Vine.gd" type="Script" id=2]
+[ext_resource path="res://World/Props/Foliage/Disturb.gdshader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/sway = 4.0
+shader_param/strength = 4.0
+
+[node name="Vine" type="Sprite"]
+material = SubResource( 2 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+
+[connection signal="area_entered" from="Detection" to="." method="_on_area_entered"]
