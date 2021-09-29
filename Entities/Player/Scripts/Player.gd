@@ -12,7 +12,6 @@ onready var rightHand = $ScaleHelper/Sprite/Arm/Hand
 onready var collision = $CollisionShape2D
 onready var scaleHelper = $ScaleHelper
 onready var hurtbox = $Hurtbox
-onready var grappleRay = $GrappleRay
 onready var vignette = $CanvasLayer/Vignette
 onready var animationPlayer = $AnimationPlayer
 onready var SaS = $SquashAndStretch

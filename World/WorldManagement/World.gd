@@ -16,15 +16,7 @@ export var solidPath:NodePath
 export var platformPath:NodePath
 export var zoneNumber:int = 0
 
-var queuedChunks : Array
-var queueFreeChunks : Array
-var generatedChunks : Array
-var ruinedChunks : Array
-var propedChunks : Array
-var lastChunk = Vector2.ZERO
-var chunkAmount = 3
-var firstTime = true
-var enemyCount = 0
+var worldData = preload("res://World/WorldManagement/WorldData.tres")
 
 
 func _ready():
@@ -37,7 +29,7 @@ func _ready():
 	
 	var roofProps := [preload("res://World/Props/Foliage/Vine/Vine.tscn")]
 	
-	var room := RoomGenerator.generate(randi(), "LabTemplates.png", 11)
+	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 11, [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP])
 	room.lock()
 	for x in room.get_width():
 		for y in room.get_height():
@@ -57,7 +49,13 @@ func _ready():
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				platforms.set_cell(x, y, 0)
 				platforms.update_bitmask_area(Vector2(x, y))
-
+	
+	var roomSize = solids.get_used_rect().end
+	create_loading_zone(Vector2(0, roomSize.y*.5)*16, Vector2(.5, roomSize.y*.5)*16, Vector2.LEFT) # Left
+	create_loading_zone(Vector2(roomSize.x, roomSize.y*.5)*16, Vector2(.5, roomSize.y*.5)*16, Vector2.RIGHT) # Right
+	create_loading_zone(Vector2(roomSize.x*.5, 0)*16, Vector2(roomSize.x*.5, .5)*16, Vector2.UP) # Up
+	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y)*16, Vector2(roomSize.x*.5, .5)*16, Vector2.DOWN) # Down
+	
 	# Setting camera limits
 	var camMoveShape = mainCamMove.collisionShape.shape
 	var limits = solids.get_used_rect()
@@ -80,12 +78,30 @@ func _on_drop_gun(gun, pos):
 	GameManager.spawnManager.add_item(gun)
 
 
-#func _on_load_rea() -> void:
-#	var timer = Timer.new()
-#	timer.wait_time = .4
-#	timer.connect("timeout", get_tree(), "change_scene", [loadingZone.loadPath])
-#	add_child(timer)
-#	timer.start()
-#
-#	screenTrans.out()
+func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
+	var area = Area2D.new()
+	area.position = pos
+	add_child(area)
+	var collision = CollisionShape2D.new()
+	var shape = RectangleShape2D.new()
+	shape.extents = size
+	collision.shape = shape
+	area.add_child(collision)
+	
+	area.collision_layer = 0
+	area.collision_mask = 2
+	area.connect("area_entered", self, "_on_load_area", [direction])
+	
+
+
+func _on_load_area(area: Area2D, direction: Vector2) -> void:
+	var timer = Timer.new()
+	timer.wait_time = .4
+	timer.connect("timeout", get_tree(), "reload_current_scene")
+	add_child(timer)
+	timer.start()
+	
+	worldData.position += direction
+
+	screenTrans.out()
 

@@ -15,7 +15,7 @@ const LEFT = Color("#952008")
 enum {IS_UP, IS_DOWN, IS_RIGHT, IS_LEFT, IS_TILE}
 
 
-static func generate(seed_:int, templatesName:String, templateAmount:int) -> Image:
+static func generate(seed_:int, templatesName:String, templateAmount:int, exits:PoolVector2Array) -> Image:
 	seed(seed_)
 	var size:Vector2 = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
 	var image:Image = Image.new()
@@ -29,6 +29,11 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 	if canBlockOffy: canBlockOffy = size != Vector2.ONE*2
 	var blocksy = 0
 	var blocksx = 0
+	
+	var upExitI = round(rand_range(1, size.x-1))
+	var downExitI = round(rand_range(1, size.x-1))
+	var rightExitI = round(rand_range(1, size.y-1))
+	var leftExitI = round(rand_range(1, size.y-1))
 	
 	image.lock()
 	for x in size.x:
@@ -63,13 +68,17 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 					var pixelDir := get_tile_dir(color)
 					var pPixelDir := get_tile_dir(pColor)
 					
-					if pixelDir == IS_UP and y != 0:
+					if (pixelDir == IS_UP and y != 0)\
+					or (pixelDir == IS_UP and x == upExitI-1 and y == 0 and Vector2.UP in exits):
 						color = EMPTY
-					elif pixelDir == IS_DOWN and y != size.y-1:
+					elif (pixelDir == IS_DOWN and y != size.y-1)\
+					or (pixelDir == IS_DOWN and x == downExitI-1 and y == size.y-1 and Vector2.DOWN in exits):
 						color = EMPTY
-					elif pixelDir == IS_RIGHT and x != size.x-1:
+					elif (pixelDir == IS_RIGHT and x != size.x-1)\
+					or (pixelDir == IS_RIGHT and y == rightExitI-1 and x == size.x-1 and Vector2.RIGHT in exits):
 						color = EMPTY
-					elif pixelDir == IS_LEFT and x != 0:
+					elif (pixelDir == IS_LEFT and x != 0)\
+					or (pixelDir == IS_LEFT and y == leftExitI-1 and x == 0 and Vector2.LEFT in exits):
 						color = EMPTY
 					elif color.is_equal_approx(EMPTY):
 						color = EMPTY
@@ -89,7 +98,7 @@ static func generate(seed_:int, templatesName:String, templateAmount:int) -> Ima
 					)
 			room.unlock()
 			platforms.unlock()
-			
+	
 	image.unlock()
 	
 	return image
