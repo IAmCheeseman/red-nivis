@@ -51,7 +51,7 @@ func _ready():
 					var prop = roofProps.front().instance()
 					prop.position = Vector2(x, y)*solids.cell_size
 					prop.position.y += solids.cell_size.y
-					prop.position.x += solids.cell_size.x*.5
+					prop.position.x += round(rand_range(0, solids.cell_size.x))
 					props.add_child(prop)
 				
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):

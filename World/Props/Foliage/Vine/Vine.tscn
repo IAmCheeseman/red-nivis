@@ -11,6 +11,7 @@ shader_param/strength = 2.0
 
 [node name="Vine" type="Sprite"]
 material = SubResource( 2 )
+z_index = 4
 texture = ExtResource( 1 )
 offset = Vector2( 0, 9 )
 script = ExtResource( 2 )
