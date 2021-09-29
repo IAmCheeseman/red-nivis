@@ -46,11 +46,11 @@ func _ready():
 				solids.set_cell(x, y, 0)
 				solids.update_bitmask_area(Vector2(x, y))
 				
-				if rand_range(0, 1) < .5 and room.get_pixel(x, y+1).is_equal_approx(RoomGenerator.EMPTY):
+				if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y+1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
 					roofProps.shuffle()
 					var prop = roofProps.front().instance()
 					prop.position = Vector2(x, y)*solids.cell_size
-					prop.position.y += solids.cell_size.y*1.5
+					prop.position.y += solids.cell_size.y
 					prop.position.x += solids.cell_size.x*.5
 					props.add_child(prop)
 				

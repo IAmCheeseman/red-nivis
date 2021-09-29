@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	material.set_shader_param("sway", lerp(material.get_shader_param("sway"), targetSway, slowDown*delta))
+	material.set_shader_param("sway", lerp(material.get_shader_param("sway"), targetSway, 10*delta))
 	if material.get_shader_param("sway") >= targetSway-.005:
 		targetSway = 0
 		slowDown = 2
