@@ -57,15 +57,20 @@ func _ready():
 	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y)*16, Vector2(roomSize.x*.5, .5)*16, Vector2.DOWN) # Down
 	
 	# Setting camera limits
-	var camMoveShape = mainCamMove.collisionShape.shape
+	var camMoveShape = mainCamMove.collisionShape.shape.duplicate()
 	var limits = solids.get_used_rect()
 
 	limits.position = solids.map_to_world(limits.position)
 	limits.end = solids.map_to_world(limits.end)
+	
+	var offset:Vector2 = get_viewport_rect().end-limits.end
+	offset.x = clamp(offset.x, 0, INF); offset.y = clamp(offset.y, 0, INF)
+	
 	limits.end.x = clamp(limits.end.x, get_viewport_rect().end.x, INF)
 	limits.end.y = clamp(limits.end.y, get_viewport_rect().end.y, INF)
 
 	mainCamMove.position = (limits.end*.5).abs()
+	mainCamMove.position -= offset*.5
 	camMoveShape.extents = (limits.end*.5).abs()
 	
 	mainCamMove.collisionShape.shape = camMoveShape
