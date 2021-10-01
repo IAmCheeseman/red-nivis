@@ -41,7 +41,6 @@ var state = states.WALK
 
 
 var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
-var dashParticles = preload("res://Entities/Player/Assets/Dash.tscn")
 var playerData = preload("res://Entities/Player/Player.tres")
 var lockMovement = false
 
@@ -180,31 +179,7 @@ func _input(event):
 	
 	collision.disabled = Input.is_action_pressed("down") and is_on_platform() and !test_move(transform, Vector2(vel.normalized().x, 0))
 	
-	# Dashing
-	if Input.is_action_just_pressed("dash") and playerData.dashesLeft > 0:
-		var dashDir = Vector2.ZERO
-		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
-		dashDir.y = Input.get_action_strength("down")
-		dashDir.normalized()
-		dashDir *= playerData.dashSpeed
-		
-		dashDir.y = clamp(dashDir.y, -playerData.jumpForce, INF)
-		
-		if dashDir == Vector2.ZERO:
-			return
-		
-		vel = dashDir
-		
-		state = states.DASH
-		playerData.dashesLeft -= 1
-		dashCooldown.start()
-		
-		SaS.play("Dash")
-		
-		var newDashPar = dashParticles.instance()
-		sprite.add_child(newDashPar)
-		newDashPar.emitting = true
-		jumpSFX.play()
+	
 
 	# Controller Controls
 	# Aiming
