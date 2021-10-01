@@ -66,7 +66,6 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 					var color:Color = room.get_pixel(xx, yy)
 					var pColor = platforms.get_pixel(xx, yy)
 					var pixelDir := get_tile_dir(color)
-					var pPixelDir := get_tile_dir(pColor)
 					
 					if (pixelDir == IS_UP and y != 0)\
 					or (pixelDir == IS_UP and x == upExitI-1 and y == 0 and Vector2.UP in exits):

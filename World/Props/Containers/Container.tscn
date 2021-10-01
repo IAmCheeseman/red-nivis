@@ -29,6 +29,7 @@ tracks/0/keys = {
 }
 
 [node name="Container" type="KinematicBody2D"]
+z_index = -1
 collision_layer = 0
 script = ExtResource( 2 )
 

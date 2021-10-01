@@ -36,6 +36,10 @@ func _ready():
 		preload("res://World/Props/Containers/Locker/Locker.tscn"),
 		preload("res://World/Props/Containers/Safe/Safe.tscn")
 	]
+	var enemies := [
+		preload("res://Entities/Enemies/MiniDeathMachine/MDM.tscn"),
+		preload("res://Entities/Enemies/MinigunMachine/MinigunMachine.tscn")
+	]
 	
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 11, connections)
@@ -48,13 +52,14 @@ func _ready():
 				solids.update_bitmask_area(Vector2(x, y))
 				
 				if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y+1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					add_props(roofProps, x, y)
-				if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y-1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					add_props(groundProps, x, y-1)
-				
+					add_props(roofProps, x, y+1)
+				if rand_range(0, 1) < .1 and room.get_pixel(x, clamp(y-1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
+					add_props(groundProps, clamp(x, 2, room.get_width()-2), y)
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				platforms.set_cell(x, y, 0)
 				platforms.update_bitmask_area(Vector2(x, y))
+			if rand_range(0, 1) < .007 and room.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
+					add_props(enemies, x, y)
 	
 	var roomSize = solids.get_used_rect().end
 	create_loading_zone(Vector2(0, roomSize.y*.5)*16, Vector2(.5, roomSize.y*.5)*16, Vector2.LEFT) # Left
@@ -105,7 +110,6 @@ func add_props(propArr:Array, x, y):
 	propArr.shuffle()
 	var prop = propArr.front().instance()
 	prop.position = Vector2(x, y)*solids.cell_size
-	prop.position.y += solids.cell_size.y
 	prop.position.x += round(rand_range(0, solids.cell_size.x))
 	props.add_child(prop)
 

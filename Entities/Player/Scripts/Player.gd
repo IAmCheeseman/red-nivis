@@ -166,6 +166,8 @@ func is_on_platform():
 
 
 func _input(event):
+	if playerData.isDead:
+		return
 	# Jumping
 	if Input.is_action_just_pressed("jump"):
 		triedJumpRecent = true
