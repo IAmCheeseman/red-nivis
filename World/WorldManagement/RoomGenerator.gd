@@ -84,7 +84,7 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 						color = EMPTY
 					else:
 						color = TILE
-					if (pColor.is_equal_approx(UP) or pColor.is_equal_approx(DOWN))\
+					if (pColor.is_equal_approx(UP) or pColor.is_equal_approx(DOWN) or pColor.is_equal_approx(TILE))\
 					and !color.is_equal_approx(TILE):
 						color = PLATFORM
 					

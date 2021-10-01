@@ -31,7 +31,8 @@ func _ready():
 	
 	var roofProps := [preload("res://World/Props/Foliage/Vine/Vine.tscn")]
 	
-	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 11, worldData.get_connected_rooms(worldData.position))
+	var connections:Array = worldData.get_connected_rooms(worldData.position)
+	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 11, connections)
 	room.lock()
 	for x in room.get_width():
 		for y in room.get_height():
