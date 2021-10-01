@@ -29,7 +29,13 @@ func _ready():
 	if platformPath:
 		platforms = get_node(platformPath)
 	
-	var roofProps := [preload("res://World/Props/Foliage/Vine/Vine.tscn")]
+	var roofProps := [
+		preload("res://World/Props/Foliage/Vine/Vine.tscn")
+	]
+	var groundProps := [
+		preload("res://World/Props/Containers/Locker/Locker.tscn"),
+		preload("res://World/Props/Containers/Safe/Safe.tscn")
+	]
 	
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 11, connections)
@@ -42,12 +48,9 @@ func _ready():
 				solids.update_bitmask_area(Vector2(x, y))
 				
 				if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y+1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					roofProps.shuffle()
-					var prop = roofProps.front().instance()
-					prop.position = Vector2(x, y)*solids.cell_size
-					prop.position.y += solids.cell_size.y
-					prop.position.x += round(rand_range(0, solids.cell_size.x))
-					props.add_child(prop)
+					add_props(roofProps, x, y)
+				if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y-1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
+					add_props(groundProps, x, y-1)
 				
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				platforms.set_cell(x, y, 0)
@@ -96,6 +99,15 @@ func _on_drop_gun(gun, pos):
 	gun.isPickedUp = false
 	gun.set_logic(false)
 	GameManager.spawnManager.add_item(gun)
+
+
+func add_props(propArr:Array, x, y):
+	propArr.shuffle()
+	var prop = propArr.front().instance()
+	prop.position = Vector2(x, y)*solids.cell_size
+	prop.position.y += solids.cell_size.y
+	prop.position.x += round(rand_range(0, solids.cell_size.x))
+	props.add_child(prop)
 
 
 func pad(startPos:Vector2, endPos:Vector2, incDir:Vector2, padDir:Vector2):
