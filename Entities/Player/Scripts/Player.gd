@@ -124,6 +124,8 @@ func walk_state(delta):
 
 
 func animate(moveDir:Vector2):
+	if playerData.isDead:
+		return
 	var noHand = ""
 	if itemHolder.get_child_count() > 0:
 		noHand = "NoHand" if itemHolder.get_child(0).stats.isTwoHanded else ""
@@ -250,6 +252,7 @@ func show_death_screen(timer:Timer) -> void:
 	timer.queue_free()
 
 func _on_health_changed(dir):
+	return
 	# Feedback
 	if !dashCooldown.is_stopped():
 		return

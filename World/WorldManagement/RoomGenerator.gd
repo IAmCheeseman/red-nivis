@@ -67,6 +67,7 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 					var pColor = platforms.get_pixel(xx, yy)
 					var pixelDir := get_tile_dir(color)
 					
+					# Determining the color
 					if (pixelDir == IS_UP and y != 0)\
 					or (pixelDir == IS_UP and x == upExitI-1 and y == 0 and Vector2.UP in exits):
 						color = EMPTY
@@ -87,8 +88,8 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 					and !color.is_equal_approx(TILE):
 						color = PLATFORM
 					
-					if doBlock and pixelDir == blockDir:
-						color = TILE
+#					if doBlock and pixelDir == blockDir:
+#						color = TILE
 					
 					image.set_pixel(
 						xx+(x*TEMPLATE_SIZE),
