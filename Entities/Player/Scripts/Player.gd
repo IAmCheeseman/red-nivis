@@ -114,7 +114,9 @@ func walk_state(delta):
 		if just_landed():
 			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
 			bunnyHopTimer.start()
-
+		
+		set_collision_mask_bit(4, !Input.is_action_pressed("down"))
+		
 		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 	else:
 		sprite.rotation_degrees = 0
@@ -176,8 +178,6 @@ func _input(event):
 	# Adjustable jump height
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
-	
-	collision.disabled = Input.is_action_pressed("down") and is_on_platform() and !test_move(transform, Vector2(vel.normalized().x, 0))
 	
 	
 
