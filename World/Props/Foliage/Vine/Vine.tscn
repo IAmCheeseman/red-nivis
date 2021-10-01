@@ -1,25 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://World/Props/Foliage/Vine/Vine1.png" type="Texture" id=1]
 [ext_resource path="res://World/Props/Foliage/Vine/Vine.gd" type="Script" id=2]
-[ext_resource path="res://World/Props/Foliage/Disturb.gdshader" type="Shader" id=3]
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 3 )
-shader_param/sway = 2.0
-shader_param/strength = 2.0
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.0
 
-[node name="Vine" type="Sprite"]
-material = SubResource( 2 )
-z_index = 4
-texture = ExtResource( 1 )
-offset = Vector2( 0, 9 )
+[node name="Vine" type="StaticBody2D"]
 script = ExtResource( 2 )
 
-[node name="Detection" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 6
+[node name="queueArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="queueArea"]
+shape = SubResource( 1 )
 
-[connection signal="area_entered" from="Detection" to="." method="_on_area_entered"]
+[connection signal="area_entered" from="queueArea" to="." method="queue_free"]

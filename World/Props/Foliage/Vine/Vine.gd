@@ -1,30 +1,51 @@
-extends Sprite
+extends StaticBody2D
 
-onready var collision = $Detection/CollisionShape2D
+const SEG_HEIGHT = 8
 
-var targetSway = 0
-var slowDown = 2
+onready var queueArea = $queueArea
+
+export var length = 12
+
+var vineSeg = preload("res://World/Props/Foliage/Vine/Middle.tscn")
+var vineEnd = preload("res://World/Props/Foliage/Vine/Bottom.tscn")
+var vineBegin = preload("res://World/Props/Foliage/Vine/Top.tscn")
+
 
 func _ready() -> void:
-	texture = load("res://World/Props/Foliage/Vine/Vine%s.png" % round(rand_range(1, 2)))
+#	if queueArea.get_overlapping_areas().size() > 0:
+#		queue_free()
+#	queueArea.queue_free()
+	length = round(rand_range(3, 5))
 	
-	var shape = RectangleShape2D.new()
-	var shapeVec = Vector2(texture.get_width()*.5, texture.get_height()*.5)
-	shape.extents = shapeVec
+	var prevPin := PinJoint2D.new()
+	prevPin.disable_collision = true
+	prevPin.softness = 0
+	prevPin.node_a = get_path()
+	add_child(prevPin)
 	
-	collision.shape = shape
 	
-	material = material.duplicate()
+	for i in length:
+		var newVineSeg
+		if i == 0:
+			newVineSeg = vineBegin.instance()
+		elif i == length-1:
+			newVineSeg = vineEnd.instance()
+		else:
+			newVineSeg = vineSeg.instance()
+		newVineSeg.position.y = i*SEG_HEIGHT
+		newVineSeg.mass = 3
+		newVineSeg.gravity_scale = 9.8/2
+		add_child(newVineSeg)
+		
+		prevPin.node_b = newVineSeg.get_path()
+		
+		prevPin = prevPin.duplicate()
+		prevPin.position = newVineSeg.position+Vector2(0, SEG_HEIGHT)
+		prevPin.node_a = newVineSeg.get_path()
+		add_child(prevPin)
+		
 
 
-func _process(delta: float) -> void:
-	material.set_shader_param("sway", lerp(material.get_shader_param("sway"), targetSway, 10*delta))
-	if material.get_shader_param("sway") >= targetSway-.005:
-		targetSway = 0
-		slowDown = 2
-
-
-func _on_area_entered(area: Area2D) -> void:
-	targetSway = 4
-	slowDown = 10
-
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("use_item"):
+		get_child(get_child_count()-2).apply_central_impulse(Vector2.RIGHT.rotated(deg2rad(rand_range(0, 360)))*100)
