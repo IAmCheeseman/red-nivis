@@ -30,10 +30,10 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 	var blocksy = 0
 	var blocksx = 0
 	
-	var upExitI = round(rand_range(1, size.x-1))
-	var downExitI = round(rand_range(1, size.x-1))
-	var rightExitI = round(rand_range(1, size.y-1))
-	var leftExitI = round(rand_range(1, size.y-1))
+	var upExitI = round(rand_range(1, size.x))
+	var downExitI = round(rand_range(1, size.x))
+	var rightExitI = round(rand_range(1, size.y))
+	var leftExitI = round(rand_range(1, size.y))
 	
 	image.lock()
 	for x in size.x:
@@ -106,7 +106,7 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 
 static func get_random_template(template:Image, templateAmount:int) -> Dictionary:
 # warning-ignore:integer_division
-	var templatex := int(rand_range(0, template.get_width()/templateAmount))*TEMPLATE_SIZE
+	var templatex := int(rand_range(0, (template.get_width()/templateAmount)+1))*TEMPLATE_SIZE
 	
 	return {
 		"solids" : Rect2(

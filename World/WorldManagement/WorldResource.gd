@@ -11,9 +11,20 @@ func _init() -> void:
 	set_starting_position()
 
 
-func generate_world(seed_:int=randi()):
+func generate_world(seed_:int=randi()) -> void:
 	var worldGenerateor = WorldGenerator.new()
 	rooms = worldGenerateor.generate_world(seed_)
+
+
+func get_connected_rooms(room:Vector2) -> Array:
+	var pos := Vector2(-1, -1)
+	var connections := []
+	for i in 9:
+		if rooms[room.x+pos.x][room.y+pos.y].biome:
+			connections.append(pos)
+		pos.x = wrapi(pos.x+1, -1, 2)
+		if pos.x == -1: pos.y += 1
+	return connections
 
 
 func set_starting_position() -> void:
