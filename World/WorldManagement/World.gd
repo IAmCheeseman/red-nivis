@@ -144,7 +144,9 @@ func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
 	
 
 
-func _on_load_area(_area: Area2D, direction: Vector2) -> void:
+func _on_load_area(area: Area2D, direction: Vector2) -> void:
+	if !area.is_in_group("player"):
+		return
 	var timer = Timer.new()
 	timer.wait_time = .4
 	timer.connect("timeout", get_tree(), "reload_current_scene")
