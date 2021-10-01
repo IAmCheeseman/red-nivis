@@ -1,4 +1,5 @@
-extends Node2D
+extends Reference
+class_name WorldGenerator
 
 export var blowUpSize := 3
 export var growLoops := 2
@@ -7,13 +8,8 @@ export var removalPointCount := 100
 var rooms = []
 
 
-func _ready() -> void:
-	randomize()
-	generate_world()
-#	update()
-
-
-func generate_world() -> void:
+func generate_world(seed_:int=randi()) -> Array:
+	seed(seed_)
 	# Creating and filling out the 2D array
 	var template := select_template()
 	template.lock()
@@ -41,6 +37,7 @@ func generate_world() -> void:
 		for y in rooms[0].size():
 			if get_neighbors(Vector2(x, y), false, false).size() <= 1:
 				rooms[x][y].biome = null
+	return rooms
 	
 
 
@@ -189,25 +186,4 @@ func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array
 		if pos.x == -1: pos.y += 1
 	neighbors.erase(vec)
 	return neighbors
-
-
-func _draw() -> void:
-	return
-	for x in rooms.size():
-		for y in rooms[x].size():
-			if !rooms[x][y].biome:
-				continue
-				
-			var color = rooms[x][y].biome.mapColor
-			draw_rect(Rect2(x*6, y*6, 5, 5), color)
-			for i in rooms[x][y].connections:
-				match i:
-					Vector2.UP:
-						draw_rect(Rect2(x*6, y*6-1, 5, 1), color)
-					Vector2.DOWN:
-						draw_rect(Rect2(x*6, y*6+5, 5, 1), color)
-					Vector2.LEFT:
-						draw_rect(Rect2(x*6-1, y*6, 1, 5), color)
-					Vector2.RIGHT:
-						draw_rect(Rect2(x*6+5, y*6, 1, 5), color)
 

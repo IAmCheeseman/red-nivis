@@ -118,6 +118,11 @@ _global_script_classes=[ {
 "class": "WorldData",
 "language": "GDScript",
 "path": "res://World/WorldManagement/WorldResource.gd"
+}, {
+"base": "Reference",
+"class": "WorldGenerator",
+"language": "GDScript",
+"path": "res://World/WorldManagement/WorldGeneration.gd"
 } ]
 _global_script_class_icons={
 "CustomParallax": "",
@@ -141,7 +146,8 @@ _global_script_class_icons={
 "Walker": "",
 "WeaponConstructor": "",
 "WorldArea": "",
-"WorldData": ""
+"WorldData": "",
+"WorldGenerator": ""
 }
 
 [application]
