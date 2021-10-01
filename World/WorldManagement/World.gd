@@ -1,5 +1,7 @@
 extends Node2D
 
+const PADDING = 20
+
 var tiles:TileMap
 var altTiles:Array
 var backgroundTiles:TileMap
@@ -56,6 +58,7 @@ func _ready():
 	create_loading_zone(Vector2(roomSize.x*.5, 0)*16, Vector2(roomSize.x*.5, .5)*16, Vector2.UP) # Up
 	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y)*16, Vector2(roomSize.x*.5, .5)*16, Vector2.DOWN) # Down
 	
+	
 	# Setting camera limits
 	var camMoveShape = mainCamMove.collisionShape.shape.duplicate()
 	var limits = solids.get_used_rect()
@@ -68,12 +71,23 @@ func _ready():
 	
 	limits.end.x = clamp(limits.end.x, get_viewport_rect().end.x, INF)
 	limits.end.y = clamp(limits.end.y, get_viewport_rect().end.y, INF)
-
+	
 	mainCamMove.position = (limits.end*.5).abs()
 	mainCamMove.position -= offset*.5
 	camMoveShape.extents = (limits.end*.5).abs()
 	
 	mainCamMove.collisionShape.shape = camMoveShape
+	
+	# PADDING
+	
+	# Left padding
+	pad(Vector2(0, -PADDING), Vector2(0, roomSize.y+PADDING), Vector2.DOWN, Vector2.LEFT)
+	# Right padding
+	pad(Vector2(roomSize.x-1, -PADDING), Vector2(roomSize.x-1, roomSize.y+PADDING), Vector2.DOWN, Vector2.RIGHT)
+	# Up padding
+	pad(Vector2(-PADDING, 0), Vector2(roomSize.x+PADDING, 0), Vector2.RIGHT, Vector2.UP)
+	# Down padding
+	pad(Vector2(-PADDING, roomSize.y-1), Vector2(roomSize.x+PADDING, roomSize.y-1), Vector2.RIGHT, Vector2.DOWN)
 
 
 func _on_drop_gun(gun, pos):
@@ -81,6 +95,18 @@ func _on_drop_gun(gun, pos):
 	gun.isPickedUp = false
 	gun.set_logic(false)
 	GameManager.spawnManager.add_item(gun)
+
+
+func pad(startPos:Vector2, endPos:Vector2, incDir:Vector2, padDir:Vector2):
+	var pos = startPos
+	
+	while pos != endPos:
+		if solids.get_cellv(pos) > -1:
+			for i in PADDING:
+				var updatePos:Vector2 = pos+(padDir*i)
+				solids.set_cellv(updatePos, 0)
+				solids.update_bitmask_area(updatePos)
+		pos += incDir
 
 
 func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
