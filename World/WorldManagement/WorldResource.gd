@@ -22,7 +22,7 @@ func get_connected_rooms(room:Vector2) -> Array:
 	for i in 9:
 		if rooms[room.x+pos.x][room.y+pos.y].biome:
 			connections.append(pos)
-		pos.x = wrapi(pos.x+1, -1, 2)
+		pos.x = wrapi(int(pos.x+1), -1, 2)
 		if pos.x == -1: pos.y += 1
 	return connections
 

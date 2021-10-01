@@ -51,8 +51,10 @@ func _ready():
 				solids.set_cell(x, y, 0)
 				solids.update_bitmask_area(Vector2(x, y))
 				
+# warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y+1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
 					add_props(roofProps, x, y+1)
+# warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .1 and room.get_pixel(x, clamp(y-1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
 					add_props(groundProps, clamp(x, 2, room.get_width()-2), y)
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
@@ -142,7 +144,7 @@ func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
 	
 
 
-func _on_load_area(area: Area2D, direction: Vector2) -> void:
+func _on_load_area(_area: Area2D, direction: Vector2) -> void:
 	var timer = Timer.new()
 	timer.wait_time = .4
 	timer.connect("timeout", get_tree(), "reload_current_scene")

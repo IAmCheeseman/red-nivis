@@ -7,7 +7,7 @@ var playerData = preload("res://Entities/Player/Player.tres")
 var dashParticles = preload("res://Entities/Player/Assets/Dash.tscn")
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	# Dashing
 	if Input.is_action_just_pressed("dash") and playerData.dashesLeft > 0:
 		var dashDir = Vector2.ZERO
