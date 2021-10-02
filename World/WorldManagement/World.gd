@@ -32,9 +32,12 @@ func _ready():
 	var roofProps := [
 		preload("res://World/Props/Foliage/Vine/Vine.tscn")
 	]
-	var groundProps := [
+	var containers := [
 		preload("res://World/Props/Containers/Locker/Locker.tscn"),
 		preload("res://World/Props/Containers/Safe/Safe.tscn")
+	]
+	var groundProps := [
+		
 	]
 	var enemies := [
 		preload("res://Entities/Enemies/MiniDeathMachine/MDM.tscn"),
@@ -45,6 +48,7 @@ func _ready():
 	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 13, connections)
 	
 	var viableEnemySpawns = [] 
+	var viableContainerSpawns = []
 	
 	room.lock()
 	for x in room.get_width():
@@ -59,19 +63,27 @@ func _ready():
 					add_props(roofProps, x, y+1)
 # warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .1 and room.get_pixel(x, clamp(y-1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					add_props(groundProps, clamp(x, 2, room.get_width()-2), y)
+					if groundProps.size() > 0: add_props(groundProps, clamp(x, 2, room.get_width()-2), y)
+					viableContainerSpawns.append(Vector2(clamp(x, 2, room.get_width()-2), y))
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				platforms.set_cell(x, y, 0)
 				platforms.update_bitmask_area(Vector2(x, y))
 			if room.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
 				viableEnemySpawns.append(Vector2(x, y))
 	
+	viableContainerSpawns.shuffle()
+	for i in Globals.MAX_CONTAINERS:
+		if viableContainerSpawns.size() == 0: 
+			break
+		var spawnPos:Vector2 = viableContainerSpawns.pop_front()
+		add_props(containers, spawnPos.x, spawnPos.y)
+	
 	randomize()
 	viableEnemySpawns.shuffle()
 	for i in ceil((room.get_width()/Globals.TEMPLATE_SIZE)*(room.get_height()/Globals.TEMPLATE_SIZE)):
 		if viableEnemySpawns.size() == 0:
 			break
-		var spawnPos:Vector2 = viableEnemySpawns.pop_front()#*solids.cell_size
+		var spawnPos:Vector2 = viableEnemySpawns.pop_front()
 		add_props([preload("res://Entities/Effects/EnemySpawn.tscn")], spawnPos.x, spawnPos.y)
 	
 	var roomSize = solids.get_used_rect().end

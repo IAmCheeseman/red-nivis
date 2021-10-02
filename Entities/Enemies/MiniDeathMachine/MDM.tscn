@@ -97,7 +97,6 @@ shape = SubResource( 2 )
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 2 )]
 visible = false
-mustBeInSight = false
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
 shape = SubResource( 3 )

@@ -6,7 +6,7 @@
 [node name="Body0" instance=ExtResource( 1 )]
 damage = 11.0
 accuracy = 5.0
-cooldown = 0.4
+cooldown = 0.3
 magazineSize = 3
 
 [node name="Sprite" parent="." index="0"]

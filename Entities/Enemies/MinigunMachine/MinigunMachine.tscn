@@ -103,6 +103,7 @@ overheatShotCount = 3
 damage = 1
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper/Sprite/Minigun"]
+modulate = Color( 1, 0.72399, 0.72399, 1 )
 material = ExtResource( 8 )
 rotation = 1.5708
 texture = ExtResource( 3 )
@@ -135,7 +136,6 @@ collision_layer = 4
 shape = SubResource( 3 )
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 6 )]
-mustBeInSight = false
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
 shape = SubResource( 4 )
