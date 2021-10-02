@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -26,6 +26,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 8.57423, 1 ),
 "update": 0,
 "values": [ Color( 1, 0.721569, 0.721569, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "init"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="CircleShape2D" id=2]
@@ -103,7 +119,6 @@ overheatShotCount = 3
 damage = 1
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper/Sprite/Minigun"]
-modulate = Color( 1, 0.72399, 0.72399, 1 )
 material = ExtResource( 8 )
 rotation = 1.5708
 texture = ExtResource( 3 )
@@ -120,7 +135,9 @@ wait_time = 3.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScaleHelper/Sprite/Minigun"]
+autoplay = "init"
 anims/cooldown = SubResource( 1 )
+anims/init = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

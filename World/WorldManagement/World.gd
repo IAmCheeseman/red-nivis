@@ -137,7 +137,7 @@ func add_props(propArr:Array, x, y):
 	propArr.shuffle()
 	var prop = propArr.front().instance()
 	prop.position = Vector2(x, y)*solids.cell_size
-	prop.position.x += round(rand_range(0, solids.cell_size.x))
+	prop.position.x += solids.cell_size.x*.5
 	props.add_child(prop)
 
 
