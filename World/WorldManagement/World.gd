@@ -66,10 +66,12 @@ func _ready():
 			if room.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
 				viableEnemySpawns.append(Vector2(x, y))
 	
-	for i in ceil(((room.get_width()/10)*(room.get_height()/10))/3):
+	randomize()
+	viableEnemySpawns.shuffle()
+	for i in ceil((room.get_width()/Globals.TEMPLATE_SIZE)*(room.get_height()/Globals.TEMPLATE_SIZE)):
 		if viableEnemySpawns.size() == 0:
 			break
-		var spawnPos:Vector2 = viableEnemySpawns.pop_front()*solids.cell_size
+		var spawnPos:Vector2 = viableEnemySpawns.pop_front()#*solids.cell_size
 		add_props([preload("res://Entities/Effects/EnemySpawn.tscn")], spawnPos.x, spawnPos.y)
 	
 	var roomSize = solids.get_used_rect().end
@@ -188,7 +190,7 @@ func get_free_spot(startPos:Vector2, endPos:Vector2, incDir:Vector2) -> Dictiona
 
 func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
 	var area = Area2D.new()
-	area.position = pos
+	area.position = pos+((direction*2)*16)
 	add_child(area)
 	var collision = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
