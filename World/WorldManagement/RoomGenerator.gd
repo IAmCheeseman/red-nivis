@@ -23,13 +23,6 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 	
 	var templates:Image = load(TEMPLATE_PATH+templatesName).get_data()
 	
-	var canBlockOffy = size.x != 1
-	var canBlockOffx = size.y != 1
-	if canBlockOffx: canBlockOffx = size != Vector2.ONE*2
-	if canBlockOffy: canBlockOffy = size != Vector2.ONE*2
-	var blocksy = 0
-	var blocksx = 0
-	
 	var upExitI = round(rand_range(1, size.x))
 	var downExitI = round(rand_range(1, size.x))
 	var rightExitI = round(rand_range(1, size.y))
@@ -43,22 +36,6 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 			var platforms = templates.get_rect(template.platforms)
 			room.lock()
 			platforms.lock()
-			
-			# Deciding whether or not to block off this template in a certain direction
-			var blockDir = int(rand_range(0, 3))
-			var doBlock = rand_range(0, 1) < .5
-			
-			match blockDir in [IS_RIGHT, IS_LEFT]:
-				true:
-					if !canBlockOffx or blocksx > 0:
-						doBlock = false
-					else:
-						blocksx += 1
-				false:
-					if !canBlockOffy or blocksy > 0:
-						doBlock = false
-					else:
-						blocksy += 1
 			
 			# Adding the template
 			for xx in room.get_width():
@@ -87,9 +64,6 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 					if (pColor.is_equal_approx(UP) or pColor.is_equal_approx(DOWN) or pColor.is_equal_approx(TILE))\
 					and !color.is_equal_approx(TILE):
 						color = PLATFORM
-					
-#					if doBlock and pixelDir == blockDir:
-#						color = TILE
 					
 					image.set_pixel(
 						xx+(x*TEMPLATE_SIZE),

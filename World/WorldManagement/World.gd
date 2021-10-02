@@ -39,10 +39,6 @@ func _ready():
 	var groundProps := [
 		
 	]
-	var enemies := [
-		preload("res://Entities/Enemies/MiniDeathMachine/MDM.tscn"),
-		preload("res://Entities/Enemies/MinigunMachine/MinigunMachine.tscn")
-	]
 	
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 13, connections)
@@ -80,6 +76,8 @@ func _ready():
 	
 	randomize()
 	viableEnemySpawns.shuffle()
+# warning-ignore:integer_division
+# warning-ignore:integer_division
 	for i in ceil((room.get_width()/Globals.TEMPLATE_SIZE)*(room.get_height()/Globals.TEMPLATE_SIZE)):
 		if viableEnemySpawns.size() == 0:
 			break
