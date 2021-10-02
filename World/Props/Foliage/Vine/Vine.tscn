@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
 shader_param/sway = 2.0
-shader_param/strength = 2.0
+shader_param/strength = 1.5
 shader_param/offset = 0.0
 
 [node name="Vine" type="Sprite"]
@@ -17,6 +17,7 @@ z_index = -1
 texture = ExtResource( 3 )
 centered = false
 offset = Vector2( -8, -16 )
+hframes = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
