@@ -25,6 +25,5 @@ func _process(delta):
 	update()
 
 
-
 func _draw():
 	draw_arc(Vector2.ZERO, radius, 0, deg2rad(362), int(360*.5), Color.white, lineWidth, true)

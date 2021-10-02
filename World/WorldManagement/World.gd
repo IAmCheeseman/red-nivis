@@ -70,7 +70,7 @@ func _ready():
 		if viableEnemySpawns.size() == 0:
 			break
 		var spawnPos:Vector2 = viableEnemySpawns.pop_front()
-		add_props(enemies, spawnPos.x, spawnPos.y)
+		add_props([preload("res://Entities/Effects/EnemySpawn.tscn")], spawnPos.x, spawnPos.y)
 	
 	var roomSize = solids.get_used_rect().end
 	create_loading_zone(Vector2(0, roomSize.y*.5)*16, Vector2(.5, roomSize.y*.5)*16, Vector2.LEFT) # Left
