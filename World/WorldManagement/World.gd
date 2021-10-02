@@ -63,13 +63,13 @@ func _ready():
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				platforms.set_cell(x, y, 0)
 				platforms.update_bitmask_area(Vector2(x, y))
-			if rand_range(0, 1) < Globals.ENEMY_SPAWN_CHANCE and room.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
+			if room.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
 				viableEnemySpawns.append(Vector2(x, y))
 	
-	for i in Globals.MAX_ENEMIES:
+	for i in ceil(((room.get_width()/10)*(room.get_height()/10))/3):
 		if viableEnemySpawns.size() == 0:
 			break
-		var spawnPos:Vector2 = viableEnemySpawns.pop_front()
+		var spawnPos:Vector2 = viableEnemySpawns.pop_front()*solids.cell_size
 		add_props([preload("res://Entities/Effects/EnemySpawn.tscn")], spawnPos.x, spawnPos.y)
 	
 	var roomSize = solids.get_used_rect().end

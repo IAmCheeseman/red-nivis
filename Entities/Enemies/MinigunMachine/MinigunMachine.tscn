@@ -112,6 +112,7 @@ hframes = 4
 
 [node name="Cooldown" type="Timer" parent="ScaleHelper/Sprite/Minigun"]
 one_shot = true
+autostart = true
 
 [node name="OverheatCooldown" type="Timer" parent="ScaleHelper/Sprite/Minigun"]
 wait_time = 3.5
