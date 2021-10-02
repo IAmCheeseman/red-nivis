@@ -5,13 +5,10 @@
 [ext_resource path="res://General/Outline.shader" type="Shader" id=3]
 
 [sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/Slot.png-c3dabab1b9471a34cb3fe7bec0b47623.stex"
 
 [sub_resource type="StreamTexture" id=2]
-load_path = "res://.import/SlotPressed.png-ddbacac1a489c10b58df20bf6827b85e.stex"
 
 [sub_resource type="StreamTexture" id=3]
-load_path = "res://.import/SlotHover.png-7d9bc903ca922261bf7278352f84965b.stex"
 
 [sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;

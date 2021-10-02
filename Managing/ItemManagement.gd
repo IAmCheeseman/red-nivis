@@ -9,7 +9,7 @@ var tierColors = {
 
 enum {COMMON, UNCOMMON, RARE}
 
-var itemDropped = preload("res://Items/DroppedItem.tscn")
+#var itemDropped = preload("res://Items/DroppedItem.tscn")
 
 
 func convert_tier_to_str(tier:int):
@@ -20,7 +20,7 @@ func convert_tier_to_str(tier:int):
 
 
 func create_item(item, withForce:bool=false):
-	var newItem = itemDropped.instance()
+	var newItem = load("res://Items/DroppedItem.tscn").instance()
 	newItem.item = item
 	if withForce:
 		var force = (Vector2.UP+Vector2(rand_range(-.25, .25), 0)).normalized()*70
