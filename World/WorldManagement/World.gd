@@ -42,7 +42,7 @@ func _ready():
 	]
 	
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
-	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 11, connections)
+	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 13, connections)
 	room.lock()
 	for x in room.get_width():
 		for y in room.get_height():
@@ -89,6 +89,8 @@ func _ready():
 	
 	mainCamMove.collisionShape.shape = camMoveShape
 	
+	set_player_pos()
+	
 	# PADDING
 	
 	# Left padding
@@ -128,6 +130,53 @@ func pad(startPos:Vector2, endPos:Vector2, incDir:Vector2, padDir:Vector2):
 		pos += incDir
 
 
+func set_player_pos():
+	var size = solids.get_used_rect().end
+	match worldData.moveDir:
+		Vector2.RIGHT:
+			var ppos = get_free_spot(Vector2.ZERO, Vector2(0, size.y), Vector2.DOWN).end
+			ppos.x += 1.8
+			player.position = ppos*solids.cell_size
+			player.position.y -= 8
+		Vector2.LEFT:
+			var ppos = get_free_spot(Vector2(size.x-1, 0), Vector2(size.x-1, size.y), Vector2.DOWN).end
+			ppos.x -= 1.8
+			player.position = ppos*solids.cell_size
+			player.position.y -= 8
+		Vector2.UP:
+			var positions = get_free_spot(Vector2(0, size.y-1), Vector2(size.x, size.y-1), Vector2.RIGHT)
+			var x = (positions.end.x-positions.start.x)*.5
+			var ppos = Vector2(positions.start.x+x, size.y-2)
+			player.position = ppos*solids.cell_size
+			player.vel.y = -player.playerData.jumpForce
+		Vector2.DOWN:
+			var positions = get_free_spot(Vector2.ZERO, Vector2(size.x, 0), Vector2.RIGHT)
+			var x = (positions.end.x-positions.start.x)*.5
+			var ppos = Vector2(positions.start.x+x, 2)
+			player.position = ppos*solids.cell_size
+	while solids.get_cellv(solids.world_to_map(player.position)) != -1:
+		player.position.y -= solids.cell_size.y
+
+
+func get_free_spot(startPos:Vector2, endPos:Vector2, incDir:Vector2) -> Dictionary:
+	var firstUpdatedPos := startPos
+	var lastUpdatedPos := startPos
+	var updateCount = 0
+	var i := startPos
+	
+	while i != endPos:
+		if solids.get_cellv(i) == -1:
+			if updateCount == 0: firstUpdatedPos = i
+			lastUpdatedPos = i
+			updateCount += 1
+		i += incDir
+	
+	return {
+		"start" : firstUpdatedPos,
+		"end" : lastUpdatedPos
+	}
+
+
 func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
 	var area = Area2D.new()
 	area.position = pos
@@ -141,7 +190,6 @@ func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
 	area.collision_layer = 0
 	area.collision_mask = 2
 	area.connect("area_entered", self, "_on_load_area", [direction])
-	
 
 
 func _on_load_area(area: Area2D, direction: Vector2) -> void:
@@ -154,6 +202,7 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 	timer.start()
 	
 	worldData.position += direction
+	worldData.moveDir = direction
 
 	screenTrans.out()
 

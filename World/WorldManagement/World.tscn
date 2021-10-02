@@ -33,7 +33,7 @@ __meta__ = {
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Player" parent="Props" instance=ExtResource( 7 )]
-position = Vector2( 95.8917, 70.4171 )
+position = Vector2( 70, 94 )
 
 [node name="MistSpawner" parent="Props/Player" instance=ExtResource( 1 )]
 worldPath = NodePath("../..")
