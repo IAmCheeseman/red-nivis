@@ -86,7 +86,6 @@ func _physics_process(delta):
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
 
-
 	lastFrameGroundState = is_grounded()
 
 
@@ -144,7 +143,7 @@ func animate(moveDir:Vector2):
 
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
-		if vel.y > -playerData.jumpForce*0.15: SaS.play("Land")
+		if vel.y > -playerData.jumpForce*0.15 and !Input.is_action_pressed("down"): SaS.play("Land")
 		if triedJumpRecent:
 			jump()
 			bunnyHopTimer.start()
