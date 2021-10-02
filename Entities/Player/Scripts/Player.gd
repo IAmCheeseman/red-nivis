@@ -82,7 +82,7 @@ func _physics_process(delta):
 					0,
 					playerData.accelaration*delta
 				)
-			vel.y += GameManager.gravity*delta
+			vel.y += Globals.GRAVITY*delta
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
 
@@ -180,8 +180,6 @@ func _input(event):
 	# Adjustable jump height
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
-	
-	
 
 	# Controller Controls
 	# Aiming
@@ -193,8 +191,6 @@ func _input(event):
 		mouseTarget = joystickVector#+(OS.window_size/2)
 		mouseTarget += Utils.get_relative_to_camera(self, $Camera)
 		Input.warp_mouse_position(mouseTarget)
-
-
 
 # warning-ignore:return_value_discarded
 	if Input.is_key_pressed(KEY_K):

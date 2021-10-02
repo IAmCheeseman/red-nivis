@@ -43,6 +43,9 @@ func _ready():
 	
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 13, connections)
+	
+	var viableEnemySpawns = [] 
+	
 	room.lock()
 	for x in room.get_width():
 		for y in room.get_height():
@@ -61,7 +64,13 @@ func _ready():
 				platforms.set_cell(x, y, 0)
 				platforms.update_bitmask_area(Vector2(x, y))
 			if rand_range(0, 1) < Globals.ENEMY_SPAWN_CHANCE and room.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
-					add_props(enemies, x, y)
+				viableEnemySpawns.append(Vector2(x, y))
+	
+	for i in Globals.MAX_ENEMIES:
+		if viableEnemySpawns.size() == 0:
+			break
+		var spawnPos:Vector2 = viableEnemySpawns.pop_front()
+		add_props(enemies, spawnPos.x, spawnPos.y)
 	
 	var roomSize = solids.get_used_rect().end
 	create_loading_zone(Vector2(0, roomSize.y*.5)*16, Vector2(.5, roomSize.y*.5)*16, Vector2.LEFT) # Left

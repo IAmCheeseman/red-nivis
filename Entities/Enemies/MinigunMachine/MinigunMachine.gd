@@ -42,7 +42,9 @@ func _process(delta: float) -> void:
 	if !player:
 		player = playerDetection.get_player()
 		healthBar.hide()
+		minigun.isOn = false
 	else:
+		minigun.isOn = true
 		minigunSprite.look_at(player.global_position)
 		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
 		minigunSprite.scale.y = -1 if angleVec.x > 0 else 1
