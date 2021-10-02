@@ -13,7 +13,7 @@ var playedDialog = false
 
 
 func _process(delta):
-	vel.y += GameManager.gravity*delta
+	vel.y += Globals.GRAVITY*delta
 	vel.y = move_and_slide(vel).y
 	if playerDetection.get_player() and !playedDialog:
 		playedDialog = true

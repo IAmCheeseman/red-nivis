@@ -60,7 +60,7 @@ func _ready():
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				platforms.set_cell(x, y, 0)
 				platforms.update_bitmask_area(Vector2(x, y))
-			if rand_range(0, 1) < .007 and room.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
+			if rand_range(0, 1) < Globals.ENEMY_SPAWN_CHANCE and room.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
 					add_props(enemies, x, y)
 	
 	var roomSize = solids.get_used_rect().end

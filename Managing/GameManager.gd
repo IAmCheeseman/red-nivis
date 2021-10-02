@@ -1,7 +1,5 @@
 extends Node2D
 
-const DEFAULT_GRAVITY = 350
-const HEART_CHANCE = .05
 
 var isDead = false
 var editingInventory = false
@@ -12,8 +10,6 @@ var attackingEnemies = 0 setget set_attacking_enemies
 var spawnManager:Node2D
 var itemManager:ItemManagement = ItemManagement.new()
 var frameFreezer:FrameFreezer = FrameFreezer.new()
-
-var gravity = 350
 
 # warning-ignore:unused_signal
 signal screenshake

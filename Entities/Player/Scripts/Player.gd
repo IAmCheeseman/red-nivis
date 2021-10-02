@@ -104,7 +104,7 @@ func walk_state(delta):
 			playerData.accelaration*delta
 		)
 		# Do stuff in the air.
-		vel.y += GameManager.gravity*delta
+		vel.y += Globals.GRAVITY*delta
 
 		var faceDir = get_local_mouse_position()
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
@@ -204,7 +204,7 @@ func _input(event):
 func _on_dash_cooldown_timeout():
 	state = states.WALK
 	vel.x *= .1
-	vel.y = GameManager.gravity*.25
+	vel.y = Globals.GRAVITY*.25
 	if is_grounded(): playerData.dashesLeft = playerData.maxDashes
 
 

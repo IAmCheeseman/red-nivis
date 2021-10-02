@@ -95,7 +95,7 @@ func _on_hurt(amount:float, dir:Vector2) -> void:
 		GameManager.spawnManager.spawn_object(newDP)
 		GameManager.frameFreezer.freeze_frames(.07)
 		
-		if rand_range(0, 1) < GameManager.HEART_CHANCE:
+		if rand_range(0, 1) < Globals.HEART_CHANCE:
 			var newHealth = healthPickup.instance()
 			newHealth.position = position
 			GameManager.spawnManager.spawn_object(newHealth)
