@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=8 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [ext_resource path="res://UI/Assets/CheckButtonEnabled.png" type="Texture" id=1]
 [ext_resource path="res://UI/Assets/CheckButtonDisabled.png" type="Texture" id=2]
 [ext_resource path="res://UI/Assets/SliderH.png" type="Texture" id=3]
 [ext_resource path="res://UI/Assets/SliderHandleH.png" type="Texture" id=4]
+[ext_resource path="res://UI/Assets/VScrollGrabber.png" type="Texture" id=5]
+[ext_resource path="res://UI/Assets/VscrollBar.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -12,6 +14,16 @@
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 50, 7 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 5, 7 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 5, 18 )
 
 [resource]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
@@ -413,10 +425,10 @@ VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber = SubResource( 4 )
 VScrollBar/styles/grabber_highlight = null
 VScrollBar/styles/grabber_pressed = null
-VScrollBar/styles/scroll = null
+VScrollBar/styles/scroll = SubResource( 5 )
 VScrollBar/styles/scroll_focus = null
 VSeparator/constants/separation = 4
 VSeparator/styles/separator = null

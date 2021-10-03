@@ -29,14 +29,14 @@ __meta__ = {
 [node name="Slot1" parent="Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 210.0
+margin_top = 172.0
 margin_right = 39.0
-margin_bottom = 210.0
+margin_bottom = 191.0
 
 [node name="Slot2" parent="Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 214.0
+margin_top = 195.0
 margin_right = 39.0
 margin_bottom = 214.0
 

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entities/Shopkeep/ShopSlot.gd" type="Script" id=1]
+
+[node name="ShopSlot" type="ColorRect"]
+margin_right = 39.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 39, 19 )
+rect_pivot_offset = Vector2( 19, 9 )
+color = Color( 0, 0, 0, 0.498039 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

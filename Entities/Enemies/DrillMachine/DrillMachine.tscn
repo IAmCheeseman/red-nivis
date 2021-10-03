@@ -58,7 +58,7 @@ tracks/2/path = NodePath("ScaleHelper:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -77,17 +77,16 @@ friction = 12.0
 wanderRange = 32
 
 [node name="ScaleHelper" type="Node2D" parent="."]
-scale = Vector2( 0.953553, 1.04645 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
 material = ExtResource( 10 )
-position = Vector2( 0, -0.464466 )
+position = Vector2( 0, -0.933396 )
 texture = ExtResource( 2 )
 
 [node name="Drill" type="Sprite" parent="ScaleHelper/Sprite"]
 show_behind_parent = true
 material = ExtResource( 10 )
-position = Vector2( 0, 11.6967 )
+position = Vector2( 0, 11.4667 )
 texture = ExtResource( 3 )
 hframes = 2
 

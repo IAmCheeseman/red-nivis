@@ -166,7 +166,7 @@ tracks/1/path = NodePath("ScaleHelper:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -230,7 +230,7 @@ tracks/1/path = NodePath("ScaleHelper:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -375,7 +375,7 @@ tracks/1/path = NodePath("ScaleHelper:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
@@ -474,7 +474,7 @@ tracks/1/path = NodePath("ScaleHelper:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
@@ -628,10 +628,11 @@ material = SubResource( 2 )
 position = Vector2( 0, -15.334 )
 scale = Vector2( 1, 0.969635 )
 texture = ExtResource( 1 )
-offset = Vector2( -5, 2 )
+offset = Vector2( -5, 1 )
 flip_h = true
 hframes = 6
 vframes = 4
+frame = 6
 
 [node name="Arm" type="Sprite" parent="ScaleHelper/Sprite"]
 visible = false

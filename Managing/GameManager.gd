@@ -3,6 +3,7 @@ extends Node2D
 
 var isDead = false
 var editingInventory = false
+var inGUI = false
 var currentCamera:Camera2D
 
 var attackingEnemies = 0 setget set_attacking_enemies

@@ -91,7 +91,7 @@ func _input(event):
 		inventory.add_item(items_.pop_front())
 
 	# Slot scrolling
-	if !playerData.isDead:
+	if !playerData.isDead and !GameManager.inGUI:
 		if event.is_action_released("hotbar_scroll_left"):
 			inventory.selectedSlot = wrapi(inventory.selectedSlot-1,
 									0, slots.get_child_count())

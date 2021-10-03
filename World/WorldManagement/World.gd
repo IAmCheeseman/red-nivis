@@ -151,7 +151,6 @@ func _ready():
 	create_loading_zone(Vector2(roomSize.x*.5, 0)*16, Vector2(roomSize.x*.5, .5)*16, Vector2.UP) # Up
 	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y)*16, Vector2(roomSize.x*.5, .5)*16, Vector2.DOWN) # Down
 	
-	
 	# Setting camera limits
 	var camMoveShape = mainCamMove.collisionShape.shape.duplicate()
 	var limits = solids.get_used_rect()
