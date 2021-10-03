@@ -77,17 +77,17 @@ friction = 12.0
 wanderRange = 32
 
 [node name="ScaleHelper" type="Node2D" parent="."]
-scale = Vector2( 0.924683, 1.07532 )
+scale = Vector2( 0.953553, 1.04645 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
 material = ExtResource( 10 )
-position = Vector2( 0, -0.753173 )
+position = Vector2( 0, -0.464466 )
 texture = ExtResource( 2 )
 
 [node name="Drill" type="Sprite" parent="ScaleHelper/Sprite"]
 show_behind_parent = true
 material = ExtResource( 10 )
-position = Vector2( 0, 11.8702 )
+position = Vector2( 0, 11.6967 )
 texture = ExtResource( 3 )
 hframes = 2
 
