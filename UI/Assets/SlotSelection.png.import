@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SlotSelection.png-1e2dd3dc60396ddf3746cb20fbc1000e.stex"
+path="res://.import/SlotSelection.png-f510920c314167884d9683fbd41270f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Assets/SlotSelection.png"
-dest_files=[ "res://.import/SlotSelection.png-1e2dd3dc60396ddf3746cb20fbc1000e.stex" ]
+source_file="res://Entities/Enemies/DrillMachine/UI/Assets/SlotSelection.png"
+dest_files=[ "res://.import/SlotSelection.png-f510920c314167884d9683fbd41270f8.stex" ]
 
 [params]
 

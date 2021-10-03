@@ -35,7 +35,7 @@ func _input(event):
 			var newItem = GameManager.itemManager.create_item(inventory.items[inventory.selectedSlot])
 			newItem.position = position
 			GameManager.spawnManager.spawn_object(newItem)
-			inventory.remove_item(inventory.selectedSlot)
+			inventory.remove_item(inventory.sel)
 		inventory.add_item(item)
 		pickUpAnim.play("PickUp")
 		pickUpArea.disconnect("area_exited", self, "_on_player_far")

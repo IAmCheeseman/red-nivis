@@ -117,9 +117,17 @@ shape = SubResource( 5 )
 [node name="MoneyDropper" type="Node2D" parent="."]
 script = ExtResource( 10 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Default"
-anims/Default = SubResource( 6 )
+[node name="Timers" type="Node" parent="."]
+
+[node name="WanderTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="DefendTimer" type="Timer" parent="Timers"]
+wait_time = 0.3
+one_shot = true
+
+[node name="RetreatTimer" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="Healthbar" type="TextureProgress" parent="."]
 margin_left = -9.0
@@ -133,17 +141,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timers" type="Node" parent="."]
-
-[node name="WanderTimer" type="Timer" parent="Timers"]
-one_shot = true
-
-[node name="DefendTimer" type="Timer" parent="Timers"]
-wait_time = 0.3
-one_shot = true
-
-[node name="RetreatTimer" type="Timer" parent="Timers"]
-one_shot = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Default"
+anims/Default = SubResource( 6 )
 
 [connection signal="death" from="." to="MoneyDropper" method="drop_money"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
