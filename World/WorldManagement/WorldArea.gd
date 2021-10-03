@@ -5,7 +5,7 @@ class_name WorldArea
 export var name:String = "Unamed"
 export var solids:PackedScene
 export var background:PackedScene
-export var platForms:PackedScene
+export var platforms:PackedScene
 
 # World Gen
 export var biomeIndex:int = 0

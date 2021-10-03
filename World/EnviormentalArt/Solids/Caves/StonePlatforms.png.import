@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StoneBG.png-8920201e41890093a66ac8ff9794e77b.stex"
+path="res://.import/StonePlatforms.png-48edc20847fb6708d28250dca3c624e0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/EnviormentalArt/Solids/StoneBG.png"
-dest_files=[ "res://.import/StoneBG.png-8920201e41890093a66ac8ff9794e77b.stex" ]
+source_file="res://World/EnviormentalArt/Solids/Caves/StonePlatforms.png"
+dest_files=[ "res://.import/StonePlatforms.png-48edc20847fb6708d28250dca3c624e0.stex" ]
 
 [params]
 

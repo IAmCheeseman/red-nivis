@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Stone.png-deae53a0743973302d39303d960a1dd2.stex"
+path="res://.import/Drill.png-9f1745604e50359a510243bdbcda14b8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/EnviormentalArt/Solids/Stone.png"
-dest_files=[ "res://.import/Stone.png-deae53a0743973302d39303d960a1dd2.stex" ]
+source_file="res://Entities/Enemies/DrillMachine/Drill.png"
+dest_files=[ "res://.import/Drill.png-9f1745604e50359a510243bdbcda14b8.stex" ]
 
 [params]
 

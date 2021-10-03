@@ -4,6 +4,10 @@ class_name WorldData
 var rooms := []
 var position := Vector2.ZERO
 var moveDir := Vector2.ZERO
+var biomes := [
+	preload("res://World/Biomes/Lab.tres"),
+	preload("res://World/Biomes/DeepLabs.tres")
+]
 
 
 func _init() -> void:
@@ -29,7 +33,7 @@ func get_connected_rooms(room:Vector2) -> Array:
 
 
 func set_starting_position() -> void:
-	var startingArea = preload("res://World/Biomes/Lab.tres")
+	var startingArea = preload("res://World/Biomes/Caves.tres")
 	var viableRooms = []
 	for x in rooms.size():
 		for y in rooms[0].size():

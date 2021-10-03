@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://World/EnviormentalArt/Solids/Stone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/EnviormentalArt/Solids/Caves/Stone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/EnviormentalArt/Solids/Placeholder.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabSolids.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/EnviormentalArt/Solids/StoneBG.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/EnviormentalArt/Solids/Caves/StoneBG.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Placeholder.png 0"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=65 format=2]
 
-[ext_resource path="res://World/EnviormentalArt/Solids/Stone.png" type="Texture" id=1]
+[ext_resource path="res://World/EnviormentalArt/Solids/Caves/Stone.png" type="Texture" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 1, 16, 1, 16, 16, 0, 16 )

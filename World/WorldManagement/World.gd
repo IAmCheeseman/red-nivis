@@ -2,9 +2,9 @@ extends Node2D
 
 const PADDING = 20
 
-var tiles:TileMap
-var altTiles:Array
-var backgroundTiles:TileMap
+#var tiles:TileMap
+#var altTiles:Array
+#var backgroundTiles:TileMap
 onready var player = $Props/Player
 onready var props = $Props
 onready var atmosphere = $Atmosphere
@@ -13,6 +13,7 @@ onready var solids = $Props/Tiles/LabSolids
 onready var platforms = $Props/Tiles/OneWayPlatforms
 onready var mainCamMove = $Props/CameraZones/CameraMoveZone
 onready var screenTrans = $ScreenTransition
+onready var tilesContainer = $Props/Tiles
 
 export var solidPath:NodePath
 export var platformPath:NodePath
@@ -24,10 +25,17 @@ var worldData = preload("res://World/WorldManagement/WorldData.tres")
 func _ready():
 	AudioServer.set_bus_effect_enabled(4, 0, true)
 	
-	if solidPath:
-		solids = get_node(solidPath)
-	if platformPath:
-		platforms = get_node(platformPath)
+	
+	for t in tilesContainer.get_children():
+		t.queue_free()
+	var biome:WorldArea = worldData.rooms[worldData.position.x][worldData.position.y].biome
+	
+	solids = biome.solids.instance()
+	solids.z_index = 1
+	tilesContainer.add_child(solids)
+	platforms = biome.platforms.instance()
+	platforms.z_index = -1
+	tilesContainer.add_child(platforms)
 	
 	var roofProps := [
 		preload("res://World/Props/Foliage/Vine/Vine.tscn")

@@ -16,7 +16,7 @@ var subtitles = [
 	"I like my pasta how I like my code."
 ]
 
-#
+
 func _ready():
 	randomize()
 	

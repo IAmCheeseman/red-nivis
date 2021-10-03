@@ -103,6 +103,7 @@ points = PoolVector2Array( 0, 1, 16, 1, 16, 3, 0, 3 )
 [node name="OneWayPlatforms" type="TileMap" groups=[
 "Platform",
 ]]
+z_index = -1
 tile_set = SubResource( 9 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 16
