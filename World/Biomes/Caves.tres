@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Solids/Caves/StoneBG.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/EnviormentalArt/Solids/Caves/Stone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Solids/Caves/StonePlatforms.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Props/Foliage/Vine/Vine.tscn" type="PackedScene" id=7]
 
 [resource]
 script = ExtResource( 1 )
@@ -17,4 +18,5 @@ growChance = 0.5
 middleRemovalChance = 0.666
 connectionChance = 0.12
 roomTemplates = "res://World/Templates/LabTemplates"
-split = Vector2( 16, 16 )
+roofProps = [ ExtResource( 7 ) ]
+groundProps = [  ]

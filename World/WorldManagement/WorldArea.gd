@@ -17,4 +17,6 @@ export var connectionChance:float = .05
 
 # Room Gen
 export var roomTemplates:String = "res://World/Templates/LabTemplates"
-export var split:Vector2 = Vector2.ONE*16
+export(Array, PackedScene) var roofProps := []
+export(Array, PackedScene) var groundProps := []#preload("res://World/Props/Containers/Safe/Safe.tscn"), preload("res://World/Props/Containers/Locker/Locker.tscn")]
+

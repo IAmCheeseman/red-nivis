@@ -61,7 +61,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/is_on = 0.0
-shader_param/line_color = Color( 0.486275, 1, 0.941176, 1 )
+shader_param/line_color = Color( 0.435294, 0.721569, 0.74902, 1 )
 shader_param/line_thickness = 1.0
 
 [sub_resource type="RectangleShape2D" id=3]

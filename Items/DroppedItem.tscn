@@ -90,6 +90,7 @@ tracks/1/keys = {
 
 [node name="DroppedItem" type="RigidBody2D"]
 collision_layer = 0
+collision_mask = 17
 mode = 2
 physics_material_override = SubResource( 1 )
 script = ExtResource( 2 )

@@ -15,7 +15,6 @@ var isPickedUp = false
 
 func _ready():
 	# Setting the sprite
-#	sprite.add_child()
 	add_child(item.scene.duplicate())
 	# Setting collisions
 	collision.shape.extents = Vector2(4, 4)
@@ -28,14 +27,15 @@ func _ready():
 	itemGlow.color = tierColor
 	trail.default_color = tierColor
 
-#	sprite.material = sprite.material.duplicate()
-#	sprite.material.set_shader_param("line_color", tierColor)
-
 
 func _input(event):
 	# Picking up the item
-	if player and event.is_action_pressed("interact")\
-	and inventory.has_space() and !isPickedUp:
+	if player and event.is_action_pressed("interact") and !isPickedUp:
+		if !inventory.has_space():
+			var newItem = GameManager.itemManager.create_item(inventory.items[inventory.selectedSlot])
+			newItem.position = position
+			GameManager.spawnManager.spawn_object(newItem)
+			inventory.remove_item(inventory.selectedSlot)
 		inventory.add_item(item)
 		pickUpAnim.play("PickUp")
 		pickUpArea.disconnect("area_exited", self, "_on_player_far")

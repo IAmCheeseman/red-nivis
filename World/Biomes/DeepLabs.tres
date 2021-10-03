@@ -17,4 +17,5 @@ growChance = 0.5
 middleRemovalChance = 0.333
 connectionChance = 0.08
 roomTemplates = "res://World/Templates/LabTemplates"
-split = Vector2( 16, 16 )
+roofProps = [  ]
+groundProps = [  ]

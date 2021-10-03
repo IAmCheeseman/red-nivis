@@ -37,22 +37,16 @@ func _ready():
 	platforms.z_index = -1
 	tilesContainer.add_child(platforms)
 	
-	var roofProps := [
-		preload("res://World/Props/Foliage/Vine/Vine.tscn")
-	]
-	var containers := [
-		preload("res://World/Props/Containers/Locker/Locker.tscn"),
-		preload("res://World/Props/Containers/Safe/Safe.tscn")
-	]
-	var groundProps := [
-		
-	]
-	
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	var room := RoomGenerator.generate(worldData.position.x+worldData.position.y, "LabTemplates.png", 13, connections)
 	
 	var viableEnemySpawns = [] 
 	var viableContainerSpawns = []
+	
+	var containers = [
+		preload("res://World/Props/Containers/Safe/Safe.tscn"),
+		preload("res://World/Props/Containers/Locker/Locker.tscn")
+	]
 	
 	room.lock()
 	for x in room.get_width():
@@ -64,10 +58,10 @@ func _ready():
 				
 # warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y+1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					add_props(roofProps, x, y+1)
+					if biome.roofProps.size() > 0: add_props(biome.roofProps, x, y+1)
 # warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .1 and room.get_pixel(x, clamp(y-1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					if groundProps.size() > 0: add_props(groundProps, clamp(x, 2, room.get_width()-2), y)
+					if biome.groundProps.size() > 0: add_props(biome.groundProps, clamp(x, 2, room.get_width()-2), y)
 					viableContainerSpawns.append(Vector2(clamp(x, 2, room.get_width()-2), y))
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				platforms.set_cell(x, y, 0)
@@ -80,7 +74,7 @@ func _ready():
 		if viableContainerSpawns.size() == 0: 
 			break
 		var spawnPos:Vector2 = viableContainerSpawns.pop_front()
-		add_props(containers, spawnPos.x, spawnPos.y)
+		add_props(containers, spawnPos.x, spawnPos.y-8)
 	
 	randomize()
 	viableEnemySpawns.shuffle()
