@@ -11,11 +11,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.18266, 1 )
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
 radius = 59.0762
 
-[sub_resource type="Animation" id=2]
-resource_name = "Default"
+[sub_resource type="Animation" id=3]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -108,7 +107,7 @@ tracks/5/keys = {
 ", "$", "$$", "$$$" ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "Init"
 length = 0.1
 tracks/0/type = "value"
@@ -124,7 +123,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 3
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -151,11 +150,11 @@ visible = false
 position = Vector2( 0, -16 )
 
 [node name="CollisionShape2D" parent="PlayerDetection" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Default"
-anims/Default = SubResource( 2 )
+anims/Default = SubResource( 3 )
 
 [node name="Dialog" type="Control" parent="."]
 visible = false
@@ -169,7 +168,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dialog"]
 anims/Appear = SubResource( 4 )
-anims/Init = SubResource( 6 )
+anims/Init = SubResource( 5 )
 
 [node name="Pointer" type="TextureRect" parent="Dialog"]
 margin_left = -4.0
@@ -209,7 +208,7 @@ flip_h = true
 margin_top = 2.0
 margin_right = 6.0
 margin_bottom = 6.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "$$$"
 align = 1
 __meta__ = {

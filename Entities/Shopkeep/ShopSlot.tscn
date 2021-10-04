@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Entities/Shopkeep/ShopSlot.gd" type="Script" id=1]
+[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
 
 [node name="ShopSlot" type="ColorRect"]
 margin_right = 39.0
@@ -12,3 +13,21 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Hbox" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 15.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="Hbox"]
+margin_left = 42.0
+margin_top = 4.0
+margin_right = 54.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "50"

@@ -12,8 +12,8 @@ func _ready() -> void:
 	for i in rand_range(3, 5):
 		var weapon = WeaponConstructor.new().generate_weapon()
 		var newSlot = slot.instance()
-		newSlot.set_item(weapon)
 		items.add_child(newSlot)
+		newSlot.set_item(weapon)
 
 
 func _on_up_scroll_pressed() -> void:
