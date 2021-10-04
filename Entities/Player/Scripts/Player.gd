@@ -13,6 +13,7 @@ onready var collision = $CollisionShape2D
 onready var scaleHelper = $ScaleHelper
 onready var hurtbox = $Hurtbox
 onready var vignette = $CanvasLayer/Vignette
+onready var grayscale = $CanvasLayer/GrayScaleDeath
 onready var animationPlayer = $AnimationPlayer
 onready var SaS = $SquashAndStretch
 onready var flashPlayer = $Flash
@@ -85,6 +86,8 @@ func _physics_process(delta):
 			vel.y += Globals.GRAVITY*delta
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
+			var grayscaleStrength = grayscale.material.get_shader_param("strength")
+			grayscale.material.set_shader_param("strength", lerp(grayscaleStrength, .15, 2*delta))
 
 	lastFrameGroundState = is_grounded()
 
