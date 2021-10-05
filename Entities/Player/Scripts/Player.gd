@@ -57,7 +57,7 @@ func _ready():
 	if !Settings.vignette:
 		vignette.queue_free()
 	playerData.playerObject = self
-
+	grayscale.material.set_shader_param("strength", 1)
 	playerData.connect("healthChanged", self, "_on_health_changed")
 	hurtbox.connect("hurt", playerData, "_on_damage_taken")
 

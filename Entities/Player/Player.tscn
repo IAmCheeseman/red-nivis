@@ -98,17 +98,16 @@ shader_param/darkness = 0.489
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/vignette = ExtResource( 26 )
 
-[sub_resource type="ShaderMaterial" id=21]
+[sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 19 )
 shader_param/strength = 1.0
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=9]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "Dead"
+[sub_resource type="Animation" id=10]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -124,8 +123,7 @@ tracks/0/keys = {
 "values": [ 18 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "Die"
+[sub_resource type="Animation" id=11]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
@@ -152,7 +150,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -216,7 +214,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -268,7 +266,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -320,7 +318,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -360,7 +358,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.6
 loop = true
 step = 0.05
@@ -459,7 +457,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.6
 loop = true
 step = 0.05
@@ -546,7 +544,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -574,7 +572,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
 tracks/0/interp = 1
@@ -588,7 +586,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -603,7 +601,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.5, 0.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:material:shader_param/is_on")
@@ -797,7 +795,7 @@ __meta__ = {
 }
 
 [node name="GrayScaleDeath" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 21 )
+material = SubResource( 8 )
 use_parent_material = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -872,7 +870,7 @@ margin_right = 235.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 9 )
 bbcode_enabled = true
 bbcode_text = "[center][shake rate=45 level=8]Game Over[/shake]"
 text = "Game Over"
@@ -928,22 +926,22 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Dead = SubResource( 9 )
-anims/Die = SubResource( 10 )
-anims/Idle = SubResource( 11 )
-anims/IdleNoHand = SubResource( 12 )
-anims/Jump = SubResource( 13 )
-anims/JumpNoHand = SubResource( 14 )
-anims/Run = SubResource( 15 )
-anims/RunNoHand = SubResource( 16 )
+anims/Dead = SubResource( 10 )
+anims/Die = SubResource( 11 )
+anims/Idle = SubResource( 12 )
+anims/IdleNoHand = SubResource( 13 )
+anims/Jump = SubResource( 14 )
+anims/JumpNoHand = SubResource( 15 )
+anims/Run = SubResource( 16 )
+anims/RunNoHand = SubResource( 17 )
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
-anims/Dash = SubResource( 17 )
-anims/Jump = SubResource( 18 )
-anims/Land = SubResource( 19 )
+anims/Dash = SubResource( 18 )
+anims/Jump = SubResource( 19 )
+anims/Land = SubResource( 20 )
 
 [node name="Flash" type="AnimationPlayer" parent="."]
-anims/flash = SubResource( 20 )
+anims/flash = SubResource( 21 )
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
