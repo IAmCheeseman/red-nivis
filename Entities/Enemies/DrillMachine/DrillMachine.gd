@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum states {WANDER, ATTACK, DEFEND, RETREAT}
+enum states {WANDER, ATTACK, DEFEND, RETREAT, WIND_UP}
 
 export var speed:float = 18000
 export var attackSpeed:float = 18000
@@ -19,6 +19,7 @@ onready var softCollision = $Collisions/SoftCollision
 onready var wanderTimer = $Timers/WanderTimer
 onready var defendTimer = $Timers/DefendTimer
 onready var attackTimer = $Timers/AttackTimer
+onready var windUpTimer = $Timers/WindUpTimer
 onready var sprite = $ScaleHelper/Sprite
 onready var bounceRay = $Collisions/BounceRay
 onready var healthBar = $Healthbar
@@ -44,6 +45,8 @@ signal death
 """
 WANDER STATE:
 	While the MDM does not see the player.
+WIND UP STATE:
+	Winding up for the attack state
 ATTACK STATE:
 	The MDM charges at the player. Hitboxes enabled.
 DEFEND STATE:
@@ -70,13 +73,15 @@ func _physics_process(delta:float) -> void:
 		GameManager.spawnManager.spawn_object(newAS)
 		get_tree().call_group("MDM", "give_player", player, position)
 		
-		state = states.ATTACK
-		attackTimer.start()
+		state = states.WIND_UP
+		windUpTimer.start()
 	
-	rotation = 0
+	rotation = lerp_angle(rotation, 0, 2*delta)
 	match state:
 		states.WANDER:
 			wander_state(delta)
+		states.WIND_UP:
+			wind_up_state(delta)
 		states.ATTACK:
 			attack_state(delta)
 		states.DEFEND:
@@ -94,21 +99,32 @@ func wander_state(delta:float) -> void:
 
 
 func attack_state(delta:float) -> void:
-	vel = vel.move_toward(global_position.direction_to(player.global_position)*attackSpeed, accel*20*delta)
-	look_at(global_position+vel)
+	vel = vel.move_toward(global_position.direction_to(player.global_position)*attackSpeed, accel*40*delta)
+	look_at(player.global_position)
 	rotation_degrees -= 90
 	
 	if attackTimer.is_stopped():
+		vel *= .333
 		state = states.DEFEND
 		defendTimer.start()
+
+
+func wind_up_state(delta: float) -> void:
+	vel = vel.move_toward(-global_position.direction_to(player.global_position)*130, accel*20*delta)
+	look_at(player.global_position)
+	rotation_degrees -= 90
+	
+	if windUpTimer.is_stopped():
+		state = states.ATTACK
+		attackTimer.start()
 
 
 func defend_state(delta:float) -> void:
 	if !defendTimer.is_stopped():
 		accel_to_point((-position.direction_to(player.global_position)*32)+player.global_position, delta)
 	else:
-		state = states.ATTACK# if player else states.WANDER
-		attackTimer.start()
+		state = states.WIND_UP# if player else states.WANDER
+		windUpTimer.start()
 
 
 func select_position() -> Vector2:

@@ -11,22 +11,21 @@
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Enemies/Assets/EnemyOutline.tres" type="Material" id=10]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 radius = 96.7471
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=2]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2, 4 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=4]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=5]
 radius = 4.0
 
-[sub_resource type="Animation" id=1]
-resource_name = "default"
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -70,7 +69,7 @@ tracks/2/keys = {
 collision_layer = 0
 script = ExtResource( 1 )
 speed = 1200.0
-attackSpeed = 280.0
+attackSpeed = 480.0
 kbAmount = 0.0
 accel = 24.0
 friction = 12.0
@@ -96,13 +95,13 @@ visible = false
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 4 )]
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 5 )]
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="Hitbox" parent="Collisions" instance=ExtResource( 6 )]
 position = Vector2( 0, 11 )
@@ -111,19 +110,19 @@ collision_mask = 2
 damage = 1
 
 [node name="CollisionShape2D" parent="Collisions/Hitbox" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="SoftCollision" parent="Collisions" instance=ExtResource( 9 )]
 
 [node name="CollisionShape2D" parent="Collisions/SoftCollision" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="BounceRay" type="RayCast2D" parent="Collisions"]
 enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Timers" type="Node" parent="."]
 
@@ -135,7 +134,10 @@ wait_time = 5.0
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="Timers"]
-wait_time = 0.5
+one_shot = true
+
+[node name="WindUpTimer" type="Timer" parent="Timers"]
+wait_time = 0.4
 one_shot = true
 
 [node name="Healthbar" type="TextureProgress" parent="."]
@@ -143,6 +145,7 @@ margin_left = -9.0
 margin_top = -15.0
 margin_right = 9.0
 margin_bottom = -10.0
+rect_pivot_offset = Vector2( 9, 15 )
 value = 50.0
 texture_under = ExtResource( 8 )
 texture_progress = ExtResource( 7 )
@@ -152,7 +155,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 1 )
+anims/default = SubResource( 6 )
 
 [connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
 [connection signal="timeout" from="Timers/WanderTimer" to="." method="_on_wander_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://World/EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=16]
 [ext_resource path="res://Entities/Shopkeep/Shopkeep.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Entities/Shopkeep/Shop.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.tscn" type="PackedScene" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 192, 108 )
@@ -139,6 +140,9 @@ mouseWeight = false
 trackNodePath = NodePath("../Player")
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
+
+[node name="DrillMachine" parent="." instance=ExtResource( 19 )]
+position = Vector2( 45.4709, -92.9728 )
 
 [connection signal="loadArea" from="Managing/LoadingZone" to="." method="_on_lab_loading_zone_loadArea"]
 
