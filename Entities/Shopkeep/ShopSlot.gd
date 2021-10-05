@@ -1,6 +1,6 @@
 extends ColorRect
 
-onready var costLabel = $Hbox/Cost
+onready var costLabel := $Hbox/Cost
 
 var item:Dictionary
 
@@ -10,7 +10,8 @@ var player = preload("res://Entities/Player/Player.tres")
 
 func set_item(_item:Dictionary) -> void:
 	item = _item
-	costLabel.text = str(item.cost)
+	var costColor = Color.red if item.cost > player.money else Color.yellow
+	costLabel.bbcode_text = "[center][color=#%s]%s[/color][/center]" % [str(costColor.to_html()), str(item.cost)]
 	var display = item.scene.duplicate()
 	display.position = rect_size*.5
 	add_child(display)

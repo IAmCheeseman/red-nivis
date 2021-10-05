@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var shopInterface = $CanvasLayer
+onready var shopGUI = $CanvasLayer/ShopInterface
 
 var playerClose = false
 
@@ -10,9 +11,10 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and playerClose:
 		for i in shopInterface.get_children(): i.show()
 		GameManager.inGUI = true
+		shopGUI.update_slots()
 
 
 func _on_area_entered(area: Area2D) -> void:

@@ -16,6 +16,11 @@ func _ready() -> void:
 		newSlot.set_item(weapon)
 
 
+func update_slots():
+	for i in items.get_children():
+		i.set_item(i.item)
+
+
 func _on_up_scroll_pressed() -> void:
 	scrollBox.scroll_vertical -= 5
 

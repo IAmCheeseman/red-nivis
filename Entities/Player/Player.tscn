@@ -796,8 +796,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameOverlay" parent="CanvasLayer" instance=ExtResource( 3 )]
-
 [node name="GrayScaleDeath" type="ColorRect" parent="CanvasLayer"]
 material = SubResource( 21 )
 use_parent_material = true
@@ -807,6 +805,17 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GameOverlay" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource( 17 )]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
+visible = false
+mouse_filter = 2
+
+[node name="DebugConsole" parent="CanvasLayer" instance=ExtResource( 14 )]
+visible = false
 
 [node name="GameOverScreen" type="CenterContainer" parent="CanvasLayer"]
 visible = false
@@ -916,15 +925,6 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource( 17 )]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
-visible = false
-mouse_filter = 2
-
-[node name="DebugConsole" parent="CanvasLayer" instance=ExtResource( 14 )]
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
