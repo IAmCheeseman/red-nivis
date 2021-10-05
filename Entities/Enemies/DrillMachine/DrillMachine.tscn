@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.png" type="Texture" id=2]
@@ -10,6 +10,23 @@
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=8]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Enemies/Assets/EnemyOutline.tres" type="Material" id=10]
+
+[sub_resource type="Animation" id=7]
+resource_name = "Spin"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Drill:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 96.7471
@@ -88,6 +105,10 @@ material = ExtResource( 10 )
 position = Vector2( 0, 11.4667 )
 texture = ExtResource( 3 )
 hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScaleHelper/Sprite"]
+autoplay = "Spin"
+anims/Spin = SubResource( 7 )
 
 [node name="Collisions" type="Node2D" parent="."]
 visible = false
