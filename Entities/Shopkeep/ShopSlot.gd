@@ -21,6 +21,11 @@ func _input(event: InputEvent) -> void:
 	var hasEnoughMoney = player.money-item.cost >= 0
 	var mouseOver = get_global_rect().has_point(get_global_mouse_position())
 	if event.is_action_pressed("use_item") and mouseOver and hasEnoughMoney:
+		if !inventory.has_space():
+			var newItem = GameManager.itemManager.create_item(inventory.items[inventory.selectedSlot])
+			newItem.position = player.playerObject.position
+			GameManager.spawnManager.spawn_object(newItem)
+			inventory.remove_item(inventory.selectedSlot)
 		inventory.add_item(item)
 		player.money -= item.cost
 		queue_free()
