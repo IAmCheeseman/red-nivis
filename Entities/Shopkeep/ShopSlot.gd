@@ -18,6 +18,7 @@ func set_item(_item:Dictionary) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if !item.has("cost"): return
 	var hasEnoughMoney = player.money-item.cost >= 0
 	var mouseOver = get_global_rect().has_point(get_global_mouse_position())
 	if event.is_action_pressed("use_item") and mouseOver and hasEnoughMoney:

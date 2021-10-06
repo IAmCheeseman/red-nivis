@@ -39,6 +39,7 @@ func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 	var data = generate_stats(selectedParts, constructedWeapon)
 
 	data.scene = constructedWeapon
+	data.cost = generate_cost(data)
 	data.isTwoHanded = handle.isTwoHanded
 	data.bulletSpawnDist = barrel.get_node("Sprite").texture.get_width()/2
 	data.shellSprite = constructedWeapon.shellSprite
@@ -72,7 +73,6 @@ func generate_stats(selectedParts:Dictionary, body:Node2D):
 	data.customBullet = body.customBullet
 	data.magazineSize = body.magazineSize
 	data.reloadSpeed = body.reloadSpeed
-	data.cost = generate_cost(data)
 
 	data.bulletSprite = body.bulletSprite
 	data.kickUp = body.kickUp

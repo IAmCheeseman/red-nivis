@@ -8,6 +8,7 @@ onready var atmosphere = $Atmosphere
 onready var mistSpawner = $Props/Player/MistSpawner
 onready var solids = $Props/Tiles/LabSolids
 onready var platforms = $Props/Tiles/OneWayPlatforms
+onready var solidColorBG = $Background/BGColor
 onready var mainCamMove = $Props/CameraZones/CameraMoveZone
 onready var screenTrans = $ScreenTransition
 onready var tilesContainer = $Props/Tiles
@@ -29,6 +30,8 @@ func _ready():
 	platforms = biome.platforms.instance()
 	platforms.z_index = -1
 	tilesContainer.add_child(platforms)
+	
+	solidColorBG.color = biome.bgColor
 	
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	var constantRooms = preload("res://World/ConstantRooms/Rooms.tres")

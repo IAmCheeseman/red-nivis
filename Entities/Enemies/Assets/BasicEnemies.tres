@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Enemies/Assets/EnemyTable.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDM.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.tscn" type="PackedScene" id=4]
+
+[resource]
+script = ExtResource( 1 )
+enemies = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
+chances = [ 1.0, 0.5, 0.75 ]

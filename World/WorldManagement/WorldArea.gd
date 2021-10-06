@@ -6,7 +6,7 @@ export var name:String = "Unamed"
 export var solids:PackedScene
 export var background:PackedScene
 export var platforms:PackedScene
-export var bgColor:Color
+export var bgColor:Color = Color("#10141f")
 
 # World Gen
 export var biomeIndex:int = 0

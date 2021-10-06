@@ -35,6 +35,10 @@ signal ammoChanged
 signal moneyChanged
 
 
+func _init() -> void:
+	health = maxHealth
+
+
 func _on_damage_taken(damage, kbDir) -> void:
 	if isDashing:
 		return
