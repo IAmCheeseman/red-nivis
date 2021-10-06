@@ -19,7 +19,7 @@ uniform float fadeStart : hint_range(0, 2
 
 void fragment() {
 	vec4 newColor = color;
-	newColor.a = clamp(fadeStart-UV.x, 0.0, 1.0);
+	newColor.a = clamp(UV.x, 0.0, 1.0);
 	COLOR = newColor;
 }"
 

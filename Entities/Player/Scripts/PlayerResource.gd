@@ -23,6 +23,8 @@ var health:int
 var money = 0 setget set_money
 var ammo:int setget set_ammo
 var dashesLeft = 1
+var godmode = false
+
 var playerObject:KinematicBody2D
 
 var isDead = false

@@ -250,6 +250,9 @@ func show_death_screen(timer:Timer) -> void:
 	timer.queue_free()
 
 func _on_health_changed(dir):
+	if playerData.godmode:
+		playerData.health = playerData.maxHealth
+		return
 	# Feedback
 	if !dashCooldown.is_stopped():
 		return

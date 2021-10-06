@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.png" type="Texture" id=2]
@@ -10,8 +10,9 @@
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=8]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Enemies/Assets/EnemyOutline.tres" type="Material" id=10]
+[ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=11]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=1]
 resource_name = "Spin"
 length = 0.2
 loop = true
@@ -28,21 +29,21 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 96.7471
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 2, 4 )
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=5]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=6]
 radius = 4.0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -108,7 +109,7 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScaleHelper/Sprite"]
 autoplay = "Spin"
-anims/Spin = SubResource( 7 )
+anims/Spin = SubResource( 1 )
 
 [node name="Collisions" type="Node2D" parent="."]
 visible = false
@@ -116,13 +117,13 @@ visible = false
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 4 )]
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 5 )]
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Hitbox" parent="Collisions" instance=ExtResource( 6 )]
 position = Vector2( 0, 11 )
@@ -131,19 +132,24 @@ collision_mask = 2
 damage = 1
 
 [node name="CollisionShape2D" parent="Collisions/Hitbox" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="SoftCollision" parent="Collisions" instance=ExtResource( 9 )]
 
 [node name="CollisionShape2D" parent="Collisions/SoftCollision" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="BounceRay" type="RayCast2D" parent="Collisions"]
 enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( 6 )
+
+[node name="MoneyDropper" type="Node2D" parent="."]
+script = ExtResource( 11 )
+moneyRange = Vector2( 3, 6 )
+valueRange = Vector2( 2, 4 )
 
 [node name="Timers" type="Node" parent="."]
 
@@ -176,8 +182,9 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 6 )
+anims/default = SubResource( 7 )
 
+[connection signal="death" from="." to="MoneyDropper" method="drop_money"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
 [connection signal="timeout" from="Timers/WanderTimer" to="." method="_on_wander_timer_timeout"]
 

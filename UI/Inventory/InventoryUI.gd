@@ -1,6 +1,6 @@
 extends Control
 
-onready var slots = $Slots
+onready var slots = $HBox/Slots
 onready var slotSelector = $SlotSelector
 #onready var itemName = $VBox/ItemName
 

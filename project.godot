@@ -180,8 +180,8 @@ settings/fps/force_fps=60
 
 [display]
 
-window/size/width=384
-window/size/height=216
+window/size/width=256
+window/size/height=240
 window/size/test_width=768
 window/size/test_height=432
 window/vsync/use_vsync=false
