@@ -17,7 +17,7 @@ func help() -> String:
 
 
 func echo(output:String) -> String:
-	return output
+	return " " + output
 
 
 func toggle_godmode() -> String:
@@ -45,7 +45,7 @@ func set_room(x, y) -> String:
 	if !mapData.rooms[x][y].biome:
 		return " That room has no set biome."
 	mapData.position = Vector2(x, y)
-	get_tree().reload_current_scene()
+	var _discard = get_tree().reload_current_scene()
 	return " Set room pos to %s" % str(Vector2(x, y))
 
 

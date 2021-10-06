@@ -22,7 +22,7 @@ func update_slots():
 
 
 func _on_up_scroll_pressed() -> void:
-	scrollBox.scroll_vertical -= 5
+	scrollBox.scroll_vertical -= Globals.SCROLL_STEP
 
 func _on_down_scroll_pressed() -> void:
-	scrollBox.scroll_vertical += 5
+	scrollBox.scroll_vertical += Globals.SCROLL_STEP

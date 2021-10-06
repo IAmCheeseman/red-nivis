@@ -104,9 +104,10 @@ tile_data = PoolIntArray( -262124, 26, 0, -262116, 26, 0, -196585, 18, 0, -19658
 [node name="Managing" type="Node2D" parent="."]
 
 [node name="CameraZones" type="Node2D" parent="Managing"]
+visible = false
 
 [node name="CameraMoveZone1" parent="Managing/CameraZones" instance=ExtResource( 8 )]
-position = Vector2( -63, -87 )
+position = Vector2( -71.7583, -86.0493 )
 
 [node name="CollisionShape2D" parent="Managing/CameraZones/CameraMoveZone1" index="0"]
 shape = SubResource( 1 )

@@ -17,7 +17,6 @@ func _on_Quit_pressed():
 
 
 func _on_Play_pressed():
-#	anim.play("FadeAway")
 	screenTrans.out()
 	playTimer.start()
 
