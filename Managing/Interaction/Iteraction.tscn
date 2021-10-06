@@ -6,6 +6,7 @@
 [node name="Iteraction" type="Area2D" groups=[
 "interactable",
 ]]
+z_index = 4096
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 1 )

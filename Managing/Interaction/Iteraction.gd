@@ -41,6 +41,7 @@ func _on_area_exited(area: Area2D) -> void:
 		label.hide()
 		emit_signal("player_left")
 
+
 # Checks if the player is closest to this interactable.
 # Bad code, but it works since there's
 # not going to be a huge number of 
@@ -53,9 +54,6 @@ func is_closest() -> bool:
 			PLAYER.playerObject.global_position) < dist:
 			return false
 	return true
-
-
-
 
 
 

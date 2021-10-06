@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/Minigun.png" type="Texture" id=1]
 [ext_resource path="res://Items/DroppedItem.gd" type="Script" id=2]
 [ext_resource path="res://Items/ItemGlow/ItemGlow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://General/Trail.gd" type="Script" id=4]
 [ext_resource path="res://General/Outline.shader" type="Shader" id=5]
+[ext_resource path="res://Managing/Interaction/Iteraction.tscn" type="PackedScene" id=6]
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 0.5
@@ -34,25 +35,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 0, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("PickUpZone/CollisionShape2D:disabled")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -75,18 +64,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("PickUpZone/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 6, 6 )
 
 [node name="DroppedItem" type="RigidBody2D"]
 collision_layer = 0
@@ -113,17 +93,16 @@ default_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 4 )
 maxLength = 32
 
-[node name="PickUpZone" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpZone"]
-disabled = true
-
 [node name="PickUp" type="AnimationPlayer" parent="."]
 autoplay = "init"
 anims/PickUp = SubResource( 5 )
 anims/init = SubResource( 6 )
 
-[connection signal="area_entered" from="PickUpZone" to="." method="_on_player_close"]
-[connection signal="area_exited" from="PickUpZone" to="." method="_on_player_far"]
+[node name="Iteraction" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, -9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
+position = Vector2( 0, 9 )
+shape = SubResource( 7 )
+
+[connection signal="interaction" from="Iteraction" to="." method="pick_up"]

@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 onready var collision = $CollisionShape2D
-onready var pickUpArea = $PickUpZone
-onready var pickUpCollision = $PickUpZone/CollisionShape2D
+#onready var pickUpArea = $PickUpZone
+onready var pickUpCollision = $Iteraction/CollisionShape2D
 onready var pickUpAnim = $PickUp
 onready var itemGlow = $ItemGlow
 onready var trail = $Trail
@@ -10,7 +10,6 @@ onready var trail = $Trail
 var item:Dictionary
 
 var inventory:Inventory = preload("res://UI/Inventory/Inventory.tres")
-var player = null
 var isPickedUp = false
 
 func _ready():
@@ -28,9 +27,9 @@ func _ready():
 	trail.default_color = tierColor
 
 
-func _input(event):
+func pick_up():
 	# Picking up the item
-	if player and event.is_action_pressed("interact") and !isPickedUp:
+	if !isPickedUp:
 		if !inventory.has_space():
 			var newItem = GameManager.itemManager.create_item(inventory.items[inventory.selectedSlot])
 			newItem.position = position
@@ -38,15 +37,6 @@ func _input(event):
 			inventory.remove_item(inventory.selectedSlot)
 		inventory.add_item(item)
 		pickUpAnim.play("PickUp")
-		pickUpArea.disconnect("area_exited", self, "_on_player_far")
+		pickUpCollision.disabled = true
 		isPickedUp = true
 
-
-func _on_player_close(area):
-	if area.is_in_group("player"):
-		player = area.get_parent()
-
-
-func _on_player_far(area):
-	if area.is_in_group("player"):
-		player = null
