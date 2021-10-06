@@ -142,13 +142,19 @@ func _ready():
 		
 		randomize()
 		viableEnemySpawns.shuffle()
+		var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
 	# warning-ignore:integer_division
 	# warning-ignore:integer_division
 		for i in ceil((room.get_width()/Globals.TEMPLATE_SIZE)*(room.get_height()/Globals.TEMPLATE_SIZE)):
 			if viableEnemySpawns.size() == 0:
 				break
 			var spawnPos:Vector2 = viableEnemySpawns.pop_front()
-			add_props([preload("res://Entities/Effects/EnemySpawn.tscn")], spawnPos.x, spawnPos.y)
+			var spawner = preload(\
+				"res://Entities/Effects/EnemySpawn.tscn").instance()
+			spawner.position = spawnPos*solids.cell_size
+			spawner.position.x += solids.cell_size.x*.5
+			add_child(spawner)
+			spawner.enemyPool = enemyPool
 		
 	var roomSize = solids.get_used_rect().end
 	create_loading_zone(Vector2(0, roomSize.y*.5)*16, Vector2(.5, roomSize.y*.5)*16, Vector2.LEFT) # Left

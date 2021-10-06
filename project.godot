@@ -165,7 +165,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Astronaut Game"
-run/main_scene="res://Managing/Init.tscn"
+run/main_scene="res://World/StartingArea/StartingArea.tscn"
 
 [autoload]
 
