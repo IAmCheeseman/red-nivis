@@ -58,6 +58,11 @@ func _ready():
 		for i in roomCeilProps.get_used_cells():
 			if biome.roofProps.size() > 0: add_props(biome.roofProps, i.x, i.y)
 		
+		# Floor Props
+		var roomFloorprops:TileMap = room.groundProp
+		for i in roomFloorprops.get_used_cells():
+			if biome.groundProps.size() > 0: add_props(biome.groundProps, i.x, i.y+1)
+		
 		# Props
 		var roomPr:Node2D = room.props
 		for c in roomPr.get_children():
