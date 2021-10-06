@@ -4,7 +4,7 @@ onready var enemySpawner = $EnemySpawner
 onready var anim = $AnimationPlayer
 onready var startTimer = $Timer
 
-export var enemyPool:Resource
+var enemyPool:Resource
 
 
 func _ready() -> void:

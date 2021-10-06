@@ -32,6 +32,7 @@ func _ready():
 	tilesContainer.add_child(platforms)
 	
 	solidColorBG.color = biome.bgColor
+	mistSpawner.color = biome.mistColor
 	
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	var constantRooms = preload("res://World/ConstantRooms/Rooms.tres")
@@ -143,9 +144,10 @@ func _ready():
 			var spawnPos:Vector2 = viableContainerSpawns.pop_front()
 			add_props(containers, spawnPos.x, spawnPos.y-8)
 		
+		# Enemy Spawning
 		randomize()
 		viableEnemySpawns.shuffle()
-		var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
+		var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size()-1)]
 	# warning-ignore:integer_division
 	# warning-ignore:integer_division
 		for i in ceil((room.get_width()/Globals.TEMPLATE_SIZE)*(room.get_height()/Globals.TEMPLATE_SIZE)):
@@ -156,8 +158,8 @@ func _ready():
 				"res://Entities/Effects/EnemySpawn.tscn").instance()
 			spawner.position = spawnPos*solids.cell_size
 			spawner.position.x += solids.cell_size.x*.5
-			add_child(spawner)
 			spawner.enemyPool = enemyPool
+			add_child(spawner)
 		
 	var roomSize = solids.get_used_rect().end
 	create_loading_zone(Vector2(0, roomSize.y*.5)*16, Vector2(.5, roomSize.y*.5)*16, Vector2.LEFT) # Left

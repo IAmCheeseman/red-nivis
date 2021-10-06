@@ -4,8 +4,8 @@
 [ext_resource path="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsTiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsPlatforms.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsBG.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/EnemyPools/BasicEnemies.tres" type="Resource" id=5]
 [ext_resource path="res://World/EnemyPools/DeepLabsDefault.tres" type="Resource" id=6]
+[ext_resource path="res://World/Props/Foliage/Vine/DeepLabs/DeepLabsVine.tscn" type="PackedScene" id=7]
 
 [resource]
 script = ExtResource( 1 )
@@ -13,13 +13,14 @@ name = "Deep Labs"
 solids = ExtResource( 2 )
 background = ExtResource( 4 )
 platforms = ExtResource( 3 )
-bgColor = Color( 0.137255, 0.0941176, 0.0941176, 1 )
+bgColor = Color( 0.14902, 0.0117647, 0.105882, 1 )
+mistColor = Color( 0.470588, 0.12549, 0.203922, 1 )
 biomeIndex = 1
 mapColor = Color( 0.756863, 0.54902, 0.337255, 1 )
 growChance = 0.5
 middleRemovalChance = 0.333
 connectionChance = 0.08
 roomTemplates = "res://World/Templates/LabTemplates"
-roofProps = [  ]
+roofProps = [ ExtResource( 7 ) ]
 groundProps = [  ]
-enemyPools = [ ExtResource( 5 ), ExtResource( 6 ) ]
+enemyPools = [ ExtResource( 6 ) ]

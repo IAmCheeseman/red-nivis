@@ -28,7 +28,7 @@ func spawn_mist():
 		newMist.player = player
 		var node = Node2D.new()
 		node.name = "MistHolder"
-		node.z_index = 1
+		node.z_index = -2
 		GameManager.spawnManager.spawn_object(node)
 		node.add_child(newMist)
 		newMist.set_param(color, strength)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/VineTile.png-ae24ff0d0b23a78bd3f28ed10b79fbb7.stex"
+path="res://.import/Vine.png-9a75c4fef5bdf67b384c0d73af047948.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Props/Foliage/Vine/VineTile.png"
-dest_files=[ "res://.import/VineTile.png-ae24ff0d0b23a78bd3f28ed10b79fbb7.stex" ]
+source_file="res://World/Props/Foliage/Vine/Normal/Vine.png"
+dest_files=[ "res://.import/Vine.png-9a75c4fef5bdf67b384c0d73af047948.stex" ]
 
 [params]
 
