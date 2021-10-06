@@ -28,12 +28,12 @@ func toggle_godmode() -> String:
 
 
 func go_to(path:String) -> String:
-	get_tree().change_scene(path)
+	var _discard = get_tree().change_scene(path)
 	return ""
 
 
 func reload() -> String:
-	get_tree().reload_current_scene()
+	var _discard = get_tree().reload_current_scene()
 	return ""
 
 
