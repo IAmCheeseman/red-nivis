@@ -3,7 +3,9 @@
 [ext_resource path="res://Managing/Interaction/Iteraction.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
 
-[node name="Iteraction" type="Area2D"]
+[node name="Iteraction" type="Area2D" groups=[
+"interactable",
+]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 1 )

@@ -28,6 +28,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		playerNear = true
+		# Setting the label to show correct key
+		label.text = "<%s>" % OS.get_scancode_string(
+			InputMap.get_action_list("interact")[0].scancode
+		)
 		label.show()
 		emit_signal("player_close")
 
