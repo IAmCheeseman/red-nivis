@@ -25,6 +25,11 @@ func toggle_godmode() -> String:
 	return " Set godmode to %s" % str(player.godmode)
 
 
+func go_to(path:String) -> String:
+	get_tree().change_scene(path)
+	return ""
+
+
 func set_health(value:int) -> String:
 	player.health = value
 	return " Changed health to %s." % str(value)
