@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Grass1.png-9a9f40b240a9f0d2bd2762daed88d072.stex"
+path="res://.import/DeepLabsGrass.png-f921d2ee6acd072e5169068cd7c8a46d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Props/Foliage/Grass/Grass1.png"
-dest_files=[ "res://.import/Grass1.png-9a9f40b240a9f0d2bd2762daed88d072.stex" ]
+source_file="res://World/Props/Foliage/Grass/DeepLabs/DeepLabsGrass.png"
+dest_files=[ "res://.import/DeepLabsGrass.png-f921d2ee6acd072e5169068cd7c8a46d.stex" ]
 
 [params]
 

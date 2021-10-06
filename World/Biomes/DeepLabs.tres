@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsTiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsPlatforms.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsBG.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Props/Foliage/Grass/DeepLabs/DeepLabsGrass.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnemyPools/DeepLabsDefault.tres" type="Resource" id=6]
 [ext_resource path="res://World/Props/Foliage/Vine/DeepLabs/DeepLabsVine.tscn" type="PackedScene" id=7]
 
@@ -22,5 +23,5 @@ middleRemovalChance = 0.333
 connectionChance = 0.08
 roomTemplates = "res://World/Templates/LabTemplates"
 roofProps = [ ExtResource( 7 ) ]
-groundProps = [  ]
+groundProps = [ ExtResource( 5 ) ]
 enemyPools = [ ExtResource( 6 ) ]
