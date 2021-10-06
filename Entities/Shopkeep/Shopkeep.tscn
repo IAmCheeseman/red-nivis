@@ -8,13 +8,13 @@
 [ext_resource path="res://Entities/Shopkeep/DialogMiddle.png" type="Texture" id=6]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=7]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 1.18266, 1 )
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=10]
 radius = 59.0762
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=11]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -30,7 +30,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -141,18 +141,18 @@ hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 3 )
+shape = SubResource( 9 )
 
 [node name="PlayerDetection" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 0, -16 )
 
 [node name="CollisionShape2D" parent="PlayerDetection" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Default"
-anims/Default = SubResource( 5 )
+anims/Default = SubResource( 11 )
 
 [node name="Dialog" type="Control" parent="."]
 visible = false
@@ -165,7 +165,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dialog"]
-anims/Appear = SubResource( 6 )
+anims/Appear = SubResource( 12 )
 anims/Init = SubResource( 7 )
 
 [node name="Pointer" type="TextureRect" parent="Dialog"]

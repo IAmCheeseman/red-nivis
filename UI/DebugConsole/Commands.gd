@@ -8,6 +8,8 @@ func help() -> String:
 	return """ -= HELP =-
  echo(msg)
  toggle_godmode()
+ go_to(path)
+ reload()
  set_health(amount)
  set_max_health(amount)
  set_money(amount)
@@ -27,6 +29,11 @@ func toggle_godmode() -> String:
 
 func go_to(path:String) -> String:
 	get_tree().change_scene(path)
+	return ""
+
+
+func reload() -> String:
+	get_tree().reload_current_scene()
 	return ""
 
 
