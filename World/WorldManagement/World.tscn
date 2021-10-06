@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://World/VisualEffects/MistSpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/EnviormentalArt/Solids/Caves/Stone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Map/Map.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabBackground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/EnviormentalArt/Solids/Caves/StoneBG.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabSolids.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/WorldManagement/World.gd" type="Script" id=10]
+[ext_resource path="res://World/EnviormentalArt/Decor/RuinProps.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/EnviormentalArt/Solids/Lab/OneWayPlatforms.tscn" type="PackedScene" id=13]
+
+[node name="World0" type="Node2D" groups=[
+"world",
+]]
+script = ExtResource( 10 )
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="BGColor" type="ColorRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0627451, 0.0784314, 0.121569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Player" parent="Props" instance=ExtResource( 7 )]
+position = Vector2( 70, 94 )
+
+[node name="MistSpawner" parent="Props/Player" instance=ExtResource( 1 )]
+worldPath = NodePath("../..")
+playerPath = NodePath("..")
+mistRarity = 5
+mistClumpSize = 2
+color = Color( 0.45098, 0.298039, 0.227451, 1 )
+strength = 0.1
+
+[node name="SpawningManagment" parent="Props" instance=ExtResource( 12 )]
+
+[node name="Tiles" type="Node2D" parent="Props"]
+
+[node name="LabBackground" parent="Props/Tiles" instance=ExtResource( 5 )]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+z_index = -1
+
+[node name="OneWayPlatforms" parent="Props/Tiles" instance=ExtResource( 13 )]
+
+[node name="Props" parent="Props/Tiles" instance=ExtResource( 11 )]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+z_index = -1
+
+[node name="LabSolids" parent="Props/Tiles" instance=ExtResource( 8 )]
+z_index = 2
+
+[node name="Stone" parent="Props/Tiles" instance=ExtResource( 3 )]
+
+[node name="StoneBG" parent="Props/Tiles" instance=ExtResource( 6 )]
+z_index = -1
+
+[node name="CameraZones" type="Node2D" parent="Props"]
+
+[node name="CameraMoveZone" parent="Props/CameraZones" instance=ExtResource( 9 )]
+
+[node name="Atmosphere" type="CanvasModulate" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Map" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+[node name="ScreenTransition" parent="." instance=ExtResource( 2 )]

@@ -42,7 +42,9 @@ func _process(delta: float) -> void:
 	if !player:
 		player = playerDetection.get_player()
 		healthBar.hide()
+		minigun.isOn = false
 	else:
+		minigun.isOn = true
 		minigunSprite.look_at(player.global_position)
 		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
 		minigunSprite.scale.y = -1 if angleVec.x > 0 else 1
@@ -95,7 +97,7 @@ func _on_hurt(amount:float, dir:Vector2) -> void:
 		GameManager.spawnManager.spawn_object(newDP)
 		GameManager.frameFreezer.freeze_frames(.07)
 		
-		if rand_range(0, 1) < GameManager.HEART_CHANCE:
+		if rand_range(0, 1) < Globals.HEART_CHANCE:
 			var newHealth = healthPickup.instance()
 			newHealth.position = position
 			GameManager.spawnManager.spawn_object(newHealth)

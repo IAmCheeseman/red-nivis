@@ -13,8 +13,11 @@ func _on_Continue_button_up():
 
 
 func _on_Quit_button_up():
-# warning-ignore:return_value_discarded
+	playerData.isDead = false
+	playerData.health = playerData.maxHealth
+	playerData.ammo = playerData.maxAmmo
 	Engine.time_scale = 1
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
 
 

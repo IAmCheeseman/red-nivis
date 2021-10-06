@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -28,19 +28,35 @@ tracks/0/keys = {
 "values": [ Color( 1, 0.721569, 0.721569, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 4.12311
+[sub_resource type="Animation" id=2]
+resource_name = "init"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 8.0
+radius = 4.12311
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 112.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id=5]
+radius = 112.0
+
+[sub_resource type="CircleShape2D" id=6]
 radius = 11.0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -72,7 +88,7 @@ tracks/2/path = NodePath("ScaleHelper:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -112,17 +128,20 @@ hframes = 4
 
 [node name="Cooldown" type="Timer" parent="ScaleHelper/Sprite/Minigun"]
 one_shot = true
+autostart = true
 
 [node name="OverheatCooldown" type="Timer" parent="ScaleHelper/Sprite/Minigun"]
 wait_time = 3.5
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScaleHelper/Sprite/Minigun"]
+autoplay = "init"
 anims/cooldown = SubResource( 1 )
+anims/init = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Collisions" type="Node2D" parent="."]
 visible = false
@@ -131,18 +150,17 @@ visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 6 )]
-mustBeInSight = false
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="SoftCollision" parent="Collisions" instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" parent="Collisions/SoftCollision" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="BounceRay" type="RayCast2D" parent="Collisions"]
 enabled = true
@@ -170,7 +188,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 6 )
+anims/default = SubResource( 7 )
 
 [connection signal="death" from="." to="MoneyDropper" method="drop_money"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]

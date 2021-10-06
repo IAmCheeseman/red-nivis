@@ -16,7 +16,7 @@ var subtitles = [
 	"I like my pasta how I like my code."
 ]
 
-#
+
 func _ready():
 	randomize()
 	
@@ -26,6 +26,5 @@ func _ready():
 	
 	subtitles.shuffle()
 	OS.set_window_title("Astronaut Game: %s" % subtitles.front())
-
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+	
+	var _dispose = get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")

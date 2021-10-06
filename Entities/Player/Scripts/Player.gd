@@ -12,8 +12,8 @@ onready var rightHand = $ScaleHelper/Sprite/Arm/Hand
 onready var collision = $CollisionShape2D
 onready var scaleHelper = $ScaleHelper
 onready var hurtbox = $Hurtbox
-onready var grappleRay = $GrappleRay
 onready var vignette = $CanvasLayer/Vignette
+onready var grayscale = $CanvasLayer/GrayScaleDeath
 onready var animationPlayer = $AnimationPlayer
 onready var SaS = $SquashAndStretch
 onready var flashPlayer = $Flash
@@ -42,7 +42,6 @@ var state = states.WALK
 
 
 var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
-var dashParticles = preload("res://Entities/Player/Assets/Dash.tscn")
 var playerData = preload("res://Entities/Player/Player.tres")
 var lockMovement = false
 
@@ -52,14 +51,13 @@ signal dropGun(gun, pos)
 
 
 func _ready():
-#	print(Utils.get_relative_to_camera(self, $Camera))
 	# Making sure players cannot come back to life by leaving an area
 	if playerData.isDead:
 		die()
 	if !Settings.vignette:
 		vignette.queue_free()
 	playerData.playerObject = self
-
+	grayscale.material.set_shader_param("strength", 1)
 	playerData.connect("healthChanged", self, "_on_health_changed")
 	hurtbox.connect("hurt", playerData, "_on_damage_taken")
 
@@ -85,10 +83,11 @@ func _physics_process(delta):
 					0,
 					playerData.accelaration*delta
 				)
-			vel.y += GameManager.gravity*delta
+			vel.y += Globals.GRAVITY*delta
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
-
+			var grayscaleStrength = grayscale.material.get_shader_param("strength")
+			grayscale.material.set_shader_param("strength", lerp(grayscaleStrength, .15, 2*delta))
 
 	lastFrameGroundState = is_grounded()
 
@@ -107,18 +106,19 @@ func walk_state(delta):
 			playerData.accelaration*delta
 		)
 		# Do stuff in the air.
-		vel.y += GameManager.gravity*delta
+		vel.y += Globals.GRAVITY*delta
 
 		var faceDir = get_local_mouse_position()
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
-		sprite.rotation_degrees = vel.x/15
 
 		animate(moveDir)
 
 		if just_landed():
 			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
 			bunnyHopTimer.start()
-
+		
+		set_collision_mask_bit(4, !Input.is_action_pressed("down"))
+		
 		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 	else:
 		sprite.rotation_degrees = 0
@@ -126,6 +126,8 @@ func walk_state(delta):
 
 
 func animate(moveDir:Vector2):
+	if playerData.isDead:
+		return
 	var noHand = ""
 	if itemHolder.get_child_count() > 0:
 		noHand = "NoHand" if itemHolder.get_child(0).stats.isTwoHanded else ""
@@ -144,7 +146,7 @@ func animate(moveDir:Vector2):
 
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
-		if vel.y > -playerData.jumpForce*0.15: SaS.play("Land")
+		if vel.y > -playerData.jumpForce*0.15 and !Input.is_action_pressed("down"): SaS.play("Land")
 		if triedJumpRecent:
 			jump()
 			bunnyHopTimer.start()
@@ -169,6 +171,8 @@ func is_on_platform():
 
 
 func _input(event):
+	if playerData.isDead:
+		return
 	# Jumping
 	if Input.is_action_just_pressed("jump"):
 		triedJumpRecent = true
@@ -178,34 +182,6 @@ func _input(event):
 	# Adjustable jump height
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
-	
-	collision.disabled = Input.is_action_pressed("down") and is_on_platform() and !test_move(transform, Vector2(vel.normalized().x, 0))
-	
-	# Dashing
-	if Input.is_action_just_pressed("dash") and playerData.dashesLeft > 0:
-		var dashDir = Vector2.ZERO
-		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
-		dashDir.y = Input.get_action_strength("down")
-		dashDir.normalized()
-		dashDir *= playerData.dashSpeed
-		
-		dashDir.y = clamp(dashDir.y, -playerData.jumpForce, INF)
-		
-		if dashDir == Vector2.ZERO:
-			return
-		
-		vel = dashDir
-		
-		state = states.DASH
-		playerData.dashesLeft -= 1
-		dashCooldown.start()
-		
-		SaS.play("Dash")
-		
-		var newDashPar = dashParticles.instance()
-		sprite.add_child(newDashPar)
-		newDashPar.emitting = true
-		jumpSFX.play()
 
 	# Controller Controls
 	# Aiming
@@ -218,8 +194,6 @@ func _input(event):
 		mouseTarget += Utils.get_relative_to_camera(self, $Camera)
 		Input.warp_mouse_position(mouseTarget)
 
-
-
 # warning-ignore:return_value_discarded
 	if Input.is_key_pressed(KEY_K):
 		global_position = get_global_mouse_position()
@@ -228,7 +202,7 @@ func _input(event):
 func _on_dash_cooldown_timeout():
 	state = states.WALK
 	vel.x *= .1
-	vel.y = GameManager.gravity*.25
+	vel.y = Globals.GRAVITY*.25
 	if is_grounded(): playerData.dashesLeft = playerData.maxDashes
 
 
@@ -276,6 +250,9 @@ func show_death_screen(timer:Timer) -> void:
 	timer.queue_free()
 
 func _on_health_changed(dir):
+	if playerData.godmode:
+		playerData.health = playerData.maxHealth
+		return
 	# Feedback
 	if !dashCooldown.is_stopped():
 		return

@@ -12,8 +12,7 @@ var points:PoolVector2Array = []
 
 func _ready():
 	for i in pointCount:
-# warning-ignore:integer_division
-		points.append(Vector2.RIGHT.rotated(deg2rad(360/pointCount)*i))
+		points.append(Vector2.RIGHT.rotated(deg2rad(360.0/pointCount)*i))
 
 
 func _process(delta):

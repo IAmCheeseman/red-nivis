@@ -55,7 +55,7 @@ func _process(delta):
 		GameManager.emit_signal("screenshake", 1, 5, .05, .05)
 
 # warning-ignore:return_value_discarded
-	vel.y += (Vector2.DOWN*(GameManager.gravity*delta)).y
+	vel.y += (Vector2.DOWN*(Globals.GRAVITY*delta)).y
 	vel.y = move_and_slide(vel).y
 	position = position.round()
 

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
+[ext_resource path="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsTiles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsPlatforms.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/EnviormentalArt/Solids/DeepLabs/DeepLabsBG.tscn" type="PackedScene" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Deep Labs"
+solids = ExtResource( 2 )
+background = ExtResource( 4 )
+platforms = ExtResource( 3 )
+biomeIndex = 1
+mapColor = Color( 0.756863, 0.54902, 0.337255, 1 )
+growChance = 0.5
+middleRemovalChance = 0.333
+connectionChance = 0.08
+roomTemplates = "res://World/Templates/LabTemplates"
+roofProps = [  ]
+groundProps = [  ]

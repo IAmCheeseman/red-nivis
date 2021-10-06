@@ -72,6 +72,7 @@ func generate_stats(selectedParts:Dictionary, body:Node2D):
 	data.customBullet = body.customBullet
 	data.magazineSize = body.magazineSize
 	data.reloadSpeed = body.reloadSpeed
+	data.cost = generate_cost(data)
 
 	data.bulletSprite = body.bulletSprite
 	data.kickUp = body.kickUp
@@ -122,6 +123,15 @@ func select_tier():
 		var chance = tierChances[(tierChances.size()-1)-i]
 		if roll >= 1-chance:
 			return i
+
+
+func generate_cost(item:Dictionary):
+	var cost := 50
+	cost += item.damage*1.3
+	cost += item.cooldown*3
+	cost += item.multishot*5
+	cost -= item.accuracy
+	return cost
 
 
 var parts = [

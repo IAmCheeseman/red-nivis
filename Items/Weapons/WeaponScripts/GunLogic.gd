@@ -42,6 +42,7 @@ func _physics_process(delta):
 	and hasEnoughAmmo\
 	and holdShots != gun.stats.maxHoldShots\
 	and !GameManager.editingInventory\
+	and !GameManager.inGUI\
 	and !playerData.playerObject.lockMovement:
 		playerData.ammo -= 1
 		Cursor.get_node("Sprite").scale = Vector2(1.2, 1.2)

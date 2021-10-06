@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Entities/Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Scripts/Player.gd" type="Script" id=2]
@@ -11,11 +11,14 @@
 [ext_resource path="res://UI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Player/Scripts/BlurVignette.tres" type="Material" id=10]
 [ext_resource path="res://Entities/Player/Camera/Camera.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Player/Scripts/Abilities/Dash.gd" type="Script" id=12]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=13]
 [ext_resource path="res://UI/DebugConsole/DebugConsole.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=15]
 [ext_resource path="res://Entities/Player/Assets/Vignette.tres" type="Material" id=16]
 [ext_resource path="res://UI/Inventory/Inventory.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/Player/Scripts/Abilities/DoubleJump.gd" type="Script" id=18]
+[ext_resource path="res://Entities/Player/grayscale.shader" type="Shader" id=19]
 [ext_resource path="res://Entities/Player/Assets/Arm1.png" type="Texture" id=21]
 [ext_resource path="res://Entities/Player/Assets/Hand.png" type="Texture" id=22]
 [ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=23]
@@ -30,16 +33,38 @@ code = "shader_type canvas_item;
 
 uniform float is_on : hint_range(0, 1);
 
+uniform vec4 line_color : hint_color = vec4(1);
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+
 void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+
+	
+	outline = min(outline, 1.0);
+
+	vec4 color = texture(TEXTURE, UV);
+
+	vec3 rcolor = texture(TEXTURE, UV).rgb;
+	if (rcolor == vec3(0.623529, 0.043137, 0.043137)) {
+		color = vec4(1, 1, 1, 1);
+	}
+
 	vec4 pixel = texture(TEXTURE, UV);
 	pixel.rgb += vec3(1.0*is_on, 1.0*is_on, 1.0*is_on);
 
-	COLOR = pixel;
+	COLOR = mix(pixel, line_color, outline - color.a);
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/is_on = 0.0
+shader_param/line_color = Color( 0.435294, 0.721569, 0.74902, 1 )
+shader_param/line_thickness = 1.0
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 7 )
@@ -73,13 +98,16 @@ shader_param/darkness = 0.489
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/vignette = ExtResource( 26 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 19 )
+shader_param/strength = 1.0
+
+[sub_resource type="DynamicFont" id=9]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "Dead"
+[sub_resource type="Animation" id=10]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -95,8 +123,7 @@ tracks/0/keys = {
 "values": [ 18 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "Die"
+[sub_resource type="Animation" id=11]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
@@ -123,7 +150,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -143,7 +170,7 @@ tracks/1/path = NodePath("ScaleHelper:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -187,7 +214,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -207,7 +234,7 @@ tracks/1/path = NodePath("ScaleHelper:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -239,7 +266,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -291,7 +318,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -331,7 +358,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.6
 loop = true
 step = 0.05
@@ -352,7 +379,7 @@ tracks/1/path = NodePath("ScaleHelper:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
@@ -430,7 +457,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.6
 loop = true
 step = 0.05
@@ -451,7 +478,7 @@ tracks/1/path = NodePath("ScaleHelper:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
@@ -517,7 +544,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -545,7 +572,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
 tracks/0/interp = 1
@@ -559,7 +586,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -574,7 +601,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.5, 0.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:material:shader_param/is_on")
@@ -594,6 +621,7 @@ tracks/0/keys = {
 ]]
 position = Vector2( 0, -3 )
 collision_layer = 0
+collision_mask = 25
 script = ExtResource( 2 )
 
 [node name="ScaleHelper" type="Node2D" parent="."]
@@ -601,13 +629,14 @@ position = Vector2( 0, 5 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
 material = SubResource( 2 )
-position = Vector2( 0, -15.7895 )
+position = Vector2( 0, -15.334 )
+scale = Vector2( 1, 0.969635 )
 texture = ExtResource( 1 )
-offset = Vector2( -5, 2 )
+offset = Vector2( -5, 1 )
 flip_h = true
 hframes = 6
 vframes = 4
-frame = 12
+frame = 6
 
 [node name="Arm" type="Sprite" parent="ScaleHelper/Sprite"]
 visible = false
@@ -665,8 +694,6 @@ visible = false
 position = Vector2( 0, -3 )
 shape = SubResource( 5 )
 
-[node name="GrappleRay" type="RayCast2D" parent="."]
-
 [node name="FloorCheckers" type="Node2D" parent="."]
 visible = false
 position = Vector2( 0, 1 )
@@ -675,16 +702,19 @@ position = Vector2( 0, 1 )
 position = Vector2( 3, 1 )
 enabled = true
 cast_to = Vector2( 1, 3 )
+collision_mask = 17
 
 [node name="FloorChecker2" type="RayCast2D" parent="FloorCheckers"]
 position = Vector2( 0, 2 )
 enabled = true
 cast_to = Vector2( 0, 2 )
+collision_mask = 17
 
 [node name="FloorChecker3" type="RayCast2D" parent="FloorCheckers"]
 position = Vector2( -3, 1 )
 enabled = true
 cast_to = Vector2( -1, 3 )
+collision_mask = 17
 
 [node name="TileCheckers" type="Node2D" parent="."]
 visible = false
@@ -692,17 +722,28 @@ visible = false
 [node name="BottomTileChecker" type="RayCast2D" parent="TileCheckers"]
 enabled = true
 cast_to = Vector2( 6, 0 )
+collision_mask = 17
 
 [node name="TopTileChecker" type="RayCast2D" parent="TileCheckers"]
 position = Vector2( 0, -8 )
 enabled = true
 cast_to = Vector2( 6, 0 )
+collision_mask = 17
 
 [node name="ItemHolder" type="Node2D" parent="."]
-position = Vector2( 0, -6 )
+position = Vector2( 0, -10 )
 
 [node name="Camera" parent="." instance=ExtResource( 11 )]
 trackNodePath = NodePath("..")
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="Dash" type="Node" parent="Abilities"]
+script = ExtResource( 12 )
+
+[node name="DoubleJump" type="Node" parent="Abilities"]
+script = ExtResource( 18 )
+playerPath = NodePath("../..")
 
 [node name="ItemManagement" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -753,7 +794,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="GrayScaleDeath" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 8 )
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GameOverlay" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource( 17 )]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
+visible = false
+mouse_filter = 2
+
+[node name="DebugConsole" parent="CanvasLayer" instance=ExtResource( 14 )]
+visible = false
 
 [node name="GameOverScreen" type="CenterContainer" parent="CanvasLayer"]
 visible = false
@@ -810,7 +870,7 @@ margin_right = 235.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 9 )
 bbcode_enabled = true
 bbcode_text = "[center][shake rate=45 level=8]Game Over[/shake]"
 text = "Game Over"
@@ -864,33 +924,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource( 17 )]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
-visible = false
-mouse_filter = 2
-
-[node name="DebugConsole" parent="CanvasLayer" instance=ExtResource( 14 )]
-visible = false
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Dead = SubResource( 9 )
-anims/Die = SubResource( 10 )
-anims/Idle = SubResource( 11 )
-anims/IdleNoHand = SubResource( 12 )
-anims/Jump = SubResource( 13 )
-anims/JumpNoHand = SubResource( 14 )
-anims/Run = SubResource( 15 )
-anims/RunNoHand = SubResource( 16 )
+anims/Dead = SubResource( 10 )
+anims/Die = SubResource( 11 )
+anims/Idle = SubResource( 12 )
+anims/IdleNoHand = SubResource( 13 )
+anims/Jump = SubResource( 14 )
+anims/JumpNoHand = SubResource( 15 )
+anims/Run = SubResource( 16 )
+anims/RunNoHand = SubResource( 17 )
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
-anims/Dash = SubResource( 17 )
-anims/Jump = SubResource( 18 )
-anims/Land = SubResource( 19 )
+anims/Dash = SubResource( 18 )
+anims/Jump = SubResource( 19 )
+anims/Land = SubResource( 20 )
 
 [node name="Flash" type="AnimationPlayer" parent="."]
-anims/flash = SubResource( 20 )
+anims/flash = SubResource( 21 )
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

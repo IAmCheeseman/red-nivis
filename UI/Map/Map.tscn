@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UI/Map/Map.gd" type="Script" id=1]
+[ext_resource path="res://UI/Map/MapTiles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/Assets/MapPositionMarker.png" type="Texture" id=3]
+[ext_resource path="res://UI/Assets/MapAlpha.png" type="Texture" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D alpha;
+
+const float PI = 3.14;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	float beforeA = 1.0-color.a;
+	color.a = texture(alpha, SCREEN_UV).r;
+	color.a = mix(color.a, 0, beforeA);
+	
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/alpha = ExtResource( 4 )
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+const float PI = 3.14;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+//	color.a = clamp(1.0-(sin(PI*UV.x)+sin(PI*UV.y)));
+	
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+
+[node name="Map" type="ViewportContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -60.0
+margin_bottom = 60.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 60, 60 )
+transparent_bg = true
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="MapTiles" parent="Viewport" instance=ExtResource( 2 )]
+material = SubResource( 2 )
+
+[node name="Camera" type="Camera2D" parent="Viewport"]
+current = true
+
+[node name="Sprite" type="Sprite" parent="Viewport/Camera"]
+texture = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Viewport"]
+
+[node name="AlphaVignette" type="ColorRect" parent="Viewport/CanvasLayer"]
+visible = false
+material = SubResource( 4 )
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 60, 60 )

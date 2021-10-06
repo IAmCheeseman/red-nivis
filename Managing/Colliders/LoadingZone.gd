@@ -18,10 +18,6 @@ onready var prompt = $Prompt
 signal loadArea
 
 
-func _ready():
-	if inWorld: worldRoot = get_tree().root.get_child(5)
-
-
 func _on_LoadingZone_area_entered(area):
 	if !area.is_in_group("player"):
 		return

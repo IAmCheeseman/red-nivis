@@ -8,7 +8,7 @@ func _ready():
 
 
 func _input(event):
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and !GameManager.inGUI:
 		visible = !visible
 		get_tree().paused = visible
 

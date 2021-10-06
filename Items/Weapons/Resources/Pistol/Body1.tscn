@@ -7,7 +7,6 @@
 rarity = 1
 damage = 15.0
 accuracy = 4.0
-cooldown = 0.35
 recoil = 0.2
 magazineSize = 4
 

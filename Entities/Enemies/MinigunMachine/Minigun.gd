@@ -14,6 +14,7 @@ onready var anim = $AnimationPlayer
 var currentCooldown = 2.3
 var shotsInARow = 0
 var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
+var isOn = false
 
 
 func _ready() -> void:
@@ -23,7 +24,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	scale = Vector2.ONE
 
-	if !overheatCooldown.is_stopped() or !cooldown.is_stopped():
+	if !overheatCooldown.is_stopped() or !cooldown.is_stopped() or !isOn:
 		return
 	currentCooldown = clamp(currentCooldown*.75, minCooldown, startCooldown)
 	cooldown.stop()

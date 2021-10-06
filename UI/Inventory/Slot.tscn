@@ -5,13 +5,10 @@
 [ext_resource path="res://General/Outline.shader" type="Shader" id=3]
 
 [sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/Slot.png-c3dabab1b9471a34cb3fe7bec0b47623.stex"
 
 [sub_resource type="StreamTexture" id=2]
-load_path = "res://.import/SlotPressed.png-ddbacac1a489c10b58df20bf6827b85e.stex"
 
 [sub_resource type="StreamTexture" id=3]
-load_path = "res://.import/SlotHover.png-7d9bc903ca922261bf7278352f84965b.stex"
 
 [sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
@@ -22,7 +19,7 @@ uniform float fadeStart : hint_range(0, 2
 
 void fragment() {
 	vec4 newColor = color;
-	newColor.a = clamp(fadeStart-UV.x, 0.0, 1.0);
+	newColor.a = clamp(UV.x, 0.0, 1.0);
 	COLOR = newColor;
 }"
 
@@ -46,6 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -349.0
 margin_bottom = -280.0
+rect_min_size = Vector2( 0, 19 )
 texture_normal = SubResource( 1 )
 texture_pressed = SubResource( 2 )
 texture_hover = SubResource( 3 )
