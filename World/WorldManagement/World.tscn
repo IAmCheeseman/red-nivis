@@ -14,7 +14,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=12]
 [ext_resource path="res://World/EnviormentalArt/Solids/Lab/OneWayPlatforms.tscn" type="PackedScene" id=13]
 
-[node name="World0" type="Node2D" groups=[
+[node name="World" type="Node2D" groups=[
 "world",
 ]]
 script = ExtResource( 10 )

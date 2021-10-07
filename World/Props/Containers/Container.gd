@@ -57,7 +57,7 @@ func _process(delta):
 # warning-ignore:return_value_discarded
 	vel.y += (Vector2.DOWN*(Globals.GRAVITY*delta)).y
 	vel.y = move_and_slide(vel).y
-	position = position.round()
+#	position = position.round()
 
 
 func _on_animation_finished():

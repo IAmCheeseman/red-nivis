@@ -26,6 +26,7 @@ func _ready():
 	
 	solids = biome.solids.instance()
 	solids.z_index = 1
+	
 	tilesContainer.add_child(solids)
 	platforms = biome.platforms.instance()
 	platforms.z_index = -1
@@ -128,7 +129,7 @@ func _ready():
 	# warning-ignore:narrowing_conversion
 					if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y-1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
 						if biome.groundProps.size() > 0: add_props(biome.groundProps, clamp(x, 2, room.get_width()-2), y)
-						viableContainerSpawns.append(Vector2(clamp(x, 2, room.get_width()-2), y-1))
+						viableContainerSpawns.append(Vector2(x, y))
 				# If is platform
 				elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 					platforms.set_cell(x, y, 0)
@@ -142,7 +143,8 @@ func _ready():
 			if viableContainerSpawns.size() == 0: 
 				break
 			var spawnPos:Vector2 = viableContainerSpawns.pop_front()
-			add_props(containers, spawnPos.x, spawnPos.y-8)
+			add_props(containers, spawnPos.x, spawnPos.y)
+			
 		
 		# Enemy Spawning
 		randomize()
