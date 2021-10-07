@@ -1,10 +1,11 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Solids/Caves/StoneBG.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/EnviormentalArt/Solids/Caves/Stone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Solids/Caves/StonePlatforms.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnemyPools/BasicEnemies.tres" type="Resource" id=5]
+[ext_resource path="res://World/Templates/CaveTemplates.png" type="Texture" id=6]
 [ext_resource path="res://World/Props/Foliage/Vine/Normal/Vine.tscn" type="PackedScene" id=7]
 
 [resource]
@@ -20,7 +21,7 @@ mapColor = Color( 0.298039, 0.396078, 0.537255, 1 )
 growChance = 0.5
 middleRemovalChance = 0.666
 connectionChance = 0.12
-roomTemplates = "res://World/Templates/LabTemplates"
+roomTemplates = ExtResource( 6 )
 roofProps = [ ExtResource( 7 ) ]
 groundProps = [  ]
 enemyPools = [ ExtResource( 5 ) ]

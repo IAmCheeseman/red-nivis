@@ -2,7 +2,6 @@ extends Node
 class_name RoomGenerator
 
 const TEMPLATE_SIZE = 10
-const TEMPLATE_PATH = "res://World/Templates/"
 
 const EMPTY = Color("#ffffff")
 const TILE = Color("#000000")
@@ -15,13 +14,16 @@ const LEFT = Color("#952008")
 enum {IS_UP, IS_DOWN, IS_RIGHT, IS_LEFT, IS_TILE}
 
 
-static func generate(seed_:int, templatesName:String, templateAmount:int, exits:PoolVector2Array) -> Image:
+static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, exits:PoolVector2Array) -> Image:
 	seed(seed_)
 	var size:Vector2 = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
 	var image:Image = Image.new()
-	image.create(int(size.x*TEMPLATE_SIZE), int(size.y*TEMPLATE_SIZE), true, Image.FORMAT_RGBA8)
+	image.create(
+		int(size.x*TEMPLATE_SIZE), 
+		int(size.y*TEMPLATE_SIZE), 
+		true, Image.FORMAT_RGBA8)
 	
-	var templates:Image = load(TEMPLATE_PATH+templatesName).get_data()
+	var templates:Image = _templates.get_data()
 	
 	var upExitI = round(rand_range(1, size.x))
 	var downExitI = round(rand_range(1, size.x))
@@ -74,6 +76,8 @@ static func generate(seed_:int, templatesName:String, templateAmount:int, exits:
 			platforms.unlock()
 	
 	image.unlock()
+	
+	image.save_png("user://Room.png")
 	
 	return image
 

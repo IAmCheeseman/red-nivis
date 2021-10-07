@@ -104,7 +104,13 @@ func _ready():
 		room.queue_free()
 	# RANDOM ROOMS
 	else:
-		room = RoomGenerator.generate(randi(), "LabTemplates.png", 13, connections)
+		room = RoomGenerator.generate(
+			randi(),
+			biome.roomTemplates,
+			biome.roomTemplates.get_width()/RoomGenerator.TEMPLATE_SIZE,
+			connections
+		)
+		print(biome.roomTemplates.get_width()/RoomGenerator.TEMPLATE_SIZE)
 		
 		var viableEnemySpawns = [] 
 		var viableContainerSpawns = []
