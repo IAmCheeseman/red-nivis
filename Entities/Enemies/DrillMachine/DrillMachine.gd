@@ -182,12 +182,13 @@ func _on_hurt(amount:float, dir:Vector2) -> void:
 		defendTimer.start()
 		vel = Vector2.ZERO
 	
+	GameManager.frameFreezer.freeze_frames(.07)
 	if health <= 0:
 		var newDP = deathParticles.instance()
 		newDP.position = position
 		newDP.rotation = dir.angle()
 		GameManager.spawnManager.spawn_object(newDP)
-		GameManager.frameFreezer.freeze_frames(.07)
+		GameManager.frameFreezer.freeze_frames(.1)
 		
 		if rand_range(0, 1) < Globals.HEART_CHANCE:
 			var newHealth = healthPickup.instance()

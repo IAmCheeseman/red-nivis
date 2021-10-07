@@ -36,7 +36,7 @@ signal moneyChanged
 
 
 func _init() -> void:
-	health = maxHealth
+	health = maxHealth-1
 
 
 func _on_damage_taken(damage, kbDir) -> void:
