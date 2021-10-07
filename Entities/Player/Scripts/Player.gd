@@ -262,11 +262,13 @@ func _on_health_changed(dir):
 	hurtSFX.play()
 	flashPlayer.play("flash")
 	if playerData.health <= 0:
-		vel = dir*(playerData.kbStrength*1.2)
+		vel = dir*(playerData.kbStrength*1.5)
 		die()
 	# Screenshake
 	GameManager.emit_signal("screenshake", 2, 6, .05, .05)
+	
 	# Knockback
 	dir = dir*playerData.kbStrength
+	vel = dir
 
 

@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://World/EnviormentalArt/Solids/BlockOff/BlockOff.png" type="Texture" id=1]
+[ext_resource path="res://World/EnviormentalArt/Solids/BlockOff/BlockBase.png" type="Texture" id=2]
+[ext_resource path="res://World/EnviormentalArt/Solids/BlockOff/BlockOffLight.png" type="Texture" id=3]
+[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 3, 20 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 1, 20 )
+
+[node name="BlockOff" type="Node2D"]
+
+[node name="Bottom" type="Sprite" parent="."]
+position = Vector2( 0, 22 )
+texture = ExtResource( 2 )
+
+[node name="Top" type="Sprite" parent="."]
+position = Vector2( 0, -22 )
+scale = Vector2( 1, -1 )
+texture = ExtResource( 2 )
+
+[node name="Lasers" type="Node2D" parent="."]
+show_behind_parent = true
+
+[node name="Laser" type="AnimatedSprite" parent="Lasers"]
+position = Vector2( 0, 4.76837e-07 )
+frames = SubResource( 6 )
+frame = 2
+playing = true
+
+[node name="Light2D" type="Light2D" parent="Lasers/Laser"]
+texture = ExtResource( 3 )
+
+[node name="Laser3" type="AnimatedSprite" parent="Lasers"]
+position = Vector2( 0, 16 )
+frames = SubResource( 6 )
+frame = 2
+playing = true
+
+[node name="Light2D" type="Light2D" parent="Lasers/Laser3"]
+texture = ExtResource( 3 )
+
+[node name="Laser2" type="AnimatedSprite" parent="Lasers"]
+position = Vector2( 0, -16 )
+frames = SubResource( 6 )
+frame = 2
+playing = true
+
+[node name="Light2D" type="Light2D" parent="Lasers/Laser2"]
+texture = ExtResource( 3 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 4 )]
+collision_mask = 2
+damage = 1
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 7 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 4, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 8 )
+
+[editable path="Hitbox"]
