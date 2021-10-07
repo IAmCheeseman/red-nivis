@@ -110,7 +110,6 @@ func _ready():
 			biome.roomTemplates.get_width()/RoomGenerator.TEMPLATE_SIZE,
 			connections
 		)
-		print(biome.roomTemplates.get_width()/RoomGenerator.TEMPLATE_SIZE)
 		
 		var viableEnemySpawns = [] 
 		var viableContainerSpawns = []
