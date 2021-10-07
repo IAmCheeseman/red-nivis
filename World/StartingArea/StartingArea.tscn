@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://World/EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=16]
 [ext_resource path="res://Entities/Shopkeep/Shopkeep.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Entities/Shopkeep/Shop.tscn" type="PackedScene" id=18]
+[ext_resource path="res://World/Props/Foliage/Vine/Normal/Vine.tscn" type="PackedScene" id=19]
+[ext_resource path="res://World/Props/Foliage/Grass/Normal/Grass.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 181.343, 120 )
@@ -134,6 +136,49 @@ emitSignalInstead = true
 
 [node name="CollisionShape2D" parent="Managing/LoadingZone" index="0"]
 shape = SubResource( 4 )
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="Sprite1" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( -120, 0 )
+
+[node name="Sprite2" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( -152, -16 )
+
+[node name="Sprite3" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( -136, -16 )
+
+[node name="Sprite4" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( -184, -64 )
+
+[node name="Sprite5" parent="Decoration" instance=ExtResource( 20 )]
+
+[node name="Sprite6" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( 16, 0 )
+
+[node name="Sprite7" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( 56, 0 )
+
+[node name="Sprite8" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( 72, -16 )
+
+[node name="Sprite9" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( 152, -16 )
+
+[node name="Sprite10" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( 168, 0 )
+
+[node name="Sprite11" parent="Decoration" instance=ExtResource( 20 )]
+position = Vector2( 392, -16 )
+
+[node name="Vine" parent="Decoration" instance=ExtResource( 19 )]
+position = Vector2( -184, -128 )
+
+[node name="Vine2" parent="Decoration" instance=ExtResource( 19 )]
+position = Vector2( 488, -192 )
+
+[node name="Vine3" parent="Decoration" instance=ExtResource( 19 )]
+position = Vector2( 472, -208 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 322.837, -18.6631 )
