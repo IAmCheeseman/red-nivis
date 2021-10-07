@@ -11,7 +11,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Lab"
+name = "Labs"
 solids = ExtResource( 4 )
 background = ExtResource( 3 )
 platforms = ExtResource( 2 )

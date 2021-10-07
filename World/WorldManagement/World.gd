@@ -9,6 +9,7 @@ onready var mistSpawner = $Props/Player/MistSpawner
 onready var solids = $Props/Tiles/LabSolids
 onready var platforms = $Props/Tiles/OneWayPlatforms
 onready var solidColorBG = $Background/BGColor
+onready var canvasLayer =$CanvasLayer
 onready var mainCamMove = $Props/CameraZones/CameraMoveZone
 onready var screenTrans = $ScreenTransition
 onready var tilesContainer = $Props/Tiles
@@ -205,6 +206,11 @@ func _ready():
 	pad(Vector2(-PADDING, 0), Vector2(roomSize.x+PADDING, 0), Vector2.RIGHT, Vector2.UP)
 	# Down padding
 	pad(Vector2(-PADDING, roomSize.y-1), Vector2(roomSize.x+PADDING, roomSize.y-1), Vector2.RIGHT, Vector2.DOWN)
+
+	if worldData.rooms[worldData.position.x-worldData.moveDir.x][worldData.position.y-worldData.moveDir.y].biome != biome:
+		var newBiomeTitle = preload("res://UI/BiomeTitle/BiomeTitle.tscn").instance()
+		canvasLayer.add_child(newBiomeTitle)
+		newBiomeTitle.get_node("Title/Name").text = "The "+biome.name
 
 
 func _on_drop_gun(gun, pos):
