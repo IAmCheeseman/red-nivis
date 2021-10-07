@@ -207,7 +207,9 @@ func _ready():
 	# Down padding
 	pad(Vector2(-PADDING, roomSize.y-1), Vector2(roomSize.x+PADDING, roomSize.y-1), Vector2.RIGHT, Vector2.DOWN)
 
-	if worldData.rooms[worldData.position.x-worldData.moveDir.x][worldData.position.y-worldData.moveDir.y].biome != biome:
+	if worldData.rooms[worldData.position.x-worldData.moveDir.x]\
+	[worldData.position.y-worldData.moveDir.y].biome != biome\
+	or worldData.moveDir == Vector2.ZERO:
 		var newBiomeTitle = preload("res://UI/BiomeTitle/BiomeTitle.tscn").instance()
 		canvasLayer.add_child(newBiomeTitle)
 		newBiomeTitle.get_node("Title/Name").text = "The "+biome.name
