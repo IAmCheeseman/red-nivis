@@ -172,20 +172,19 @@ position = Vector2( 168, 0 )
 position = Vector2( 392, -16 )
 
 [node name="Vine" parent="Decoration" instance=ExtResource( 19 )]
-position = Vector2( -184, -128 )
+position = Vector2( -185, -128 )
 
 [node name="Vine2" parent="Decoration" instance=ExtResource( 19 )]
-position = Vector2( 488, -192 )
+position = Vector2( 489, -192 )
 
 [node name="Vine3" parent="Decoration" instance=ExtResource( 19 )]
-position = Vector2( 472, -208 )
+position = Vector2( 473, -208 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 322.837, -18.6631 )
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 323.166, -18.9643 )
-mouseWeight = false
 trackNodePath = NodePath("../Player")
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
