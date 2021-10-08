@@ -63,6 +63,7 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 						color = EMPTY
 					else:
 						color = TILE
+					
 					if (pColor.is_equal_approx(UP) or pColor.is_equal_approx(DOWN) or pColor.is_equal_approx(TILE))\
 					and !color.is_equal_approx(TILE):
 						color = PLATFORM

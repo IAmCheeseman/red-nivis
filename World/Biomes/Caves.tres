@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Solids/Caves/StoneBG.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://World/EnemyPools/BasicEnemies.tres" type="Resource" id=5]
 [ext_resource path="res://World/Templates/CaveTemplates.png" type="Texture" id=6]
 [ext_resource path="res://World/Props/Foliage/Vine/Normal/Vine.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Props/Foliage/Grass/Normal/Grass.tscn" type="PackedScene" id=8]
 
 [resource]
 script = ExtResource( 1 )
@@ -23,5 +24,5 @@ middleRemovalChance = 0.666
 connectionChance = 0.12
 roomTemplates = ExtResource( 6 )
 roofProps = [ ExtResource( 7 ) ]
-groundProps = [  ]
+groundProps = [ ExtResource( 8 ) ]
 enemyPools = [ ExtResource( 5 ) ]

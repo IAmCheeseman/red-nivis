@@ -7,6 +7,7 @@ onready var label:Label = $Label
 
 
 export var ignoreDistance := false
+export var disabled := false setget set_disabled
 
 var playerNear = false
 
@@ -19,7 +20,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		# Checking if it's the player and
 		# Emitting a signal if it's the player
-		if playerNear and is_closest():
+		if playerNear and is_closest() and !disabled:
 			emit_signal("interaction")
 
 
@@ -32,14 +33,16 @@ func _on_area_entered(area: Area2D) -> void:
 		label.text = "<%s>" % OS.get_scancode_string(
 			InputMap.get_action_list("interact")[0].scancode
 		)
-		label.show()
-		emit_signal("player_close")
+		if !disabled:
+			label.show()
+			emit_signal("player_close")
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		playerNear = false
-		label.hide()
-		emit_signal("player_left")
+		if !disabled:
+			label.hide()
+			emit_signal("player_left")
 
 
 # Checks if the player is closest to this interactable.
@@ -56,4 +59,7 @@ func is_closest() -> bool:
 	return true
 
 
+func set_disabled(val:bool):
+	disabled = val 
+	if disabled: label.hide()
 
