@@ -83,7 +83,7 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 static func get_random_template(template:Image, templateAmount:int) -> Dictionary:
 # warning-ignore:integer_division
 	var templatex := int(rand_range(0, (template.get_width()/(templateAmount-1))))*TEMPLATE_SIZE
-	templatex = clamp(templatex, 0, template.get_width()-TEMPLATE_SIZE)
+	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
 	return {
 		"solids" : Rect2(
 			Vector2(templatex, 0),

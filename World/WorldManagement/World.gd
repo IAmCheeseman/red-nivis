@@ -108,7 +108,7 @@ func _ready():
 		room = RoomGenerator.generate(
 			randi(),
 			biome.roomTemplates,
-			biome.roomTemplates.get_width()/RoomGenerator.TEMPLATE_SIZE,
+			int(float(biome.roomTemplates.get_width())/float(RoomGenerator.TEMPLATE_SIZE)),
 			connections
 		)
 		
