@@ -108,6 +108,7 @@ func _ready():
 		room = RoomGenerator.generate(
 			randi(),
 			biome.roomTemplates,
+# warning-ignore:integer_division
 			biome.roomTemplates.get_width()/RoomGenerator.TEMPLATE_SIZE,
 			connections
 		)
