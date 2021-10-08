@@ -5,7 +5,7 @@ onready var textureRect = $BG/TextureRect
 onready var bg = $BG
 
 
-export var texture:StreamTexture = preload("res://Items/Upgrades/DoubleJumpUpgrade.png") setget set_texture
+export var texture:StreamTexture = preload("res://Items/Upgrades/DoubleJump/DoubleJumpUpgrade.png") setget set_texture
 
 signal clicked
 
@@ -17,7 +17,6 @@ func _ready() -> void:
 func _gui_input(event: InputEvent) -> void:
 	bg.color = Color(0, 0, 0, .5)
 	if event.is_action_pressed("use_item"):
-		print("clicky click " + name)
 		emit_signal("clicked")
 		bg.color = Color(0, 0, 0, .75)
 

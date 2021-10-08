@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/Upgrades/Upgrade.gd" type="Script" id=1]
+[ext_resource path="res://Items/Upgrades/Teleport/Teleport.gd" type="Script" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/TeleportUpgrade.png-8ca1a78e99182934da26f22174d74ba9.stex"
+
+[resource]
+script = ExtResource( 1 )
+icon = SubResource( 1 )
+name = "Teleporter"
+description = "Teleports you a short distance."
+abilityScript = ExtResource( 2 )

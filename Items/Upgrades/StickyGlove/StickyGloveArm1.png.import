@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StickyGloveArm1.png-b280a305d34c9d8bb581a285aea01399.stex"
+path="res://.import/StickyGloveArm1.png-1c3b3985805a7ac829fb6da90a9c755b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Upgrades/StickyGloveArm1.png"
-dest_files=[ "res://.import/StickyGloveArm1.png-b280a305d34c9d8bb581a285aea01399.stex" ]
+source_file="res://Items/Upgrades/StickyGlove/StickyGloveArm1.png"
+dest_files=[ "res://.import/StickyGloveArm1.png-1c3b3985805a7ac829fb6da90a9c755b.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StickyGloveHand.png-26b559d9185f719905be7471f7da03f8.stex"
+path="res://.import/DoubleJumpUpgrade.png-4812ff76ddc1bc17a467d22bd83f58d4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Upgrades/StickyGloveHand.png"
-dest_files=[ "res://.import/StickyGloveHand.png-26b559d9185f719905be7471f7da03f8.stex" ]
+source_file="res://Items/Upgrades/DoubleJump/DoubleJumpUpgrade.png"
+dest_files=[ "res://.import/DoubleJumpUpgrade.png-4812ff76ddc1bc17a467d22bd83f58d4.stex" ]
 
 [params]
 

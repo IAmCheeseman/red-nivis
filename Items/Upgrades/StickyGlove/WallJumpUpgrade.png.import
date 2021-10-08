@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TeleportUpgrade.png-8ca1a78e99182934da26f22174d74ba9.stex"
+path="res://.import/WallJumpUpgrade.png-10d82b2d2885014737853af54448f476.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Upgrades/TeleportUpgrade.png"
-dest_files=[ "res://.import/TeleportUpgrade.png-8ca1a78e99182934da26f22174d74ba9.stex" ]
+source_file="res://Items/Upgrades/StickyGlove/WallJumpUpgrade.png"
+dest_files=[ "res://.import/WallJumpUpgrade.png-10d82b2d2885014737853af54448f476.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WallJumpUpgrade.png-f9e4de18040c4d9752d060edf595d045.stex"
+path="res://.import/DoubleJumpPlayerOverlay.png-70c7c443e46a43a352165dff3d81b36e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Upgrades/WallJumpUpgrade.png"
-dest_files=[ "res://.import/WallJumpUpgrade.png-f9e4de18040c4d9752d060edf595d045.stex" ]
+source_file="res://Items/Upgrades/DoubleJump/DoubleJumpPlayerOverlay.png"
+dest_files=[ "res://.import/DoubleJumpPlayerOverlay.png-70c7c443e46a43a352165dff3d81b36e.stex" ]
 
 [params]
 
