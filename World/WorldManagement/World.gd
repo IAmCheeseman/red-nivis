@@ -109,7 +109,7 @@ func _ready():
 			randi(),
 			biome.roomTemplates,
 # warning-ignore:integer_division
-			biome.roomTemplates.get_width()/RoomGenerator.TEMPLATE_SIZE,
+			int(float(biome.roomTemplates.get_width())/float(RoomGenerator.TEMPLATE_SIZE)),
 			connections
 		)
 		

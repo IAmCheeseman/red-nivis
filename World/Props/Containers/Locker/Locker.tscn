@@ -41,6 +41,7 @@ animations = [ {
 extents = Vector2( 6, 12 )
 
 [sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 6, 12 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 13 )
@@ -60,11 +61,11 @@ visible = false
 position = Vector2( -1, -12 )
 shape = SubResource( 7 )
 
-[node name="PlayerDetection" parent="." index="3"]
-visible = false
+[node name="Iteraction" parent="." index="3"]
+position = Vector2( 0, -32 )
 
-[node name="CollisionShape2D" parent="PlayerDetection" index="0"]
-position = Vector2( -1, -12 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction" index="1"]
+position = Vector2( 0, 20 )
 shape = SubResource( 8 )
 
 [node name="QueueCollision" parent="." index="4"]
@@ -73,5 +74,3 @@ visible = false
 [node name="CollisionShape2D" parent="QueueCollision" index="0"]
 position = Vector2( 0, -13 )
 shape = SubResource( 9 )
-
-[editable path="PlayerDetection"]
