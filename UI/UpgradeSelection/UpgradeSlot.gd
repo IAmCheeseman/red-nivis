@@ -5,22 +5,22 @@ onready var textureRect = $BG/TextureRect
 onready var bg = $BG
 
 
-export var texture:StreamTexture = preload("res://Items/Upgrades/DoubleJump/DoubleJumpUpgrade.png") setget set_texture
+export var upgrade:Resource = preload("res://Items/Upgrades/DoubleJump/DoubleJump.tres") setget update_upgrade
 
 signal clicked
 
 
 func _ready() -> void:
-	textureRect.texture = texture
+	textureRect.texture = upgrade.icon
 
 
 func _gui_input(event: InputEvent) -> void:
-	bg.color = Color(0, 0, 0, .5)
+	bg.self_modulate = Color(0, 0, 0, .5)
 	if event.is_action_pressed("use_item"):
 		emit_signal("clicked")
-		bg.color = Color(0, 0, 0, .75)
+		bg.self_modulate = Color(0, 0, 0, .75)
 
-func set_texture(tex:StreamTexture) -> void:
-	texture = tex
+func update_upgrade(_upgrade:Upgrade) -> void:
+	upgrade = _upgrade
 	if is_inside_tree():
-		textureRect.texture = texture
+		textureRect.texture = upgrade.icon
