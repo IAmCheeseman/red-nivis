@@ -17,23 +17,47 @@ enum {IS_UP, IS_DOWN, IS_RIGHT, IS_LEFT, IS_TILE}
 static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, exits:PoolVector2Array) -> Image:
 	seed(seed_)
 	var size:Vector2 = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
+	while size == Vector2.ONE:
+		size = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
 	var image:Image = Image.new()
 	image.create(
 		int(size.x*TEMPLATE_SIZE), 
 		int(size.y*TEMPLATE_SIZE), 
 		true, Image.FORMAT_RGBA8)
 	
+	var canBlockOutTemplates = size.x > 1 and size.y > 1
+	var blockOuts = []
+	var blockOutCount = (size.x*size.y)*.5
+	blockOutCount -= 1
+	blockOutCount = floor(blockOutCount)
+	blockOutCount -= round(rand_range(0, blockOutCount))
+	while blockOutCount >= size.x or blockOutCount >= size.y:
+		blockOutCount -= 1
+	
+	for i in blockOutCount:
+		blockOuts.append(Vector2(
+			rand_range(0, size.x-1),
+			rand_range(0, size.y-1)
+		).round())
+	
 	var templates:Image = _templates.get_data()
 	
 	var upExitI = round(rand_range(1, size.x))
+	while Vector2(upExitI-1, 0) in blockOuts: upExitI = round(rand_range(1, size.x))
 	var downExitI = round(rand_range(1, size.x))
+	while Vector2(downExitI-1, size.x-1) in blockOuts: downExitI = round(rand_range(1, size.x))
 	var rightExitI = round(rand_range(1, size.y))
+	while Vector2(rightExitI-1, size.y-1) in blockOuts: rightExitI = round(rand_range(1, size.y))
 	var leftExitI = round(rand_range(1, size.y))
+	while Vector2(leftExitI-1, 0) in blockOuts: leftExitI = round(rand_range(1, size.y))
 	
 	image.lock()
 	for x in size.x:
 		for y in size.y:
 			var template = get_random_template(templates, templateAmount)
+			if Vector2(x, y) in blockOuts:
+				template.solids.position.x = templates.get_width()
+				template.platforms.position.x = templates.get_width()
 			var room = templates.get_rect(template.solids)
 			var platforms = templates.get_rect(template.platforms)
 			room.lock()

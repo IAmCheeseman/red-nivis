@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 onready var sprite = $Sprite
 onready var interactionZone = $Iteraction
-#onready var playerDetection = $PlayerDetection
 onready var itemSpawner = $ItemSpawn
 onready var animationPlayer = $AnimationPlayer
 onready var queueCollision = $QueueCollision
