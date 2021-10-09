@@ -10,5 +10,5 @@ load_path = "res://.import/TeleportUpgrade.png-8ca1a78e99182934da26f22174d74ba9.
 script = ExtResource( 1 )
 icon = SubResource( 1 )
 name = "Teleporter"
-description = "Teleports you a short distance."
+description = "Teleports you a short distance"
 abilityScript = ExtResource( 2 )

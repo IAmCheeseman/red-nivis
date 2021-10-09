@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://UI/Assets/BULKYPIX.TTF" type="DynamicFontData" id=1]
-[ext_resource path="res://UI/Assets/DenseLetters.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/Assets/FFFFORWA.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/Assets/FFFForwa.tres" type="DynamicFont" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 13
@@ -65,15 +65,16 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 5.0
+mouse_filter = 2
 custom_constants/separation = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Welcome" type="Label" parent="Title"]
-modulate = Color( 1, 1, 1, 0 )
 margin_right = 256.0
-margin_bottom = 10.0
+margin_bottom = 14.0
+input_pass_on_modal_close_click = false
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
@@ -82,10 +83,10 @@ text = "welcome to"
 align = 1
 
 [node name="Name" type="Label" parent="Title"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 15.0
+margin_top = 19.0
 margin_right = 256.0
-margin_bottom = 29.0
+margin_bottom = 38.0
+input_pass_on_modal_close_click = false
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0

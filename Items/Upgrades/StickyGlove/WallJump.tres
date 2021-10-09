@@ -9,4 +9,4 @@ load_path = "res://.import/WallJumpUpgrade.png-f9e4de18040c4d9752d060edf595d045.
 script = ExtResource( 1 )
 icon = SubResource( 1 )
 name = "Sticky Glove"
-description = "Allows you to jump off walls."
+description = "Allows you to jump off walls"

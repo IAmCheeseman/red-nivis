@@ -20,15 +20,18 @@ export var recoveryTime:float = 2.0
 export var tiltStrength:float = 5.0
 
 var health:int
-var money = 0 setget set_money
+var money := 0 setget set_money
 var ammo:int setget set_ammo
-var dashesLeft = 1
-var godmode = false
+var dashesLeft := 1
+var godmode := false
+
+var upgradeSlots = 2
+var upgrades := []
 
 var playerObject:KinematicBody2D
 
-var isDead = false
-var isDashing = false
+var isDead := false
+var isDashing := false
 
 signal healthChanged
 signal ammoChanged

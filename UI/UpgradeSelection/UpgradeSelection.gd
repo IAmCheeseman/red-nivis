@@ -3,9 +3,12 @@ extends Control
 onready var upgrades = find_node("Upgrades")
 onready var selections = find_node("Selections")
 
+var player = preload("res://Entities/Player/Player.tres")
+
+
 func _ready() -> void:
-	for i in upgrades.get_children():
-		i.connect("clicked", self, "_on_upgrade_slot_clicked", [i])
+	for u in upgrades.get_children():
+		u.connect("clicked", self, "_on_upgrade_slot_clicked", [u])
 
 
 func _on_upgrade_slot_clicked(node:Node) -> void:
@@ -17,6 +20,7 @@ func _on_upgrade_slot_clicked(node:Node) -> void:
 		upgrades.add_child(node)
 
 
-func _on_selection_slot_clicked() -> void:
-	pass
+func _on_done_pressed():
+	for s in selections.get_children():
+		player.upgrades.append(s.upgrade.abilityScript)
 
