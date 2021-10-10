@@ -2,6 +2,7 @@ extends Node2D
 
 onready var sparkSpawnPos = $SparkSpawnPos
 onready var anim = $AnimationPlayer
+onready var dingSFX = $DingSFX
 
 var player = preload("res://Entities/Player/Player.tres")
 
@@ -29,3 +30,4 @@ func add_sparks():
 
 func open_door() -> void:
 	anim.play("Open")
+	dingSFX.play()

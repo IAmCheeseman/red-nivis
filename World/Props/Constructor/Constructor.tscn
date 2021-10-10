@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/Props/Constructor/Constructor.png" type="Texture" id=1]
 [ext_resource path="res://World/Props/Constructor/Constructor.gd" type="Script" id=2]
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Effects/EnemySpawnGrow.png" type="Texture" id=4]
+[ext_resource path="res://World/Props/Constructor/DoneDing.wav" type="AudioStream" id=5]
 
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, -1.0, 0, 1, Vector2( 1, 0 ), -1.0, 0.0, 1, 0 ]
@@ -135,13 +136,15 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -20 )
 hframes = 6
 vframes = 2
-frame = 5
+frame = 8
 
 [node name="SparkSpawnPos" type="Position2D" parent="."]
 position = Vector2( -20, -20 )
 
 [node name="DingSFX" type="Node2D" parent="."]
 script = ExtResource( 3 )
+audio = ExtResource( 5 )
+volumeMod = -8.0
 bus = "SFX"
 
 [node name="Particles2D" type="Particles2D" parent="."]
