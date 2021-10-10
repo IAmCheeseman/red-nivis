@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -16,8 +16,7 @@
 [ext_resource path="res://World/EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=14]
 [ext_resource path="res://World/EnviormentalArt/BackGrounds/MountainsNear.png" type="Texture" id=15]
 [ext_resource path="res://World/EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=16]
-[ext_resource path="res://Entities/Shopkeep/Shopkeep.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Entities/Shopkeep/Shop.tscn" type="PackedScene" id=18]
+[ext_resource path="res://World/Props/Constructor/Constructor.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Props/Foliage/Vine/Normal/Vine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://World/Props/Foliage/Grass/Normal/Grass.tscn" type="PackedScene" id=20]
 
@@ -73,14 +72,6 @@ __meta__ = {
 
 [node name="Lab" parent="." instance=ExtResource( 9 )]
 position = Vector2( 322, -72 )
-
-[node name="Shop" type="Node2D" parent="."]
-
-[node name="Shop" parent="Shop" instance=ExtResource( 18 )]
-position = Vector2( -40, 1 )
-
-[node name="Shopkeep" parent="Shop" instance=ExtResource( 17 )]
-position = Vector2( -80, -3 )
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -180,8 +171,11 @@ position = Vector2( 489, -192 )
 [node name="Vine3" parent="Decoration" instance=ExtResource( 19 )]
 position = Vector2( 473, -208 )
 
+[node name="Constructor" parent="." instance=ExtResource( 17 )]
+position = Vector2( -49, 1 )
+
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 322.837, -18.6631 )
+position = Vector2( -37, -8 )
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 323.166, -18.9643 )
