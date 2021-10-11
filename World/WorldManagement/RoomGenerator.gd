@@ -28,9 +28,8 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 	var canBlockOutTemplates = size.x > 1 and size.y > 1
 	var blockOuts = []
 	var blockOutCount = (size.x*size.y)*.5
-	blockOutCount -= 1
 	blockOutCount = floor(blockOutCount)
-	blockOutCount -= round(rand_range(0, blockOutCount))
+#	blockOutCount -= round(rand_range(0, blockOutCount))
 	while blockOutCount >= size.x or blockOutCount >= size.y:
 		blockOutCount -= 1
 	
@@ -42,14 +41,14 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 	
 	var templates:Image = _templates.get_data()
 	
-	var upExitI = round(rand_range(1, size.x))
-	while Vector2(upExitI-1, 0) in blockOuts: upExitI = round(rand_range(1, size.x))
-	var downExitI = round(rand_range(1, size.x))
-	while Vector2(downExitI-1, size.x-1) in blockOuts: downExitI = round(rand_range(1, size.x))
-	var rightExitI = round(rand_range(1, size.y))
-	while Vector2(rightExitI-1, size.y-1) in blockOuts: rightExitI = round(rand_range(1, size.y))
-	var leftExitI = round(rand_range(1, size.y))
-	while Vector2(leftExitI-1, 0) in blockOuts: leftExitI = round(rand_range(1, size.y))
+	var upExitI = round(rand_range(0, size.x-1))
+	while Vector2(upExitI, 0) in blockOuts: upExitI = round(rand_range(0, size.x-1))
+	var downExitI = round(rand_range(0, size.x-1))
+	while Vector2(downExitI, size.y-1) in blockOuts: downExitI = round(rand_range(0, size.x-1))
+	var rightExitI = round(rand_range(0, size.y-1))
+	while Vector2(size.x-1, rightExitI) in blockOuts: rightExitI = round(rand_range(0, size.y-1))
+	var leftExitI = round(rand_range(0, size.y-1))
+	while Vector2(0, leftExitI) in blockOuts: leftExitI = round(rand_range(0, size.y-1))
 	
 	image.lock()
 	for x in size.x:
@@ -72,16 +71,16 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 					
 					# Determining the color
 					if (pixelDir == IS_UP and y != 0)\
-					or (pixelDir == IS_UP and x == upExitI-1 and y == 0 and Vector2.UP in exits):
+					or (pixelDir == IS_UP and x == upExitI and y == 0 and Vector2.UP in exits):
 						color = EMPTY
 					elif (pixelDir == IS_DOWN and y != size.y-1)\
-					or (pixelDir == IS_DOWN and x == downExitI-1 and y == size.y-1 and Vector2.DOWN in exits):
+					or (pixelDir == IS_DOWN and x == downExitI and y == size.y-1 and Vector2.DOWN in exits):
 						color = EMPTY
 					elif (pixelDir == IS_RIGHT and x != size.x-1)\
-					or (pixelDir == IS_RIGHT and y == rightExitI-1 and x == size.x-1 and Vector2.RIGHT in exits):
+					or (pixelDir == IS_RIGHT and y == rightExitI and x == size.x-1 and Vector2.RIGHT in exits):
 						color = EMPTY
 					elif (pixelDir == IS_LEFT and x != 0)\
-					or (pixelDir == IS_LEFT and y == leftExitI-1 and x == 0 and Vector2.LEFT in exits):
+					or (pixelDir == IS_LEFT and y == leftExitI and x == 0 and Vector2.LEFT in exits):
 						color = EMPTY
 					elif color.is_equal_approx(EMPTY):
 						color = EMPTY

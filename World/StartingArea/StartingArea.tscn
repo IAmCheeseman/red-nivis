@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Player/Camera/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnviormentalArt/Solids/AbovegroundStone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabBackground.tscn" type="PackedScene" id=6]
@@ -177,10 +176,6 @@ position = Vector2( -49, 1 )
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( -37, -8 )
 
-[node name="Camera" parent="." instance=ExtResource( 3 )]
-position = Vector2( 323.166, -18.9643 )
-trackNodePath = NodePath("../Player")
-
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
 
 [connection signal="loadArea" from="Managing/LoadingZone" to="." method="_on_lab_loading_zone_loadArea"]
@@ -189,3 +184,6 @@ trackNodePath = NodePath("../Player")
 [editable path="Managing/CameraZones/CameraMoveZone2"]
 [editable path="Managing/CameraZones/CameraMoveZone4"]
 [editable path="Managing/LoadingZone"]
+[editable path="Player"]
+[editable path="Player/Hurtbox"]
+[editable path="Player/SoftCollision"]

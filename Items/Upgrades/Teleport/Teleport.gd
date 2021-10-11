@@ -5,7 +5,7 @@ var player:Node2D
 var rc := RayCast2D.new()
 
 var playerData = preload("res://Entities/Player/Player.tres")
-var dashParticles = preload("res://Entities/Player/Assets/Dash.tscn")
+var teleParticles = preload("res://Entities/Player/Assets/Dash.tscn")
 
 
 func _ready() -> void:
@@ -25,6 +25,13 @@ func _input(_event: InputEvent) -> void:
 		if rc.is_colliding():
 			dashDir = rc.get_collision_point()-player.position
 		
+		var pos = [player.position, player.position+dashDir]
+		for i in pos:
+			var newPatricles = teleParticles.instance()
+			newPatricles.position = i-Vector2(0, 8)
+			GameManager.spawnManager.spawn_object(newPatricles)
+		
 		player.position += dashDir
 		playerData.dashesLeft -= 1
 		player.dashCooldown.start()
+		

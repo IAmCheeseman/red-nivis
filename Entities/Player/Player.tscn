@@ -733,7 +733,6 @@ collision_mask = 17
 position = Vector2( 0, -10 )
 
 [node name="Camera" parent="." instance=ExtResource( 11 )]
-zoom = Vector2( 5, 5 )
 trackNodePath = NodePath("..")
 
 [node name="Abilities" type="Node" parent="."]

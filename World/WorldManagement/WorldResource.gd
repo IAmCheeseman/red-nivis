@@ -6,15 +6,10 @@ var position := Vector2.ZERO
 var moveDir := Vector2.ZERO
 
 
-func _init() -> void:
-	randomize()
-	generate_world()
-	set_starting_position()
-
-
 func generate_world(seed_:int=randi()) -> void:
 	var worldGenerateor = WorldGenerator.new()
 	rooms = worldGenerateor.generate_world(seed_)
+	set_starting_position()
 
 
 func get_connected_rooms(room:Vector2) -> Array:
