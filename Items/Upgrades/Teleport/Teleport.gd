@@ -13,7 +13,6 @@ func _ready() -> void:
 	rc.enabled = true
 
 func _input(_event: InputEvent) -> void:
-	# Dashing
 	if Input.is_action_just_pressed("dash") and playerData.dashesLeft > 0:
 		var dashDir = Vector2.ZERO
 		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")

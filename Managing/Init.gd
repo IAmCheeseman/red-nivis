@@ -23,4 +23,4 @@ func _ready():
 	subtitles.shuffle()
 	OS.set_window_title("Astronaut Game: %s" % subtitles.front())
 	
-	var _dispose = get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+	var _dispose = get_tree().change_scene("res://UI/UpgradeSelection/UpgradeSelection.tscn")

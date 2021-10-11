@@ -171,10 +171,10 @@ func _ready():
 			add_child(spawner)
 		
 	var roomSize = solids.get_used_rect().end
-	create_loading_zone(Vector2(0, roomSize.y*.5)*16, Vector2(.5, roomSize.y*.5)*16, Vector2.LEFT) # Left
-	create_loading_zone(Vector2(roomSize.x, roomSize.y*.5)*16, Vector2(.5, roomSize.y*.5)*16, Vector2.RIGHT) # Right
-	create_loading_zone(Vector2(roomSize.x*.5, 0)*16, Vector2(roomSize.x*.5, .5)*16, Vector2.UP) # Up
-	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y)*16, Vector2(roomSize.x*.5, .5)*16, Vector2.DOWN) # Down
+	create_loading_zone(Vector2(-24/16, roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.LEFT) # Left
+	create_loading_zone(Vector2(roomSize.x+(24/16), roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.RIGHT) # Right
+	create_loading_zone(Vector2(roomSize.x*.5, -24/16)*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.UP) # Up
+	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y+(24/16))*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.DOWN) # Down
 	
 	# Setting camera limits
 	var camMoveShape = mainCamMove.collisionShape.shape.duplicate()
