@@ -89,6 +89,7 @@ func _physics_process(delta):
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
 			var grayscaleStrength = grayscale.material.get_shader_param("strength")
 			grayscale.material.set_shader_param("strength", lerp(grayscaleStrength, .15, 2*delta))
+		
 		states.WALLSLIDE:
 			walk_state(delta)
 			sprite.scale.x = -tileChecker.cast_to.normalized().x
@@ -151,6 +152,7 @@ func animate(moveDir:Vector2):
 		if !dontPlayJump:
 			animationPlayer.play("Jump")
 	if state == states.WALLSLIDE:
+		dontPlayJump = false
 		animationPlayer.play("WallSlide")
 
 
