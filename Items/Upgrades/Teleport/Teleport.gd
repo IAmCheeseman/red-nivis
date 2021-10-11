@@ -2,10 +2,15 @@ extends Node
 
 
 var player:Node2D
+var rc := RayCast2D.new()
 
 var playerData = preload("res://Entities/Player/Player.tres")
 var dashParticles = preload("res://Entities/Player/Assets/Dash.tscn")
 
+
+func _ready() -> void:
+	add_child(rc)
+	rc.enabled = true
 
 func _input(_event: InputEvent) -> void:
 	# Dashing
@@ -13,23 +18,14 @@ func _input(_event: InputEvent) -> void:
 		var dashDir = Vector2.ZERO
 		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
 		dashDir.y = Input.get_action_strength("down")
-		dashDir.normalized()
-		dashDir *= playerData.dashSpeed
+		dashDir = dashDir.normalized()*64
 		
-		dashDir.y = clamp(dashDir.y, -playerData.jumpForce, INF)
+		rc.global_position = player.global_position+(Vector2.UP*8)
+		rc.cast_to = dashDir.normalized()*70
+		rc.force_raycast_update()
+		if rc.is_colliding():
+			dashDir = rc.get_collision_point()-player.position
 		
-		if dashDir == Vector2.ZERO:
-			return
-		
-		player.vel = dashDir
-		
-		player.state = player.states.DASH
+		player.position += dashDir
 		playerData.dashesLeft -= 1
 		player.dashCooldown.start()
-		
-		player.SaS.play("Dash")
-		
-		var newDashPar = dashParticles.instance()
-		player.sprite.add_child(newDashPar)
-		newDashPar.emitting = true
-		player.jumpSFX.play()
