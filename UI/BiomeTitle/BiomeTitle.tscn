@@ -73,7 +73,7 @@ __meta__ = {
 
 [node name="Welcome" type="Label" parent="Title"]
 margin_right = 256.0
-margin_bottom = 14.0
+margin_bottom = 11.0
 input_pass_on_modal_close_click = false
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -83,9 +83,9 @@ text = "welcome to"
 align = 1
 
 [node name="Name" type="Label" parent="Title"]
-margin_top = 19.0
+margin_top = 16.0
 margin_right = 256.0
-margin_bottom = 38.0
+margin_bottom = 35.0
 input_pass_on_modal_close_click = false
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

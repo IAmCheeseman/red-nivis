@@ -1,7 +1,7 @@
 extends Node
 
 
-onready var parent:Node2D = get_parent().get_parent()
+var player:Node2D
 
 var playerData = preload("res://Entities/Player/Player.tres")
 var dashParticles = preload("res://Entities/Player/Assets/Dash.tscn")
@@ -21,15 +21,15 @@ func _input(_event: InputEvent) -> void:
 		if dashDir == Vector2.ZERO:
 			return
 		
-		parent.vel = dashDir
+		player.vel = dashDir
 		
-		parent.state = parent.states.DASH
+		player.state = player.states.DASH
 		playerData.dashesLeft -= 1
-		parent.dashCooldown.start()
+		player.dashCooldown.start()
 		
-		parent.SaS.play("Dash")
+		player.SaS.play("Dash")
 		
 		var newDashPar = dashParticles.instance()
-		parent.sprite.add_child(newDashPar)
+		player.sprite.add_child(newDashPar)
 		newDashPar.emitting = true
-		parent.jumpSFX.play()
+		player.jumpSFX.play()

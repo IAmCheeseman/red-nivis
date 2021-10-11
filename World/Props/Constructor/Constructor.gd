@@ -3,6 +3,7 @@ extends Node2D
 onready var sparkSpawnPos = $SparkSpawnPos
 onready var anim = $AnimationPlayer
 onready var dingSFX = $DingSFX
+onready var bzztSFX = $BzztSFX
 
 var player = preload("res://Entities/Player/Player.tres")
 
@@ -26,6 +27,7 @@ func add_sparks():
 		newSpark.position = Vector2.RIGHT.rotated(rand_range(0, 2*PI))*rand_range(4, 24)
 		newSpark.position += sparkSpawnPos.position
 		add_child(newSpark)
+		bzztSFX.play()
 
 
 func open_door() -> void:

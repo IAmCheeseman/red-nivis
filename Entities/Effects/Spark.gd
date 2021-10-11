@@ -1,6 +1,7 @@
 extends Node2D
 
 export var color := Color("#4f8fba")
+export var size := 5.0
 
 
 func _draw() -> void:
@@ -18,7 +19,7 @@ func _draw() -> void:
 		var endPos = Vector2.RIGHT.rotated(deg2rad(drawAngle))
 		endPos *= rand_range(5, maxSegLenth)
 		endPos += drawPos
-		draw_line(drawPos, endPos, currentColor, 1, false)
+		draw_line(drawPos, endPos, currentColor, size, false)
 		
 		segPositions.append({
 			"pos" : drawPos,
@@ -38,13 +39,15 @@ func _draw() -> void:
 		for b in branchAmount:
 			var branchSegs = rand_range(1, 2)
 			drawAngle = rand_range(0, 360)
+			drawPos = i.pos
 			
 			for s in branchSegs:
 				var endPos = Vector2.RIGHT.rotated(deg2rad(drawAngle))
 				endPos *= rand_range(5, maxSegLenth)
 				endPos += drawPos
-				draw_line(drawPos, endPos, currentColor, 1, false)
+				draw_line(drawPos, endPos, currentColor, size, false)
 				
 				drawAngle += rand_range(-mainBendMax, mainBendMax)
 				
 				currentColor = currentColor.lightened((1/branchSegs)*.25)
+				drawPos = endPos

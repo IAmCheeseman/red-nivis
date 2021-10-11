@@ -1,14 +1,12 @@
 extends Node
 
-export var playerPath:NodePath
-
-onready var player:Node2D = get_node(playerPath)
-
+var player:Node2D
 
 var hasJumped = false
 
 
 func _process(_delta: float) -> void:
+	if !player: return
 	if player.is_grounded(): hasJumped = false
 
 
