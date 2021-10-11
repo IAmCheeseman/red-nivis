@@ -16,4 +16,5 @@ func _input(event: InputEvent) -> void:
 	and !hasJumped:
 		hasJumped = true
 		player.jump()
+		player.animationPlayer.play("DoubleJump")
 

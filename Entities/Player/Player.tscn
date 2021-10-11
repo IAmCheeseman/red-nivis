@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Entities/Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Scripts/Player.gd" type="Script" id=2]
@@ -149,6 +149,34 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Animation" id=22]
+resource_name = "DoubleJump"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScaleHelper/Sprite/Arm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -7, 1 ), Vector2( -7, 2 ) ]
+}
+
 [sub_resource type="Animation" id=12]
 length = 0.4
 loop = true
@@ -198,71 +226,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( -7, 2 ), Vector2( -7, 1 ), Vector2( -7, 1 ), Vector2( -7, 2 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("ScaleHelper/Sprite/Arm:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=13]
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ScaleHelper:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1.05, 0.95 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ScaleHelper/Sprite:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -5, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("ScaleHelper/Sprite/Arm:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"values": [ Vector2( -7, 2 ), Vector2( -7, 2 ), Vector2( -7, 2 ), Vector2( -7, 3 ) ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -303,58 +267,6 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( -7, 3 ), Vector2( -7, 1 ), Vector2( -7, 2 ), Vector2( -7, 3 ), Vector2( -7, 1 ), Vector2( -7, 2 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("ScaleHelper/Sprite/Arm:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=15]
-length = 1.2
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 6, 7, 8, 9, 10, 11 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ScaleHelper/Sprite:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 0.6, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( -5, 1 ), Vector2( -5, 2 ), Vector2( -5, 1 ), Vector2( -5, 2 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ScaleHelper/Sprite/Arm:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -426,105 +338,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [ Vector2( -7, 3 ), Vector2( -7, 1 ), Vector2( -7, 1 ), Vector2( -7, 2 ), Vector2( -7, 1 ), Vector2( -7, 1 ) ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("ScaleHelper/Sprite/Arm:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath("Sounds/WalkSFX")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play"
-}, {
-"args": [  ],
-"method": "play"
-} ]
-}
-
-[sub_resource type="Animation" id=17]
-length = 0.6
-loop = true
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 6, 7, 8, 9, 10, 11 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ScaleHelper:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ Vector2( 0, 2 ) ],
-"method": "add_walk_particles"
-}, {
-"args": [ Vector2( 0, 2 ) ],
-"method": "add_walk_particles"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("ScaleHelper/Sprite:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -5, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("ScaleHelper/Sprite/Arm:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
 tracks/5/type = "method"
 tracks/5/path = NodePath("Sounds/WalkSFX")
 tracks/5/interp = 1
@@ -541,6 +354,47 @@ tracks/5/keys = {
 "args": [  ],
 "method": "play"
 } ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "WallSlide"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 30 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScaleHelper/Sprite/Arm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -19, -4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ScaleHelper/Sprite/Arm:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -634,12 +488,12 @@ texture = ExtResource( 1 )
 offset = Vector2( -5, 1 )
 flip_h = true
 hframes = 6
-vframes = 4
-frame = 6
+vframes = 6
+frame = 30
 
 [node name="Arm" type="Sprite" parent="ScaleHelper/Sprite"]
 visible = false
-position = Vector2( -7, 2 )
+position = Vector2( -19, -4 )
 texture = ExtResource( 21 )
 centered = false
 offset = Vector2( 0.5, 0 )
@@ -716,23 +570,21 @@ cast_to = Vector2( -1, 3 )
 collision_mask = 17
 
 [node name="TileCheckers" type="Node2D" parent="."]
-visible = false
 
 [node name="BottomTileChecker" type="RayCast2D" parent="TileCheckers"]
 enabled = true
 cast_to = Vector2( 6, 0 )
-collision_mask = 17
 
 [node name="TopTileChecker" type="RayCast2D" parent="TileCheckers"]
 position = Vector2( 0, -8 )
 enabled = true
 cast_to = Vector2( 6, 0 )
-collision_mask = 17
 
 [node name="ItemHolder" type="Node2D" parent="."]
 position = Vector2( 0, -10 )
 
 [node name="Camera" parent="." instance=ExtResource( 11 )]
+visible = false
 trackNodePath = NodePath("..")
 
 [node name="Abilities" type="Node" parent="."]
@@ -921,12 +773,11 @@ __meta__ = {
 autoplay = "Idle"
 anims/Dead = SubResource( 10 )
 anims/Die = SubResource( 11 )
+anims/DoubleJump = SubResource( 22 )
 anims/Idle = SubResource( 12 )
-anims/IdleNoHand = SubResource( 13 )
 anims/Jump = SubResource( 14 )
-anims/JumpNoHand = SubResource( 15 )
 anims/Run = SubResource( 16 )
-anims/RunNoHand = SubResource( 17 )
+anims/WallSlide = SubResource( 23 )
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
 anims/Dash = SubResource( 18 )

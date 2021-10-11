@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum states {WALK, DASH, DEAD}
+enum states {WALK, DASH, DEAD, WALLSLIDE}
 
 const averageTileSize = 16
 const SNAP_DIRECTION = Vector2.DOWN
@@ -8,6 +8,7 @@ const SNAP_LENGTH = 5
 
 # Nodes
 onready var sprite = $ScaleHelper/Sprite
+onready var hand = $ScaleHelper/Sprite/Arm
 onready var rightHand = $ScaleHelper/Sprite/Arm/Hand
 onready var collision = $CollisionShape2D
 onready var scaleHelper = $ScaleHelper
@@ -24,13 +25,12 @@ onready var hurtSFX = $Sounds/HurtSFX
 onready var jumpSFX = $Sounds/JumpSFX
 onready var walkSFX = $Sounds/WalkSFX
 onready var floorCheckers = $FloorCheckers
-onready var bottomTileChecker = $TileCheckers/BottomTileChecker
-onready var topTileChecker = $TileCheckers/TopTileChecker
 onready var bunnyHopTimer = $BunnyHopTimer
 onready var jumpWindow = $APressWindow
 onready var dashCooldown = $DashCooldown
 onready var healthVig = $CanvasLayer/HealthVig
 onready var gameOverlay = $CanvasLayer/GameOverlay
+onready var tileChecker = $TileCheckers/BottomTileChecker
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -39,6 +39,7 @@ var triedJumpRecent = false
 var mouseTarget = Vector2.ZERO
 var lastUsedMouse = true
 var state = states.WALK
+var dontPlayJump = false
 
 
 var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
@@ -88,6 +89,10 @@ func _physics_process(delta):
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
 			var grayscaleStrength = grayscale.material.get_shader_param("strength")
 			grayscale.material.set_shader_param("strength", lerp(grayscaleStrength, .15, 2*delta))
+		states.WALLSLIDE:
+			walk_state(delta)
+			sprite.scale.x = -tileChecker.cast_to.normalized().x
+			vel.y /= 1.2
 
 	lastFrameGroundState = is_grounded()
 
@@ -128,25 +133,31 @@ func walk_state(delta):
 func animate(moveDir:Vector2):
 	if playerData.isDead:
 		return
-	var noHand = ""
+	if animationPlayer.current_animation == "DoubleJump":
+		dontPlayJump = true
+	
 	if itemHolder.get_child_count() > 0:
-		noHand = "NoHand" if itemHolder.get_child(0).stats.isTwoHanded else ""
+		hand.visible = !itemHolder.get_child(0).stats.isTwoHanded and state != states.WALLSLIDE
 		rightHand.hide()
 	else:
 		rightHand.show()
 	if is_grounded():
 		if is_equal_approx(moveDir.x, 0) or test_move(transform, Vector2(vel.normalized().x, 0)):
 			sprite.rotation_degrees = 0
-			animationPlayer.play("Idle%s" % noHand)
+			animationPlayer.play("Idle")
 		else:
-			animationPlayer.play("Run%s" % noHand)
+			animationPlayer.play("Run")
 	else:
-		animationPlayer.play("Jump%s" % noHand)
+		if !dontPlayJump:
+			animationPlayer.play("Jump")
+	if state == states.WALLSLIDE:
+		animationPlayer.play("WallSlide")
 
 
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
 		if vel.y > -playerData.jumpForce*0.15 and !Input.is_action_pressed("down"): SaS.play("Land")
+		dontPlayJump = false
 		if triedJumpRecent:
 			jump()
 			bunnyHopTimer.start()
@@ -177,7 +188,7 @@ func _input(event):
 	if Input.is_action_just_pressed("jump"):
 		triedJumpRecent = true
 		jumpWindow.start()
-		if is_grounded():
+		if is_grounded() or state == states.WALLSLIDE:
 			jump()
 	# Adjustable jump height
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
