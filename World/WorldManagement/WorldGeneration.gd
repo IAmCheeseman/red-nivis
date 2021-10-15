@@ -44,8 +44,12 @@ func generate_world(seed_:int=randi()) -> Array:
 	
 	for x in rooms.size():
 		for y in rooms[0].size():
-			if get_neighbors(Vector2(x, y), false, false).size() <= 1:
-				rooms[x][y].biome = null
+			var neighbors = get_neighbors(Vector2(x, y), false, false)
+#			if neighbors.size() <= 1:
+#				rooms[x][y].biome = null
+			for i in neighbors:
+				if rooms[i.x][i.y].biome != rooms[x][y].biome:
+					rooms[x][y].constantRoom = preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tscn").instance()
 	return rooms
 	
 
