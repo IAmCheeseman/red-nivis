@@ -29,7 +29,7 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 	var blockOuts = []
 	var blockOutCount = (size.x*size.y)*.5
 	blockOutCount = floor(blockOutCount)
-#	blockOutCount -= round(rand_range(0, blockOutCount))
+	
 	while blockOutCount >= size.x or blockOutCount >= size.y:
 		blockOutCount -= 1
 	

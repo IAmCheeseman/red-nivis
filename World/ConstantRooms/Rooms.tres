@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 1 )
 rooms = [ {
-"rarity": 0.1,
+"rarity": 0.5,
 "scene": ExtResource( 2 )
 } ]

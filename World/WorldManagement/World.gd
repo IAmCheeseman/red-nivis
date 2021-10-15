@@ -41,9 +41,10 @@ func _ready():
 	var room
 	
 	# CONSTANT ROOMS
-	for i in constantRooms.rooms:
-		if rand_range(0, 1) < i.rarity:
-			room = i.scene.instance()
+	
+	var _temp = worldData.rooms[worldData.position.x][worldData.position.y].constantRoom
+	if _temp: room = _temp.duplicate()
+	
 	if room:
 		add_child(room)
 		

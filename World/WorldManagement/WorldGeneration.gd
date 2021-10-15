@@ -13,6 +13,9 @@ func generate_world(seed_:int=randi()) -> Array:
 	# Creating and filling out the 2D array
 	var template := select_template()
 	template.lock()
+	
+	var constantRooms = preload("res://World/ConstantRooms/Rooms.tres")
+	
 	for x in template.get_width():
 		for i in blowUpSize:
 			rooms.append([])
@@ -20,9 +23,15 @@ func generate_world(seed_:int=randi()) -> Array:
 			for y in template.get_height():
 				for j in blowUpSize:
 					var color = template.get_pixel(x, y)
+					var selectedConstantRoom = null
+					for cr in constantRooms.rooms:
+						if rand_range(0, 1) < cr.rarity:
+							selectedConstantRoom = cr.scene.instance()
+							break
 					rooms[(x*blowUpSize)+i].append({
 						"color" : color,
 						"biome" : get_biome_by_color(color),
+						"constantRoom" : selectedConstantRoom,
 						"connections" : []
 					})
 	
