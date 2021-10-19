@@ -1,10 +1,12 @@
 extends KinematicBody2D
 
 enum {IDLE, MOVE, FIRE_CHARGE, FIRE_FAST, FIRE_SHOTGUN}
+const BULLET_SPEED = 90
 
 # Visuals
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
+onready var hpBar = $BossBar/VBoxContainer/ProgressBar
 
 # Collisions
 onready var playerDetection = $Collisions/PlayerDetection
@@ -21,22 +23,32 @@ onready var gun = $Gun
 onready var barrelEnd = $Gun/BarrelEnd
 
 # Exports
+export var maxHealth := 550
+
 export var maxSpeed := 320
 export var backwardsMod := .5
 export var accel := 5.0
 
 export var fastFireCooldown := .2
+export var fastFireShots := 8
 
-export var fireShotgunCooldown := .8
-export var shotgunShots := 2
+export var shotgunCooldown := .8
+export var shotgunBullets = 4
 export var shotgunSpread := 16
 
 # Other variables
+var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
+var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn") 
+
 var state := IDLE
+
+onready var health = maxHealth
 
 var speed := 0
 var vel := Vector2.ZERO
 var target := 0.0
+
+var fireCount = 0
 
 var player: Node2D
 
@@ -50,8 +62,9 @@ func _process(delta: float) -> void:
 		anim.play("Idle")
 	else:
 		if fireStateTimer.is_stopped():
-			var fireStates = [FIRE_CHARGE, FIRE_FAST, FIRE_SHOTGUN]
-			state = FIRE_FAST
+			var fireStates = [FIRE_FAST, FIRE_SHOTGUN]
+			fireStates.shuffle()
+			state = fireStates.pop_front()
 		# States
 		match state:
 			IDLE:
@@ -65,13 +78,50 @@ func _process(delta: float) -> void:
 			FIRE_CHARGE:
 				pass
 			FIRE_FAST:
-				fire_state(delta, "fire_fast")
+				fire_state(delta)
+				# Firing
+				if fireCooldown.is_stopped():
+					var newBullet = bullet.instance()
+					newBullet.global_position = barrelEnd.global_position
+					newBullet.direction = barrelEnd.global_position.direction_to(player.global_position)
+					newBullet.speed = BULLET_SPEED
+					
+					GameManager.spawnManager.spawn_object(newBullet)
+					fireCooldown.start(fastFireCooldown)
+					
+					fireCount += 1
+					if fireCount >= fastFireShots:
+						fireStateTimer.start()
+						fireCount = 0
+						state = IDLE
 			FIRE_SHOTGUN:
-				pass
+				fire_state(delta)
+				# Firing
+				if fireCooldown.is_stopped():
+					for i in shotgunBullets:
+						var newBullet = bullet.instance()
+						
+						var dir = barrelEnd.global_position.direction_to(player.global_position)
+						var spread = deg2rad(shotgunSpread*i-(shotgunSpread*(shotgunBullets-1)*.5))
+						
+						
+						newBullet.global_position = barrelEnd.global_position
+						newBullet.direction = dir.rotated(spread)
+						newBullet.speed = BULLET_SPEED
+						
+						GameManager.spawnManager.spawn_object(newBullet)
+						
+					fireCooldown.start(shotgunCooldown)
+					fireCount += 1
+					if fireCount >= fastFireShots:
+						fireStateTimer.start()
+						fireCount = 0
+						state = IDLE
+						
 	move_and_slide(vel)
 
 
-func fire_state(delta: float, fireFunction:String) -> void:
+func fire_state(delta: float) -> void:
 	vel.x = lerp(vel.x, 0, accel*delta)
 	gun.look_at(player.global_position)
 	anim.play("Shoot")
@@ -122,3 +172,19 @@ func select_target_x() -> void:
 		if i > 100 and !isColliding:
 			break
 		i += 1
+
+
+func _on_hurt(amount, _dir) -> void:
+	health -= amount
+	hpBar.value = Utils.percentage_of(health, maxHealth)
+	if health <= 0:
+		var playerData = player.get_parent().playerData
+		for i in playerData.maxHealth-playerData.health:
+			var newHealth = healthPickup.instance()
+			newHealth.position = position-Vector2(0, sprite.texture.get_height()*.25)
+			var force = (Vector2.UP+Vector2(rand_range(-.25, .25), 0)).normalized()*70
+			newHealth.apply_central_impulse(force)
+			GameManager.spawnManager.spawn_object(newHealth)
+		queue_free()
+
+
