@@ -12,6 +12,8 @@ onready var sprite = $Sprite
 onready var light = $Light
 onready var particles = $Particles
 
+signal hitCollision
+
 
 func set_texture(texture:StreamTexture):
 	sprite.texture = texture
@@ -32,7 +34,9 @@ func _physics_process(delta):
 
 
 func _on_QueueArea_body_entered(body):
-	if !body.is_in_group("Platform"): queue_free()
+	if !body.is_in_group("Platform"):
+		emit_signal("hitCollision", position)
+		queue_free()
 
 
 func _on_Hitbox_hit_object(_object):

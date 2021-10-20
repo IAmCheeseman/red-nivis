@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 enum {IDLE, MOVE, FIRE_CHARGE, FIRE_FAST, FIRE_SHOTGUN}
-
+var fireStates = [FIRE_FAST, FIRE_SHOTGUN, FIRE_CHARGE]
 
 # Visuals
 onready var sprite = $Sprite
@@ -20,6 +20,7 @@ onready var walkDirChangeTimer = $Timers/WalkDirChange
 
 # Gun
 onready var gun = $Gun
+onready var gunAnim = $Gun/AnimationPlayer
 onready var barrelEnd = $Gun/BarrelEnd
 
 # Exports
@@ -39,9 +40,12 @@ export var shotgunShots := 2
 export var shotgunBullets = 4
 export var shotgunSpread := 16
 
+export var chargeDamage := 2
+
 # Other variables
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn") 
+var shockwave = preload("res://Entities/Enemies/Shockwave/Shockwave.tscn")
 
 var state := IDLE
 
@@ -65,10 +69,9 @@ func _process(delta: float) -> void:
 		anim.play("Idle")
 	else:
 		if fireStateTimer.is_stopped():
-			var fireStates = [FIRE_FAST, FIRE_SHOTGUN]
 			if !state in fireStates:
 				fireStates.shuffle()
-				state = fireStates.pop_front()
+				state = fireStates.front()
 		# States
 		match state:
 			IDLE:
@@ -80,7 +83,8 @@ func _process(delta: float) -> void:
 			MOVE:
 				move_state(delta)
 			FIRE_CHARGE:
-				pass
+				fire_state(delta)
+				gunAnim.play("ChargeUp")
 			FIRE_FAST:
 				fire_state(delta)
 				# Firing
@@ -158,6 +162,46 @@ func move_state(delta: float) -> void:
 	
 	var targetv = -1 if global_position.x > target else 1
 	vel.x = lerp(vel.x, targetv*speed, accel*delta)
+
+
+func charge_shot() -> void:
+	var newBullet = bullet.instance()
+	newBullet.global_position = barrelEnd.global_position
+	newBullet.direction = barrelEnd.global_position.direction_to(player.global_position)
+	newBullet.speed = fastFireBulletSpeed
+	newBullet.scale = Vector2.ONE*2
+	newBullet.damage = chargeDamage
+	newBullet.connect("hitCollision", self, "_on_charge_bullet_hit")
+	
+	GameManager.spawnManager.spawn_object(newBullet)
+	fireCooldown.start(fastFireCooldown)
+	
+	fireStateTimer.start()
+	gunAnim.play("Reset")
+	fireCount = 0
+	state = IDLE
+
+
+func _on_charge_bullet_hit(bulletPosition: Vector2) -> void:
+	var raycast = RayCast2D.new()
+	raycast.global_position = bulletPosition
+	raycast.enabled = true
+	raycast.cast_to = Vector2(0, 8)
+	add_child(raycast)
+	raycast.force_raycast_update()
+	
+	if !raycast.is_colliding():
+		return
+	var spawnPoint = raycast.get_collision_point()
+	var direction = 1
+	for i in 2:
+		var newShockwave = shockwave.instance()
+		newShockwave.position = spawnPoint
+		newShockwave.scale.x = direction
+		GameManager.spawnManager.spawn_object(newShockwave)
+		direction = -direction
+	
+	raycast.queue_free()
 
 
 func is_close_to_target() -> bool:

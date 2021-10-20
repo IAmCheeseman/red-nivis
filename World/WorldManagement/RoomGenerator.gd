@@ -25,7 +25,6 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 		int(size.y*TEMPLATE_SIZE), 
 		true, Image.FORMAT_RGBA8)
 	
-	var canBlockOutTemplates = size.x > 1 and size.y > 1
 	var blockOuts = []
 	var blockOutCount = (size.x*size.y)*.5
 	blockOutCount = floor(blockOutCount)
@@ -108,7 +107,7 @@ static func get_random_template(template:Image, templateAmount:int) -> Dictionar
 # warning-ignore:integer_division
 	var templatex := int(rand_range(0, (template.get_width()/(templateAmount-1))))*TEMPLATE_SIZE
 # warning-ignore:narrowing_conversion
-	templatex = clamp(templatex, 0, template.get_width()-TEMPLATE_SIZE)
+	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
 
 	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
 	

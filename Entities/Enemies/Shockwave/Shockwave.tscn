@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/Shockwave/ShockWave.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Enemies/Shockwave/Shockwave.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 11 )
+
+[node name="Shockwave" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -22 )
+hframes = 3
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4, -11 )
+maskedHurtbox = "enemy"
+damage = 1
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+
+[editable path="Hitbox"]
