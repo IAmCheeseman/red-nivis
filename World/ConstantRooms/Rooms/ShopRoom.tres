@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
+[ext_resource path="res://World/ConstantRooms/Rooms/ShopRoom.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+rarity = 0.13
+scene = ExtResource( 2 )
+mustHave = false
+maxUses = -1

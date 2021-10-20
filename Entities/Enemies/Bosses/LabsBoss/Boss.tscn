@@ -131,8 +131,8 @@ tracks/1/keys = {
 [node name="BossLabs" type="KinematicBody2D"]
 z_index = -1
 collision_layer = 0
+collision_mask = 17
 script = ExtResource( 3 )
-maxHealth = 1
 maxSpeed = 3800
 fastFireCooldown = 0.4
 

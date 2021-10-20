@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
+[ext_resource path="res://World/ConstantRooms/Rooms/BossLabsRoom.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Biomes/Lab.tres" type="Resource" id=3]
+[ext_resource path="res://UI/Assets/BossRoom.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+rarity = 0.0
+scene = ExtResource( 2 )
+biome = ExtResource( 3 )
+mustHave = true
+roomIcon = ExtResource( 4 )
+maxUses = 1

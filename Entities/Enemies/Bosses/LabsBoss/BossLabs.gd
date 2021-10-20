@@ -54,7 +54,7 @@ var player: Node2D
 
 
 func _process(delta: float) -> void:
-	if !is_on_floor(): vel.y += Globals.GRAVITY
+	if !is_on_floor(): vel.y += Globals.GRAVITY*delta
 	
 	# Grabbing the player
 	if !player:
@@ -178,6 +178,7 @@ func _on_hurt(amount, _dir) -> void:
 	health -= amount
 	hpBar.value = Utils.percentage_of(health, maxHealth)
 	if health <= 0:
+		# Dropping the hp
 		var playerData = player.get_parent().playerData
 		for i in playerData.maxHealth-playerData.health:
 			var newHealth = healthPickup.instance()
@@ -185,6 +186,7 @@ func _on_hurt(amount, _dir) -> void:
 			var force = (Vector2.UP+Vector2(rand_range(-.25, .25), 0)).normalized()*70
 			newHealth.apply_central_impulse(force)
 			GameManager.spawnManager.spawn_object(newHealth)
+		# Getting done
 		queue_free()
 
 

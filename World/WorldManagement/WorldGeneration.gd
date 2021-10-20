@@ -6,6 +6,7 @@ export var growLoops := 2
 export var removalPointCount := 100
 
 var rooms = []
+var constantRoomUseage = []
 
 
 func generate_world(seed_:int=randi()) -> Array:
@@ -16,6 +17,11 @@ func generate_world(seed_:int=randi()) -> Array:
 	
 	var constantRooms = preload("res://World/ConstantRooms/Rooms.tres")
 	
+	for i in constantRooms.rooms:
+		constantRoomUseage.append(0)
+	
+	var biomes = {}
+	
 	for x in template.get_width():
 		for i in blowUpSize:
 			rooms.append([])
@@ -23,15 +29,15 @@ func generate_world(seed_:int=randi()) -> Array:
 			for y in template.get_height():
 				for j in blowUpSize:
 					var color = template.get_pixel(x, y)
-					var selectedConstantRoom = null
-					for cr in constantRooms.rooms:
-						if rand_range(0, 1) < cr.rarity:
-							selectedConstantRoom = cr.scene.instance()
-							break
+					var biome = get_biome_by_color(color)
+					
+					
+					
 					rooms[(x*blowUpSize)+i].append({
 						"color" : color,
-						"biome" : get_biome_by_color(color),
-						"constantRoom" : selectedConstantRoom,
+						"biome" : biome,
+						"constantRoom" : null,
+						"roomIcon" : null,
 						"connections" : []
 					})
 	
@@ -40,16 +46,54 @@ func generate_world(seed_:int=randi()) -> Array:
 	remove_surrounded_tiles()
 	
 	# Connecting rooms to make bigger rooms
-#	connect_rooms()
 	
 	for x in rooms.size():
 		for y in rooms[0].size():
+			var room = rooms[x][y]
+			if room.biome:
+				if !room.biome.name in biomes.keys():
+					biomes[room.biome.name] = []
+					biomes[room.biome.name].append(Vector2(x, y))
 			var neighbors = get_neighbors(Vector2(x, y), false, false)
-#			if neighbors.size() <= 1:
-#				rooms[x][y].biome = null
 			for i in neighbors:
 				if rooms[i.x][i.y].biome != rooms[x][y].biome:
 					rooms[x][y].constantRoom = preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tscn").instance()
+	
+	# Adding special rooms
+	var unusedRooms = constantRooms.rooms.duplicate()
+	for i in biomes.keys():
+		var brooms = biomes[i]
+		for r in brooms:
+			
+			for cr in constantRooms.rooms:
+				var rv = rooms[r.x][r.y]
+				var cru = constantRoomUseage[constantRooms.rooms.find(cr)]
+				if (cr.biome != rv.biome and cr.biome != null) or cru == cr.maxUses:
+					continue
+				if rand_range(0, 1) < cr.rarity:
+					rooms[r.x][r.y].constantRoom = cr.scene.instance()
+					rooms[r.x][r.y].roomIcon = cr.roomIcon
+					constantRoomUseage[constantRooms.rooms.find(cr)] += 1
+					unusedRooms.erase(cr)
+					break
+	for i in unusedRooms:
+		var position:Vector2
+		if i.biome:
+			var biome = biomes[i.biome.name]
+			biome.shuffle()
+			position = biome.front()
+		else:
+			var width = rooms.size()
+			var height = rooms[0].size()
+			while true:
+				position = Vector2(
+					rand_range(0, width-1),
+					rand_range(0, height-1)).round()
+				if rooms[position.x][position.y].biome != null:
+					break
+		rooms[position.x][position.y].constantRoom = i.scene.instance()
+		rooms[position.x][position.y].roomIcon = i.roomIcon
+	
 	return rooms
 	
 

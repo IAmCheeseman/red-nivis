@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "ConstantRoom",
+"language": "GDScript",
+"path": "res://World/ConstantRooms/ConstantRoomResource.gd"
+}, {
 "base": "Node2D",
 "class": "CustomParallax",
 "language": "GDScript",
@@ -140,6 +145,7 @@ _global_script_classes=[ {
 "path": "res://World/WorldManagement/WorldGeneration.gd"
 } ]
 _global_script_class_icons={
+"ConstantRoom": "",
 "CustomParallax": "",
 "DataManager": "",
 "EnemyBullet": "",
