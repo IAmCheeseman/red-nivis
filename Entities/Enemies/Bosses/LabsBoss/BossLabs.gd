@@ -118,7 +118,7 @@ func _process(delta: float) -> void:
 						fireCount = 0
 						state = IDLE
 						
-	move_and_slide(vel)
+	vel.y = move_and_slide(vel*delta).y
 
 
 func fire_state(delta: float) -> void:
@@ -152,7 +152,7 @@ func move_state(delta: float) -> void:
 		speed = maxSpeed*.75
 	
 	var targetv = -1 if global_position.x > target else 1
-	vel.x = lerp(vel.x, targetv*speed*delta, accel*delta)
+	vel.x = lerp(vel.x, targetv*speed, accel*delta)
 
 
 func is_close_to_target() -> bool:

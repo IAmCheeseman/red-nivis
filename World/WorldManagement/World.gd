@@ -42,8 +42,8 @@ func _ready():
 	
 	# CONSTANT ROOMS
 	
-	var _temp = worldData.rooms[worldData.position.x][worldData.position.y].constantRoom
-	if _temp: room = _temp.duplicate()
+	var cr = worldData.rooms[worldData.position.x][worldData.position.y].constantRoom
+	if cr: room = cr.scene.instance()
 	
 	if room:
 		add_child(room)

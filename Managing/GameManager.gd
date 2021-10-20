@@ -20,7 +20,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
 	if Input.is_key_pressed(KEY_R):
-		get_tree().reload_current_scene()
+		var _discard = get_tree().reload_current_scene()
 
 
 func set_attacking_enemies(value:int):

@@ -28,5 +28,5 @@ func _on_upgrade_slot_clicked(node:Node) -> void:
 func _on_done_pressed():
 	for s in selections.get_children():
 		player.upgrades.append(s.upgrade.abilityScript)
-	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+	var _discard = get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
 

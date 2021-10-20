@@ -57,7 +57,9 @@ func generate_world(seed_:int=randi()) -> Array:
 			var neighbors = get_neighbors(Vector2(x, y), false, false)
 			for i in neighbors:
 				if rooms[i.x][i.y].biome != rooms[x][y].biome:
-					rooms[x][y].constantRoom = preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tscn").instance()
+					if room.biome: if room.biome.name != "Labs": break
+					
+					rooms[x][y].constantRoom = preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres")
 	
 	# Adding special rooms
 	var unusedRooms = constantRooms.rooms.duplicate()
@@ -71,7 +73,7 @@ func generate_world(seed_:int=randi()) -> Array:
 				if (cr.biome != rv.biome and cr.biome != null) or cru == cr.maxUses:
 					continue
 				if rand_range(0, 1) < cr.rarity:
-					rooms[r.x][r.y].constantRoom = cr.scene.instance()
+					rooms[r.x][r.y].constantRoom = cr
 					rooms[r.x][r.y].roomIcon = cr.roomIcon
 					constantRoomUseage[constantRooms.rooms.find(cr)] += 1
 					unusedRooms.erase(cr)
@@ -91,7 +93,7 @@ func generate_world(seed_:int=randi()) -> Array:
 					rand_range(0, height-1)).round()
 				if rooms[position.x][position.y].biome != null:
 					break
-		rooms[position.x][position.y].constantRoom = i.scene.instance()
+		rooms[position.x][position.y].constantRoom = i
 		rooms[position.x][position.y].roomIcon = i.roomIcon
 	
 	return rooms
