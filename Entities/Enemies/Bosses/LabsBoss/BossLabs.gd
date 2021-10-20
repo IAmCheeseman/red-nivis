@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 enum {IDLE, MOVE, FIRE_CHARGE, FIRE_FAST, FIRE_SHOTGUN}
-const BULLET_SPEED = 90
+
 
 # Visuals
 onready var sprite = $Sprite
@@ -31,8 +31,11 @@ export var accel := 5.0
 
 export var fastFireCooldown := .2
 export var fastFireShots := 8
+export var fastFireBulletSpeed := 110
 
+export var shotgunBulletSpeed := 90
 export var shotgunCooldown := .8
+export var shotgunShots := 2
 export var shotgunBullets = 4
 export var shotgunSpread := 16
 
@@ -63,8 +66,9 @@ func _process(delta: float) -> void:
 	else:
 		if fireStateTimer.is_stopped():
 			var fireStates = [FIRE_FAST, FIRE_SHOTGUN]
-			fireStates.shuffle()
-			state = fireStates.pop_front()
+			if !state in fireStates:
+				fireStates.shuffle()
+				state = fireStates.pop_front()
 		# States
 		match state:
 			IDLE:
@@ -84,7 +88,7 @@ func _process(delta: float) -> void:
 					var newBullet = bullet.instance()
 					newBullet.global_position = barrelEnd.global_position
 					newBullet.direction = barrelEnd.global_position.direction_to(player.global_position)
-					newBullet.speed = BULLET_SPEED
+					newBullet.speed = fastFireBulletSpeed
 					
 					GameManager.spawnManager.spawn_object(newBullet)
 					fireCooldown.start(fastFireCooldown)
@@ -107,18 +111,19 @@ func _process(delta: float) -> void:
 						
 						newBullet.global_position = barrelEnd.global_position
 						newBullet.direction = dir.rotated(spread)
-						newBullet.speed = BULLET_SPEED
+						newBullet.speed = shotgunBulletSpeed
 						
 						GameManager.spawnManager.spawn_object(newBullet)
 						
 					fireCooldown.start(shotgunCooldown)
+					
 					fireCount += 1
-					if fireCount >= fastFireShots:
+					if fireCount >= shotgunShots:
 						fireStateTimer.start()
 						fireCount = 0
 						state = IDLE
 						
-	vel.y = move_and_slide(vel*delta).y
+	var _discard = move_and_slide(vel*delta)
 
 
 func fire_state(delta: float) -> void:
@@ -149,7 +154,7 @@ func move_state(delta: float) -> void:
 		speed = maxSpeed
 	else:
 		anim.play("WalkBackwards")
-		speed = maxSpeed*.75
+		speed = int(maxSpeed*.75)
 	
 	var targetv = -1 if global_position.x > target else 1
 	vel.x = lerp(vel.x, targetv*speed, accel*delta)

@@ -135,7 +135,8 @@ collision_layer = 0
 collision_mask = 17
 script = ExtResource( 3 )
 maxSpeed = 3800
-fastFireCooldown = 0.4
+fastFireCooldown = 0.3
+shotgunCooldown = 0.5
 
 [node name="Gun" type="Sprite" parent="."]
 position = Vector2( -1, -30 )
