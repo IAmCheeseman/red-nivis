@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Solids/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Enemies/Bosses/LabsBoss/Boss.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Enemies/Shockwave/Shockwave.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 192, 127.002 )
@@ -17,9 +16,6 @@ tile_data = PoolIntArray( -851974, 0, 0, -851973, 0, 1, -851972, 0, 1, -851971, 
 
 [node name="BossLabs" parent="." instance=ExtResource( 3 )]
 position = Vector2( 140.57, -8.76523 )
-
-[node name="Shockwave" parent="BossLabs" instance=ExtResource( 6 )]
-position = Vector2( -88.1406, 8.42159 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -10 )

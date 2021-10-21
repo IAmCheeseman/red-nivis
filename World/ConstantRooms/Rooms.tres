@@ -6,4 +6,4 @@
 
 [resource]
 script = ExtResource( 1 )
-rooms = [ ExtResource( 3 ), ExtResource( 2 ) ]
+rooms = [ ExtResource( 2 ), ExtResource( 3 ) ]

@@ -7,9 +7,9 @@
 
 [resource]
 script = ExtResource( 1 )
-rarity = 0.0
 scene = ExtResource( 2 )
 biome = ExtResource( 3 )
 mustHave = true
 roomIcon = ExtResource( 4 )
-maxUses = 1
+usesMin = 1
+usesMax = 1

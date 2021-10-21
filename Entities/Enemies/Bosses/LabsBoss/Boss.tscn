@@ -196,7 +196,6 @@ position = Vector2( 26, 0 )
 
 [node name="ChargeVisual" type="Sprite" parent="Gun"]
 position = Vector2( 30, 0 )
-scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Gun"]

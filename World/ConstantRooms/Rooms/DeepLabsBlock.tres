@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-rarity = -1.0
 scene = ExtResource( 2 )
 mustHave = false
-maxUses = -1
+usesMin = 1
+usesMax = 1

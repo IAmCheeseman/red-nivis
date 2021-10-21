@@ -50,7 +50,7 @@ func generate_world(seed_:int=randi()) -> Array:
 			if room.biome:
 				if !room.biome.name in biomes.keys():
 					biomes[room.biome.name] = []
-					biomes[room.biome.name].append(Vector2(x, y))
+				biomes[room.biome.name].append(Vector2(x, y))
 			var neighbors = get_neighbors(Vector2(x, y), false, false)
 			if neighbors.size() == 0:
 				rooms[x][y].biome == null
@@ -61,40 +61,27 @@ func generate_world(seed_:int=randi()) -> Array:
 					
 					rooms[x][y].constantRoom = preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres")
 	
-	# Adding special rooms
-	var unusedRooms = constantRooms.rooms.duplicate()
-	for i in biomes.keys():
-		var brooms = biomes[i]
-		for r in brooms:
-			
-			for cr in constantRooms.rooms:
-				var rv = rooms[r.x][r.y]
-				var cru = constantRoomUseage[constantRooms.rooms.find(cr)]
-				if (cr.biome != rv.biome and cr.biome != null) or cru == cr.maxUses:
-					continue
-				if rand_range(0, 1) < cr.rarity:
-					rooms[r.x][r.y].constantRoom = cr
-					rooms[r.x][r.y].roomIcon = cr.roomIcon
-					constantRoomUseage[constantRooms.rooms.find(cr)] += 1
-					unusedRooms.erase(cr)
-					break
-	for i in unusedRooms:
+	for i in constantRooms.rooms.duplicate():
 		var position:Vector2
-		if i.biome:
-			var biome = biomes[i.biome.name]
-			biome.shuffle()
-			position = biome.front()
-		else:
-			var width = rooms.size()
-			var height = rooms[0].size()
-			while true:
-				position = Vector2(
-					rand_range(0, width-1),
-					rand_range(0, height-1)).round()
-				if rooms[position.x][position.y].biome != null:
-					break
-		rooms[position.x][position.y].constantRoom = i
-		rooms[position.x][position.y].roomIcon = i.roomIcon
+		for _j in int(rand_range(i.usesMin+1, i.usesMax)):
+			if i.biome:
+				while true:
+					var biome = biomes[i.biome.name]
+					biome.shuffle()
+					position = biome.front()
+					if !rooms[position.x][position.y].constantRoom:
+						break
+			else:
+				var width = rooms.size()
+				var height = rooms[0].size()
+				while true:
+					position = Vector2(
+						rand_range(0, width-1),
+						rand_range(0, height-1)).round()
+					if rooms[position.x][position.y].biome != null:
+						break
+			rooms[position.x][position.y].constantRoom = i
+			rooms[position.x][position.y].roomIcon = i.roomIcon
 	
 	return rooms
 	
