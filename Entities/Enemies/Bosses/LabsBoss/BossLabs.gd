@@ -60,6 +60,9 @@ var fireCount = 0
 var player: Node2D
 
 
+signal dead
+
+
 func _process(delta: float) -> void:
 	if !is_on_floor(): vel.y += Globals.GRAVITY*delta
 	
@@ -253,6 +256,7 @@ func _on_hurt(amount, _dir) -> void:
 	hpBar.value = Utils.percentage_of(health, maxHealth)
 	GameManager.frameFreezer.freeze_frames(.1)
 	if health <= 0:
+		emit_signal("dead")
 		# Dropping the hp
 		var playerData = player.get_parent().playerData
 		for i in playerData.maxHealth-playerData.health:
