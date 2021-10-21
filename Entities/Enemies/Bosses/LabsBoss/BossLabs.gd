@@ -89,12 +89,14 @@ func _process(delta: float) -> void:
 				fire_state(delta)
 				# Firing
 				if fireCooldown.is_stopped():
+					GameManager.emit_signal("screenshake", 1, 4, .05, .05)
 					var newBullet = bullet.instance()
 					newBullet.global_position = barrelEnd.global_position
 					newBullet.direction = barrelEnd.global_position.direction_to(player.global_position)
 					newBullet.speed = fastFireBulletSpeed
 					
 					GameManager.spawnManager.spawn_object(newBullet)
+					
 					fireCooldown.start(fastFireCooldown)
 					
 					fireCount += 1
@@ -106,6 +108,7 @@ func _process(delta: float) -> void:
 				fire_state(delta)
 				# Firing
 				if fireCooldown.is_stopped():
+					GameManager.emit_signal("screenshake", 1, 8, .05, .05)
 					for i in shotgunBullets:
 						var newBullet = bullet.instance()
 						
@@ -133,6 +136,7 @@ func _process(delta: float) -> void:
 func fire_state(delta: float) -> void:
 	vel.x = lerp(vel.x, 0, accel*delta)
 	gun.look_at(player.global_position)
+	gun.rotation_degrees = stepify(gun.rotation_degrees, 6)
 	anim.play("Shoot")
 	
 	sprite.scale.x = -1
@@ -165,15 +169,19 @@ func move_state(delta: float) -> void:
 
 
 func charge_shot() -> void:
+	GameManager.emit_signal("screenshake", 1, 9, .05, .05)
+	
 	var newBullet = bullet.instance()
 	newBullet.global_position = barrelEnd.global_position
 	newBullet.direction = barrelEnd.global_position.direction_to(player.global_position)
 	newBullet.speed = fastFireBulletSpeed
 	newBullet.scale = Vector2.ONE*2
 	newBullet.damage = chargeDamage
-	newBullet.connect("hitCollision", self, "_on_charge_bullet_hit")
+	newBullet.connect("hitCollision", self, "_on_charge_bullet_hit", [newBullet])
+	newBullet.set_meta("bounceTimes", 0)
 	
 	GameManager.spawnManager.spawn_object(newBullet)
+	
 	fireCooldown.start(fastFireCooldown)
 	
 	fireStateTimer.start()
@@ -182,7 +190,7 @@ func charge_shot() -> void:
 	state = IDLE
 
 
-func _on_charge_bullet_hit(bulletPosition: Vector2) -> void:
+func _on_charge_bullet_hit(bulletPosition: Vector2, oldBullet:Node2D) -> void:
 	var raycast = RayCast2D.new()
 	raycast.global_position = bulletPosition
 	raycast.enabled = true
@@ -190,14 +198,31 @@ func _on_charge_bullet_hit(bulletPosition: Vector2) -> void:
 	add_child(raycast)
 	raycast.force_raycast_update()
 	
-	if !raycast.is_colliding():
+	GameManager.emit_signal("screenshake", 1, 11, .05, .15)
+	
+	if !raycast.is_colliding() or oldBullet.get_meta("bounceTimes") < 3:
+		var newBullet = bullet.instance()
+		newBullet.global_position = bulletPosition
+		newBullet.direction = bulletPosition.direction_to(player.global_position)
+		newBullet.position += newBullet.direction.normalized()*16
+		newBullet.speed = fastFireBulletSpeed
+		newBullet.scale = Vector2.ONE*2
+		newBullet.damage = chargeDamage
+		newBullet.connect("hitCollision", self, "_on_charge_bullet_hit", [newBullet])
+		newBullet.set_meta("bounceTimes", oldBullet.get_meta("bounceTimes")+1)
+		
+		GameManager.spawnManager.spawn_object(newBullet)
 		return
-	var spawnPoint = raycast.get_collision_point()
+	
+	var spawnPoint = to_local(raycast.get_collision_point())
 	var direction = 1
 	for i in 2:
 		var newShockwave = shockwave.instance()
 		newShockwave.position = spawnPoint
+		newShockwave.position += Vector2(12, 0)*direction
+		
 		newShockwave.scale.x = direction
+		
 		GameManager.spawnManager.spawn_object(newShockwave)
 		direction = -direction
 	
@@ -226,6 +251,7 @@ func select_target_x() -> void:
 func _on_hurt(amount, _dir) -> void:
 	health -= amount
 	hpBar.value = Utils.percentage_of(health, maxHealth)
+	GameManager.frameFreezer.freeze_frames(.1)
 	if health <= 0:
 		# Dropping the hp
 		var playerData = player.get_parent().playerData
@@ -235,6 +261,9 @@ func _on_hurt(amount, _dir) -> void:
 			var force = (Vector2.UP+Vector2(rand_range(-.25, .25), 0)).normalized()*70
 			newHealth.apply_central_impulse(force)
 			GameManager.spawnManager.spawn_object(newHealth)
+			
+			GameManager.frameFreezer.freeze_frames(.5)
+			
 		# Getting done
 		queue_free()
 

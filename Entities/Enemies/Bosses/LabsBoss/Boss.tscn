@@ -12,6 +12,7 @@
 
 [sub_resource type="Animation" id=8]
 resource_name = "ChargeUp"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("ChargeVisual:scale")
 tracks/0/interp = 1
@@ -19,7 +20,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 6.27668, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
@@ -31,7 +32,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.7 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -185,6 +186,7 @@ fastFireCooldown = 0.3
 shotgunCooldown = 0.5
 
 [node name="Gun" type="Sprite" parent="."]
+visible = false
 position = Vector2( -1, -30 )
 texture = ExtResource( 2 )
 offset = Vector2( 12, 1 )
@@ -207,7 +209,7 @@ texture = ExtResource( 1 )
 offset = Vector2( -2, -27 )
 hframes = 11
 vframes = 3
-frame = 22
+frame = 1
 
 [node name="Collisions" type="Node2D" parent="."]
 
@@ -218,17 +220,17 @@ position = Vector2( 2, -40 )
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
 shape = SubResource( 1 )
 
-[node name="CollisionChecker" type="RayCast2D" parent="Collisions"]
-position = Vector2( 0, -10 )
-enabled = true
-cast_to = Vector2( -50, 0 )
-
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 5 )]
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
 position = Vector2( 1, -23 )
 shape = SubResource( 2 )
+
+[node name="CollisionChecker" type="RayCast2D" parent="Collisions"]
+position = Vector2( 0, -10 )
+enabled = true
+cast_to = Vector2( -50, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, -11 )
@@ -249,7 +251,7 @@ one_shot = true
 one_shot = true
 
 [node name="FireStateTimer" type="Timer" parent="Timers"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="WalkDirChange" type="Timer" parent="Timers"]
