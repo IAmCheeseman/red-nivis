@@ -17,6 +17,7 @@ func _ready() -> void:
 				if roomIcon:
 					var sprite = Sprite.new()
 					sprite.texture = roomIcon
+					sprite.centered = false
 					sprite.position = Vector2(x, y)*tiles.cell_size
 					tiles.add_child(sprite)
 	camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5

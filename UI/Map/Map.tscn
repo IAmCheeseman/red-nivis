@@ -47,7 +47,6 @@ material = SubResource( 2 )
 
 [node name="Camera" type="Camera2D" parent="Viewport"]
 current = true
-zoom = Vector2( 5, 5 )
 
 [node name="Sprite" type="Sprite" parent="Viewport/Camera"]
 texture = ExtResource( 3 )
