@@ -117,8 +117,8 @@ func _input(event):
 			inventory.remove_item(inventory.selectedSlot)
 
 	# Item moving for controller
-	if event.is_action_pressed("move_item"):
-		_on_button_pressed(slots.get_child(inventory.selectedSlot))
+#	if event.is_action_pressed("move_item"):
+#		_on_button_pressed(slots.get_child(inventory.selectedSlot))
 
 func _on_mouse_entered():
 	GameManager.editingInventory = true

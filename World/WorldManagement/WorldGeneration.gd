@@ -31,8 +31,6 @@ func generate_world(seed_:int=randi()) -> Array:
 					var color = template.get_pixel(x, y)
 					var biome = get_biome_by_color(color)
 					
-					
-					
 					rooms[(x*blowUpSize)+i].append({
 						"color" : color,
 						"biome" : biome,
@@ -45,8 +43,7 @@ func generate_world(seed_:int=randi()) -> Array:
 	grow_world()
 	remove_surrounded_tiles()
 	
-	# Connecting rooms to make bigger rooms
-	
+
 	for x in rooms.size():
 		for y in rooms[0].size():
 			var room = rooms[x][y]
@@ -55,6 +52,9 @@ func generate_world(seed_:int=randi()) -> Array:
 					biomes[room.biome.name] = []
 					biomes[room.biome.name].append(Vector2(x, y))
 			var neighbors = get_neighbors(Vector2(x, y), false, false)
+			if neighbors.size() == 0:
+				rooms[x][y].biome == null
+				continue
 			for i in neighbors:
 				if rooms[i.x][i.y].biome != rooms[x][y].biome:
 					if room.biome: if room.biome.name != "Labs": break

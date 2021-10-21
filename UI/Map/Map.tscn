@@ -45,8 +45,8 @@ render_target_update_mode = 3
 [node name="MapTiles" parent="Viewport" instance=ExtResource( 2 )]
 material = SubResource( 2 )
 
+[node name="Player" type="Sprite" parent="Viewport"]
+texture = ExtResource( 3 )
+
 [node name="Camera" type="Camera2D" parent="Viewport"]
 current = true
-
-[node name="Sprite" type="Sprite" parent="Viewport/Camera"]
-texture = ExtResource( 3 )
