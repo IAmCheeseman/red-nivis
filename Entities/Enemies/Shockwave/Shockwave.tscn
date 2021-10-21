@@ -5,18 +5,19 @@
 [ext_resource path="res://Entities/Enemies/Shockwave/Shockwave.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9, 11 )
+extents = Vector2( 9, 9 )
 
 [node name="Shockwave" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -22 )
 hframes = 3
 
 [node name="Hitbox" parent="." instance=ExtResource( 1 )]
-position = Vector2( 4, -11 )
+position = Vector2( 4, -10 )
 collision_mask = 2
 maskedHurtbox = "enemy"
 damage = 1

@@ -60,13 +60,13 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=1]
 radius = 116.039
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=10]
 height = 26.0
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 19, 10 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=12]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -94,7 +94,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=13]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -121,7 +121,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=14]
 length = 1.1
 loop = true
 tracks/0/type = "value"
@@ -182,8 +182,10 @@ z_index = -1
 collision_layer = 0
 collision_mask = 17
 script = ExtResource( 3 )
+maxHealth = 600
 maxSpeed = 3800
 fastFireCooldown = 0.3
+fastFireShots = 5
 shotgunCooldown = 0.5
 
 [node name="Gun" type="Sprite" parent="."]
@@ -225,7 +227,7 @@ collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
 position = Vector2( 1, -23 )
-shape = SubResource( 2 )
+shape = SubResource( 10 )
 
 [node name="CollisionChecker" type="RayCast2D" parent="Collisions"]
 position = Vector2( 0, -10 )
@@ -239,12 +241,12 @@ valueRange = Vector2( 5, 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, -11 )
-shape = SubResource( 3 )
+shape = SubResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 4 )
-anims/Shoot = SubResource( 5 )
-anims/WalkBackwards = SubResource( 6 )
+anims/Idle = SubResource( 12 )
+anims/Shoot = SubResource( 13 )
+anims/WalkBackwards = SubResource( 14 )
 anims/WalkForwards = SubResource( 7 )
 
 [node name="Timers" type="Node" parent="."]

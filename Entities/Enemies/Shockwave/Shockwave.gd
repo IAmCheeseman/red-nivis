@@ -6,7 +6,7 @@ onready var lifetimeTimer = $Lifetime
 
 
 export var lifeTime := 1.0
-export var speed := 200
+export var speed := 130
 
 
 func _ready() -> void:

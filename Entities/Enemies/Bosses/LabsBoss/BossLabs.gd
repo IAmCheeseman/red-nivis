@@ -57,6 +57,8 @@ var target := 0.0
 
 var fireCount = 0
 
+var chargeShotCurrentCount = 0
+
 var player: Node2D
 
 
@@ -86,6 +88,10 @@ func _process(delta: float) -> void:
 			MOVE:
 				move_state(delta)
 			FIRE_CHARGE:
+				if chargeShotCurrentCount >= 2:
+					fireStateTimer.start()
+					fireCount = 0
+					state = IDLE
 				fire_state(delta)
 				gunAnim.play("ChargeUp")
 			FIRE_FAST:
@@ -144,6 +150,7 @@ func fire_state(delta: float) -> void:
 	
 	sprite.scale.x = -1
 	gun.scale.y = 1
+	
 	if player.global_position.x < global_position.x:
 		sprite.scale.x = 1
 		gun.scale.y = -1
@@ -183,6 +190,8 @@ func charge_shot() -> void:
 	newBullet.connect("hitCollision", self, "_on_charge_bullet_hit", [newBullet])
 	newBullet.set_meta("bounceTimes", 0)
 	
+	chargeShotCurrentCount += 1
+	
 	GameManager.spawnManager.spawn_object(newBullet)
 	
 	fireCooldown.start(fastFireCooldown)
@@ -217,6 +226,7 @@ func _on_charge_bullet_hit(bulletPosition: Vector2, oldBullet:Node2D) -> void:
 		GameManager.spawnManager.spawn_object(newBullet)
 		return
 	
+	chargeShotCurrentCount -= 1
 	var spawnPoint = to_local(raycast.get_collision_point())
 	var direction = 1
 	for i in 2:
@@ -254,7 +264,6 @@ func select_target_x() -> void:
 func _on_hurt(amount, _dir) -> void:
 	health -= amount
 	hpBar.value = Utils.percentage_of(health, maxHealth)
-	GameManager.frameFreezer.freeze_frames(.1)
 	if health <= 0:
 		emit_signal("dead")
 		# Dropping the hp
@@ -266,7 +275,7 @@ func _on_hurt(amount, _dir) -> void:
 			newHealth.apply_central_impulse(force)
 			GameManager.spawnManager.spawn_object(newHealth)
 			
-			GameManager.frameFreezer.freeze_frames(.5)
+			GameManager.frameFreezer.freeze_frames(.2)
 			
 		# Getting done
 		queue_free()

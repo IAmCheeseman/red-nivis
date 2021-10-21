@@ -14,4 +14,5 @@ func _on_interaction() -> void:
 func increment_max_health():
 	player.maxHealth += 1
 	player.health += 1
+	player.emit_signal("healthChanged", Vector2.ZERO)
 	queue_free()
