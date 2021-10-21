@@ -37,7 +37,6 @@ func _ready():
 	mistSpawner.color = biome.mistColor
 	
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
-	var constantRooms = preload("res://World/ConstantRooms/Rooms.tres")
 	var room
 	
 	# CONSTANT ROOMS

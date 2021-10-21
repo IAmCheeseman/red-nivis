@@ -53,7 +53,7 @@ func generate_world(seed_:int=randi()) -> Array:
 				biomes[room.biome.name].append(Vector2(x, y))
 			var neighbors = get_neighbors(Vector2(x, y), false, false)
 			if neighbors.size() == 0:
-				rooms[x][y].biome == null
+				rooms[x][y].biome = null
 				continue
 			for i in neighbors:
 				if rooms[i.x][i.y].biome != rooms[x][y].biome:

@@ -21,4 +21,4 @@ func _on_lab_loading_zone_loadArea() -> void:
 func load_world():
 	randomize()
 	worldData.generate_world()
-	get_tree().change_scene("res://World/WorldManagement/World.tscn")
+	var _discard = get_tree().change_scene("res://World/WorldManagement/World.tscn")

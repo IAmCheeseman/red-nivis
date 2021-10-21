@@ -109,6 +109,7 @@ static func get_random_template(template:Image, templateAmount:int) -> Dictionar
 # warning-ignore:narrowing_conversion
 	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
 
+# warning-ignore:narrowing_conversion
 	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
 	
 	return {
