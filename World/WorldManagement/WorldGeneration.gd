@@ -213,7 +213,9 @@ func get_biome_by_color(color:Color):
 
 
 func select_template() -> Image:
-	return load("res://World/Templates/WorldTemplates/Template%s.png" % ceil(rand_range(0, 5))).get_data()
+	return load(
+		"res://World/Templates/WorldTemplates/Template%s.png"\
+		 % ceil(rand_range(0, 7)) ).get_data()
 
 
 func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array:

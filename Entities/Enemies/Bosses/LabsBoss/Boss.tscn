@@ -211,9 +211,10 @@ texture = ExtResource( 1 )
 offset = Vector2( -2, -27 )
 hframes = 11
 vframes = 3
-frame = 1
+frame = 20
 
 [node name="Collisions" type="Node2D" parent="."]
+visible = false
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 4 )]
 visible = false
@@ -240,6 +241,7 @@ moneyRange = Vector2( 1, 25 )
 valueRange = Vector2( 5, 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 2, -11 )
 shape = SubResource( 11 )
 

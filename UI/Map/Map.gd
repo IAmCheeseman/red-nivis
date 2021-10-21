@@ -16,6 +16,7 @@ var miniSize:Vector2
 
 
 func _ready() -> void:
+	print(tiles.tile_set.get_tiles_ids())
 	miniPosition = rect_position
 	miniSize = rect_size
 	for x in mapData.rooms.size():
@@ -23,7 +24,7 @@ func _ready() -> void:
 			var biome = mapData.rooms[x][y].biome
 			var roomIcon = mapData.rooms[x][y].roomIcon
 			if biome:
-				tiles.set_cell(x, y, 0)
+				tiles.set_cell(x, y, biome.biomeIndex)
 				if roomIcon:
 					var sprite = Sprite.new()
 					sprite.texture = roomIcon
