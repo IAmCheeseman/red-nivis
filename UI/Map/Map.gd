@@ -16,24 +16,32 @@ var miniSize:Vector2
 
 
 func _ready() -> void:
-	print(tiles.tile_set.get_tiles_ids())
 	miniPosition = rect_position
 	miniSize = rect_size
+	yield(get_tree(), "idle_frame")
 	for x in mapData.rooms.size():
 		for y in mapData.rooms[0].size():
 			var biome = mapData.rooms[x][y].biome
 			var roomIcon = mapData.rooms[x][y].roomIcon
 			if biome:
-				tiles.set_cell(x, y, biome.biomeIndex)
-				if roomIcon:
-					var sprite = Sprite.new()
-					sprite.texture = roomIcon
-					sprite.centered = false
-					sprite.position = Vector2(x, y)*tiles.cell_size
-					tiles.add_child(sprite)
+				if mapData.rooms[x][y].discovered:
+					tiles.set_cell(x, y, biome.biomeIndex+1)
+					set_icon(roomIcon, x, y)
+				elif mapData.rooms[x][y].nearDiscovered:
+					tiles.set_cell(x, y, 0)
+					set_icon(roomIcon, x, y)
+					
 	camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
 	player.position = camera.position
-	
+
+
+func set_icon(roomIcon, x, y):
+	if roomIcon:
+		var sprite = Sprite.new()
+		sprite.texture = roomIcon
+		sprite.centered = false
+		sprite.position = Vector2(x, y)*tiles.cell_size
+		tiles.add_child(sprite)
 
 
 func _input(event: InputEvent) -> void:

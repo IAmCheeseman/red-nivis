@@ -212,10 +212,17 @@ func _on_charge_bullet_hit(bulletPosition: Vector2, oldBullet:Node2D) -> void:
 	
 	GameManager.emit_signal("screenshake", 1, 11, .05, .15)
 	
-	if !raycast.is_colliding() or oldBullet.get_meta("bounceTimes") < 3:
+	if !raycast.is_colliding() or oldBullet.get_meta("bounceTimes") < 5:
+		raycast.cast_to = oldBullet.direction.normalized()*100
+		raycast.force_raycast_update()
+		var normal = raycast.get_collision_normal()
+		
 		var newBullet = bullet.instance()
 		newBullet.global_position = bulletPosition
-		newBullet.direction = bulletPosition.direction_to(player.global_position)
+		if normal != Vector2.ZERO:
+			newBullet.direction = oldBullet.direction.bounce(normal)
+		else:
+			newBullet.direction = -oldBullet.direction
 		newBullet.position += newBullet.direction.normalized()*16
 		newBullet.speed = fastFireBulletSpeed
 		newBullet.scale = Vector2.ONE*2
@@ -224,20 +231,6 @@ func _on_charge_bullet_hit(bulletPosition: Vector2, oldBullet:Node2D) -> void:
 		newBullet.set_meta("bounceTimes", oldBullet.get_meta("bounceTimes")+1)
 		
 		GameManager.spawnManager.spawn_object(newBullet)
-		return
-	
-	chargeShotCurrentCount -= 1
-	var spawnPoint = to_local(raycast.get_collision_point())
-	var direction = 1
-	for i in 2:
-		var newShockwave = shockwave.instance()
-		newShockwave.position = spawnPoint
-		newShockwave.position += Vector2(12, 0)*direction
-		
-		newShockwave.scale.x = direction
-		
-		GameManager.spawnManager.spawn_object(newShockwave)
-		direction = -direction
 	
 	raycast.queue_free()
 

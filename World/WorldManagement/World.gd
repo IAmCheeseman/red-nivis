@@ -39,6 +39,10 @@ func _ready():
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	var room
 	
+	worldData.rooms[worldData.position.x][worldData.position.y].discovered = true
+	for i in worldData.get_connected_rooms(worldData.position):
+		worldData.rooms[worldData.position.x+i.x][worldData.position.y+i.y].nearDiscovered = true
+	
 	# CONSTANT ROOMS
 	
 	var cr = worldData.rooms[worldData.position.x][worldData.position.y].constantRoom

@@ -36,6 +36,8 @@ func generate_world(seed_:int=randi()) -> Array:
 						"biome" : biome,
 						"constantRoom" : null,
 						"roomIcon" : null,
+						"discovered" : false,
+						"nearDiscovered" : false,
 						"connections" : []
 					})
 	

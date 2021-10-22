@@ -26,6 +26,7 @@ shader = SubResource( 1 )
 shader_param/alpha = ExtResource( 4 )
 
 [node name="Map" type="ViewportContainer"]
+process_priority = -1
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -60.0
