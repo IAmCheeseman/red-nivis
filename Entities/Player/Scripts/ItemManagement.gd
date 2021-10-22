@@ -15,6 +15,9 @@ func _ready():
 
 
 func add_item():
+	if itemHolder == null:
+		return
+	
 	for i in itemHolder.get_children():
 		i.queue_free()
 	var item = inventory.items[inventory.selectedSlot]

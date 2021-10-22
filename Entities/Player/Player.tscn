@@ -149,7 +149,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=12]
 resource_name = "DoubleJump"
 length = 0.3
 tracks/0/type = "value"
@@ -177,7 +177,7 @@ tracks/1/keys = {
 "values": [ Vector2( -7, 1 ), Vector2( -7, 2 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -269,7 +269,7 @@ tracks/2/keys = {
 "values": [ Vector2( -7, 3 ), Vector2( -7, 1 ), Vector2( -7, 2 ), Vector2( -7, 3 ), Vector2( -7, 1 ), Vector2( -7, 2 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 length = 0.6
 loop = true
 step = 0.05
@@ -356,7 +356,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=16]
 resource_name = "WallSlide"
 length = 0.1
 loop = true
@@ -397,7 +397,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -425,7 +425,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=18]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
 tracks/0/interp = 1
@@ -439,7 +439,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=19]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -454,7 +454,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.5, 0.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=20]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:material:shader_param/is_on")
@@ -773,19 +773,19 @@ __meta__ = {
 autoplay = "Idle"
 anims/Dead = SubResource( 10 )
 anims/Die = SubResource( 11 )
-anims/DoubleJump = SubResource( 22 )
-anims/Idle = SubResource( 12 )
+anims/DoubleJump = SubResource( 12 )
+anims/Idle = SubResource( 13 )
 anims/Jump = SubResource( 14 )
-anims/Run = SubResource( 16 )
-anims/WallSlide = SubResource( 23 )
+anims/Run = SubResource( 15 )
+anims/WallSlide = SubResource( 16 )
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
-anims/Dash = SubResource( 18 )
-anims/Jump = SubResource( 19 )
-anims/Land = SubResource( 20 )
+anims/Dash = SubResource( 17 )
+anims/Jump = SubResource( 18 )
+anims/Land = SubResource( 19 )
 
 [node name="Flash" type="AnimationPlayer" parent="."]
-anims/flash = SubResource( 21 )
+anims/flash = SubResource( 20 )
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

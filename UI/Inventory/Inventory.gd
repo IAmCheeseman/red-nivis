@@ -19,6 +19,10 @@ signal selectedSlotChanged
 
 
 func _init():
+	setup()
+
+func setup():
+	items.clear()
 	for slot in maxSlots:
 		items.append(null)
 	randomize()

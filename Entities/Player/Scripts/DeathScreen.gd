@@ -1,10 +1,12 @@
 extends VBoxContainer
 
 var playerData = preload("res://Entities/Player/Player.tres")
+var inventory = preload("res://UI/Inventory/Inventory.tres")
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
 
 
 func _on_Continue_button_up():
+	inventory.setup()
 	playerData.isDead = false
 	playerData.health = playerData.maxHealth
 	playerData.ammo = playerData.maxAmmo
@@ -15,6 +17,7 @@ func _on_Continue_button_up():
 
 
 func _on_Quit_button_up():
+	inventory.setup()
 	playerData.isDead = false
 	playerData.health = playerData.maxHealth
 	playerData.ammo = playerData.maxAmmo

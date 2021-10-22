@@ -256,7 +256,9 @@ func die():
 	add_child(defTimah)
 	defTimah.start(.4)
 	
-	itemHolder.queue_free()
+	for i in itemHolder.get_children():
+		i.queue_free()
+	itemHolder.hide()
 
 func show_death_screen(timer:Timer) -> void:
 	deathScreen.show()
