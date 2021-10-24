@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://World/ConstantRooms/Base.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Shopkeep/Shop.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Shopkeep/Shopkeep.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/NPC/Shopkeep/Shop.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/NPC/Shopkeep/Shopkeep.tscn" type="PackedScene" id=3]
 
 [node name="ShopRoom" instance=ExtResource( 1 )]
 
@@ -11,7 +11,7 @@ position = Vector2( 128, 192 )
 z_index = -1
 
 [node name="Shopkeep" parent="Props" index="1" instance=ExtResource( 3 )]
-position = Vector2( 88, 188 )
+position = Vector2( 69, 191 )
 z_index = -1
 
 [node name="Solids" parent="." index="1"]

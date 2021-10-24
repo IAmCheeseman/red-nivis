@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+uniform float size = 16;
+uniform vec4 color1 : hint_color;
+uniform vec4 color2 : hint_color;
+
+
+bool isEven(int number) {
+	return number % 2 == 0;
+}
+
+
+void fragment() {
+	vec4 oldColor = texture(TEXTURE, UV);
+	if ( isEven( int( UV.y * size + -TIME )) ) {
+		COLOR = mix(color1/1.25, color1, oldColor.r);
+	} else {
+		COLOR = mix(color1/1.25, color2, oldColor.r);
+	}
+	COLOR.a = mix(0, COLOR.a, oldColor.a);
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/size = 10.0
+shader_param/color1 = Color( 0.647059, 0.87451, 1, 0.498039 )
+shader_param/color2 = Color( 0.54902, 0.745098, 0.886275, 0.498039 )

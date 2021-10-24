@@ -206,7 +206,7 @@ search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg" )
 
 [importer_defaults]
 
