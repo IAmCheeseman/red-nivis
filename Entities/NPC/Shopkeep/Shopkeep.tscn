@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id=2]
 radius = 27.0
 
-[node name="NPC" instance=ExtResource( 1 )]
+[node name="Shopkeep" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="ScaleHelper" index="0"]
 texture = ExtResource( 3 )

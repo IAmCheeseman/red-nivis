@@ -1,0 +1,11 @@
+extends Resource
+class_name DialogInteraction
+
+
+export(Array, Array, String) var dialog = []
+
+
+func get_interaction(interaction: String):
+	for i in dialog:
+		if i[0] == interaction:
+			return i

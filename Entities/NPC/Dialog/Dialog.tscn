@@ -4,7 +4,7 @@
 [ext_resource path="res://Entities/NPC/Dialog/Dialog.gd" type="Script" id=2]
 [ext_resource path="res://Entities/NPC/Dialog/DialogPointer.png" type="Texture" id=3]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Entities/NPC/Dialog/DefaultDialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/NPC/Dialog/DefaultDialog.tres" type="Resource" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Spin"
@@ -23,7 +23,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[node name="Dialog" type="Control"]
+[node name="Dialog" type="Control" groups=[
+"Dialog",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -72,6 +74,7 @@ anims/Spin = SubResource( 1 )
 
 [node name="CharIncTimer" type="Timer" parent="."]
 wait_time = 0.05
+one_shot = true
 
 [node name="AdvanceTimer" type="Timer" parent="."]
 one_shot = true

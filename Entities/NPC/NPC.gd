@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var sprite = $ScaleHelper/Sprite
 
 onready var dialog = $Dialog/Dialog
+onready var interactionZone = $Iteraction
 
 
 var vel:Vector2 = Vector2.ZERO
@@ -20,3 +21,8 @@ func _process(delta):
 func _on_interaction() -> void:
 	dialog.show()
 	dialog.start_dialog("Introduction")
+	interactionZone.disabled = true
+
+
+func _on_dialog_finished() -> void:
+	interactionZone.disabled = false
