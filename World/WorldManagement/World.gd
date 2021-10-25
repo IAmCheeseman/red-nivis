@@ -1,6 +1,6 @@
 extends Node2D
 
-const PADDING = 20
+const PADDING = 10
 
 onready var player = $Props/Player
 onready var props = $Props
@@ -23,7 +23,8 @@ func _ready():
 	
 	for t in tilesContainer.get_children():
 		t.queue_free()
-	var biome:WorldArea = worldData.rooms[worldData.position.x][worldData.position.y].biome
+	var biome:WorldArea = worldData.rooms\
+		[worldData.position.x][worldData.position.y].biome
 	
 	solids = biome.solids.instance()
 	solids.z_index = 1

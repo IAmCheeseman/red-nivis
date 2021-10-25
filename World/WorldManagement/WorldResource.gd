@@ -32,13 +32,10 @@ func get_connected_rooms(room:Vector2) -> Array:
 
 
 func set_starting_position() -> void:
-	var startingArea = preload("res://World/Biomes/Lab.tres")
-	var viableRooms = []
 	for x in rooms.size():
 		for y in rooms[0].size():
-			if rooms[x][y].biome == startingArea:
-				viableRooms.append(Vector2(x, y))
-	viableRooms.shuffle()
-	position = viableRooms.front()
+			if "isStartingRoom" in rooms[x][y].keys():
+				position = Vector2(x, y)
+				return
 
 

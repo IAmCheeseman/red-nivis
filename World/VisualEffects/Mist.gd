@@ -12,8 +12,8 @@ var targetScale = rand_range(.5, 2)
 
 func _process(delta):
 	rect_position += moveDir*(moveSpeed*delta)
-	var dist = rect_global_position.distance_to(player.global_position)
-	modulate.a = clamp(1-(dist/200), 0, 1)
+#	var dist = rect_global_position.distance_to(player.global_position)
+#	modulate.a = clamp(1-(dist/200), 0, 1)
 
 	rect_scale = rect_scale.move_toward(Vector2(targetScale, targetScale), scaleSpeed*delta)
 

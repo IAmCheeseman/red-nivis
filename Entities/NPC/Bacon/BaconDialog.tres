@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "and [wave]can[/wave] i [shake]do[/shake] [rainbow]this[/rainbow]" ] ]
+dialog = [ [ "Introduction", "and [wave]can[/wave] i [shake]do[/shake] [rainbow]this[/rainbow]?" ] ]
