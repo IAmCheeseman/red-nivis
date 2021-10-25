@@ -58,6 +58,7 @@ func add_particles():
 func add_trail_to_parent():
 	remove_child(trail)
 	get_parent().add_child(trail)
+	trail.emitting = false
 	
 	var timer = Timer.new()
 	timer.wait_time = 2
