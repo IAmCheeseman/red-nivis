@@ -30,6 +30,13 @@ func add_sparks():
 		bzztSFX.play()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("jump"):
+		open_door()
+
+
 func open_door() -> void:
+	if !player.playerObject.lockMovement:
+		return
 	anim.play("Open")
 	dingSFX.play()

@@ -1,12 +1,33 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://World/Props/DoorBlock/DoorBlock.png" type="Texture" id=1]
+[ext_resource path="res://World/Props/DoorBlock/DoorBlock.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float size = 1.0;
+
+void fragment() {
+	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 textureColor = texture(TEXTURE, UV);
+
+	COLOR = mix(color, textureColor, textureColor.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/size = 1.0
 
 [node name="DoorBlock" type="StaticBody2D"]
+script = ExtResource( 2 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_right = 8.0
-margin_bottom = 46.0
+[node name="Sprite" type="NinePatchRect" parent="."]
+material = SubResource( 2 )
+margin_left = -5.0
+margin_top = -27.0
+margin_right = 5.0
+margin_bottom = 27.0
 texture = ExtResource( 1 )
 patch_margin_left = 4
 patch_margin_top = 7
@@ -15,3 +36,5 @@ patch_margin_bottom = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

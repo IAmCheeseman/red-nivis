@@ -13,7 +13,7 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=2]
 code = "shader_type particles;
 uniform vec3 direction;
 uniform float spread;
@@ -198,8 +198,8 @@ void vertex() {
 
 "
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 shader_param/direction = Vector3( 1, 0, 0 )
 shader_param/spread = 180.0
 shader_param/flatness = 0.0
@@ -233,7 +233,7 @@ shader_param/color_value = Color( 1, 1, 1, 1 )
 shader_param/trail_divisor = 1
 shader_param/gravity = Vector3( 0, -1e-06, 0 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -275,7 +275,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -362,7 +362,7 @@ amount = 24
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 6 )
+process_material = SubResource( 3 )
 texture = ExtResource( 4 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -372,7 +372,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Construct"
-anims/Construct = SubResource( 3 )
-anims/Open = SubResource( 4 )
+anims/Construct = SubResource( 4 )
+anims/Open = SubResource( 5 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="open_door"]

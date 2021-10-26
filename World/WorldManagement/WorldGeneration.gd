@@ -38,7 +38,8 @@ func generate_world(seed_:int=randi()) -> Array:
 						"roomIcon" : null,
 						"discovered" : false,
 						"nearDiscovered" : false,
-						"connections" : []
+						"connections" : [],
+						"cleared" : false
 					})
 	
 	remove_2x2_areas()
@@ -72,7 +73,7 @@ func generate_world(seed_:int=randi()) -> Array:
 					if room.biome: if room.biome.name != "Labs": break
 					
 					rooms[x][y].constantRoom = preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres")
-	print(topLabsLayer)
+
 	topLabsLayer.shuffle()
 	var er = topLabsLayer.front()
 	rooms[er.x][er.y].constantRoom = preload("res://World/ConstantRooms/Rooms/StartingRoom.tres")

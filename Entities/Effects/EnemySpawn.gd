@@ -14,3 +14,9 @@ func _ready() -> void:
 
 func _on_start_timer_timeout() -> void:
 	anim.play("default")
+
+
+func _on_enemy_added(enemy) -> void:
+	yield(get_tree(), "idle_frame")
+	enemy.get_parent().remove_child(enemy)
+	get_parent().add_child(enemy)

@@ -200,7 +200,6 @@ tracks/1/keys = {
 script = ExtResource( 4 )
 
 [node name="In" type="Particles2D" parent="."]
-emitting = false
 amount = 100
 process_material = SubResource( 7 )
 
@@ -223,4 +222,5 @@ anims/init = SubResource( 17 )
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="enemy_added" from="EnemySpawner" to="." method="_on_enemy_added"]
 [connection signal="timeout" from="Timer" to="." method="_on_start_timer_timeout"]

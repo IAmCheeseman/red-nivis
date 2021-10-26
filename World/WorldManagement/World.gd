@@ -13,9 +13,12 @@ onready var canvasLayer =$CanvasLayer
 onready var mainCamMove = $Props/CameraZones/CameraMoveZone
 onready var screenTrans = $ScreenTransition
 onready var tilesContainer = $Props/Tiles
+onready var enemies = $Props/Enemies
+onready var roomClearer = $RoomClearer
 
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
 
+var exitBlockers = []
 
 func _ready():
 	AudioServer.set_bus_effect_enabled(4, 0, true)
@@ -173,8 +176,51 @@ func _ready():
 			spawner.position = spawnPos*solids.cell_size
 			spawner.position.x += solids.cell_size.x*.5
 			spawner.enemyPool = enemyPool
-			add_child(spawner)
+			
+			enemies.add_child(spawner)
+	
+	# Blocking off exits
+	var dirs = [Vector2.UP, Vector2.DOWN, Vector2.RIGHT, Vector2.LEFT]
+	for i in dirs:
+		var blockOff := preload("res://World/Props/DoorBlock/DoorBlock.tscn").instance()
+		var collisionShape := RectangleShape2D.new()
 		
+		var extents:Vector2 = solids.get_used_rect().end
+		#et_free_spot(startPos:Vector2, endPos:Vector2, incDir:Vector2) -> Dictionary:
+		match i:
+			Vector2.UP:
+				var collisionSize = (extents.x*.5)*solids.cell_size.x
+				collisionShape.extents = Vector2(5, collisionSize)
+				
+				blockOff.scale.x = -1
+				blockOff.rotation_degrees = 90
+				blockOff.position = Vector2((extents.x*.5), 0)
+			Vector2.DOWN:
+				var collisionSize = (extents.x*.5)*solids.cell_size.x
+				collisionShape.extents = Vector2(5, collisionSize)
+				
+				blockOff.rotation_degrees = 90
+				blockOff.position = Vector2((extents.x*.5), extents.y)
+			Vector2.RIGHT:
+				var collisionSize = (extents.y*.5)*solids.cell_size.x
+				collisionShape.extents = Vector2(5, collisionSize)
+				
+				blockOff.position = Vector2(extents.x, (extents.y*.5))
+			Vector2.LEFT:
+				var collisionSize = (extents.y*.5)*solids.cell_size.x
+				collisionShape.extents = Vector2(5, collisionSize)
+				
+				blockOff.scale.x = -1
+				blockOff.position = Vector2(0, (extents.y*.5))
+		
+		add_child(blockOff)
+		blockOff.position *= solids.cell_size
+		blockOff.position = blockOff.position.round()
+		blockOff.collision.shape = collisionShape
+		blockOff.position_sprite()
+		
+		exitBlockers.append(blockOff)
+	
 	var roomSize = solids.get_used_rect().end
 	create_loading_zone(Vector2(-24/16, roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.LEFT) # Left
 	create_loading_zone(Vector2(roomSize.x+(24/16), roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.RIGHT) # Right
@@ -219,6 +265,13 @@ func _ready():
 		var newBiomeTitle = preload("res://UI/BiomeTitle/BiomeTitle.tscn").instance()
 		canvasLayer.add_child(newBiomeTitle)
 		newBiomeTitle.get_node("Title/Name").text = "The "+biome.name
+	
+	var timer = get_tree().create_timer(2.9)
+	timer.connect("timeout", self, "_on_index_timer_timeout")
+# 2.8s
+
+func _on_index_timer_timeout() -> void:
+	roomClearer.get_enemies()
 
 
 func _on_drop_gun(gun, pos):
@@ -325,4 +378,9 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 	worldData.moveDir = direction
 
 	screenTrans.out()
+
+
+func _on_enemies_cleared() -> void:
+	for eb in exitBlockers:
+		eb.queue_free()
 
