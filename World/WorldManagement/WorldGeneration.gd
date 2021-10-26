@@ -41,9 +41,9 @@ func generate_world(seed_:int=randi()) -> Array:
 						"connections" : []
 					})
 	
-#	remove_2x2_areas()
-#	grow_world()
-#	remove_surrounded_tiles()
+	remove_2x2_areas()
+	grow_world()
+	remove_surrounded_tiles()
 	
 	var topLabsLayer = []
 	var firstY = -1
