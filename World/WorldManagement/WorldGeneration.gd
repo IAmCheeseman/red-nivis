@@ -41,9 +41,9 @@ func generate_world(seed_:int=randi()) -> Array:
 						"connections" : []
 					})
 	
-	remove_2x2_areas()
-	grow_world()
-	remove_surrounded_tiles()
+#	remove_2x2_areas()
+#	grow_world()
+#	remove_surrounded_tiles()
 	
 	var topLabsLayer = []
 	var firstY = -1
@@ -53,10 +53,15 @@ func generate_world(seed_:int=randi()) -> Array:
 			if room.biome:
 				if !room.biome.name in biomes.keys():
 					biomes[room.biome.name] = []
-					if room.biome.name == "Labs"\
-					and (y == firstY or firstY == -1):
-						firstY = y
-						topLabsLayer.append(Vector2(x, firstY))
+				
+				# Getting the top layer of the labs biome
+				if room.biome.name == "Labs"\
+				and (y <= firstY or firstY == -1):
+					if y < firstY:
+						topLabsLayer.clear()
+					firstY = y
+					topLabsLayer.append(Vector2(x, firstY))
+				
 				biomes[room.biome.name].append(Vector2(x, y))
 			var neighbors = get_neighbors(Vector2(x, y), false, false)
 			if neighbors.size() == 0:
@@ -67,6 +72,7 @@ func generate_world(seed_:int=randi()) -> Array:
 					if room.biome: if room.biome.name != "Labs": break
 					
 					rooms[x][y].constantRoom = preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres")
+	print(topLabsLayer)
 	topLabsLayer.shuffle()
 	var er = topLabsLayer.front()
 	rooms[er.x][er.y].constantRoom = preload("res://World/ConstantRooms/Rooms/StartingRoom.tres")
