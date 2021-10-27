@@ -70,7 +70,7 @@ func accel_to_point(point:Vector2, delta:float) -> void:
 		collision.disabled = bounceRay.get_collider().is_in_group("Platform")
 		if collision.disabled: return
 		var normal = bounceRay.get_collision_normal()
-		vel = vel.bounce(normal)*.8
+		if vel.is_normalized(): vel = vel.bounce(normal)*.8
 
 
 func select_position() -> Vector2:
