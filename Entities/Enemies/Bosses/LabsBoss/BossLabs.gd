@@ -66,7 +66,7 @@ signal dead
 
 
 func _ready() -> void:
-	maxHealth = Utils.dmg_to_hp(8*6, .8, 60*2)
+	maxHealth = Utils.dmg_to_hp(15, .2, 60*2)
 	health = maxHealth
 	print(health)
 

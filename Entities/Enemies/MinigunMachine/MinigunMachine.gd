@@ -31,6 +31,7 @@ signal death
 
 func _ready() -> void:
 	startingPosition = position
+	health = Utils.dmg_to_hp(15, .2, 2)
 	healthBar.max_value = health
 	healthBar.value = health
 

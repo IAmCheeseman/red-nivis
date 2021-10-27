@@ -5,7 +5,7 @@
 
 [node name="Body1" instance=ExtResource( 1 )]
 rarity = 1
-damage = 15.0
+damage = 17.0
 accuracy = 1.0
 cooldown = 0.15
 recoil = 0.25

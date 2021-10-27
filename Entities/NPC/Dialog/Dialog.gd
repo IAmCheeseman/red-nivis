@@ -10,6 +10,7 @@ onready var background = $Background
 onready var pointer = $Pointer
 onready var advanceTimer = $AdvanceTimer
 onready var charIncTimer = $CharIncTimer
+onready var speakSound = $Bleep
 
 #var dialogIst:AnimationPlayer
 var currentDialogID := ""
@@ -71,6 +72,8 @@ func increment_char() -> void:
 	if !currentDialogID: return
 	
 	text.bbcode_text = targetText
+	if rand_range(0, 1) < .666:
+		speakSound.play()
 	var testText = add_center_tags(text.text)
 	text.bbcode_text = add_center_tags(text.text.left(charsShown))
 	
@@ -84,7 +87,7 @@ func increment_char() -> void:
 	reposition_bg()
 	
 	charIncTimer.start(rand_range(.025, .1))
-
+ 
 
 func increment_text() -> void:
 	# Resetting 
