@@ -65,6 +65,12 @@ var player: Node2D
 signal dead
 
 
+func _ready() -> void:
+	maxHealth = Utils.dmg_to_hp(8*6, .8, 60*2)
+	health = maxHealth
+	print(health)
+
+
 func _process(delta: float) -> void:
 	if !is_on_floor(): vel.y += Globals.GRAVITY*delta
 	
