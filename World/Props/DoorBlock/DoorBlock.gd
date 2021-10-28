@@ -3,9 +3,15 @@ extends StaticBody2D
 onready var sprite = $Sprite
 onready var collision = $CollisionShape2D
 
+var targetSize:float = 0
+
+
+func _process(delta: float) -> void:
+	sprite.rect_size.y = lerp(sprite.rect_size.y, targetSize, 3*delta)
+
 
 func position_sprite() -> void:
 	var collisionSize = collision.shape.extents
 	sprite.rect_position = -collisionSize
-	sprite.rect_size = (collisionSize*2).round()
+	targetSize = (collisionSize*2).round().y
 	sprite.rect_size.x = 10
