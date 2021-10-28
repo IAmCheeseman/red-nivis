@@ -15,7 +15,13 @@ func help() -> String:
  set_money(amount)
  tp(x, y)
  set_room(x, y)
+ toggle_revealed_map()
 """
+
+
+func toggle_revealed_map():
+	GameManager.revealMap = !GameManager.revealMap
+	return " Map reveal toggled"
 
 
 func echo(output:String) -> String:
