@@ -8,12 +8,27 @@ onready var label:Label = $Label
 
 export var ignoreDistance := false
 export var disabled := false setget set_disabled
+export var spritePath:NodePath
+
+var sprite:Sprite
 
 var playerNear = false
 
 signal interaction
 signal player_close
 signal player_left
+
+
+
+func _ready() -> void:
+	# Adding an outline shader to a sprite
+	if !has_node(spritePath): return
+	sprite = get_node(spritePath)
+	if !sprite.material:
+		sprite.material = ShaderMaterial.new()
+		sprite.material.shader = preload("res://General/Outline.shader")
+		sprite.material.set_shader_param("line_thickness", 0)
+
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -33,9 +48,10 @@ func _on_area_entered(area: Area2D) -> void:
 		label.text = "<%s>" % OS.get_scancode_string(
 			InputMap.get_action_list("interact")[0].scancode
 		)
-		if !disabled:
+		if !disabled and is_closest():
 			label.show()
 			emit_signal("player_close")
+			if sprite: sprite.material.set_shader_param("line_thickness", 1)
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("player"):
@@ -43,6 +59,7 @@ func _on_area_exited(area: Area2D) -> void:
 		if !disabled:
 			label.hide()
 			emit_signal("player_left")
+		if sprite: sprite.material.set_shader_param("line_thickness", 0)
 
 
 # Checks if the player is closest to this interactable.

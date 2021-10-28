@@ -472,6 +472,7 @@ texture = ExtResource( 5 )
 
 [node name="Iteraction" parent="." instance=ExtResource( 15 )]
 position = Vector2( 0, -50 )
+spritePath = NodePath("../Sprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
 position = Vector2( 0, 26 )
