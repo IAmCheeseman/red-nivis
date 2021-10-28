@@ -29,7 +29,7 @@ func _ready():
 	var biome:WorldArea = worldData.rooms\
 		[worldData.position.x][worldData.position.y].biome
 	
-	solids = biome.solids.instance()
+	solids = biome.solids.instance() 
 	solids.z_index = 1
 	
 	tilesContainer.add_child(solids)
