@@ -69,4 +69,5 @@ func _on_enemies_cleared() -> void:
 	roomClearer.isChecking = false
 	for eb in exitBlockers:
 		eb.queue_free()
+	exitBlockers.clear()
 
