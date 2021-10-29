@@ -12,6 +12,7 @@ var roomI:Image
 
 
 func _ready() -> void:
+# warning-ignore:return_value_discarded
 	connect("tree_exiting", self, "_on_tree_exiting")
 func _on_tree_exiting() -> void:
 	if room: room.queue_free()
@@ -49,9 +50,9 @@ func create_room() -> void:
 	
 	# Adding the tiles
 	if room:
-		create_constant_room(room, connections, biome)
+		create_constant_room(connections)
 	else:
-		create_random_room(room, connections, biome)
+		create_random_room(connections)
 	
 	var roomSize = world.solids.get_used_rect().end
 	create_loading_zone(Vector2(-24/16, roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.LEFT) # Left
@@ -94,7 +95,9 @@ func create_room() -> void:
 		world.canvasLayer.add_child(newBiomeTitle)
 		newBiomeTitle.get_node("Title/Name").text = "The "+biome.name
 
-func create_constant_room(room, connections, biome) -> void:
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
+func create_constant_room(connections) -> void:
 	add_child(room)
 	room.hide()
 	# Solids
@@ -148,7 +151,7 @@ func create_constant_room(room, connections, biome) -> void:
 					world.solids.set_cellv(pos, 0)
 					world.solids.update_bitmask_area(pos)
 
-func create_random_room(room, connections, biome) -> void:
+func create_random_room(connections) -> void:
 	roomI = RoomGenerator.generate(
 		randi(),
 		biome.roomTemplates,
@@ -198,7 +201,7 @@ func create_random_room(room, connections, biome) -> void:
 		
 	
 	# Enemy Spawning
-	spawn_enemies(biome)
+	spawn_enemies()
 	
 	# Blocking off exits
 	var dirs = [Vector2.UP, Vector2.DOWN, Vector2.RIGHT, Vector2.LEFT]
@@ -300,7 +303,7 @@ func add_props(propArr:Array, x, y) -> void:
 	prop.position.x += world.solids.cell_size.x*.5
 	world.props.add_child(prop)
 
-func spawn_enemies(biome) -> void: 
+func spawn_enemies() -> void: 
 	if !roomI is Image:
 		print("Get trolled: %s" % roomI)
 		return

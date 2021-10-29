@@ -62,7 +62,7 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 
 func _on_enemies_cleared() -> void:
 	if rand_range(0, 1) < .5 and waves < 1 and lockedIn:
-		generator.spawn_enemies(generator.biome)
+		generator.spawn_enemies()
 		waves += 1
 		roomClearer.isChecking = true
 		return
