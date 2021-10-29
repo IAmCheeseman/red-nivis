@@ -26,7 +26,7 @@ var exitBlockers := []
 func _ready() -> void:
 	generator.create_room()
 	seed(worldData.position.x*worldData.position.y)
-	lockedIn = rand_range(0, 1) < 1
+	lockedIn = rand_range(0, 1) < .2
 	if !lockedIn: for i in exitBlockers: i.queue_free()
 	var timer = get_tree().create_timer(2.9)
 	timer.connect("timeout", self, "_on_index_timer_timeout")
@@ -61,7 +61,7 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 
 
 func _on_enemies_cleared() -> void:
-	if rand_range(0, 1) < 1 and waves < 1 and lockedIn:
+	if rand_range(0, 1) < .5 and waves < 1 and lockedIn:
 		generator.spawn_enemies(generator.biome)
 		waves += 1
 		roomClearer.isChecking = true
