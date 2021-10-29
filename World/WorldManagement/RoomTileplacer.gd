@@ -6,8 +6,15 @@ onready var world := get_parent()
 
 
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
+var biome:WorldArea
+var room:Node
+var roomI:Image
 
-var viableEnemySpawns := []
+
+func _ready() -> void:
+	connect("tree_exiting", self, "_on_tree_exiting")
+func _on_tree_exiting() -> void:
+	if room: room.queue_free()
 
 func create_room() -> void:
 	AudioServer.set_bus_effect_enabled(4, 0, true)
@@ -15,9 +22,10 @@ func create_room() -> void:
 	
 	for t in world.tilesContainer.get_children():
 		t.queue_free()
-	var biome:WorldArea = worldData.rooms\
+	biome = worldData.rooms\
 		[worldData.position.x][worldData.position.y].biome
 	
+	# Adding in the nodes
 	world.solids = biome.solids.instance()
 	world.solids.z_index = 1
 	
@@ -29,21 +37,19 @@ func create_room() -> void:
 	world.solidColorBG.color = biome.bgColor
 	world.mistSpawner.color = biome.mistColor
 	
+	# Setup
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
-	var room
 	
 	worldData.rooms[worldData.position.x][worldData.position.y].discovered = true
 	for i in worldData.get_connected_rooms(worldData.position):
 		worldData.rooms[worldData.position.x+i.x][worldData.position.y+i.y].nearDiscovered = true
 	
-	# CONSTANT ROOMS
-	
 	var cr = worldData.rooms[worldData.position.x][worldData.position.y].constantRoom
 	if cr: room = cr.scene.instance()
 	
+	# Adding the tiles
 	if room:
 		create_constant_room(room, connections, biome)
-	# RANDOM ROOMS
 	else:
 		create_random_room(room, connections, biome)
 	
@@ -72,6 +78,7 @@ func create_room() -> void:
 	
 	world.mainCamMove.collisionShape.shape = camMoveShape
 	
+	# Setting player position
 	set_player_pos()
 	
 	# PADDING
@@ -89,6 +96,7 @@ func create_room() -> void:
 
 func create_constant_room(room, connections, biome) -> void:
 	add_child(room)
+	room.hide()
 	# Solids
 	var roomS:TileMap = room.solids
 	for i in roomS.get_used_cells():
@@ -139,10 +147,9 @@ func create_constant_room(room, connections, biome) -> void:
 					var pos = Vector2(0, y)
 					world.solids.set_cellv(pos, 0)
 					world.solids.update_bitmask_area(pos)
-	room.queue_free()
 
 func create_random_room(room, connections, biome) -> void:
-	room = RoomGenerator.generate(
+	roomI = RoomGenerator.generate(
 		randi(),
 		biome.roomTemplates,
 # warning-ignore:integer_division
@@ -157,29 +164,30 @@ func create_random_room(room, connections, biome) -> void:
 		preload("res://World/Props/Containers/Locker/Locker.tscn")
 	]
 	
-	room.lock()
-	for x in room.get_width():
-		for y in room.get_height():
-			var pixel:Color = room.get_pixel(x, y)
+	# Placing the props
+	roomI.lock()
+	for x in roomI.get_width():
+		for y in roomI.get_height():
+			var pixel:Color = roomI.get_pixel(x, y)
 			# If is solid tile
 			if pixel.is_equal_approx(RoomGenerator.TILE):
 				world.solids.set_cell(x, y, 0)
 				world.solids.update_bitmask_area(Vector2(x, y))
 				
 # warning-ignore:narrowing_conversion
-				if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y+1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
+				if rand_range(0, 1) < .5 and roomI.get_pixel(x, clamp(y+1, 0, roomI.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
 					if biome.roofProps.size() > 0: add_props(biome.roofProps, x, y+1)
 # warning-ignore:narrowing_conversion
-				if rand_range(0, 1) < .5 and room.get_pixel(x, clamp(y-1, 0, room.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					if biome.groundProps.size() > 0: add_props(biome.groundProps, clamp(x, 2, room.get_width()-2), y)
+				if rand_range(0, 1) < .5 and roomI.get_pixel(x, clamp(y-1, 0, roomI.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
+					if biome.groundProps.size() > 0: add_props(biome.groundProps, clamp(x, 2, roomI.get_width()-2), y)
 					viableContainerSpawns.append(Vector2(x, y))
 			# If is platform
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				world.platforms.set_cell(x, y, 0)
 				world.platforms.update_bitmask_area(Vector2(x, y))
 			# If is empty
-			if room.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
-				viableEnemySpawns.append(Vector2(x, y))
+			if roomI.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
+				world.viableEnemySpawns.append(Vector2(x, y))
 	
 	viableContainerSpawns.shuffle()
 	for i in Globals.MAX_CONTAINERS:
@@ -190,7 +198,7 @@ func create_random_room(room, connections, biome) -> void:
 		
 	
 	# Enemy Spawning
-	spawn_enemies(biome, room)
+	spawn_enemies(biome)
 	
 	# Blocking off exits
 	var dirs = [Vector2.UP, Vector2.DOWN, Vector2.RIGHT, Vector2.LEFT]
@@ -199,7 +207,6 @@ func create_random_room(room, connections, biome) -> void:
 		var collisionShape := RectangleShape2D.new()
 		
 		var extents:Vector2 = world.solids.get_used_rect().end
-		#et_free_spot(startPos:Vector2, endPos:Vector2, incDir:Vector2) -> Dictionary:
 		match i:
 			Vector2.UP:
 				var collisionSize = (extents.x*.5)*world.solids.cell_size.x
@@ -293,16 +300,19 @@ func add_props(propArr:Array, x, y) -> void:
 	prop.position.x += world.solids.cell_size.x*.5
 	world.props.add_child(prop)
 
-func spawn_enemies(biome, room) -> void: 
+func spawn_enemies(biome) -> void: 
+	if !roomI is Image:
+		print("Get trolled: %s" % roomI)
+		return
 	randomize()
-	viableEnemySpawns.shuffle()
+	world.viableEnemySpawns.shuffle()
 	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size()-1)]
 # warning-ignore:integer_division
 # warning-ignore:integer_division
-	for i in ceil((room.get_width()/Globals.TEMPLATE_SIZE)*(room.get_height()/Globals.TEMPLATE_SIZE)):
-		if viableEnemySpawns.size() == 0:
+	for i in ceil((roomI.get_width()/Globals.TEMPLATE_SIZE)*(roomI.get_height()/Globals.TEMPLATE_SIZE)):
+		if world.viableEnemySpawns.size() == 0:
 			break
-		var spawnPos:Vector2 = viableEnemySpawns.pop_front()
+		var spawnPos:Vector2 = world.viableEnemySpawns.pop_front()
 		var spawner = preload(\
 			"res://Entities/Effects/EnemySpawn.tscn").instance()
 		spawner.position = spawnPos*world.solids.cell_size
