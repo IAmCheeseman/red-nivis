@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum states {WALK, DASH, DEAD, WALLSLIDE}
+enum states {WALK, DEAD, WALLSLIDE}
 
 const averageTileSize = 16
 const SNAP_DIRECTION = Vector2.DOWN
@@ -65,7 +65,6 @@ func _ready():
 
 func _physics_process(delta):
 	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
-	playerData.isDashing = state == states.DASH
 	
 	match state:
 		states.WALK:
@@ -172,7 +171,7 @@ func is_grounded():
 	for c in floorCheckers.get_children():
 		if c.is_colliding():
 			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump") else Vector2.ZERO
-			if SaS.is_playing("Jump"): SaS.stop()
+			if SaS.current_animation == "Jump": SaS.stop()
 			return true
 	return false
 
