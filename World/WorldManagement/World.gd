@@ -66,7 +66,6 @@ func _on_enemies_cleared() -> void:
 		waves += 1
 		roomClearer.isChecking = true
 		return
-	print(exitBlockers)
 	roomClearer.isChecking = false
 	for eb in exitBlockers:
 		if eb is Node2D:

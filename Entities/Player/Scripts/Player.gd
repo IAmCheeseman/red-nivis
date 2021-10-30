@@ -172,6 +172,7 @@ func is_grounded():
 	for c in floorCheckers.get_children():
 		if c.is_colliding():
 			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump") else Vector2.ZERO
+			if SaS.is_playing("Jump"): SaS.stop()
 			return true
 	return false
 
