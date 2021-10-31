@@ -70,10 +70,6 @@ func _physics_process(delta):
 		states.WALK:
 			sprite.material.set_shader_param("is_on", 0)
 			walk_state(delta)
-		states.DASH:
-			vel.y = round(vel.y)
-			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
-			if test_move(transform, Vector2(vel.x, 0).normalized()): state = states.WALK
 		states.DEAD:
 			if just_landed():
 				animationPlayer.play("Dead")
@@ -171,7 +167,6 @@ func is_grounded():
 	for c in floorCheckers.get_children():
 		if c.is_colliding():
 			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump") else Vector2.ZERO
-			if SaS.current_animation == "Jump": SaS.stop()
 			return true
 	return false
 

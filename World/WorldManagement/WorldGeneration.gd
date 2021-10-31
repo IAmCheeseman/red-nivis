@@ -74,11 +74,6 @@ func generate_world(seed_:int=randi()) -> Array:
 					
 					rooms[x][y].constantRoom = preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres")
 
-	topLabsLayer.shuffle()
-	var er = topLabsLayer.front()
-	rooms[er.x][er.y].constantRoom = preload("res://World/ConstantRooms/Rooms/StartingRoom.tres")
-	rooms[er.x][er.y].isStartingRoom = true
-	
 	for i in constantRooms.rooms.duplicate():
 		var position:Vector2
 		for _j in int(rand_range(i.usesMin+1, i.usesMax)):
@@ -100,6 +95,11 @@ func generate_world(seed_:int=randi()) -> Array:
 						break
 			rooms[position.x][position.y].constantRoom = i
 			rooms[position.x][position.y].roomIcon = i.roomIcon
+	
+	topLabsLayer.shuffle()
+	var er = topLabsLayer.front()
+	rooms[er.x][er.y].constantRoom = preload("res://World/ConstantRooms/Rooms/StartingRoom.tres")
+	rooms[er.x][er.y].isStartingRoom = true
 	
 	return rooms
 	
