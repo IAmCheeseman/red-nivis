@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World/Props/FastTravelStation/FastTravelMenu.gd" type="Script" id=1]
+
+[node name="FastTravelMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 108.0
+margin_top = 56.0
+margin_right = 147.0
+margin_bottom = 184.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/HBoxContainer"]
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 128 )
+rect_clip_content = false
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/ScrollContainer"]
+alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer"]
+margin_left = 4.0
+margin_right = 39.0
+margin_bottom = 128.0
+text = "Exit"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]

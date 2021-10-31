@@ -14,6 +14,8 @@ var spawnManager:Node2D
 var itemManager:ItemManagement = ItemManagement.new()
 var frameFreezer:FrameFreezer = FrameFreezer.new()
 
+var worldData = preload("res://World/WorldManagement/WorldData.tres")
+
 # warning-ignore:unused_signal
 signal screenshake
 

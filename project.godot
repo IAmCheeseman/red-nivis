@@ -191,6 +191,7 @@ GameManager="*res://Managing/GameManager.gd"
 Memory="*res://Managing/MemoryManager.gd"
 Settings="*res://Managing/settings.gd"
 Cursor="*res://UI/Cursor/Cursor.tscn"
+FastTravel="*res://World/Props/FastTravelStation/FastTravel.gd"
 
 [debug]
 
