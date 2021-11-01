@@ -301,6 +301,7 @@ func add_props(propArr:Array, x, y) -> void:
 	var prop = propArr.front().instance()
 	prop.position = Vector2(x, y)*world.solids.cell_size
 	prop.position.x += world.solids.cell_size.x*.5
+	prop.z_index = -2
 	world.props.add_child(prop)
 
 func spawn_enemies() -> void: 
