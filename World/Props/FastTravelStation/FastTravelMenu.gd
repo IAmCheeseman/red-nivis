@@ -5,6 +5,8 @@ onready var buttonContainer = $CenterContainer/HBoxContainer/ScrollContainer/VBo
 export var stationPath:NodePath
 onready var station = get_node(stationPath)
 
+signal placeSelected
+
 
 func _ready() -> void:
 	yield(get_tree(), "idle_frame")
@@ -18,10 +20,11 @@ func _ready() -> void:
 
 
 func _on_fast_travel_pressed(button:Button):
+	emit_signal("placeSelected")
 	GameManager.worldData.position = button.get_meta("location")
 	GameManager.worldData.playerPos = station.global_position
 	GameManager.inGUI = false
-	get_tree().reload_current_scene()
+	hide()
 
 
 func _on_Button_pressed() -> void:

@@ -32,7 +32,8 @@ alignment = 1
 [node name="Button" type="Button" parent="CenterContainer/HBoxContainer"]
 margin_left = 4.0
 margin_right = 39.0
-margin_bottom = 128.0
+margin_bottom = 20.0
+size_flags_vertical = 0
 text = "Exit"
 
 [connection signal="pressed" from="CenterContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
