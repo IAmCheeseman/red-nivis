@@ -96,10 +96,14 @@ func generate_world(seed_:int=randi()) -> Array:
 			rooms[position.x][position.y].constantRoom = i
 			rooms[position.x][position.y].roomIcon = i.roomIcon
 	
-	topLabsLayer.shuffle()
-	var er = topLabsLayer.front()
-	rooms[er.x][er.y].constantRoom = preload("res://World/ConstantRooms/Rooms/StartingRoom.tres")
-	rooms[er.x][er.y].isStartingRoom = true
+	while true:
+		topLabsLayer.shuffle()
+		var er = topLabsLayer.front()
+		if !rooms[er.x][er.y].biome:
+			continue
+		rooms[er.x][er.y].constantRoom = preload("res://World/ConstantRooms/Rooms/StartingRoom.tres")
+		rooms[er.x][er.y].isStartingRoom = true
+		break
 	
 	return rooms
 	

@@ -4,7 +4,7 @@ class_name WorldData
 var rooms := []
 var position := Vector2.ZERO
 var moveDir := Vector2.ZERO
-var playerPos := Vector2.ZERO
+var playerPos := Vector2(160, 32)
 
 
 func generate_world(seed_:int=randi()) -> void:
