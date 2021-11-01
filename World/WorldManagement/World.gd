@@ -6,6 +6,7 @@ onready var atmosphere = $Atmosphere
 onready var mistSpawner = $Props/Player/MistSpawner
 onready var solids = $Props/Tiles/LabSolids
 onready var platforms = $Props/Tiles/OneWayPlatforms
+onready var background = $Props/Tiles/LabBackground
 onready var solidColorBG = $Background/BGColor
 onready var canvasLayer =$CanvasLayer
 onready var mainCamMove = $Props/CameraZones/CameraMoveZone

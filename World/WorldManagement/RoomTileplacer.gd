@@ -12,8 +12,7 @@ var roomI:Image
 
 
 func _ready() -> void:
-# warning-ignore:return_value_discarded
-	connect("tree_exiting", self, "_on_tree_exiting")
+	var _discard = connect("tree_exiting", self, "_on_tree_exiting")
 func _on_tree_exiting() -> void:
 	if room: room.queue_free()
 
@@ -29,11 +28,15 @@ func create_room() -> void:
 	# Adding in the nodes
 	world.solids = biome.solids.instance()
 	world.solids.z_index = 1
-	
 	world.tilesContainer.add_child(world.solids)
+	
 	world.platforms = biome.platforms.instance()
 	world.platforms.z_index = -1
 	world.tilesContainer.add_child(world.platforms)
+	
+	world.background = biome.background.instance()
+	world.background.z_index = -2
+	world.tilesContainer.add_child(world.background)
 	
 	world.solidColorBG.color = biome.bgColor
 	world.mistSpawner.color = biome.mistColor
@@ -105,11 +108,20 @@ func create_constant_room(connections) -> void:
 	for i in roomS.get_used_cells():
 		world.solids.set_cellv(i, roomS.get_cellv(i))
 		world.solids.update_bitmask_area(i)
+		world.background.set_cellv(i, roomS.get_cellv(i))
+		world.background.update_bitmask_area(i)
+	# Background
+	var roomBG:TileMap = room.BG
+	for i in roomBG.get_used_cells():
+		world.background.set_cellv(i, roomBG.get_cellv(i))
+		world.background.update_bitmask_area(i)
 	# Platforms
 	var roomP:TileMap = room.platforms
 	for i in roomP.get_used_cells():
 		world.platforms.set_cellv(i, roomP.get_cellv(i))
 		world.platforms.update_bitmask_area(i)
+		world.background.set_cellv(i, roomP.get_cellv(i))
+		world.background.update_bitmask_area(i)
 	# Roof Props
 	var roomCeilProps:TileMap = room.ceilingProp
 	for i in roomCeilProps.get_used_cells():
@@ -188,6 +200,13 @@ func create_random_room(connections) -> void:
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				world.platforms.set_cell(x, y, 0)
 				world.platforms.update_bitmask_area(Vector2(x, y))
+				
+				world.background.set_cell(x, y, 0)
+				world.background.update_bitmask_area(Vector2(x, y))
+				var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
+				world.background.set_cell(x+plus.x, y+plus.y, 0)
+				world.background.update_bitmask_area(Vector2(x, y)+plus)
+				
 			# If is empty
 			if roomI.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
 				world.viableEnemySpawns.append(Vector2(x, y))
@@ -294,6 +313,17 @@ func pad(startPos:Vector2, endPos:Vector2, incDir:Vector2, padDir:Vector2) -> vo
 				var updatePos:Vector2 = pos+(padDir*i)
 				world.solids.set_cellv(updatePos, 0)
 				world.solids.update_bitmask_area(updatePos)
+				world.background.set_cellv(updatePos, 0)
+				world.background.update_bitmask_area(updatePos)
+		else:
+			for i in PADDING:
+				var updatePos:Vector2 = pos+(padDir*i)
+				world.background.set_cellv(updatePos, 0)
+				world.background.update_bitmask_area(updatePos)
+				
+				var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
+				world.background.set_cellv(updatePos+plus, 0)
+				world.background.update_bitmask_area(updatePos+plus)
 		pos += incDir
 
 func add_props(propArr:Array, x, y) -> void:
