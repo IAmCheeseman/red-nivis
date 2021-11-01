@@ -33,7 +33,7 @@ static func get_relative_to_camera(node:Node2D, camera:Camera2D) -> Vector2:
 static func dmg_to_hp(
 	dmg: float, cooldown: float, fightTime: float):
 	var dps = dmg/cooldown
-	return dps*fightTime
+	return (dps*fightTime)*.75
 
 
 

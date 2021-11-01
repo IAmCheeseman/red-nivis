@@ -66,9 +66,7 @@ signal dead
 
 
 func _ready() -> void:
-	maxHealth = Utils.dmg_to_hp(15, .2, 60*2)
 	health = maxHealth
-	print(health)
 
 
 func _process(delta: float) -> void:

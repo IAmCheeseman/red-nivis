@@ -2,7 +2,11 @@ extends Control
 
 onready var buttonContainer = $CenterContainer/HBoxContainer/ScrollContainer/VBoxContainer
 
- dfunc _ready() -> void:
+export var stationPath:NodePath
+onready var station = get_node(stationPath)
+
+
+func _ready() -> void:
 	yield(get_tree(), "idle_frame")
 	for i in FastTravel.discoveredStations:
 		var newPoint = Button.new()
@@ -15,6 +19,7 @@ onready var buttonContainer = $CenterContainer/HBoxContainer/ScrollContainer/VBo
 
 func _on_fast_travel_pressed(button:Button):
 	GameManager.worldData.position = button.get_meta("location")
+	GameManager.worldData.playerPos = station.global_position
 	GameManager.inGUI = false
 	get_tree().reload_current_scene()
 

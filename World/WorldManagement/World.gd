@@ -28,6 +28,9 @@ func _ready() -> void:
 	seed(worldData.position.x*worldData.position.y)
 	lockedIn = rand_range(0, 1) < .2
 	if !lockedIn: for i in exitBlockers: i.queue_free()
+	if worldData.playerPos != Vector2.ZERO:
+		player.global_position = worldData.playerPos
+		worldData.playerPos = Vector2.ZERO
 	var timer = get_tree().create_timer(2.9)
 	timer.connect("timeout", self, "_on_index_timer_timeout")
 
