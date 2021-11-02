@@ -3,7 +3,6 @@ tool
 
 export var worldPath:NodePath
 export var playerPath:NodePath
-export var mistRarity = 2
 export var mistClumpSize = 4
 export var mistClumRange = 4
 export var clumpSpread = 64

@@ -30,10 +30,10 @@ position = Vector2( 70, 94 )
 [node name="MistSpawner" parent="Props/Player" instance=ExtResource( 1 )]
 worldPath = NodePath("../..")
 playerPath = NodePath("..")
-mistRarity = 5
 mistClumpSize = 2
+mistClumRange = 1
 color = Color( 0.45098, 0.298039, 0.227451, 1 )
-strength = 0.1
+strength = 0.05
 
 [node name="SpawningManagment" parent="Props" instance=ExtResource( 12 )]
 
