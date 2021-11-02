@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://World/EnviormentalArt/Decor/ruinProps.png" type="Texture" id=1]
+[ext_resource path="res://World/Props/LabStuff/ruinProps.png" type="Texture" id=1]
 
 [sub_resource type="TileSet" id=1]
 0/name = "ruinProps.png 0"

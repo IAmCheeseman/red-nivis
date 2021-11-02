@@ -207,6 +207,7 @@ func create_random_room(connections) -> void:
 				world.background.set_cell(x+plus.x, y+plus.y, 0)
 				world.background.update_bitmask_area(Vector2(x, y)+plus)
 				
+				viableContainerSpawns.append(Vector2(x, y-1))
 			# If is empty
 			if roomI.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
 				world.viableEnemySpawns.append(Vector2(x, y))
