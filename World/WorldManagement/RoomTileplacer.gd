@@ -218,7 +218,6 @@ func create_random_room(connections) -> void:
 			break
 		var spawnPos:Vector2 = viableContainerSpawns.pop_front()
 		add_props(containers, spawnPos.x, spawnPos.y)
-		
 	
 	# Enemy Spawning
 	spawn_enemies()
