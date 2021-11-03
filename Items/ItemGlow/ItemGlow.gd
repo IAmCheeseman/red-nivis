@@ -10,6 +10,7 @@ export var color:Color = Color.white
 
 var points:PoolVector2Array = []
 
+
 func _ready():
 	for i in pointCount:
 		points.append(Vector2.RIGHT.rotated(deg2rad(360.0/pointCount)*i))
