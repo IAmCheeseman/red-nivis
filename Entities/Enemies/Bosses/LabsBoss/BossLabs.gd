@@ -47,6 +47,10 @@ var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn") 
 var shockwave = preload("res://Entities/Enemies/Shockwave/Shockwave.tscn")
 
+var drops = [
+	preload("res://Items/HeartContiner/HeartContainer.tscn")
+]
+
 var state := IDLE
 
 onready var health = maxHealth
@@ -273,6 +277,10 @@ func _on_hurt(amount, _dir) -> void:
 			GameManager.spawnManager.spawn_object(newHealth)
 			
 			GameManager.frameFreezer.freeze_frames(.2)
+		for i in drops:
+			var newDrop:Node2D = i.instance()
+			newDrop.position = position-Vector2(0, sprite.texture.get_height()*.25)
+			GameManager.spawnManager.spawn_object(newDrop)
 			
 		# Getting done
 		queue_free()
