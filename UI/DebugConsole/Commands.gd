@@ -16,12 +16,18 @@ func help() -> String:
  tp(x, y)
  set_room(x, y)
  toggle_revealed_map()
+ op()
 """
 
 
 func toggle_revealed_map():
 	GameManager.revealMap = !GameManager.revealMap
 	return " Map reveal toggled"
+
+
+func op():
+	
+	return toggle_godmode()+"\n"+toggle_revealed_map()
 
 
 func echo(output:String) -> String:
