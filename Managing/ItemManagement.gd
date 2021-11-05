@@ -12,14 +12,14 @@ enum {COMMON, UNCOMMON, RARE}
 #var itemDropped = preload("res://Items/DroppedItem.tscn")
 
 
-func convert_tier_to_str(tier:int):
+func convert_tier_to_str(tier: int):
 	match tier:
 		COMMON: return "common"
 		UNCOMMON: return "uncommon"
 		RARE: return "rare"
 
 
-func create_item(item, withForce:bool=false):
+func create_item(item, withForce: bool=false):
 	var newItem = load("res://Items/DroppedItem.tscn").instance()
 	newItem.item = item
 	if withForce:

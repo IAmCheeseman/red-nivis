@@ -48,7 +48,8 @@ var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
 var shockwave = preload("res://Entities/Enemies/Shockwave/Shockwave.tscn")
 
 var drops = [
-	preload("res://Items/HeartContiner/HeartContainer.tscn")
+	preload("res://Items/HeartContiner/HeartContainer.tscn"),
+	preload("res://Items/Upgrades/DroppedUpgrade.tscn")
 ]
 
 var state := IDLE
@@ -277,9 +278,12 @@ func _on_hurt(amount, _dir) -> void:
 			GameManager.spawnManager.spawn_object(newHealth)
 			
 			GameManager.frameFreezer.freeze_frames(.2)
-		for i in drops:
-			var newDrop:Node2D = i.instance()
+		
+		for i in drops.size():
+			var d = drops[i]
+			var newDrop:Node2D = d.instance()
 			newDrop.position = position-Vector2(0, sprite.texture.get_height()*.25)
+			newDrop.position.x += (drops.size()*.5-i)*32
 			GameManager.spawnManager.spawn_object(newDrop)
 			
 		# Getting done
