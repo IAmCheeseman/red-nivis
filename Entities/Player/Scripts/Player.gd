@@ -80,7 +80,7 @@ func _physics_process(delta):
 					playerData.accelaration*delta
 				)
 			vel.y += Globals.GRAVITY*delta
-			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
+			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
 			var grayscaleStrength = grayscale.material.get_shader_param("strength")
 			grayscale.material.set_shader_param("strength", lerp(grayscaleStrength, .15, 2*delta))
@@ -166,7 +166,8 @@ func just_landed():
 func is_grounded():
 	for c in floorCheckers.get_children():
 		if c.is_colliding():
-			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump") else Vector2.ZERO
+			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump")\
+			else Vector2.ZERO
 			return true
 	return false
 
