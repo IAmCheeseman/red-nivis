@@ -20,7 +20,7 @@ export var connectionChance:float = .05
 # Room Gen
 export var roomTemplates:StreamTexture = preload("res://World/Templates/LabTemplates.png")
 export(Array, PackedScene) var roofProps := []
-export(Array, PackedScene) var groundProps := []#preload("res://World/Props/Containers/Safe/Safe.tscn"), preload("res://World/Props/Containers/Locker/Locker.tscn")]
+export(Array, PackedScene) var groundProps := []
 
 # Other
 

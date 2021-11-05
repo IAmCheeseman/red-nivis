@@ -286,7 +286,7 @@ func _on_hurt(amount, _dir) -> void:
 			newDrop.position.x += (drops.size()*.5-i)*32
 			GameManager.spawnManager.spawn_object(newDrop)
 			
-		# Getting done
+		# Getting delted 
 		queue_free()
 
 

@@ -20,8 +20,8 @@ var subtitles = [
 func _ready():
 	randomize()
 
-	if OS.get_name() == "OSX":
-		Engine.target_fps = 16
+#	if OS.get_name() == "OSX":
+#		Engine.target_fps = 16
 	
 	subtitles.shuffle()
 	OS.set_window_title("Astronaut Game: %s" % subtitles.front())
