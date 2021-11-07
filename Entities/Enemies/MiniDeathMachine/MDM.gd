@@ -152,7 +152,7 @@ func _on_wander_timer_timeout() -> void:
 func _on_hurt(amount:float, dir:Vector2) -> void:
 # warning-ignore:narrowing_conversion
 	health -= amount
-	vel *= .6
+	vel = dir*kbAmount
 	GameManager.frameFreezer.freeze_frames(.07)
 	if health <= 0:
 		var newDP = deathParticles.instance()

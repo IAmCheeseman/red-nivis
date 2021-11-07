@@ -3,6 +3,10 @@ extends Node2D
 
 onready var anim = $AnimationPlayer
 
+export var requiredUpgrade:Resource
+
+var playerData = preload("res://Entities/Player/Player.tres")
+
 
 signal removeUp()
 signal removeDown()
@@ -27,10 +31,12 @@ func _ready() -> void:
 
 
 func _on_Iteraction_interaction() -> void:
+	if requiredUpgrade.abilityScript  in playerData.upgrades:
+		anim.play("Accept")
+		emit_signal("removeLeft")
+		emit_signal("removeRight")
+		emit_signal("removeUp")
+		emit_signal("removeDown")
+		return
 	anim.play("Deny")
-	
-	emit_signal("removeLeft")
-	emit_signal("removeRight")
-	emit_signal("removeUp")
-	emit_signal("removeDown")
 
