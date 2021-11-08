@@ -137,6 +137,7 @@ func _on_hurt(amount, dir) -> void:
 	hp -= amount
 	update_healthbar()
 	vel += dir*kbAmount
+	vel.x *= 2
 	
 	GameManager.frameFreezer.freeze_frames(.07)
 	if hp <= 0:
@@ -150,6 +151,6 @@ func _on_hurt(amount, dir) -> void:
 			var newHealth = healthPickup.instance()
 			newHealth.position = position
 			GameManager.spawnManager.spawn_object(newHealth)
-		emit_signal("death")
+		emit_signal("dead")
 		
 		queue_free()

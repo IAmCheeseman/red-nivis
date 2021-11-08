@@ -9,6 +9,7 @@ onready var gun := get_parent()
 export var bullet = preload("res://Items/Weapons/Bullet/Bullet.tscn")
 var shell := preload("res://Items/Weapons/Bullet/Shells/Shell.tscn")
 var playerData := preload("res://Entities/Player/Player.tres")
+var swing := preload("res://Items/Weapons/GunSwing.tscn")
 var shootSound : SoundManager
 var rotVel := .0
 var holdShots := 0
@@ -16,6 +17,7 @@ var isReloading := false
 
 var swinging := false
 var swingStartDeg := .0
+var swingDir := 1
 var targetPos:Vector2
 
 func _ready() -> void:
@@ -32,10 +34,12 @@ func _physics_process(delta) -> void:
 
 	# Settling the rotation of the gun down after it's been kicked up
 	if !swinging:
+		var before = pivot.rotation
 		pivot.look_at(get_global_mouse_position())
+		pivot.rotation = lerp(before, pivot.rotation, 12*delta)
 	else:
-		pivot.rotation += 15*delta
-		if pivot.rotation_degrees-swingStartDeg > 65*2:
+		pivot.rotation += 12*delta*swingDir
+		if abs(pivot.rotation_degrees-swingStartDeg) > 65*2:
 			swinging = false
 	
 	gun.visuals.rotation = lerp_angle(gun.visuals.rotation, 0, 4*delta)
@@ -76,6 +80,24 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee") and !swinging:
 #		gun.position.x += 10
 		swinging = true
-		pivot.rotation_degrees -= 65
+		swingDir = -swingDir
+		pivot.rotation_degrees -= 65*swingDir
 		swingStartDeg = pivot.rotation_degrees
 		pivot.scale = Vector2.ONE*1.5
+		
+		
+		var angle = get_local_mouse_position().angle()
+		var newSwing = swing.instance()
+		
+		newSwing.rotation = angle
+		GameManager.spawnManager.spawn_object(newSwing)
+		
+		newSwing.get_node("Hitbox").damage = gun.stats.damage*2
+		
+		newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle)*8
+		
+		GameManager.emit_signal(
+			"screenshake",
+			1, 8, .05, .05,
+			get_local_mouse_position().normalized()
+		)
