@@ -17,6 +17,7 @@ export var friction:float = 3.0
 export var kbStrength:int = 45
 export var maxDashes:int = 1
 export var recoveryTime:float = 2.0
+export var maxStamina := 3
 export var tiltStrength:float = 5.0
 
 var health:int
@@ -24,6 +25,8 @@ var money := 0 setget set_money
 var ammo:int setget set_ammo
 var dashesLeft := 1
 var godmode := false
+
+var stamina := 3 setget set_stamina
 
 var upgradeSlots = 2
 var upgrades := []
@@ -36,6 +39,7 @@ var isDashing := false
 signal healthChanged
 signal ammoChanged
 signal moneyChanged
+signal stamina_changed
 
 
 func _init() -> void:
@@ -59,7 +63,8 @@ func set_ammo(value:int) -> void:
 	emit_signal("ammoChanged")
 
 
-
-
+func set_stamina(val:int) -> void:
+	stamina = val
+	emit_signal("stamina_changed")
 
 
