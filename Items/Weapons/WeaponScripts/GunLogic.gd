@@ -54,7 +54,8 @@ func _physics_process(delta) -> void:
 	and holdShots != gun.stats.maxHoldShots\
 	and !GameManager.editingInventory\
 	and !GameManager.inGUI\
-	and !playerData.playerObject.lockMovement:
+	and !playerData.playerObject.lockMovement\
+	and !swinging:
 		playerData.ammo -= 1
 		Cursor.get_node("Sprite").scale = Vector2(1.2, 1.2)
 		shoot()
@@ -78,7 +79,6 @@ func shoot() -> void:
 func _input(event: InputEvent) -> void:
 	# Meleeing
 	if event.is_action_pressed("melee") and !swinging:
-#		gun.position.x += 10
 		swinging = true
 		swingDir = -swingDir
 		pivot.rotation_degrees -= 65*swingDir
@@ -87,9 +87,10 @@ func _input(event: InputEvent) -> void:
 		
 		
 		var angle = get_local_mouse_position().angle()
-		var newSwing = swing.instance()
 		
+		var newSwing = swing.instance()
 		newSwing.rotation = angle
+		newSwing.reflectDir = get_local_mouse_position().normalized()
 		GameManager.spawnManager.spawn_object(newSwing)
 		
 		newSwing.get_node("Hitbox").damage = gun.stats.damage*2

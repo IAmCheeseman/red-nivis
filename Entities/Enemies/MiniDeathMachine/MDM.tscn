@@ -106,9 +106,11 @@ visible = false
 shape = SubResource( 4 )
 
 [node name="BounceRay" type="RayCast2D" parent="Collisions"]
+visible = false
 enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 2 )
 shape = SubResource( 5 )
 

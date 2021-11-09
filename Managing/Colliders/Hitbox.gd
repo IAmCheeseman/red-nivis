@@ -15,3 +15,4 @@ func _on_Hitbox_area_entered(area):
 		var dir = global_position.direction_to(area.global_position)*kbStrengh
 		if setDirection: dir = setDirection
 		area.take_damage(damage, dir)
+
