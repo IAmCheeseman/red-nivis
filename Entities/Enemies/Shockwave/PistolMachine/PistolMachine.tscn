@@ -1,14 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Entities/Enemies/PistolMachine/PistolMachine.gd" type="Script" id=1]
-[ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Enemies/PistolMachine/Pistol.png" type="Texture" id=3]
-[ext_resource path="res://Entities/Enemies/PistolMachine/PistolMachine.png" type="Texture" id=4]
-[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Enemies/Shockwave/PistolMachine/Pistol.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Enemies/Shockwave/PistolMachine/PistolMachine.gd" type="Script" id=4]
+[ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=5]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=6]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=7]
-[ext_resource path="res://Entities/Enemies/Assets/EnemyOutline.tres" type="Material" id=8]
-[ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=9]
+[ext_resource path="res://Entities/Enemies/Shockwave/PistolMachine/PistolMachine.png" type="Texture" id=8]
+[ext_resource path="res://Entities/Enemies/Assets/EnemyOutline.tres" type="Material" id=9]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
@@ -78,20 +79,20 @@ tracks/1/keys = {
 [node name="PistolMachine" type="KinematicBody2D"]
 collision_layer = 0
 collision_mask = 17
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 speed = 50.0
 
 [node name="Sprite" type="Sprite" parent="."]
-material = ExtResource( 8 )
+material = ExtResource( 9 )
 position = Vector2( 6, 0 )
 scale = Vector2( -1, 1 )
-texture = ExtResource( 4 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, -11 )
 hframes = 5
 vframes = 2
 frame = 8
 
-[node name="Hurtbox" parent="Sprite" instance=ExtResource( 5 )]
+[node name="Hurtbox" parent="Sprite" instance=ExtResource( 2 )]
 visible = false
 position = Vector2( -3, -9 )
 rotation = 3.14159
@@ -105,7 +106,7 @@ shape = SubResource( 1 )
 position = Vector2( 12, -19 )
 
 [node name="Sprite" type="Sprite" parent="Gun"]
-material = ExtResource( 8 )
+material = ExtResource( 9 )
 position = Vector2( 7, -1 )
 texture = ExtResource( 3 )
 offset = Vector2( -4, 0 )
@@ -117,7 +118,7 @@ shape = SubResource( 2 )
 
 [node name="Collisions" type="Node2D" parent="."]
 
-[node name="PlayerDetection" parent="Collisions" instance=ExtResource( 2 )]
+[node name="PlayerDetection" parent="Collisions" instance=ExtResource( 1 )]
 visible = false
 mustBeInSight = false
 
@@ -125,9 +126,11 @@ mustBeInSight = false
 shape = SubResource( 3 )
 
 [node name="MoneyDropper" type="Node2D" parent="."]
-script = ExtResource( 9 )
+script = ExtResource( 5 )
 moneyRange = Vector2( 2, 7 )
 valueRange = Vector2( 1, 4 )
+
+[node name="DamageManager" parent="." instance=ExtResource( 10 )]
 
 [node name="Timers" type="Node" parent="."]
 
@@ -157,7 +160,7 @@ __meta__ = {
 }
 
 [connection signal="dead" from="." to="MoneyDropper" method="drop_money"]
-[connection signal="hurt" from="Sprite/Hurtbox" to="." method="_on_hurt"]
+[connection signal="hurt" from="Sprite/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/Shoot" to="." method="_on_shoot_state_timeout"]
 
 [editable path="Sprite/Hurtbox"]

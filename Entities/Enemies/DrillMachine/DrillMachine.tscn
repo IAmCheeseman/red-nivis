@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entities/Enemies/Assets/EnemyOutline.tres" type="Material" id=10]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=11]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Spin"
@@ -151,6 +152,8 @@ script = ExtResource( 11 )
 moneyRange = Vector2( 3, 6 )
 valueRange = Vector2( 2, 4 )
 
+[node name="DamageManager" parent="." instance=ExtResource( 12 )]
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="WanderTimer" type="Timer" parent="Timers"]
@@ -185,7 +188,7 @@ autoplay = "default"
 anims/default = SubResource( 7 )
 
 [connection signal="death" from="." to="MoneyDropper" method="drop_money"]
-[connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/WanderTimer" to="." method="_on_wander_timer_timeout"]
 
 [editable path="Collisions/PlayerDetection"]

@@ -15,18 +15,15 @@ onready var shootStateTimer = $Timers/Shoot
 
 onready var hpBar = $Healthbar
 
+onready var healthManager = $DamageManager
+
 export var speed := 64.0
 export var kbAmount:float = 32
 export var acceleration := 5.0
 export var friction := 2.5
 export var damage := 1
 
-var maxHP: int
-var hp:int
-
 var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
-var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
-var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 
 var vel := Vector2.ZERO
 var targetPosition := 0.0
@@ -41,10 +38,8 @@ signal dead
 func _ready() -> void:
 	targetPosition = global_position.x
 	
-	maxHP = Utils.dmg_to_hp(15, .2, 1.5)
-	hpBar.max_value = maxHP
-	hpBar.value = maxHP
-	hp = maxHP
+	healthManager.maxHealth = Utils.dmg_to_hp(15, .2, 1.5)
+	update_healthbar()
 
 
 func _process(delta: float) -> void:
@@ -84,7 +79,7 @@ func walk_state(delta: float) -> void:
 func shoot_state(delta: float) -> void:
 	if aimTimer.is_stopped():
 		shoot()
-		shootStateTimer.start(rand_range(1, 3))
+		shootStateTimer.start(rand_range(1, 2))
 		new_target_position()
 		state = WALK
 	vel.x = lerp(vel.x, 0, friction*delta)
@@ -117,7 +112,8 @@ func flip_sprite(fv:Vector2) -> void:
 
 
 func update_healthbar():
-	hpBar.value = hp
+	hpBar.max_value = healthManager.maxHealth
+	hpBar.value = healthManager.health
 
 
 func new_target_position() -> void:
@@ -132,24 +128,3 @@ func _on_shoot_state_timeout() -> void:
 	state = SHOOT
 	aimTimer.start()
 
-
-func _on_hurt(amount, dir) -> void:
-	hp -= amount
-	update_healthbar()
-	vel += dir*kbAmount
-	vel.x *= 2
-	
-	if hp <= 0:
-		var newDP = deathParticles.instance()
-		newDP.position = position
-		newDP.rotation = dir.angle()
-		GameManager.spawnManager.spawn_object(newDP)
-		GameManager.frameFreezer.freeze_frames(.07)
-		
-		if rand_range(0, 1) < Globals.HEART_CHANCE:
-			var newHealth = healthPickup.instance()
-			newHealth.position = position
-			GameManager.spawnManager.spawn_object(newHealth)
-		emit_signal("dead")
-		
-		queue_free()

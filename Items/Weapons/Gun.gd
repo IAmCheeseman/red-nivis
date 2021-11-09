@@ -57,7 +57,7 @@ func _ready():
 	ammoLabel.hide()
 	cooldown.start(stats.reloadSpeed*.333)
 	
-	meleeCooldown.wait_time = stats.reloadSpeed*.333
+	meleeCooldown.wait_time = stats.cooldown
 
 
 func _on_Cooldown_timeout():

@@ -11,4 +11,9 @@ func _on_area_entered(area: Area2D) -> void:
 		body.hitbox.collision_mask = 4
 		body.hitbox.damage = hitbox.damage*1.5
 		body.speed *= 3
+		
+		GameManager.emit_signal(
+			"screenshake",
+			2, 12, .05, .05
+		)
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=5 format=2]
 
-[ext_resource path="res://Entities/Enemies/PistolMachine/PistolMachine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/Shockwave/PistolMachine/PistolMachine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDM.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Enemies/Assets/EnemyTable.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.tscn" type="PackedScene" id=4]

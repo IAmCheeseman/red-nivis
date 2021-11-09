@@ -22,7 +22,8 @@ onready var attackTimer = $Timers/AttackTimer
 onready var windUpTimer = $Timers/WindUpTimer
 onready var sprite = $ScaleHelper/Sprite
 onready var bounceRay = $Collisions/BounceRay
-onready var healthBar = $Healthbar
+onready var hpBar = $Healthbar
+onready var healthManager = $DamageManager
 
 
 var alertSignal = preload("res://Entities/Enemies/Assets/Alarm.tscn")
@@ -35,10 +36,10 @@ var startingPosition = position
 
 var player:Node2D
 var state:int = states.WANDER
-var health:int
 
 var alerted = false
 
+# warning-ignore:unused_signal
 signal death
 
 
@@ -56,9 +57,8 @@ DEFEND STATE:
 func _ready():
 	wanderTimer.start(rand_range(.5, 4.5))
 	startingPosition = position
-	maxHealth = Utils.dmg_to_hp(17, .15, 2)
-	health = maxHealth
-	healthBar.max_value = maxHealth
+	healthManager.maxHealth = Utils.dmg_to_hp(17, .15, 2)
+	healthManager.health = maxHealth
 	update_healthbar()
 
 
@@ -95,7 +95,7 @@ func _physics_process(delta:float) -> void:
 
 
 func wander_state(delta:float) -> void:
-	healthBar.hide()
+	hpBar.hide()
 	accel_to_point(targetPosition, delta)
 
 
@@ -163,7 +163,8 @@ func accel_to_point(point:Vector2, delta:float) -> void:
 
 
 func update_healthbar():
-	healthBar.value = health
+	hpBar.max_value = healthManager.maxHealth
+	hpBar.value = healthManager.health
 
 
 # Signals
@@ -171,35 +172,6 @@ func _on_wander_timer_timeout() -> void:
 	if state == states.WANDER:
 		targetPosition = select_position()
 	wanderTimer.start(rand_range(.5, 4.5))
-
-
-func _on_hurt(amount:float, dir:Vector2) -> void:
-# warning-ignore:narrowing_conversion
-	health -= amount
-	vel *= .6
-	
-	if state == states.ATTACK:
-		state = states.DEFEND
-		defendTimer.start()
-		vel = Vector2.ZERO
-	
-	GameManager.frameFreezer.freeze_frames(.07)
-	if health <= 0:
-		var newDP = deathParticles.instance()
-		newDP.position = position
-		newDP.rotation = dir.angle()
-		GameManager.spawnManager.spawn_object(newDP)
-		GameManager.frameFreezer.freeze_frames(.1)
-		
-		if rand_range(0, 1) < Globals.HEART_CHANCE:
-			var newHealth = healthPickup.instance()
-			newHealth.position = position
-			GameManager.spawnManager.spawn_object(newHealth)
-		emit_signal("death")
-		
-		queue_free()
-	
-	update_healthbar()
 
 
 func _on_hit_object(_area:Area2D) -> void:

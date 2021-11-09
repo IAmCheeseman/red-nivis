@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -11,10 +11,11 @@
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=9]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=11]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "cooldown"
-length = 4.0
+length = 2.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1
@@ -22,7 +23,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
+"times": PoolRealArray( 0, 2.3 ),
 "transitions": PoolRealArray( 8.57423, 1 ),
 "update": 0,
 "values": [ Color( 1, 0.721569, 0.721569, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -119,6 +120,7 @@ overheatShotCount = 3
 damage = 1
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper/Sprite/Minigun"]
+modulate = Color( 1, 0.721569, 0.721569, 1 )
 material = ExtResource( 8 )
 rotation = 1.5708
 texture = ExtResource( 3 )
@@ -131,7 +133,7 @@ one_shot = true
 autostart = true
 
 [node name="OverheatCooldown" type="Timer" parent="ScaleHelper/Sprite/Minigun"]
-wait_time = 3.5
+wait_time = 2.3
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScaleHelper/Sprite/Minigun"]
@@ -169,6 +171,8 @@ enabled = true
 [node name="MoneyDropper" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
+[node name="DamageManager" parent="." instance=ExtResource( 12 )]
+
 [node name="Healthbar" type="TextureProgress" parent="."]
 margin_left = -9.0
 margin_top = -21.0
@@ -192,7 +196,7 @@ autoplay = "default"
 anims/default = SubResource( 7 )
 
 [connection signal="death" from="." to="MoneyDropper" method="drop_money"]
-[connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/WanderTimer" to="." method="_on_wander_timer_timeout"]
 
 [editable path="Collisions/Hurtbox"]

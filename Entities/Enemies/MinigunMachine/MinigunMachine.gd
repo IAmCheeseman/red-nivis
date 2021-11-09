@@ -16,7 +16,8 @@ onready var bounceRay = $Collisions/BounceRay
 onready var sprite = $ScaleHelper/Sprite
 onready var minigunSprite = $ScaleHelper/Sprite/Minigun/Sprite
 onready var wanderTimer = $Timers/WanderTimer
-onready var healthBar = $Healthbar
+onready var hpBar = $Healthbar
+onready var healthManager = $DamageManager
 
 
 var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
@@ -26,14 +27,14 @@ var vel:Vector2 = Vector2.ZERO
 var targetPosition:Vector2 = position
 var startingPosition:Vector2 = position
 
+# warning-ignore:unused_signal
 signal death
 
 
 func _ready() -> void:
 	startingPosition = position
-	health = Utils.dmg_to_hp(15, .2, 1.5)
-	healthBar.max_value = health
-	healthBar.value = health
+	healthManager.health = Utils.dmg_to_hp(15, .2, 1.5)
+	update_healthbar()
 
 
 func _process(delta: float) -> void:
@@ -42,14 +43,14 @@ func _process(delta: float) -> void:
 	
 	if !player:
 		player = playerDetection.get_player()
-		healthBar.hide()
+		hpBar.hide()
 		minigun.isOn = false
 	else:
 		minigun.isOn = true
 		minigunSprite.look_at(player.global_position)
 		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
 		minigunSprite.scale.y = -1 if angleVec.x > 0 else 1
-		healthBar.show()
+		hpBar.show()
 		
 	accel_to_point(targetPosition, delta)
 	vel += softCollision.get_push_vector()*(kbAmount*.05)
@@ -80,29 +81,11 @@ func select_position() -> Vector2:
 	return addVec+(Vector2.RIGHT.rotated(rand_range(0, 360))*distance)
 
 
+func update_healthbar():
+	hpBar.max_value = healthManager.maxHealth
+	hpBar.value = healthManager.health
+
+
 func _on_wander_timer_timeout() -> void:
 	targetPosition = select_position()
 	wanderTimer.start(rand_range(.1, 4.5))
-
-
-func _on_hurt(amount:float, dir:Vector2) -> void:
-# warning-ignore:narrowing_conversion
-	health -= amount
-	healthBar.value = health
-	vel = dir*kbAmount
-	if health <= 0:
-		var newDP = deathParticles.instance()
-		newDP.position = position
-		newDP.rotation = dir.angle()
-		GameManager.spawnManager.spawn_object(newDP)
-		GameManager.frameFreezer.freeze_frames(.07)
-		
-		if rand_range(0, 1) < Globals.HEART_CHANCE:
-			var newHealth = healthPickup.instance()
-			newHealth.position = position
-			GameManager.spawnManager.spawn_object(newHealth)
-			
-		emit_signal("death")
-		queue_free()
-	
-#	update_healthbar()

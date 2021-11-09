@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=8]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=9]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=10]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.0
@@ -117,6 +118,8 @@ shape = SubResource( 5 )
 [node name="MoneyDropper" type="Node2D" parent="."]
 script = ExtResource( 10 )
 
+[node name="DamageManager" parent="." instance=ExtResource( 11 )]
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="WanderTimer" type="Timer" parent="Timers"]
@@ -146,7 +149,7 @@ autoplay = "Default"
 anims/Default = SubResource( 6 )
 
 [connection signal="death" from="." to="MoneyDropper" method="drop_money"]
-[connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="hit_object" from="Collisions/Hitbox" to="." method="_on_hit_object"]
 [connection signal="timeout" from="Timers/WanderTimer" to="." method="_on_wander_timer_timeout"]
 
