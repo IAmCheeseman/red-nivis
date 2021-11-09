@@ -78,7 +78,10 @@ func shoot() -> void:
 
 func _input(event: InputEvent) -> void:
 	# Meleeing
-	if event.is_action_pressed("melee") and !swinging:
+	if event.is_action_pressed("melee")\
+	and !swinging\
+	and gun.canSwing\
+	and !GameManager.inGUI:
 		swinging = true
 		swingDir = -swingDir
 		pivot.rotation_degrees -= 65*swingDir
@@ -102,3 +105,6 @@ func _input(event: InputEvent) -> void:
 			1, 8, .05, .05,
 			get_local_mouse_position().normalized()
 		)
+		
+		gun.meleeCooldown.start()
+		gun.canSwing = false

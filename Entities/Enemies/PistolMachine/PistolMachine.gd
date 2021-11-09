@@ -139,13 +139,12 @@ func _on_hurt(amount, dir) -> void:
 	vel += dir*kbAmount
 	vel.x *= 2
 	
-	GameManager.frameFreezer.freeze_frames(.07)
 	if hp <= 0:
 		var newDP = deathParticles.instance()
 		newDP.position = position
 		newDP.rotation = dir.angle()
 		GameManager.spawnManager.spawn_object(newDP)
-		GameManager.frameFreezer.freeze_frames(.01)
+		GameManager.frameFreezer.freeze_frames(.07)
 		
 		if rand_range(0, 1) < Globals.HEART_CHANCE:
 			var newHealth = healthPickup.instance()

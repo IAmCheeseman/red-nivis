@@ -49,6 +49,9 @@ __meta__ = {
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="MeleeCooldown" type="Timer" parent="."]
+one_shot = true
+
 [node name="ShootSound" parent="." instance=ExtResource( 2 )]
 audio = ExtResource( 3 )
 volumeMod = -10.0
@@ -62,3 +65,4 @@ pitchShiftRange = 1.1
 bus = "SFX"
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="timeout" from="MeleeCooldown" to="." method="_on_melee_timeout"]

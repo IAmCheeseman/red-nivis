@@ -27,3 +27,4 @@ export(Array, PackedScene) var groundProps := []
 export(Array, Resource) var enemyPools := [
 	preload("res://World/EnemyPools/BasicEnemies.tres")
 ]
+

@@ -38,11 +38,13 @@ onready var shootSound = $ShootSound
 onready var noAmmoClick = $NoAmmoClickSFX
 onready var ammoLabel = $AmmoCount
 onready var cooldown = $Cooldown
+onready var meleeCooldown = $MeleeCooldown
 var visuals
 
 # Properties
 var standingOver = false
 var canShoot = false
+var canSwing = true
 var isReloading = false
 var player
 
@@ -54,6 +56,8 @@ func _ready():
 	visuals.position.x = stats.holdDist
 	ammoLabel.hide()
 	cooldown.start(stats.reloadSpeed*.333)
+	
+	meleeCooldown.wait_time = stats.reloadSpeed*.333
 
 
 func _on_Cooldown_timeout():
@@ -61,4 +65,7 @@ func _on_Cooldown_timeout():
 	if isReloading:
 		isReloading = false
 		player.ammo = player.maxAmmo
-		
+
+
+func _on_melee_timeout() -> void:
+	canSwing = true
