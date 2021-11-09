@@ -469,9 +469,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="Player" type="KinematicBody2D" groups=[
-"Player",
-]]
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 position = Vector2( 0, -3 )
 collision_layer = 0
 collision_mask = 25
@@ -528,9 +526,7 @@ volumeMod = 5.0
 pitchShiftRange = 1.2
 bus = "SFX"
 
-[node name="Hurtbox" parent="." groups=[
-"player",
-] instance=ExtResource( 4 )]
+[node name="Hurtbox" parent="." groups=["player"] instance=ExtResource( 4 )]
 visible = false
 collision_layer = 2
 collision_mask = 2147483648
@@ -731,11 +727,11 @@ alignment = 1
 margin_left = 39.0
 margin_right = 87.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "Restart"
 flat = true
 
@@ -743,11 +739,11 @@ flat = true
 margin_left = 91.0
 margin_right = 160.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "Back to Hub"
 flat = true
 __meta__ = {
@@ -758,11 +754,11 @@ __meta__ = {
 margin_left = 164.0
 margin_right = 196.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "Quit"
 flat = true
 __meta__ = {

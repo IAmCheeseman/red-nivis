@@ -138,7 +138,7 @@ func animate(moveDir:Vector2):
 	else:
 		rightHand.show()
 	if is_grounded():
-		if is_equal_approx(moveDir.x, 0) or test_move(transform, Vector2(vel.normalized().x, 0)):
+		if is_equal_approx(moveDir.x, 0):
 			sprite.rotation_degrees = 0
 			animationPlayer.play("Idle")
 		else:
