@@ -18,13 +18,12 @@ func _ready() -> void:
 
 
 func take_damage(amount:float, dir:Vector2) -> void:
-# warning-ignore:narrowing_conversion
-	health -= amount
+	health -= int(amount)
 	par.vel = dir*kbAmount
 	
 	var newDL = damageLabel.instance()
 	newDL.rect_position = global_position
-	newDL.text = str(amount)
+	newDL.text = str(int(amount))
 	var nn = Node2D.new()
 	nn.z_index = 100
 	GameManager.spawnManager.spawn_object(nn)

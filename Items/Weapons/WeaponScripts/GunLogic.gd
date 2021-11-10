@@ -99,7 +99,7 @@ func _input(event: InputEvent) -> void:
 		newSwing.reflectDir = get_local_mouse_position().normalized()
 		GameManager.spawnManager.spawn_object(newSwing)
 		
-		newSwing.get_node("Hitbox").damage = gun.stats.damage*.75
+		newSwing.get_node("Hitbox").damage = gun.stats.damage*1.25
 		
 		newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle)*8
 		
