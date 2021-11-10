@@ -18,12 +18,13 @@ func _ready() -> void:
 
 
 func take_damage(amount:float, dir:Vector2) -> void:
-	health -= int(amount)
+	var dmg = amount + rand_range(-2, 2)
+	health -= int(dmg)
 	par.vel = dir*kbAmount
 	
 	var newDL = damageLabel.instance()
 	newDL.rect_position = global_position
-	newDL.text = str(int(amount))
+	newDL.text = str(int(dmg))
 	var nn = Node2D.new()
 	nn.z_index = 100
 	GameManager.spawnManager.spawn_object(nn)
