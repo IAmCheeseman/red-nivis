@@ -51,7 +51,8 @@ DEFEND STATE:
 func _ready():
 	wanderTimer.start(rand_range(.5, 4.5))
 	startingPosition = position
-	healthManager.maxHealth = Utils.dmg_to_hp(15, .2, .5)
+	healthManager.maxHealth = Utils.dmg_to_hp(15, .2, 1)
+	healthManager.health = healthManager.maxHealth
 	update_healthbar()
 
 

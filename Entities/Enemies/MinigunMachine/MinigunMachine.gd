@@ -5,7 +5,6 @@ export var accel:float = 24
 export var friction:float = 12
 export var wanderRange:float = 48
 export var kbAmount:float = .5
-export var health:float = 1
 
 
 onready var minigun = $ScaleHelper/Sprite/Minigun
@@ -34,6 +33,7 @@ signal death
 func _ready() -> void:
 	startingPosition = position
 	healthManager.health = Utils.dmg_to_hp(15, .2, 1.5)
+	healthManager.maxHealth = healthManager.health
 	update_healthbar()
 
 

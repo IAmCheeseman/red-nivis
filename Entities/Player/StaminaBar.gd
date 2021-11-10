@@ -12,8 +12,8 @@ onready var regainTimer:Timer = $RegainTimer
 
 func _ready() -> void:
 	modulate.a = 0
-	regainTimer.connect("timeout", self, "_on_regain_timeout")
-	playerData.connect("stamina_changed", self, "_on_stamina_changed")
+	var _discard0 = regainTimer.connect("timeout", self, "_on_regain_timeout")
+	var _discard1 = playerData.connect("stamina_changed", self, "_on_stamina_changed")
 	
 	playerData.stamina = playerData.maxStamina
 	update_stamina()

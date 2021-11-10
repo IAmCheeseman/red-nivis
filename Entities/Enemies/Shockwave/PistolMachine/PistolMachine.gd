@@ -32,6 +32,7 @@ var state := WALK
 
 var player: Node2D
 
+# warning-ignore:unused_signal
 signal dead
 
 
@@ -39,6 +40,7 @@ func _ready() -> void:
 	targetPosition = global_position.x
 	
 	healthManager.maxHealth = Utils.dmg_to_hp(15, .2, 1.5)
+	healthManager.health = healthManager.maxHealth
 	update_healthbar()
 
 

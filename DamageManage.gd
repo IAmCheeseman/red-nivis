@@ -10,6 +10,7 @@ var health:int
 
 var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
+var damageLabel = preload("res://Entities/Effects/DmgLabel.tscn")
 
 
 func _ready() -> void:
@@ -20,6 +21,15 @@ func take_damage(amount:float, dir:Vector2) -> void:
 # warning-ignore:narrowing_conversion
 	health -= amount
 	par.vel = dir*kbAmount
+	
+	var newDL = damageLabel.instance()
+	newDL.rect_position = global_position
+	newDL.text = str(amount)
+	var nn = Node2D.new()
+	nn.z_index = 100
+	GameManager.spawnManager.spawn_object(nn)
+	nn.add_child(newDL)
+	
 	if health <= 0:
 		var newDP = deathParticles.instance()
 		newDP.position = global_position
