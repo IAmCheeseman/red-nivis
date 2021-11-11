@@ -11,11 +11,11 @@ var tierChances = [.45, .35, .20]
 
 var perks = [
 	# Common
-	[],
+	[null, preload("res://Items/Weapons/Perks/BulletBounce/BulletBounce.gd")],
 	# Uncommon
-	[],
+	[null],
 	# Rare
-	[]
+	[null]
 ]
 
 func generate_weapon(_seed:int=randi(), _selectedType:String=""):
@@ -46,7 +46,12 @@ func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 		constructedWeapon.get_node("Sight").add_child(sight)
 	var data = generate_stats(selectedParts, constructedWeapon)
 	
-	data.perk = preload("res://Items/Weapons/Perks/BulletBounce/BulletBounce.gd")
+	if rand_range(0, 1) < .75:
+		var perkTier = select_tier()
+		data.perk = perks[perkTier][rand_range(0, perks[perkTier].size())]
+	else:
+		data.perk = null
+
 	data.scene = constructedWeapon
 	data.cost = generate_cost(data)
 	data.isTwoHanded = handle.isTwoHanded

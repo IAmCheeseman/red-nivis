@@ -58,10 +58,11 @@ func _ready():
 	ammoLabel.hide()
 	cooldown.start(stats.reloadSpeed*.333)
 	
-	perk = Node.new()
-	perk.set_script(stats.perk)
-	perk.gun = gunLogic
-	add_child(perk)
+	if stats.perk:
+		perk = Node.new()
+		perk.set_script(stats.perk)
+		perk.gun = gunLogic
+		add_child(perk)
 	
 	meleeCooldown.wait_time = stats.cooldown
 
