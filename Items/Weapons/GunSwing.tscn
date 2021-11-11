@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/SwordSwing.png" type="Texture" id=2]
 [ext_resource path="res://Items/Weapons/GunSwing.gd" type="Script" id=3]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=4]
+[ext_resource path="res://Entities/Player/Assets/Swing.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11, 15 )
@@ -95,6 +97,12 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
 anims/default = SubResource( 2 )
+
+[node name="SwishSFX" type="Node2D" parent="."]
+script = ExtResource( 4 )
+audio = ExtResource( 5 )
+pitchShiftRange = 2.0
+bus = "SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_area_entered"]
 

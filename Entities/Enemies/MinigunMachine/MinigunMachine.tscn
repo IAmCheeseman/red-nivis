@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=11]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=13]
+[ext_resource path="res://Entities/Enemies/MachineHurt.wav" type="AudioStream" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "cooldown"
@@ -101,7 +103,6 @@ tracks/2/keys = {
 collision_layer = 0
 script = ExtResource( 1 )
 kbAmount = 32.0
-health = 55.0
 
 [node name="ScaleHelper" type="Node2D" parent="."]
 
@@ -172,6 +173,13 @@ enabled = true
 script = ExtResource( 9 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 12 )]
+hurtSFXPath = NodePath("../HitSFX")
+
+[node name="HitSFX" type="Node2D" parent="."]
+script = ExtResource( 13 )
+audio = ExtResource( 14 )
+volumeMod = 5.0
+bus = "SFX"
 
 [node name="Healthbar" type="TextureProgress" parent="."]
 margin_left = -9.0

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pistol.png-a176ba53fd02c75005cd89063b122a7b.stex"
+path="res://.import/Pistol.png-e207c6b6129a236bba33789c7808d50b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Shockwave/PistolMachine/Pistol.png"
-dest_files=[ "res://.import/Pistol.png-a176ba53fd02c75005cd89063b122a7b.stex" ]
+source_file="res://Entities/Enemies/PistolMachine/Pistol.png"
+dest_files=[ "res://.import/Pistol.png-e207c6b6129a236bba33789c7808d50b.stex" ]
 
 [params]
 

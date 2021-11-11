@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Entities/Enemies/Assets/EnemyOutline.tres" type="Material" id=10]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=11]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=13]
+[ext_resource path="res://Entities/Enemies/MachineHurt.wav" type="AudioStream" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Spin"
@@ -153,6 +155,13 @@ moneyRange = Vector2( 3, 6 )
 valueRange = Vector2( 2, 4 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 12 )]
+hurtSFXPath = NodePath("../HitSFX")
+
+[node name="HitSFX" type="Node2D" parent="."]
+script = ExtResource( 13 )
+audio = ExtResource( 14 )
+volumeMod = 5.0
+bus = "SFX"
 
 [node name="Timers" type="Node" parent="."]
 

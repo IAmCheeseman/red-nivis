@@ -5,6 +5,9 @@ onready var par:Node = get_parent()
 
 export var maxHealth := 120
 export var kbAmount := 32.0
+export var hurtSFXPath: NodePath
+
+onready var hurtSFX = get_node(hurtSFXPath)
 
 var health:int
 
@@ -45,6 +48,8 @@ func take_damage(amount:float, dir:Vector2) -> void:
 			par.emit_signal("death")
 		
 		par.queue_free()
+	
+	if hurtSFX: hurtSFX.play()
 	
 	if par.has_method("update_healthbar"):
 		par.update_healthbar()

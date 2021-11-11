@@ -20,6 +20,14 @@ var swingStartDeg := .0
 var swingDir := 1
 var targetPos:Vector2
 
+
+signal gun_shot(bullet)
+signal gun_aimed()
+signal bullet_hit_wall(bullet)
+signal bullet_hit_enemy(bullet)
+signal bullet_hit(bullet)
+
+
 func _ready() -> void:
 	targetPos = position
 

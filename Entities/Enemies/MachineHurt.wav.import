@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/download.wav-bd5f94bdb00fbad8e30ffc6ff97d4fee.sample"
+path="res://.import/MachineHurt.wav-74dd5bfc790dc3e665d083c5f5b2e888.sample"
 
 [deps]
 
-source_file="res://Entities/Enemies/download.wav"
-dest_files=[ "res://.import/download.wav-bd5f94bdb00fbad8e30ffc6ff97d4fee.sample" ]
+source_file="res://Entities/Enemies/MachineHurt.wav"
+dest_files=[ "res://.import/MachineHurt.wav-74dd5bfc790dc3e665d083c5f5b2e888.sample" ]
 
 [params]
 
