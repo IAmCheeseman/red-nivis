@@ -42,11 +42,12 @@ onready var meleeCooldown = $MeleeCooldown
 var visuals
 
 # Properties
-var standingOver = false
-var canShoot = false
-var canSwing = true
-var isReloading = false
-var player
+var standingOver := false
+var canShoot := false
+var canSwing := true
+var isReloading := false
+var player: Resource
+var perk: Node
 
 
 
@@ -56,6 +57,11 @@ func _ready():
 	visuals.position.x = stats.holdDist
 	ammoLabel.hide()
 	cooldown.start(stats.reloadSpeed*.333)
+	
+	perk = Node.new()
+	perk.set_script(stats.perk)
+	perk.gun = gunLogic
+	add_child(perk)
 	
 	meleeCooldown.wait_time = stats.cooldown
 

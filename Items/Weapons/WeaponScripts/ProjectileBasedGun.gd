@@ -19,6 +19,9 @@ func shoot():
 		newBullet.peircing = gun.stats.peircing
 		newBullet.lifetime = gun.stats.projLifetime
 		newBullet.global_position = global_position+dir*gun.stats.bulletSpawnDist
+		
+		newBullet.connect("hit_wall", self, "_on_bullet_hit_wall")
+		newBullet.connect("hit_enemy", self, "_on_bullet_hit_enemy")
 		# Adding it to the tree
 		GameManager.spawnManager.spawn_object(newBullet)
 		newBullet.damage = gun.stats.damage

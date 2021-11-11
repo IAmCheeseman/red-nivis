@@ -21,7 +21,9 @@ var swingDir := 1
 var targetPos:Vector2
 
 
+# warning-ignore:unused_signal
 signal gun_shot(bullet)
+# warning-ignore:unused_signal
 signal gun_aimed()
 signal bullet_hit_wall(bullet)
 signal bullet_hit_enemy(bullet)
@@ -119,5 +121,13 @@ func _input(event: InputEvent) -> void:
 		
 		gun.meleeCooldown.start()
 		gun.canSwing = false
-		
-		
+
+
+# warning-ignore:shadowed_variable
+func _on_bullet_hit_wall(bullet: Node2D) -> void:
+	emit_signal("bullet_hit", bullet)
+	emit_signal("bullet_hit_wall", bullet)
+# warning-ignore:shadowed_variable
+func _on_bullet_hit_enemy(bullet: Node2D) -> void:
+	emit_signal("bullet_hit", bullet)
+	emit_signal("bullet_hit_enemy", bullet)

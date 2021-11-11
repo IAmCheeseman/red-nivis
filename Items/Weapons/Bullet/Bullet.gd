@@ -9,13 +9,16 @@ var lifetime = 5.0
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
 onready var particles = $Particles
-onready var liftimeTimer = $Lifetime
+onready var lifetimeTimer = $Lifetime
 onready var anim = $AnimationPlayer
 onready var dieTween = $DieTween
 onready var trail = $Trail
 
 #var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
 var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
+
+signal hit_wall(bullet)
+signal hit_enemy(bullet)
 
 
 func set_texture(texture:StreamTexture):
@@ -34,7 +37,7 @@ func _ready():
 	sprite.look_at(global_position+direction)
 	hitbox.look_at(global_position+direction)
 	hitbox.setDirection = direction
-	liftimeTimer.start(clamp(lifetime-0.2, .001, INF))
+	lifetimeTimer.start(clamp(lifetime-0.2, .001, INF))
 
 
 func _physics_process(delta):
@@ -44,6 +47,7 @@ func _physics_process(delta):
 func _on_QueueArea_body_entered(body):
 	if body.is_in_group("Platform"):
 		return
+	emit_signal("hit_wall", self)
 	add_trail_to_parent()
 	add_particles()
 	queue_free()
@@ -71,6 +75,7 @@ func add_trail_to_parent():
 
 
 func _on_Hitbox_hit_object(object):
+	emit_signal("hit_enemy", self)
 	if !peircing:
 		add_trail_to_parent()
 		add_particles()

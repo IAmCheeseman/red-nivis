@@ -85,6 +85,11 @@ _global_script_classes=[ {
 "path": "res://Managing/MoneyDropper.gd"
 }, {
 "base": "Resource",
+"class": "Perk",
+"language": "GDScript",
+"path": "res://Items/Weapons/Perks/Perk.gd"
+}, {
+"base": "Resource",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Entities/Player/Scripts/PlayerResource.gd"
@@ -165,6 +170,7 @@ _global_script_class_icons={
 "ItemManagement": "",
 "LootTable": "",
 "MoneyDropper": "",
+"Perk": "",
 "Player": "",
 "Prefix": "",
 "RoomGenerator": "",

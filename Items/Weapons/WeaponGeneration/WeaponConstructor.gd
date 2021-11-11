@@ -9,6 +9,14 @@ enum {
 
 var tierChances = [.45, .35, .20]
 
+var perks = [
+	# Common
+	[],
+	# Uncommon
+	[],
+	# Rare
+	[]
+]
 
 func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 	seed(_seed)
@@ -37,7 +45,8 @@ func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 		var sight = selectedParts.sight.instance()
 		constructedWeapon.get_node("Sight").add_child(sight)
 	var data = generate_stats(selectedParts, constructedWeapon)
-
+	
+	data.perk = preload("res://Items/Weapons/Perks/BulletBounce/BulletBounce.gd")
 	data.scene = constructedWeapon
 	data.cost = generate_cost(data)
 	data.isTwoHanded = handle.isTwoHanded
