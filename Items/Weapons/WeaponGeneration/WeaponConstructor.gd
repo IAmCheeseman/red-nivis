@@ -11,11 +11,18 @@ var tierChances = [.45, .35, .20]
 
 var perks = [
 	# Common
-	[null, preload("res://Items/Weapons/Perks/BulletBounce/BulletBounce.gd")],
+	[null, preload("res://Items/Weapons/Perks/BulletBounce.gd")],
 	# Uncommon
 	[null],
 	# Rare
 	[null]
+]
+
+var prefixes = [
+	{
+		"path": "res://Items/Weapons/Resources/0Prefixes/EnhancedPrefix.tscn",
+		"rarity" : 1
+	}
 ]
 
 func generate_weapon(_seed:int=randi(), _selectedType:String=""):
@@ -25,7 +32,8 @@ func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 		"body" : null,
 		"handle" : null,
 		"barrel" : null,
-		"sight" : null
+		"sight" : null,
+		"prefix" : null
 	}
 
 	parts.shuffle()
@@ -44,6 +52,8 @@ func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 	if selectedParts.has("sight"):
 		var sight = selectedParts.sight.instance()
 		constructedWeapon.get_node("Sight").add_child(sight)
+	
+	# Generating stats
 	var data = generate_stats(selectedParts, constructedWeapon)
 	
 	if rand_range(0, 1) < .75:
@@ -51,8 +61,20 @@ func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 		data.perk = perks[perkTier][rand_range(0, perks[perkTier].size())]
 	else:
 		data.perk = null
-
+	
+	var name: String = selectedWeapon
+	if data.perk:
+		var perk = data.perk.new()
+		name = perk.PERK_ADJ+" "+name
+		perk.free()
+	if selectedParts.has("prefix"):
+		var prefix = selectedParts.prefix.instance()
+		name = prefix.name+" "+name
+		prefix.queue_free()
+	print(name)
+	
 	data.scene = constructedWeapon
+	data.ssStrength = clamp(data.ssStrength, 0, 16)
 	data.cost = generate_cost(data)
 	data.isTwoHanded = handle.isTwoHanded
 	data.bulletSpawnDist = barrel.get_node("Sprite").texture.get_width()/2
@@ -101,6 +123,7 @@ func generate_stats(selectedParts:Dictionary, body:Node2D):
 		for i in data.keys():
 			if data[i] is float:
 				data[i] += data[i]*part.get(i)
+		part.queue_free()
 
 	var oldChances = tierChances.duplicate()
 	tierChances = [.60, .30, .10]
@@ -123,6 +146,17 @@ func select_parts(selectedWeapon):
 	# Sight
 	if rand_range(0, 1) < .5:
 		weaponParts.sight = load(sightPath % round(rand_range(0, 2)))
+	if rand_range(0, 1) < .5:
+		prefixes.shuffle()
+		var prefix = prefixes.pop_front()
+		while true:
+			if rand_range(0, 1) < prefix.rarity:
+				weaponParts.prefix = load(prefix.path)
+				break
+			if prefixes.size() == 0:
+				break
+			prefix = prefixes.pop_front()
+		
 	return weaponParts
 
 

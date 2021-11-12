@@ -1,5 +1,7 @@
 extends Node
 
+const PERK_NAME = "Bullet Bounce"
+const PERK_ADJ = "Bouncy"
 const TIMES_BOUNCED = "timesBounced"
 
 onready var gun: Node2D

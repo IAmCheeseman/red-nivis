@@ -8,6 +8,8 @@ export(
 	"Rare"
 ) var rarity = .5
 
+export var isPrefix := false
+
 # Functionality
 export var damage: float = 6.0
 export var accuracy: float = 0.0

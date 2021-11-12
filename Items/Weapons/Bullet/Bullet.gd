@@ -3,7 +3,6 @@ extends KinematicBody2D
 var direction : Vector2
 var speed : float
 var peircing = false
-var prefix : Prefix
 var damage : float 
 var lifetime = 5.0
 onready var hitbox = $Hitbox
