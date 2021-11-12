@@ -21,7 +21,7 @@ var perks = [
 var prefixes = [
 	{
 		"path": "res://Items/Weapons/Resources/0Prefixes/EnhancedPrefix.tscn",
-		"rarity" : 1
+		"rarity" : .2
 	}
 ]
 
@@ -146,7 +146,7 @@ func select_parts(selectedWeapon):
 	# Sight
 	if rand_range(0, 1) < .5:
 		weaponParts.sight = load(sightPath % round(rand_range(0, 2)))
-	if rand_range(0, 1) < .5:
+	if rand_range(0, 1) < .8:
 		prefixes.shuffle()
 		var prefix = prefixes.pop_front()
 		while true:

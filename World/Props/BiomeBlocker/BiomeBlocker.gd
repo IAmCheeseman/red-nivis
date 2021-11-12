@@ -31,7 +31,7 @@ func _ready() -> void:
 
 
 func _on_Iteraction_interaction() -> void:
-	if requiredUpgrade.abilityScript  in playerData.upgrades:
+	if requiredUpgrade.abilityScript in playerData.upgrades:
 		anim.play("Accept")
 		emit_signal("removeLeft")
 		emit_signal("removeRight")
