@@ -58,6 +58,8 @@ func _ready():
 	ammoLabel.hide()
 	cooldown.start(stats.reloadSpeed*.333)
 	
+	print(ToolTipGenerator.tooltips(stats))
+	
 	if stats.perk:
 		perk = Node.new()
 		perk.set_script(stats.perk)

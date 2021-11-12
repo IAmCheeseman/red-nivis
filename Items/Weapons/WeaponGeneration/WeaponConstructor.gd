@@ -22,8 +22,14 @@ var prefixes = [
 	{
 		"path": "res://Items/Weapons/Resources/0Prefixes/EnhancedPrefix.tscn",
 		"rarity" : .2
+	},
+	{
+		"path": "res://Items/Weapons/Resources/0Prefixes/BrokenPrefix.tscn",
+		"rarity" : .3
 	}
 ]
+
+var selectedPrefixName: String
 
 func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 	seed(_seed)
@@ -71,8 +77,9 @@ func generate_weapon(_seed:int=randi(), _selectedType:String=""):
 		var prefix = selectedParts.prefix.instance()
 		name = prefix.name+" "+name
 		prefix.queue_free()
-	print(name)
 	
+	data.prefixName = selectedPrefixName
+	data.name = name
 	data.scene = constructedWeapon
 	data.ssStrength = clamp(data.ssStrength, 0, 16)
 	data.cost = generate_cost(data)
@@ -152,6 +159,9 @@ func select_parts(selectedWeapon):
 		while true:
 			if rand_range(0, 1) < prefix.rarity:
 				weaponParts.prefix = load(prefix.path)
+				var node = weaponParts.prefix.instance()
+				selectedPrefixName = node.name
+				node.queue_free()
 				break
 			if prefixes.size() == 0:
 				break
