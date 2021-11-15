@@ -17,18 +17,14 @@ func _ready():
 	#slotTexture.material = slotTexture.material.duplicate()
 
 
-func setup(texture, itemID:String, outlineColor:Color=Color.white):
+func setup(texture, itemID:String, outlineColor:Color=Color.white, tt:String=""):
 	if texture is Node2D:
 		weaponHolder.add_child(texture.duplicate())
 	else:
 		slotTexture.texture = texture
 		slotTexture.material.set_shader_param("line_color", outlineColor)
 	item = itemID
-	tooltip = ToolTipGenerator.tooltips(
-		WeaponConstructor.new().generate_weapon(
-			int(item)
-		)
-	)
+	tooltip = tt
 	update_index()
 
 
@@ -47,9 +43,7 @@ func update_index():
 
 func _process(delta: float) -> void:
 	var rect = get_global_rect()
-	rect.position.y -= rect_size.y
-	if rect.has_point(get_global_mouse_position())\
-	and ToolTip.id == item:
+	if rect.has_point(get_global_mouse_position()):
 		_on_mouse_entered()
 	else:
 		_on_mouse_exited()
@@ -61,11 +55,7 @@ func _on_press():
 
 func _on_mouse_entered() -> void:
 	ToolTip.set_tooltip(
-		ToolTipGenerator.tooltips(
-			WeaponConstructor.new().generate_weapon(
-				int(item)
-			)
-		)
+		tooltip
 	)
 	ToolTip.id = item
 

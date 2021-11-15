@@ -336,7 +336,6 @@ func add_props(propArr:Array, x, y) -> void:
 
 func spawn_enemies() -> void: 
 	if !roomI is Image:
-		print("Get trolled: %s" % roomI)
 		return
 	randomize()
 	world.viableEnemySpawns.shuffle()
