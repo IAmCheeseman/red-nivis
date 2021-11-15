@@ -25,31 +25,45 @@ func take_damage(amount:float, dir:Vector2) -> void:
 	health -= int(dmg)
 	par.vel = dir*kbAmount
 	
+	# Instancing label for damage
 	var newDL = damageLabel.instance()
 	newDL.rect_position = global_position
 	newDL.text = str(int(dmg))
+	
+	# Adding damage label
 	var nn = Node2D.new()
 	nn.z_index = 100
 	GameManager.spawnManager.spawn_object(nn)
 	nn.add_child(newDL)
 	
-	if health <= 0:
-		var newDP = deathParticles.instance()
-		newDP.position = global_position
-		newDP.rotation = dir.angle()
-		GameManager.spawnManager.spawn_object(newDP)
-		GameManager.frameFreezer.freeze_frames(.07)
-		
-		if rand_range(0, 1) < Globals.HEART_CHANCE:
-			var newHealth = healthPickup.instance()
-			newHealth.position = global_position
-			GameManager.spawnManager.spawn_object(newHealth)
-		if par.has_signal("death"):
-			par.emit_signal("death")
-		
-		par.queue_free()
-	
 	if hurtSFX: hurtSFX.play()
 	
+	# Updating the healthbar
 	if par.has_method("update_healthbar"):
 		par.update_healthbar()
+	
+	# Killing thingy
+	if health <= 0:
+		_die(dir)
+
+
+func _die(dir) -> void:
+	# Instancing death particles
+	var newDP = deathParticles.instance()
+	newDP.position = global_position
+	newDP.rotation = dir.angle()
+	GameManager.spawnManager.spawn_object(newDP)
+	
+	# Freezing game
+	GameManager.frameFreezer.freeze_frames(.07)
+	
+	# Adding health pickup
+	if rand_range(0, 1) < Globals.HEART_CHANCE:
+		var newHealth = healthPickup.instance()
+		newHealth.position = global_position
+		GameManager.spawnManager.spawn_object(newHealth)
+	
+	if par.has_signal("death"):
+		par.emit_signal("death")
+	
+	par.queue_free()

@@ -1,18 +1,24 @@
 extends Control
 
 const MOUSE_OFFSET = Vector2(7, 6)
+const PADDING = 4
 
 onready var label = $Label
 onready var bg = $BG
 
 
 func _ready() -> void:
-	set_tooltip("Spgahetti\nDMG: 12\nAccuracy: 15\nsdfusdkjdfsdfsasdasdasdad\n")
+	var wc = WeaponConstructor.new()
+	var weapon = wc.generate_weapon()
+	set_tooltip(ToolTipGenerator.tooltips(weapon))
+	#set_tooltip("Spgahetti\nDMG: 12\nAccuracy: 15\nsdfusdkjdfsdfsasdasdasdad\n")
 
 
 func _process(delta: float) -> void:
 	rect_global_position = get_global_mouse_position()
 	rect_global_position -= bg.rect_size+MOUSE_OFFSET
+	bg.rect_position = label.rect_position-Vector2.ONE*PADDING
+	bg.rect_size = label.rect_size+Vector2(0, PADDING*2)
 
 
 func set_tooltip(tooltip:String) -> void:
@@ -20,18 +26,20 @@ func set_tooltip(tooltip:String) -> void:
 		hide()
 	else:
 		show()
-		label.bbcode_text = tooltip
+		label.bbcode_text = tooltip.left(tooltip.find_last("\n"))
 		
-		var font:Font = label.get_font("normal_font")
+		var tt:String = label.text
+		
+		var font:Font = label.get_font("bold_font")
 		var longestLine = "b"
-		for i in tooltip.count("\n"):
-			var firstp = tooltip.find("\n")
-			var nextp = tooltip.find("\n", firstp)
+		for i in tt.count("\n"):
+			var firstp = tt.find("\n")
+			var nextp = tt.find("\n", firstp)
 			
-			var line := tooltip.left(firstp)
+			var line := tt.left(firstp)
 			line = line.right(nextp-line.length())
 			
-			tooltip = tooltip.right(firstp+1)
+			tt = tt.right(firstp+1)
 			
 			if font.get_string_size(line).x\
 			> font.get_string_size(longestLine).x:
@@ -39,4 +47,3 @@ func set_tooltip(tooltip:String) -> void:
 		
 		var size:int = font.get_string_size(longestLine).x+16
 		label.rect_size.x = size
-		bg.rect_size = Vector2(size, label.rect_size.y)
