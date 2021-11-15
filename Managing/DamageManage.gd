@@ -21,7 +21,7 @@ func _ready() -> void:
 
 
 func take_damage(amount:float, dir:Vector2) -> void:
-	var dmg = amount + rand_range(-2, 2)
+	var dmg = amount
 	health -= int(dmg)
 	par.vel = dir*kbAmount
 	
