@@ -21,14 +21,14 @@ func _ready() -> void:
 
 
 func take_damage(amount:float, dir:Vector2) -> void:
-	var dmg = amount
-	health -= int(dmg)
+	var dmg := int(amount+rand_range(-2, 1))
+	health -= dmg
 	par.vel = dir*kbAmount
 	
 	# Instancing label for damage
 	var newDL = damageLabel.instance()
 	newDL.rect_position = global_position
-	newDL.text = str(int(dmg))
+	newDL.text = str(dmg)
 	
 	# Adding damage label
 	var nn = Node2D.new()
