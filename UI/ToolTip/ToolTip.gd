@@ -1,7 +1,7 @@
 extends Node2D
 class_name Tooltip
 
-const MOUSE_OFFSET = Vector2(7, 6)
+const MOUSE_OFFSET = Vector2(4, 3)
 const PADDING = 4
 
 onready var label = $Label

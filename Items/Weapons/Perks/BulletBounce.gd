@@ -46,5 +46,5 @@ func _on_bullet_hit_wall(bullet: Node2D) -> void:
 	
 	GameManager.spawnManager.spawn_object(newBullet)
 	yield(get_tree(), "idle_frame")
-	if newBullet:
+	if newBullet != null:
 		newBullet.global_position += newBullet.direction*16
