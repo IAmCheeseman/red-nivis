@@ -19,7 +19,6 @@ var worldData = preload("res://World/WorldManagement/WorldData.tres")
 # warning-ignore:unused_signal
 signal screenshake
 
-
 func _input(_event):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen

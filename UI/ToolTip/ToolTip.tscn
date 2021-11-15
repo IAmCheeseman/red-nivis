@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/ToolTip/ToolTip.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://UI/Assets/ToolTipBG.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 9
@@ -10,20 +11,19 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[node name="ToolTip" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
+[node name="ToolTip" type="Node2D"]
+z_index = 4096
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="NinePatchRect" parent="."]
+modulate = Color( 0.113725, 0.113725, 0.14902, 1 )
 margin_right = 40.0
 margin_bottom = 40.0
-mouse_filter = 2
-color = Color( 0, 0, 0, 0.498039 )
+texture = ExtResource( 4 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Label" type="RichTextLabel" parent="."]
 margin_right = 92.0
@@ -38,7 +38,7 @@ custom_colors/selection_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
 bbcode_text = "[b]help[/b]
 "
-text = "help
+text = "
 "
 fit_content_height = true
 scroll_active = false

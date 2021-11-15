@@ -1,4 +1,5 @@
-extends Control
+extends Node2D
+class_name Tooltip
 
 const MOUSE_OFFSET = Vector2(7, 6)
 const PADDING = 4
@@ -6,17 +7,16 @@ const PADDING = 4
 onready var label = $Label
 onready var bg = $BG
 
+var id: String
+
 
 func _ready() -> void:
-	var wc = WeaponConstructor.new()
-	var weapon = wc.generate_weapon()
-	set_tooltip(ToolTipGenerator.tooltips(weapon))
-	#set_tooltip("Spgahetti\nDMG: 12\nAccuracy: 15\nsdfusdkjdfsdfsasdasdasdad\n")
+	set_tooltip("")
 
 
 func _process(delta: float) -> void:
-	rect_global_position = get_global_mouse_position()
-	rect_global_position -= bg.rect_size+MOUSE_OFFSET
+	global_position = get_global_mouse_position()
+	global_position -= bg.rect_size+MOUSE_OFFSET
 	bg.rect_position = label.rect_position-Vector2.ONE*PADDING
 	bg.rect_size = label.rect_size+Vector2(0, PADDING*2)
 
@@ -28,7 +28,7 @@ func set_tooltip(tooltip:String) -> void:
 		show()
 		label.bbcode_text = tooltip.left(tooltip.find_last("\n"))
 		
-		var tt:String = label.text
+		var tt:String = label.text+"\n"
 		
 		var font:Font = label.get_font("bold_font")
 		var longestLine = "b"
@@ -45,5 +45,5 @@ func set_tooltip(tooltip:String) -> void:
 			> font.get_string_size(longestLine).x:
 				longestLine = line
 		
-		var size:int = font.get_string_size(longestLine).x+16
+		var size:int = font.get_string_size(longestLine).x+(PADDING*.5)
 		label.rect_size.x = size

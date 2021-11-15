@@ -109,6 +109,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Items/Weapons/WeaponGeneration/TooltipGenerator.gd"
 }, {
+"base": "Node2D",
+"class": "Tooltip",
+"language": "GDScript",
+"path": "res://UI/ToolTip/ToolTip.gd"
+}, {
 "base": "Line2D",
 "class": "Trail",
 "language": "GDScript",
@@ -170,6 +175,7 @@ _global_script_class_icons={
 "Rooms": "",
 "SoundManager": "",
 "ToolTipGenerator": "",
+"Tooltip": "",
 "Trail": "",
 "Upgrade": "",
 "Utils": "",
@@ -192,6 +198,7 @@ Memory="*res://Managing/MemoryManager.gd"
 Settings="*res://Managing/settings.gd"
 Cursor="*res://UI/Cursor/Cursor.tscn"
 FastTravel="*res://World/Props/FastTravelStation/FastTravel.gd"
+ToolTip="*res://UI/ToolTip/ToolTip.tscn"
 
 [debug]
 
