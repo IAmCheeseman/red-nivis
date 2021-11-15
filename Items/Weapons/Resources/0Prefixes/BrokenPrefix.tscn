@@ -5,3 +5,16 @@
 [node name="Broken" instance=ExtResource( 1 )]
 isPrefix = true
 damage = -0.1
+accuracy = 0.5
+multishot = 0.0
+projSpeed = 0
+projScale = -0.2
+projLifetime = -0.333
+recoil = 0.5
+cost = 0
+maxHoldShots = 0
+reloadSpeed = 0.2
+kickUp = 0.0
+bulletSpawnDist = 0.0
+ssFreq = 0.0
+ssStrength = 0.0
