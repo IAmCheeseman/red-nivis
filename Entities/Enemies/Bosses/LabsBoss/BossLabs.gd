@@ -101,8 +101,9 @@ func _process(delta: float) -> void:
 					fireStateTimer.start()
 					fireCount = 0
 					state = IDLE
-				fire_state(delta)
-				gunAnim.play("ChargeUp")
+				else:
+					fire_state(delta)
+					gunAnim.play("ChargeUp")
 			FIRE_FAST:
 				fire_state(delta)
 				# Firing
@@ -240,6 +241,8 @@ func _on_charge_bullet_hit(bulletPosition: Vector2, oldBullet:Node2D) -> void:
 		newBullet.set_meta("bounceTimes", oldBullet.get_meta("bounceTimes")+1)
 		
 		GameManager.spawnManager.spawn_object(newBullet)
+	if oldBullet.get_meta("bounceTimes") >= 5:
+		chargeShotCurrentCount -= 1
 	
 	raycast.queue_free()
 
