@@ -9,7 +9,7 @@ func _on_Continue_button_up():
 	Resetter.reset()
 
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+	get_tree().change_scene("res://UI/UpgradeSelection/UpgradeSelection.tscn")
 
 
 func _on_Quit_button_up():

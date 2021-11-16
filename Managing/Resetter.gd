@@ -8,7 +8,7 @@ static func reset() -> void:
 	var worldData = preload("res://World/WorldManagement/WorldData.tres")
 	
 	playerData.isDead = false
-	playerData.maxHealth = 5
+	playerData.maxHealth = 4
 	playerData.health = playerData.maxHealth
 	playerData.maxStamina = 3
 	playerData.money = 0
@@ -17,6 +17,7 @@ static func reset() -> void:
 	inventory.setup()
 	
 	worldData.rooms.clear()
+	worldData.playerPos = Vector2(160, 32)
 	
 	FastTravel.discoveredStations.clear()
 	

@@ -22,7 +22,7 @@ func _on_quittm_pressed():
 	Resetter.reset()
 	get_tree().paused = false
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+	get_tree().change_scene("res://UI/UpgradeSelection/UpgradeSelection.tscn")
 
 
 func _on_quittd_pressed():
