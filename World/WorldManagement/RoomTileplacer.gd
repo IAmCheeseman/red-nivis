@@ -350,6 +350,11 @@ func spawn_enemies() -> void:
 			"res://Entities/Effects/EnemySpawn.tscn").instance()
 		spawner.position = spawnPos*world.solids.cell_size
 		spawner.position.x += world.solids.cell_size.x*.5
+		spawner.position.y = clamp(
+			spawner.position.y,
+			32,
+			(world.solids.get_used_rect().end.y*16)-32
+		)
 		spawner.enemyPool = enemyPool
 		
 		world.enemies.add_child(spawner)

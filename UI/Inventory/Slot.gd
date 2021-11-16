@@ -41,7 +41,7 @@ func update_index():
 	indexLabel.text = str(get_index()+1)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var rect = get_global_rect()
 	if rect.has_point(get_global_mouse_position()):
 		_on_mouse_entered()

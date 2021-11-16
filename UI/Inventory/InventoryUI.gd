@@ -85,10 +85,6 @@ func set_slot_cursor_position():
 
 func _input(event):
 	randomize()
-	if Input.is_key_pressed(KEY_P):
-		var items_ = inventory.itemMap.keys()
-		items_.shuffle()
-		inventory.add_item(items_.pop_front())
 
 	# Slot scrolling
 	if !playerData.isDead and !GameManager.inGUI:

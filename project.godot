@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Player/Scripts/PlayerResource.gd"
 }, {
+"base": "Reference",
+"class": "Resetter",
+"language": "GDScript",
+"path": "res://Managing/Resetter.gd"
+}, {
 "base": "Node",
 "class": "RoomGenerator",
 "language": "GDScript",
@@ -171,6 +176,7 @@ _global_script_class_icons={
 "LootTable": "",
 "MoneyDropper": "",
 "Player": "",
+"Resetter": "",
 "RoomGenerator": "",
 "Rooms": "",
 "SoundManager": "",

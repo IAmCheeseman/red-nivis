@@ -6,29 +6,14 @@ var worldData = preload("res://World/WorldManagement/WorldData.tres")
 
 
 func _on_Continue_button_up():
-	inventory.setup()
-	playerData.isDead = false
-	playerData.health = playerData.maxHealth
-	playerData.ammo = playerData.maxAmmo
-	Engine.time_scale = 1
-	FastTravel.discoveredStations.clear()
+	Resetter.reset()
 
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
 
 
 func _on_Quit_button_up():
-	inventory.setup()
-	playerData.isDead = false
-	playerData.health = playerData.maxHealth
-	playerData.ammo = playerData.maxAmmo
-	Engine.time_scale = 1
-	
-	randomize()
-	worldData.generate_world()
-	
-	FastTravel.discoveredStations.clear()
-	
+	Resetter.reset()
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://UI/UpgradeSelection/UpgradeSelection.tscn")
 

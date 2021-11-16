@@ -14,7 +14,7 @@ func _ready() -> void:
 	set_tooltip("")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
 	global_position -= bg.rect_size+MOUSE_OFFSET
 	bg.rect_position = label.rect_position-Vector2.ONE*PADDING
@@ -45,5 +45,5 @@ func set_tooltip(tooltip:String) -> void:
 			> font.get_string_size(longestLine).x:
 				longestLine = line
 		
-		var size:int = font.get_string_size(longestLine).x+(PADDING*.5)
+		var size:float = font.get_string_size(longestLine).x+(PADDING*.5)
 		label.rect_size.x = size

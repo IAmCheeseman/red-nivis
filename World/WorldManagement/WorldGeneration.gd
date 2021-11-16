@@ -73,7 +73,16 @@ func generate_world(seed_:int=randi()) -> Array:
 					if room.biome: if room.biome.name != "Labs": break
 					
 					rooms[x][y].constantRoom = preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres")
-
+	
+	while true:
+		topLabsLayer.shuffle()
+		var er = topLabsLayer.pop_front()
+		if (!rooms[er.x][er.y].biome or rooms[er.x][er.y].constantRoom) and topLabsLayer.size() > 0:
+			continue
+		rooms[er.x][er.y].constantRoom = preload("res://World/ConstantRooms/Rooms/StartingRoom.tres")
+		rooms[er.x][er.y].isStartingRoom = true
+		break
+	
 	for i in constantRooms.rooms.duplicate():
 		var position:Vector2
 		for _j in int(rand_range(i.usesMin+1, i.usesMax)):
@@ -91,19 +100,11 @@ func generate_world(seed_:int=randi()) -> Array:
 					position = Vector2(
 						rand_range(0, width-1),
 						rand_range(0, height-1)).round()
-					if rooms[position.x][position.y].biome != null:
+					if rooms[position.x][position.y].biome != null\
+					and rooms[position.x][position.y].constantRoom == null:
 						break
 			rooms[position.x][position.y].constantRoom = i
 			rooms[position.x][position.y].roomIcon = i.roomIcon
-	
-	while true:
-		topLabsLayer.shuffle()
-		var er = topLabsLayer.front()
-		if !rooms[er.x][er.y].biome:
-			continue
-		rooms[er.x][er.y].constantRoom = preload("res://World/ConstantRooms/Rooms/StartingRoom.tres")
-		rooms[er.x][er.y].isStartingRoom = true
-		break
 	
 	return rooms
 	
