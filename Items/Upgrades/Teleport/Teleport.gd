@@ -18,6 +18,7 @@ func _input(_event: InputEvent) -> void:
 		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
 		dashDir.y = Input.get_action_strength("down")
 		dashDir = dashDir.normalized()*64
+		if dashDir == Vector2.ZERO: return
 		
 		rc.global_position = player.global_position+(Vector2.UP*8)
 		rc.cast_to = dashDir.normalized()*70
