@@ -9,7 +9,7 @@ func _process(_delta: float) -> void:
 	if !player: return
 	
 	var isNotJumping = player.vel.y > 0
-	if player.is_grounded()\
+	if player.is_on_floor()\
 	or player.state == player.states.WALLSLIDE\
 	and isNotJumping:
 		hasJumped = false
