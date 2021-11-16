@@ -40,7 +40,15 @@ func update_stamina() -> void:
 
 
 func _on_stamina_changed() -> void:
-	regainTimer.start()
+	if playerData.stamina != 0:
+		# Getting the point on a curve for stamina regain time
+		regainTimer.start(
+			playerData.staminaRecovery*playerData.stamRecovCurve.interpolate_baked(
+				1-(1/playerData.stamina)
+			)
+		)
+	else:
+		regainTimer.start(playerData.staminaRecovery)
 	update_stamina()
 
 

@@ -17,7 +17,9 @@ export var friction:float = 3.0
 export var kbStrength:int = 45
 export var maxDashes:int = 1
 export var recoveryTime:float = 2.0
-export var maxStamina := 3
+export var maxStamina := 5
+export var staminaRecovery := 2.4
+export var stamRecovCurve: Curve
 export var tiltStrength:float = 5.0
 
 var health:int
