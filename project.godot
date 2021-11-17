@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://World/ConstantRooms/ConstantRoomResource.gd"
 }, {
+"base": "Button",
+"class": "CustomButton",
+"language": "GDScript",
+"path": "res://UI/PauseMenu/CustomButton.gd"
+}, {
 "base": "Node2D",
 "class": "CustomParallax",
 "language": "GDScript",
@@ -161,6 +166,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ConstantRoom": "",
+"CustomButton": "",
 "CustomParallax": "",
 "DataManager": "",
 "DialogInteraction": "",
@@ -420,6 +426,10 @@ map={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Decor"
 2d_physics/layer_5="Platforms"
+
+[locale]
+
+translations=PoolStringArray( "res://Translations/text.en.translation" )
 
 [rendering]
 

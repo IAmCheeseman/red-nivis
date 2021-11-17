@@ -10,7 +10,7 @@ static func tooltips(data: Dictionary) -> String:
 	var tooltip = ""
 	
 	tooltip = "[b][color=#c7cfcc]%s[/color][/b]\n\n" % data.name
-	tooltip += "[color=#a53030]DMG[/color]%s [color=#c7cfcc]%s[/color]\n" % [COLON, int(data.damage)]
+	tooltip += "[color=#a53030]Damage[/color]%s [color=#c7cfcc]%s[/color]\n" % [COLON, int(data.damage)]
 	if data.multishot > 1:
 		tooltip += "[color=#a53030]Multishot[/color]%s [color=#c7cfcc]%s[/color]\n" % [COLON, int(data.multishot)]
 	tooltip += "[color=#468232]Cooldown[/color]%s [color=#c7cfcc]%s[/color]\n" % [COLON, data.cooldown]
