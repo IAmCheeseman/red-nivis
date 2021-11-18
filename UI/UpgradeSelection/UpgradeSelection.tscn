@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Items/Upgrades/Teleport/Teleport.tres" type="Resource" id=1]
 [ext_resource path="res://Items/Upgrades/StickyGlove/WallJump.tres" type="Resource" id=2]
 [ext_resource path="res://UI/UpgradeSelection/UpgradeSlot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Assets/FFFFORWA.TTF" type="DynamicFontData" id=4]
-[ext_resource path="res://UI/Assets/PlayButtonPressed.png" type="Texture" id=5]
+[ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=5]
 [ext_resource path="res://UI/UpgradeSelection/UpgradeSelection.gd" type="Script" id=6]
-[ext_resource path="res://UI/Assets/PlayButton.png" type="Texture" id=7]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
@@ -41,7 +40,7 @@ __meta__ = {
 margin_left = 87.0
 margin_top = 35.0
 margin_right = 169.0
-margin_bottom = 205.0
+margin_bottom = 204.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -113,13 +112,12 @@ margin_bottom = 141.0
 rect_min_size = Vector2( 0, 26 )
 alignment = 1
 
-[node name="DoneButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
-margin_left = 20.0
+[node name="DoneButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 153.0
-margin_right = 61.0
-margin_bottom = 170.0
-size_flags_horizontal = 4
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 5 )
+margin_right = 82.0
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 8 )
+text = "Start"
+script = ExtResource( 5 )
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/DoneButton" to="." method="_on_done_pressed"]

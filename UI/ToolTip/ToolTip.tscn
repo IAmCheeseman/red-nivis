@@ -3,7 +3,7 @@
 [ext_resource path="res://UI/ToolTip/ToolTip.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://UI/Assets/ToolTipBG.png" type="Texture" id=4]
+[ext_resource path="res://UI/Assets/ui.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -25,10 +25,14 @@ script = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 4 )
+region_rect = Rect2( 135, 0, 5, 5 )
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="RichTextLabel" parent="."]
 margin_right = 92.0

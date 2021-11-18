@@ -34,9 +34,9 @@ stretch_mode = 4
 
 [node name="Name" type="Label" parent="."]
 visible = false
-margin_left = -18.0
+margin_left = -18.5
 margin_top = 26.0
-margin_right = -18.0
+margin_right = 44.5
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 4 )
 text = "Rocket Boots"

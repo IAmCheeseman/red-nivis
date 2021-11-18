@@ -429,7 +429,7 @@ map={
 
 [locale]
 
-translations=PoolStringArray( "res://Translations/text.en.translation" )
+translations=PoolStringArray(  )
 
 [rendering]
 
