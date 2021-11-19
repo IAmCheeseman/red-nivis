@@ -28,7 +28,6 @@ func _ready() -> void:
 	flat = true
 
 
-
 func _on_mouse_entered() -> void:
 	text = "> %s <" % _originalText
 	var timer = get_tree().create_timer(.01)
