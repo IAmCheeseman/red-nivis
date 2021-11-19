@@ -32,7 +32,7 @@ worldPath = NodePath("../..")
 playerPath = NodePath("..")
 mistClumpSize = 1
 mistClumRange = 1
-strength = 0.05
+strength = 0.07
 
 [node name="SpawningManagment" parent="Props" instance=ExtResource( 12 )]
 
