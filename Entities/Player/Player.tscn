@@ -29,13 +29,13 @@
 [ext_resource path="res://Entities/Player/Assets/Hit.wav" type="AudioStream" id=28]
 [ext_resource path="res://Entities/Player/StaminaBar.gd" type="Script" id=29]
 
-[sub_resource type="Shader" id=21]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;"
 
-[sub_resource type="ShaderMaterial" id=22]
-shader = SubResource( 21 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 uniform float is_on : hint_range(0, 1);
@@ -67,23 +67,23 @@ void fragment() {
 	COLOR = mix(pixel, line_color, outline - color.a);
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/is_on = 0.0
 shader_param/line_color = Color( 0.435294, 0.721569, 0.74902, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 4, 7 )
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 4.0
 height = 5.69744
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=7]
 radius = 4.0
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
 uniform float darkness;
@@ -99,22 +99,22 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
 shader_param/darkness = 0.489
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/vignette = ExtResource( 26 )
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 19 )
 shader_param/strength = 1.0
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=11]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -130,7 +130,7 @@ tracks/0/keys = {
 "values": [ 18 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
@@ -157,8 +157,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "DoubleJump"
+[sub_resource type="Animation" id=14]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
@@ -185,7 +184,7 @@ tracks/1/keys = {
 "values": [ Vector2( -7, 1 ), Vector2( -7, 2 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=15]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -237,7 +236,7 @@ tracks/3/keys = {
 "values": [ Vector2( -7, 2 ), Vector2( -7, 2 ), Vector2( -7, 2 ), Vector2( -7, 3 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=16]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -277,7 +276,7 @@ tracks/2/keys = {
 "values": [ Vector2( -7, 3 ), Vector2( -7, 1 ), Vector2( -7, 2 ), Vector2( -7, 3 ), Vector2( -7, 1 ), Vector2( -7, 2 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=17]
 length = 0.6
 loop = true
 step = 0.05
@@ -364,8 +363,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "WallSlide"
+[sub_resource type="Animation" id=18]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -405,7 +403,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=19]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -433,7 +431,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=20]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
 tracks/0/interp = 1
@@ -447,7 +445,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=21]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -462,7 +460,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.5, 0.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=22]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:material:shader_param/is_on")
@@ -480,7 +478,7 @@ tracks/0/keys = {
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-material = SubResource( 22 )
+material = SubResource( 2 )
 position = Vector2( 0, -3 )
 collision_layer = 0
 collision_mask = 25
@@ -490,7 +488,7 @@ script = ExtResource( 2 )
 position = Vector2( 0, 5 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 0, -15.334 )
 scale = Vector2( 1, 0.969635 )
 texture = ExtResource( 1 )
@@ -515,7 +513,7 @@ offset = Vector2( 0.5, 0 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -5 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Sounds" type="Node2D" parent="."]
 
@@ -547,14 +545,14 @@ immTime = 0.8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( -1, -4 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 13 )]
 visible = false
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 position = Vector2( 0, -3 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="FloorCheckers" type="Node2D" parent="."]
 position = Vector2( 0, 1 )
@@ -630,7 +628,7 @@ __meta__ = {
 
 [node name="HealthVig" type="ColorRect" parent="CanvasLayer"]
 modulate = Color( 1, 1, 1, 0 )
-material = SubResource( 7 )
+material = SubResource( 9 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -640,7 +638,7 @@ __meta__ = {
 }
 
 [node name="GrayScaleDeath" type="ColorRect" parent="CanvasLayer"]
-material = SubResource( 8 )
+material = SubResource( 10 )
 use_parent_material = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -717,7 +715,7 @@ margin_right = 235.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 100, 16 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 9 )
+custom_fonts/normal_font = SubResource( 11 )
 bbcode_enabled = true
 bbcode_text = "[center][shake rate=45 level=8]Game Over[/shake]"
 text = "Game Over"
@@ -804,21 +802,21 @@ wait_time = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-anims/Dead = SubResource( 10 )
-anims/Die = SubResource( 11 )
-anims/DoubleJump = SubResource( 12 )
-anims/Idle = SubResource( 13 )
-anims/Jump = SubResource( 14 )
-anims/Run = SubResource( 15 )
-anims/WallSlide = SubResource( 16 )
+anims/Dead = SubResource( 12 )
+anims/Die = SubResource( 13 )
+anims/DoubleJump = SubResource( 14 )
+anims/Idle = SubResource( 15 )
+anims/Jump = SubResource( 16 )
+anims/Run = SubResource( 17 )
+anims/WallSlide = SubResource( 18 )
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
-anims/Dash = SubResource( 17 )
-anims/Jump = SubResource( 18 )
-anims/Land = SubResource( 19 )
+anims/Dash = SubResource( 19 )
+anims/Jump = SubResource( 20 )
+anims/Land = SubResource( 21 )
 
 [node name="Flash" type="AnimationPlayer" parent="."]
-anims/flash = SubResource( 20 )
+anims/flash = SubResource( 22 )
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
