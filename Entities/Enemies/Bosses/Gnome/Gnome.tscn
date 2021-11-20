@@ -74,7 +74,7 @@ position = Vector2( 0, -9 )
 texture = ExtResource( 1 )
 hframes = 5
 vframes = 3
-frame = 6
+frame = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -109,12 +109,17 @@ cast_to = Vector2( 0, 5 )
 one_shot = true
 autostart = true
 
+[node name="TargetChangeTimer" type="Timer" parent="Timers"]
+wait_time = 4.0
+autostart = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Falling = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
 [connection signal="timeout" from="Timers/JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="Timers/TargetChangeTimer" to="." method="_on_target_change_timer_timeout"]
 
 [editable path="Collisions/Hitbox"]
 [editable path="Collisions/PlayerDetection"]

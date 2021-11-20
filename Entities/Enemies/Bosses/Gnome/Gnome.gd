@@ -14,6 +14,8 @@ export var jumpForce:int = 400
 export var speed:int = 80
 export var accel:float = 4
 
+var stick = preload("res://Entities/Enemies/Bosses/Gnome/Stick.tscn")
+
 var vel := Vector2.ZERO
 var target := 0
 
@@ -69,3 +71,17 @@ func _on_jump_timer_timeout() -> void:
 	#if !floorRC.is_colliding(): return 
 	vel.y = -jumpForce
 	jumpTimer.start(rand_range(1, 2))
+	instance_stick(vel)
+
+
+func instance_stick(dir: Vector2) -> void:
+	var newStick = stick.instance()
+	newStick.dir = (dir.normalized()).rotated(
+		deg2rad(rand_range(-12, 12))
+		)*450
+	newStick.global_position = global_position
+	GameManager.spawnManager.spawn_object(newStick)
+
+
+func _on_target_change_timer_timeout() -> void:
+	get_target()
