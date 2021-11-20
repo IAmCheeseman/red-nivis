@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-enum { TARGET, BOUNCE }
+enum { TARGET, SWIPE, BOUNCE }
 
 onready var anim = $AnimationPlayer
 onready var sprite = $Sprite
 
 onready var jumpTimer = $Timers/JumpTimer
+onready var attacktimer = $Timers/AttackTimer
 
 onready var playerDetection = $Collisions/PlayerDetection
 onready var floorRC = $Collisions/Floor
@@ -29,12 +30,19 @@ func _physics_process(delta: float) -> void:
 		player = playerDetection.get_player()
 		anim.play("Idle")
 		get_target()
+		# Animating
+		if floorRC.is_colliding():
+			anim.play("Idle")
+		else:
+			anim.play("Falling")
 	else:
 		match state: 
 			TARGET:
 				target_state(delta)
 			BOUNCE:
 				bounce_state(delta)
+			SWIPE:
+				anim.play("Attack")
 	
 	vel.y = move_and_slide(vel).y
 
@@ -62,16 +70,22 @@ func bounce_state(delta: float) -> void:
 	pass
 
 
+
 func get_target() -> void:
 	if player:
 		target = player.global_position.x + rand_range(-64, 64)
 
 
-func _on_jump_timer_timeout() -> void:
-	#if !floorRC.is_colliding(): return 
+func _on_jump_timer_timeout() -> void: 
 	vel.y = -jumpForce
-	jumpTimer.start(rand_range(1, 2))
+	jumpTimer.start(rand_range(2, 4))
 	instance_stick(vel)
+
+
+func _on_attack_timer_timeout() -> void:
+	if state == TARGET: 
+		state = SWIPE
+	attacktimer.start(1)
 
 
 func instance_stick(dir: Vector2) -> void:
@@ -85,3 +99,21 @@ func instance_stick(dir: Vector2) -> void:
 
 func _on_target_change_timer_timeout() -> void:
 	get_target()
+
+
+func _on_animation_finished(anim_name: String) -> void:
+	if anim_name == "Attack":
+		state = TARGET
+
+
+func swipe() -> void:
+	var newSwipe = preload(\
+		"res://Entities/Enemies/Bosses/Gnome/GnomeSwing.tscn"\
+	).instance()
+	var pos = global_position
+	pos.y -= 8
+	newSwipe.global_position = pos
+	newSwipe.look_at(pos+(Vector2.LEFT*sprite.scale.x))
+	newSwipe.global_position += Vector2.RIGHT.rotated(newSwipe.rotation)*10
+	newSwipe.reflectDir
+	GameManager.spawnManager.spawn_object(newSwipe)

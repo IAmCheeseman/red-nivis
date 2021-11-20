@@ -139,9 +139,11 @@ maskedHurtbox = "player"
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 3 )
 
-[node name="QueueArea" type="Area2D" parent="."]
+[node name="QueueArea" type="Area2D" parent="." groups=[
+"PlayerBullet",
+]]
 visible = false
-collision_layer = 0
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QueueArea"]
 shape = SubResource( 4 )

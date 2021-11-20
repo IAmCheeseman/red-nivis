@@ -7,7 +7,7 @@ export var maxHealth := 120
 export var kbAmount := 32.0
 export var hurtSFXPath: NodePath
 
-onready var hurtSFX = get_node(hurtSFXPath)
+var hurtSFX:Node2D
 
 var health:int
 
@@ -17,6 +17,7 @@ var damageLabel = preload("res://Entities/Effects/DmgLabel.tscn")
 
 
 func _ready() -> void:
+	if hurtSFXPath: hurtSFX = get_node(hurtSFXPath)
 	health = maxHealth
 
 
