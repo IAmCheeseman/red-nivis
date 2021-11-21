@@ -11,6 +11,8 @@ onready var attacktimer = $Timers/AttackTimer
 onready var playerDetection = $Collisions/PlayerDetection
 onready var floorRC = $Collisions/Floor
 
+onready var dialog = $Dialog
+
 export var jumpForce:int = 400
 export var speed:int = 80
 export var accel:float = 4
@@ -20,12 +22,16 @@ var stick = preload("res://Entities/Enemies/Bosses/Gnome/Stick.tscn")
 var vel := Vector2.ZERO
 var target := 0
 
+var firstTime := true
+
 var player: Node2D
 
 var state := TARGET
 
 func _physics_process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
+	
+	position_dialog()
 	if !player:
 		player = playerDetection.get_player()
 		anim.play("Idle")
@@ -36,6 +42,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			anim.play("Falling")
 	else:
+		if firstTime:
+			firstTime = false
+			dialog.show()
+			dialog.start_dialog()
 		match state: 
 			TARGET:
 				target_state(delta)
@@ -83,7 +93,7 @@ func _on_jump_timer_timeout() -> void:
 
 
 func _on_attack_timer_timeout() -> void:
-	if state == TARGET: 
+	if state == TARGET and floorRC.is_colliding(): 
 		state = SWIPE
 	attacktimer.start(1)
 
@@ -113,7 +123,21 @@ func swipe() -> void:
 	var pos = global_position
 	pos.y -= 8
 	newSwipe.global_position = pos
+	newSwipe.player = player
+	GameManager.spawnManager.spawn_object(newSwipe)
+	yield(get_tree(), "idle_frame")
 	newSwipe.look_at(pos+(Vector2.LEFT*sprite.scale.x))
 	newSwipe.global_position += Vector2.RIGHT.rotated(newSwipe.rotation)*10
-	newSwipe.reflectDir
-	GameManager.spawnManager.spawn_object(newSwipe)
+
+
+func _on_hurt(amount, dir) -> void:
+	if dialog.currentDialogID == "":
+		dialog.show()
+		dialog.start_dialog("Hit%s" % round(rand_range(1, 2)))
+
+
+func position_dialog() -> void:
+	if sprite.scale.x == 1:
+		dialog.rect_position = Vector2(6, -44)
+	else:
+		dialog.rect_position = Vector2(-6, -44)

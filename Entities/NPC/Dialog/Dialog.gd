@@ -101,6 +101,7 @@ func increment_text() -> void:
 	if currentDialog >= currentInteraction.size():
 		hide()
 		emit_signal("done")
+		currentDialogID = ""
 		return
 	
 	# Starting
