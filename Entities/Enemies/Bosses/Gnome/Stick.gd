@@ -7,4 +7,4 @@ var dir := Vector2.RIGHT
 func _physics_process(delta: float) -> void:
 	dir.y += Globals.GRAVITY*delta
 	rotation += 3*delta
-	move_and_slide(dir)
+	var _discard = move_and_slide(dir)
