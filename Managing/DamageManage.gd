@@ -5,6 +5,7 @@ onready var par:Node = get_parent()
 
 export var maxHealth := 120
 export var kbAmount := 32.0
+export var upwardsKB := 0.0
 export var hurtSFXPath: NodePath
 
 var hurtSFX:Node2D
@@ -24,7 +25,7 @@ func _ready() -> void:
 func take_damage(amount:float, dir:Vector2) -> void:
 	var dmg := int(amount+rand_range(-2, 1))
 	health -= dmg
-	par.vel = dir*kbAmount
+	par.vel = dir*kbAmount+(Vector2.UP*upwardsKB)
 	
 	# Instancing label for damage
 	var newDL = damageLabel.instance()

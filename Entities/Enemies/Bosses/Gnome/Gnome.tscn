@@ -10,7 +10,7 @@
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/GnomeDialog.tres" type="Resource" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 3 )
+extents = Vector2( 5, 1 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 4.0
@@ -110,8 +110,7 @@ vframes = 4
 frame = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, -3 )
+position = Vector2( 0, -2 )
 shape = SubResource( 1 )
 
 [node name="Collisions" type="Node2D" parent="."]
@@ -151,6 +150,7 @@ enabled = true
 [node name="DamageManager" parent="." instance=ExtResource( 6 )]
 maxHealth = 650
 kbAmount = 320.0
+upwardsKB = 200.0
 
 [node name="Timers" type="Node" parent="."]
 

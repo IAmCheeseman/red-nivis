@@ -82,14 +82,15 @@ func target_state(delta: float) -> void:
 func bounce_state(delta: float) -> void:
 	anim.play("Falling")
 	bounceHB.get_node("CollisionShape2D").disabled = false
-	bounceRC.cast_to = vel.normalized()*16
+	bounceRC.cast_to = vel.normalized()*5
 	bounceRC.force_raycast_update()
 	if bounceRC.is_colliding():
 		var normal = bounceRC.get_collision_normal()
 		vel = vel.bounce(normal)*1.05
 		vel = vel.rotated(to_local(player.global_position).angle()/5)
-		if bounceTimer.is_stopped():
-			state = SWIPE
+#		if bounceTimer.is_stopped():
+		if bounceRC.cast_to.y > 0:
+			state = TARGET
 
 
 func get_target() -> void:
