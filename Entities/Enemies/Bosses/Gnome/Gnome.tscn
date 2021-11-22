@@ -150,7 +150,7 @@ enabled = true
 [node name="DamageManager" parent="." instance=ExtResource( 6 )]
 maxHealth = 650
 kbAmount = 320.0
-upwardsKB = 200.0
+upwardsKB = 320.0
 
 [node name="Timers" type="Node" parent="."]
 
@@ -168,7 +168,7 @@ one_shot = true
 autostart = true
 
 [node name="BounceTimer" type="Timer" parent="Timers"]
-wait_time = 3.0
+wait_time = 0.2
 one_shot = true
 
 [node name="Dialog" parent="." instance=ExtResource( 7 )]

@@ -81,6 +81,7 @@ func target_state(delta: float) -> void:
 func bounce_state(delta: float) -> void:
 	anim.play("Falling")
 	bounceHB.get_node("CollisionShape2D").disabled = false
+	bounceRC.enabled = bounceTimer.is_stopped()
 	bounceRC.cast_to = vel.normalized()*16
 	bounceRC.force_raycast_update()
 	if bounceRC.is_colliding():
@@ -144,7 +145,11 @@ func swipe() -> void:
 
 func _on_hurt(amount, dir) -> void:
 	state = BOUNCE
+	vel.y = -200
+	position.y -= 8
 	bounceTimer.start()
+	instance_stick(vel)
+	
 	if dialog.currentDialogID == "" and rand_range(0, 1) < .1:
 		dialog.show()
 		dialog.start_dialog("Hit%s" % round(rand_range(1, 2)))
