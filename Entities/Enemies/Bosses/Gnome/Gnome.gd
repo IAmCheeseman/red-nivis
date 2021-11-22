@@ -88,6 +88,7 @@ func bounce_state() -> void:
 		var normal = bounceRC.get_collision_normal()
 		if bounceRC.cast_to.y > 0:
 			state = TARGET
+			bounceHB.get_node("CollisionShape2D").disabled = false
 			return
 		vel = vel.bounce(normal)*1.05
 		vel = vel.rotated(to_local(player.global_position).angle()/5)
@@ -148,7 +149,7 @@ func _on_hurt(_amount, _dir) -> void:
 	vel.y = -200
 	position.y -= 8
 	bounceTimer.start()
-	instance_stick(vel)
+	if anim.current_animation != "Falling": instance_stick(vel)
 	
 	if dialog.currentDialogID == "" and rand_range(0, 1) < .1:
 		dialog.show()
