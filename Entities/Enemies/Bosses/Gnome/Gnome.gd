@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 			TARGET:
 				target_state(delta)
 			BOUNCE:
-				bounce_state(delta)
+				bounce_state()
 			SWIPE:
 				anim.play("Attack")
 	
@@ -78,7 +78,7 @@ func target_state(delta: float) -> void:
 		get_target()
 
 
-func bounce_state(delta: float) -> void:
+func bounce_state() -> void:
 	anim.play("Falling")
 	bounceHB.get_node("CollisionShape2D").disabled = false
 	bounceRC.enabled = bounceTimer.is_stopped()
@@ -95,7 +95,7 @@ func bounce_state(delta: float) -> void:
 
 func get_target() -> void:
 	if player:
-		target = player.global_position.x + rand_range(-64, 64)
+		target = int(player.global_position.x + rand_range(-64, 64))
 
 
 func _on_jump_timer_timeout() -> void:
@@ -143,7 +143,7 @@ func swipe() -> void:
 	newSwipe.global_position += Vector2.RIGHT.rotated(newSwipe.rotation)*10
 
 
-func _on_hurt(amount, dir) -> void:
+func _on_hurt(_amount, _dir) -> void:
 	state = BOUNCE
 	vel.y = -200
 	position.y -= 8
