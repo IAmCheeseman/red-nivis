@@ -107,7 +107,7 @@ position = Vector2( 0, -9 )
 texture = ExtResource( 1 )
 hframes = 5
 vframes = 4
-frame = 15
+frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -2 )
@@ -140,7 +140,7 @@ collision_layer = 4
 shape = SubResource( 4 )
 
 [node name="Floor" type="RayCast2D" parent="Collisions"]
-visible = false
+position = Vector2( 0, -1 )
 enabled = true
 cast_to = Vector2( 0, 5 )
 
