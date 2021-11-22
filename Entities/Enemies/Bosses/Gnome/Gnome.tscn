@@ -145,8 +145,12 @@ visible = false
 enabled = true
 cast_to = Vector2( 0, 5 )
 
+[node name="Bounce" type="RayCast2D" parent="Collisions"]
+enabled = true
+
 [node name="DamageManager" parent="." instance=ExtResource( 6 )]
 maxHealth = 650
+kbAmount = 320.0
 
 [node name="Timers" type="Node" parent="."]
 
@@ -163,6 +167,10 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
+[node name="BounceTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
 [node name="Dialog" parent="." instance=ExtResource( 7 )]
 visible = false
 margin_left = 6.0
@@ -177,8 +185,8 @@ anims/Falling = SubResource( 6 )
 anims/Idle = SubResource( 7 )
 anims/Walk = SubResource( 8 )
 
-[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="Timers/TargetChangeTimer" to="." method="_on_target_change_timer_timeout"]
 [connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]

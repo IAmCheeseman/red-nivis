@@ -7,9 +7,12 @@ onready var sprite = $Sprite
 
 onready var jumpTimer = $Timers/JumpTimer
 onready var attacktimer = $Timers/AttackTimer
+onready var bounceTimer = $Timers/BounceTimer
 
 onready var playerDetection = $Collisions/PlayerDetection
 onready var floorRC = $Collisions/Floor
+onready var bounceHB = $Collisions/BounceHitbox
+onready var bounceRC = $Collisions/Bounce
 
 onready var dialog = $Dialog
 
@@ -77,8 +80,16 @@ func target_state(delta: float) -> void:
 
 
 func bounce_state(delta: float) -> void:
-	pass
-
+	anim.play("Falling")
+	bounceHB.get_node("CollisionShape2D").disabled = false
+	bounceRC.cast_to = vel.normalized()*16
+	bounceRC.force_raycast_update()
+	if bounceRC.is_colliding():
+		var normal = bounceRC.get_collision_normal()
+		vel = vel.bounce(normal)*1.05
+		vel = vel.rotated(to_local(player.global_position).angle()/5)
+		if bounceTimer.is_stopped():
+			state = SWIPE
 
 
 func get_target() -> void:
@@ -86,7 +97,8 @@ func get_target() -> void:
 		target = player.global_position.x + rand_range(-64, 64)
 
 
-func _on_jump_timer_timeout() -> void: 
+func _on_jump_timer_timeout() -> void:
+	if state == BOUNCE: return 
 	vel.y = -jumpForce
 	jumpTimer.start(rand_range(2, 4))
 	instance_stick(vel)
@@ -131,7 +143,9 @@ func swipe() -> void:
 
 
 func _on_hurt(amount, dir) -> void:
-	if dialog.currentDialogID == "":
+	state = BOUNCE
+	bounceTimer.start()
+	if dialog.currentDialogID == "" and rand_range(0, 1) < .1:
 		dialog.show()
 		dialog.start_dialog("Hit%s" % round(rand_range(1, 2)))
 
