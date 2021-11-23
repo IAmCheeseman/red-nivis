@@ -38,6 +38,7 @@ func generate_world(seed_:int=randi()) -> Array:
 						"roomIcon" : null,
 						"discovered" : false,
 						"nearDiscovered" : false,
+						"typeAlwaysVisible": false,
 						"connections" : [],
 						"cleared" : false
 					})
@@ -105,6 +106,7 @@ func generate_world(seed_:int=randi()) -> Array:
 						break
 			rooms[position.x][position.y].constantRoom = i
 			rooms[position.x][position.y].roomIcon = i.roomIcon
+			rooms[position.x][position.y].typeAlwaysVisible = i.typeAlwaysVisible
 	
 	return rooms
 	

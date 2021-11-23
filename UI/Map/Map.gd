@@ -28,7 +28,7 @@ func _ready() -> void:
 				if mapData.rooms[x][y].discovered or GameManager.revealMap:
 					tiles.set_cell(x, y, biome.biomeIndex+1)
 					set_icon(roomIcon, x, y)
-				elif mapData.rooms[x][y].nearDiscovered:
+				elif mapData.rooms[x][y].nearDiscovered or mapData.rooms[x][y].typeAlwaysVisible:
 					set_icon(roomIcon, x, y)
 					
 	camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5

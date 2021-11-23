@@ -7,5 +7,6 @@
 script = ExtResource( 1 )
 scene = ExtResource( 2 )
 mustHave = false
+typeAlwaysVisible = false
 usesMin = 1
 usesMax = 1

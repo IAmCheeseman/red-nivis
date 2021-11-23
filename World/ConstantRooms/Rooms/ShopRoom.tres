@@ -8,6 +8,7 @@
 script = ExtResource( 1 )
 scene = ExtResource( 2 )
 mustHave = false
+typeAlwaysVisible = false
 roomIcon = ExtResource( 3 )
 usesMin = 5
 usesMax = 7
