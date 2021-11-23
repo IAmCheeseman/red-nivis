@@ -29,6 +29,7 @@ func _on_bullet_hit_wall(bullet: Node2D) -> void:
 	var newBullet = bullet.duplicate()
 	newBullet.direction = -bullet.direction
 	newBullet.speed = bullet.speed
+	newBullet.damage = bullet.damage
 	newBullet.lifetime = bullet.lifetimeTimer.time_left
 	
 	newBullet.connect("hit_wall", gun, "_on_bullet_hit_wall")
