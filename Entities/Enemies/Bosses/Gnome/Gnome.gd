@@ -153,7 +153,7 @@ func _on_hurt(_amount, _dir) -> void:
 	
 	if dialog.currentDialogID == "" and rand_range(0, 1) < .1:
 		dialog.show()
-		dialog.start_dialog("Hit%s" % round(rand_range(1, 2)))
+		dialog.start_dialog("Hit%s" % round(rand_range(1, 3)))
 
 
 func position_dialog() -> void:
