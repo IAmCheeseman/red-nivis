@@ -17,10 +17,8 @@ func _on_start_timer_timeout() -> void:
 
 
 func _on_enemy_added(enemy) -> void:
-	var timer = get_tree().create_timer(.01)
-	timer.connect("timeout", self, "_reparent_enemy", [enemy])
-
-func _reparent_enemy(enemy) -> void:
+	yield(TempTimer.idle_frame(self), "timeout")
+	
 	enemy.get_parent().remove_child(enemy)
 	get_parent().add_child(enemy)
 

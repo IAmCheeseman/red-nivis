@@ -120,6 +120,11 @@ _global_script_classes=[ {
 "path": "res://Managing/SoundManager.gd"
 }, {
 "base": "Reference",
+"class": "TempTimer",
+"language": "GDScript",
+"path": "res://Managing/TempTimer.gd"
+}, {
+"base": "Reference",
 "class": "ToolTipGenerator",
 "language": "GDScript",
 "path": "res://Items/Weapons/WeaponGeneration/TooltipGenerator.gd"
@@ -192,6 +197,7 @@ _global_script_class_icons={
 "RoomGenerator": "",
 "Rooms": "",
 "SoundManager": "",
+"TempTimer": "",
 "ToolTipGenerator": "",
 "Tooltip": "",
 "Trail": "",

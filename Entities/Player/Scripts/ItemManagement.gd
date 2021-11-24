@@ -28,12 +28,9 @@ func add_item():
 		newItem.stats = item
 		newItem.player = playerData
 		
-		var timer = get_tree().create_timer(.01)
-		timer.connect("timeout", self, "add_item_to_player", [item, newItem])
+		yield(TempTimer.idle_frame(self), "timeout")
 
-
-func add_item_to_player(item, newItem) -> void:
-	playerData.maxAmmo = item.magazineSize
-	playerData.ammo = playerData.maxAmmo
-	
-	itemHolder.add_child(newItem)
+		playerData.maxAmmo = item.magazineSize
+		playerData.ammo = playerData.maxAmmo
+		
+		itemHolder.add_child(newItem)

@@ -30,11 +30,8 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	text = "> %s <" % _originalText
-	var timer = get_tree().create_timer(.01)
-	timer.connect(
-		"timeout", self, "set",
-		["rect_position", _originalPosition+Vector2.UP]
-	)
+	yield(TempTimer.idle_frame(self), "timeout")
+	rect_position = _originalPosition+Vector2.UP
 
 
 func _on_mouse_exited() -> void:
