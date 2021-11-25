@@ -1,7 +1,10 @@
 extends Node
 
-var vignette = true
-var cameraLook = 1
-var screenshake = 1
-var playerTilt = true
+enum {GRAPHICS_LOW, GRAPHICS_NORMAL, GRAPHICS_HIGH}
 
+# Graphics
+var graphicsQuality := GRAPHICS_NORMAL
+var screenshake := 1.0
+
+# Gameplay
+var keybinds = {}

@@ -55,8 +55,6 @@ func _ready():
 	# Making sure players cannot come back to life by leaving an area
 	if playerData.isDead:
 		die()
-	if !Settings.vignette:
-		vignette.queue_free()
 	playerData.playerObject = self
 	grayscale.material.set_shader_param("strength", 1)
 	playerData.connect("healthChanged", self, "_on_health_changed")

@@ -43,7 +43,7 @@ func _process(_delta):
 	
 	var mousePosition = get_global_mouse_position()
 	var dirMouse = global_position.direction_to(mousePosition)
-	var mouseDist = (global_position.distance_to(mousePosition)/sensitivity)*Settings.cameraLook
+	var mouseDist = (global_position.distance_to(mousePosition)/sensitivity)
 	mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
 	global_position += (dirMouse*mouseDist)*int(mouseWeight)
 
