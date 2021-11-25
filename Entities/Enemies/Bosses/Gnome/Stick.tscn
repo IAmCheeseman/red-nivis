@@ -15,7 +15,7 @@ texture = ExtResource( 2 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
 collision_mask = 2
-damage = 3
+damage = 100000
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 1 )

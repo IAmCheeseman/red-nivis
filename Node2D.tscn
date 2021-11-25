@@ -18,7 +18,7 @@ tile_data = PoolIntArray( -851974, 0, 0, -851973, 0, 1, -851972, 0, 1, -851971, 
 position = Vector2( 239, -67 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -10 )
+position = Vector2( 7.62939e-06, -18.4635 )
 
 [node name="CameraMoveZone" parent="." instance=ExtResource( 4 )]
 visible = false
