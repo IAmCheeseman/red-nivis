@@ -9,6 +9,5 @@ script = ExtResource( 1 )
 scene = ExtResource( 3 )
 biome = ExtResource( 2 )
 mustHave = true
-typeAlwaysVisible = false
 usesMin = 0
 usesMax = 0

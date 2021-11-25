@@ -243,7 +243,7 @@ search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/abfi/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 
@@ -438,10 +438,6 @@ map={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Decor"
 2d_physics/layer_5="Platforms"
-
-[locale]
-
-translations=PoolStringArray(  )
 
 [rendering]
 
