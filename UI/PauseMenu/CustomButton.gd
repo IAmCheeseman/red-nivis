@@ -24,8 +24,10 @@ func _ready() -> void:
 	
 	_originalPosition = rect_position
 	_originalText = text
+	
 	focus_mode = Control.FOCUS_NONE
 	flat = true
+	size_flags_horizontal = SIZE_SHRINK_CENTER
 
 
 func _on_mouse_entered() -> void:

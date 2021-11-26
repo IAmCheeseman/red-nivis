@@ -1,9 +1,59 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=2]
 [ext_resource path="res://UI/Settings/OptionsMenu.gd" type="Script" id=3]
 [ext_resource path="res://UI/Settings/OptionSlider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/CustomOptionButton.gd" type="Script" id=5]
+[ext_resource path="res://UI/Assets/ui.png" type="Texture" id=6]
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 6 )
+region = Rect2( 151, 53, 7, 5 )
+margin = Rect2( 5, 0, 5, -1 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+[sub_resource type="StreamTexture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.12549, 0.180392, 0.215686, 1 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 141, 0, 28, 29 )
+margin_left = 16.0
+margin_right = 16.0
+margin_top = 16.0
+margin_bottom = 16.0
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 6.0
+expand_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id=5]
+
+[sub_resource type="Theme" id=3]
+OptionButton/fonts/font = ExtResource( 1 )
+OptionButton/icons/arrow = SubResource( 8 )
+OptionButton/styles/disabled = SubResource( 2 )
+OptionButton/styles/focus = SubResource( 2 )
+OptionButton/styles/hover = SubResource( 2 )
+OptionButton/styles/normal = SubResource( 2 )
+OptionButton/styles/pressed = SubResource( 2 )
+PopupMenu/constants/vseparation = 2
+PopupMenu/fonts/font = ExtResource( 1 )
+PopupMenu/icons/radio_checked = SubResource( 6 )
+PopupMenu/icons/radio_unchecked = SubResource( 6 )
+PopupMenu/styles/hover = SubResource( 7 )
+PopupMenu/styles/panel = SubResource( 4 )
+PopupPanel/styles/panel = SubResource( 5 )
 
 [node name="OptionsMenu" type="Control"]
 anchor_right = 1.0
@@ -67,6 +117,9 @@ isNegative = true
 [node name="Menus" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Visuals" type="VBoxContainer" parent="Menus"]
 anchor_right = 1.0
@@ -76,12 +129,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionSlider" parent="Menus/Visuals" instance=ExtResource( 4 )]
+[node name="CustomOptionButton" type="OptionButton" parent="Menus/Visuals"]
+margin_left = 87.0
+margin_top = 98.0
+margin_right = 169.0
+margin_bottom = 108.0
+size_flags_horizontal = 4
+theme = SubResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+text = "Visual Quality"
+align = 1
+script = ExtResource( 5 )
+options = [ "Not Good", "Good", "Gooder" ]
+defaultIndex = 1
+
+[node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 62.0
-margin_top = 115.0
+margin_top = 112.0
 margin_right = 194.0
-margin_bottom = 125.0
+margin_bottom = 122.0
 size_flags_horizontal = 4
 optionName = "Screenshake"
+
+[node name="Back" type="Button" parent="Menus/Visuals"]
+margin_top = 126.0
+margin_right = 256.0
+margin_bottom = 142.0
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+script = ExtResource( 2 )
+isNegative = true

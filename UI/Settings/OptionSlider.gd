@@ -15,6 +15,7 @@ func _ready() -> void:
 
 
 func _on_value_changed(value: float) -> void:
-	at.text = ""+str(value)+"%"
+	slider.value = stepify(value, 2.0)
+	at.text = ""+str(slider.value)+"%"
 	var charsRemaining = 6-at.text.length()
 	yield(TempTimer.idle_frame(self), "timeout")
