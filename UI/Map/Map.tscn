@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Map/Map.gd" type="Script" id=1]
 [ext_resource path="res://UI/Map/MapTiles.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/Assets/MapPositionMarker.png" type="Texture" id=3]
+[ext_resource path="res://UI/Assets/ui.png" type="Texture" id=3]
 [ext_resource path="res://UI/Assets/MapAlpha.png" type="Texture" id=4]
 
 [sub_resource type="Shader" id=1]
@@ -24,6 +24,10 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/alpha = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 82, 48, 16, 16 )
 
 [node name="Map" type="ViewportContainer"]
 process_priority = -1
@@ -47,7 +51,7 @@ render_target_update_mode = 3
 material = SubResource( 2 )
 
 [node name="Player" type="Sprite" parent="Viewport"]
-texture = ExtResource( 3 )
+texture = SubResource( 3 )
 
 [node name="Camera" type="Camera2D" parent="Viewport"]
 current = true

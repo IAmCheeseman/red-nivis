@@ -2,8 +2,8 @@ extends HBoxContainer
 
 
 var playerData = preload("res://Entities/Player/Player.tres")
-var staminaFull = preload("res://UI/Assets/Stamina.png")
-var staminaEmpty = preload("res://UI/Assets/StaminaEmpty.png")
+var staminaFull = preload("res://UI/Assets/StaminaFull.tres")
+var staminaEmpty = preload("res://UI/Assets/StaminaEmpty.tres")
 
 var targetA = 0.0
 

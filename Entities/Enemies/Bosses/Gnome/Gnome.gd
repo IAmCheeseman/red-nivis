@@ -31,6 +31,8 @@ var player: Node2D
 
 var state := TARGET
 
+signal dead
+
 func _physics_process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
 	position_dialog()

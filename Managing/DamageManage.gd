@@ -16,6 +16,8 @@ var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn"
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var damageLabel = preload("res://Entities/Effects/DmgLabel.tscn")
 
+signal dead
+
 
 func _ready() -> void:
 	if hurtSFXPath: hurtSFX = get_node(hurtSFXPath)
@@ -50,6 +52,7 @@ func take_damage(amount:float, dir:Vector2) -> void:
 
 
 func _die(dir) -> void:
+	emit_signal("dead")
 	# Instancing death particles
 	var newDP = deathParticles.instance()
 	newDP.position = global_position

@@ -58,9 +58,9 @@ tile_data = PoolIntArray( 65542, 0, 0, 65543, 0, 0, 65552, 0, 0, 65553, 0, 0, 13
 [node name="GroundProp" parent="." index="5"]
 tile_data = PoolIntArray( 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655365, 0, 0, 655366, 0, 0, 655370, 0, 0, 655375, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655383, 0, 0 )
 
-[connection signal="dead" from="Props/BossLabs" to="Props/DoorBlock3" method="queue_free"]
 [connection signal="dead" from="Props/BossLabs" to="Props/DoorBlock1" method="queue_free"]
 [connection signal="dead" from="Props/BossLabs" to="Props/DoorBlock2" method="queue_free"]
+[connection signal="dead" from="Props/BossLabs" to="Props/DoorBlock3" method="queue_free"]
 [connection signal="dead" from="Props/BossLabs" to="Props/DoorBlock4" method="queue_free"]
 
 [editable path="Props/DoorBlock1"]

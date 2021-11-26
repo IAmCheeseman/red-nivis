@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Entities/Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Scripts/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Entities/Player/Scripts/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/Assets/ui.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Player/Camera/Camera.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/Player/AddAbilities.gd" type="Script" id=12]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=13]
@@ -16,16 +17,13 @@
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=15]
 [ext_resource path="res://Entities/Player/Assets/Vignette.tres" type="Material" id=16]
 [ext_resource path="res://UI/Inventory/Inventory.tscn" type="PackedScene" id=17]
-[ext_resource path="res://UI/Assets/Stamina.png" type="Texture" id=18]
 [ext_resource path="res://Entities/Player/grayscale.shader" type="Shader" id=19]
-[ext_resource path="res://UI/Assets/StaminaEmpty.png" type="Texture" id=20]
 [ext_resource path="res://Entities/Player/Assets/Arm1.png" type="Texture" id=21]
 [ext_resource path="res://Entities/Player/Assets/Hand.png" type="Texture" id=22]
 [ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Entities/Player/Assets/Walk.wav" type="AudioStream" id=24]
 [ext_resource path="res://Entities/Player/Assets/Jump.wav" type="AudioStream" id=25]
 [ext_resource path="res://UI/Assets/vignette.png" type="Texture" id=26]
-[ext_resource path="res://UI/Assets/MenuBG.png" type="Texture" id=27]
 [ext_resource path="res://Entities/Player/Assets/Hit.wav" type="AudioStream" id=28]
 [ext_resource path="res://Entities/Player/StaminaBar.gd" type="Script" id=29]
 
@@ -475,9 +473,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="Player" type="KinematicBody2D" groups=[
-"Player",
-]]
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 material = SubResource( 2 )
 position = Vector2( 0, -3 )
 collision_layer = 0
@@ -535,9 +531,7 @@ volumeMod = 5.0
 pitchShiftRange = 1.2
 bus = "SFX"
 
-[node name="Hurtbox" parent="." groups=[
-"player",
-] instance=ExtResource( 4 )]
+[node name="Hurtbox" parent="." groups=["player"] instance=ExtResource( 4 )]
 visible = false
 collision_layer = 2
 collision_mask = 2147483648
@@ -674,7 +668,8 @@ margin_top = 70.0
 margin_right = 245.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 235, 100 )
-texture = ExtResource( 27 )
+texture = ExtResource( 10 )
+region_rect = Rect2( 141, 0, 28, 29 )
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
@@ -690,7 +685,8 @@ margin_top = 4.0
 margin_right = 200.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 235, 100 )
-texture = ExtResource( 27 )
+texture = ExtResource( 10 )
+region_rect = Rect2( 141, 0, 28, 29 )
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
@@ -731,11 +727,11 @@ alignment = 1
 margin_left = 39.0
 margin_right = 87.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "Restart"
 flat = true
 
@@ -743,11 +739,11 @@ flat = true
 margin_left = 91.0
 margin_right = 160.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "Back to Hub"
 flat = true
 __meta__ = {
@@ -758,11 +754,11 @@ __meta__ = {
 margin_left = 164.0
 margin_right = 196.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 0.388235, 0.388235, 0.388235, 1 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "Quit"
 flat = true
 __meta__ = {
@@ -779,23 +775,6 @@ script = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Stamina1" type="TextureRect" parent="Stamina"]
-margin_right = 4.0
-margin_bottom = 5.0
-texture = ExtResource( 18 )
-
-[node name="Stamina2" type="TextureRect" parent="Stamina"]
-margin_left = 5.0
-margin_right = 9.0
-margin_bottom = 5.0
-texture = ExtResource( 18 )
-
-[node name="Stamina3" type="TextureRect" parent="Stamina"]
-margin_left = 10.0
-margin_right = 14.0
-margin_bottom = 5.0
-texture = ExtResource( 20 )
 
 [node name="RegainTimer" type="Timer" parent="Stamina"]
 wait_time = 3.0
