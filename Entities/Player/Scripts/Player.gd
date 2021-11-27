@@ -26,6 +26,7 @@ onready var jumpSFX = $Sounds/JumpSFX
 onready var walkSFX = $Sounds/WalkSFX
 onready var floorCheckers = $FloorCheckers
 onready var bunnyHopTimer = $BunnyHopTimer
+onready var dropDownTimer = $DropDownTimer
 onready var jumpWindow = $APressWindow
 onready var dashCooldown = $DashCooldown
 onready var healthVig = $CanvasLayer/HealthVig
@@ -87,7 +88,6 @@ func _physics_process(delta):
 			walk_state(delta)
 			sprite.scale.x = -tileChecker.cast_to.normalized().x
 			vel.y /= 1.2
-	
 	lastFrameGroundState = is_grounded()
 
 
@@ -115,8 +115,6 @@ func walk_state(delta):
 		if just_landed():
 			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
 			bunnyHopTimer.start()
-		
-		set_collision_mask_bit(4, !Input.is_action_pressed("down"))
 		
 		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 	else:
@@ -189,7 +187,10 @@ func _input(event):
 	# Adjustable jump height
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
-
+	
+	if Input.is_action_just_pressed("down"):
+		set_collision_mask_bit(4, false)
+		dropDownTimer.start(.05)
 	# Controller Controls
 	# Aiming
 	if event is InputEventJoypadMotion:

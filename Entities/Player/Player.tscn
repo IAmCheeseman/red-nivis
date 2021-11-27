@@ -606,6 +606,9 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
+[node name="DropDownTimer" type="Timer" parent="."]
+wait_time = 0.1
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -799,6 +802,7 @@ anims/flash = SubResource( 22 )
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="DropDownTimer" to="." method="set_collision_mask_bit" binds= [ 4, true ]]
 [connection signal="button_up" from="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen/HBoxContainer/Continue" to="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen" method="_on_Continue_button_up"]
 [connection signal="button_up" from="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen/HBoxContainer/Quit" to="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen" method="_on_Quit_button_up"]
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen/HBoxContainer/QuitDesktop" to="CanvasLayer/GameOverScreen/NinePatchRect/DeathScreen" method="_on_QuitDesktop_pressed"]
