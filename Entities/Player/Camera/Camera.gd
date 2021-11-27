@@ -14,7 +14,7 @@ onready var trackNode = get_node(trackNodePath)
 var lerpSpeed = .3
 var maxOffset = 32
 var baseMaxOffset = maxOffset
-var sensitivity = 6
+var sensitivity = 16
 
 # Screenshake
 var priority = -1

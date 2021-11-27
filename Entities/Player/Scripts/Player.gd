@@ -87,7 +87,7 @@ func _physics_process(delta):
 			walk_state(delta)
 			sprite.scale.x = -tileChecker.cast_to.normalized().x
 			vel.y /= 1.2
-
+	
 	lastFrameGroundState = is_grounded()
 
 

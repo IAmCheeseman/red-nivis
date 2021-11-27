@@ -485,10 +485,10 @@ position = Vector2( 0, 5 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
 material = SubResource( 4 )
-position = Vector2( 0, -15.334 )
+position = Vector2( 0, -15 )
 scale = Vector2( 1, 0.969635 )
 texture = ExtResource( 1 )
-offset = Vector2( -5, 1 )
+offset = Vector2( -5, 0 )
 flip_h = true
 hframes = 6
 vframes = 6
