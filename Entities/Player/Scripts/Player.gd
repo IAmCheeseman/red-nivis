@@ -149,7 +149,8 @@ func animate(moveDir:Vector2):
 
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
-		if vel.y > -playerData.jumpForce*0.15 and !Input.is_action_pressed("down"): SaS.play("Land")
+		if vel.y > -playerData.jumpForce*0.15:
+			SaS.play("Land")
 		dontPlayJump = false
 		if triedJumpRecent:
 			jump()
@@ -234,8 +235,6 @@ func jump():
 	vel.y = -playerData.jumpForce
 	bunny_hop()
 	triedJumpRecent = false
-	# Squash and stretch
-	SaS.play("Jump")
 
 
 func _on_a_press_window_timeout(): triedJumpRecent = false
