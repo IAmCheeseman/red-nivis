@@ -34,7 +34,7 @@ func shoot():
 
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
-		cooldownTimer.start(gun.stats.cooldown)
+		cooldownTimer.start(gun.stats.cooldown*playerData.attackSpeed)
 	# Screenshake
 
 	# Getting the parameters

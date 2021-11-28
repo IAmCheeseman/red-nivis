@@ -4,6 +4,7 @@ class_name ToolTipGenerator
 const DMG_COLOR = Color.red
 const COLON = "[color=#a8b5b2]:[/color]"
 
+const PLAYER_DATA = preload("res://Entities/Player/Player.tres")
 
 
 static func tooltips(data: Dictionary) -> String:
@@ -13,7 +14,7 @@ static func tooltips(data: Dictionary) -> String:
 	tooltip += "[color=#a53030]Damage[/color]%s [color=#c7cfcc]%s[/color]\n" % [COLON, int(data.damage)]
 	if data.multishot > 1:
 		tooltip += "[color=#a53030]Multishot[/color]%s [color=#c7cfcc]%s[/color]\n" % [COLON, int(data.multishot)]
-	tooltip += "[color=#468232]Cooldown[/color]%s [color=#c7cfcc]%s[/color]\n" % [COLON, data.cooldown]
+	tooltip += "[color=#468232]Cooldown[/color]%s [color=#c7cfcc]%s[/color]\n" % [COLON, data.cooldown*PLAYER_DATA.attackSpeed]
 	tooltip += "[color=#468232]Reload[/color]%s [color=#c7cfcc]%s[/color]\n" % [COLON, data.reloadSpeed]
 	# Making bigger number smaller and smaller number bigger
 	var bigSmallAcc = stepify((1/data.accuracy)*27, .01)

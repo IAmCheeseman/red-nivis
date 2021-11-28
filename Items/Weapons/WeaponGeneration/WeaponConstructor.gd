@@ -7,7 +7,7 @@ enum {
 	RARE
 }
 
-var tierChances = [.45, .35, .20]
+var tierChances = [.38, .36, .26]
 
 var perks = [
 	# Common
@@ -180,6 +180,7 @@ func select_tier():
 	for i in tierChances.size():
 		var chance = tierChances[(tierChances.size()-1)-i]
 		if roll >= 1-chance:
+			print("%s: %s" % [i, 1-chance])
 			return i
 
 
@@ -194,5 +195,6 @@ func generate_cost(item:Dictionary):
 
 var parts = [
 	'Pistol',
-	'Shotgun'
+	'Shotgun',
+	'AssaultRifle'
 ]

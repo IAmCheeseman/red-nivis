@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/woosh.wav-d55c53a7ebb4756b9aeef7b2f572c876.sample"
+path="res://.import/Woosh.wav-c30e5427353c4d1e8c5e6b0160e5dc87.sample"
 
 [deps]
 
-source_file="res://Entities/Player/Assets/woosh.wav"
-dest_files=[ "res://.import/woosh.wav-d55c53a7ebb4756b9aeef7b2f572c876.sample" ]
+source_file="res://Entities/Player/Assets/Woosh.wav"
+dest_files=[ "res://.import/Woosh.wav-c30e5427353c4d1e8c5e6b0160e5dc87.sample" ]
 
 [params]
 

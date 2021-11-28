@@ -26,7 +26,7 @@ func setup():
 	for slot in maxSlots:
 		items.append(null)
 	randomize()
-	add_item(WeaponConstructor.new().generate_weapon(randi(), 'Pistol'))
+	add_item(WeaponConstructor.new().generate_weapon(randi(), 'AssaultRifle'))
 
 
 func has_space() -> bool:

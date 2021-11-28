@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Items/Weapons/WeaponGeneration/Body.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Weapons/Resources/AssaultRifle/AssaultRifle.png" type="Texture" id=2]
+
+[node name="Body0" instance=ExtResource( 1 )]
+rarity = 2
+damage = 4.0
+accuracy = 6.0
+cooldown = 0.09
+magazineSize = 32
+kickUp = 8.0
+bulletSpawnDist = 24.0
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 2 )
+texture = ExtResource( 2 )
+offset = Vector2( 1, 1 )
+region_rect = Rect2( 13, 24, 13, 12 )
+
+[node name="Hand1" parent="." index="1"]
+visible = true
+position = Vector2( 5, 5 )
+
+[node name="Hand2" parent="." index="2"]
+visible = true
+position = Vector2( -4, 5 )
+
+[node name="Handle" parent="." index="3"]
+position = Vector2( -5, -1 )
+
+[node name="Sight" parent="." index="4"]
+position = Vector2( -4, -2 )
+
+[node name="Barrel" parent="." index="5"]
+position = Vector2( 6, -1 )
+
+[node name="Slider" parent="." index="6"]
+position = Vector2( -1, 2 )

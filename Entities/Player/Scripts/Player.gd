@@ -138,7 +138,10 @@ func animate(moveDir:Vector2):
 			sprite.rotation_degrees = 0
 			animationPlayer.play("Idle")
 		else:
-			animationPlayer.play("Run")
+			if vel.normalized().x == sprite.scale.x:
+				animationPlayer.play("Run", -1, 1.2)
+			else:
+				animationPlayer.play_backwards("Run", -1)
 	else:
 		if !dontPlayJump:
 			animationPlayer.play("Jump")
