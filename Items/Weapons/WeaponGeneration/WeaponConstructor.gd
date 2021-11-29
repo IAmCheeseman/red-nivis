@@ -180,16 +180,15 @@ func select_tier():
 	for i in tierChances.size():
 		var chance = tierChances[(tierChances.size()-1)-i]
 		if roll >= 1-chance:
-			print("%s: %s" % [i, 1-chance])
 			return i
 
 
 func generate_cost(item:Dictionary):
 	var cost := 50
-	cost += item.damage*1.3
-	cost += item.cooldown*3
-	cost += item.multishot*5
-	cost -= item.accuracy
+	cost += item.damage    * 1.3
+	cost += item.cooldown  *   3
+	cost += item.multishot *   5
+	cost -= item.accuracy  *  .5
 	return cost
 
 

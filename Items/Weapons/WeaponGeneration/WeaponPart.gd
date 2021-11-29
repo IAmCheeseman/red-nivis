@@ -6,7 +6,7 @@ export(
 	"Common",
 	"Uncommon",
 	"Rare"
-) var rarity = .5
+) var rarity = 0
 
 export var isPrefix := false
 
