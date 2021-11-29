@@ -169,6 +169,11 @@ func is_grounded():
 			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump")\
 			else Vector2.ZERO
 			return true
+	if vel.y > 0:
+		scaleHelper.scale.x = clamp(
+			1-abs(vel.y/Globals.GRAVITY),
+			.75, 1.5)
+		scaleHelper.scale.y = 1+(1-scaleHelper.scale.x)
 	return false
 
 func is_on_platform():
