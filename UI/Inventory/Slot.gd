@@ -20,7 +20,6 @@ func _ready():
 func setup(texture, itemID:String, outlineColor:Color=Color.white, tt:String=""):
 	if texture is Node2D:
 		var item = texture.duplicate()
-		item.modulate = Color.black
 		item.scale = Vector2.ONE*.9
 		weaponHolder.add_child(item)
 	else:

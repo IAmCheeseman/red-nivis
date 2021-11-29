@@ -6,7 +6,7 @@
 [node name="Body0" instance=ExtResource( 1 )]
 rarity = 1
 damage = 3.0
-accuracy = 9.0
+accuracy = 14.0
 cooldown = 0.15
 magazineSize = 16
 kickUp = 8.0
