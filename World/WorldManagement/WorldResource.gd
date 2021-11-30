@@ -35,7 +35,7 @@ func get_connected_rooms(room:Vector2) -> Array:
 func set_starting_position() -> void:
 	for x in rooms.size():
 		for y in rooms[0].size():
-			if "isStartingRoom" in rooms[x][y].keys():
+			if rooms[x][y].isStartingRoom:
 				position = Vector2(x, y)
 				return
 

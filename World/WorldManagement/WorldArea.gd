@@ -10,6 +10,7 @@ export var bgColor:Color = Color("#10141f")
 export var mistColor:Color = Color("#734c3a")
 
 # World Gen
+export var startingArea:bool = false
 export var biomeIndex:int = 0
 export var mapColor:Color = Color.white
 
