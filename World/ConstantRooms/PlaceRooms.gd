@@ -25,7 +25,7 @@ func generate_rooms(rooms: Array) -> void:
 				if j.distance_to(selectedPos) <= minDistance:
 					roomOkay = false
 			
-			if selectedRoom.biome != b or !roomOkay: continue
+			if selectedRoom.biome != b or !roomOkay or selectedRoom.constantRoom: continue
 			selectedRoom.constantRoom = room
 			selectedRoom.roomIcon = room.roomIcon
 			usedRooms.append(selectedPos)

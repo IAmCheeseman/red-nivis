@@ -42,6 +42,9 @@ func generate_world(seed_:int=randi()) -> Array:
 						"isStartingRoom" : color.is_equal_approx(STARTING_ROOM),
 						"blockGrowing" : color.is_equal_approx(BLOCKING_ROOM)
 					}
+					if room.isStartingRoom:
+						room.constantRoom = preload(\
+							"res://World/ConstantRooms/Rooms/StartingRoom.tres")
 					rooms[x].append(room)
 	
 	flood_world()
