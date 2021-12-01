@@ -1,7 +1,7 @@
 extends Reference
 class_name WorldGenerator
 
-const BLOCKING_ROOM = Color("#151d28")
+const BLOCKING_ROOM = Color("#000000")
 const STARTING_ROOM = Color("#a8ca58")
 
 export var blowUpSize := 3
@@ -33,6 +33,7 @@ func generate_world(seed_:int=randi()) -> Array:
 					
 					var room = {
 						"color" : color,
+						"possibleBiome" : get_biome_by_color(color, true),
 						"biome" : biome,
 						"constantRoom" : null,
 						"roomIcon" : null,
@@ -46,13 +47,32 @@ func generate_world(seed_:int=randi()) -> Array:
 					}
 					rooms[x].append(room)
 	
+	flood_world()
 	grow_world()
 	
 	return rooms
 
 
+func flood_rooms(position:Vector2, what) -> void:
+	var neighbors = get_neighbors(position, true, false)
+	rooms[position.x][position.y].biome = what
+	rooms[position.x][position.y].possibleBiome = null
+	for i in neighbors:
+		var room = rooms[i.x][i.y]
+		if room.possibleBiome == what:
+			flood_rooms(i, what)
+
+
+func flood_world() -> void:
+	for x in rooms.size():
+		for y in rooms[0].size():
+			var room = rooms[x][y]
+			if room.possibleBiome and rand_range(0, 1) < .5:
+				flood_rooms(Vector2(x, y), room.possibleBiome)
+
+
 func grow_world(growLoops_:int=growLoops) -> void:
-	for i in 3:#growLoops_:
+	for i in 2:#growLoops_:
 		var changes = []
 		for x in rooms.size():
 			for y in rooms[0].size():
@@ -83,7 +103,7 @@ func grow_world(growLoops_:int=growLoops) -> void:
 						break
 				
 				if !goodBiome: continue
-				if (allBiomesSame and rand_range(0, 1) < 0.333)\
+				if (allBiomesSame and rand_range(0, 1) < .2)\
 				and !room.blockGrowing:
 					changes.append({
 						"pos" : Vector2(x, y),
@@ -93,7 +113,7 @@ func grow_world(growLoops_:int=growLoops) -> void:
 			rooms[c.pos.x][c.pos.y].biome = c.to
 
 
-func get_biome_by_color(color:Color):
+func get_biome_by_color(color:Color, getSecondary:bool=false):
 	var biomes = [
 		"res://World/Biomes/Lab.tres", 
 		"res://World/Biomes/DeepLabs.tres",
@@ -101,8 +121,10 @@ func get_biome_by_color(color:Color):
 	]
 	for b in biomes:
 		var biome = load(b)
-		if biome.mapColor.is_equal_approx(color) or\
-		(biome.startingArea and color.is_equal_approx(STARTING_ROOM)):
+		if (biome.mapColor.is_equal_approx(color)) or\
+		(biome.startingArea and color.is_equal_approx(STARTING_ROOM)) and !getSecondary:
+			return biome
+		elif biome.secondaryColor.is_equal_approx(color) and getSecondary:
 			return biome
 	return null
 

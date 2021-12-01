@@ -13,6 +13,7 @@ export var mistColor:Color = Color("#734c3a")
 export var startingArea:bool = false
 export var biomeIndex:int = 0
 export var mapColor:Color = Color.white
+export var secondaryColor:Color = Color.gray
 
 export var growChance:float = .5
 export var middleRemovalChance:float = .666

@@ -20,6 +20,7 @@ mistColor = Color( 0.45098, 0.298039, 0.227451, 1 )
 startingArea = false
 biomeIndex = 1
 mapColor = Color( 0.341176, 0.447059, 0.466667, 1 )
+secondaryColor = Color( 0.223529, 0.290196, 0.313726, 1 )
 growChance = 0.5
 middleRemovalChance = 0.666
 connectionChance = 0.12
