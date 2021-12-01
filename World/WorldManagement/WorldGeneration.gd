@@ -53,22 +53,24 @@ func generate_world(seed_:int=randi()) -> Array:
 	return rooms
 
 
-func flood_rooms(position:Vector2, what) -> void:
+func flood_rooms(position:Vector2, what, searchfor) -> void:
 	var neighbors = get_neighbors(position, true, false)
 	rooms[position.x][position.y].biome = what
 	rooms[position.x][position.y].possibleBiome = null
 	for i in neighbors:
 		var room = rooms[i.x][i.y]
-		if room.possibleBiome == what:
-			flood_rooms(i, what)
+		if room.possibleBiome == searchfor:
+			flood_rooms(i, what, searchfor)
 
 
 func flood_world() -> void:
 	for x in rooms.size():
 		for y in rooms[0].size():
 			var room = rooms[x][y]
-			if room.possibleBiome and rand_range(0, 1) < .5:
-				flood_rooms(Vector2(x, y), room.possibleBiome)
+			if room.possibleBiome and rand_range(0, 1) < 1.0/10.0:
+				flood_rooms(Vector2(x, y), room.possibleBiome, room.possibleBiome)
+			elif room.possibleBiome and !room.biome:
+				flood_rooms(Vector2(x, y), null, room.possibleBiome)
 
 
 func grow_world(growLoops_:int=growLoops) -> void:
