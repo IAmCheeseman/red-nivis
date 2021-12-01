@@ -3,6 +3,7 @@ class_name WorldGenerator
 
 const BLOCKING_ROOM = Color("#000000")
 const STARTING_ROOM = Color("#a8ca58")
+const BOSS_ROOM     = Color("#ff0000")
 
 export var growLoops := 2
 
@@ -40,7 +41,8 @@ func generate_world(seed_:int=randi()) -> Array:
 						"connections" : [],
 						"cleared" : false,
 						"isStartingRoom" : color.is_equal_approx(STARTING_ROOM),
-						"blockGrowing" : color.is_equal_approx(BLOCKING_ROOM)
+						"blockGrowing" : color.is_equal_approx(BLOCKING_ROOM),
+						"bossRoom" : color.is_equal_approx(BOSS_ROOM)
 					}
 					if room.isStartingRoom:
 						room.constantRoom = preload(\
@@ -50,8 +52,11 @@ func generate_world(seed_:int=randi()) -> Array:
 	flood_world()
 	grow_world()
 	
-	var thing = Thing.new()
-	thing.generate_rooms(rooms)
+	var roomPlacer = RoomPlacer.new()
+	var cr = preload("res://World/ConstantRooms/Rooms.tres")
+	for r in cr.rooms:
+		roomPlacer.generate_rooms(
+			rooms, r, r.perBiome, r.minDistOfSameType, r.biomes)
 	
 	return rooms
 

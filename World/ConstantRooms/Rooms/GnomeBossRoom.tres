@@ -3,14 +3,14 @@
 [ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
 [ext_resource path="res://World/ConstantRooms/MapBossTexture.tres" type="Texture" id=2]
 [ext_resource path="res://World/ConstantRooms/Rooms/GnomeBossRoom.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World/Biomes/Lab.tres" type="Resource" id=4]
+[ext_resource path="res://World/Biomes/Caves.tres" type="Resource" id=4]
 
 [resource]
 script = ExtResource( 1 )
 scene = ExtResource( 3 )
-biome = ExtResource( 4 )
+biomes = [ ExtResource( 4 ) ]
 mustHave = true
 typeAlwaysVisible = true
 roomIcon = ExtResource( 2 )
-usesMin = 1
-usesMax = 1
+perBiome = 1
+minDistOfSameType = 2.8

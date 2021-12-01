@@ -1,8 +1,11 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
 [ext_resource path="res://World/ConstantRooms/Rooms/FastTravelRoom.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=3]
+[ext_resource path="res://World/Biomes/Caves.tres" type="Resource" id=4]
+[ext_resource path="res://World/Biomes/Lab.tres" type="Resource" id=5]
+[ext_resource path="res://World/Biomes/DeepLabs.tres" type="Resource" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -11,8 +14,9 @@ region = Rect2( 99, 48, 16, 16 )
 [resource]
 script = ExtResource( 1 )
 scene = ExtResource( 2 )
+biomes = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
 mustHave = true
 typeAlwaysVisible = false
 roomIcon = SubResource( 1 )
-usesMin = 10
-usesMax = 10
+perBiome = 3
+minDistOfSameType = 2.8

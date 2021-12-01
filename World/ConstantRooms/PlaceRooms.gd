@@ -1,13 +1,12 @@
 extends Reference
-class_name Thing
+class_name RoomPlacer
 
-var amountPerBiome := 3
-var minDistance := 2.8
-var room = preload("res://World/ConstantRooms/Rooms/FastTravelRoom.tres")
-var whitelistedBiomes := [preload("res://World/Biomes/Lab.tres")]
-var whitelistAllBiomes := false
-
-func generate_rooms(rooms: Array) -> void:
+func generate_rooms(
+rooms: Array,
+room: Resource,
+amountPerBiome:int,
+minDistance:float,
+whitelistedBiomes: Array) -> void:
 	for b in whitelistedBiomes:
 		var usedRooms := []
 		var i = 0
