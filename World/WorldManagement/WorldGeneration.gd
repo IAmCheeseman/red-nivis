@@ -4,9 +4,7 @@ class_name WorldGenerator
 const BLOCKING_ROOM = Color("#000000")
 const STARTING_ROOM = Color("#a8ca58")
 
-export var blowUpSize := 3
 export var growLoops := 2
-export var removalPointCount := 100
 
 var rooms = []
 var constantRoomUseage = []
@@ -30,7 +28,6 @@ func generate_world(seed_:int=randi()) -> Array:
 			for y in template.get_height():
 					var color = template.get_pixel(x, y)
 					var biome = get_biome_by_color(color)
-					
 					var room = {
 						"color" : color,
 						"possibleBiome" : get_biome_by_color(color, true),
@@ -49,6 +46,9 @@ func generate_world(seed_:int=randi()) -> Array:
 	
 	flood_world()
 	grow_world()
+	
+	var thing = Thing.new()
+	thing.generate_rooms(rooms)
 	
 	return rooms
 
@@ -73,8 +73,8 @@ func flood_world() -> void:
 				flood_rooms(Vector2(x, y), null, room.possibleBiome)
 
 
-func grow_world(growLoops_:int=growLoops) -> void:
-	for i in 2:#growLoops_:
+func grow_world() -> void:
+	for i in growLoops:
 		var changes = []
 		for x in rooms.size():
 			for y in rooms[0].size():
@@ -115,6 +115,7 @@ func grow_world(growLoops_:int=growLoops) -> void:
 			rooms[c.pos.x][c.pos.y].biome = c.to
 
 
+
 func get_biome_by_color(color:Color, getSecondary:bool=false):
 	var biomes = [
 		"res://World/Biomes/Lab.tres", 
@@ -129,6 +130,15 @@ func get_biome_by_color(color:Color, getSecondary:bool=false):
 		elif biome.secondaryColor.is_equal_approx(color) and getSecondary:
 			return biome
 	return null
+
+
+func get_used_rooms() -> Array:
+	var usedRooms := []
+	for x in rooms:
+		for y in x:
+			if y.biome:
+				usedRooms.append(y)
+	return usedRooms
 
 
 func select_template() -> Image:
