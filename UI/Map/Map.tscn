@@ -1,29 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Map/Map.gd" type="Script" id=1]
 [ext_resource path="res://UI/Map/MapTiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=3]
-[ext_resource path="res://UI/Assets/MapAlpha.png" type="Texture" id=4]
+[ext_resource path="res://Entities/Player/Scripts/BlurVignette.tres" type="Material" id=6]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-uniform sampler2D alpha;
-
-const float PI = 3.14;
-
-void fragment() {
-	vec4 color = texture(TEXTURE, UV);
-	float beforeA = 1.0-color.a;
-	color.a = texture(alpha, SCREEN_UV).r;
-	color.a = mix(color.a, 0.0, beforeA);
-
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/alpha = ExtResource( 4 )
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 170, 0, 64, 64 )
+margin = Rect2( -4, 0, 0, 0 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
@@ -40,6 +25,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Border" type="TextureRect" parent="."]
+margin_right = 60.0
+margin_bottom = 60.0
+texture = SubResource( 4 )
+
+[node name="Node2D" type="Node2D" parent="."]
+z_index = -1
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+margin_right = 60.0
+margin_bottom = 60.0
+color = Color( 0.152941, 0.152941, 0.152941, 0.952941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blur" type="ColorRect" parent="Node2D"]
+visible = false
+material = ExtResource( 6 )
+margin_right = 1000.0
+margin_bottom = 1000.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlurBG" type="ColorRect" parent="Node2D/Blur"]
+margin_right = 1000.0
+margin_bottom = 1000.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+color = Color( 0.152941, 0.152941, 0.152941, 0.952941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 60, 60 )
 transparent_bg = true
@@ -48,7 +70,7 @@ usage = 0
 render_target_update_mode = 3
 
 [node name="MapTiles" parent="Viewport" instance=ExtResource( 2 )]
-material = SubResource( 2 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 65536, 0, 0, 65537, 0, 0 )
 
 [node name="Player" type="Sprite" parent="Viewport"]
 texture = SubResource( 3 )
