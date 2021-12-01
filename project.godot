@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "BossRoomPlacer",
+"language": "GDScript",
+"path": "res://World/ConstantRooms/PlaceBossRooms.gd"
+}, {
 "base": "Resource",
 "class": "ConstantRoom",
 "language": "GDScript",
@@ -185,6 +190,7 @@ _global_script_classes=[ {
 "path": "res://World/WorldManagement/WorldGeneration.gd"
 } ]
 _global_script_class_icons={
+"BossRoomPlacer": "",
 "ConstantRoom": "",
 "CustomButton": "",
 "CustomOptionButton": "",

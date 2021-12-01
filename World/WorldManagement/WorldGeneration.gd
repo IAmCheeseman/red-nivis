@@ -52,6 +52,11 @@ func generate_world(seed_:int=randi()) -> Array:
 	flood_world()
 	grow_world()
 	
+	var br = preload("res://World/ConstantRooms/BossRooms.tres")
+	var bossRoomPlacer = BossRoomPlacer.new()
+	bossRoomPlacer.generate_rooms(
+		rooms, br.rooms, self
+	)
 	var roomPlacer = RoomPlacer.new()
 	var cr = preload("res://World/ConstantRooms/Rooms.tres")
 	for r in cr.rooms:
@@ -152,7 +157,7 @@ func get_used_rooms() -> Array:
 func select_template() -> Image:
 	return load(
 		"res://World/Templates/WorldTemplates/Template%s.png"\
-		 % ceil(rand_range(0, 1)) ).get_data()
+		 % ceil(rand_range(0, 2)) ).get_data()
 
 
 func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array:
