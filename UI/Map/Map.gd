@@ -10,8 +10,6 @@ onready var bg = $Node2D/ColorRect
 onready var blur = $Node2D/Blur
 
 var mapData = preload("res://World/WorldManagement/WorldData.tres")
-var minimapAlphaBorder = preload("res://UI/Assets/MapAlpha.png")
-var mapAlphaBorder = preload("res://UI/Assets/MapAlphaLarge.png")
 
 var inMiniMode := true
 var miniPosition:Vector2
@@ -55,7 +53,6 @@ func _input(event: InputEvent) -> void:
 		border.hide()
 		bg.hide()
 		blur.show()
-		#tiles.material.set_shader_param("alpha", mapAlphaBorder)
 		inMiniMode = false
 		GameManager.inGUI = true
 	
@@ -66,7 +63,6 @@ func _input(event: InputEvent) -> void:
 		border.show()
 		bg.show()
 		blur.hide()
-		#tiles.material.set_shader_param("alpha", minimapAlphaBorder)
 		camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
 		inMiniMode = true
 		GameManager.inGUI = false
