@@ -42,6 +42,8 @@ var lastUsedMouse = true
 var state = states.WALK
 var dontPlayJump = false
 
+var usingController := false
+var lastUpdatedAim := Vector2.ZERO
 
 var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
 var playerData = preload("res://Entities/Player/Player.tres")
@@ -88,6 +90,7 @@ func _physics_process(delta):
 			walk_state(delta)
 			sprite.scale.x = -tileChecker.cast_to.normalized().x
 			vel.y /= 1.2
+	controller_aiming()
 	lastFrameGroundState = is_grounded()
 
 
@@ -184,6 +187,20 @@ func is_on_platform():
 	return false
 
 
+func controller_aiming() -> void:
+	if !usingController: return
+	var joystickVector = Vector2(
+		Input.get_joy_axis(0, JOY_ANALOG_RX),
+		Input.get_joy_axis(0, JOY_ANALOG_RY)
+	).normalized()*32
+	if joystickVector.length() < 8:
+		joystickVector = lastUpdatedAim
+	lastUpdatedAim = joystickVector
+	mouseTarget = joystickVector#+(OS.window_size/2)
+	mouseTarget += Utils.get_relative_to_camera(self, $Camera)
+	get_tree().root.warp_mouse(mouseTarget)
+
+
 func _input(event):
 	if playerData.isDead:
 		return
@@ -201,15 +218,11 @@ func _input(event):
 		set_collision_mask_bit(4, false)
 		dropDownTimer.start(.05)
 	# Controller Controls
-	# Aiming
+#	# Aiming
 	if event is InputEventJoypadMotion:
-		var joystickVector = Vector2(Input.get_joy_axis(0, JOY_ANALOG_RX),
-		Input.get_joy_axis(0, JOY_ANALOG_RY)).normalized()*128
-		if joystickVector.length() < 64:
-			return
-		mouseTarget = joystickVector#+(OS.window_size/2)
-		mouseTarget += Utils.get_relative_to_camera(self, $Camera)
-		Input.warp_mouse_position(mouseTarget)
+		usingController = true
+	elif event is InputEventMouseMotion:
+		usingController = false
 
 # warning-ignore:return_value_discarded
 	if Input.is_key_pressed(KEY_K):

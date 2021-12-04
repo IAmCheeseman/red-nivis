@@ -7,6 +7,7 @@ damping = 0.55
 hipass = 0.24
 
 [resource]
+bus/0/volume_db = -80.0
 bus/1/name = "Ambient"
 bus/1/solo = false
 bus/1/mute = false

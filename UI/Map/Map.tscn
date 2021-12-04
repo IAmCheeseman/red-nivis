@@ -26,11 +26,13 @@ __meta__ = {
 }
 
 [node name="Border" type="TextureRect" parent="."]
+visible = false
 margin_right = 60.0
 margin_bottom = 60.0
 texture = SubResource( 4 )
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Node2D"]
@@ -70,7 +72,6 @@ usage = 0
 render_target_update_mode = 3
 
 [node name="MapTiles" parent="Viewport" instance=ExtResource( 2 )]
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 65536, 0, 0, 65537, 0, 0 )
 
 [node name="Player" type="Sprite" parent="Viewport"]
 texture = SubResource( 3 )
