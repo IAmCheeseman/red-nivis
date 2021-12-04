@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 	
 	var newBullet = bullet.instance()
 	newBullet.direction = Vector2.RIGHT.rotated(sprite.global_rotation)
-	newBullet.speed = 180*.5
+	newBullet.speed = 130
 	newBullet.damage = damage
 	newBullet.global_position = global_position+(newBullet.direction*16)
 	GameManager.spawnManager.spawn_object(newBullet)

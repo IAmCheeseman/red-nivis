@@ -492,7 +492,7 @@ offset = Vector2( -5, 1 )
 flip_h = true
 hframes = 6
 vframes = 6
-frame = 7
+frame = 11
 
 [node name="Arm" type="Sprite" parent="ScaleHelper/Sprite"]
 visible = false
@@ -667,9 +667,9 @@ __meta__ = {
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/GameOverScreen"]
 margin_left = 42.0
-margin_top = 58.0
+margin_top = 60.0
 margin_right = 277.0
-margin_bottom = 158.0
+margin_bottom = 160.0
 rect_min_size = Vector2( 235, 100 )
 texture = ExtResource( 10 )
 region_rect = Rect2( 141, 0, 28, 29 )

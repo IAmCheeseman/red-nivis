@@ -96,7 +96,7 @@ func shoot_state(delta: float) -> void:
 func shoot() -> void:
 	var newBullet = bullet.instance()
 	newBullet.direction = Vector2.RIGHT.rotated(gunSprite.global_rotation)
-	newBullet.speed = 180*.5
+	newBullet.speed = 130
 	newBullet.damage = damage
 	newBullet.global_position = gunSprite.global_position
 	GameManager.spawnManager.spawn_object(newBullet)
