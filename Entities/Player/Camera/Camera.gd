@@ -41,7 +41,7 @@ func _process(_delta):
 	global_position.x = clamp(global_position.x, limits.position.x+vs.x, limits.end.x-vs.x)
 	global_position.y = clamp(global_position.y, limits.position.y+vs.y, limits.end.y-vs.y)
 	
-	var mousePosition = get_global_mouse_position()
+	var mousePosition = Utils.get_global_mouse_position()
 	var dirMouse = global_position.direction_to(mousePosition)
 	var mouseDist = (global_position.distance_to(mousePosition)/sensitivity)
 	mouseDist = clamp(mouseDist, -maxOffset, maxOffset)

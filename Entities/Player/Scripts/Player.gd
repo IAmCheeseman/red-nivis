@@ -42,7 +42,6 @@ var lastUsedMouse = true
 var state = states.WALK
 var dontPlayJump = false
 
-var usingController := false
 var lastUpdatedAim := Vector2.ZERO
 
 var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
@@ -55,6 +54,7 @@ signal dropGun(gun, pos)
 
 
 func _ready():
+	GameManager.player = self
 	# Making sure players cannot come back to life by leaving an area
 	if playerData.isDead:
 		die()
@@ -110,7 +110,7 @@ func walk_state(delta):
 		# Do stuff in the air.
 		vel.y += Globals.GRAVITY*delta
 
-		var faceDir = get_local_mouse_position()
+		var faceDir = Utils.get_local_mouse_position(self)
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
 
 		animate(moveDir)
@@ -166,12 +166,14 @@ func just_landed():
 		return true
 	return false
 
+
 func is_grounded():
 	for c in floorCheckers.get_children():
 		if c.is_colliding():
 			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump")\
 			else Vector2.ZERO
 			return true
+	
 	if vel.y > 0:
 		scaleHelper.scale.x = clamp(
 			1-abs(vel.y/Globals.GRAVITY),
@@ -188,20 +190,18 @@ func is_on_platform():
 
 
 func controller_aiming() -> void:
-	if !usingController: return
+	if !GameManager.usingController: return
 	var joystickVector = Vector2(
 		Input.get_joy_axis(0, JOY_ANALOG_RX),
 		Input.get_joy_axis(0, JOY_ANALOG_RY)
-	).normalized()*32
-	if joystickVector.length() < 8:
-		joystickVector = lastUpdatedAim
+	).normalized()*64
+	if joystickVector.length() < 60: joystickVector = lastUpdatedAim
 	lastUpdatedAim = joystickVector
-	mouseTarget = joystickVector#+(OS.window_size/2)
-	mouseTarget += Utils.get_relative_to_camera(self, $Camera)
-	get_tree().root.warp_mouse(mouseTarget)
+	joystickVector += Utils.get_relative_to_camera(self, $Camera)
+	Utils.set_mouse_position(joystickVector)
 
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if playerData.isDead:
 		return
 	# Jumping
@@ -218,15 +218,14 @@ func _input(event):
 		set_collision_mask_bit(4, false)
 		dropDownTimer.start(.05)
 	# Controller Controls
-#	# Aiming
 	if event is InputEventJoypadMotion:
-		usingController = true
+		GameManager.usingController = true
 	elif event is InputEventMouseMotion:
-		usingController = false
+		GameManager.usingController = false
 
 # warning-ignore:return_value_discarded
 	if Input.is_key_pressed(KEY_K):
-		global_position = get_global_mouse_position()
+		GameManager.global_position = Utils.get_global_mouse_position()
 
 
 func _on_dash_cooldown_timeout():

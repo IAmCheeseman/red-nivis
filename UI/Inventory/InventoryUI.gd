@@ -32,7 +32,7 @@ func _process(delta):
 
 	if movingSlot:
 		var movingSlotTexHeight = movingSlot.texture_pressed.get_height()
-		movingSlot.rect_position.y = get_local_mouse_position().y-(movingSlotTexHeight/2)
+		movingSlot.rect_position.y = Utils.get_local_mouse_position(self).y-(movingSlotTexHeight/2)
 		var hotbarBegin = slots.get_child(0).rect_global_position.y
 		var hotbarEnd = slots.get_child_count()*movingSlotTexHeight
 		hotbarEnd += slots.get_child_count()+hotbarBegin

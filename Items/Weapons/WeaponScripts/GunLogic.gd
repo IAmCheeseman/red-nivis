@@ -45,7 +45,7 @@ func _physics_process(delta) -> void:
 	# Settling the rotation of the gun down after it's been kicked up
 	if !swinging:
 		var before = pivot.rotation
-		pivot.look_at(get_global_mouse_position())
+		pivot.look_at(Utils.get_global_mouse_position())
 		pivot.rotation = lerp(before, pivot.rotation, 12*delta)
 	else:
 		pivot.rotation += 12*delta*swingDir
@@ -71,8 +71,8 @@ func _physics_process(delta) -> void:
 		shoot()
 		
 		var newShell = shell.instance()
-		var dir = -global_position.direction_to(get_global_mouse_position())-Vector2(0, 2)
-		newShell.direction = -global_position.direction_to(get_global_mouse_position())-Vector2(0, 2)
+		var dir = -global_position.direction_to(Utils.get_global_mouse_position())-Vector2(0, 2)
+		newShell.direction = -global_position.direction_to(Utils.get_global_mouse_position())-Vector2(0, 2)
 		newShell.position = global_position+(dir*2)
 		GameManager.spawnManager.spawn_shell(newShell)
 		newShell.sprite.texture = gun.stats.shellSprite
@@ -102,11 +102,11 @@ func _input(event: InputEvent) -> void:
 		pivot.scale = Vector2.ONE*1.5
 		
 		
-		var angle = get_local_mouse_position().angle()
+		var angle = Utils.get_local_mouse_position(self).angle()
 		
 		var newSwing = swing.instance()
 		newSwing.rotation = angle
-		newSwing.reflectDir = get_local_mouse_position().normalized()
+		newSwing.reflectDir = Utils.get_local_mouse_position(self).normalized()
 		GameManager.spawnManager.spawn_object(newSwing)
 		
 		newSwing.get_node("Hitbox").damage = gun.stats.damage*1.25
@@ -116,7 +116,7 @@ func _input(event: InputEvent) -> void:
 		GameManager.emit_signal(
 			"screenshake",
 			1, 8, .05, .05,
-			get_local_mouse_position().normalized()
+			Utils.get_local_mouse_position(self).normalized()
 		)
 		
 		gun.meleeCooldown.start()

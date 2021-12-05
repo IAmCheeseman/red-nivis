@@ -8,11 +8,15 @@ var currentCamera:Camera2D
 
 var revealMap := false
 
+var usingController := false
+
 var attackingEnemies = 0 setget set_attacking_enemies
 
 var spawnManager:Node2D
 var itemManager:ItemManagement = ItemManagement.new()
 var frameFreezer:FrameFreezer = FrameFreezer.new()
+
+var player: Node2D
 
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
 

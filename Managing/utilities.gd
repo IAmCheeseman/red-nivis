@@ -31,6 +31,19 @@ static func get_relative_to_camera(node:Node2D, camera:Camera2D) -> Vector2:
 	return position
 
 
+static func get_global_mouse_position() -> Vector2:
+	return\
+		Cursor.find_node("Sprite").global_position\
+		+(GameManager.currentCamera.global_position - (GameManager.get_viewport_rect().end*.5))
+
+static func get_local_mouse_position(node) -> Vector2:
+	return node.to_local(get_global_mouse_position())
+
+
+static func set_mouse_position(pos: Vector2) -> void:
+	Cursor.find_node("Sprite").global_position = pos
+
+
 static func dmg_to_hp(
 	dmg: float, cooldown: float, fightTime: float):
 	var dps = dmg/cooldown

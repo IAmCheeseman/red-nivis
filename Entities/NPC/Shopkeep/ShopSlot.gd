@@ -20,7 +20,7 @@ func set_item(_item:Dictionary) -> void:
 func _input(event: InputEvent) -> void:
 	if !item.has("cost"): return
 	var hasEnoughMoney = player.money-item.cost >= 0
-	var mouseOver = get_global_rect().has_point(get_global_mouse_position())
+	var mouseOver = get_global_rect().has_point(Utils.get_global_mouse_position())
 	if event.is_action_pressed("use_item") and mouseOver and hasEnoughMoney:
 		if !inventory.has_space():
 			var newItem = GameManager.itemManager.create_item(inventory.items[inventory.selectedSlot], true)
