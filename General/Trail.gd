@@ -6,6 +6,9 @@ export var enabled = true
 
 var pointsGlobal = []
 
+func _ready() -> void:
+	pass
+
 
 func _process(_delta):
 	pointsGlobal.append(global_position)
