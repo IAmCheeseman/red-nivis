@@ -17,8 +17,9 @@ var player: Node2D
 func _physics_process(delta: float) -> void:
 	head.rotation = vel.angle()
 	if body.points.size() > 2:
-		tail.position = body.points[0]
-		tail.rotation = vel.angle()
+		var dir = body.points[0].direction_to(body.points[1])
+		tail.position = body.points[0]+(-dir*(body.SPRITE_WIDTH*.5))
+		tail.rotation = dir.angle()
 	
 	if !player:
 		player = playerDetection.get_player()

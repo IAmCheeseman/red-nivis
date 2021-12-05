@@ -15,7 +15,7 @@ func _ready():
 
 func _process(delta):
 	scale = scale.move_toward(Vector2.ONE, scaleSpeed*delta)
-	if !GameManager.usingController:
+	if !GameManager.usingController or get_tree().paused:
 		global_position = get_global_mouse_position()
 
 

@@ -2,24 +2,26 @@ extends Line2D
 
 const SPRITE_WIDTH = 6
 
-export var size := 32
+export var size := 8
 
-var pointsGlobal := []
+var pointsGlobal := [global_position+Vector2.RIGHT, global_position]
 
-func _ready() -> void:
-	var pos := Vector2.ZERO
-	for i in size:
-		add_point(pos)
-		pointsGlobal.append(pos)
-		pos += Vector2.LEFT * SPRITE_WIDTH
+var lastFrameHead := Vector2.ZERO
 
 
 func _process(_delta):
-	pointsGlobal.append(global_position)
-
+#	pointsGlobal[0] -= lastFrameHead-global_position
+	
+	if pointsGlobal.size() >= 2:
+		if global_position.distance_to(pointsGlobal.back()) >= SPRITE_WIDTH:
+			pointsGlobal.append(global_position)
+	
 	while pointsGlobal.size() > size:
 		pointsGlobal.pop_front()
 
 	clear_points()
 	for point in pointsGlobal:
 		add_point(point-global_position)
+	
+#	add_point(Vector2.ZERO)
+	lastFrameHead = global_position
