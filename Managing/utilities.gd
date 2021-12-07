@@ -53,3 +53,28 @@ static func dmg_to_hp(
 	return (dps*fightTime)*.75
 
 
+static func round_dir_to_target(
+node: Node2D, dir: Vector2,
+correction_range: int=20, targetLayer: int=4) -> Vector2:
+	
+	var rc := RayCast2D.new()
+	rc.enabled = true
+	rc.collision_mask = targetLayer
+	rc.collide_with_areas = true
+	rc.collide_with_bodies = false
+	node.add_child(rc)
+	
+	var collisions := []
+	for i in correction_range:
+		var angle = deg2rad((correction_range*.5)-i)
+		rc.cast_to = dir.rotated(angle)*1000
+		rc.force_raycast_update()
+		if rc.is_colliding():
+			var pos = rc.get_collider().global_position
+			collisions.append(node.global_position.direction_to(pos))
+	rc.queue_free()
+	
+	if collisions.size() == 0: return dir
+	print(collisions.front())
+	return collisions.front()
+

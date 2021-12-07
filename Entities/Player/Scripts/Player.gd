@@ -181,6 +181,7 @@ func is_grounded():
 		scaleHelper.scale.y = 1+(1-scaleHelper.scale.x)
 	return false
 
+
 func is_on_platform():
 	for c in floorCheckers.get_children():
 		if c.is_colliding():
