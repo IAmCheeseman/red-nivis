@@ -2,7 +2,8 @@ extends "res://Items/Weapons/WeaponScripts/GunLogic.gd"
 
 func shoot():
 	randomize()
-
+	
+	var bullets = []
 	holdShots += 1
 	for i in gun.multishot:
 		# Getting the direction that the bullet needs to go in.
@@ -23,11 +24,12 @@ func shoot():
 		newBullet.peircing = gun.peircing
 		newBullet.lifetime = gun.projLifetime
 		newBullet.global_position = global_position+dir*gun.bulletSpawnDist
-		
+		bullets.append(newBullet)
 		newBullet.connect("hit_wall", self, "_on_bullet_hit_wall")
 		newBullet.connect("hit_enemy", self, "_on_bullet_hit_enemy")
 		# Adding it to the tree
 		GameManager.spawnManager.spawn_object(newBullet)
+		
 		newBullet.damage = gun.damage
 
 		if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
@@ -39,6 +41,11 @@ func shoot():
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
 		cooldownTimer.start(gun.cooldown*playerData.attackSpeed)
+	
+	yield(TempTimer.idle_frame(self), "timeout")
+	if gun.bulletSprite:
+		for i in bullets:
+			i.set_texture(gun.bulletSprite)
 	# Screenshake
 
 	# Getting the parameters

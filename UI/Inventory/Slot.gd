@@ -19,8 +19,11 @@ func _ready():
 
 func setup(texture, itemID:String, tt:String=""):
 	slotTexture.texture = texture
-	#slotTexture.material.set_shader_param("line_color", outlineColor)
 	item = itemID
+	var i = ItemMap.ITEMS[item]
+	slotTexture.material.set_shader_param(
+		"line_color", Color(ToolTipGenerator.TIER_COLORS[i.tier]))
+	tooltip = ToolTipGenerator.tooltips(i.name, i.tier)
 	update_index()
 
 
@@ -46,19 +49,16 @@ func _process(_delta: float) -> void:
 
 
 func _on_press():
+	return
 	emit_signal("selected", self)
 
 
 func _on_mouse_entered() -> void:
-	return
-	ToolTip.set_tooltip(
-		tooltip
-	)
+	ToolTip.set_tooltip(tooltip)
 	ToolTip.id = item
 
 
 func _on_mouse_exited() -> void:
-	return
 	if ToolTip.id == item:
 		ToolTip.id = ""
 		ToolTip.set_tooltip("")

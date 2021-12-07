@@ -75,6 +75,5 @@ correction_range: int=20, targetLayer: int=4) -> Vector2:
 	rc.queue_free()
 	
 	if collisions.size() == 0: return dir
-	print(collisions.front())
 	return collisions.front()
 

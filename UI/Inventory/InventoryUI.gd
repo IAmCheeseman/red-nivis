@@ -74,7 +74,6 @@ func refresh_items():
 			continue
 		
 		slot.clear()
-		var tierColor = Color.black
 		slot.setup(item.slotTexture, item.key)
 
 
