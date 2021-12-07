@@ -60,7 +60,9 @@ func shoot():
 		cooldownTimer.stop()
 		cooldownTimer.start(gun.reloadSpeed)
 		gun.isReloading = true
-		gun.visuals.rotation_degrees = 180
+		gun.visuals.rotation_degrees = gun.kickUp*5.2\
+		if gun.visuals.scale.y == -1\
+		else -gun.kickUp*5.2
 
 
 

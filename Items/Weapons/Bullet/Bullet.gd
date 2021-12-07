@@ -85,11 +85,13 @@ func _on_Hitbox_hit_object(object):
 
 
 func _on_lifetime_timeout():
-	dieTween.interpolate_property(self, "speed", speed, 0, .2, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	dieTween.interpolate_property(
+		self, "speed", speed,
+		0, .2, Tween.TRANS_LINEAR,
+		Tween.EASE_IN
+	)
 	dieTween.start()
-	modulate = Color.gray
-	add_trail_to_parent()
-	anim.play("Free")
+	anim.play("Free", -1, 2)
 
 
 

@@ -14,14 +14,14 @@ export var multishot: float = 1
 export var spread: float = 0.0
 export var projSpeed: int = 340
 export var projScale: float = 1.0
-export var projLifetime: float = 5.0
+export var projLifetime: float = .5
 export var peircing: bool = false
 export var recoil: float = 0.3
 export var look: int
 export var cost: int = 1
 export var maxHoldShots: int = -1
 export var customBullet: PackedScene
-export var magazineSize: int = 0
+export var magazineSize: int = 5
 export var reloadSpeed: float = 1
 export var meleeSpeed: float = 1.2
 

@@ -75,7 +75,7 @@ func refresh_items():
 		
 		slot.clear()
 		var tierColor = Color.black
-		slot.setup(item.slotTexture, item.key)#, ToolTipGenerator.tooltips(item))
+		slot.setup(item.slotTexture, item.key)
 
 
 func set_slot_cursor_position():
