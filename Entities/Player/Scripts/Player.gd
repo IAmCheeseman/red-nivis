@@ -132,7 +132,7 @@ func animate(moveDir:Vector2):
 		dontPlayJump = true
 	
 	if itemHolder.get_child_count() > 0:
-		hand.visible = !itemHolder.get_child(0).stats.isTwoHanded and state != states.WALLSLIDE
+		hand.visible = !itemHolder.get_child(0).isTwoHanded and state != states.WALLSLIDE
 		rightHand.hide()
 	else:
 		rightHand.show()

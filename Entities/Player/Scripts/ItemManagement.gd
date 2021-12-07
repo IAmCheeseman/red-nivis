@@ -24,13 +24,12 @@ func add_item():
 	if item == null: return
 
 	if item is Dictionary:
-		var newItem = load("res://Items/Weapons/Gun.tscn").instance()
-		newItem.stats = item
+		var newItem = item.scene.instance()
 		newItem.player = playerData
-		
+
 		yield(TempTimer.idle_frame(self), "timeout")
 
-		playerData.maxAmmo = item.magazineSize
+		playerData.maxAmmo = newItem.magazineSize
 		playerData.ammo = playerData.maxAmmo
-		
+
 		itemHolder.add_child(newItem)

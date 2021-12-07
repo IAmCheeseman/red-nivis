@@ -72,10 +72,10 @@ func refresh_items():
 		if item == null:
 			slot.clear()
 			continue
-
+		
 		slot.clear()
 		var tierColor = Color.black
-		slot.setup(item.scene, str(item.seed), tierColor, ToolTipGenerator.tooltips(item))
+		slot.setup(item.slotTexture, item.key)#, ToolTipGenerator.tooltips(item))
 
 
 func set_slot_cursor_position():

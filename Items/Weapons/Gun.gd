@@ -6,30 +6,33 @@ export(int, "pistol", "shotgun") var gunType = 0
 signal onShoot
 
 # Functionality
-var stats = {
-	"damage" : 6.0,
-	"accuracy" : 8.0,
-	"cooldown" : 0.2,
-	"multishot" : 1,
-	"spread" : 0.0,
-	"projSpeed" : 340,
-	"projScale" : 1.0,
-	"projLifetime" : 5.0,
-	"peircing" : false,
-	"recoil" : 0.3,
-	"cost" : 1.0,
-	"maxHoldShots" : -1,
-	"customBullet" : null,
+# Functionality
+export var damage: float = 6.0
+export var accuracy: float = 0.0
+export var cooldown: float = 0.2
+export var multishot: float = 1
+export var spread: float = 0.0
+export var projSpeed: int = 340
+export var projScale: float = 1.0
+export var projLifetime: float = 5.0
+export var peircing: bool = false
+export var recoil: float = 0.3
+export var look: int
+export var cost: int = 1
+export var maxHoldShots: int = -1
+export var customBullet: PackedScene
+export var magazineSize: int = 0
+export var reloadSpeed: float = 1
 
-	# Visual
-	"bulletSprite" : preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png"),
-	"kickUp" : 25,
-	"bulletSpawnDist" : 16,
+# Visual
+export var bulletSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")
+export var shellSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Shells/shellPistol.png")
+export var kickUp:float = 25
+export var bulletSpawnDist:float = 16
 
-	"ssFreq" : .05,
-	"ssStrength" : 7,
-	"isTwoHanded" : false
-}
+export var ssFreq:float = .05
+export var ssStrength:float = 7
+export var isTwoHanded:bool = false
 
 # Nodes
 onready var gunLogic = $GunLogic
@@ -37,9 +40,9 @@ onready var pivot = $Pivot
 onready var shootSound = $ShootSound
 onready var noAmmoClick = $NoAmmoClickSFX
 onready var ammoLabel = $AmmoCount
-onready var cooldown = $Cooldown
+onready var cooldownTimer = $Cooldown
 onready var meleeCooldown = $MeleeCooldown
-var visuals
+onready var visuals = $Pivot/GunSprite
 
 # Properties
 var standingOver := false
@@ -47,24 +50,21 @@ var canShoot := false
 var canSwing := true
 var isReloading := false
 var player: Resource
-var perk: Node
+#var perk: Node
 
 
 
 func _ready():
-	visuals = stats.scene.duplicate()
-	pivot.add_child(visuals)
-	visuals.position.x = stats.holdDist
 	ammoLabel.hide()
-	cooldown.start(stats.reloadSpeed*.333)
+	cooldownTimer.start(reloadSpeed*.333)
 	
-	if stats.perk:
-		perk = Node.new()
-		perk.set_script(stats.perk)
-		perk.gun = gunLogic
-		add_child(perk)
+#	if perk:
+#		perkNode = Node.new()
+#		perkNode.set_script(perk)
+#		perk.gun = gunLogic
+#		add_child(perk)
 	
-	meleeCooldown.wait_time = stats.cooldown
+	meleeCooldown.wait_time = cooldown
 
 
 func _on_Cooldown_timeout():

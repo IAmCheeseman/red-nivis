@@ -8,12 +8,12 @@ var slot = preload("res://Entities/NPC/Shopkeep/ShopSlot.tscn")
 
 func _ready() -> void:
 	randomize()
-	for i in items.get_children(): i.queue_free()
-	for i in rand_range(3, 5):
-		var weapon = WeaponConstructor.new().generate_weapon()
-		var newSlot = slot.instance()
-		items.add_child(newSlot)
-		newSlot.set_item(weapon)
+#	for i in items.get_children(): i.queue_free()
+#	for i in rand_range(3, 5):
+#		var weapon = WeaponConstructor.new().generate_weapon()
+#		var newSlot = slot.instance()
+#		items.add_child(newSlot)
+#		newSlot.set_item(weapon)
 
 
 func update_slots():

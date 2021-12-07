@@ -61,7 +61,7 @@ func _physics_process(delta) -> void:
 	if Input.is_action_pressed("use_item")\
 	and gun.canShoot\
 	and hasEnoughAmmo\
-	and holdShots != gun.stats.maxHoldShots\
+	and holdShots != gun.maxHoldShots\
 	and !GameManager.editingInventory\
 	and !GameManager.inGUI\
 	and !playerData.playerObject.lockMovement\
@@ -75,7 +75,7 @@ func _physics_process(delta) -> void:
 		newShell.direction = -global_position.direction_to(Utils.get_global_mouse_position())-Vector2(0, 2)
 		newShell.position = global_position+(dir*2)
 		GameManager.spawnManager.spawn_shell(newShell)
-		newShell.sprite.texture = gun.stats.shellSprite
+		newShell.sprite.texture = gun.shellSprite
 		
 	elif Input.is_action_just_pressed("use_item")\
 	and !hasEnoughAmmo:
@@ -109,7 +109,7 @@ func _input(event: InputEvent) -> void:
 		newSwing.reflectDir = Utils.get_local_mouse_position(self).normalized()
 		GameManager.spawnManager.spawn_object(newSwing)
 		
-		newSwing.get_node("Hitbox").damage = gun.stats.damage*1.25
+		newSwing.get_node("Hitbox").damage = gun.damage*1.25
 		
 		newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle)*8
 		

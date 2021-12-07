@@ -22,8 +22,6 @@ func generate_world(seed_:int=randi()) -> Array:
 	for i in constantRooms.rooms:
 		constantRoomUseage.append(0)
 	
-	var biomes = {}
-	
 	for x in template.get_width():
 			rooms.append([])
 			for y in template.get_height():

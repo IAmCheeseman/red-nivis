@@ -8,7 +8,7 @@ var selectedSlot:int = 0 setget _on_selected_slot_changed
 
 # Item map
 #var itemMapR = preload("res://UI/Inventory/ItemMap.tres")
-#var itemMap = itemMapR.items
+var itemMap = ItemMap.ITEMS.duplicate()
 var allowSlotChange = true
 
 # Signals
@@ -26,7 +26,7 @@ func setup():
 	for slot in maxSlots:
 		items.append(null)
 	randomize()
-	add_item(WeaponConstructor.new().generate_weapon(randi(), 'Pistol'))
+	add_item('pistol')
 
 
 func has_space() -> bool:
@@ -80,7 +80,7 @@ func remove_item(id):
 
 func add_item(id):
 	if !has_space(): return
-	items[items.find(null)] = id
+	items[items.find(null)] = itemMap[id]
 	emit_signal("itemsChanged")
 	emit_signal("itemAdded", id)
 
