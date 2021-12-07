@@ -19,3 +19,9 @@ position = Vector2( 19, 0 )
 [node name="GunSprite" parent="Pivot" index="2"]
 position = Vector2( 13, 1 )
 texture = ExtResource( 2 )
+
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( -4, 2 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( -4, 2 )

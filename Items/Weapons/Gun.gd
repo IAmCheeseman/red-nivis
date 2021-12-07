@@ -23,6 +23,7 @@ export var maxHoldShots: int = -1
 export var customBullet: PackedScene
 export var magazineSize: int = 0
 export var reloadSpeed: float = 1
+export var meleeSpeed: float = 1.2
 
 # Visual
 export var bulletSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")
@@ -57,14 +58,13 @@ var player: Resource
 func _ready():
 	ammoLabel.hide()
 	cooldownTimer.start(reloadSpeed*.333)
+	meleeCooldown.wait_time = meleeSpeed
 	
 #	if perk:
 #		perkNode = Node.new()
 #		perkNode.set_script(perk)
 #		perk.gun = gunLogic
 #		add_child(perk)
-	
-	meleeCooldown.wait_time = cooldown
 
 
 func _on_Cooldown_timeout():
