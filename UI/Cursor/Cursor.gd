@@ -1,7 +1,7 @@
 extends Sprite
 
 export var rotAmount := 90.0
-export var scaleSpeed:float = 1
+export var scaleSpeed:float = 2
 
 onready var tween = $Tween
 
@@ -27,4 +27,5 @@ func rotate_cursor(time:float):
 	tween.interpolate_property(self, "rotation_degrees",
 	rotation_degrees, target, time-.05)
 	tween.start()
+	scale = Vector2.ONE*1.3
 

@@ -10,6 +10,8 @@ signal onShoot
 export var damage: float = 6.0
 export var accuracy: float = 0.0
 export var cooldown: float = 0.2
+export var reloadSpeed: float = 1
+export var meleeSpeed: float = 1.2
 export var multishot: float = 1
 export var spread: float = 0.0
 export var projSpeed: int = 340
@@ -22,8 +24,7 @@ export var cost: int = 1
 export var maxHoldShots: int = -1
 export var customBullet: PackedScene
 export var magazineSize: int = 5
-export var reloadSpeed: float = 1
-export var meleeSpeed: float = 1.2
+export(Array, Resource) var perks: Array = []
 
 # Visual
 export var bulletSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")

@@ -27,7 +27,7 @@ func setup():
 		items.append(null)
 	randomize()
 	add_item('pistol')
-#	add_item('regular-shotgun')
+#	add_item('assault-rifle')
 
 
 func has_space() -> bool:

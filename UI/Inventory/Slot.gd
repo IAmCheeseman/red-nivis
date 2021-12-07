@@ -17,7 +17,7 @@ func _ready():
 	#slotTexture.material = slotTexture.material.duplicate()
 
 
-func setup(texture, itemID:String, tt:String=""):
+func setup(texture, itemID:String):
 	slotTexture.texture = texture
 	item = itemID
 	var i = ItemMap.ITEMS[item]
@@ -50,6 +50,7 @@ func _process(_delta: float) -> void:
 
 func _on_press():
 	return
+# warning-ignore:unreachable_code
 	emit_signal("selected", self)
 
 
