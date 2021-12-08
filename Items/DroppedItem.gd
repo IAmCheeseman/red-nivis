@@ -6,6 +6,7 @@ onready var pickUpCollision = $Iteraction/CollisionShape2D
 onready var pickUpAnim = $PickUp
 onready var itemGlow = $ItemGlow
 onready var trail = $Trail
+onready var sprite = $Sprite
 
 var item:Dictionary
 
@@ -14,7 +15,7 @@ var isPickedUp = false
 
 func _ready():
 	# Setting the sprite
-	add_child(item.scene.duplicate())
+	sprite.texture = item.slotTexture
 	# Setting collisions
 	collision.shape.extents = Vector2(4, 4)
 	pickUpCollision.shape = collision.shape
@@ -35,7 +36,7 @@ func pick_up():
 			newItem.position = position
 			GameManager.spawnManager.spawn_object(newItem)
 			inventory.remove_item(inventory.selectedSlot)
-		inventory.add_item(item)
+		inventory.add_item(item.key)
 		pickUpAnim.play("PickUp")
 		pickUpCollision.disabled = true
 		isPickedUp = true

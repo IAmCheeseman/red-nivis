@@ -21,8 +21,8 @@ func convert_tier_to_str(tier: int):
 
 func create_item(item, withForce: bool=false):
 	var newItem = load("res://Items/DroppedItem.tscn").instance()
-	newItem.item = item
+	newItem.item = ItemMap.ITEMS[item]
 	if withForce:
-		var force = (Vector2.UP+Vector2(rand_range(-.25, .25), 0)).normalized()*70
+		var force = Vector2(rand_range(-.25, .25), -1).normalized()*70
 		newItem.apply_central_impulse(force)
 	return newItem

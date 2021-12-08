@@ -4,6 +4,7 @@ onready var anim = $AnimationPlayer
 onready var sprite = $Sprite
 onready var shakeTimer = $ShakeTimer
 onready var interaction = $Iteraction
+onready var itemSpawn = $ItemSpawn
 
 var ending := false
 
@@ -29,4 +30,5 @@ func _on_animation_finished(anim_name: String) -> void:
 func _on_shake_timer_timeout() -> void:
 	GameManager.emit_signal("screenshake", 2, 4, .025, .025*3)
 	anim.play_backwards("BuildUp")
+	itemSpawn.add_item()
 	ending = true
