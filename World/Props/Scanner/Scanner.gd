@@ -12,7 +12,7 @@ var ending := false
 func _on_interaction() -> void:
 	anim.play("BuildUp")
 	GameManager.emit_signal(
-		"zoom_in", .75, 3,
+		"zoom_in", .75, 2,
 		global_position-Vector2(0, sprite.texture.get_height()/2/sprite.vframes)
 	)
 	interaction.disabled = true

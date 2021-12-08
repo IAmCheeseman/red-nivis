@@ -196,8 +196,11 @@ func controller_aiming() -> void:
 		Input.get_joy_axis(0, JOY_ANALOG_RX),
 		Input.get_joy_axis(0, JOY_ANALOG_RY)
 	).normalized()*64
-	print(joystickVector)
-#	if joystickVector == Vector2.ZERO: joystickVector = lastUpdatedAim
+	if !Input.get_joy_axis(0, JOY_ANALOG_RX) or\
+		!Input.get_joy_axis(0, JOY_ANALOG_RY):
+			joystickVector = Vector2(vel.normalized().x, 0)*64
+	joystickVector += itemHolder.position
+	
 	if joystickVector.length() < 40: joystickVector = lastUpdatedAim
 	lastUpdatedAim = joystickVector
 	joystickVector += Utils.get_relative_to_camera(self, $Camera)

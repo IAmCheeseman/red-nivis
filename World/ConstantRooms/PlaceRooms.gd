@@ -10,7 +10,7 @@ whitelistedBiomes: Array) -> void:
 	for b in whitelistedBiomes:
 		var usedRooms := []
 		var i = 0
-		while i < amountPerBiome:
+		while i < amountPerBiome and i < 100:
 			var selectedPos = Vector2(
 				rand_range(0, rooms.size()-1),
 				rand_range(0, rooms[0].size()-1)

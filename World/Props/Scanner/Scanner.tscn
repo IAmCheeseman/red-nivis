@@ -158,7 +158,7 @@ anims/RESET = SubResource( 2 )
 anims/Shake = SubResource( 3 )
 
 [node name="ShakeTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 one_shot = true
 
 [node name="ItemSpawn" parent="." instance=ExtResource( 4 )]
