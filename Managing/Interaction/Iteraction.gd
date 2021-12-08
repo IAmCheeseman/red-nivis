@@ -78,5 +78,7 @@ func is_closest() -> bool:
 
 func set_disabled(val:bool):
 	disabled = val 
-	if disabled: label.hide()
+	if disabled:
+		label.hide()
+		sprite.material.set_shader_param("line_thickness", 0)
 

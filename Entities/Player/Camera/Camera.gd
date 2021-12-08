@@ -2,6 +2,9 @@ extends Camera2D
 
 onready var offsetTween = $OffsetTween
 onready var timer = $Timer
+onready var zoomTween = $ZoomTween
+onready var posTween = $PosTween
+onready var zoomTimer = $ZoomTimer
 
 export var mouseWeight = true
 export var yOffset = 0
@@ -24,6 +27,9 @@ var freq = 0
 var time = 0
 var shakeDir = Vector2.ZERO
 
+var zoomingIn := false
+var zoomTarget := Vector2.ZERO
+
 var playerData = preload("res://Entities/Player/Player.tres")
 
 
@@ -31,26 +37,59 @@ func _ready():
 # warning-ignore:return_value_discarded
 	GameManager.currentCamera = self
 	GameManager.connect("screenshake", self, "start")
-#	if !mouseWeight: set_process(false)
+	GameManager.connect("zoom_in", self, "zoom_in")
 
 
 func _process(_delta):
-	global_position = trackNode.global_position
-	
-	var vs = get_viewport_rect().end*.5
-	global_position.x = clamp(global_position.x, limits.position.x+vs.x, limits.end.x-vs.x)
-	global_position.y = clamp(global_position.y, limits.position.y+vs.y, limits.end.y-vs.y)
-	
-	var mousePosition = Utils.get_global_mouse_position()
-	var dirMouse = global_position.direction_to(mousePosition)
-	var mouseDist = (global_position.distance_to(mousePosition)/sensitivity)
-	mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
-	global_position += (dirMouse*mouseDist)*int(mouseWeight)
+	if !zoomingIn:
+		global_position = trackNode.global_position
+		
+		var vs = get_viewport_rect().end*.5
+		global_position.x = clamp(global_position.x, limits.position.x+vs.x, limits.end.x-vs.x)
+		global_position.y = clamp(global_position.y, limits.position.y+vs.y, limits.end.y-vs.y)
+		
+		var mousePosition = Utils.get_global_mouse_position()
+		var dirMouse = global_position.direction_to(mousePosition)
+		var mouseDist = (global_position.distance_to(mousePosition)/sensitivity)
+		mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
+		global_position += (dirMouse*mouseDist)*int(mouseWeight)
+	else:
+		global_position = zoomTarget 
 
 
 func set_cam_look(value:bool):
 	maxOffset = baseMaxOffset * int(value)
 
+
+func zoom_in(z:=.5, time:=2, zoomPos:=global_position):
+	if zoomingIn: return
+	zoomTween.interpolate_property(
+		self,
+		"zoom",
+		zoom,
+		Vector2.ONE*z,
+		.2,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT
+	)
+	
+	posTween.interpolate_property(
+		self,
+		"global_position", 
+		global_position,
+		zoomPos,
+		.2,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT
+	)
+	
+	posTween.start()
+	zoomTween.start()
+	
+	zoomTimer.start(time)
+	
+	zoomTarget = zoomPos
+	zoomingIn = true
 
 # SCREENSHAKE
 func start(priority_=0, strength_=16, freq_=.1, time_=.25, dir=Vector2.ZERO):
@@ -102,3 +141,30 @@ func _on_Tween_tween_all_completed():
 
 func _on_Camera_tree_exiting():
 	offsetTween.remove_all()
+
+
+func _on_zoom_timer_timeout() -> void:
+	zoomTween.interpolate_property(
+		self,
+		"zoom",
+		zoom,
+		Vector2.ONE,
+		.2,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT
+	)
+	
+	posTween.interpolate_property(
+		self,
+		"global_position", 
+		global_position,
+		trackNode.global_position,
+		.2,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT
+	)
+	
+	posTween.start()
+	zoomTween.start()
+	
+	zoomingIn = false

@@ -27,5 +27,6 @@ whitelistedBiomes: Array) -> void:
 			if selectedRoom.biome != b or !roomOkay or selectedRoom.constantRoom: continue
 			selectedRoom.constantRoom = room
 			selectedRoom.roomIcon = room.roomIcon
+			selectedRoom.typeAlwaysVisible = room.typeAlwaysVisible
 			usedRooms.append(selectedPos)
 			i += 1
