@@ -8,6 +8,7 @@ var player = preload("res://Entities/Player/Player.tres")
 
 
 func _ready() -> void:
+	GameManager.inGUI = true
 	for u in upgrades.get_children():
 		u.connect("clicked", self, "_on_upgrade_slot_clicked", [u])
 	slotsLeftLabel.text = "Slots Left: %s" % str(player.upgradeSlots)
@@ -29,4 +30,5 @@ func _on_done_pressed():
 	for s in selections.get_children():
 		player.upgrades.append(s.upgrade.abilityScript)
 	var _discard = get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+	GameManager.inGUI = false
 

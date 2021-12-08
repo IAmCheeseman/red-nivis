@@ -172,13 +172,6 @@ func create_random_room(connections) -> void:
 		connections
 	)
 	
-	var viableContainerSpawns = []
-	
-	var containers = [
-		preload("res://World/Props/Containers/Safe/Safe.tscn"),
-		preload("res://World/Props/Containers/Locker/Locker.tscn")
-	]
-	
 	# Placing the props
 	roomI.lock()
 	for x in roomI.get_width():
@@ -195,7 +188,6 @@ func create_random_room(connections) -> void:
 # warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .5 and roomI.get_pixel(x, clamp(y-1, 0, roomI.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
 					if biome.groundProps.size() > 0: add_props(biome.groundProps, clamp(x, 2, roomI.get_width()-2), y)
-					viableContainerSpawns.append(Vector2(x, y))
 			# If is platform
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				world.platforms.set_cell(x, y, 0)
@@ -207,17 +199,9 @@ func create_random_room(connections) -> void:
 				world.background.set_cell(x+plus.x, y+plus.y, 0)
 				world.background.update_bitmask_area(Vector2(x, y)+plus)
 				
-				viableContainerSpawns.append(Vector2(x, y-1))
 			# If is empty
 			if roomI.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
 				world.viableEnemySpawns.append(Vector2(x, y))
-	
-	viableContainerSpawns.shuffle()
-	for i in Globals.MAX_CONTAINERS:
-		if viableContainerSpawns.size() == 0: 
-			break
-		var spawnPos:Vector2 = viableContainerSpawns.pop_front()
-		add_props(containers, spawnPos.x, spawnPos.y)
 	
 	# Enemy Spawning
 	spawn_enemies()

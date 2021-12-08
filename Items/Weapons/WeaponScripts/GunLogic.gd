@@ -31,8 +31,21 @@ signal bullet_hit(bullet)
 
 
 func _ready() -> void:
+	if gun.burst:
+		cooldownTimer.set_meta("fromReload", true)
+		cooldownTimer.connect("timeout", self, "_on_cooldown_timeout")
 	targetPos = position
 
+func _on_cooldown_timeout() -> void:
+	if gun.canShoot\
+	and playerData.ammo > 0\
+	and !GameManager.editingInventory\
+	and !GameManager.inGUI\
+	and !playerData.playerObject.lockMovement\
+	and !swinging\
+	and !cooldownTimer.get_meta("fromReload"):
+		pre_shoot()
+	cooldownTimer.set_meta("fromReload", false)
 
 func _physics_process(delta) -> void:
 	# Flipping the gun based on rotation
@@ -66,20 +79,25 @@ func _physics_process(delta) -> void:
 	and !GameManager.inGUI\
 	and !playerData.playerObject.lockMovement\
 	and !swinging:
-		playerData.ammo -= 1
-		Cursor.get_node("Sprite").scale = Vector2(1.2, 1.2)
-		shoot()
-		
-		var newShell = shell.instance()
-		var dir = -global_position.direction_to(Utils.get_global_mouse_position())-Vector2(0, 2)
-		newShell.direction = -global_position.direction_to(Utils.get_global_mouse_position())-Vector2(0, 2)
-		newShell.position = global_position+(dir*2)
-		GameManager.spawnManager.spawn_shell(newShell)
-		newShell.sprite.texture = gun.shellSprite
+		pre_shoot()
 		
 	elif Input.is_action_just_pressed("use_item")\
 	and !hasEnoughAmmo:
 		gun.noAmmoClick.play()
+
+
+func pre_shoot() -> void:
+	playerData.ammo -= 1
+	Cursor.get_node("Sprite").scale = Vector2(
+		rand_range(1, 1.2), rand_range(1, 1.2))
+	shoot()
+	
+	var newShell = shell.instance()
+	var dir = -global_position.direction_to(Utils.get_global_mouse_position())-Vector2(0, 2)
+	newShell.direction = -global_position.direction_to(Utils.get_global_mouse_position())-Vector2(0, 2)
+	newShell.position = global_position+(dir*2)
+	GameManager.spawnManager.spawn_shell(newShell)
+	newShell.sprite.texture = gun.shellSprite
 
 
 func shoot() -> void:
@@ -90,7 +108,7 @@ func _input(event: InputEvent) -> void:
 	# Meleeing
 	if event.is_action_pressed("melee")\
 	and !swinging\
-	and gun.canSwing\
+	and gun.meleeCooldown.is_stopped()\
 	and !GameManager.inGUI\
 	and playerData.stamina > 0:
 		playerData.stamina -= 1

@@ -65,6 +65,7 @@ func shoot():
 	if playerData.ammo <= 0:
 		cooldownTimer.stop()
 		cooldownTimer.start(gun.reloadSpeed)
+		cooldownTimer.set_meta("fromReload", true)
 		gun.isReloading = true
 		gun.visuals.rotation_degrees = gun.kickUp*5.2\
 		if gun.visuals.scale.y == -1\
@@ -72,6 +73,7 @@ func shoot():
 		Cursor.get_node("Sprite").rotate_cursor(gun.reloadSpeed)
 	else:
 		Cursor.get_node("Sprite").rotate_cursor(gun.cooldown)
+		cooldownTimer.set_meta("fromReload", false)
 
 
 

@@ -8,6 +8,7 @@ damage = 12.0
 cooldown = 0.05
 reloadSpeed = 0.5
 magazineSize = 3
+burst = true
 kickUp = 5.0
 bulletSpawnDist = 27.0
 isTwoHanded = true
