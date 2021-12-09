@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump") and player.state == player.states.WALLSLIDE:
-		player.vel.x = -wallCheckers.get_child(0).cast_to.normalized().x*200
+		player.vel.x = -wallCheckers.get_child(0).cast_to.normalized().x*600
 		
 		slideTimer.start()
 

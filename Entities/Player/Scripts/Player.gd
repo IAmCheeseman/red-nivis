@@ -42,7 +42,7 @@ var lastUsedMouse = true
 var state = states.WALK
 var dontPlayJump = false
 
-var lastUpdatedAim := Vector2.ZERO
+var lastUpdatedAim := Vector2.RIGHT*64
 
 var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
 var playerData = preload("res://Entities/Player/Player.tres")
@@ -195,12 +195,11 @@ func controller_aiming() -> void:
 	var joystickVector = Vector2(
 		Input.get_joy_axis(0, JOY_ANALOG_RX),
 		Input.get_joy_axis(0, JOY_ANALOG_RY)
-	).normalized()*64
-	if !Input.is_joy_button_pressed(0, JOY_AXIS_2) and\
-	   !Input.is_joy_button_pressed(0, JOY_AXIS_3):
-			joystickVector = Vector2(vel.normalized().x, 0)*64
+	).snapped(Vector2.ONE*.1).normalized()*64
+	if  joystickVector.x == 0 and\
+		joystickVector.y == 0:
+			joystickVector = lastUpdatedAim
 	
-	if joystickVector.length() < 40: joystickVector = lastUpdatedAim
 	lastUpdatedAim = joystickVector
 	joystickVector += Utils.get_relative_to_camera(itemHolder, $Camera)
 	Utils.set_mouse_position(joystickVector)

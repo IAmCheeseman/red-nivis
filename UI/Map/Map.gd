@@ -5,8 +5,6 @@ onready var tiles:TileMap = $Viewport/MapTiles
 onready var camera:Camera2D = $Viewport/Camera
 onready var player:Sprite = $Viewport/Player
 onready var viewport:Viewport = $Viewport
-onready var border = $Border
-onready var bg = $Node2D/ColorRect
 onready var blur = $Node2D/Blur
 
 var mapData = preload("res://World/WorldManagement/WorldData.tres")
@@ -33,6 +31,7 @@ func _ready() -> void:
 					set_icon(roomIcon, x, y)
 					
 	camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
+	camera.position = camera.position.round()
 	player.position = camera.position
 
 
@@ -50,8 +49,6 @@ func _input(event: InputEvent) -> void:
 		rect_position = Vector2.ZERO
 		rect_size = get_viewport_rect().end
 		viewport.size = rect_size
-		border.hide()
-		bg.hide()
 		blur.show()
 		inMiniMode = false
 		GameManager.inGUI = true
@@ -60,8 +57,6 @@ func _input(event: InputEvent) -> void:
 		rect_position = miniPosition
 		rect_size = miniSize
 		viewport.size = rect_size
-		border.show()
-		bg.show()
 		blur.hide()
 		camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
 		inMiniMode = true

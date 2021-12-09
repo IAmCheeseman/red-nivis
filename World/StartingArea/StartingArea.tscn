@@ -72,7 +72,7 @@ __meta__ = {
 }
 
 [node name="Lab" parent="." instance=ExtResource( 9 )]
-position = Vector2( 322, -72 )
+position = Vector2( 322, -70 )
 
 [node name="Tiles" type="Node2D" parent="."]
 

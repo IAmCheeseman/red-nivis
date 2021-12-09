@@ -19,6 +19,7 @@ func generate_rooms(rooms:Array, brooms: Array, worldGenerator):
 					var iroom = rooms[i.x][i.y]
 					if iroom.biome in r.biomes:
 						room.biome = iroom.biome
+						room.typeAlwaysVisible = true
 						correctBiome = true
 						break
 				if !correctBiome: continue
