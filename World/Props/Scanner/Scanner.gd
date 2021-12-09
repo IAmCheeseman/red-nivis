@@ -13,11 +13,9 @@ var roomData = GameManager.worldData.rooms\
 var key
 
 func _ready() -> void:
-	key = str(get_index())
-	if !roomData.has(key):
-		roomData[str(get_index())] = false
-	else:
-		interaction.disabled = roomData[str(get_index())]
+	yield(TempTimer.idle_frame(self), "timeout")
+	interaction.disabled = GameManager.worldData.get_room_data(
+		self, false)
 
 
 func _on_interaction() -> void:
@@ -27,7 +25,7 @@ func _on_interaction() -> void:
 		global_position-Vector2(0, sprite.texture.get_height()/2/sprite.vframes)
 	)
 	interaction.disabled = true
-	roomData[key] = true
+	GameManager.worldData.store_room_data(self, true)
 
 
 func _on_animation_finished(anim_name: String) -> void:

@@ -17,6 +17,22 @@ func get_current_room() -> Dictionary:
 	return rooms[position.x][position.y]
 
 
+func store_room_data(node:Node, value):
+	var key = str(node.get_index())
+	rooms[position.x][position.y].nodeData[key] = value
+
+
+func get_room_data(node:Node, defaultValue=null):
+	var key = str(node.get_index())
+	var roomData = rooms[position.x][position.y].nodeData
+	if !roomData.has(key):
+		store_room_data(node, defaultValue)
+		return defaultValue
+	else:
+		print(roomData[key])
+		return roomData[key]
+
+
 func get_connected_rooms(room:Vector2) -> Array:
 	var pos := Vector2(-1, -1)
 	var connections := []
