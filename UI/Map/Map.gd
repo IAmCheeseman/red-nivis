@@ -7,6 +7,8 @@ onready var player:Sprite = $Viewport/Player
 onready var viewport:Viewport = $Viewport
 onready var blur = $Node2D/Blur
 
+# TODO: Make a teleport mode where you can teleport to stations.
+
 var mapData = preload("res://World/WorldManagement/WorldData.tres")
 
 var inMiniMode := true
