@@ -7,6 +7,17 @@ onready var interaction = $Iteraction
 onready var itemSpawn = $ItemSpawn
 
 var ending := false
+var worldPos = GameManager.worldData.position
+var roomData = GameManager.worldData.rooms\
+	[worldPos.x][worldPos.y].nodeData
+var key
+
+func _ready() -> void:
+	key = str(get_index())
+	if !roomData.has(key):
+		roomData[str(get_index())] = false
+	else:
+		interaction.disabled = roomData[str(get_index())]
 
 
 func _on_interaction() -> void:
@@ -16,6 +27,7 @@ func _on_interaction() -> void:
 		global_position-Vector2(0, sprite.texture.get_height()/2/sprite.vframes)
 	)
 	interaction.disabled = true
+	roomData[key] = true
 
 
 func _on_animation_finished(anim_name: String) -> void:

@@ -26,13 +26,11 @@ __meta__ = {
 }
 
 [node name="Border" type="TextureRect" parent="."]
-visible = false
 margin_right = 60.0
 margin_bottom = 60.0
 texture = SubResource( 4 )
 
 [node name="Node2D" type="Node2D" parent="."]
-visible = false
 z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Node2D"]

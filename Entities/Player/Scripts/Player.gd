@@ -196,14 +196,13 @@ func controller_aiming() -> void:
 		Input.get_joy_axis(0, JOY_ANALOG_RX),
 		Input.get_joy_axis(0, JOY_ANALOG_RY)
 	).normalized()*64
-	if !Input.get_joy_axis(0, JOY_ANALOG_RX) or\
-		!Input.get_joy_axis(0, JOY_ANALOG_RY):
+	if !Input.is_joy_button_pressed(0, JOY_AXIS_2) and\
+	   !Input.is_joy_button_pressed(0, JOY_AXIS_3):
 			joystickVector = Vector2(vel.normalized().x, 0)*64
-	joystickVector += itemHolder.position
 	
 	if joystickVector.length() < 40: joystickVector = lastUpdatedAim
 	lastUpdatedAim = joystickVector
-	joystickVector += Utils.get_relative_to_camera(self, $Camera)
+	joystickVector += Utils.get_relative_to_camera(itemHolder, $Camera)
 	Utils.set_mouse_position(joystickVector)
 
 

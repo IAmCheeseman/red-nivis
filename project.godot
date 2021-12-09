@@ -261,7 +261,11 @@ search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg", "res://addons/branch/plugin.cfg" )
+
+[gdnative]
+
+singletons=[  ]
 
 [importer_defaults]
 

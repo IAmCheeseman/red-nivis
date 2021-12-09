@@ -213,7 +213,6 @@ func import(source_file, save_path, options, _platform_variants, _gen_files):
 					glyph_i += 1
 
 			else:
-				# TODO: for absolute pedantry, we should at this point check
 				# there are no delimiter pixels within the glyphs on the
 				# following lines. for now, this is probably fine though.
 				pass

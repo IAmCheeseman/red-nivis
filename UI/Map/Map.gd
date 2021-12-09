@@ -17,9 +17,9 @@ var miniSize:Vector2
 
 
 func _ready() -> void:
+	yield(TempTimer.idle_frame(self), "timeout")
 	miniPosition = rect_position
 	miniSize = rect_size
-	yield(get_tree(), "idle_frame")
 	for x in mapData.rooms.size():
 		for y in mapData.rooms[0].size():
 			var biome = mapData.rooms[x][y].biome

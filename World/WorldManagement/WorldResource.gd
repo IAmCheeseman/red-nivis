@@ -13,6 +13,10 @@ func generate_world(seed_:int=randi()) -> void:
 	set_starting_position()
 
 
+func get_current_room() -> Dictionary:
+	return rooms[position.x][position.y]
+
+
 func get_connected_rooms(room:Vector2) -> Array:
 	var pos := Vector2(-1, -1)
 	var connections := []

@@ -7,6 +7,7 @@ var item:Dictionary
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 var player = preload("res://Entities/Player/Player.tres")
 
+# FIXME
 
 func set_item(_item:Dictionary) -> void:
 	item = _item
