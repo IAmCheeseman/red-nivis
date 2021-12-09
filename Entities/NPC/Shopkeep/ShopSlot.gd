@@ -7,7 +7,7 @@ var item:Dictionary
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 var player = preload("res://Entities/Player/Player.tres")
 
-# FIXME - Weapons don't come in.
+# FIXME - Weapons don't come in. Unless I don't want the shopkeep.
 
 func set_item(_item:Dictionary) -> void:
 	item = _item

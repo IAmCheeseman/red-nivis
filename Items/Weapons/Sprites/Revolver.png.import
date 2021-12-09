@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_sheet.png-f7792860bc6a0a1e06a01cfa2d4a772d.stex"
+path="res://.import/Revolver.png-460fdae3f402b9f7de88a6caaebd6b11.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Player/Assets/player_sheet.png"
-dest_files=[ "res://.import/player_sheet.png-f7792860bc6a0a1e06a01cfa2d4a772d.stex" ]
+source_file="res://Items/Weapons/Sprites/Revolver.png"
+dest_files=[ "res://.import/Revolver.png-460fdae3f402b9f7de88a6caaebd6b11.stex" ]
 
 [params]
 

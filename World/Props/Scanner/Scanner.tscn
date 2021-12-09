@@ -140,7 +140,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 41, 20 )
+extents = Vector2( 41, 23.5 )
 
 [node name="Scanner" type="Node2D"]
 script = ExtResource( 3 )
@@ -173,7 +173,7 @@ position = Vector2( 0, -47 )
 spritePath = NodePath("../Sprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
-position = Vector2( 0, 27 )
+position = Vector2( 0, 23.5 )
 shape = SubResource( 4 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

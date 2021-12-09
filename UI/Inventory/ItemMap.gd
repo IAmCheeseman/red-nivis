@@ -9,6 +9,13 @@ const ITEMS = {
 		"scene" : preload("res://Items/Weapons/Scenes/Pistol.tscn"),
 		"slotTexture" : preload("res://Items/Weapons/Sprites/Pistol.png")
 	},
+	"revolver" : {
+		"key" : "revolver",
+		"name" : "Revolver",
+		"tier" : ToolTipGenerator.TIERS.LAB,
+		"scene" : preload("res://Items/Weapons/Scenes/Revolver.tscn"),
+		"slotTexture" : preload("res://Items/Weapons/Sprites/Revolver.png")
+	},
 	"pump-shotgun" : {
 		"key" : "pump-shotgun",
 		"name" : "Pump Shotgun",

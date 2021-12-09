@@ -243,7 +243,6 @@ ToolTip="*res://UI/ToolTip/ToolTip.tscn"
 
 [debug]
 
-settings/fps/force_fps=60
 settings/gdscript/max_call_stack=2048
 
 [display]

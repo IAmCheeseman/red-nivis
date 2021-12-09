@@ -33,8 +33,8 @@ export var shellSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Shell
 export var kickUp:float = 25
 export var bulletSpawnDist:float = 16
 
-export var ssFreq:float = .05
-export var ssStrength:float = 7
+export var ssFreq:float = .025
+export var ssStrength:float = 2
 export var isTwoHanded:bool = false
 
 # Nodes

@@ -19,8 +19,8 @@ func _ready() -> void:
 		theme.set_color("font_color_pressed", "Button", Color("#752438"))
 	else:
 		theme.set_color("font_color", "Button", Color("#c7cfcc"))
-		theme.set_color("font_color_hover", "Button", Color("#ebede9"))
-		theme.set_color("font_color_pressed", "Button", Color("#a8b5b2"))
+		theme.set_color("font_color_hover", "Button", Color("#e8c170"))
+		theme.set_color("font_color_pressed", "Button", Color("#de9e41"))
 	
 	_originalPosition = rect_position
 	_originalText = text
@@ -29,7 +29,7 @@ func _ready() -> void:
 
 
 func _on_mouse_entered() -> void:
-	text = "> %s <" % _originalText
+	text = "%s" % _originalText
 	yield(TempTimer.idle_frame(self), "timeout")
 	rect_position = _originalPosition+Vector2.UP
 

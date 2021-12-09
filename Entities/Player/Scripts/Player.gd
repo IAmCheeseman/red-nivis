@@ -69,7 +69,6 @@ func _physics_process(delta):
 	
 	match state:
 		states.WALK:
-			sprite.material.set_shader_param("is_on", 0)
 			walk_state(delta)
 		states.DEAD:
 			if just_landed():
