@@ -22,6 +22,7 @@ var worldData = preload("res://World/WorldManagement/WorldData.tres")
 
 # warning-ignore:unused_signal
 signal screenshake
+# warning-ignore:unused_signal
 signal zoom_in(zoom,time,zoomPos)
 
 func _input(_event):

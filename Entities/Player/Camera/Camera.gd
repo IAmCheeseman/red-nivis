@@ -34,10 +34,9 @@ var playerData = preload("res://Entities/Player/Player.tres")
 
 
 func _ready():
-# warning-ignore:return_value_discarded
 	GameManager.currentCamera = self
-	GameManager.connect("screenshake", self, "start")
-	GameManager.connect("zoom_in", self, "zoom_in")
+	var _discard0 = GameManager.connect("screenshake", self, "start")
+	var _discard1 = GameManager.connect("zoom_in", self, "zoom_in")
 
 
 func _process(_delta):
@@ -61,7 +60,7 @@ func set_cam_look(value:bool):
 	maxOffset = baseMaxOffset * int(value)
 
 
-func zoom_in(z:=.5, time:=2, zoomPos:=global_position):
+func zoom_in(z:=.5, t:=2, zoomPos:=global_position):
 	if zoomingIn: return
 	zoomTween.interpolate_property(
 		self,
@@ -86,7 +85,7 @@ func zoom_in(z:=.5, time:=2, zoomPos:=global_position):
 	posTween.start()
 	zoomTween.start()
 	
-	zoomTimer.start(time)
+	zoomTimer.start(t)
 	
 	zoomTarget = zoomPos
 	zoomingIn = true

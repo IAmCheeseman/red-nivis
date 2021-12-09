@@ -33,7 +33,7 @@ signal bullet_hit(bullet)
 func _ready() -> void:
 	if gun.burst:
 		cooldownTimer.set_meta("fromReload", true)
-		cooldownTimer.connect("timeout", self, "_on_cooldown_timeout")
+		var _discard = cooldownTimer.connect("timeout", self, "_on_cooldown_timeout")
 	targetPos = position
 
 func _on_cooldown_timeout() -> void:
