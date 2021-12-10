@@ -8,6 +8,9 @@ onready var bounceRay = $Collision/BounceRay
 
 onready var jumpTimer = $Timers/Jump
 
+onready var hpBar = $Healthbar
+onready var healthManager = $DamageManager
+
 export var jumpForce := 340
 export var friction := 15
 
@@ -17,6 +20,7 @@ var vel := Vector2.ZERO
 var jumpDir := Vector2.ZERO
 
 var lastFrameGrounded := false
+
 
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
@@ -64,7 +68,11 @@ func select_jump_dir() -> void:
 	else: # Jump in a random direction
 		var dir = rand_range(-1, 1)
 		jumpDir = Vector2(dir, -1)
-	
+
+
+func update_healthbar():
+	hpBar.max_value = healthManager.maxHealth
+	hpBar.value = healthManager.health
 
 
 func jump() -> void:

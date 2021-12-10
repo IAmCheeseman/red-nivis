@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Entities/Enemies/Jumper/Jumper.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Jumper/Jumper.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Entities/Enemies/Jumper/hit.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Managing/Colliders/Hurtbox.gd" type="Script" id=7]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=9]
+[ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5, 7.5 )
@@ -128,7 +130,7 @@ visible = false
 [node name="HitSFX" type="Node2D" parent="."]
 script = ExtResource( 5 )
 audio = ExtResource( 6 )
-bus = "SFXMain"
+bus = "Master"
 
 [node name="Timers" type="Node" parent="."]
 
@@ -138,6 +140,18 @@ autostart = true
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
 anims/Land = SubResource( 3 )
 anims/RESET = SubResource( 4 )
+
+[node name="Healthbar" type="TextureProgress" parent="."]
+margin_left = -9.0
+margin_top = -25.0
+margin_right = 9.0
+margin_bottom = -20.0
+max_value = 50.0
+texture_under = ExtResource( 10 )
+texture_progress = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="hurt" from="Collision/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/Jump" to="." method="_on_jump_timer_timeout"]
