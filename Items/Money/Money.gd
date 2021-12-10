@@ -21,7 +21,7 @@ func _ready():
 	if value < minCoinSpriteVal:
 		sprite.texture = coinSprite
 	
-	vel = Vector2.RIGHT.rotated(deg2rad(rand_range(0, 360)))*100
+	vel = Vector2.RIGHT.rotated(deg2rad(rand_range(0, 360)))*(speed*20)
 
 
 func _process(delta):
@@ -29,11 +29,12 @@ func _process(delta):
 		if playerDetection.get_player():
 			playerData.money += value
 			queue_free()
-		speed += 10*delta
+		speed *= 150*delta
+		speed = clamp(speed, 0, speed*(150*100))
 		friction += 250*delta
 		var targetVel = position.direction_to(player.position)*speed*delta
-		vel = targetVel #vel.move_toward(targetVel, friction*delta)
+		vel = targetVel*friction*delta#vel.move_toward(targetVel, friction*delta)
 	else:
 		vel = vel.move_toward(Vector2.ZERO, friction*delta)
-	vel = move_and_slide(vel)
+	vel = move_and_slide(vel*delta)
 
