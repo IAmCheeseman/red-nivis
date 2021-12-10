@@ -41,24 +41,38 @@ shader_param/alpha = ExtResource( 4 )
 atlas = ExtResource( 3 )
 region = Rect2( 12, 65, 12, 12 )
 
-[node name="Map" type="ViewportContainer"]
-process_priority = -1
-anchor_left = 1.0
+[node name="Control" type="Control"]
 anchor_right = 1.0
-margin_left = -320.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="VBoxContainer"]
 margin_top = 172.0
-margin_right = -272.0
+margin_right = 48.0
 margin_bottom = 220.0
+rect_min_size = Vector2( 48, 48 )
+mouse_filter = 2
 stretch = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ViewportContainer"]
 z_index = -1
 
-[node name="Blur" type="ColorRect" parent="Node2D"]
+[node name="Blur" type="ColorRect" parent="VBoxContainer/ViewportContainer/Node2D"]
 visible = false
 material = SubResource( 6 )
 margin_right = 320.0
@@ -68,18 +82,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="."]
+[node name="Viewport" type="Viewport" parent="VBoxContainer/ViewportContainer"]
 size = Vector2( 48, 48 )
 transparent_bg = true
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
 
-[node name="MapTiles" parent="Viewport" instance=ExtResource( 2 )]
+[node name="MapTiles" parent="VBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
 material = SubResource( 8 )
 
-[node name="Player" type="Sprite" parent="Viewport"]
+[node name="Player" type="Sprite" parent="VBoxContainer/ViewportContainer/Viewport"]
 texture = SubResource( 3 )
 
-[node name="Camera" type="Camera2D" parent="Viewport"]
+[node name="Camera" type="Camera2D" parent="VBoxContainer/ViewportContainer/Viewport"]
 current = true

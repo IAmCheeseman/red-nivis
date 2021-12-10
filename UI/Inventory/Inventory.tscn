@@ -6,7 +6,7 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
-region = Rect2( 141, 30, 20, 22 )
+region = Rect2( 141, 30, 6, 22 )
 
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
@@ -30,7 +30,7 @@ __meta__ = {
 [node name="Slots" type="VBoxContainer" parent="HBox"]
 margin_left = 285.0
 margin_right = 317.0
-margin_bottom = 214.0
+margin_bottom = 218.0
 rect_min_size = Vector2( 32, 0 )
 mouse_filter = 2
 alignment = 2
@@ -41,23 +41,22 @@ __meta__ = {
 [node name="Slot1" parent="HBox/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 172.0
+margin_top = 176.0
 margin_right = 32.0
-margin_bottom = 191.0
+margin_bottom = 195.0
 
 [node name="Slot2" parent="HBox/Slots" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 195.0
+margin_top = 199.0
 margin_right = 32.0
-margin_bottom = 214.0
+margin_bottom = 218.0
 
 [node name="SlotSelector" type="TextureRect" parent="."]
-margin_left = 318.0
-margin_top = 170.0
-margin_right = 338.0
-margin_bottom = 192.0
-rect_scale = Vector2( -1, 1 )
+margin_left = 314.0
+margin_top = 174.0
+margin_right = 320.0
+margin_bottom = 196.0
 mouse_filter = 2
 texture = SubResource( 1 )
 stretch_mode = 4

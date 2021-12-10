@@ -24,6 +24,7 @@ func _ready():
 
 
 func _process(delta):
+	slotSelector.rect_position.x = slots.rect_position.x+slots.rect_size.x-slotSelector.texture.get_width()+1
 	slotSelector.rect_position.y = lerp(slotSelector.rect_position.y, slotSelectorTarget, 20*delta)
 	set_slot_cursor_position()
 

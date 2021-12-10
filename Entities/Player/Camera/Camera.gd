@@ -44,14 +44,23 @@ func _process(_delta):
 		global_position = trackNode.global_position
 		
 		var vs = get_viewport_rect().end*.5
-		global_position.x = clamp(global_position.x, limits.position.x+vs.x, limits.end.x-vs.x)
-		global_position.y = clamp(global_position.y, limits.position.y+vs.y, limits.end.y-vs.y)
-		
+		global_position.x = clamp(
+			global_position.x,
+			limits.position.x+min(vs.x, 320*.5),
+			limits.end.x-min(vs.x, 320*.5)
+		)
+		global_position.y = clamp(
+			global_position.y,
+			limits.position.y+min(vs.y, 220*.5),
+			limits.end.y-min(vs.y, 220*.5)
+		)
+
 		var mousePosition = Utils.get_global_mouse_position()
 		var dirMouse = global_position.direction_to(mousePosition)
 		var mouseDist = (global_position.distance_to(mousePosition)/sensitivity)
 		mouseDist = clamp(mouseDist, -maxOffset, maxOffset)
 		global_position += (dirMouse*mouseDist)*int(mouseWeight)
+#		global_position.y -= 16*3
 	else:
 		global_position = zoomTarget 
 
