@@ -22,6 +22,10 @@ var jumpDir := Vector2.ZERO
 var lastFrameGrounded := false
 
 
+func _ready() -> void:
+	update_healthbar()
+
+
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
 	if !player: player = playerDetection.get_player()

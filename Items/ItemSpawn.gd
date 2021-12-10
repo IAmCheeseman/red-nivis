@@ -11,6 +11,7 @@ func _process(_delta):
 
 
 func add_item():
+	if itemPool.size() <= 0: queue_free()
 	if rand_range(0, 1) > failChance:
 		itemPool.shuffle()
 		var weapon = itemPool.pop_front()

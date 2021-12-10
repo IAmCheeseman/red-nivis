@@ -22,8 +22,6 @@ signal dead
 func _ready() -> void:
 	if hurtSFXPath: hurtSFX = get_node(hurtSFXPath)
 	health = maxHealth
-	if par.has_method("update_healthbar"):
-		par.update_healthbar()
 
 
 func take_damage(amount:float, dir:Vector2) -> void:
