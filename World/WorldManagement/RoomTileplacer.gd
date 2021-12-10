@@ -1,6 +1,6 @@
 extends Node2D
 
-const PADDING := 20
+const PADDING := 10
 
 onready var world := get_parent()
 

@@ -585,7 +585,7 @@ one_shot = true
 wait_time = 0.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
+layer = 3
 
 [node name="Vignette" type="ColorRect" parent="CanvasLayer"]
 visible = false

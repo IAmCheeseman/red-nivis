@@ -44,15 +44,16 @@ func _process(_delta):
 		global_position = trackNode.global_position
 		
 		var vs = get_viewport_rect().end*.5
+		
 		global_position.x = clamp(
 			global_position.x,
-			limits.position.x+min(vs.x, 320*.5),
-			limits.end.x-min(vs.x, 320*.5)
+			limits.position.x+min(vs.x, Globals.DEFAULT_CAM_SIZE.x*.5),
+			limits.end.x-min(vs.x, Globals.DEFAULT_CAM_SIZE.x*.5)
 		)
 		global_position.y = clamp(
 			global_position.y,
-			limits.position.y+min(vs.y, 220*.5),
-			limits.end.y-min(vs.y, 220*.5)
+			limits.position.y+min(vs.y, Globals.DEFAULT_CAM_SIZE.y*.5),
+			limits.end.y-min(vs.y, Globals.DEFAULT_CAM_SIZE.y*.5)
 		)
 
 		var mousePosition = Utils.get_global_mouse_position()

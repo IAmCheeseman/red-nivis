@@ -160,7 +160,6 @@ func just_landed():
 		if triedJumpRecent:
 			jump()
 			bunnyHopTimer.start()
-			bunny_hop()
 			triedJumpRecent = false
 		return true
 	return false
@@ -178,14 +177,6 @@ func is_grounded():
 			1-abs(vel.y/Globals.GRAVITY),
 			.75, 1.5)
 		scaleHelper.scale.y = 1+(1-scaleHelper.scale.x)
-	return false
-
-
-func is_on_platform():
-	for c in floorCheckers.get_children():
-		if c.is_colliding():
-			if c.get_collider().is_in_group("Platform"):
-				return true
 	return false
 
 
@@ -249,14 +240,12 @@ func add_walk_particles(spawnPos:Vector2):
 
 	add_child(newDust)
 
-func bunny_hop(): if !bunnyHopTimer.is_stopped(): vel.x *= playerData.bunnyHopMult
 
 func jump():
 	# Setting values
 	jumpSFX.play()
 	snapVector = Vector2.ZERO
 	vel.y = -playerData.jumpForce
-	bunny_hop()
 	triedJumpRecent = false
 
 
