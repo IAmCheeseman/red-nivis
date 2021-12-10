@@ -58,9 +58,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ) ]
 }
 
-[node name="MDM" type="KinematicBody2D" groups=[
-"MDM",
-]]
+[node name="MDM" type="KinematicBody2D" groups=["MDM"]]
 collision_layer = 0
 script = ExtResource( 5 )
 speed = 1200.0

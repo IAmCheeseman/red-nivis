@@ -51,8 +51,8 @@ shader_param/is_on = 0.0
 extents = Vector2( 4, 7 )
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 4.0
-height = 5.69744
+radius = 3.0
+height = 0.0
 
 [sub_resource type="CircleShape2D" id=7]
 radius = 4.0
@@ -508,13 +508,12 @@ pitchShiftRange = 1.2
 bus = "SFX"
 
 [node name="Hurtbox" parent="." groups=["player"] instance=ExtResource( 4 )]
-visible = false
 collision_layer = 2
 collision_mask = 2147483648
 immTime = 0.8
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2( -1, -4 )
+position = Vector2( 0, -4 )
 shape = SubResource( 6 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 13 )]
