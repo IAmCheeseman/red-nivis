@@ -4,7 +4,6 @@ class_name CustomButton
 export var isNegative := false
 
 var _originalPosition: Vector2 
-var _originalText: String
 var hovering := false
 
 
@@ -23,18 +22,14 @@ func _ready() -> void:
 		theme.set_color("font_color_pressed", "Button", Color("#de9e41"))
 	
 	_originalPosition = rect_position
-	_originalText = text
 	focus_mode = Control.FOCUS_NONE
 	flat = true
 
 
 func _on_mouse_entered() -> void:
-	text = "%s" % _originalText
-	yield(TempTimer.idle_frame(self), "timeout")
 	rect_position = _originalPosition+Vector2.UP
 
 
 func _on_mouse_exited() -> void:
-	text = _originalText
 	rect_position = _originalPosition
 
