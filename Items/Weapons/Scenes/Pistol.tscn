@@ -11,8 +11,6 @@ cost = 30
 magazineSize = 3
 kickUp = 13.0
 bulletSpawnDist = 20.0
-ssFreq = 0.025
-ssStrength = 2.0
 
 [node name="Pivot" parent="." index="1"]
 position = Vector2( 0, 3 )

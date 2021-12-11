@@ -1,21 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Weapons/Sprites/Shotgun.png" type="Texture" id=2]
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/Bullet1.png" type="Texture" id=3]
+[ext_resource path="res://Items/Weapons/Bullet/Shells/shellShotgun.png" type="Texture" id=4]
+[ext_resource path="res://Items/Weapons/Perks/BulletBounce.gd" type="Script" id=5]
 
 [node name="Shotgun" instance=ExtResource( 1 )]
 gunType = 1
 damage = 15.0
 accuracy = 24.0
 cooldown = 0.6
+reloadSpeed = 1.4
 multishot = 12.0
-projSpeed = 280
+projSpeed = 442
 projLifetime = 0.35
+recoil = 255.0
 maxHoldShots = 1
 magazineSize = 3
-reloadSpeed = 1.4
+perks = [ ExtResource( 5 ) ]
 bulletSprite = ExtResource( 3 )
+shellSprite = ExtResource( 4 )
 ssFreq = 0.035
 ssStrength = 4.0
 isTwoHanded = true

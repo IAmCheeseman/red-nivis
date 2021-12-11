@@ -18,7 +18,7 @@ export var projSpeed: int = 340
 export var projScale: float = 1.0
 export var projLifetime: float = .5
 export var peircing: bool = false
-export var recoil: float = 0.3
+export var recoil: float = 30
 export var look: int
 export var cost: int = 1
 export var maxHoldShots: int = -1
@@ -61,12 +61,11 @@ func _ready():
 	ammoLabel.hide()
 	cooldownTimer.start(reloadSpeed*.333)
 	meleeCooldown.wait_time = meleeSpeed
-	
-#	if perk:
-#		perkNode = Node.new()
-#		perkNode.set_script(perk)
-#		perk.gun = gunLogic
-#		add_child(perk)
+	for perk in perks:
+		var perkNode = Node.new()
+		perkNode.set_script(perk)
+		perkNode.gun = gunLogic
+		add_child(perkNode)
 
 
 func _on_Cooldown_timeout():

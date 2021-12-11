@@ -129,6 +129,7 @@ emitSignalInstead = true
 shape = SubResource( 4 )
 
 [node name="Decoration" type="Node2D" parent="."]
+z_index = -2
 
 [node name="Sprite1" parent="Decoration" instance=ExtResource( 20 )]
 position = Vector2( -120, 0 )
@@ -171,7 +172,7 @@ position = Vector2( 489, -192 )
 [node name="Vine3" parent="Decoration" instance=ExtResource( 19 )]
 position = Vector2( 473, -208 )
 
-[node name="Constructor" parent="." instance=ExtResource( 17 )]
+[node name="Constructor" parent="Decoration" instance=ExtResource( 17 )]
 position = Vector2( -49, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]

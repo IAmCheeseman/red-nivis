@@ -1,7 +1,5 @@
 extends Node
 
-const PERK_NAME = "Bullet Bounce"
-const PERK_ADJ = "Bouncy"
 const TIMES_BOUNCED = "timesBounced"
 
 onready var gun: Node2D
@@ -28,8 +26,9 @@ func _on_bullet_hit_wall(bullet: Node2D) -> void:
 	
 	var newBullet = bullet.duplicate()
 	newBullet.direction = -bullet.direction
-	newBullet.speed = bullet.speed
+	newBullet.speed = bullet.speed*.8
 	newBullet.damage = bullet.damage
+	newBullet.scale = bullet.scale
 	newBullet.lifetime = bullet.lifetimeTimer.time_left
 	
 	newBullet.connect("hit_wall", gun, "_on_bullet_hit_wall")
@@ -39,13 +38,12 @@ func _on_bullet_hit_wall(bullet: Node2D) -> void:
 	bounceRaycast.cast_to = bullet.direction*32
 	bounceRaycast.force_raycast_update()
 	
-	var normal = bounceRaycast.get_collision_normal()#.normalized()
+	var normal = bounceRaycast.get_collision_normal()
 	if normal != Vector2.ZERO:
-		newBullet.direction = newBullet.direction.reflect(normal)
+		newBullet.direction = bullet.direction.bounce(normal)
 	else:
 		newBullet.direction = -bullet.direction
 	
+	newBullet.global_position = bullet.global_position+newBullet.direction*16
+	
 	GameManager.spawnManager.spawn_object(newBullet)
-	yield(get_tree(), "idle_frame")
-	if newBullet is KinematicBody2D:
-		newBullet.global_position += newBullet.direction*16

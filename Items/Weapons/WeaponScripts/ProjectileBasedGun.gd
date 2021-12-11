@@ -61,7 +61,7 @@ func shoot():
 	# Playing a sound for feedback
 	gun.get_node("ShootSound").play()
 
-#	gun.player.vel += -global_position.direction_to(get_global_mouse_position())*gun.recoil
+	gun.player.playerObject.vel += -get_local_mouse_position().normalized()*gun.recoil
 	if playerData.ammo <= 0:
 		cooldownTimer.stop()
 		cooldownTimer.start(gun.reloadSpeed)
