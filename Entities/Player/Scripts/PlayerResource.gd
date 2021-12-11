@@ -22,10 +22,13 @@ export var maxStamina := 5
 export var staminaRecovery := 2.4
 export var stamRecovCurve: Curve
 export var tiltStrength:float = 5.0
+export var maxHeals := 3
+export var healTime := 2.0
 
 var health:int
 var money := 0 setget set_money
 var ammo:int setget set_ammo
+var healsLeft:int setget set_heals
 var dashesLeft := 1
 var godmode := false
 
@@ -41,18 +44,21 @@ var isDashing := false
 
 signal healthChanged
 signal ammoChanged
+signal healsChanged
 signal moneyChanged
 signal stamina_changed
 
 
 func _init() -> void:
 	health = maxHealth-1
+	healsLeft = maxHeals
 
 
 func _on_damage_taken(damage, kbDir) -> void:
 	if isDashing:
 		return
 	health -= damage
+	health = clamp(health, 0, maxHealth)
 	emit_signal("healthChanged", kbDir)
 
 
@@ -64,6 +70,11 @@ func set_money(val):
 func set_ammo(value:int) -> void:
 	ammo = value
 	emit_signal("ammoChanged")
+
+
+func set_heals(value:int) -> void:
+	healsLeft = value
+	emit_signal("healsChanged")
 
 
 func set_stamina(val:int) -> void:

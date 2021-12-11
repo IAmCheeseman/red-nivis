@@ -117,10 +117,17 @@ func walk_state(delta):
 		if just_landed():
 			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
 		
-		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
+		#vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 	else:
+		vel.y += Globals.GRAVITY*delta
+		vel.x = lerp(
+			vel.x,
+			0,
+			playerData.accelaration*delta
+		)
 		sprite.rotation_degrees = 0
 		animationPlayer.play("Idle")
+	vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 
 
 func animate(moveDir:Vector2):
@@ -199,7 +206,7 @@ func _input(event: InputEvent) -> void:
 	if playerData.isDead:
 		return
 	# Jumping
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and !lockMovement:
 		triedJumpRecent = true
 		jumpWindow.start()
 		if is_grounded() or state == states.WALLSLIDE:
@@ -208,7 +215,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
 	
-	if Input.is_action_just_pressed("down"):
+	if Input.is_action_just_pressed("down") and !lockMovement:
 		set_collision_mask_bit(4, false)
 		dropDownTimer.start(.1)
 	# Controller Controls
@@ -286,6 +293,7 @@ func _on_health_changed(dir):
 	if playerData.health <= 0:
 		vel = dir*(playerData.kbStrength*1.5)
 		die()
+		return
 	# Screenshake
 	GameManager.emit_signal("screenshake", 2, 6, .05, .05)
 	

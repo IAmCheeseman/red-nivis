@@ -7,7 +7,6 @@ onready var healthBar = $VBox/HealthBar
 onready var healthBarEmpty = $VBox/HealthBar/Empty
 onready var hbAnim = $VBox/HealthBar/AnimationPlayer
 onready var hbShakeAnim = $VBox/HealthBar/ShakeAnim
-onready var hpLabel = $VBox/HPLabel
 
 onready var justLostBar = $VBox/HealthBar/JustLost
 onready var justLostTween = $VBox/HealthBar/JustLost/JustLostTween
@@ -15,7 +14,8 @@ onready var justLostTimer = $VBox/HealthBar/JustLost/JustLostTimer
 
 # Ammo bar
 onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
-onready var ammoLabel = $VBox/Bottom/AmmoBar/Label
+
+onready var healsBar = $VBox/Bottom/Heals/Icons
 
 # Money Counter
 onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
@@ -31,17 +31,18 @@ func _ready() -> void:
 	
 	playerData.connect("healthChanged", self, "update_health")
 	playerData.connect("ammoChanged", self, "update_ammo")
+	playerData.connect("healsChanged", self, "update_heals")
 	playerData.connect("moneyChanged", self, "update_money")
 	
 	update_health(Vector2.ZERO)
 	update_ammo()
+	update_heals()
 	update_money()
 
 
 func update_health(_kb:Vector2) -> void:
 	healthBar.rect_min_size.x = (playerData.health*healthBarTexSize.x)
 	healthBarEmpty.rect_size.x = playerData.maxHealth*healthBarTexSize.x
-	hpLabel.text = "HP: %s/%s" % [playerData.health, playerData.maxHealth]
 	
 	hbAnim.play("Flash")
 	justLostTimer.start()
@@ -51,11 +52,11 @@ func update_health(_kb:Vector2) -> void:
 		hbShakeAnim.stop(true)
 
 
-func update_money():
+func update_money() -> void:
 	moneyLabel.text = "%s" % playerData.money
 
 
-func update_ammo():
+func update_ammo() -> void:
 	if ammoBar.get_child_count() != playerData.maxAmmo:
 		Utils.free_children(ammoBar)
 
@@ -64,14 +65,27 @@ func update_ammo():
 			var newAmmoPoint = ammoPoint.instance()
 			ammoBar.add_child(newAmmoPoint)
 	else:
-		ammoLabel.text = "Ammo: %s/%s" % [playerData.ammo, playerData.maxAmmo]
-		if playerData.ammo == 0: ammoLabel.text = "Reloading..."
 		for i in ammoBar.get_children():
 			if i.get_index()+1 > playerData.ammo:
 				i.self_modulate.a = 0
 			else:
 				i.self_modulate.a = 1
 
+
+func update_heals() -> void:
+	if healsBar.get_child_count() != playerData.maxHeals:
+		Utils.free_children(healsBar)
+		
+		var healPoint = preload("res://UI/GameOverlay/Heal.tscn")
+		for i in playerData.healsLeft:
+			var newHealPoint = healPoint.instance()
+			healsBar.add_child(newHealPoint)
+	else:
+		for i in healsBar.get_children():
+			if i.get_index()+1 > playerData.healsLeft:
+				i.self_modulate.a = 0
+			else:
+				i.self_modulate.a = 1
 
 
 func _on_just_lost_timer_timeout() -> void:
