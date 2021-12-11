@@ -54,6 +54,7 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 		return
 	if player.playerData.isDead:
 		return
+	GameManager.inGUI = false
 	var timer = Timer.new()
 	timer.wait_time = .4
 	timer.connect("timeout", get_tree(), "reload_current_scene")
