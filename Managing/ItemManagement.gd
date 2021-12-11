@@ -19,6 +19,7 @@ func convert_tier_to_str(tier: int):
 		RARE: return "rare"
 
 
+
 func create_item(item, withForce: bool=false):
 	if item:
 		var newItem = load("res://Items/DroppedItem.tscn").instance()
