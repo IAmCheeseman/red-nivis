@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/Enemies/Assets/DeathParticles.png" type="Texture" id=1]
 
@@ -7,13 +7,6 @@ particles_animation = true
 particles_anim_h_frames = 3
 particles_anim_v_frames = 1
 particles_anim_loop = false
-
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.728723, 0.882979 )
-colors = PoolColorArray( 0.460938, 0.460938, 0.460938, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0, 0.95 ), 1.23754, 1.23754, 0, 0, Vector2( 0.687204, 0.827273 ), -1.11053, -1.11053, 0, 0, Vector2( 1, 0 ), 0.787825, 0.0, 0, 0 ]
@@ -35,7 +28,6 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 damping = 66.67
 scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
 anim_offset = 1.0
 anim_offset_random = 1.0
 
@@ -71,9 +63,10 @@ tracks/1/keys = {
 material = SubResource( 1 )
 z_index = 1
 emitting = false
-amount = 20
+amount = 30
 one_shot = true
 explosiveness = 1.0
+fixed_fps = 30
 local_coords = false
 process_material = SubResource( 6 )
 texture = ExtResource( 1 )

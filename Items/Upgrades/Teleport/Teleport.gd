@@ -20,8 +20,6 @@ func _input(_event: InputEvent) -> void:
 		dashDir = dashDir.normalized()*64
 		if dashDir == Vector2.ZERO: return
 		
-		var index := 0
-		var closestPoint := player.global_position
 		for i in 3:
 			rc.global_position = player.global_position+(
 				Vector2.UP*(8*i)
@@ -29,17 +27,11 @@ func _input(_event: InputEvent) -> void:
 			rc.cast_to = dashDir.normalized()*70
 			rc.force_raycast_update()
 			if rc.is_colliding():
-				var collisionPoint = rc.get_collision_point()-player.global_position
-				var evenPoint = Vector2(collisionPoint.x, player.global_position.y)
+				var collisionPoint = player.to_local(rc.get_collision_point())
+				var evenPoint = Vector2(collisionPoint.x, 0)
 				
-				if evenPoint.distance_to(
-					player.global_position
-				) < closestPoint.distance_to(
-					player.global_position
-				):
-					
-					closestPoint = evenPoint
-		dashDir = closestPoint
+				if evenPoint.distance_to(Vector2.ZERO) < dashDir.distance_to(Vector2.ZERO):
+					dashDir = evenPoint
 		
 		var pos = [player.position, player.position+dashDir]
 		for i in pos:
@@ -48,6 +40,7 @@ func _input(_event: InputEvent) -> void:
 			GameManager.spawnManager.spawn_object(newPatricles)
 		
 		player.position += dashDir
+		player.vel.y = 0
 		playerData.dashesLeft -= 1
 		player.dashCooldown.start()
 		
