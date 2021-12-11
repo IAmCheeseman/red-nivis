@@ -14,11 +14,10 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("dash") and playerData.dashesLeft > 0 and !player.lockMovement:
-		var dashDir = Vector2.ZERO
+		var dashDir := Vector2.ZERO
 		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
 		dashDir.y = Input.get_action_strength("down")
 		dashDir = dashDir.normalized()*64
-		if dashDir == Vector2.ZERO: return
 		
 		for i in 3:
 			rc.global_position = player.global_position+(
@@ -32,12 +31,14 @@ func _input(_event: InputEvent) -> void:
 				
 				if evenPoint.distance_to(Vector2.ZERO) < dashDir.distance_to(Vector2.ZERO):
 					dashDir = evenPoint
+		if dashDir.length() < 16: return
 		
 		var pos = [player.position, player.position+dashDir]
 		for i in pos:
 			var newPatricles = teleParticles.instance()
 			newPatricles.position = i-Vector2(0, 8)
 			GameManager.spawnManager.spawn_object(newPatricles)
+		
 		
 		player.position += dashDir
 		player.vel.y = 0
