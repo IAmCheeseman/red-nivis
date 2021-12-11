@@ -106,7 +106,7 @@ func _input(event):
 
 			# Spawning the item
 			var itemManager = ItemManagement.new()
-			var newItem = itemManager.create_item(item, true)
+			var newItem = itemManager.create_item(item.key, true)
 			newItem.global_position = playerData.playerObject.global_position+Vector2(0, -8)
 			GameManager.spawnManager.spawn_object(newItem)
 

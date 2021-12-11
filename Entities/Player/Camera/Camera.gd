@@ -5,10 +5,11 @@ onready var timer = $Timer
 onready var zoomTween = $ZoomTween
 onready var posTween = $PosTween
 onready var zoomTimer = $ZoomTimer
+onready var smoothingTimer = $SmoothingTimer
 
 export var mouseWeight = true
 export var yOffset = 0
-export var limits:Rect2 = Rect2(-1000000, -1000000, 1000000, 1000000)
+export var limits:Rect2 = Rect2(-1000000, -1000000, 1000000, 1000000) setget set_limits
 export var trackNodePath:NodePath
 
 onready var trackNode = get_node(trackNodePath)
@@ -37,6 +38,9 @@ func _ready():
 	GameManager.currentCamera = self
 	var _discard0 = GameManager.connect("screenshake", self, "start")
 	var _discard1 = GameManager.connect("zoom_in", self, "zoom_in")
+	
+	yield(TempTimer.idle_frame(self), "timeout")
+	smoothing_enabled = false
 
 
 func _process(_delta):
@@ -66,12 +70,20 @@ func _process(_delta):
 		global_position = zoomTarget 
 
 
+func set_limits(val) -> void:
+	limits = val
+	smoothing_enabled = true
+	smoothingTimer.start()
+
+
 func set_cam_look(value:bool):
 	maxOffset = baseMaxOffset * int(value)
 
 
 func zoom_in(z:=.5, t:=2, zoomPos:=global_position):
 	if zoomingIn: return
+	smoothing_enabled = true
+	
 	zoomTween.interpolate_property(
 		self,
 		"zoom",
@@ -153,6 +165,10 @@ func _on_Camera_tree_exiting():
 
 
 func _on_zoom_timer_timeout() -> void:
+	
+	smoothing_enabled = true
+	smoothingTimer.start(.45)
+	
 	zoomTween.interpolate_property(
 		self,
 		"zoom",
