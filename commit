@@ -1,4 +1,7 @@
 read -p "Commit Name: " commitName || { exit 0; }
 git add .
 git commit -m "$commitName" || { exit 0; }
+
+echo "ACCESS TOKEN:\n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"
+
 git push || { exit 0; }
