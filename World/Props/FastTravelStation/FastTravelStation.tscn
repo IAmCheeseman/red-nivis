@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/Props/FastTravelStation/FastTravel.png" type="Texture" id=1]
 [ext_resource path="res://Managing/Interaction/Iteraction.tscn" type="PackedScene" id=2]
@@ -21,6 +21,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -52,6 +67,18 @@ tracks/1/keys = {
 "method": "teleport"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 25, 25 )
@@ -71,12 +98,15 @@ autoplay = "Default"
 anims/Default = SubResource( 1 )
 
 [node name="Teleport" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, 800 )
 scale = Vector2( 1e-05, 1600 )
 z_index = 1
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Teleport"]
+autoplay = "RESET"
+anims/RESET = SubResource( 4 )
 anims/Teleport = SubResource( 2 )
 
 [node name="Iteraction" parent="." instance=ExtResource( 2 )]

@@ -15,10 +15,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-margin_left = 108.0
-margin_top = 56.0
-margin_right = 147.0
-margin_bottom = 184.0
+margin_left = 140.0
+margin_top = 46.0
+margin_right = 179.0
+margin_bottom = 174.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/HBoxContainer"]
 margin_bottom = 128.0
