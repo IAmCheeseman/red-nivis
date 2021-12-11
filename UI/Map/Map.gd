@@ -54,6 +54,7 @@ func _input(event: InputEvent) -> void:
 		blur.show()
 		inMiniMode = false
 		GameManager.inGUI = true
+		tiles.material.set_shader_param("isOn", false)
 	
 	if event.is_action_released("map"):
 		rect_position = miniPosition
@@ -63,6 +64,7 @@ func _input(event: InputEvent) -> void:
 		camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
 		inMiniMode = true
 		GameManager.inGUI = false
+		tiles.material.set_shader_param("isOn", true)
 	
 	if event is InputEventMouseMotion\
 	and Input.is_action_pressed("use_item")\
