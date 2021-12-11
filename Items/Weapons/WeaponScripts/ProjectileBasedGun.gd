@@ -45,7 +45,8 @@ func shoot():
 	yield(TempTimer.idle_frame(self), "timeout")
 	if gun.bulletSprite:
 		for i in bullets:
-			i.set_texture(gun.bulletSprite)
+			if is_instance_valid(i):
+				i.set_texture(gun.bulletSprite)
 	# Screenshake
 
 	# Getting the parameters

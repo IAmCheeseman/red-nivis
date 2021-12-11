@@ -25,7 +25,6 @@ onready var hurtSFX = $Sounds/HurtSFX
 onready var jumpSFX = $Sounds/JumpSFX
 onready var walkSFX = $Sounds/WalkSFX
 onready var floorCheckers = $FloorCheckers
-onready var bunnyHopTimer = $BunnyHopTimer
 onready var dropDownTimer = $DropDownTimer
 onready var jumpWindow = $APressWindow
 onready var dashCooldown = $DashCooldown
@@ -64,7 +63,7 @@ func _ready():
 	hurtbox.connect("hurt", playerData, "_on_damage_taken")
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
 	
 	match state:
@@ -79,9 +78,10 @@ func _physics_process(delta):
 					0,
 					playerData.accelaration*delta
 				)
-			vel.y += Globals.GRAVITY*delta
+				vel.y += Globals.GRAVITY*delta
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
+			
 			var grayscaleStrength = grayscale.material.get_shader_param("strength")
 			grayscale.material.set_shader_param("strength", lerp(grayscaleStrength, .15, 2*delta))
 		
@@ -116,7 +116,6 @@ func walk_state(delta):
 
 		if just_landed():
 			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
-			bunnyHopTimer.start()
 		
 		vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 	else:
@@ -154,23 +153,24 @@ func animate(moveDir:Vector2):
 
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
-		if vel.y > -playerData.jumpForce*0.15:
+		if vel.y > 0:
 			SaS.play("Land")
 		dontPlayJump = false
 		if triedJumpRecent:
 			jump()
-			bunnyHopTimer.start()
 			triedJumpRecent = false
 		return true
 	return false
 
 
 func is_grounded():
-	for c in floorCheckers.get_children():
-		if c.is_colliding():
-			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump")\
-			else Vector2.ZERO
-			return true
+	if $FloorChecker.get_overlapping_bodies().size() != 0:
+		return true
+#	for c in floorCheckers.get_children():
+#		if c.is_colliding():
+#			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump")\
+#			else Vector2.ZERO
+#			return true
 	
 	if vel.y > 0:
 		scaleHelper.scale.x = clamp(
@@ -210,7 +210,7 @@ func _input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("down"):
 		set_collision_mask_bit(4, false)
-		dropDownTimer.start(.05)
+		dropDownTimer.start(.1)
 	# Controller Controls
 	if event is InputEventJoypadMotion:
 		GameManager.usingController = true
