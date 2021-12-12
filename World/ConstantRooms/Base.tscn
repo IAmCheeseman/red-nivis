@@ -32,24 +32,28 @@ format = 1
 
 [node name="BG" type="TileMap" parent="."]
 modulate = Color( 0.5, 0.5, 0.5, 1 )
+z_index = -1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
 [node name="Platform" type="TileMap" parent="."]
 modulate = Color( 0.160784, 0.168627, 0.439216, 1 )
+z_index = -1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
 [node name="CeilingProp" type="TileMap" parent="."]
 modulate = Color( 0.905882, 0.333333, 0.333333, 1 )
+z_index = -1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
 [node name="GroundProp" type="TileMap" parent="."]
 modulate = Color( 0.117647, 0.466667, 0.160784, 1 )
+z_index = -1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1

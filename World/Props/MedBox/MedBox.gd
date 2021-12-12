@@ -13,6 +13,12 @@ func _process(delta: float) -> void:
 
 func _on_interaction() -> void:
 	anim.play("Open")
+	GameManager.emit_signal(
+		"zoom_in",
+		.75,
+		2,
+		global_position-Vector2(0, 16)
+		)
 
 
 func spawn_medkits() -> void:
