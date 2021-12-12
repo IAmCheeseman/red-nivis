@@ -44,6 +44,7 @@ func create_room() -> void:
 	# Setup
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	
+	var roomData = worldData.rooms[worldData.position.x][worldData.position.y]
 	worldData.rooms[worldData.position.x][worldData.position.y].discovered = true
 	for i in worldData.get_connected_rooms(worldData.position):
 		worldData.rooms[worldData.position.x+i.x][worldData.position.y+i.y].nearDiscovered = true
@@ -142,6 +143,10 @@ func create_constant_room(connections) -> void:
 	for i in nonconnections:
 		match i:
 			Vector2.UP:
+				if worldData.rooms\
+				[worldData.position.x]\
+				[worldData.position.y].isStartingRoom:
+					continue
 				for x in size.x:
 					var pos = Vector2(x, 0)
 					world.solids.set_cellv(pos, 0)
