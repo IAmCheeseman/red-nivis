@@ -80,10 +80,10 @@ func update_heals() -> void:
 		for i in playerData.maxHealth-1:
 			var newHealPoint = healPoint.instance()
 			healsBar.add_child(newHealPoint)
-			if i.get_index()+1 > playerData.healsLeft:
-				i.self_modulate.a = 0
+			if newHealPoint.get_index()+1 > playerData.healsLeft:
+				newHealPoint.self_modulate.a = 0
 			else:
-				i.self_modulate.a = 1
+				newHealPoint.self_modulate.a = 1
 	else:
 		for i in healsBar.get_children():
 			if i.get_index()+1 > playerData.healsLeft:
