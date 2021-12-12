@@ -54,17 +54,17 @@ func _init() -> void:
 	healsLeft = maxHeals
 
 
-func _on_damage_taken(damage, kbDir) -> void:
+func _on_damage_taken(damage: int, kbDir: Vector2) -> void:
 	if isDashing:
 		return
-	health -= damage
-	health = clamp(health, 0, maxHealth)
+	health -= int(damage)
+	health = int(clamp(health, 0, maxHealth))
 	emit_signal("healthChanged", kbDir)
 
 
 func heal(h: int) -> void:
 	health += h
-	health = clamp(health, 0, maxHealth)
+	health = int(clamp(health, 0, maxHealth))
 	playerObject.healVignette.modulate.a = 1
 	GameManager.emit_signal(
 		"screenshake",
