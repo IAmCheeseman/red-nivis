@@ -19,6 +19,8 @@ func display_player() -> void:
 	player.playerObject.lockMovement = false
 	player.playerObject.show()
 	player.playerObject.jump()
+	GameManager.emit_signal("screenshake",
+		5, 2, .0333, .1)
 
 
 func add_sparks():
