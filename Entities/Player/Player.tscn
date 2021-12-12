@@ -807,6 +807,7 @@ __meta__ = {
 wait_time = 3.0
 
 [node name="HealProgress" type="TextureProgress" parent="."]
+visible = false
 margin_left = -6.0
 margin_top = -34.0
 margin_right = 5.0

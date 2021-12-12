@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Clouds.png-dacce5c872334d5cafc76b301d5743c7.stex"
+path="res://.import/Surface.png-c70e05208496124b62a740af3e50cdad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/EnviormentalArt/BackGrounds/Clouds.png"
-dest_files=[ "res://.import/Clouds.png-dacce5c872334d5cafc76b301d5743c7.stex" ]
+source_file="res://World/EnviormentalArt/Solids/Surface.png"
+dest_files=[ "res://.import/Surface.png-c70e05208496124b62a740af3e50cdad.stex" ]
 
 [params]
 
