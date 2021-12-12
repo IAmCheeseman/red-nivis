@@ -86,7 +86,7 @@ shader_param/vignette = ExtResource( 26 )
 
 [sub_resource type="ShaderMaterial" id=29]
 shader = SubResource( 8 )
-shader_param/darkness = 0.732
+shader_param/darkness = 0.6
 shader_param/color = Color( 0, 1, 0.866667, 1 )
 shader_param/vignette = ExtResource( 26 )
 

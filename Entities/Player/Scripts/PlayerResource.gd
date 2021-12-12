@@ -28,7 +28,7 @@ export var healTime := 2.0
 var health:int
 var money := 0 setget set_money
 var ammo:int setget set_ammo
-var healsLeft:int setget set_heals
+var healsLeft := 3 setget set_heals
 var dashesLeft := 1
 var godmode := false
 
@@ -51,7 +51,6 @@ signal stamina_changed
 
 func _init() -> void:
 	health = maxHealth-1
-	healsLeft = maxHeals
 
 
 func _on_damage_taken(damage: int, kbDir: Vector2) -> void:
