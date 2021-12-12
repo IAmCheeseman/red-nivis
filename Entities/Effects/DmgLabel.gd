@@ -2,7 +2,7 @@ extends Label
 
 onready var tween = $Tween
 
-var vel := Vector2(0, -75)
+var vel := Vector2(rand_range(-12, 12), -75)
 
 
 func _ready() -> void:

@@ -77,9 +77,10 @@ func update_heals() -> void:
 		Utils.free_children(healsBar)
 		
 		var healPoint = preload("res://UI/GameOverlay/Heal.tscn")
-		for i in playerData.healsLeft:
+		for i in playerData.maxHealth-1:
 			var newHealPoint = healPoint.instance()
 			healsBar.add_child(newHealPoint)
+		update_heals()
 	else:
 		for i in healsBar.get_children():
 			if i.get_index()+1 > playerData.healsLeft:
