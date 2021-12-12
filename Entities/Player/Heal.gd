@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 			GameManager.currentCamera.zoom = lerp(
 				GameManager.currentCamera.zoom, Vector2(.9, .9), delta)
 		if value == max_value:
-			playerData._on_damage_taken(-1, Vector2.ZERO)
+			playerData.heal(1)
 			playerData.healsLeft -= 1
 			finished = true
 			finish()

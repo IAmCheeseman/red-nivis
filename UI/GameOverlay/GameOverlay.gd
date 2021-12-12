@@ -87,6 +87,7 @@ func update_heals() -> void:
 				i.self_modulate.a = 0
 			else:
 				i.self_modulate.a = 1
+	update_health(Vector2.ZERO)
 
 
 func _on_just_lost_timer_timeout() -> void:

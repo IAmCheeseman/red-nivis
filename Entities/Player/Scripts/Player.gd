@@ -29,6 +29,7 @@ onready var dropDownTimer = $DropDownTimer
 onready var jumpWindow = $APressWindow
 onready var dashCooldown = $DashCooldown
 onready var healthVig = $CanvasLayer/HealthVig
+onready var healVignette = $CanvasLayer/HealVig
 onready var gameOverlay = $CanvasLayer/GameOverlay
 onready var tileChecker = $TileCheckers/BottomTileChecker
 
@@ -65,6 +66,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
+	healVignette.modulate.a = lerp(healVignette.modulate.a, 0, 1.25*delta)
 	
 	match state:
 		states.WALK:
@@ -278,7 +280,7 @@ func show_death_screen(timer:Timer) -> void:
 	deathScreen.show()
 	timer.queue_free()
 
-func _on_health_changed(dir):
+func _on_health_changed(dir: Vector2) -> void:
 	if playerData.godmode:
 		playerData.health = playerData.maxHealth
 		return

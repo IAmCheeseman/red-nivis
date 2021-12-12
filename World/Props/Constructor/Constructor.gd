@@ -4,6 +4,7 @@ onready var sparkSpawnPos = $SparkSpawnPos
 onready var anim = $AnimationPlayer
 onready var dingSFX = $DingSFX
 onready var bzztSFX = $BzztSFX
+onready var timer = $SpawnTimer
 
 var player = preload("res://Entities/Player/Player.tres")
 
@@ -38,5 +39,6 @@ func _input(event: InputEvent) -> void:
 func open_door() -> void:
 	if !player.playerObject.lockMovement:
 		return
+	timer.stop()
 	anim.play("Open")
 	dingSFX.play()

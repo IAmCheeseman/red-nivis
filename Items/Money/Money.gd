@@ -16,7 +16,6 @@ var vel:Vector2 = Vector2.ZERO
 var player:Node2D
 var gravitation := 1
 
-
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
 	
@@ -30,6 +29,8 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if playerDetection.get_player() and timer.is_stopped():
 		playerData.money += value
+		value = 0
+		
 		vel = global_position.direction_to(
 			player.global_position)*speed
 		collision.disabled = true

@@ -62,6 +62,15 @@ func _on_damage_taken(damage, kbDir) -> void:
 	emit_signal("healthChanged", kbDir)
 
 
+func heal(h: int) -> void:
+	health += h
+	health = clamp(health, 0, maxHealth)
+	playerObject.healVignette.modulate.a = 1
+	GameManager.emit_signal(
+		"screenshake",
+		2, 2, .0333, .1)
+
+
 func set_money(val):
 	money = val
 	emit_signal("moneyChanged")
