@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("heal")\
 	and !finished\
 	and playerData.healsLeft > 0\
-	and playerData.health != playerData.maxHealth\
 	and playerData.playerObject.is_grounded():
 		show()
 		playerData.playerObject.lockMovement = true
