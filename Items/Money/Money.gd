@@ -3,15 +3,18 @@ extends KinematicBody2D
 onready var sprite = $Sprite
 onready var timer = $Timer
 onready var playerDetection = $PlayerDetection
+onready var br = $BounceRay
+onready var collision = $CollisionShape2D
 
 export var value:int = 5
-export var friction:int = 200
+export var friction:int = 5
+export var speed:int = 200
 
 var coinSprite:StreamTexture = preload("res://Items/Money/Coin.png")
 var playerData = preload("res://Entities/Player/Player.tres")
 var vel:Vector2 = Vector2.ZERO
 var player:Node2D
-var speed = 1600*12
+var gravitation := 1
 
 
 func _ready():
@@ -21,20 +24,33 @@ func _ready():
 	if value < minCoinSpriteVal:
 		sprite.texture = coinSprite
 	
-	vel = Vector2.RIGHT.rotated(deg2rad(rand_range(0, 360)))*(speed*20)
+	vel = Vector2.RIGHT.rotated(deg2rad(rand_range(0, 360)))*200
 
 
-func _process(delta):
-	if timer.is_stopped():
-		if playerDetection.get_player():
-			playerData.money += value
+func _physics_process(delta: float) -> void:
+	if playerDetection.get_player() and timer.is_stopped():
+		playerData.money += value
+		vel = global_position.direction_to(
+			player.global_position)*speed
+		collision.disabled = true
+		if global_position.distance_to(
+			player.global_position
+		) < 5:
 			queue_free()
-		speed *= 150*delta
-		speed = clamp(speed, 0, speed*(150*100))
-		friction += 250*delta
-		var targetVel = position.direction_to(player.position)*speed*delta
-		vel = targetVel*friction*delta#vel.move_toward(targetVel, friction*delta)
 	else:
-		vel = vel.move_toward(Vector2.ZERO, friction*delta)
-	vel = move_and_slide(vel*delta)
+		br.cast_to = vel.normalized()*8
+		br.force_raycast_update()
+		if br.is_colliding():
+			vel = vel.bounce(br.get_collision_normal())*.5
+		vel.y += Globals.GRAVITY*delta
+		vel.x = lerp(vel.x, 0, friction*delta)
+	
+	vel.y = move_and_slide_with_snap(
+		vel,
+		Vector2.ZERO,
+		Vector2.UP,
+		false,
+		4,
+		deg2rad(89)
+	).y
 
