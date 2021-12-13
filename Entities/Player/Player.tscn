@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Entities/Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Scripts/Player.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Entities/Player/Assets/Walk.wav" type="AudioStream" id=24]
 [ext_resource path="res://Entities/Player/Assets/Jump.wav" type="AudioStream" id=25]
 [ext_resource path="res://UI/Assets/vignette.png" type="Texture" id=26]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=27]
 [ext_resource path="res://Entities/Player/Assets/Hit.wav" type="AudioStream" id=28]
 [ext_resource path="res://Entities/Player/StaminaBar.gd" type="Script" id=29]
 
@@ -60,7 +61,7 @@ height = 0.0
 radius = 4.0
 
 [sub_resource type="RectangleShape2D" id=27]
-extents = Vector2( 5, 1.5 )
+extents = Vector2( 3, 1.5 )
 
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
@@ -487,6 +488,16 @@ collision_layer = 0
 collision_mask = 25
 script = ExtResource( 2 )
 
+[node name="Flashlight" type="Light2D" parent="."]
+position = Vector2( 0, -7 )
+texture = ExtResource( 27 )
+texture_scale = 0.4
+color = Color( 1, 0.996078, 0.745098, 1 )
+energy = 0.9
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 8.0
+
 [node name="ScaleHelper" type="Node2D" parent="."]
 position = Vector2( 0, 5 )
 
@@ -565,6 +576,7 @@ position = Vector2( 0, 3.5 )
 shape = SubResource( 27 )
 
 [node name="FloorCheckers" type="Node2D" parent="."]
+visible = false
 z_index = 10
 
 [node name="FloorChecker1" type="RayCast2D" parent="FloorCheckers"]

@@ -30,4 +30,5 @@
 [node name="LabBackground" type="TileMap"]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
+occluder_light_mask = 0
 format = 1

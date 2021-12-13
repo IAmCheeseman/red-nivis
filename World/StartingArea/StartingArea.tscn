@@ -119,6 +119,9 @@ position = Vector2( -49, 1 )
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( -37, -8 )
 
+[node name="Flashlight" parent="Player" index="0"]
+energy = 0.5
+
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
 
 [connection signal="loadArea" from="Managing/LoadingZone" to="." method="_on_lab_loading_zone_loadArea"]

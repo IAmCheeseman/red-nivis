@@ -35,6 +35,7 @@ func _ready() -> void:
 		player.global_position = worldData.playerPos
 		worldData.playerPos = Vector2.ZERO
 	var timer = get_tree().create_timer(2.9)
+	background.modulate = Color.darkgray
 	timer.connect("timeout", self, "_on_index_timer_timeout")
 
 

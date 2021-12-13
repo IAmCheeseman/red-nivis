@@ -5,6 +5,8 @@ onready var sprite = $Sprite
 onready var shakeTimer = $ShakeTimer
 onready var interaction = $Iteraction
 onready var itemSpawn = $ItemSpawn
+onready var lightTween = $Light/Tween
+onready var light = $Light
 
 var ending := false
 var worldPos = GameManager.worldData.position
@@ -31,10 +33,26 @@ func _on_interaction() -> void:
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "BuildUp" and !ending:
 		anim.play("Shake")
+		lightTween.interpolate_property(
+			light,
+			"energy",
+			0,
+			2,
+			.2
+		)
 		shakeTimer.start()
+		lightTween.start()
 	elif ending:
 		ending = false
 		anim.play("RESET")
+		lightTween.interpolate_property(
+			light,
+			"energy",
+			2,
+			0,
+			.5
+		)
+		lightTween.start()
 
 
 func _on_shake_timer_timeout() -> void:

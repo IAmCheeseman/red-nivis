@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://World/StartingArea/Lab.png" type="Texture" id=1]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( -105, 25, -84, 30, -82, 25, -89, 23, -90, -40, 91, -49, 90, 18, 83, 19, 84, 24, 105, 22, 106, 17, 100, 17, 101, -57, -99, -48, -98, 22, -104, 21 )
 
 [node name="Lab" type="StaticBody2D"]
 
@@ -11,3 +14,6 @@ offset = Vector2( 1, 1 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 1, 1 )
 polygon = PoolVector2Array( -99, 27, -100, -300, 98, -300, 99, 22, 90, 22, 90, -50, -91, -41, -90, 27 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 1 )

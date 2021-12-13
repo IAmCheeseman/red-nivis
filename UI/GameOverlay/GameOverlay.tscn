@@ -124,23 +124,23 @@ anims/Shake = SubResource( 5 )
 
 [node name="Separator" type="ColorRect" parent="VBox"]
 margin_top = 16.0
-margin_right = 39.0
+margin_right = 60.0
 margin_bottom = 17.0
-rect_min_size = Vector2( 32, 1 )
+rect_min_size = Vector2( 60, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Bottom" type="VBoxContainer" parent="VBox"]
 margin_top = 21.0
-margin_right = 39.0
+margin_right = 60.0
 margin_bottom = 37.0
 
 [node name="Heals" type="VBoxContainer" parent="VBox/Bottom"]
-margin_right = 39.0
+margin_right = 60.0
 
 [node name="Icons" type="GridContainer" parent="VBox/Bottom/Heals"]
-margin_right = 39.0
+margin_right = 60.0
 custom_constants/vseparation = 3
 custom_constants/hseparation = 0
 columns = 8
@@ -150,11 +150,11 @@ __meta__ = {
 
 [node name="AmmoBar" type="VBoxContainer" parent="VBox/Bottom"]
 margin_top = 4.0
-margin_right = 39.0
+margin_right = 60.0
 margin_bottom = 4.0
 
 [node name="Icons" type="GridContainer" parent="VBox/Bottom/AmmoBar"]
-margin_right = 39.0
+margin_right = 60.0
 custom_constants/vseparation = 3
 custom_constants/hseparation = 0
 columns = 8
@@ -164,7 +164,7 @@ __meta__ = {
 
 [node name="MoneyDisplay" type="HBoxContainer" parent="VBox/Bottom"]
 margin_top = 8.0
-margin_right = 39.0
+margin_right = 60.0
 margin_bottom = 16.0
 custom_constants/separation = 2
 

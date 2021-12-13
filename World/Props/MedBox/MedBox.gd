@@ -7,7 +7,7 @@ onready var spawnPos = $SpawnPosition
 var playerData = preload("res://Entities/Player/Player.tres")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	interaction.disabled = playerData.maxHeals-playerData.healsLeft == 0
 
 

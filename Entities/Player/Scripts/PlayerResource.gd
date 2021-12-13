@@ -81,7 +81,7 @@ func set_ammo(value:int) -> void:
 
 
 func set_heals(value:int) -> void:
-	healsLeft = clamp(value, 0, maxHeals)
+	healsLeft = int(clamp(value, 0, maxHeals))
 	emit_signal("healsChanged")
 
 

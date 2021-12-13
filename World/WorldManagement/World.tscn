@@ -13,9 +13,7 @@
 [ext_resource path="res://World/Props/RoomClearer/RoomClearer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/WorldManagement/RoomTileplacer.gd" type="Script" id=15]
 
-[node name="World" type="Node2D" groups=[
-"world",
-]]
+[node name="World" type="Node2D" groups=["world"]]
 script = ExtResource( 10 )
 
 [node name="RoomClearer" parent="." instance=ExtResource( 14 )]
@@ -71,5 +69,8 @@ layer = 3
 [node name="Map" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
+
+[node name="Darkness" type="CanvasModulate" parent="."]
+color = Color( 0.333333, 0.333333, 0.333333, 1 )
 
 [connection signal="enemiesCleared" from="RoomClearer" to="." method="_on_enemies_cleared"]
