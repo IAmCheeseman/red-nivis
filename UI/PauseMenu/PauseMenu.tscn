@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=2]
@@ -6,20 +6,6 @@
 [ext_resource path="res://UI/Assets/FFFFORWA.TTF" type="DynamicFontData" id=12]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=13]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=14]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-//uniform vec4 color: hint_color;
-uniform float strength = 2.5;
-
-void fragment() {
-	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, strength);
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/strength = 2.5
 
 [sub_resource type="DynamicFont" id=3]
 size = 12
@@ -43,11 +29,10 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 0.521569, 0.521569, 0.521569, 1 )
 light_mask = 0
-material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.705882 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
