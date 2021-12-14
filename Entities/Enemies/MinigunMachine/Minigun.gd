@@ -15,33 +15,57 @@ var currentCooldown = 2.3
 var shotsInARow = 0
 var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
 var isOn = false
+var started = false
 
 
 func _ready() -> void:
 	currentCooldown = startCooldown
 
 
-func _process(_delta: float) -> void:
-	scale = Vector2.ONE
+func start() -> void:
+	if !started:
+		anim.play("WindUp")
+		started = true
 
-	if !overheatCooldown.is_stopped() or !cooldown.is_stopped() or !isOn:
+
+func start_shooting() -> void:
+	isOn = true
+	cooldown.stop()
+	overheatCooldown.stop()
+
+
+func _process(delta: float) -> void:
+	scale = Vector2.ONE
+	if anim.current_animation != "WindUp":
+		sprite.scale = sprite.scale.move_toward(
+			Vector2.ONE, 5*delta)
+
+	if !overheatCooldown.is_stopped()\
+	or !cooldown.is_stopped()\
+	or !isOn\
+	or anim.is_playing():
 		return
 	currentCooldown = clamp(currentCooldown*.75, minCooldown, startCooldown)
 	cooldown.stop()
 	cooldown.start(currentCooldown)
 	
 	var newBullet = bullet.instance()
-	newBullet.direction = Vector2.RIGHT.rotated(sprite.global_rotation)
+	newBullet.direction = Vector2.RIGHT.rotated(
+		sprite.global_rotation)
 	newBullet.speed = 130
 	newBullet.damage = damage
-	newBullet.global_position = global_position+(newBullet.direction*16)
+	newBullet.global_position = global_position+(
+		newBullet.direction*16)
 	GameManager.spawnManager.spawn_object(newBullet)
 	
 	shotsInARow += 1
+	
+	sprite.scale = Vector2(1.3, .7)
 	if shotsInARow >= overheatShotCount:
 		currentCooldown = startCooldown
 		overheatCooldown.start()
 		shotsInARow = 0
+		isOn = false
 		anim.play("cooldown")
 	
 	sprite.frame = wrapi(sprite.frame+1, 0, sprite.hframes)

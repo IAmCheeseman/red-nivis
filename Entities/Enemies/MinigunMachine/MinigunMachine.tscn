@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -15,6 +15,63 @@
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=13]
 [ext_resource path="res://Entities/Enemies/MachineHurt.wav" type="AudioStream" id=14]
 
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "WindUp"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 0.353553, 5.27803, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_shooting"
+} ]
+}
+
 [sub_resource type="Animation" id=1]
 resource_name = "cooldown"
 length = 2.3
@@ -29,6 +86,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 8.57423, 1 ),
 "update": 0,
 "values": [ Color( 1, 0.721569, 0.721569, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "WindUp", -1, 1.0, false ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -121,7 +192,6 @@ overheatShotCount = 3
 damage = 1
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper/Sprite/Minigun"]
-modulate = Color( 1, 0.721569, 0.721569, 1 )
 material = ExtResource( 8 )
 rotation = 1.5708
 texture = ExtResource( 3 )
@@ -135,10 +205,11 @@ autostart = true
 
 [node name="OverheatCooldown" type="Timer" parent="ScaleHelper/Sprite/Minigun"]
 wait_time = 2.3
-one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScaleHelper/Sprite/Minigun"]
 autoplay = "init"
+anims/RESET = SubResource( 8 )
+anims/WindUp = SubResource( 9 )
 anims/cooldown = SubResource( 1 )
 anims/init = SubResource( 2 )
 

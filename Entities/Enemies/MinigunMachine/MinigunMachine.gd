@@ -46,10 +46,10 @@ func _process(delta: float) -> void:
 		hpBar.hide()
 		minigun.isOn = false
 	else:
-		minigun.isOn = true
+		minigun.start()
 		minigunSprite.look_at(player.global_position)
 		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
-		minigunSprite.scale.y = -1 if angleVec.x > 0 else 1
+		minigunSprite.flip_v = false if angleVec.x > 0 else true
 		hpBar.show()
 		
 	accel_to_point(targetPosition, delta)
