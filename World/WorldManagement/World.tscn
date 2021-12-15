@@ -71,6 +71,6 @@ layer = 3
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
 
 [node name="Darkness" type="CanvasModulate" parent="."]
-color = Color( 0.333333, 0.333333, 0.333333, 1 )
+color = Color( 0.407843, 0.407843, 0.407843, 1 )
 
 [connection signal="enemiesCleared" from="RoomClearer" to="." method="_on_enemies_cleared"]

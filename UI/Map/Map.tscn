@@ -1,21 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Map/Map.gd" type="Script" id=1]
 [ext_resource path="res://UI/Map/MapTiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=3]
 [ext_resource path="res://UI/Map/MapAlpha.png" type="Texture" id=4]
 
-[sub_resource type="Shader" id=5]
-code = "shader_type canvas_item;
-
-
-void fragment() {
-	vec4 color = textureLod(SCREEN_TEXTURE, SCREEN_UV, 1.0);
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 136, 65, 14, 13 )
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
@@ -26,14 +18,14 @@ uniform sampler2D alpha;
 const float PI = 3.14;
 
 void fragment() {
-	vec4 color = texture(TEXTURE, UV);
-	if (isOn) {
-		float beforeA = 1.0-color.a;
-		color.a = texture(alpha, SCREEN_UV).r;
-		color.a = mix(color.a, 0.0, beforeA);
-	}
-
-	COLOR = color;
+//	vec4 color = texture(TEXTURE, UV);
+//	if (isOn) {
+//		float beforeA = 1.0-color.a;
+//		color.a = texture(alpha, SCREEN_UV).r;
+//		color.a = mix(color.a, 0.0, beforeA);
+//	}
+//
+//	COLOR = color;
 }"
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -78,13 +70,18 @@ z_index = -1
 
 [node name="Blur" type="ColorRect" parent="VBoxContainer/ViewportContainer/Node2D"]
 visible = false
-material = SubResource( 6 )
 margin_right = 320.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 320, 220 )
+color = Color( 0, 0, 0, 0.678431 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Selection" type="Sprite" parent="VBoxContainer/ViewportContainer"]
+position = Vector2( 0, -172 )
+texture = SubResource( 9 )
+centered = false
 
 [node name="Viewport" type="Viewport" parent="VBoxContainer/ViewportContainer"]
 size = Vector2( 48, 48 )

@@ -1205,6 +1205,5 @@ points = PoolVector2Array( 0, 0, 0, 16, 16, 16, 16, 0 )
 [node name="LabSolids" type="TileMap"]
 tile_set = SubResource( 111 )
 cell_size = Vector2( 16, 16 )
-occluder_light_mask = 3
 format = 1
 script = ExtResource( 1 )

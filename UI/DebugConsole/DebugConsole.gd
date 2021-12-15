@@ -41,7 +41,7 @@ func _on_hide_button_pressed():
 
 
 func _input(event):
-	if event.is_action_pressed("debug_console"):
+	if event.is_action_pressed("debug_console") and !OS.has_feature("standalone"):
 		visible = !visible
 		input.grab_focus()
 		get_tree().paused = visible

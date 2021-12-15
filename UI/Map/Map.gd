@@ -6,6 +6,7 @@ onready var camera:Camera2D = $Viewport/Camera
 onready var player:Sprite = $Viewport/Player
 onready var viewport:Viewport = $Viewport
 onready var blur = $Node2D/Blur
+onready var selection = $Selection#Viewport/Selection
 
 # TODO: Make a teleport mode where you can teleport to stations.
 
@@ -70,3 +71,4 @@ func _input(event: InputEvent) -> void:
 	and Input.is_action_pressed("use_item")\
 	and !inMiniMode:
 		camera.position -= event.relative
+		return
