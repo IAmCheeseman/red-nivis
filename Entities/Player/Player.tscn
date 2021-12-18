@@ -805,11 +805,12 @@ __meta__ = {
 }
 
 [node name="Stamina" type="HBoxContainer" parent="."]
-margin_left = -7.0
+margin_left = -24.0
 margin_top = -30.0
-margin_right = 7.0
+margin_right = 24.0
 margin_bottom = -25.0
 custom_constants/separation = 1
+alignment = 1
 script = ExtResource( 29 )
 __meta__ = {
 "_edit_use_anchors_": false
