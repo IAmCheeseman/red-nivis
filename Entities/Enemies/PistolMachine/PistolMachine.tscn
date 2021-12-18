@@ -133,6 +133,8 @@ moneyRange = Vector2( 2, 7 )
 valueRange = Vector2( 1, 4 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 10 )]
+kbAmount = 128.0
+upwardsKB = 128.0
 hurtSFXPath = NodePath("../HitSFX")
 
 [node name="HitSFX" type="Node2D" parent="."]

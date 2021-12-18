@@ -93,6 +93,8 @@ shape = SubResource( 2 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 maxHealth = 150
+kbAmount = 128.0
+upwardsKB = 128.0
 hurtSFXPath = NodePath("../HitSFX")
 
 [node name="Collision" type="Node2D" parent="."]
