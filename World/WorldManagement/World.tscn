@@ -47,8 +47,6 @@ z_index = 2
 
 [node name="Enemies" type="Node2D" parent="Props"]
 
-[node name="Atmosphere" type="CanvasModulate" parent="."]
-
 [node name="Generator" type="Node2D" parent="."]
 script = ExtResource( 15 )
 

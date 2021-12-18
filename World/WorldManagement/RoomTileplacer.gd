@@ -39,7 +39,8 @@ func create_room() -> void:
 	world.tilesContainer.add_child(world.background)
 	
 	world.solidColorBG.color = biome.bgColor
-#	world.mistSpawner.color = biome.mistColor
+	if biome.atmosphere:
+		world.add_child(biome.atmosphere.instance())
 	
 	# Setup
 	var connections:Array = worldData.get_connected_rooms(worldData.position)

@@ -7,6 +7,7 @@ export var solids:PackedScene
 export var background:PackedScene
 export var platforms:PackedScene
 export var bgColor:Color = Color("#10141f")
+export var atmosphere:PackedScene
 export var mistColor:Color = Color("#734c3a")
 
 # World Gen
