@@ -26,6 +26,9 @@ position = Vector2( 21, -2 )
 [node name="DamageManager" parent="." index="3"]
 maxHealth = 150
 
+[node name="Collisions" parent="." index="4"]
+visible = false
+
 [connection signal="timeout" from="Gun/PewPewTiemr" to="Gun" method="shoot"]
 
 [editable path="Collisions/Hurtbox"]

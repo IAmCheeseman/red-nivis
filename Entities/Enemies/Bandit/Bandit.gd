@@ -74,7 +74,7 @@ func _physics_process(delta: float) -> void:
 func select_new_target_pos() -> void:
 	if !player: return
 	for _i in 10:
-		targetPosition = player.global_position.x + rand_range(-64, 64)
+		targetPosition = int(player.global_position.x + rand_range(-64, 64))
 		collisionCheckerRC.cast_to.x = targetPosition - global_position.x
 		collisionCheckerRC.force_raycast_update()
 		if !collisionCheckerRC.is_colliding(): break
