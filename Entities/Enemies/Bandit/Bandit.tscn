@@ -1,11 +1,18 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bandit/Shotgun/Bandit.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bandit/Bandit.gd" type="Script" id=2]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=6]
+[ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.5, 2.5 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 160.012
@@ -91,10 +98,23 @@ frame = 4
 [node name="Gun" type="Node2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.5, -2.5 )
 shape = SubResource( 1 )
 
+[node name="DamageManager" parent="." instance=ExtResource( 5 )]
+maxHealth = 200
+kbAmount = 128.0
+upwardsKB = 64.0
+
 [node name="Collisions" type="Node2D" parent="."]
+
+[node name="Hurtbox" parent="Collisions" instance=ExtResource( 4 )]
+position = Vector2( 0, -8 )
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
+shape = SubResource( 7 )
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 3 )]
 visible = false
@@ -104,10 +124,12 @@ mustBeInSight = false
 shape = SubResource( 2 )
 
 [node name="CollisionChecker" type="RayCast2D" parent="Collisions"]
+visible = false
 enabled = true
 cast_to = Vector2( 0, 0 )
 
 [node name="FloorChecker" type="RayCast2D" parent="Collisions"]
+visible = false
 enabled = true
 cast_to = Vector2( 0, 2 )
 
@@ -128,7 +150,21 @@ anims/Idle = SubResource( 5 )
 anims/RESET = SubResource( 4 )
 anims/Walk = SubResource( 3 )
 
+[node name="Healthbar" type="TextureProgress" parent="."]
+margin_left = -9.0
+margin_top = -30.0
+margin_right = 9.0
+margin_bottom = -25.0
+max_value = 50.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/StateChange" to="." method="_on_state_change_timeout"]
 [connection signal="timeout" from="Timers/Jump" to="." method="jump"]
 
+[editable path="Collisions/Hurtbox"]
 [editable path="Collisions/PlayerDetection"]

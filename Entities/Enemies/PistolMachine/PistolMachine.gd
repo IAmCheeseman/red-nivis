@@ -94,6 +94,8 @@ func shoot_state(delta: float) -> void:
 
 
 func shoot() -> void:
+	if global_position.distance_to(player.global_position) < 32:
+		return
 	var newBullet = bullet.instance()
 	newBullet.direction = Vector2.RIGHT.rotated(gunSprite.global_rotation)
 	newBullet.speed = 130

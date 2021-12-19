@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 
 
 func shoot() -> void:
+	if global_position.distance_to(player.global_position) < 32:
+		return
 	var spread = 12
 	for i in 3:
 		var angle = i-1

@@ -8,9 +8,13 @@ onready var anim = $AnimationPlayer
 onready var stateChangeTimer = $Timers/StateChange
 onready var jumpTimer = $Timers/Jump
 
+onready var hurtbox = $Collisions/Hurtbox
 onready var playerDetection = $Collisions/PlayerDetection
 onready var collisionCheckerRC = $Collisions/CollisionChecker
 onready var floorCheckerRC = $Collisions/FloorChecker
+
+onready var damageManager = $DamageManager
+onready var healthBar = $Healthbar
 
 onready var gun = $Gun
 
@@ -29,6 +33,8 @@ var prevFloorState = false
 
 func _ready() -> void:
 	select_new_target_pos()
+	healthBar.max_value = damageManager.maxHealth
+	healthBar.value = damageManager.maxHealth
 
 
 func _physics_process(delta: float) -> void:
@@ -93,3 +99,7 @@ func _on_state_change_timeout() -> void:
 		stateChangeTimer.start(rand_range(.5, 1))
 	else:
 		stateChangeTimer.start(rand_range(.2, .5))
+
+
+func update_healthbar() -> void:
+	healthBar.value = damageManager.health
