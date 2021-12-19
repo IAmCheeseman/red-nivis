@@ -23,6 +23,10 @@ autostart = true
 [node name="BarrelEnd" type="Position2D" parent="Gun" index="2"]
 position = Vector2( 21, -2 )
 
+[node name="DamageManager" parent="." index="3"]
+maxHealth = 150
+
 [connection signal="timeout" from="Gun/PewPewTiemr" to="Gun" method="shoot"]
 
+[editable path="Collisions/Hurtbox"]
 [editable path="Collisions/PlayerDetection"]

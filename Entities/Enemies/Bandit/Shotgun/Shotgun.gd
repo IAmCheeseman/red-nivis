@@ -16,9 +16,11 @@ func _process(delta: float) -> void:
 
 
 func shoot() -> void:
+	if !player: return
 	if global_position.distance_to(player.global_position) < 32:
 		return
 	var spread = 12
+	get_parent().vel = -Vector2.RIGHT.rotated(rotation)*250
 	for i in 3:
 		var angle = i-1
 		angle *= spread

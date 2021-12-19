@@ -329,7 +329,7 @@ func spawn_enemies() -> void:
 		return
 	randomize()
 	world.viableEnemySpawns.shuffle()
-	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size()-1)]
+	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
 # warning-ignore:integer_division
 # warning-ignore:integer_division
 	for i in ceil((roomI.get_width()/Globals.TEMPLATE_SIZE)*(roomI.get_height()/Globals.TEMPLATE_SIZE)):

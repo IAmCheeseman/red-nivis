@@ -3,7 +3,7 @@
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabBackground.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/EnviormentalArt/Lab/LabsAtmosphere.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Props/Foliage/Vine/Normal/Vine.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Props/Foliage/Grass/Normal/Grass.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/EnemyPools/BasicEnemies.tres" type="Resource" id=7]
@@ -11,16 +11,16 @@
 [ext_resource path="res://World/Props/LabStuff/Tables/SmallTableWoodEmpty.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Props/LabStuff/Tables/SmallTableMetalEmpty.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Props/LabStuff/Tables/BrainContainer.tscn" type="PackedScene" id=11]
-[ext_resource path="res://World/EnviormentalArt/Lab/LabsAtmosphere.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=12]
 
 [resource]
 script = ExtResource( 1 )
 name = "Labs"
-solids = ExtResource( 4 )
+solids = ExtResource( 12 )
 background = ExtResource( 3 )
 platforms = ExtResource( 2 )
 bgColor = Color( 0.0235294, 0.0313726, 0.0509804, 1 )
-atmosphere = ExtResource( 12 )
+atmosphere = ExtResource( 4 )
 mistColor = Color( 0.45098, 0.298039, 0.227451, 1 )
 startingArea = true
 biomeIndex = 0

@@ -1,9 +1,9 @@
-[gd_resource type="Resource" load_steps=12 format=2]
+[gd_resource type="Resource" load_steps=13 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnemyPools/DeepLabsDefault.tres" type="Resource" id=2]
-[ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsPlatforms.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsBG.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsBG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsPlatforms.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsTiles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Props/Foliage/Grass/DeepLabs/DeepLabsGrass.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Props/Foliage/Vine/DeepLabs/DeepLabsVine.tscn" type="PackedScene" id=7]
@@ -11,13 +11,14 @@
 [ext_resource path="res://World/Props/LabStuff/Tables/BrainContainer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Props/LabStuff/Tables/SmallTableMetalEmpty.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Props/LabStuff/Tables/SmallTableWoodEmpty.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/EnemyPools/Bandits.tres" type="Resource" id=12]
 
 [resource]
 script = ExtResource( 1 )
 name = "Deep Labs"
 solids = ExtResource( 5 )
-background = ExtResource( 4 )
-platforms = ExtResource( 3 )
+background = ExtResource( 3 )
+platforms = ExtResource( 4 )
 bgColor = Color( 0.0666667, 0.0235294, 0.0666667, 1 )
 mistColor = Color( 0.701961, 0.25098, 0.313726, 1 )
 startingArea = false
@@ -30,4 +31,4 @@ connectionChance = 0.05
 roomTemplates = ExtResource( 8 )
 roofProps = [ ExtResource( 7 ) ]
 groundProps = [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
-enemyPools = [ ExtResource( 2 ) ]
+enemyPools = [ ExtResource( 2 ), ExtResource( 12 ) ]

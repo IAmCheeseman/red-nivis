@@ -2,8 +2,8 @@
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Caves/StoneBG.tscn" type="PackedScene" id=2]
-[ext_resource path="res://World/EnviormentalArt/Caves/Stone.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World/EnviormentalArt/Caves/StonePlatforms.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/EnviormentalArt/Caves/StonePlatforms.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/EnviormentalArt/Caves/Stone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnemyPools/CavesDefault.tres" type="Resource" id=5]
 [ext_resource path="res://World/Templates/CaveTemplates.png" type="Texture" id=6]
 [ext_resource path="res://World/Props/Foliage/Vine/Normal/Vine.tscn" type="PackedScene" id=7]
@@ -12,9 +12,9 @@
 [resource]
 script = ExtResource( 1 )
 name = "Caves"
-solids = ExtResource( 3 )
+solids = ExtResource( 4 )
 background = ExtResource( 2 )
-platforms = ExtResource( 4 )
+platforms = ExtResource( 3 )
 bgColor = Color( 0.027451, 0.0352941, 0.054902, 1 )
 mistColor = Color( 0.45098, 0.298039, 0.227451, 1 )
 startingArea = false
