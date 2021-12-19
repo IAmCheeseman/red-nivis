@@ -12,6 +12,8 @@ onready var playerDetection = $Collisions/PlayerDetection
 onready var collisionCheckerRC = $Collisions/CollisionChecker
 onready var floorCheckerRC = $Collisions/FloorChecker
 
+onready var gun = $Gun
+
 export var speed := 75
 export var accel := 5.0
 export var frict := 10.0
@@ -34,6 +36,7 @@ func _physics_process(delta: float) -> void:
 	
 	if !player:
 		player = playerDetection.get_player()
+		gun.player = player
 	else:
 		match state:
 			IDLE:
@@ -63,8 +66,9 @@ func _physics_process(delta: float) -> void:
 
 
 func select_new_target_pos() -> void:
+	if !player: return
 	for _i in 10:
-		targetPosition = global_position.x + rand_range(-64, 64)
+		targetPosition = player.global_position.x + rand_range(-64, 64)
 		collisionCheckerRC.cast_to.x = targetPosition - global_position.x
 		collisionCheckerRC.force_raycast_update()
 		if !collisionCheckerRC.is_colliding(): break
