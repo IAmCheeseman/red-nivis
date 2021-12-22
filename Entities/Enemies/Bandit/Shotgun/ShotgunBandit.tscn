@@ -20,7 +20,10 @@ offset = Vector2( 9, 0 )
 wait_time = 1.5
 autostart = true
 
-[node name="BarrelEnd" type="Position2D" parent="Gun" index="2"]
+[node name="AttackTimer" type="Timer" parent="Gun" index="2"]
+one_shot = true
+
+[node name="BarrelEnd" type="Position2D" parent="Gun" index="3"]
 position = Vector2( 21, -2 )
 
 [node name="DamageManager" parent="." index="3"]
@@ -30,6 +33,7 @@ maxHealth = 150
 visible = false
 
 [connection signal="timeout" from="Gun/PewPewTiemr" to="Gun" method="shoot"]
+[connection signal="timeout" from="Gun/AttackTimer" to="Gun" method="_on_attack_timer_timeout"]
 
 [editable path="Collisions/Hurtbox"]
 [editable path="Collisions/PlayerDetection"]

@@ -14,6 +14,7 @@ onready var justLostTimer = $VBox/HealthBar/JustLost/JustLostTimer
 
 # Ammo bar
 onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
+onready var reloadNotif = $VBox/Bottom/AmmoBar/ReloadNotif
 
 onready var healsBar = $VBox/Bottom/Heals/Icons
 
@@ -70,6 +71,7 @@ func update_ammo() -> void:
 				i.self_modulate.a = 0
 			else:
 				i.self_modulate.a = 1
+		reloadNotif.visible = playerData.ammo == 0
 
 
 func update_heals() -> void:

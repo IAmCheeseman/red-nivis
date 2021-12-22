@@ -2,6 +2,7 @@ extends Node2D
 
 onready var sprite = $Sprite
 onready var PEWPEWTIERWOOO = $PewPewTiemr
+onready var attackTimer = $AttackTimer
 onready var barrelEnd = $BarrelEnd
 
 var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
@@ -16,7 +17,7 @@ func _process(_delta: float) -> void:
 
 
 func shoot() -> void:
-	if !player: return
+	if !player or GameManager.attacks_capped(): return
 	if global_position.distance_to(player.global_position) < 32:
 		return
 	var spread = 12
@@ -32,4 +33,12 @@ func shoot() -> void:
 		newBullet.damage = 1
 		newBullet.global_position = barrelEnd.global_position
 		GameManager.spawnManager.spawn_object(newBullet)
-		
+	
+	GameManager.add_attacking_enemy(self)
+	attackTimer.start()
+	
+
+
+func _on_attack_timer_timeout() -> void:
+	if GameManager.enemy_is_attacking(self):
+		GameManager.remove_attacking_enemy(self)

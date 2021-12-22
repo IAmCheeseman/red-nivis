@@ -29,4 +29,61 @@ shape = SubResource( 1 )
 [node name="ShotgunBandit" parent="." instance=ExtResource( 3 )]
 position = Vector2( 169, -10 )
 
+[node name="ShotgunBandit2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
+[node name="ShotgunBandit20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 169, -10 )
+
 [editable path="CameraMoveZone"]

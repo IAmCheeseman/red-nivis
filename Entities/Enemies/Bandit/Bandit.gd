@@ -103,3 +103,4 @@ func _on_state_change_timeout() -> void:
 
 func update_healthbar() -> void:
 	healthBar.value = damageManager.health
+

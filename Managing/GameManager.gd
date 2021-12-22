@@ -10,11 +10,11 @@ var revealMap := false
 
 var usingController := false
 
-var attackingEnemies = 0 setget set_attacking_enemies
-
 var spawnManager:Node2D
 var itemManager:ItemManagement = ItemManagement.new()
 var frameFreezer:FrameFreezer = FrameFreezer.new()
+
+var currentlyAttackingEnemies := []
 
 var player: Node2D
 
@@ -36,8 +36,6 @@ func _ready() -> void:
 func _input(_event):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
-	if Input.is_key_pressed(KEY_R):
-		var _discard = get_tree().reload_current_scene()
 
 
 func _on_node_added(node: Node) -> void:
@@ -47,8 +45,18 @@ func _on_node_added(node: Node) -> void:
 		node.material = controlMaterial
 
 
-func set_attacking_enemies(value:int):
-	attackingEnemies = value
-	attackingEnemies = clamp(attackingEnemies, 0, 1)
+func attacks_capped() -> bool:
+	return currentlyAttackingEnemies.size() == 0
 
 
+func add_attacking_enemy(enemy: Node) -> void:
+	if attacks_capped(): return
+	currentlyAttackingEnemies.append(enemy)
+
+
+func enemy_is_attacking(enemy: Node) -> bool:
+	return currentlyAttackingEnemies.has(enemy)
+
+
+func remove_attacking_enemy(enemy: Node) -> void:
+	currentlyAttackingEnemies.erase(enemy)

@@ -53,7 +53,6 @@ var canShoot := false
 var canSwing := true
 var isReloading := false
 var player: Resource
-#var perk: Node
 
 
 

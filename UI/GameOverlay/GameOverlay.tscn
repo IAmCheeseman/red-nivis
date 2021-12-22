@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/HeartFull.png" type="Texture" id=2]
 [ext_resource path="res://UI/Assets/HeartEmpty.png" type="Texture" id=3]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Items/Money/Coin.png" type="Texture" id=5]
+[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=6]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -148,19 +149,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AmmoBar" type="VBoxContainer" parent="VBox/Bottom"]
+[node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom"]
 margin_top = 4.0
 margin_right = 60.0
 margin_bottom = 4.0
 
 [node name="Icons" type="GridContainer" parent="VBox/Bottom/AmmoBar"]
-margin_right = 60.0
 custom_constants/vseparation = 3
 custom_constants/hseparation = 0
 columns = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ReloadNotif" type="Label" parent="VBox/Bottom/AmmoBar"]
+visible = false
+margin_left = 4.0
+margin_right = 40.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 6 )
+text = "Reload!"
 
 [node name="MoneyDisplay" type="HBoxContainer" parent="VBox/Bottom"]
 margin_top = 8.0
