@@ -29,6 +29,7 @@ shader_param/speed = 44000.0
 shader_param/noise = SubResource( 3 )
 
 [node name="LabsAtmosphere" type="Node2D"]
+z_index = -1
 
 [node name="Mist" type="ColorRect" parent="."]
 material = SubResource( 2 )
