@@ -258,16 +258,16 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="BossBar/VBoxContainer"]
-margin_top = 214.0
+margin_top = 194.0
 margin_right = 122.0
-margin_bottom = 224.0
+margin_bottom = 204.0
 custom_fonts/font = ExtResource( 11 )
 text = " Jerry"
 
 [node name="ProgressBar" type="TextureProgress" parent="BossBar/VBoxContainer"]
-margin_top = 225.0
+margin_top = 205.0
 margin_right = 122.0
-margin_bottom = 239.0
+margin_bottom = 219.0
 value = 100.0
 texture_under = ExtResource( 6 )
 texture_progress = ExtResource( 7 )

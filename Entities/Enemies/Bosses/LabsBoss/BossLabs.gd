@@ -51,6 +51,7 @@ var drops = [
 	preload("res://Items/HeartContiner/HeartContainer.tscn"),
 	preload("res://Items/Upgrades/DroppedUpgrade.tscn")
 ]
+var areItemsDropped := false
 
 var state := IDLE
 
@@ -272,22 +273,24 @@ func _on_hurt(amount, _dir) -> void:
 	if health <= 0:
 		emit_signal("dead")
 		# Dropping the hp
-		var playerData = player.get_parent().playerData
-		for i in playerData.maxHealth-playerData.health:
-			var newHealth = healthPickup.instance()
-			newHealth.position = position-Vector2(0, sprite.texture.get_height()*.25)
-			var force = (Vector2.UP+Vector2(rand_range(-.25, .25), 0)).normalized()*70
-			newHealth.apply_central_impulse(force)
-			GameManager.spawnManager.spawn_object(newHealth)
+		if !areItemsDropped:
+			var playerData = player.get_parent().playerData
+			for i in playerData.maxHealth-playerData.health:
+				var newHealth = healthPickup.instance()
+				newHealth.position = position-Vector2(0, sprite.texture.get_height()*.25)
+				var force = (Vector2.UP+Vector2(rand_range(-.25, .25), 0)).normalized()*70
+				newHealth.apply_central_impulse(force)
+				GameManager.spawnManager.spawn_object(newHealth)
+				
+				GameManager.frameFreezer.freeze_frames(.2)
 			
-			GameManager.frameFreezer.freeze_frames(.2)
-		
-		for i in drops.size():
-			var d = drops[i]
-			var newDrop:Node2D = d.instance()
-			newDrop.position = position-Vector2(0, sprite.texture.get_height()*.25)
-			newDrop.position.x += (drops.size()*.5-i)*32
-			GameManager.spawnManager.spawn_object(newDrop)
+			for i in drops.size():
+				var d = drops[i]
+				var newDrop:Node2D = d.instance()
+				newDrop.position = position-Vector2(0, sprite.texture.get_height()*.25)
+				newDrop.position.x += (drops.size()*.5-i)*32
+				GameManager.spawnManager.spawn_object(newDrop)
+			areItemsDropped = false
 			
 		# Getting delted 
 		queue_free()

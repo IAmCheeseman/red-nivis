@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=2]
+[gd_scene load_steps=174 format=2]
 
 [sub_resource type="OccluderPolygon2D" id=112]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1202,34 +1202,7 @@ load_path = "res://.import/LabSolids.png-d511f28a1c2b995de2d5801523c151fa.stex"
 } ]
 0/z_index = 0
 
-[sub_resource type="GDScript" id=175]
-script/source = "extends TileMap
-
-
-func _ready() -> void:
-	add_timer()
-
-
-func add_timer() -> void:
-	var timer = get_tree().create_timer(rand_range(.1, 2))
-	timer.connect(\"timeout\", self, \"_drop_debris\")
-
-
-func _drop_debris() -> void:
-	var debris = Debris.new()
-	var cells = get_used_cells()
-	cells.shuffle()
-	debris.position = cells.front()*cell_size+cell_size*.5
-	debris.sprite = preload(\\
-		\"res://World/Props/TempStuff/FallingRock.png\")
-	debris.z_index = -1
-	add_child(debris)
-	
-	add_timer()
-"
-
 [node name="LabSolids" type="TileMap"]
 tile_set = SubResource( 111 )
 cell_size = Vector2( 16, 16 )
 format = 1
-script = SubResource( 175 )

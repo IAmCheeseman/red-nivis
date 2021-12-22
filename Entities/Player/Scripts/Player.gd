@@ -260,6 +260,7 @@ func jump():
 
 func _on_a_press_window_timeout(): triedJumpRecent = false
 
+
 func die():
 	GameManager.inGUI = true
 	state = states.DEAD
@@ -276,9 +277,12 @@ func die():
 		i.queue_free()
 	itemHolder.hide()
 
+
 func show_death_screen(timer:Timer) -> void:
 	deathScreen.show()
+	if animationPlayer.current_animation != "Dead": animationPlayer.play("Dead")
 	timer.queue_free()
+
 
 func _on_health_changed(dir: Vector2) -> void:
 	if playerData.godmode:

@@ -18,14 +18,14 @@ uniform sampler2D alpha;
 const float PI = 3.14;
 
 void fragment() {
-//	vec4 color = texture(TEXTURE, UV);
-//	if (isOn) {
-//		float beforeA = 1.0-color.a;
-//		color.a = texture(alpha, SCREEN_UV).r;
-//		color.a = mix(color.a, 0.0, beforeA);
-//	}
-//
-//	COLOR = color;
+	vec4 color = texture(TEXTURE, UV);
+	if (isOn) {
+		float beforeA = 1.0-color.a;
+		color.a = texture(alpha, SCREEN_UV).r;
+		color.a = mix(color.a, 0.0, beforeA);
+	}
+
+	COLOR = color;
 }"
 
 [sub_resource type="ShaderMaterial" id=8]
