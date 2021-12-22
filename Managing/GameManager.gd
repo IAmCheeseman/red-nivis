@@ -46,12 +46,13 @@ func _on_node_added(node: Node) -> void:
 
 
 func attacks_capped() -> bool:
-	return currentlyAttackingEnemies.size() == 0
+	return currentlyAttackingEnemies.size() > 2
 
 
 func add_attacking_enemy(enemy: Node) -> void:
 	if attacks_capped(): return
 	currentlyAttackingEnemies.append(enemy)
+	enemy.connect("tree_exiting", self, "remove_attacking_enemy", [enemy])
 
 
 func enemy_is_attacking(enemy: Node) -> bool:

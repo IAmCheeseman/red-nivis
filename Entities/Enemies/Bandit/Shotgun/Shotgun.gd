@@ -17,7 +17,11 @@ func _process(_delta: float) -> void:
 
 
 func shoot() -> void:
-	if !player or GameManager.attacks_capped(): return
+	PEWPEWTIERWOOO.start(PEWPEWTIERWOOO.wait_time + rand_range(-.4, .4))
+	if !player: return
+	if GameManager.attacks_capped():
+		attackTimer.start()
+		return
 	if global_position.distance_to(player.global_position) < 32:
 		return
 	var spread = 12
@@ -35,8 +39,8 @@ func shoot() -> void:
 		GameManager.spawnManager.spawn_object(newBullet)
 	
 	GameManager.add_attacking_enemy(self)
+	randomize()
 	attackTimer.start()
-	
 
 
 func _on_attack_timer_timeout() -> void:
