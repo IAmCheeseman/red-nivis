@@ -65,6 +65,7 @@ func shoot():
 	gun.player.playerObject.vel += -get_local_mouse_position().normalized()*gun.recoil
 	if playerData.ammo <= 0:
 		cooldownTimer.stop()
+		cooldownTimer.start(gun.reloadSpeed)
 		cooldownTimer.set_meta("fromReload", true)
 		gun.isReloading = true
 		gun.visuals.rotation_degrees = gun.kickUp*5.2\
@@ -80,8 +81,6 @@ func shoot():
 func _input(_event):
 	if Input.is_action_just_released("use_item"):
 		holdShots = 0
-	if Input.is_action_just_pressed("reload") and !GameManager.inGUI:
-		cooldownTimer.start(gun.reloadSpeed)
 
 
 
