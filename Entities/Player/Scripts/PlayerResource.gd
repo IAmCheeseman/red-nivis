@@ -2,7 +2,7 @@ extends Resource
 class_name Player
 
 # Stats
-export var maxHealth:int = 5
+export var maxHealth:int = 3
 export var maxAmmo:int = 255
 export var attackSpeed: float = 1.0
 
@@ -50,7 +50,7 @@ signal stamina_changed
 
 
 func _init() -> void:
-	health = maxHealth-1
+	health = 3
 
 
 func _on_damage_taken(damage: int, kbDir: Vector2) -> void:

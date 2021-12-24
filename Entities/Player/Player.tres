@@ -7,7 +7,7 @@ _data = [ Vector2( 0, 0.536364 ), 0.0, -0.136364, 0, 1, Vector2( 1, 0.4 ), -0.13
 
 [resource]
 script = ExtResource( 1 )
-maxHealth = 4
+maxHealth = 3
 maxAmmo = 255
 attackSpeed = 0.8
 maxSpeed = 129.6
