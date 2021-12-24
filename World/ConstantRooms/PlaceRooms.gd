@@ -1,7 +1,7 @@
 extends Reference
 class_name RoomPlacer
 
-func generate_rooms(
+static func generate_rooms(
 rooms: Array,
 room: Resource,
 amountPerBiome:int,

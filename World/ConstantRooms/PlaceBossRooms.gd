@@ -2,9 +2,8 @@ extends Reference
 class_name BossRoomPlacer
 
 
-func generate_rooms(rooms:Array, brooms: Array, worldGenerator):
+static func generate_rooms(rooms:Array, brooms: Array, worldGenerator):
 	for r in brooms:
-		#get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true)
 		for x in rooms.size():
 			for y in rooms[x].size():
 				var room = rooms[x][y]

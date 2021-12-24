@@ -45,7 +45,6 @@ func create_room() -> void:
 	# Setup
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
 	
-	var roomData = worldData.rooms[worldData.position.x][worldData.position.y]
 	worldData.rooms[worldData.position.x][worldData.position.y].discovered = true
 	for i in worldData.get_connected_rooms(worldData.position):
 		worldData.rooms[worldData.position.x+i.x][worldData.position.y+i.y].nearDiscovered = true

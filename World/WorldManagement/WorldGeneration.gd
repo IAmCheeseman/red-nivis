@@ -1,9 +1,10 @@
 extends Reference
 class_name WorldGenerator
 
-const BLOCKING_ROOM = Color("#000000")
-const STARTING_ROOM = Color("#a8ca58")
-const BOSS_ROOM     = Color("#ff0000")
+const BLOCKING_ROOM    = Color("#000000")
+const STARTING_ROOM    = Color("#a8ca58")
+const BOSS_ROOM        = Color("#ff0000")
+const CONNECTION_COLOR = Color("#4d2b32")
 
 export var growLoops := 2
 
@@ -41,6 +42,7 @@ func generate_world(seed_:int=randi()) -> Array:
 						"isStartingRoom" : color.is_equal_approx(STARTING_ROOM),
 						"blockGrowing" : color.is_equal_approx(BLOCKING_ROOM),
 						"bossRoom" : color.is_equal_approx(BOSS_ROOM),
+						"isBiomeConnection" : color.is_equal_approx(CONNECTION_COLOR),
 						"nodeData" : {}
 					}
 					if room.isStartingRoom:
@@ -52,15 +54,14 @@ func generate_world(seed_:int=randi()) -> Array:
 	grow_world()
 	
 	var br = preload("res://World/ConstantRooms/BossRooms.tres")
-	var bossRoomPlacer = BossRoomPlacer.new()
-	bossRoomPlacer.generate_rooms(
+	BossRoomPlacer.generate_rooms(
 		rooms, br.rooms, self
 	)
-	var roomPlacer = RoomPlacer.new()
 	var cr = preload("res://World/ConstantRooms/Rooms.tres")
 	for r in cr.rooms:
-		roomPlacer.generate_rooms(
+		RoomPlacer.generate_rooms(
 			rooms, r, r.perBiome, r.minDistOfSameType, r.biomes)
+	ConnectionRoomPlacer.generate_rooms(rooms, self)
 	
 	return rooms
 

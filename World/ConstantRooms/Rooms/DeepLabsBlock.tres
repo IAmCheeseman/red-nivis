@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource( 1 )
 scene = ExtResource( 2 )
+biomes = [  ]
 mustHave = false
 typeAlwaysVisible = false
-usesMin = 1
-usesMax = 1
+perBiome = 0
+minDistOfSameType = 2.8
