@@ -18,14 +18,12 @@ static func generate_rooms(rooms:Array, worldGenerator):
 				false
 			)
 			var biomes = []
-			var biome
 			for i in neighbors:
 				var iroom = rooms[i.x][i.y]
 				if iroom.biome:
 					room.biome = iroom.biome
 					room.typeAlwaysVisible = true
 					biomes.append(iroom.biome.name.replace(" ", "").to_lower())
-					biome = iroom.biome
 				if biomes.size() == 2: break
 			if biomes.size() == 0: continue
 			
@@ -37,6 +35,6 @@ static func generate_rooms(rooms:Array, worldGenerator):
 			else:
 				r = CONNECTION_ROOMS[possibleKey2]
 			
-			room.biome = biome
+			room.biome = r.constBiome
 			room.constantRoom = r
 			room.roomIcon = r.roomIcon
