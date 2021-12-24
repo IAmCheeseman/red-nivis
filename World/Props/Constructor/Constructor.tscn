@@ -141,10 +141,10 @@ void vertex() {
 		// orbit velocity
 		float orbit_amount = (orbit_velocity + tex_orbit_velocity) * mix(1.0, rand_from_seed(alt_seed), orbit_velocity_random);
 		if (orbit_amount != 0.0) {
-		     float ang = orbit_amount * DELTA * pi * 2.0;
-		     mat2 rot = mat2(vec2(cos(ang), -sin(ang)), vec2(sin(ang), cos(ang)));
-		     TRANSFORM[3].xy -= diff.xy;
-		     TRANSFORM[3].xy += rot * diff.xy;
+			 float ang = orbit_amount * DELTA * pi * 2.0;
+			 mat2 rot = mat2(vec2(cos(ang), -sin(ang)), vec2(sin(ang), cos(ang)));
+			 TRANSFORM[3].xy -= diff.xy;
+			 TRANSFORM[3].xy += rot * diff.xy;
 		}
 		if (damping + tex_damping > 0.0) {
 			float v = length(VELOCITY);

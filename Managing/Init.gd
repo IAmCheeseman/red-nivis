@@ -30,4 +30,7 @@ func _ready():
 	if OS.get_name() == "OSX":
 		OS.set_window_title("Astronaut Game: Stop using MacOS and use Linux lmao")
 	
+	if OS.has_feature("standalone"):
+		OS.set_window_always_on_top(false)
+	
 	var _dispose = get_tree().change_scene("res://UI/UpgradeSelection/UpgradeSelection.tscn")

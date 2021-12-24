@@ -55,6 +55,9 @@ signal dropGun(gun, pos)
 
 func _ready():
 	GameManager.player = self
+	var date = OS.get_date()
+	if date.month == OS.MONTH_DECEMBER and date.day <= 25:
+		sprite.texture = load("res://Entities/Player/Assets/player_sheet_xmas.png")
 	# Making sure players cannot come back to life by leaving an area
 	if playerData.isDead:
 		die()
