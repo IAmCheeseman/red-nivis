@@ -31,7 +31,7 @@ func create_room() -> void:
 	world.tilesContainer.add_child(world.solids)
 	
 	world.platforms = biome.platforms.instance()
-	world.platforms.z_index = -1
+	world.platforms.z_index = 0
 	world.tilesContainer.add_child(world.platforms)
 	
 	world.background = biome.background.instance()
@@ -135,6 +135,7 @@ func create_constant_room(connections) -> void:
 	var roomPr:Node2D = room.props
 	for c in roomPr.get_children():
 		roomPr.remove_child(c)
+		c.z_index = -1
 		add_child(c)
 	# Tiling over none connected rooms
 	var size = world.solids.get_used_rect().end-Vector2.ONE
