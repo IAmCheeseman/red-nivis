@@ -52,7 +52,8 @@ func attacks_capped() -> bool:
 func add_attacking_enemy(enemy: Node) -> void:
 	if attacks_capped(): return
 	currentlyAttackingEnemies.append(enemy)
-	var _discard = enemy.connect("tree_exiting", self, "remove_attacking_enemy", [enemy])
+	if self in enemy.get_signal_connection_list("tree_exiting"):
+		var _discard = enemy.connect("tree_exiting", self, "remove_attacking_enemy", [enemy])
 
 
 func enemy_is_attacking(enemy: Node) -> bool:

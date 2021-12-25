@@ -115,12 +115,13 @@ func _on_attack_timer_timeout() -> void:
 
 
 func instance_stick(dir: Vector2) -> void:
-	var newStick = stick.instance()
-	newStick.dir = (dir.normalized()).rotated(
-		deg2rad(rand_range(-24, 24))
-		)*450
-	newStick.global_position = global_position
-	GameManager.spawnManager.spawn_object(newStick)
+	for i in rand_range(1, 3):
+		var newStick = stick.instance()
+		newStick.dir = (dir.normalized()).rotated(
+			deg2rad(rand_range(-24, 24))
+			)*450
+		newStick.global_position = global_position
+		GameManager.spawnManager.spawn_object(newStick)
 
 
 func _on_target_change_timer_timeout() -> void:
