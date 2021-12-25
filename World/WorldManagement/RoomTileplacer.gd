@@ -325,6 +325,8 @@ func add_props(propArr:Array, x, y) -> void:
 	world.props.add_child(prop)
 
 func spawn_enemies() -> void: 
+	if worldData.get_current_room().cleared:
+		return
 	if !roomI is Image:
 		return
 	randomize()

@@ -43,7 +43,7 @@ func generate_world(seed_:int=randi()) -> Array:
 						"blockGrowing" : color.is_equal_approx(BLOCKING_ROOM),
 						"bossRoom" : color.is_equal_approx(BOSS_ROOM),
 						"isBiomeConnection" : color.is_equal_approx(CONNECTION_COLOR),
-						"nodeData" : {}
+						"nodeData" : {},
 					}
 					if room.isStartingRoom:
 						room.constantRoom = preload(\

@@ -28,7 +28,7 @@ func _ready() -> void:
 	generator.create_room()
 	seed(worldData.position.x*worldData.position.y)
 	lockedIn = rand_range(0, 1) < .2
-	if !lockedIn:
+	if !lockedIn or worldData.get_current_room().cleared:
 		for i in exitBlockers: i.queue_free()
 		exitBlockers.clear()
 	if worldData.playerPos != Vector2.ZERO:
@@ -61,6 +61,9 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 	timer.connect("timeout", get_tree(), "reload_current_scene")
 	add_child(timer)
 	timer.start()
+	
+	var room = worldData.get_current_room()
+	if enemies.get_child_count() == 0: room.cleared = true
 	
 	worldData.position += direction
 	worldData.moveDir = direction

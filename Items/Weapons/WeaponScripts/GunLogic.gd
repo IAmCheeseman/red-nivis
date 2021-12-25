@@ -64,10 +64,7 @@ func _physics_process(delta) -> void:
 		pivot.rotation += 12*delta*swingDir
 		if abs(pivot.rotation_degrees-swingStartDeg) > 65*2:
 			swinging = false
-	if gun.isReloading and !cooldownTimer.is_stopped():
-		gunSprite.rotation = lerp_angle(gunSprite.rotation, deg2rad(360), 50*delta)
-	else:
-		gun.visuals.rotation = lerp_angle(gun.visuals.rotation, 0, 4*delta)
+	gun.visuals.rotation = lerp_angle(gun.visuals.rotation, 0, 4*delta)
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 6*delta)
 
 	# Shooting
