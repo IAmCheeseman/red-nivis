@@ -2,7 +2,7 @@
 
 [ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
 [ext_resource path="res://World/ConstantRooms/Rooms/DeepLabsBlock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://World/Biomes/Lab.tres" type="Resource" id=3]
+[ext_resource path="res://World/Biomes/DeepLabs.tres" type="Resource" id=3]
 
 [resource]
 script = ExtResource( 1 )

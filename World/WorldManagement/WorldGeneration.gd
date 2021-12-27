@@ -133,7 +133,8 @@ func get_biome_by_color(color:Color, getSecondary:bool=false):
 	var biomes = [
 		"res://World/Biomes/Lab.tres", 
 		"res://World/Biomes/DeepLabs.tres",
-		"res://World/Biomes/Caves.tres"
+		"res://World/Biomes/Caves.tres",
+		"res://World/Biomes/MeadowCaverns.tres"
 	]
 	for b in biomes:
 		var biome = load(b)

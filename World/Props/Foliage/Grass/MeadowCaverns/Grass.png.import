@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LabTemplates.png-38de30ec0fae4c6a09496ef071b41217.stex"
+path="res://.import/Grass.png-39082d018045568fbc57f0823cb6bcc8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Templates/LabTemplates.png"
-dest_files=[ "res://.import/LabTemplates.png-38de30ec0fae4c6a09496ef071b41217.stex" ]
+source_file="res://World/Props/Foliage/Grass/MeadowCaverns/Grass.png"
+dest_files=[ "res://.import/Grass.png-39082d018045568fbc57f0823cb6bcc8.stex" ]
 
 [params]
 

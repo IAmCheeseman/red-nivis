@@ -188,6 +188,13 @@ func create_random_room(connections) -> void:
 				world.solids.set_cell(x, y, 0)
 				world.solids.update_bitmask_area(Vector2(x, y))
 				
+				world.background.set_cell(x, y, 0)
+				world.background.update_bitmask_area(Vector2(x, y))
+				for i in 3:
+					var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
+					world.background.set_cell(x+plus.x, y+plus.y, 0)
+					world.background.update_bitmask_area(Vector2(x, y)+plus)
+				
 # warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .5 and roomI.get_pixel(x, clamp(y+1, 0, roomI.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
 					if biome.roofProps.size() > 0: add_props(biome.roofProps, x, y+1)
