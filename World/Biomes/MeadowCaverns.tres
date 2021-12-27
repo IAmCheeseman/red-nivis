@@ -9,12 +9,12 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Acient Gardens"
+name = "Ancient Gardens"
 solids = ExtResource( 4 )
 background = ExtResource( 5 )
 platforms = ExtResource( 6 )
 bgColor = Color( 0.0156863, 0.0196078, 0.0431373, 1 )
-mistColor = Color( 0.45098, 0.298039, 0.227451, 1 )
+brightness = 0.79
 startingArea = false
 biomeIndex = 2
 mapColor = Color( 0.870588, 0.619608, 0.254902, 1 )

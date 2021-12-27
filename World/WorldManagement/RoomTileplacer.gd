@@ -36,7 +36,10 @@ func create_room() -> void:
 	
 	world.background = biome.background.instance()
 	world.background.z_index = -3
+	world.background.set_script(preload("res://World/EnviormentalArt/MeadowCaverns/MeadowCavernsBG.gd"))
 	world.tilesContainer.add_child(world.background)
+	
+	world.darkness.color = Color(biome.brightness, biome.brightness, biome.brightness)
 	
 	world.solidColorBG.color = biome.bgColor
 	if biome.atmosphere:

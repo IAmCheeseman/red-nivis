@@ -14,6 +14,7 @@ onready var screenTrans = $ScreenTransition
 onready var tilesContainer = $Props/Tiles
 onready var enemies = $Props/Enemies
 onready var roomClearer = $RoomClearer
+onready var darkness = $Darkness
 onready var generator = $Generator
 
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
@@ -34,6 +35,7 @@ func _ready() -> void:
 	if worldData.playerPos != Vector2.ZERO:
 		player.global_position = worldData.playerPos
 		worldData.playerPos = Vector2.ZERO
+	
 	var timer = get_tree().create_timer(2.9)
 	background.modulate = Color.darkgray
 	timer.connect("timeout", self, "_on_index_timer_timeout")
