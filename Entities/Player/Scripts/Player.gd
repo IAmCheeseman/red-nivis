@@ -106,10 +106,21 @@ func walk_state(delta):
 
 		moveDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left"))
 		moveDir = moveDir.normalized()
+		var speed
+		var accel
+		if is_grounded():
+			speed = playerData.maxSpeed
+			accel = playerData.accelaration
+		else:
+			speed = playerData.maxAirSpeed
+			accel = playerData.airAccel
+		
+		if moveDir.x == 0:
+			accel = playerData.friction
 		vel.x = lerp(
 			vel.x,
-			moveDir.x*(playerData.maxSpeed*( 1+(playerData.jumpSpeedMod*int(!is_grounded())) ) ),
-			playerData.accelaration*delta
+			moveDir.x*speed,
+			accel*delta
 		)
 		# Do stuff in the air.
 		vel.y += Globals.GRAVITY*delta
@@ -121,8 +132,6 @@ func walk_state(delta):
 
 		if just_landed():
 			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
-		
-		#vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
 	else:
 		vel.y += Globals.GRAVITY*delta
 		vel.x = lerp(
@@ -132,7 +141,7 @@ func walk_state(delta):
 		)
 		sprite.rotation_degrees = 0
 		animationPlayer.play("Idle")
-	vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(89)).y
+	vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(46)).y
 
 
 func animate(moveDir:Vector2):

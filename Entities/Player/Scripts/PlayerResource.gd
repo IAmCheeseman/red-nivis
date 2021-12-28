@@ -8,9 +8,10 @@ export var attackSpeed: float = 1.0
 
 # Movement
 export var maxSpeed:float = 90
-export var jumpSpeedMod:float = .2
+export var maxAirSpeed:float = 180
 export var dashSpeed:float = 320
 export var accelaration:float = 5.0
+export var airAccel: float 
 export var jumpForce:int = 180
 export var bunnyHopMult:float = 2.5
 export var friction:float = 3.0
