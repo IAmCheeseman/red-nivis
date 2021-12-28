@@ -158,7 +158,7 @@ func get_used_rooms() -> Array:
 func select_template() -> Image:
 	return load(
 		"res://World/Templates/WorldTemplates/Template%s.png"\
-		 % ceil(rand_range(0, 3)) ).get_data()
+		 % ceil(rand_range(0, 1)) ).get_data()
 
 
 func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array:

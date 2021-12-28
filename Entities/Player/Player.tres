@@ -16,7 +16,6 @@ dashSpeed = 472.5
 accelaration = 10.0
 jumpForce = 340
 bunnyHopMult = 1.5
-gravity = 6.0
 friction = 3.0
 kbStrength = 112
 maxDashes = 1

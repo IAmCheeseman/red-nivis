@@ -18,7 +18,11 @@ func _on_tree_exiting() -> void:
 
 func create_room() -> void:
 	AudioServer.set_bus_effect_enabled(4, 0, true)
-	seed(worldData.position.x*worldData.position.y)
+	if worldData.get_current_room().has("seed"):
+		seed(worldData.get_current_room().seed)
+	else:
+		randomize()
+		worldData.get_current_room()["seed"] = randi()
 	
 	for t in world.tilesContainer.get_children():
 		t.queue_free()
