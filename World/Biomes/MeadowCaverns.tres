@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/Templates/MeadowCavernsTemplates.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://World/EnviormentalArt/MeadowCaverns/MeadowTiles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnviormentalArt/MeadowCaverns/MeadowCavernsBG.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Caves/StonePlatforms.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Props/Spikes/Spike.tscn" type="PackedScene" id=7]
 
 [resource]
 script = ExtResource( 1 )
@@ -25,4 +26,5 @@ connectionChance = 0.05
 roomTemplates = ExtResource( 2 )
 roofProps = [  ]
 groundProps = [  ]
+spike = ExtResource( 7 )
 enemyPools = [ ExtResource( 3 ) ]

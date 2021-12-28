@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=13 format=2]
+[gd_resource type="Resource" load_steps=14 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnemyPools/DeepLabsDefault.tres" type="Resource" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://World/Props/LabStuff/Tables/SmallTableMetalEmpty.tscn" type="PackedScene" id=10]
 [ext_resource path="res://World/Props/LabStuff/Tables/SmallTableWoodEmpty.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/EnemyPools/Bandits.tres" type="Resource" id=12]
+[ext_resource path="res://World/Props/Spikes/Spike.tscn" type="PackedScene" id=13]
 
 [resource]
 script = ExtResource( 1 )
@@ -31,4 +32,5 @@ connectionChance = 0.05
 roomTemplates = ExtResource( 8 )
 roofProps = [ ExtResource( 7 ) ]
 groundProps = [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
+spike = ExtResource( 13 )
 enemyPools = [ ExtResource( 2 ), ExtResource( 12 ) ]

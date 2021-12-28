@@ -22,5 +22,6 @@ func _input(event: InputEvent) -> void:
 	and player.state != player.states.WALLSLIDE:
 		hasJumped = true
 		player.jump()
+		player.vel.y *= .9
 		player.animationPlayer.play("DoubleJump")
 
