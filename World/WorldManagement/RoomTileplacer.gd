@@ -23,6 +23,7 @@ func create_room() -> void:
 	else:
 		randomize()
 		worldData.get_current_room()["seed"] = randi()
+		seed(worldData.get_current_room().seed)
 	
 	for t in world.tilesContainer.get_children():
 		t.queue_free()
@@ -287,22 +288,22 @@ func set_player_pos() -> void:
 			var ppos = get_free_spot(Vector2.ZERO, Vector2(0, size.y), Vector2.DOWN).end
 			ppos.x += 1.8
 			world.player.position = ppos*world.solids.cell_size
-			world.player.position.y -= 8
+			world.player.position.y -= 0
 		Vector2.LEFT:
 			var ppos = get_free_spot(Vector2(size.x-1, 0), Vector2(size.x-1, size.y), Vector2.DOWN).end
 			ppos.x -= 1.8
 			world.player.position = ppos*world.solids.cell_size
-			world.player.position.y -= 8
+			world.player.position.y -= 0
 		Vector2.UP:
 			var positions = get_free_spot(Vector2(0, size.y-1), Vector2(size.x, size.y-1), Vector2.RIGHT)
 			var x = (positions.end.x-positions.start.x)*.5
-			var ppos = Vector2(positions.start.x+x, size.y-2)
+			var ppos = Vector2(positions.start.x+x, size.y)
 			world.player.position = ppos*world.solids.cell_size
 			world.player.vel.y = -world.player.playerData.jumpForce
 		Vector2.DOWN:
 			var positions = get_free_spot(Vector2.ZERO, Vector2(size.x, 0), Vector2.RIGHT)
 			var x = (positions.end.x-positions.start.x)*.5
-			var ppos = Vector2(positions.start.x+x, 2)
+			var ppos = Vector2(positions.start.x+x, 1)
 			world.player.position = ppos*world.solids.cell_size
 	while world.solids.get_cellv(world.solids.world_to_map(world.player.position)) != -1:
 		world.player.position.y -= world.solids.cell_size.y
