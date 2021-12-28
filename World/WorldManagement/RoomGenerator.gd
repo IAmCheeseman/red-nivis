@@ -56,22 +56,17 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 			if Vector2(x, y) in blockOuts:
 				template.solids.position.x = templates.get_width()
 				template.platforms.position.x = templates.get_width()
-				template.hazards.position.x = templates.get_width()
 			var room = templates.get_rect(template.solids)
 			var platforms = templates.get_rect(template.platforms)
-			var hazards = templates.get_rect(template.hazards)
 			room.lock()
 			platforms.lock()
-			hazards.lock()
 			
 			# Adding the template
 			for xx in room.get_width():
 				for yy in room.get_height():
 					var color:Color = room.get_pixel(xx, yy)
 					var pColor:Color = platforms.get_pixel(xx, yy)
-					var hColor:Color = hazards.get_pixel(xx, clamp(yy-1, 0, INF))
 					var pixelDir := get_tile_dir(color)
-					var pPixelDir := get_tile_dir(pColor)
 					
 					# Determining the color
 					if (pixelDir == IS_UP and y != 0)\
@@ -105,16 +100,6 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 					elif (pixelDir == IS_LEFT and Vector2(x-1, y) in blockOuts):
 						color = TILE
 					
-					var abovePix = image.get_pixel(xx+(x*TEMPLATE_SIZE), clamp(yy+(y*TEMPLATE_SIZE)-1, 0, INF))
-					if (hColor.is_equal_approx(UP) or hColor.is_equal_approx(DOWN) or hColor.is_equal_approx(TILE))\
-					and color.is_equal_approx(TILE) and abovePix.is_equal_approx(EMPTY) and rand_range(0, 1) < .5: 
-						
-						image.set_pixel(
-							xx+(x*TEMPLATE_SIZE),
-							yy+(y*TEMPLATE_SIZE)-1,
-							HAZARD
-						)
-					
 					image.set_pixel(
 						xx+(x*TEMPLATE_SIZE),
 						yy+(y*TEMPLATE_SIZE),
@@ -122,7 +107,6 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 					)
 			room.unlock()
 			platforms.unlock()
-			hazards.unlock()
 	
 	image.unlock()
 	
@@ -131,9 +115,9 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 
 static func get_random_template(template:Image, templateAmount:int) -> Dictionary:
 # warning-ignore:integer_division
-	var templatex := int(rand_range(0, (template.get_width()/(templateAmount-1))))*TEMPLATE_SIZE
+	var templatex := int(rand_range(0, (template.get_width()/(templateAmount))))*TEMPLATE_SIZE
 # warning-ignore:narrowing_conversion
-	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
+	templatex = clamp(int(templatex), 0, template.get_width())#-TEMPLATE_SIZE)
 
 ## warning-ignore:narrowing_conversion
 #	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
@@ -145,10 +129,6 @@ static func get_random_template(template:Image, templateAmount:int) -> Dictionar
 		),
 		"platforms" : Rect2(
 			Vector2(templatex, TEMPLATE_SIZE),
-			Vector2(TEMPLATE_SIZE, TEMPLATE_SIZE)
-		),
-		"hazards" : Rect2(
-			Vector2(templatex, TEMPLATE_SIZE*2),
 			Vector2(TEMPLATE_SIZE, TEMPLATE_SIZE)
 		)
 	}
