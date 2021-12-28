@@ -27,8 +27,7 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 		true, Image.FORMAT_RGBA8)
 	
 	var blockOuts = []
-	var blockOutCount = (size.x*size.y)*.5
-	blockOutCount = floor(blockOutCount)
+	var blockOutCount = floor((size.x*size.y)*.5)
 	
 	while blockOutCount >= size.x or blockOutCount >= size.y:
 		blockOutCount -= 1
@@ -92,9 +91,19 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 					else:
 						color = TILE
 					
+					
 					if (pColor.is_equal_approx(UP) or pColor.is_equal_approx(DOWN) or pColor.is_equal_approx(TILE))\
 					and !color.is_equal_approx(TILE):
 						color = PLATFORM
+					
+					if (pixelDir == IS_UP and Vector2(x, y-1) in blockOuts):
+						color = TILE
+					elif (pixelDir == IS_DOWN and Vector2(x, y+1) in blockOuts):
+						color = TILE
+					elif (pixelDir == IS_RIGHT and Vector2(x+1, y) in blockOuts):
+						color = TILE
+					elif (pixelDir == IS_LEFT and Vector2(x-1, y) in blockOuts):
+						color = TILE
 					
 					var abovePix = image.get_pixel(xx+(x*TEMPLATE_SIZE), clamp(yy+(y*TEMPLATE_SIZE)-1, 0, INF))
 					if (hColor.is_equal_approx(UP) or hColor.is_equal_approx(DOWN) or hColor.is_equal_approx(TILE))\
