@@ -4,7 +4,7 @@
 [ext_resource path="res://Managing/Interaction/Iteraction.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Props/FastTravelStation/Teleport.png" type="Texture" id=3]
 [ext_resource path="res://World/Props/FastTravelStation/FastTravelStation.gd" type="Script" id=4]
-[ext_resource path="res://World/Props/FastTravelStation/FastTravelMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/Map/TeleportMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -129,9 +129,8 @@ shape = SubResource( 3 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="FastTravelMenu" parent="CanvasLayer" instance=ExtResource( 5 )]
+[node name="TeleportMenu" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false
-stationPath = NodePath("../..")
 
 [connection signal="interaction" from="Iteraction" to="." method="_on_interaction"]
-[connection signal="placeSelected" from="CanvasLayer/FastTravelMenu" to="." method="_on_FastTravelMenu_placeSelected"]
+[connection signal="room_selected" from="CanvasLayer/TeleportMenu" to="." method="_on_room_selected"]

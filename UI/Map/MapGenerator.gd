@@ -3,7 +3,7 @@ extends Node
 export var tilesPath: NodePath
 onready var tiles := get_node(tilesPath)
 
-var mapData = preload("res://World/WorldManagement/WorldData.tres")
+var mapData = GameManager.worldData
 
 
 func generate_map() -> void:
