@@ -18,12 +18,10 @@ func _on_tree_exiting() -> void:
 
 func create_room() -> void:
 	AudioServer.set_bus_effect_enabled(4, 0, true)
-	if worldData.get_current_room().has("seed"):
-		seed(worldData.get_current_room().seed)
-	else:
+	if !worldData.get_current_room().has("seed"):
 		randomize()
 		worldData.get_current_room()["seed"] = randi()
-		seed(worldData.get_current_room().seed)
+	seed(worldData.get_current_room().seed)
 	
 	for t in world.tilesContainer.get_children():
 		t.queue_free()
@@ -132,12 +130,14 @@ func create_constant_room(connections) -> void:
 		world.background.update_bitmask_area(i)
 	# Roof Props
 	var roomCeilProps:TileMap = room.ceilingProp
-	for i in roomCeilProps.get_used_cells():
-		if biome.roofProps.size() > 0: add_props(biome.roofProps, i.x, i.y)
+	if biome.roofProps.size() > 0:
+		for i in roomCeilProps.get_used_cells():
+			add_props(biome.roofProps, i.x, i.y)
 	# Floor Props
 	var roomFloorprops:TileMap = room.groundProp
-	for i in roomFloorprops.get_used_cells():
-		if biome.groundProps.size() > 0: add_props(biome.groundProps, i.x, i.y+1)
+	if biome.groundProps.size() > 0: 
+		for i in roomFloorprops.get_used_cells():
+			add_props(biome.groundProps, i.x, i.y+1)
 	# Props
 	var roomPr:Node2D = room.props
 	for c in roomPr.get_children():
@@ -336,8 +336,7 @@ func pad(startPos:Vector2, endPos:Vector2, incDir:Vector2, padDir:Vector2) -> vo
 		pos += incDir
 
 func add_props(propArr:Array, x, y) -> void:
-	propArr.shuffle()
-	var prop = propArr.front().instance()
+	var prop = propArr[rand_range(0, propArr.size())].instance()
 	prop.position = Vector2(x, y)*world.solids.cell_size
 	prop.position.x += world.solids.cell_size.x*.5
 	prop.z_index = -2
@@ -348,7 +347,6 @@ func spawn_enemies() -> void:
 		return
 	if !roomI is Image:
 		return
-	randomize()
 	world.viableEnemySpawns.shuffle()
 	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
 # warning-ignore:integer_division
