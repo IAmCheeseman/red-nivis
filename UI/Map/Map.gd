@@ -7,6 +7,7 @@ onready var player:Sprite = $Viewport/Player
 onready var viewport:Viewport = $Viewport
 onready var blur = $Node2D/Blur
 onready var selection = $Selection#Viewport/Selection
+onready var mapGenerator = $MapGenerator
 
 # TODO: Make a teleport mode where you can teleport to stations.
 
@@ -21,30 +22,12 @@ func _ready() -> void:
 	yield(TempTimer.idle_frame(self), "timeout")
 	miniPosition = rect_position
 	miniSize = rect_size
-	for x in mapData.rooms.size():
-		for y in mapData.rooms[0].size():
-			var biome = mapData.rooms[x][y].biome
-			var roomIcon = mapData.rooms[x][y].roomIcon
-			if biome:
-				tiles.set_cell(x, y, 0)
-				if mapData.rooms[x][y].discovered or GameManager.revealMap:
-					tiles.set_cell(x, y, biome.biomeIndex+1)
-					set_icon(roomIcon, x, y)
-				elif mapData.rooms[x][y].nearDiscovered or mapData.rooms[x][y].typeAlwaysVisible:
-					set_icon(roomIcon, x, y)
-					
+	
+	mapGenerator.generate_map()
+	
 	camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
 	camera.position = camera.position.round()
 	player.position = camera.position
-
-
-func set_icon(roomIcon, x, y):
-	if roomIcon:
-		var sprite = Sprite.new()
-		sprite.texture = roomIcon
-		sprite.centered = false
-		sprite.position = Vector2(x, y)*tiles.cell_size
-		tiles.add_child(sprite)
 
 
 func _input(event: InputEvent) -> void:

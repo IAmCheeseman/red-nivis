@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Map/Map.gd" type="Script" id=1]
 [ext_resource path="res://UI/Map/MapTiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=3]
 [ext_resource path="res://UI/Map/MapAlpha.png" type="Texture" id=4]
+[ext_resource path="res://UI/Map/MapGenerator.gd" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
@@ -64,6 +65,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MapGenerator" type="Node" parent="VBoxContainer/ViewportContainer"]
+script = ExtResource( 5 )
 
 [node name="Node2D" type="Node2D" parent="VBoxContainer/ViewportContainer"]
 z_index = -1
