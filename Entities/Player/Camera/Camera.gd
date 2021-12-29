@@ -30,6 +30,7 @@ var shakeDir = Vector2.ZERO
 
 var zoomingIn := false
 var zoomTarget := Vector2.ZERO
+var zoomTime := .2
 
 var playerData = preload("res://Entities/Player/Player.tres")
 
@@ -80,16 +81,17 @@ func set_cam_look(value:bool):
 	maxOffset = baseMaxOffset * int(value)
 
 
-func zoom_in(z:=.5, t:=2, zoomPos:=global_position):
+func zoom_in(z:=.5, t:=2, zt:=.2, zoomPos:=global_position):
 	if zoomingIn: return
 	smoothing_enabled = true
+	zoomTime = zt
 	
 	zoomTween.interpolate_property(
 		self,
 		"zoom",
 		zoom,
 		Vector2.ONE*z,
-		.2,
+		zt,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT
 	)
@@ -99,7 +101,7 @@ func zoom_in(z:=.5, t:=2, zoomPos:=global_position):
 		"global_position", 
 		global_position,
 		zoomPos,
-		.2,
+		zt,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT
 	)
@@ -174,7 +176,7 @@ func _on_zoom_timer_timeout() -> void:
 		"zoom",
 		zoom,
 		Vector2.ONE,
-		.2,
+		zoomTime,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT
 	)
@@ -184,7 +186,7 @@ func _on_zoom_timer_timeout() -> void:
 		"global_position", 
 		global_position,
 		trackNode.global_position,
-		.2,
+		zoomTime,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT
 	)

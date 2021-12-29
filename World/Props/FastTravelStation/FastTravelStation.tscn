@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://World/Props/FastTravelStation/FastTravel.png" type="Texture" id=1]
 [ext_resource path="res://Managing/Interaction/Iteraction.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://World/Props/FastTravelStation/FastTravelStation.gd" type="Script" id=4]
 [ext_resource path="res://UI/Map/TeleportMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=6]
+[ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Default"
@@ -24,6 +25,9 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
+[sub_resource type="CanvasItemMaterial" id=5]
+blend_mode = 1
+
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
@@ -37,6 +41,48 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Spawn"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 0.297302, 4, 2.63902, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1600 ), Vector2( 1, 1600 ), Vector2( 1.2, 1600 ), Vector2( 0, 1600 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -80,6 +126,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("../ScreenTransition")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "out"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 25, 25 )
@@ -107,14 +167,16 @@ anims/Default = SubResource( 1 )
 
 [node name="Teleport" type="Sprite" parent="."]
 visible = false
+modulate = Color( 1, 1, 5, 1 )
+material = SubResource( 5 )
 position = Vector2( 0, 800 )
 scale = Vector2( 1e-05, 1600 )
 z_index = 1
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Teleport"]
-autoplay = "RESET"
 anims/RESET = SubResource( 4 )
+anims/Spawn = SubResource( 6 )
 anims/Teleport = SubResource( 2 )
 
 [node name="Iteraction" parent="." instance=ExtResource( 2 )]
@@ -131,6 +193,8 @@ layer = 3
 
 [node name="TeleportMenu" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false
+
+[node name="ScreenTransition" parent="." instance=ExtResource( 7 )]
 
 [connection signal="interaction" from="Iteraction" to="." method="_on_interaction"]
 [connection signal="room_selected" from="CanvasLayer/TeleportMenu" to="." method="_on_room_selected"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/ScreenTransition.gd" type="Script" id=1]
 
@@ -31,7 +31,7 @@ shader_param/color = Color( 0, 0, 0, 1 )
 shader_param/waveLength = 18.0
 shader_param/waveHeight = 0.066
 shader_param/speed = 0.1
-shader_param/progress = 0.0
+shader_param/progress = 1.5
 
 [sub_resource type="Animation" id=3]
 resource_name = "Out"
@@ -49,6 +49,10 @@ tracks/0/keys = {
 "values": [ 0.0, 1.5 ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "RESET"
+length = 0.001
+
 [node name="ScreenTransition" type="CanvasLayer"]
 layer = 5
 script = ExtResource( 1 )
@@ -64,3 +68,4 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Out = SubResource( 3 )
+anims/RESET = SubResource( 4 )
