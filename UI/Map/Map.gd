@@ -32,23 +32,24 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("map"):
-		rect_position = Vector2.ZERO
-		rect_size = get_viewport_rect().end
-		viewport.size = rect_size
-		blur.show()
-		inMiniMode = false
-		GameManager.inGUI = true
-		tiles.material.set_shader_param("isOn", false)
-	
-	if event.is_action_released("map"):
-		rect_position = miniPosition
-		rect_size = miniSize
-		viewport.size = rect_size
-		blur.hide()
-		camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
-		inMiniMode = true
-		GameManager.inGUI = false
-		tiles.material.set_shader_param("isOn", true)
+		if inMiniMode:
+			rect_position = Vector2.ZERO
+			rect_size = get_viewport_rect().end
+			viewport.size = rect_size
+			blur.show()
+			blur.rect_size = rect_size
+			inMiniMode = false
+			GameManager.inGUI = true
+			tiles.material.set_shader_param("isOn", false)
+		else:
+			rect_position = miniPosition
+			rect_size = miniSize
+			viewport.size = rect_size
+			blur.hide()
+			camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
+			inMiniMode = true
+			GameManager.inGUI = false
+			tiles.material.set_shader_param("isOn", true)
 	
 	if event is InputEventMouseMotion\
 	and Input.is_action_pressed("use_item")\

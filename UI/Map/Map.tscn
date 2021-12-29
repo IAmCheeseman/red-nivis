@@ -68,6 +68,7 @@ __meta__ = {
 
 [node name="MapGenerator" type="Node" parent="VBoxContainer/ViewportContainer"]
 script = ExtResource( 5 )
+tilesPath = NodePath("../Viewport/MapTiles")
 
 [node name="Node2D" type="Node2D" parent="VBoxContainer/ViewportContainer"]
 z_index = -1
