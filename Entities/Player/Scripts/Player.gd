@@ -112,7 +112,7 @@ func walk_state(delta):
 		var accel
 		if is_grounded():
 			speed = playerData.maxSpeed
-			accel = playerData.accelaration
+			accel = playerData.accelaration if abs(moveDir.x * speed) > vel.x else playerData.friction
 		else:
 			speed = playerData.maxAirSpeed
 			accel = playerData.airAccel
@@ -139,7 +139,7 @@ func walk_state(delta):
 		vel.x = lerp(
 			vel.x,
 			0,
-			playerData.accelaration*delta
+			playerData.friction*delta
 		)
 		sprite.rotation_degrees = 0
 		animationPlayer.play("Idle")

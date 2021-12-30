@@ -31,6 +31,7 @@ func create_room() -> void:
 	# Adding in the nodes
 	world.solids = biome.solids.instance()
 	world.solids.z_index = 1
+	world.solids.light_mask = 0
 	world.tilesContainer.add_child(world.solids)
 	
 	world.platforms = biome.platforms.instance()
@@ -181,9 +182,7 @@ func create_random_room(connections) -> void:
 		randi(),
 		biome.roomTemplates,
 # warning-ignore:integer_division
-		int(
-			float(biome.roomTemplates.get_width())/float(RoomGenerator.TEMPLATE_SIZE)
-		),
+		int(float(biome.roomTemplates.get_width())/float(RoomGenerator.TEMPLATE_SIZE)),
 		connections
 	)
 	
@@ -220,10 +219,6 @@ func create_random_room(connections) -> void:
 				var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
 				world.background.set_cell(x+plus.x, y+plus.y, 0)
 				world.background.update_bitmask_area(Vector2(x, y)+plus)
-			elif pixel.is_equal_approx(RoomGenerator.HAZARD) and biome.spike:
-				var newHazard = biome.spike.instance()
-				newHazard.position = world.solids.map_to_world(Vector2(x, y))
-				world.solids.add_child(newHazard)
 			# If is empty
 			if roomI.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
 				world.viableEnemySpawns.append(Vector2(x, y))

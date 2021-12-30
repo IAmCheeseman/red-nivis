@@ -6,7 +6,6 @@ const TEMPLATE_SIZE = 10
 const EMPTY = Color("#ffffff")
 const TILE = Color("#000000")
 const PLATFORM = Color("#3b486d")
-const HAZARD = Color("#de9e41")
 const UP = Color("#5bb031")
 const DOWN = Color("#e089e0")
 const RIGHT = Color("#75d1e4")
@@ -17,9 +16,9 @@ enum {IS_UP, IS_DOWN, IS_RIGHT, IS_LEFT, IS_TILE}
 
 static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, exits:PoolVector2Array) -> Image:
 	seed(seed_)
-	var size:Vector2 = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
+	var size:Vector2 = Vector2(rand_range(2, 3), rand_range(2, 3)).round()
 	while size == Vector2.ONE:
-		size = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
+		size = Vector2(rand_range(2, 3), rand_range(2, 3)).round()
 	var image:Image = Image.new()
 	image.create(
 		int(size.x*TEMPLATE_SIZE), 
@@ -34,8 +33,8 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 	
 	for i in blockOutCount:
 		blockOuts.append(Vector2(
-			rand_range(0, size.x-1),
-			rand_range(0, size.y-1)
+			rand_range(0, size.x),
+			rand_range(0, size.y)
 		).round())
 	
 	var templates:Image = _templates.get_data()
@@ -91,14 +90,14 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 					and !color.is_equal_approx(TILE):
 						color = PLATFORM
 					
-					if (pixelDir == IS_UP and Vector2(x, y-1) in blockOuts):
-						color = TILE
-					elif (pixelDir == IS_DOWN and Vector2(x, y+1) in blockOuts):
-						color = TILE
-					elif (pixelDir == IS_RIGHT and Vector2(x+1, y) in blockOuts):
-						color = TILE
-					elif (pixelDir == IS_LEFT and Vector2(x-1, y) in blockOuts):
-						color = TILE
+#					if (pixelDir == IS_UP and Vector2(x, y-1) in blockOuts):
+#						color = TILE
+#					elif (pixelDir == IS_DOWN and Vector2(x, y+1) in blockOuts):
+#						color = TILE
+#					elif (pixelDir == IS_RIGHT and Vector2(x+1, y) in blockOuts):
+#						color = TILE
+#					elif (pixelDir == IS_LEFT and Vector2(x-1, y) in blockOuts):
+#						color = TILE
 					
 					image.set_pixel(
 						xx+(x*TEMPLATE_SIZE),
@@ -110,6 +109,7 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 	
 	image.unlock()
 	
+	image.save_png("user://Room.png")
 	return image
 
 
@@ -117,10 +117,7 @@ static func get_random_template(template:Image, templateAmount:int) -> Dictionar
 # warning-ignore:integer_division
 	var templatex := int(rand_range(0, (template.get_width()/(templateAmount))))*TEMPLATE_SIZE
 # warning-ignore:narrowing_conversion
-	templatex = clamp(int(templatex), 0, template.get_width())#-TEMPLATE_SIZE)
-
-## warning-ignore:narrowing_conversion
-#	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
+	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
 	
 	return {
 		"solids" : Rect2(

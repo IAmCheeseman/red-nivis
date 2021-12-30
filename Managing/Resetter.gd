@@ -8,7 +8,7 @@ static func reset() -> void:
 	var worldData = preload("res://World/WorldManagement/WorldData.tres")
 	
 	playerData.isDead = false
-	playerData.maxHealth = 4
+	playerData.maxHealth = 3
 	playerData.health = playerData.maxHealth
 	playerData.maxStamina = 3
 	playerData.money = 0
