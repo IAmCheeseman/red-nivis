@@ -109,7 +109,6 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 	
 	image.unlock()
 	
-	image.save_png("user://Room.png")
 	return image
 
 

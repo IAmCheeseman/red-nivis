@@ -15,7 +15,7 @@ func _ready() -> void:
 	mapGenerator.generate_map()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	selection.position = mapTiles.world_to_map(mapTiles.get_local_mouse_position())*mapTiles.cell_size
 	selection.position += mapTiles.cell_size/2
 
