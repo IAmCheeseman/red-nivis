@@ -100,7 +100,7 @@ func set_disabled(val:bool):
 
 # Updates the label, and centers it
 func update_label() -> void:
-	label.text = "hit %s to %s" % [OS.get_scancode_string(
+	label.text = "Hit <%s> to %s" % [OS.get_scancode_string(
 		InputMap.get_action_list("interact")[0].scancode
 	), action]
 	label.rect_position = -label.rect_size / 2
