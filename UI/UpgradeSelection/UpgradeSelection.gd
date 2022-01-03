@@ -8,10 +8,15 @@ var player = preload("res://Entities/Player/Player.tres")
 
 
 func _ready() -> void:
-	GameManager.inGUI = true
 	for u in upgrades.get_children():
 		u.connect("clicked", self, "_on_upgrade_slot_clicked", [u])
 	slotsLeftLabel.text = "Slots Left: %s" % str(player.upgradeSlots)
+
+
+func init_slots() -> void:
+	for i in upgrades.get_children():
+		var u = i.upgrade
+		if u in player.upgrades: _on_upgrade_slot_clicked(i)
 
 
 func _on_upgrade_slot_clicked(node:Node) -> void:
@@ -27,8 +32,10 @@ func _on_upgrade_slot_clicked(node:Node) -> void:
 
 
 func _on_done_pressed():
+	player.upgrades.clear()
 	for s in selections.get_children():
 		player.upgrades.append(s.upgrade.abilityScript)
-	var _discard = get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
 	GameManager.inGUI = false
+	player.emit_signal("updateAbilities")
+	hide()
 

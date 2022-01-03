@@ -33,4 +33,5 @@ func _ready():
 	if OS.has_feature("standalone"):
 		OS.set_window_always_on_top(false)
 	
-	var _dispose = get_tree().change_scene("res://UI/UpgradeSelection/UpgradeSelection.tscn")
+	var _discard = get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+	#var _dispose = get_tree().change_scene("res://UI/UpgradeSelection/UpgradeSelection.tscn")

@@ -15,6 +15,7 @@ func help() -> String:
  set_money(amount)
  tp(x, y)
  set_room(x, y)
+ time_scale(scale)
  toggle_revealed_map()
  op()
 """
@@ -23,6 +24,11 @@ func help() -> String:
 func toggle_revealed_map():
 	GameManager.revealMap = !GameManager.revealMap
 	return " Map reveal toggled"
+
+
+func time_scale(time_scale):
+	Engine.time_scale = time_scale
+	return " Set time scale to %s" % time_scale
 
 
 func op():

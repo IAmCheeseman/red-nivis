@@ -49,6 +49,7 @@ func _on_cooldown_timeout() -> void:
 
 func _physics_process(delta) -> void:
 	# Flipping the gun based on rotation
+	if GameManager.inGUI: return
 	var local = barrelEnd.global_position-global_position
 	if local.x < 0: gun.visuals.scale.y = -1
 	else: gun.visuals.scale.y = 1

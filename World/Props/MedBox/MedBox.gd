@@ -18,7 +18,7 @@ func _on_interaction() -> void:
 		.75,
 		2,
 		global_position-Vector2(0, 16)
-		)
+	)
 
 
 func spawn_medkits() -> void:

@@ -21,9 +21,7 @@ static func is_even(number:int): return !(number % 2)
 static func coin_flip() -> bool: return is_even(randi())
 
 
-static func free_children(node:Node):
-	for i in node.get_children():
-		i.queue_free()
+static func free_children(node:Node): for i in node.get_children(): i.queue_free()
 
 
 static func get_relative_to_camera(node:Node2D, camera:Camera2D) -> Vector2:

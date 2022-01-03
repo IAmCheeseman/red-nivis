@@ -65,8 +65,6 @@ func _ready():
 	grayscale.material.set_shader_param("strength", 1)
 	playerData.connect("healthChanged", self, "_on_health_changed")
 	hurtbox.connect("hurt", playerData, "_on_damage_taken")
-	
-	
 
 
 func _physics_process(delta: float) -> void:
@@ -101,7 +99,7 @@ func _physics_process(delta: float) -> void:
 
 
 func walk_state(delta):
-	if !lockMovement:
+	if !lockMovement and !GameManager.inGUI:
 		# INPUT
 		# ------------------------------------------------
 		var moveDir := Vector2.ZERO
@@ -142,7 +140,7 @@ func walk_state(delta):
 			playerData.friction*delta
 		)
 		sprite.rotation_degrees = 0
-		animationPlayer.play("Idle")
+		animate(Vector2.ZERO)
 	vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(46)).y
 
 

@@ -60,7 +60,8 @@ func _process(_delta):
 			limits.position.y+min(vs.y, Globals.DEFAULT_CAM_SIZE.y*.5),
 			limits.end.y-min(vs.y, Globals.DEFAULT_CAM_SIZE.y*.5)
 		)
-
+		
+		if GameManager.inGUI: return
 		var mousePosition = Utils.get_global_mouse_position()
 		var dirMouse = global_position.direction_to(mousePosition)
 		var mouseDist = (global_position.distance_to(mousePosition)/sensitivity)
