@@ -3,7 +3,7 @@ extends Area2D
 const PLAYER = preload("res://Entities/Player/Player.tres")
 
 
-onready var label:Label = $Label
+onready var label:RichTextLabel = $Label
 
 
 export var ignoreDistance := false
@@ -100,7 +100,12 @@ func set_disabled(val:bool):
 
 # Updates the label, and centers it
 func update_label() -> void:
-	label.text = "Hit <%s> to %s" % [OS.get_scancode_string(
+	label.bbcode_text = "[center]Hit [wave amp=6 ]<[color=yellow]%s[/color]>[/wave]\n%s[/center]" % [OS.get_scancode_string(
 		InputMap.get_action_list("interact")[0].scancode
 	), action]
-	label.rect_position = -label.rect_size / 2
+	var font = label.get_font("normal_font")
+	label.rect_size = font.get_string_size(label.text) + (Vector2.ONE * 16)
+	print(label.text)
+	
+	label.rect_position.x = -label.rect_size.x / 2
+	label.rect_position.y = -label.rect_size.y

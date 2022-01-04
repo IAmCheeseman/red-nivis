@@ -25,7 +25,7 @@ func _on_quittm_pressed():
 	get_tree().paused = false
 	VisualServer.set_shader_time_scale(1)
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://UI/UpgradeSelection/UpgradeSelection.tscn")
+	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
 
 
 func _on_quittd_pressed():
