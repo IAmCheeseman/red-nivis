@@ -105,7 +105,6 @@ func update_label() -> void:
 	), action]
 	var font = label.get_font("normal_font")
 	label.rect_size = font.get_string_size(label.text) + (Vector2.ONE * 16)
-	print(label.text)
 	
 	label.rect_position.x = -label.rect_size.x / 2
 	label.rect_position.y = -label.rect_size.y
