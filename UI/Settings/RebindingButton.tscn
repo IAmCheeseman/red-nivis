@@ -6,10 +6,10 @@
 [node name="RebindButton" type="Button"]
 margin_right = 21.0
 margin_bottom = 20.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.65098, 0.65098, 0.65098, 1 )
+custom_fonts/font = ExtResource( 2 )
 toggle_mode = true
 text = "A"
 flat = true

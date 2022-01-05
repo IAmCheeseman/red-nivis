@@ -10,6 +10,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("pause") and !GameManager.inGUI:
 		visible = !visible
+		$CenterContainer.visible = visible
 		get_tree().paused = visible
 		VisualServer.set_shader_time_scale(int(!visible))
 

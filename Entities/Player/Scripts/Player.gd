@@ -141,7 +141,7 @@ func walk_state(delta):
 		)
 		sprite.rotation_degrees = 0
 		animate(Vector2.ZERO)
-	vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(46)).y
+	vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 
 
 func animate(moveDir:Vector2):
@@ -183,12 +183,9 @@ func just_landed():
 
 func is_grounded():
 	if $FloorChecker.get_overlapping_bodies().size() != 0:
+		snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump")\
+		else Vector2.ZERO
 		return true
-#	for c in floorCheckers.get_children():
-#		if c.is_colliding():
-#			snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump")\
-#			else Vector2.ZERO
-#			return true
 	
 	if vel.y > 0:
 		scaleHelper.scale.x = clamp(
@@ -262,7 +259,7 @@ func add_walk_particles(spawnPos:Vector2):
 func jump():
 	# Setting values
 	jumpSFX.play()
-	snapVector = Vector2.ZERO
+	#snapVector = Vector2.ZERO
 	vel.y = -playerData.jumpForce
 	triedJumpRecent = false
 
