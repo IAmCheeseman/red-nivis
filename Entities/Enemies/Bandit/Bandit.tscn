@@ -86,7 +86,7 @@ tracks/0/keys = {
 
 [node name="Bandit" type="KinematicBody2D"]
 collision_layer = 0
-collision_mask = 17
+collision_mask = 49
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -8,7 +8,7 @@ var playerData = preload("res://Entities/Player/Player.tres")
 
 
 func _process(_delta: float) -> void:
-	interaction.disabled = playerData.maxHeals-playerData.healsLeft == 0
+	interaction.disabled = playerData.maxHeals-playerData.healsLeft == 0 or anim.is_playing()
 
 
 func _on_interaction() -> void:

@@ -91,6 +91,7 @@ func is_closest() -> bool:
 # Sets `disabled` to `val`
 func set_disabled(val:bool):
 	disabled = val 
+	if !label or !sprite: return
 	if disabled:
 		label.hide()
 		sprite.material.set_shader_param("line_thickness", 0)
@@ -100,7 +101,7 @@ func set_disabled(val:bool):
 
 # Updates the label, and centers it
 func update_label() -> void:
-	label.bbcode_text = "[center]Hit [wave amp=6 ]<[color=yellow]%s[/color]>[/wave]\n%s[/center]" % [OS.get_scancode_string(
+	label.bbcode_text = "[center]Hit [wave amp=6 ]<[color=yellow]%s[/color]>[/wave]\nto %s[/center]" % [OS.get_scancode_string(
 		InputMap.get_action_list("interact")[0].scancode
 	), action]
 	var font = label.get_font("normal_font")

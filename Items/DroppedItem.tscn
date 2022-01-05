@@ -99,6 +99,7 @@ anims/init = SubResource( 6 )
 
 [node name="Iteraction" parent="." instance=ExtResource( 6 )]
 position = Vector2( 0, -9 )
+action = "pick up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
 position = Vector2( 0, 9 )

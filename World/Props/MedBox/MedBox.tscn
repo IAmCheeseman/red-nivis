@@ -96,6 +96,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Iteraction:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 17, 15 )
@@ -121,7 +133,9 @@ anims/RESET = SubResource( 2 )
 
 [node name="Iteraction" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -36 )
+disabled = true
 spritePath = NodePath("../Sprite")
+action = "heal"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
 position = Vector2( 0, 21 )

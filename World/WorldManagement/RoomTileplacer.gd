@@ -45,6 +45,7 @@ func create_room() -> void:
 	world.darkness.color = Color(biome.brightness, biome.brightness, biome.brightness)
 	
 	world.solidColorBG.color = biome.bgColor
+	
 	if biome.atmosphere:
 		world.add_child(biome.atmosphere.instance())
 	
@@ -104,6 +105,8 @@ func create_room() -> void:
 		var newBiomeTitle = preload("res://UI/BiomeTitle/BiomeTitle.tscn").instance()
 		world.canvasLayer.add_child(newBiomeTitle)
 		newBiomeTitle.get_node("Title/Name").text = "The "+biome.name
+
+
 
 # warning-ignore:shadowed_variable
 # warning-ignore:shadowed_variable
@@ -280,6 +283,14 @@ func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
 	area.collision_layer = 0
 	area.collision_mask = 2
 	area.connect("area_entered", world, "_on_load_area", [direction])
+	
+	var body = StaticBody2D.new()
+	body.global_position = area.global_position
+	body.collision_layer = 32
+	var col = CollisionShape2D.new()
+	col.shape = shape
+	body.add_child(col)
+	GameManager.spawnManager.spawn_object(body)
 
 func set_player_pos() -> void:
 	var size = world.solids.get_used_rect().end

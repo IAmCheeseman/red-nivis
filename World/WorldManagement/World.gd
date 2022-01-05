@@ -41,6 +41,7 @@ func _ready() -> void:
 	timer.connect("timeout", self, "_on_index_timer_timeout")
 
 
+
 func _on_index_timer_timeout() -> void:
 	roomClearer.isChecking = true
 	roomClearer.add_enemies()
