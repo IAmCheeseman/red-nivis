@@ -17,6 +17,7 @@ func _on_interaction() -> void:
 		"zoom_in",
 		.75,
 		2,
+		.2,
 		global_position-Vector2(0, 16)
 	)
 

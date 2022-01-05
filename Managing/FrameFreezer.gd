@@ -14,11 +14,16 @@ func freeze_frames(time:float) -> void:
 	
 	timer.start(time)
 	currentTimerCount += 1
+	
 	timer.get_tree().paused = true
+	VisualServer.set_shader_time_scale(0)
 
 
 func _timer_done(timer:Timer) -> void:
 	currentTimerCount -= 1
-	if currentTimerCount == 0: timer.get_tree().paused = false
+	if currentTimerCount == 0:
+		timer.get_tree().paused = false
+		VisualServer.set_shader_time_scale(1)
 	timer.queue_free()
+	
 

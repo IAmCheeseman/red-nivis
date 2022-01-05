@@ -43,6 +43,7 @@ func _ready() -> void:
 
 func _on_index_timer_timeout() -> void:
 	roomClearer.isChecking = true
+	roomClearer.add_enemies()
 
 
 func _on_drop_gun(gun, pos) -> void:
@@ -77,11 +78,21 @@ func _on_enemies_cleared() -> void:
 	if rand_range(0, 1) < .5 and waves < 1 and lockedIn:
 		generator.spawn_enemies()
 		waves += 1
-		roomClearer.isChecking = true
+		
+		var timer = get_tree().create_timer(2.9)
+		timer.connect("timeout", self, "_on_index_timer_timeout")
 		return
 	roomClearer.isChecking = false
 	for eb in exitBlockers:
 		if eb is Node2D:
 			eb.queue_free()
 	exitBlockers.clear()
+	
+	var currRoom = worldData.get_current_room()
+	if currRoom.cleared or currRoom.constantRoom: return
+	var clearEffectPos = roomClearer.lastKilledEnemyPos
+	var newClearEffect = preload("res://World/VisualEffects/RoomClear.tscn").instance()
+	newClearEffect.global_position = clearEffectPos
+	GameManager.spawnManager.spawn_object(newClearEffect)
+	GameManager.frameFreezer.freeze_frames(.2)
 
