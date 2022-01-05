@@ -41,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			emit_signal("interaction")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !disabled and is_closest() and playerNear:
 		label.show()
 		if !emittedClose:
