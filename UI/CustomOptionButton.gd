@@ -1,24 +1,52 @@
-extends OptionButton
+extends Button
 class_name CustomOptionButton
 
-export(Array, String) var options = ["Default"]
-export var defaultIndex: int = 0
 
-var label = text
+export(Array, String) var options := []
+
+export var selectedIdx := 0
+var selected := ""
+
+var _originalPosition: Vector2 
+var _originalText: String
+var hovering := false
+
 
 func _ready() -> void:
-	flat = true
+	var _discard0 = connect("mouse_entered", self, "_on_mouse_entered")
+	var _discard1 = connect("mouse_exited", self, "_on_mouse_exited")
+	var _discard2 = connect("pressed", self, "_on_pressed")
+	
+	theme = Theme.new()
+	theme.set_color("font_color", "Button", Color("#c7cfcc"))
+	theme.set_color("font_color_hover", "Button", Color("#e8c170"))
+	theme.set_color("font_color_pressed", "Button", Color("#de9e41"))
+	
+	_originalPosition = rect_position
+	_originalText = text
+	
 	focus_mode = Control.FOCUS_NONE
+	flat = true
 	
-	connect("item_selected", self, "_on_new_item_selected")
-	
-	for i in options:
-		add_item(i)
-	
-	select(defaultIndex)
-	
-	_on_new_item_selected(defaultIndex)
+	selected = options[selectedIdx]
+	update_button()
 
 
-func _on_new_item_selected(idx: int) -> void:
-	text = "%s: %s" % [label, get_item_text(idx)]
+func update_button() -> void:
+	text = "%s: %s >" % [_originalText, selected]
+	yield(TempTimer.idle_frame(self), "timeout")
+	_on_mouse_entered()
+
+
+func _on_mouse_entered() -> void:
+	rect_position = _originalPosition+Vector2.UP
+
+
+func _on_mouse_exited() -> void:
+	rect_position = _originalPosition
+
+
+func _on_pressed() -> void:
+	selectedIdx = wrapi(selectedIdx + 1, 0, options.size())
+	selected = options[selectedIdx]
+	update_button()
