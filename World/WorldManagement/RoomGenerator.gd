@@ -30,6 +30,7 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 	
 	while blockOutCount >= size.x or blockOutCount >= size.y:
 		blockOutCount -= 1
+	blockOutCount = 1
 	
 	for i in blockOutCount:
 		blockOuts.append(Vector2(

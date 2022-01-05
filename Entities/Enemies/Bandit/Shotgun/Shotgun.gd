@@ -46,3 +46,8 @@ func shoot() -> void:
 func _on_attack_timer_timeout() -> void:
 	if GameManager.enemy_is_attacking(self):
 		GameManager.remove_attacking_enemy(self)
+
+
+func _on_tree_exiting() -> void:
+	if GameManager.enemy_is_attacking(self):
+		GameManager.remove_attacking_enemy(self)

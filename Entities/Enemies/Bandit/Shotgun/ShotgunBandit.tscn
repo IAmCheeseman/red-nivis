@@ -30,9 +30,10 @@ position = Vector2( 21, -2 )
 [node name="DamageManager" parent="." index="3"]
 maxHealth = 150
 
-[node name="Collisions" parent="." index="4"]
+[node name="Collisions" parent="." index="5"]
 visible = false
 
+[connection signal="tree_exiting" from="Gun" to="Gun" method="_on_tree_exiting"]
 [connection signal="timeout" from="Gun/PewPewTiemr" to="Gun" method="shoot"]
 [connection signal="timeout" from="Gun/AttackTimer" to="Gun" method="_on_attack_timer_timeout"]
 
