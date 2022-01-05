@@ -21,7 +21,6 @@ var subtitles = [
 	"Could you not?"
 ]
 
-# TODO: make restarts direct to spawn area, not to ability selection
 
 func _ready():
 	randomize()

@@ -9,8 +9,6 @@ onready var blur = $Node2D/Blur
 onready var selection = $Selection#Viewport/Selection
 onready var mapGenerator = $MapGenerator
 
-# TODO: Make a teleport mode where you can teleport to stations.
-
 var mapData = preload("res://World/WorldManagement/WorldData.tres")
 
 var inMiniMode := true
