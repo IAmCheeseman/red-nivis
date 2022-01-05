@@ -3,7 +3,9 @@ extends Control
 var dataManager = DataManager.new()
 
 
-func _on_Play_pressed():
+func _on_quit():
+	update_settings()
+	
 	var settings = {
 		"graphicsQuality" : Settings.graphicsQuality,
 		"vsync"           : Settings.vsync,
@@ -16,10 +18,8 @@ func _on_Play_pressed():
 		"sfx"             : Settings.sfx,
 		"music"           : Settings.music
 	}
-	
+	# Saving the data
 	dataManager.save_data(settings, "settings.dat")
-	hide()
-	get_parent().get_node("Buttons").show()
 
 
 func update_settings() -> void:

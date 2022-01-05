@@ -5,9 +5,6 @@ export var isNegative := false
 export var fromPth: NodePath
 export var toPth: NodePath
 
-onready var to = get_node(toPth)
-onready var from = get_node(fromPth)
-
 var _originalPosition: Vector2 
 var hovering := false
 
@@ -39,7 +36,7 @@ func _on_mouse_exited() -> void:
 	rect_position.y += 1
 
 func change_menu() -> void:
-	if !from or !to: return 
-	from.hide()
-	to.show()
+	if !has_node(fromPth) or !has_node(toPth): return 
+	get_node(fromPth).hide()
+	get_node(toPth).show()
 
