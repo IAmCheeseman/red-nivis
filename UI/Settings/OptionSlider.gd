@@ -10,6 +10,7 @@ export var maxedMsg := ""
 export var displayAsPercentage: bool = true
 export var maxValue := 100
 
+signal value_changed(value)
 
 func _ready() -> void:
 	slider.max_value = maxValue
@@ -25,3 +26,4 @@ func _on_value_changed(value: float) -> void:
 	if slider.value == slider.max_value and maxedMsg != "": at.text = str(maxedMsg)
 	var charsRemaining = 6-at.text.length()
 	yield(TempTimer.idle_frame(self), "timeout")
+	emit_signal("value_changed", value)
