@@ -8,13 +8,13 @@
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=13]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=14]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 12
 outline_size = 1
 outline_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 10
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -103,7 +103,7 @@ margin_right = 63.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center][wave amp=32 freq=5]Paused[/wave][/center]"
 text = "Paused"
@@ -117,7 +117,7 @@ __meta__ = {
 margin_top = 32.0
 margin_right = 63.0
 margin_bottom = 51.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Continue"
 script = ExtResource( 3 )
 
@@ -151,7 +151,7 @@ isNegative = true
 [node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
 visible = false
 
-[node name="Back" parent="OptionsMenu/NavMenu" index="4"]
+[node name="Back" parent="OptionsMenu/NavMenu" index="3"]
 fromPth = NodePath("../..")
 toPth = NodePath("../../../CenterContainer")
 

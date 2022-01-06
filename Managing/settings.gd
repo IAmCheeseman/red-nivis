@@ -9,13 +9,16 @@ func _init() -> void:
 		save_defaults(dm)
 		settings = dm.load_data(Globals.SETTINGS_FILE_NAME)
 	
-	print(settings)
 	for i in settings.keys(): # Applying save
 		if !get(i): continue
 		set(i, settings[i])
-	for i in keybinds.keys():
+	if settings.has("keybinds"): keybinds = settings.keybinds
+	
+	for i in keybinds.keys(): # Applying keybinds 
+		var newKey = InputEventKey.new() 
+		newKey.scancode = OS.find_scancode_from_string(keybinds[i])
 		InputMap.action_erase_events(i)
-		InputMap.action_add_event(i, keybinds[i])
+		InputMap.action_add_event(i, newKey)
 
 
 func save_defaults(dm: DataManager) -> void:

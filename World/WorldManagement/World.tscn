@@ -13,7 +13,9 @@
 [ext_resource path="res://World/Props/RoomClearer/RoomClearer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/WorldManagement/RoomTileplacer.gd" type="Script" id=15]
 
-[node name="World" type="Node2D" groups=["world"]]
+[node name="World" type="Node2D" groups=[
+"world",
+]]
 script = ExtResource( 10 )
 
 [node name="RoomClearer" parent="." instance=ExtResource( 14 )]

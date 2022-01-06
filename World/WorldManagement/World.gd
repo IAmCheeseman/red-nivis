@@ -37,6 +37,7 @@ func _ready() -> void:
 		worldData.playerPos = Vector2.ZERO
 	
 	var timer = Timer.new()
+	timer.wait_time = 2.9
 	timer.autostart = true
 	timer.one_shot = true
 	add_child(timer)
