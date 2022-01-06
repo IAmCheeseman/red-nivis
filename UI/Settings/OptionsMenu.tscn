@@ -62,7 +62,6 @@ __meta__ = {
 }
 
 [node name="NavMenu" type="VBoxContainer" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -166.714, -40.6914 )
@@ -88,9 +87,11 @@ __meta__ = {
 }
 
 [node name="Controls" type="Button" parent="NavMenu"]
+margin_left = 133.0
 margin_top = 90.0
-margin_right = 320.0
+margin_right = 186.0
 margin_bottom = 106.0
+size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Controls"
 script = ExtResource( 2 )
@@ -101,9 +102,11 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Keybinds")
 
 [node name="Visuals" type="Button" parent="NavMenu"]
+margin_left = 139.0
 margin_top = 110.0
-margin_right = 320.0
+margin_right = 181.0
 margin_bottom = 126.0
+size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Visual"
 script = ExtResource( 2 )
@@ -111,9 +114,11 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Visuals")
 
 [node name="Audio" type="Button" parent="NavMenu"]
+margin_left = 140.0
 margin_top = 130.0
-margin_right = 320.0
+margin_right = 179.0
 margin_bottom = 146.0
+size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Audio"
 script = ExtResource( 2 )
@@ -121,9 +126,11 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Audio")
 
 [node name="Back" type="Button" parent="NavMenu"]
+margin_left = 142.0
 margin_top = 150.0
-margin_right = 320.0
+margin_right = 177.0
 margin_bottom = 166.0
+size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
 script = ExtResource( 2 )
@@ -353,6 +360,7 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../NavMenu")
 
 [node name="Audio" type="VBoxContainer" parent="Menus"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1

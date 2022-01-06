@@ -90,9 +90,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 128.0
-margin_top = 60.0
+margin_top = 68.0
 margin_right = 191.0
-margin_bottom = 159.0
+margin_bottom = 151.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -131,18 +131,26 @@ script = ExtResource( 3 )
 fromPth = NodePath("../..")
 toPth = NodePath("../../../OptionsMenu")
 
-[node name="Hub" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Row1" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 67.0
 margin_right = 63.0
 margin_bottom = 83.0
+custom_constants/separation = -3
+alignment = 1
+
+[node name="Hub" type="Button" parent="CenterContainer/VBoxContainer/Row1"]
+margin_left = 2.0
+margin_right = 32.0
+margin_bottom = 16.0
 custom_fonts/font = ExtResource( 14 )
 text = "Hub"
 script = ExtResource( 3 )
+isNegative = true
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 83.0
-margin_right = 63.0
-margin_bottom = 99.0
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer/Row1"]
+margin_left = 29.0
+margin_right = 61.0
+margin_bottom = 16.0
 custom_fonts/font = ExtResource( 14 )
 text = "Quit"
 script = ExtResource( 3 )
@@ -151,12 +159,12 @@ isNegative = true
 [node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
 visible = false
 
-[node name="Back" parent="OptionsMenu/NavMenu" index="3"]
+[node name="Back" parent="OptionsMenu/NavMenu" index="4"]
 fromPth = NodePath("../..")
 toPth = NodePath("../../../CenterContainer")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Hub" to="." method="_on_quittm_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quittd_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Row1/Hub" to="." method="_on_quittm_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Row1/Quit" to="." method="_on_quittd_pressed"]
 
 [editable path="OptionsMenu"]
