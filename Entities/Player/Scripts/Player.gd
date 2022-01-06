@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum states {WALK, DEAD, WALLSLIDE}
+enum states {WALK, DEAD, WALLSLIDE, DASH}
 
 const averageTileSize = 16
 const SNAP_DIRECTION = Vector2.DOWN
@@ -89,11 +89,17 @@ func _physics_process(delta: float) -> void:
 			
 			var grayscaleStrength = grayscale.material.get_shader_param("strength")
 			grayscale.material.set_shader_param("strength", lerp(grayscaleStrength, .15, 2*delta))
-		
 		states.WALLSLIDE:
 			walk_state(delta)
 			sprite.scale.x = -tileChecker.cast_to.normalized().x
 			vel.y /= 1.2
+		states.DASH:
+			SaS.stop()
+			if dashCooldown.is_stopped():
+				state = states.WALK
+				vel.y = 0
+			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
+			scaleHelper.scale = scaleHelper.scale.move_toward(Vector2.ONE, 5*delta)
 	controller_aiming()
 	lastFrameGroundState = is_grounded()
 
@@ -187,7 +193,7 @@ func is_grounded():
 		else Vector2.ZERO
 		return true
 	
-	if vel.y > 0:
+	if vel.y > 0 and state != states.DASH:
 		scaleHelper.scale.x = clamp(
 			1-abs(vel.y/Globals.GRAVITY),
 			.75, 1.5)

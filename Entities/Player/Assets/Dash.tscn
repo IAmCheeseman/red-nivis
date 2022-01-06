@@ -9,12 +9,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="ParticlesMaterial" id=2]
-emission_shape = 1
-emission_sphere_radius = 10.0
 flag_disable_z = true
-spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 20.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 anim_speed = 1.0
@@ -52,11 +48,9 @@ tracks/1/keys = {
 show_behind_parent = true
 material = SubResource( 1 )
 z_index = 1
-emitting = false
-amount = 16
-lifetime = 0.4
+amount = 100
+lifetime = 0.15
 one_shot = true
-explosiveness = 1.0
 local_coords = false
 process_material = SubResource( 2 )
 texture = ExtResource( 1 )

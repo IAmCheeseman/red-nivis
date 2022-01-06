@@ -3,6 +3,7 @@ extends Node
 
 var player:Node2D
 var rc := RayCast2D.new()
+var canDash := true
 
 var playerData = preload("res://Entities/Player/Player.tres")
 var teleParticles = preload("res://Entities/Player/Assets/Dash.tscn")
@@ -13,35 +14,31 @@ func _ready() -> void:
 	rc.enabled = true
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("dash") and playerData.dashesLeft > 0 and !player.lockMovement:
+	if Input.is_action_just_pressed("dash") and playerData.dashesLeft > 0 and !player.lockMovement and canDash:
 		var dashDir := Vector2.ZERO
 		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
-		dashDir.y = Input.get_action_strength("down")
-		dashDir = dashDir.normalized()*64
+		dashDir = dashDir.normalized()*playerData.dashSpeed
+		if dashDir == Vector2.ZERO: return
+		canDash = false
 		
-		for i in 3:
-			rc.global_position = player.global_position+(
-				Vector2.UP*(8*i)
-			)
-			rc.cast_to = dashDir.normalized()*70
-			rc.force_raycast_update()
-			if rc.is_colliding():
-				var collisionPoint = player.to_local(rc.get_collision_point())
-				var evenPoint = Vector2(collisionPoint.x, 0)
-				
-				if evenPoint.distance_to(Vector2.ZERO) < dashDir.distance_to(Vector2.ZERO):
-					dashDir = evenPoint
-		if dashDir.length() < 16: return
+		var newDashParticles = teleParticles.instance()
+		newDashParticles.position.y = -8
+		newDashParticles.emitting = true
+		player.add_child(newDashParticles)
 		
-		var pos = [player.position, player.position+dashDir]
-		for i in pos:
-			var newPatricles = teleParticles.instance()
-			newPatricles.position = i-Vector2(0, 8)
-			GameManager.spawnManager.spawn_object(newPatricles)
+		var timer = get_tree().create_timer(.2)
+		timer.connect("timeout", newDashParticles, "queue_free")
 		
+		var cooldown = get_tree().create_timer(.9)
+		cooldown.connect("timeout", self, "regenDash")
 		
-		player.position += dashDir
+		player.state = player.states.DASH
+		player.scaleHelper.scale = Vector2(1.5, .5)
+		player.vel = dashDir
 		player.vel.y = 0
 		playerData.dashesLeft -= 1
 		player.dashCooldown.start()
 		
+
+
+func regenDash() -> void: canDash = true
