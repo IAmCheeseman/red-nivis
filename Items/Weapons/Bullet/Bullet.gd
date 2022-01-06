@@ -60,6 +60,7 @@ func add_particles():
 
 
 func add_trail_to_parent():
+	if !has_node("Trail"): return
 	remove_child(trail)
 	trail.global_position = global_position
 	get_parent().add_child(trail)
