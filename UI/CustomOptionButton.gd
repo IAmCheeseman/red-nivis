@@ -28,11 +28,11 @@ func _ready() -> void:
 	focus_mode = Control.FOCUS_NONE
 	flat = true
 	
-	selected = options[selectedIdx]
 	update_button()
 
 
 func update_button() -> void:
+	selected = options[selectedIdx]
 	text = "%s: %s >" % [_originalText, selected]
 	yield(TempTimer.idle_frame(self), "timeout")
 	_on_mouse_entered()
@@ -48,5 +48,4 @@ func _on_mouse_exited() -> void:
 
 func _on_pressed() -> void:
 	selectedIdx = wrapi(selectedIdx + 1, 0, options.size())
-	selected = options[selectedIdx]
 	update_button()

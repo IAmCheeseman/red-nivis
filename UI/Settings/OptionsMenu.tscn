@@ -1,13 +1,43 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=2]
 [ext_resource path="res://UI/Settings/OptionsMenu.gd" type="Script" id=3]
 [ext_resource path="res://UI/Settings/OptionSlider.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/CustomOptionButton.gd" type="Script" id=5]
+[ext_resource path="res://UI/Assets/ui.png" type="Texture" id=5]
 [ext_resource path="res://UI/Settings/RebindingButton.tscn" type="PackedScene" id=6]
 
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 5 )
+region_rect = Rect2( 151, 65, 5, 17 )
+margin_left = 5.0
+margin_right = 5.0
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 5 )
+region_rect = Rect2( 157, 65, 5, 17 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 5 )
+region_rect = Rect2( 157, 65, 5, 17 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 5 )
+region_rect = Rect2( 184, 70, 7, 10 )
+margin_top = 9.0
+
+[sub_resource type="StyleBoxTexture" id=5]
+
+[sub_resource type="Theme" id=6]
+VScrollBar/icons/decrement = null
+VScrollBar/styles/grabber = SubResource( 1 )
+VScrollBar/styles/grabber_highlight = SubResource( 2 )
+VScrollBar/styles/grabber_pressed = SubResource( 3 )
+VScrollBar/styles/scroll = SubResource( 4 )
+VScrollBar/styles/scroll_focus = SubResource( 5 )
+
 [node name="OptionsMenu" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 1018, -189 )
@@ -25,6 +55,7 @@ __meta__ = {
 }
 
 [node name="NavMenu" type="VBoxContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
@@ -32,20 +63,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Gameplay" type="Button" parent="NavMenu"]
-margin_top = 62.0
-margin_right = 320.0
-margin_bottom = 78.0
-custom_fonts/font = ExtResource( 1 )
-text = "Gameplay"
-script = ExtResource( 2 )
-fromPth = NodePath("..")
-toPth = NodePath("../../Menus/Gameplay")
-
 [node name="Controls" type="Button" parent="NavMenu"]
-margin_top = 82.0
+margin_top = 72.0
 margin_right = 320.0
-margin_bottom = 98.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 1 )
 text = "Controls"
 script = ExtResource( 2 )
@@ -56,9 +77,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/KBKeybinds")
 
 [node name="Visuals" type="Button" parent="NavMenu"]
-margin_top = 102.0
+margin_top = 92.0
 margin_right = 320.0
-margin_bottom = 118.0
+margin_bottom = 108.0
 custom_fonts/font = ExtResource( 1 )
 text = "Visual"
 script = ExtResource( 2 )
@@ -66,9 +87,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Visuals")
 
 [node name="Audio" type="Button" parent="NavMenu"]
-margin_top = 122.0
+margin_top = 112.0
 margin_right = 320.0
-margin_bottom = 138.0
+margin_bottom = 128.0
 custom_fonts/font = ExtResource( 1 )
 text = "Audio"
 script = ExtResource( 2 )
@@ -76,9 +97,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Audio")
 
 [node name="Back" type="Button" parent="NavMenu"]
-margin_top = 142.0
+margin_top = 132.0
 margin_right = 320.0
-margin_bottom = 158.0
+margin_bottom = 148.0
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
 script = ExtResource( 2 )
@@ -101,16 +122,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GraphicalQuality" type="Button" parent="Menus/Visuals"]
-margin_top = 68.0
-margin_right = 320.0
-margin_bottom = 84.0
-custom_fonts/font = ExtResource( 1 )
-text = "Quality"
-script = ExtResource( 5 )
-options = [ "Bad", "Good" ]
-selectedIdx = 1
-
 [node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -120,16 +131,6 @@ margin_right = 226.0
 margin_bottom = 98.0
 size_flags_horizontal = 4
 optionName = "Screenshake"
-
-[node name="VSync" type="Button" parent="Menus/Visuals"]
-margin_top = 102.0
-margin_right = 320.0
-margin_bottom = 118.0
-custom_fonts/font = ExtResource( 1 )
-text = "Vsync"
-script = ExtResource( 5 )
-options = [ "On", "Off" ]
-selectedIdx = 1
 
 [node name="Framerate" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
@@ -149,37 +150,6 @@ margin_left = 142.0
 margin_top = 136.0
 margin_right = 177.0
 margin_bottom = 152.0
-size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 1 )
-text = "Back"
-script = ExtResource( 2 )
-isNegative = true
-fromPth = NodePath("..")
-toPth = NodePath("../../../NavMenu")
-
-[node name="Gameplay" type="VBoxContainer" parent="Menus"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Difficulty" type="Button" parent="Menus/Gameplay"]
-margin_top = 92.0
-margin_right = 320.0
-margin_bottom = 108.0
-custom_fonts/font = ExtResource( 1 )
-text = "Difficulty"
-script = ExtResource( 5 )
-options = [ "Normal", "Hard" ]
-
-[node name="Back" type="Button" parent="Menus/Gameplay"]
-margin_left = 142.0
-margin_top = 112.0
-margin_right = 177.0
-margin_bottom = 128.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
@@ -242,17 +212,17 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../NavMenu")
 
 [node name="KBKeybinds" type="CenterContainer" parent="Menus"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Scroll" type="ScrollContainer" parent="Menus/KBKeybinds"]
-margin_left = 142.0
+margin_left = 139.0
 margin_top = 10.0
-margin_right = 177.0
+margin_right = 181.0
 margin_bottom = 210.0
 rect_min_size = Vector2( 0, 200 )
 scroll_horizontal_enabled = false
@@ -361,11 +331,8 @@ fromPth = NodePath("../../..")
 toPth = NodePath("../../../../../NavMenu")
 
 [connection signal="pressed" from="NavMenu/Back" to="." method="_on_quit"]
-[connection signal="pressed" from="Menus/Visuals/GraphicalQuality" to="." method="_on_graphic_quality_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Screenshake" to="." method="_on_screenshake_value_changed"]
-[connection signal="pressed" from="Menus/Visuals/VSync" to="." method="_on_vsync_pressed"]
 [connection signal="value_changed" from="Menus/Visuals/Framerate" to="." method="_on_framerate_value_changed"]
-[connection signal="pressed" from="Menus/Gameplay/Difficulty" to="." method="_on_difficulty_pressed"]
 [connection signal="value_changed" from="Menus/Audio/MSTRVolume" to="." method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="Menus/Audio/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
 [connection signal="value_changed" from="Menus/Audio/MSXVolume" to="." method="_on_music_volume_value_changed"]

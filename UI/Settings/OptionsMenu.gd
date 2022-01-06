@@ -3,6 +3,10 @@ extends Control
 var dataManager = DataManager.new()
 
 
+func _ready() -> void:
+	set_values()
+
+
 func _on_quit():
 	update_settings()
 	
@@ -19,7 +23,7 @@ func _on_quit():
 		"music"           : Settings.music
 	}
 	# Saving the data
-	dataManager.save_data(settings, "settings.dat")
+	dataManager.save_data(settings, Globals.SETTINGS_FILE_NAME)
 
 
 func update_settings() -> void:
@@ -29,24 +33,31 @@ func update_settings() -> void:
 	AudioServer.set_bus_volume_db(3, linear2db(Settings.sfx))
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"): hide()
+	if event.is_action_pressed("pause"):
+		hide()
+		_on_quit()
 
 
 
 func _on_graphic_quality_changed() -> void:
-	Settings.graphicsQuality = find_node("GraphicalQuality").selectedIdx
+	Settings.graphicsQuality = wrapi(find_node("GraphicalQuality").selectedIdx+1, 0, 2)
 func _on_screenshake_value_changed(value: float) -> void:
 	Settings.screenshake = value / 100
-func _on_vsync_pressed() -> void:
-	Settings.vsync = find_node("VSync").selected == "On"
 func _on_framerate_value_changed(value) -> void:
 	Settings.maxfps = value
 	if value == 145: Settings.maxfps = -1
-func _on_difficulty_pressed() -> void:
-	Settings.difficulty = find_node("Difficulty").selectedIdx
 func _on_master_volume_value_changed(value) -> void:
 	Settings.masterVol = value / 100
 func _on_sfx_volume_value_changed(value) -> void:
 	Settings.sfx = value / 100
 func _on_music_volume_value_changed(value) -> void:
 	Settings.music = value / 100
+
+
+func set_values() -> void:
+	find_node("Screenshake").get_node("HSlider").value = Settings.screenshake * 100
+	find_node("Framerate").get_node("HSlider").value = Settings.maxfps
+	if Settings.maxfps == -1: find_node("Screenshake").get_node("HSlider").value = 145
+	find_node("MSTRVolume").get_node("HSlider").value = Settings.masterVol * 100
+	find_node("SFXVolume").get_node("HSlider").value = Settings.sfx * 100
+	find_node("MSXVolume").get_node("HSlider").value = Settings.music * 100

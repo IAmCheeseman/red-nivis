@@ -22,7 +22,7 @@ func _on_enemy_die(enemy) -> void:
 
 func add_enemies() -> void:
 	for i in enemies.get_children():
-		if "_on_enemy_die" in i.get_signal_connection_list("dead"): continue
+		if "_on_enemy_die" in i.get_signal_connection_list("dead") or i.has_signal("dead"): continue
 		var _discard = i.get_node("DamageManager").connect("dead", self, "_on_enemy_die", [i])
 
 

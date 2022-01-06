@@ -1,6 +1,9 @@
 extends Reference
 class_name Globals
 
+const SETTINGS_FILE_NAME = "settings.dat"
+const SAVE_FILE_NAME = "save.dat"
+
 const SCROLL_STEP = 10
 const ENEMY_SPAWN_CHANCE = .02
 const TEMPLATE_SIZE = 10
