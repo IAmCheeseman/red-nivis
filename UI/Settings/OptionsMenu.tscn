@@ -144,6 +144,8 @@ optionName = "Max FPS"
 maxedMsg = "None"
 displayAsPercentage = false
 maxValue = 145
+minValue = 20
+step = 2
 
 [node name="Back" type="Button" parent="Menus/Visuals"]
 margin_left = 142.0

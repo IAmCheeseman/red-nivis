@@ -11,31 +11,32 @@ func _ready():
 	focus_mode = Control.FOCUS_NONE
 
 
-func _input(input_event: InputEvent) -> void:
-	if input_event.is_action_pressed("pause"): return
-	if input_event is InputEventGesture: return
+func _input(inputEvent: InputEvent) -> void:
+	if inputEvent.is_action_pressed("pause"): return
+	if inputEvent is InputEventGesture: return
 	
-	if _editing and not input_event is InputEventMouseMotion:
+	if _editing and !inputEvent is InputEventMouseMotion:
+		get_tree().set_input_as_handled()
 		InputMap.action_erase_events(action)
-		InputMap.action_add_event(action, input_event)
-		Settings.keybinds[action] = input_event.as_text()
+		InputMap.action_add_event(action, inputEvent)
+		Settings.keybinds[action] = inputEvent.as_text()
 
 
-		_update_button_text(input_event)
+		_update_button_text(inputEvent)
 		_editing = false
 		pressed = false
 
 
-func _update_button_text(input_event: InputEvent) -> void:
-	if input_event is InputEventMouseButton:
-			if input_event.button_index == BUTTON_LEFT:
+func _update_button_text(inputEvent: InputEvent) -> void:
+	if inputEvent is InputEventMouseButton:
+			if inputEvent.button_index == BUTTON_LEFT:
 				text = "%s: LMB" % actionDisplay
-			elif input_event.button_index == BUTTON_RIGHT:
+			elif inputEvent.button_index == BUTTON_RIGHT:
 				text = "%s: RMB" % actionDisplay
-			elif input_event.button_index == BUTTON_MIDDLE:
+			elif inputEvent.button_index == BUTTON_MIDDLE:
 				text = "%s: MMB" % actionDisplay
 	else:
-		text = "%s: %s" % [actionDisplay, input_event.as_text()]
+		text = "%s: %s" % [actionDisplay, inputEvent.as_text()]
 
 
 func _on_rebind() -> void:

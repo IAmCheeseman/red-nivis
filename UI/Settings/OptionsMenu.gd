@@ -2,6 +2,9 @@ extends Control
 
 var dataManager = DataManager.new()
 
+onready var menus = $Menus
+onready var navMenu = $NavMenu
+
 
 func _ready() -> void:
 	set_values()
@@ -11,12 +14,9 @@ func _on_quit():
 	update_settings()
 	
 	var settings = {
-		"graphicsQuality" : Settings.graphicsQuality,
-		"vsync"           : Settings.vsync,
 		"maxfps"          : Settings.maxfps,
 		"screenshake"     : Settings.screenshake,
 		"brightness"      : Settings.brightness,
-		"difficulty"      : Settings.difficulty,
 		"keybinds"        : Settings.keybinds,
 		"masterVol"       : Settings.masterVol,
 		"sfx"             : Settings.sfx,
@@ -24,11 +24,14 @@ func _on_quit():
 	}
 	# Saving the data
 	dataManager.save_data(settings, Globals.SETTINGS_FILE_NAME)
+	
+	for i in menus.get_children():
+		i.hide()
+	navMenu.show()
 
 
 func update_settings() -> void:
 	Engine.target_fps = Settings.maxfps
-	OS.vsync_enabled  = Settings.vsync
 	AudioServer.set_bus_volume_db(0, linear2db(Settings.masterVol))
 	AudioServer.set_bus_volume_db(3, linear2db(Settings.sfx))
 

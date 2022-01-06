@@ -39,7 +39,7 @@ func _input(_event):
 
 
 func _on_node_added(node: Node) -> void:
-	if node is Light2D and Settings.graphicsQuality == Settings.GRAPHICS_LOW:
+	if node is Light2D and false:
 		node.queue_free()
 	if node is Control and !node.material:
 		node.material = controlMaterial

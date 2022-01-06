@@ -1,8 +1,5 @@
 extends Node
 
-enum {GRAPHICS_LOW=0, GRAPHICS_NORMAL=1}
-enum {DIFF_NORMAL=0, DIFF_HARD=1}
-
 
 func _init() -> void:
 	var dm := DataManager.new()
@@ -16,27 +13,26 @@ func _init() -> void:
 	for i in settings.keys(): # Applying save
 		if !get(i): continue
 		set(i, settings[i])
+	for i in keybinds.keys():
+		InputMap.action_erase_events(i)
+		InputMap.action_add_event(i, keybinds[i])
 
 
 func save_defaults(dm: DataManager) -> void:
-	dm.save_data({
-		"graphicsQuality" : Settings.graphicsQuality,
-		"vsync"           : Settings.vsync,
+	var ok = dm.save_data({
 		"maxfps"          : Settings.maxfps,
 		"screenshake"     : Settings.screenshake,
 		"brightness"      : Settings.brightness,
-		"difficulty"      : Settings.difficulty,
 		"keybinds"        : Settings.keybinds,
 		"masterVol"       : Settings.masterVol,
 		"sfx"             : Settings.sfx,
 		"music"           : Settings.music
 	}, Globals.SETTINGS_FILE_NAME)
+	if ok != OK: assert(false, "lmao time for pain")
 
 # Graphics
 
 # Performance
-var graphicsQuality := GRAPHICS_NORMAL
-var vsync := true
 var maxfps := 60
 
 # Purely visual
@@ -45,8 +41,6 @@ var brightness := 1.0
 
 
 # Gameplay
-
-var difficulty := DIFF_NORMAL
 
 var keybinds := {}
 var controllerKeybinds := {}
