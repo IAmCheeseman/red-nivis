@@ -25,13 +25,13 @@ extents = Vector2( 181.343, 120 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 193.72, 120 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 230.68, 326.75 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 128, 120 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 49, 10 )
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -129,13 +129,13 @@ shape = SubResource( 2 )
 position = Vector2( 788, -639 )
 
 [node name="CollisionShape2D" parent="Managing/CameraZones/CameraMoveZone5" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="CameraMoveZone4" parent="Managing/CameraZones" instance=ExtResource( 8 )]
 position = Vector2( 327.673, 166.977 )
 
 [node name="CollisionShape2D" parent="Managing/CameraZones/CameraMoveZone4" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="SpawningManagment" parent="Managing" instance=ExtResource( 13 )]
 
@@ -146,7 +146,7 @@ reqiurePrompt = false
 emitSignalInstead = true
 
 [node name="CollisionShape2D" parent="Managing/LoadingZone" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="MovementLock" type="Area2D" parent="Managing"]
 position = Vector2( 312, 29 )

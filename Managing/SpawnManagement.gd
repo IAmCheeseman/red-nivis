@@ -3,6 +3,7 @@ extends Node2D
 
 var shells = []
 
+signal spawned
 
 func _ready():
 	GameManager.spawnManager = self
@@ -10,6 +11,7 @@ func _ready():
 
 func spawn_object(object:Node):
 	call_deferred("add_child", object)
+	emit_signal("spawned")
 
 
 func spawn_shell(shell:Node2D):

@@ -60,18 +60,18 @@ func add_particles():
 
 
 func add_trail_to_parent():
-	if has_node("Trail"):
-		remove_child(trail)
-		get_parent().add_child(trail)
-		trail.emitting = false
+	remove_child(trail)
+	trail.global_position = global_position
+	get_parent().add_child(trail)
+	trail.emitting = false
 	
-		var timer = Timer.new()
-		timer.wait_time = 2
-		get_parent().add_child(timer)
-		timer.start()
-		
-		timer.connect("timeout", trail, "queue_free")
-		timer.connect("timeout", timer, "queue_free")
+	var timer = Timer.new()
+	timer.wait_time = 2
+	get_parent().add_child(timer)
+	timer.start()
+	
+	timer.connect("timeout", trail, "queue_free")
+	timer.connect("timeout", timer, "queue_free")
 
 
 func _on_Hitbox_hit_object(object):
