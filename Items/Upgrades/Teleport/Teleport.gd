@@ -29,8 +29,8 @@ func _input(_event: InputEvent) -> void:
 		var timer = get_tree().create_timer(.2)
 		timer.connect("timeout", newDashParticles, "queue_free")
 		
-		var cooldown = get_tree().create_timer(.9)
-		cooldown.connect("timeout", self, "regenDash")
+		var cooldown = get_tree().create_timer(.7)
+		cooldown.connect("timeout", self, "set", ["canDash", true])
 		
 		player.state = player.states.DASH
 		player.scaleHelper.scale = Vector2(1.5, .5)
@@ -38,7 +38,3 @@ func _input(_event: InputEvent) -> void:
 		player.vel.y = 0
 		playerData.dashesLeft -= 1
 		player.dashCooldown.start()
-		
-
-
-func regenDash() -> void: canDash = true
