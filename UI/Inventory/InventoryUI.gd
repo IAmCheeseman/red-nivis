@@ -69,11 +69,10 @@ func refresh_items():
 	for slot in slots.get_children():
 		if slot.get_index() > inventory.items.size()-1:
 			return
-		var id = inventory.items[slot.get_index()]
-		if id == null:
+		var item = inventory.items[slot.get_index()]
+		if item == null:
 			slot.clear()
 			continue
-		var item = inventory.itemMap[id]
 		
 		slot.clear()
 		slot.setup(item.slotTexture, item.key)

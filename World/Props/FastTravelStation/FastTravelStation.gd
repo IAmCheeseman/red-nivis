@@ -22,13 +22,11 @@ func _ready() -> void:
 			playerData.playerObject.global_position-Vector2(0, 16)
 		)
 		teleportEffect.play("Spawn")
-	
+		
 	if !GameManager.worldData.position\
 		in FastTravel.discoveredStations:
 		FastTravel.discoveredStations.append(GameManager.worldData.position)
-	
-	GameManager.worldData.savePosition = GameManager.worldData.position
-	GameManager.worldData.savePlayerPos = global_position
+
 
 # Showing the teleportation gooey
 func _on_interaction() -> void:

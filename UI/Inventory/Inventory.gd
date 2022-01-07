@@ -40,10 +40,10 @@ func has_item(id:String) -> bool:
 	return false
 
 
-#func get_item(id:String):
-#	if id.is_valid_integer():
-#		return null
-#	push_error("ITEM DOES NOT EXIST: %s" % id)
+func get_item(id:String):
+	if id.is_valid_integer():
+		return null
+	push_error("ITEM DOES NOT EXIST: %s" % id)
 
 
 func filter_items(id:String):
@@ -80,7 +80,7 @@ func remove_item(id):
 
 func add_item(id):
 	if !has_space(): return
-	items[items.find(null)] = id#itemMap[id]
+	items[items.find(null)] = itemMap[id]
 	emit_signal("itemsChanged")
 	emit_signal("itemAdded", id)
 

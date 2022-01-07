@@ -21,9 +21,6 @@ var subtitles = [
 	"Could you not?"
 ]
 
-const STARTING_AREA = "res://World/StartingArea/StartingArea.tscn"
-const RUN = "res://World/WorldManagement/World.tscn"
-
 
 func _ready():
 	randomize()
@@ -36,9 +33,5 @@ func _ready():
 	if OS.has_feature("standalone"):
 		OS.set_window_always_on_top(false)
 	
-	var runLoaded = GameManager.load_run()
-	
-	if runLoaded == OK:
-		var _discard = get_tree().change_scene(RUN)
-		return
-	var _discard = get_tree().change_scene(STARTING_AREA)
+	var _discard = get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+	#var _dispose = get_tree().change_scene("res://UI/UpgradeSelection/UpgradeSelection.tscn")

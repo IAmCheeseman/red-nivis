@@ -19,13 +19,13 @@ static func generate_rooms(rooms:Array, worldGenerator):
 			)
 			var biomes = []
 			for i in neighbors:
-				if biomes.size() == 2: break
 				var iroom = rooms[i.x][i.y]
 				if iroom.biome:
 					room.biome = iroom.biome
 					room.typeAlwaysVisible = true
-					biomes.append(worldGenerator.get_biome_by_id(iroom.biome).name.replace(" ", "").to_lower())
-			if biomes.size() != 1: continue
+					biomes.append(iroom.biome.name.replace(" ", "").to_lower())
+				if biomes.size() == 2: break
+			if biomes.size() == 0: continue
 			
 			var possibleKey1 = "%s-%s" % [biomes[0], biomes[1]]
 			var possibleKey2 = "%s-%s" % [biomes[1], biomes[0]]
