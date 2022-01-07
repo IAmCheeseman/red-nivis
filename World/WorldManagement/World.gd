@@ -2,8 +2,6 @@ extends Node2D
 
 onready var player = $Props/Player
 onready var props = $Props
-#onready var atmosphere = $Atmosphere
-#onready var mistSpawner = $Props/Player/MistSpawner
 onready var solids = $Props/Tiles/LabSolids
 onready var platforms = $Props/Tiles/OneWayPlatforms
 onready var background = $Props/Tiles/LabBackground
@@ -43,6 +41,8 @@ func _ready() -> void:
 	add_child(timer)
 	background.modulate = Color.darkgray
 	timer.connect("timeout", self, "_on_index_timer_timeout")
+	
+	GameManager.save_run()
 
 
 

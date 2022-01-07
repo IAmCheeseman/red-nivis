@@ -26,7 +26,7 @@ whitelistedBiomes: Array) -> void:
 				if j.distance_to(selectedPos) <= minDistance:
 					roomOkay = false
 			
-			if selectedRoom.biome != b or !roomOkay or selectedRoom.constantRoom: continue
+			if selectedRoom.biome != b.biomeIndex or !roomOkay or selectedRoom.constantRoom: continue
 			selectedRoom.constantRoom = room
 			selectedRoom.roomIcon = room.roomIcon
 			selectedRoom.typeAlwaysVisible = room.typeAlwaysVisible

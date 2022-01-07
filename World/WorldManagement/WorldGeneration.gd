@@ -6,6 +6,14 @@ const STARTING_ROOM    = Color("#a8ca58")
 const BOSS_ROOM        = Color("#ff0000")
 const CONNECTION_COLOR = Color("#4d2b32")
 
+enum {BIOME_LABS, BIOME_DEEP_LABS, BIOME_CAVES, BIOME_MEADOW_CAVERNS}
+const biomes = [
+	"res://World/Biomes/Lab.tres", 
+	"res://World/Biomes/DeepLabs.tres",
+	"res://World/Biomes/Caves.tres",
+	"res://World/Biomes/MeadowCaverns.tres"
+]
+
 export var growLoops := 2
 
 var rooms = []
@@ -98,7 +106,7 @@ func grow_world() -> void:
 				
 				var neighbors := get_neighbors(Vector2(x, y), false, false)
 				var allBiomesSame := true
-				var goodBiome:Resource
+				var goodBiome:int
 				
 				# Looping through the neighbors 
 				for n in neighbors:
@@ -130,20 +138,19 @@ func grow_world() -> void:
 
 
 func get_biome_by_color(color:Color, getSecondary:bool=false):
-	var biomes = [
-		"res://World/Biomes/Lab.tres", 
-		"res://World/Biomes/DeepLabs.tres",
-		"res://World/Biomes/Caves.tres",
-		"res://World/Biomes/MeadowCaverns.tres"
-	]
-	for b in biomes:
-		var biome = load(b)
+	for b in biomes.size():
+		var biome = load(biomes[b])
 		if (biome.mapColor.is_equal_approx(color)) or\
 		(biome.startingArea and color.is_equal_approx(STARTING_ROOM)) and !getSecondary:
-			return biome
+			return b
 		elif biome.secondaryColor.is_equal_approx(color) and getSecondary:
-			return biome
+			return b
 	return null
+
+
+func get_biome_by_id(id):
+	if id >= biomes.size(): return null
+	return load(biomes[id])
 
 
 func get_used_rooms() -> Array:
