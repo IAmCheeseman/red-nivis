@@ -12,6 +12,7 @@ var player = preload("res://Entities/Player/Player.tres")
 func _ready() -> void:
 	yield(get_tree(), "idle_frame")
 	player.playerObject.lockMovement = true
+	GameManager.inGUI = false
 	player.playerObject.hide()
 
 
