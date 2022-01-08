@@ -57,7 +57,8 @@ func get_connected_rooms(room:Vector2) -> Array:
 			Vector2(1, 1),
 			Vector2.ZERO
 		]
-		if rooms[room.x+pos.x][room.y+pos.y].biome\
+		var b = rooms[room.x+pos.x][room.y+pos.y].biome
+		if b != null\
 		and !pos in dirs:
 			connections.append(pos)
 		pos.x = wrapi(int(pos.x+1), -1, 2)

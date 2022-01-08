@@ -28,7 +28,6 @@ static func generate_rooms(rooms:Array, wg):
 						wg.get_biome_by_index(iroom.biome).name\
 						.replace(" ", "").to_lower()
 					)
-				print(biomes.size())
 				if biomes.size() == 2: break
 			if biomes.size() != 2: continue
 			
