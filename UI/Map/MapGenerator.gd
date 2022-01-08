@@ -9,7 +9,7 @@ var mapData = GameManager.worldData
 func generate_map() -> void:
 	for x in mapData.rooms.size():
 		for y in mapData.rooms[0].size():
-			var biome = mapData.rooms[x][y].biome
+			var biome = mapData.get_biome_by_index(mapData.rooms[x][y].biome)
 			var roomIcon = mapData.rooms[x][y].roomIcon
 			if biome:
 				tiles.set_cell(x, y, 0)

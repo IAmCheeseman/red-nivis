@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
 [ext_resource path="res://World/Biomes/DeepLabs.tres" type="Resource" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://World/Biomes/Caves.tres" type="Resource" id=4]
 [ext_resource path="res://World/ConstantRooms/Rooms/TreasureRoom.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=6]
+[ext_resource path="res://World/Biomes/MeadowCaverns.tres" type="Resource" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 6 )
@@ -14,9 +15,9 @@ region = Rect2( 24, 65, 12, 12 )
 [resource]
 script = ExtResource( 1 )
 scene = ExtResource( 5 )
-biomes = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ) ]
+biomes = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ) ]
 mustHave = true
 typeAlwaysVisible = false
 roomIcon = SubResource( 1 )
-perBiome = 3
+perBiome = 2
 minDistOfSameType = 2.8

@@ -6,11 +6,24 @@ var position := Vector2.ZERO
 var moveDir := Vector2.ZERO
 var playerPos := Vector2(160, 32)
 
+const BIOMES = [
+	"res://World/Biomes/Lab.tres",
+	"res://World/Biomes/Caves.tres",
+	"res://World/Biomes/DeepLabs.tres",
+	"res://World/Biomes/MeadowCaverns.tres",
+]
+
 
 func generate_world(seed_:int=randi()) -> void:
 	var worldGenerateor = WorldGenerator.new()
 	rooms = worldGenerateor.generate_world(seed_)
 	set_starting_position()
+
+
+func get_biome_by_index(idx):
+	if idx == null: return null
+	if idx > BIOMES.size(): return null
+	return load(BIOMES[idx])
 
 
 func get_current_room() -> Dictionary:

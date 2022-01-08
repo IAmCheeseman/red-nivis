@@ -25,8 +25,8 @@ func create_room() -> void:
 	
 	for t in world.tilesContainer.get_children():
 		t.queue_free()
-	biome = worldData.rooms\
-		[worldData.position.x][worldData.position.y].biome
+	biome = worldData.get_biome_by_index(worldData.rooms\
+		[worldData.position.x][worldData.position.y].biome)
 	
 	# Adding in the nodes
 	world.solids = biome.solids.instance()
@@ -99,8 +99,9 @@ func create_room() -> void:
 	pad(Vector2(-PADDING, 0), Vector2(roomSize.x+PADDING, 0), Vector2.RIGHT, Vector2.UP)
 	pad(Vector2(-PADDING, roomSize.y-1), Vector2(roomSize.x+PADDING, roomSize.y-1), Vector2.RIGHT, Vector2.DOWN)
 
-	if worldData.rooms[worldData.position.x-worldData.moveDir.x]\
-	[worldData.position.y-worldData.moveDir.y].biome != biome\
+	if worldData.get_biome_by_index(
+	worldData.rooms[worldData.position.x-worldData.moveDir.x]\
+	[worldData.position.y-worldData.moveDir.y].biome) != biome\
 	or worldData.moveDir == Vector2.ZERO:
 		var newBiomeTitle = preload("res://UI/BiomeTitle/BiomeTitle.tscn").instance()
 		world.canvasLayer.add_child(newBiomeTitle)

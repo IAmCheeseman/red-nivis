@@ -11,6 +11,12 @@ export var growLoops := 2
 var rooms = []
 var constantRoomUseage = []
 
+const BIOMES = [
+	"res://World/Biomes/Lab.tres",
+	"res://World/Biomes/Caves.tres",
+	"res://World/Biomes/DeepLabs.tres",
+	"res://World/Biomes/MeadowCaverns.tres",
+]
 
 func generate_world(seed_:int=randi()) -> Array:
 	seed(seed_)
@@ -60,7 +66,7 @@ func generate_world(seed_:int=randi()) -> Array:
 	var cr = preload("res://World/ConstantRooms/Rooms.tres")
 	for r in cr.rooms:
 		RoomPlacer.generate_rooms(
-			rooms, r, r.perBiome, r.minDistOfSameType, r.biomes)
+			rooms, r, r.perBiome, r.minDistOfSameType, r.biomes, self)
 	ConnectionRoomPlacer.generate_rooms(rooms, self)
 	
 	return rooms
@@ -106,10 +112,10 @@ func grow_world() -> void:
 
 					# Checking if the biomes match
 					if nr.biome:
-						goodBiome = nr.biome
+						goodBiome = get_biome_by_index(nr.biome)
 						for nn in neighbors:
 							var neighbor = rooms[nn.x][nn.y]
-							if neighbor.biome != goodBiome:
+							if get_biome_by_index(neighbor.biome) != goodBiome:
 								allBiomesSame = false
 								break
 					else:
@@ -122,7 +128,7 @@ func grow_world() -> void:
 				and !room.blockGrowing:
 					changes.append({
 						"pos" : Vector2(x, y),
-						"to" : goodBiome
+						"to" : goodBiome.biomeIndex
 					})
 		for c in changes:
 			rooms[c.pos.x][c.pos.y].biome = c.to
@@ -130,20 +136,19 @@ func grow_world() -> void:
 
 
 func get_biome_by_color(color:Color, getSecondary:bool=false):
-	var biomes = [
-		"res://World/Biomes/Lab.tres", 
-		"res://World/Biomes/DeepLabs.tres",
-		"res://World/Biomes/Caves.tres",
-		"res://World/Biomes/MeadowCaverns.tres"
-	]
-	for b in biomes:
-		var biome = load(b)
+	for b in BIOMES.size():
+		var biome = load(BIOMES[b])
 		if (biome.mapColor.is_equal_approx(color)) or\
 		(biome.startingArea and color.is_equal_approx(STARTING_ROOM)) and !getSecondary:
-			return biome
+			return b
 		elif biome.secondaryColor.is_equal_approx(color) and getSecondary:
-			return biome
+			return b
 	return null
+
+func get_biome_by_index(idx: int):
+	if idx == null: return null
+	if idx > BIOMES.size(): return null
+	return load(BIOMES[idx])
 
 
 func get_used_rooms() -> Array:
