@@ -43,6 +43,8 @@ func _ready() -> void:
 	add_child(timer)
 	background.modulate = Color.darkgray
 	timer.connect("timeout", self, "_on_index_timer_timeout")
+	
+	GameManager.save_run()
 
 
 

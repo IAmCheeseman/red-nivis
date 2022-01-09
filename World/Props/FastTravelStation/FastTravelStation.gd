@@ -26,6 +26,8 @@ func _ready() -> void:
 	if !GameManager.worldData.position\
 		in FastTravel.discoveredStations:
 		FastTravel.discoveredStations.append(GameManager.worldData.position)
+	
+	GameManager.worldData.savePosition = GameManager.worldData.position
 
 
 # Showing the teleportation gooey

@@ -65,8 +65,44 @@ func remove_attacking_enemy(enemy: Node) -> void:
 
 
 func save_run() -> void:
-	pass
+	var playerData = preload("res://Entities/Player/Player.tres")
+	var inventory = preload("res://UI/Inventory/Inventory.tres")
+	
+	var runData = {
+		"playerData:maxHealth"      : playerData.maxHealth,
+		"playerData:health"         : playerData.health,
+		"playerData:maxStamina"     : playerData.maxStamina,
+		"playerData:money"          : playerData.money,
+		"inventory:items"           : inventory.items,
+		"worldData:rooms"           : worldData.rooms,
+		"worldData:position"        : worldData.savePosition,
+		"worldData:playerPos"       : playerData.playerObject.global_position
+	}
+	
+	var dm := DataManager.new()
+	dm.save_data(runData, Globals.RUN_FILE_NAME)
 
 
-func load_run() -> void:
-	pass
+func load_run() -> int:
+	var playerData = preload("res://Entities/Player/Player.tres")
+	var inventory = preload("res://UI/Inventory/Inventory.tres")
+	
+	var dm := DataManager.new()
+	var runData = dm.load_data(Globals.RUN_FILE_NAME)
+	
+	if runData.size() == 0: return ERR_DOES_NOT_EXIST
+	
+	for i in runData.keys():
+		var splitKey = i.split(":")
+		var obj = splitKey[0]
+		var val = splitKey[1]
+		
+		match obj:
+			"playerData": obj = playerData
+			"inventory": obj = inventory
+			"worldData": obj = worldData
+			_: return ERR_INVALID_DATA
+		
+		obj.set(val, runData[i])
+	
+	return OK

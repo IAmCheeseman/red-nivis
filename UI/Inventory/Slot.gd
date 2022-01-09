@@ -19,7 +19,7 @@ func _ready():
 
 
 func setup(texture, itemID:String):
-	slotTexture.texture = texture
+	slotTexture.texture = load(texture)
 	item = itemID
 	var i = ItemMap.ITEMS[item]
 	slotTexture.material.set_shader_param(

@@ -15,7 +15,7 @@ var isPickedUp = false
 
 func _ready():
 	# Setting the sprite
-	sprite.texture = item.slotTexture
+	sprite.texture = load(item.slotTexture)
 	# Setting collisions
 	collision.shape.extents = Vector2(4, 4)
 	pickUpCollision.shape = collision.shape
