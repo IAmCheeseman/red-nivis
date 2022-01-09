@@ -22,6 +22,6 @@ static func generate_rooms(rooms:Array, brooms: Array, worldGenerator):
 						correctBiome = true
 						break
 				if !correctBiome: continue
-				room.constantRoom = r
+				room.constantRoom = r.resource_path
 				room.roomIcon = r.roomIcon
 				

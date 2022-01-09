@@ -52,8 +52,7 @@ func generate_world(seed_:int=randi()) -> Array:
 						"nodeData" : {},
 					}
 					if room.isStartingRoom:
-						room.constantRoom = preload(\
-							"res://World/ConstantRooms/Rooms/StartingRoom.tres")
+						room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
 					rooms[x].append(room)
 	
 	flood_world()

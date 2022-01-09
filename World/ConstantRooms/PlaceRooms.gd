@@ -28,7 +28,7 @@ wg) -> void:
 					roomOkay = false
 			if selectedRoom.biome == null: continue
 			if wg.get_biome_by_index(selectedRoom.biome) != b or !roomOkay or selectedRoom.constantRoom: continue
-			selectedRoom.constantRoom = room
+			selectedRoom.constantRoom = room.resource_path
 			selectedRoom.roomIcon = room.roomIcon
 			selectedRoom.typeAlwaysVisible = room.typeAlwaysVisible
 			usedRooms.append(selectedPos)

@@ -62,3 +62,11 @@ func enemy_is_attacking(enemy: Node) -> bool:
 
 func remove_attacking_enemy(enemy: Node) -> void:
 	currentlyAttackingEnemies.erase(enemy)
+
+
+func save_run() -> void:
+	pass
+
+
+func load_run() -> void:
+	pass

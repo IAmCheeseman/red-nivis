@@ -41,5 +41,5 @@ static func generate_rooms(rooms:Array, wg):
 				r = CONNECTION_ROOMS[possibleKey2]
 			
 			room.biome = r.constBiome.biomeIndex
-			room.constantRoom = r
+			room.constantRoom = r.resource_path
 			room.roomIcon = r.roomIcon
