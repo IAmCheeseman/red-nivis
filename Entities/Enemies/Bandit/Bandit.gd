@@ -22,6 +22,7 @@ export var speed := 75
 export var accel := 5.0
 export var frict := 10.0
 export var jumpForce := 350
+export var targetRange := 64
 
 var state := IDLE
 var targetPosition := 0
@@ -74,7 +75,7 @@ func _physics_process(delta: float) -> void:
 func select_new_target_pos() -> void:
 	if !player: return
 	for _i in 10:
-		targetPosition = int(player.global_position.x + rand_range(-64, 64))
+		targetPosition = int(player.global_position.x + rand_range(-targetRange, targetRange))
 		collisionCheckerRC.cast_to.x = targetPosition - global_position.x
 		collisionCheckerRC.force_raycast_update()
 		if !collisionCheckerRC.is_colliding(): break
