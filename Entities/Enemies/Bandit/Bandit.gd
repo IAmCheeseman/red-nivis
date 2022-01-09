@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	
 	if !player:
 		player = playerDetection.get_player()
-		gun.player = player
+		if gun.get_script(): gun.player = player
 	else:
 		match state:
 			IDLE:
