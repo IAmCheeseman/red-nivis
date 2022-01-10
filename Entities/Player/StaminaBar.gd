@@ -6,11 +6,13 @@ var staminaFull = preload("res://UI/Assets/StaminaFull.tres")
 var staminaEmpty = preload("res://UI/Assets/StaminaEmpty.tres")
 
 var targetA = 0.0
+var defaultY: int
 
 onready var regainTimer:Timer = $RegainTimer
 
 
 func _ready() -> void:
+	defaultY = rect_position.y
 	modulate.a = 0
 	var _discard0 = regainTimer.connect("timeout", self, "_on_regain_timeout")
 	var _discard1 = playerData.connect("stamina_changed", self, "_on_stamina_changed")
@@ -37,6 +39,8 @@ func update_stamina() -> void:
 		targetA = 1
 	else:
 		targetA = 0
+	
+	rect_position = -rect_size/2 + Vector2(0, defaultY)
 
 
 func _on_stamina_changed() -> void:
