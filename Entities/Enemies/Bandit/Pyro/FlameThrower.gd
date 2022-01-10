@@ -21,6 +21,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if !player: return
+	if fire.emitting:
+		get_parent().state = get_parent().IDLE
+		get_parent().vel.y = Globals.GRAVITY
+	
 	look_at(player.global_position-Vector2(0, 8))
 	sprite.flip_v = Vector2.RIGHT.rotated(rotation).x < 0
 	position = ARM_POSITIONS[int(sprite.flip_v)]
