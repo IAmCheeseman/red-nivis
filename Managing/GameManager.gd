@@ -80,7 +80,7 @@ func save_run() -> void:
 	}
 	
 	var dm := DataManager.new()
-	dm.save_data(runData, Globals.RUN_FILE_NAME)
+	var ok = dm.save_data(runData, Globals.RUN_FILE_NAME)
 
 
 func load_run() -> int:
@@ -106,3 +106,8 @@ func load_run() -> int:
 		obj.set(val, runData[i])
 	
 	return OK
+
+
+func clear_run() -> void:
+	var dm := DataManager.new()
+	dm.clear_data(Globals.RUN_FILE_NAME)

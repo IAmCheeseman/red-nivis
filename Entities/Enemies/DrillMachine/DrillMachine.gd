@@ -99,7 +99,7 @@ func wander_state(delta:float) -> void:
 	accel_to_point(targetPosition, delta)
 
 
-func attack_state(delta:float) -> void:
+func attack_state(_delta:float) -> void:
 	look_at(global_position+vel)
 	rotation_degrees -= 90
 	

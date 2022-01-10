@@ -274,6 +274,7 @@ func _on_a_press_window_timeout(): triedJumpRecent = false
 
 
 func die():
+	GameManager.clear_run()
 	GameManager.inGUI = true
 	state = states.DEAD
 	playerData.isDead = true
