@@ -11,6 +11,6 @@ func add_abilities() -> void:
 	Utils.free_children(self)
 	for a in playerData.upgrades:
 		var newAbility = Node.new()
-		newAbility.set_script(a)
+		newAbility.set_script(load(a).abilityScript)
 		newAbility.player = get_parent()
 		add_child(newAbility)

@@ -73,6 +73,7 @@ func save_run() -> void:
 		"playerData:health"         : playerData.health,
 		"playerData:maxStamina"     : playerData.maxStamina,
 		"playerData:money"          : playerData.money,
+		"playerData:upgrades"       : playerData.upgrades,
 		"inventory:items"           : inventory.items,
 		"worldData:rooms"           : worldData.rooms,
 		"worldData:position"        : worldData.savePosition,

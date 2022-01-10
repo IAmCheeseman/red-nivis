@@ -5,3 +5,4 @@ export var icon:StreamTexture = preload("res://Items/Upgrades/DoubleJump/DoubleJ
 export var name:String = "Ability"
 export var description:String = "Does nothing yet."
 export(Script) var abilityScript
+

@@ -34,7 +34,7 @@ func _on_upgrade_slot_clicked(node:Node) -> void:
 func _on_done_pressed():
 	player.upgrades.clear()
 	for s in selections.get_children():
-		player.upgrades.append(s.upgrade.abilityScript)
+		player.upgrades.append(s.upgrade.resource_path)
 	GameManager.inGUI = false
 	player.emit_signal("updateAbilities")
 	hide()
