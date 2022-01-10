@@ -76,7 +76,10 @@ func save_run() -> void:
 		"inventory:items"           : inventory.items,
 		"worldData:rooms"           : worldData.rooms,
 		"worldData:position"        : worldData.savePosition,
-		"worldData:playerPos"       : playerData.playerObject.global_position
+		"worldData:savePosition"    : worldData.savePosition,
+		"worldData:playerPos"       : worldData.savePlayerPos,
+		"worldData:savePlayerPos"   : worldData.savePlayerPos,
+		"worldData:moveDir"         : worldData.moveDir
 	}
 	
 	var dm := DataManager.new()
@@ -104,7 +107,9 @@ func load_run() -> int:
 			_: return ERR_INVALID_DATA
 		
 		obj.set(val, runData[i])
-	
+		if runData[i] is Array: runData[i] = "[Array]"
+		print(splitKey[0] + "." + str(val) + " = " + str(runData[i]))
+	worldData.moveDir = Vector2.DOWN
 	return OK
 
 

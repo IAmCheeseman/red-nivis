@@ -28,6 +28,7 @@ func _ready() -> void:
 		FastTravel.discoveredStations.append(GameManager.worldData.position)
 	
 	GameManager.worldData.savePosition = GameManager.worldData.position
+	GameManager.worldData.savePlayerPos = global_position - Vector2(0, 8)
 
 
 # Showing the teleportation gooey

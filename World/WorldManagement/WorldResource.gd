@@ -6,6 +6,7 @@ var position := Vector2.ZERO
 var savePosition := Vector2.ZERO
 var moveDir := Vector2.ZERO
 var playerPos := Vector2(160, 32)
+var savePlayerPos := Vector2.ZERO
 
 const BIOMES = [
 	"res://World/Biomes/Lab.tres",

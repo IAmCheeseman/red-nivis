@@ -44,7 +44,7 @@ func _ready() -> void:
 	background.modulate = Color.darkgray
 	timer.connect("timeout", self, "_on_index_timer_timeout")
 	
-	if worldData.savePosition == Vector2.ZERO: return
+	if worldData.savePosition == Vector2.ZERO: worldData.savePosition = worldData.position
 	GameManager.save_run()
 
 
