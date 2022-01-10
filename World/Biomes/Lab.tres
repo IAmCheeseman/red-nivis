@@ -4,7 +4,7 @@
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabsAtmosphere.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/EnemyPools/BasicEnemies.tres" type="Resource" id=7]
+[ext_resource path="res://World/EnemyPools/Robots.tres" type="Resource" id=5]
 [ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=8]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=12]
 [ext_resource path="res://World/Decorators/LabsDecorator.tres" type="Resource" id=13]
@@ -27,4 +27,4 @@ middleRemovalChance = 0.666
 connectionChance = 0.05
 decorator = ExtResource( 13 )
 roomTemplates = ExtResource( 8 )
-enemyPools = [ ExtResource( 7 ) ]
+enemyPools = [ ExtResource( 5 ) ]

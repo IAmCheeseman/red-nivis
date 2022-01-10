@@ -29,7 +29,6 @@ static func generate_rooms(rooms:Array, wg):
 						.replace(" ", "").to_lower()
 					)
 				if biomes.size() == 2: break
-			print(biomes)
 			if biomes.size() != 2: continue
 			
 			var possibleKey1 = "%s-%s" % [biomes[0], biomes[1]]

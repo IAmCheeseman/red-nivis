@@ -7,7 +7,7 @@ export(Array, float, 0, 1) var chances:Array
 
 func get_random_enemy() -> PackedScene:
 	while true:
-		var index = round(rand_range(0, enemies.size()-1))
+		var index = floor(rand_range(0, enemies.size()))
 		if rand_range(0, 1) < chances[index]:
 			return enemies[index]
 	return enemies[0]
