@@ -94,13 +94,14 @@ func animate(otherAnim: String) -> void:
 
 
 func jump() -> void:
+	if !state in [IDLE, WALK]: return
 	if floorCheckerRC.is_colliding() and player: vel.y = -jumpForce
 	jumpTimer.start(rand_range(jumpRange.x, jumpRange.y))
 
 
 func _on_state_change_timeout() -> void:
 	select_new_target_pos()
-	if Utils.coin_flip() or state == IDLE:
+	if (Utils.coin_flip() or state == IDLE) and state != 3:
 		state = WALK if state == IDLE else IDLE
 		stateChangeTimer.start(rand_range(.5, 1))
 	else:
