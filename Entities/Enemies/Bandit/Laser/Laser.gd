@@ -4,6 +4,7 @@ enum {ATTACK=3}
 
 onready var sprite = $Sprite
 onready var attackTimer = $AttackTimer
+onready var collider = $Hitbox/CollisionShape2D
 onready var b = get_parent()
 
 var player: Node2D
@@ -24,6 +25,7 @@ func _process(delta: float) -> void:
 			b.state = ATTACK
 	else:
 		hide()
+	collider.disabled = !visible
 	
 	look_at(player.global_position-Vector2(0, 8))
 	sprite.flip_v = Vector2.RIGHT.rotated(rotation).x < 0
