@@ -15,6 +15,7 @@ var prevRot := 0.0
 
 
 func _ready() -> void:
+	toggle()
 	toggleTimer.start(rand_range(.2, 2))
 
 
@@ -33,6 +34,7 @@ func _process(delta: float) -> void:
 
 
 func toggle() -> void:
+	if !player: damager.monitoring = true
 	damager.monitoring = !damager.monitoring
-	fire.emitting = !fire.emitting
+	fire.emitting = damager.monitoring
 	toggleTimer.start(rand_range(.8, 2))

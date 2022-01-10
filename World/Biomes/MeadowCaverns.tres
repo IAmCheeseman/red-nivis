@@ -6,7 +6,7 @@
 [ext_resource path="res://World/EnviormentalArt/MeadowCaverns/MeadowTiles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnviormentalArt/MeadowCaverns/MeadowCavernsBG.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Caves/StonePlatforms.tscn" type="PackedScene" id=6]
-[ext_resource path="res://World/Props/Spikes/Spike.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/Decorators/MeadowCavernsDecorator.tres" type="Resource" id=7]
 
 [resource]
 script = ExtResource( 1 )
@@ -23,8 +23,6 @@ secondaryColor = Color( 0.745098, 0.466667, 0.168627, 1 )
 growChance = 0.5
 middleRemovalChance = 0.666
 connectionChance = 0.05
+decorator = ExtResource( 7 )
 roomTemplates = ExtResource( 2 )
-roofProps = [  ]
-groundProps = [  ]
-spike = ExtResource( 7 )
 enemyPools = [ ExtResource( 3 ) ]

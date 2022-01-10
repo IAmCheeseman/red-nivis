@@ -21,7 +21,7 @@ static func generate_rooms(rooms:Array, wg):
 			var biomes = []
 			for i in neighbors:
 				var iroom = rooms[i.x][i.y]
-				if iroom.biome:
+				if iroom.biome >= 0:
 					room.biome = iroom.biome
 					room.typeAlwaysVisible = true
 					biomes.append(
@@ -29,6 +29,7 @@ static func generate_rooms(rooms:Array, wg):
 						.replace(" ", "").to_lower()
 					)
 				if biomes.size() == 2: break
+			print(biomes)
 			if biomes.size() != 2: continue
 			
 			var possibleKey1 = "%s-%s" % [biomes[0], biomes[1]]

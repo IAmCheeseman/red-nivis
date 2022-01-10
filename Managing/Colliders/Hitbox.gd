@@ -29,7 +29,8 @@ func do_damage(area) -> void:
 	if tick != -1.0 and get_overlapping_areas().size() == 0: return
 	else: do_tick(area)
 	emit_signal("hit_object", area)
-		
+	if !is_instance_valid(area): return
+	
 	var dir = global_position.direction_to(area.global_position)*kbStrengh
 	
 	if setDirection: dir = setDirection

@@ -117,6 +117,7 @@ tracks/0/keys = {
 
 [node name="PyroBandit" instance=ExtResource( 1 )]
 targetRange = 32
+jumpRange = Vector2( 3, 6 )
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, 2 )
@@ -144,7 +145,7 @@ texture = ExtResource( 5 )
 [node name="Damager" parent="Gun" index="2" instance=ExtResource( 6 )]
 collision_mask = 2
 damage = 1
-tick = 0.05
+tick = 0.025
 
 [node name="CollisionShape2D" parent="Gun/Damager" index="0"]
 position = Vector2( 1, 3 )

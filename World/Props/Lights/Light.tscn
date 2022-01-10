@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World/Props/Lights/LightTex.png" type="Texture" id=1]
+[ext_resource path="res://World/Props/Lights/LabsLights.png" type="Texture" id=2]
+
+[node name="Light" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 3 )
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, 6 )
+scale = Vector2( 1, 1.09091 )
+texture = ExtResource( 1 )

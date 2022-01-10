@@ -135,14 +135,14 @@ func create_constant_room(connections) -> void:
 		world.background.update_bitmask_area(i)
 	# Roof Props
 	var roomCeilProps:TileMap = room.ceilingProp
-	if biome.roofProps.size() > 0:
+	if biome.decorator.roofProps.size() > 0:
 		for i in roomCeilProps.get_used_cells():
-			add_props(biome.roofProps, i.x, i.y)
+			add_props(biome.decorator.roofProps, biome.decorator.roofPropsChance, i.x, i.y)
 	# Floor Props
 	var roomFloorprops:TileMap = room.groundProp
-	if biome.groundProps.size() > 0: 
+	if biome.decorator.groundProps.size() > 0: 
 		for i in roomFloorprops.get_used_cells():
-			add_props(biome.groundProps, i.x, i.y+1)
+			add_props(biome.decorator.groundProps, biome.decorator.groundPropsChance, i.x, i.y+1)
 	# Props
 	var roomPr:Node2D = room.props
 	for c in roomPr.get_children():
@@ -209,10 +209,10 @@ func create_random_room(connections) -> void:
 				
 # warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .5 and roomI.get_pixel(x, clamp(y+1, 0, roomI.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					if biome.roofProps.size() > 0: add_props(biome.roofProps, x, y+1)
+					if biome.decorator.roofProps.size() > 0: add_props(biome.decorator.roofProps, biome.decorator.roofPropsChance, x, y+1)
 # warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .5 and roomI.get_pixel(x, clamp(y-1, 0, roomI.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					if biome.groundProps.size() > 0: add_props(biome.groundProps, clamp(x, 2, roomI.get_width()-2), y)
+					if biome.decorator.groundProps.size() > 0: add_props(biome.decorator.groundProps, biome.decorator.groundPropsChance, clamp(x, 2, roomI.get_width()-2), y)
 			# If is platform
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				world.platforms.set_cell(x, y, 0)
@@ -342,12 +342,17 @@ func pad(startPos:Vector2, endPos:Vector2, incDir:Vector2, padDir:Vector2) -> vo
 				world.background.update_bitmask_area(updatePos+plus)
 		pos += incDir
 
-func add_props(propArr:Array, x, y) -> void:
-	var prop = propArr[rand_range(0, propArr.size())].instance()
-	prop.position = Vector2(x, y)*world.solids.cell_size
-	prop.position.x += world.solids.cell_size.x*.5
-	prop.z_index = -2
-	world.props.add_child(prop)
+func add_props(propArr:Array, chances:Array, x, y) -> void:
+	var idx
+	while true:
+		idx = rand_range(0, propArr.size())
+		if rand_range(0, 1) > chances[idx]: continue
+		var prop = propArr[idx].instance()
+		prop.position = Vector2(x, y)*world.solids.cell_size
+		prop.position.x += world.solids.cell_size.x*.5
+		prop.z_index = -2
+		world.props.add_child(prop)
+		break
 
 func spawn_enemies() -> void: 
 	if worldData.get_current_room().cleared:

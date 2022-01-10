@@ -29,10 +29,4 @@ shape = SubResource( 1 )
 [node name="PyroBandit" parent="." instance=ExtResource( 3 )]
 position = Vector2( 240, -12 )
 
-[node name="PyroBandit2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 240, -12 )
-
-[node name="PyroBandit3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 240, -12 )
-
 [editable path="CameraMoveZone"]

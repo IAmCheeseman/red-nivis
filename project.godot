@@ -50,6 +50,11 @@ _global_script_classes=[ {
 "path": "res://World/Props/TempStuff/Debris.gd"
 }, {
 "base": "Resource",
+"class": "Decorator",
+"language": "GDScript",
+"path": "res://World/Decorators/Decorator.gd"
+}, {
+"base": "Resource",
 "class": "DialogInteraction",
 "language": "GDScript",
 "path": "res://Entities/NPC/Dialog/DialogInteraction.gd"
@@ -203,6 +208,7 @@ _global_script_class_icons={
 "CustomParallax": "",
 "DataManager": "",
 "Debris": "",
+"Decorator": "",
 "DialogInteraction": "",
 "EnemyBullet": "",
 "EnemySpawner": "",

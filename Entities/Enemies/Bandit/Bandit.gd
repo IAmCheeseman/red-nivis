@@ -23,6 +23,7 @@ export var accel := 5.0
 export var frict := 10.0
 export var jumpForce := 350
 export var targetRange := 64
+export var jumpRange := Vector2(2, 4)
 
 var state := IDLE
 var targetPosition := 0
@@ -90,7 +91,7 @@ func animate(otherAnim: String) -> void:
 
 func jump() -> void:
 	if floorCheckerRC.is_colliding() and player: vel.y = -jumpForce
-	jumpTimer.start(rand_range(2, 4))
+	jumpTimer.start(rand_range(jumpRange.x, jumpRange.y))
 
 
 func _on_state_change_timeout() -> void:

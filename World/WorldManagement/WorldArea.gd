@@ -21,10 +21,8 @@ export var middleRemovalChance:float = .666
 export var connectionChance:float = .05
 
 # Room Gen
+export(Resource) var decorator: Resource
 export var roomTemplates:StreamTexture = preload("res://World/Templates/LabTemplates.png")
-export(Array, PackedScene) var roofProps := []
-export(Array, PackedScene) var groundProps := []
-export var spike: PackedScene = preload("res://World/Props/Spikes/Spike.tscn")
 
 # Other
 
