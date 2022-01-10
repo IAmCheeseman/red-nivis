@@ -91,7 +91,7 @@ collision_layer = 0
 collision_mask = 33
 script = ExtResource( 1 )
 speed = 1200.0
-attackSpeed = 440.0
+attackSpeed = 330.0
 kbAmount = 0.0
 accel = 24.0
 friction = 12.0
@@ -116,20 +116,22 @@ autoplay = "Spin"
 anims/Spin = SubResource( 1 )
 
 [node name="Collisions" type="Node2D" parent="."]
-visible = false
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 4 )]
+visible = false
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
 shape = SubResource( 2 )
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 5 )]
+visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
 shape = SubResource( 3 )
 
 [node name="Hitbox" parent="Collisions" instance=ExtResource( 6 )]
+visible = false
 position = Vector2( 0, 11 )
 collision_layer = 4
 collision_mask = 2
@@ -139,6 +141,7 @@ damage = 1
 shape = SubResource( 4 )
 
 [node name="SoftCollision" parent="Collisions" instance=ExtResource( 9 )]
+visible = false
 
 [node name="CollisionShape2D" parent="Collisions/SoftCollision" index="0"]
 shape = SubResource( 5 )

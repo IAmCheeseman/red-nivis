@@ -100,23 +100,27 @@ func wander_state(delta:float) -> void:
 
 
 func attack_state(delta:float) -> void:
-	vel = vel.move_toward(global_position.direction_to(player.global_position)*attackSpeed, accel*40*delta)
-	look_at(player.global_position)
+	look_at(global_position+vel)
 	rotation_degrees -= 90
 	
 	if attackTimer.is_stopped():
 		vel *= .333
 		state = states.DEFEND
 		defendTimer.start()
+	if test_move(transform, vel*.05):
+		vel *= -0.333
+		state = states.DEFEND
+		defendTimer.start()
 
 
 func wind_up_state(delta: float) -> void:
 	vel = vel.move_toward(-global_position.direction_to(player.global_position)*130, accel*20*delta)
-	look_at(player.global_position)
+	look_at(-vel)
 	rotation_degrees -= 90
 	
 	if windUpTimer.is_stopped():
 		state = states.ATTACK
+		vel = global_position.direction_to(player.global_position)*attackSpeed
 		attackTimer.start()
 
 
