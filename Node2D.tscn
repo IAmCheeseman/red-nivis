@@ -2,7 +2,7 @@
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Enemies/Bandit/Laser/LaserBandit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 
@@ -26,7 +26,7 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="DrillMachine" parent="." instance=ExtResource( 3 )]
-position = Vector2( 240, -18 )
+[node name="LaserBandit" parent="." instance=ExtResource( 3 )]
+position = Vector2( 245.521, -9.11554 )
 
 [editable path="CameraMoveZone"]

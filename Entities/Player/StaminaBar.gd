@@ -40,7 +40,7 @@ func update_stamina() -> void:
 	else:
 		targetA = 0
 	
-	rect_position = -rect_size/2 + Vector2(0, defaultY)
+	rect_position = -rect_size / 2 + Vector2(0, defaultY)
 
 
 func _on_stamina_changed() -> void:

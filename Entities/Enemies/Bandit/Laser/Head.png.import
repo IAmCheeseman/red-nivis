@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bandit.png-6c0051b864b8c9c7552c8fd66af5fe7f.stex"
+path="res://.import/Head.png-690510e9a2ad9c5ebd4ef878e8648c2e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Bandit/Shotgun/Bandit.png"
-dest_files=[ "res://.import/Bandit.png-6c0051b864b8c9c7552c8fd66af5fe7f.stex" ]
+source_file="res://Entities/Enemies/Bandit/Laser/Head.png"
+dest_files=[ "res://.import/Head.png-690510e9a2ad9c5ebd4ef878e8648c2e.stex" ]
 
 [params]
 
