@@ -46,12 +46,18 @@ color_ramp = SubResource( 3 )
 
 [node name="Gun" instance=ExtResource( 1 )]
 position = Vector2( 0, 7 )
+damage = 12.0
+accuracy = 9.0
+cooldown = 0.15
+projLifetime = 0.1
+magazineSize = 30
 kickUp = 0.0
 bulletSpawnDist = 28.0
 isTwoHanded = true
 
 [node name="GunLogic" parent="." index="0"]
 script = ExtResource( 4 )
+fire = NodePath("../Pivot/GunSprite/Fire")
 
 [node name="GunSprite" parent="Pivot" index="2"]
 position = Vector2( 9, 0 )
@@ -69,7 +75,8 @@ material = SubResource( 6 )
 position = Vector2( 12, 0 )
 emitting = false
 amount = 100
-lifetime = 0.5
+lifetime = 0.3
+one_shot = true
 local_coords = false
 process_material = SubResource( 9 )
 texture = ExtResource( 3 )
