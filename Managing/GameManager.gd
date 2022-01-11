@@ -84,7 +84,7 @@ func save_run() -> void:
 	}
 	
 	var dm := DataManager.new()
-	var ok = dm.save_data(runData, Globals.RUN_FILE_NAME)
+	var _ok = dm.save_data(runData, Globals.RUN_FILE_NAME)
 
 
 func load_run() -> int:

@@ -12,7 +12,7 @@ var player: Node2D
 func _ready() -> void:
 	cooldown = Timer.new()
 	cooldown.one_shot = true
-	cooldown.wait_time = .15
+	cooldown.wait_time = 15
 	add_child(cooldown)
 
 
@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 		var mousePos = player.get_local_mouse_position()
 		var throwStrength:float = mousePos.length() * 3
 		newBomb.apply_central_impulse(
-			mousePos.normalized() * throwStrength
+			mousePos.normalized() * throwStrength # `mousePos` acts as a direction, since it's local
 		)
 		GameManager.add_child(newBomb)
 		cooldown.start()

@@ -71,8 +71,8 @@ func _physics_process(delta: float) -> void:
 	prevFloorState = floorCheckerRC.is_colliding()
 
 
-func idle_state(delta, anim) -> void:
-	animate(anim)
+func idle_state(delta, playAnim) -> void:
+	animate(playAnim)
 	vel.x = lerp(vel.x, 0, frict*delta)
 	sprite.flip_h = global_position.x < player.global_position.x
 
