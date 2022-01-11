@@ -23,11 +23,18 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Shotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Shotgun.png"
 	},
+	"flamethrower" : {
+		"key" : "flamethrower",
+		"name" : "Flamethrower",
+		"tier" : ToolTipGenerator.TIERS.CAVE,
+		"scene" : "res://Items/Weapons/Scenes/FlameThrower.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Flamethrower.png"
+	},
 	"assault-rifle" : {
 		"key" : "assault-rifle",
 		"name" : "Assault Rifle",
 		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
 		"scene" : "res://Items/Weapons/Scenes/AssaultRifle.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/AssaultRifle.png"
-	}
+	},
 }

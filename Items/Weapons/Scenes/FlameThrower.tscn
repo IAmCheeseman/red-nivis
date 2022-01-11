@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Weapons/Sprites/Flamethrower.png" type="Texture" id=2]
+[ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=3]
+[ext_resource path="res://Items/Weapons/WeaponScripts/Flamethrower.gd" type="Script" id=4]
+
+[sub_resource type="CanvasItemMaterial" id=6]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.181818, 0.353535, 0.784512 )
+colors = PoolColorArray( 0.0832214, 0.128215, 0.394531, 1, 0.390625, 0.110167, 0.050354, 1, 0.265625, 0.142232, 0.0819702, 1, 0.492188, 0.423927, 0.205719, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.715625, 1 ), -0.090909, -0.090909, 0, 0, Vector2( 1, 0 ), -5.39394, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+lifetime_randomness = 0.5
+flag_disable_z = true
+spread = 12.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 250.0
+angular_velocity = 75.84
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 350.0
+damping_random = 0.46
+angle = 360.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 0.85
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="Gun" instance=ExtResource( 1 )]
+position = Vector2( 0, 7 )
+kickUp = 0.0
+bulletSpawnDist = 28.0
+isTwoHanded = true
+
+[node name="GunLogic" parent="." index="0"]
+script = ExtResource( 4 )
+
+[node name="GunSprite" parent="Pivot" index="2"]
+position = Vector2( 9, 0 )
+texture = ExtResource( 2 )
+
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( -10, -3 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( -4, -4 )
+
+[node name="Fire" type="Particles2D" parent="Pivot/GunSprite" index="2"]
+show_behind_parent = true
+material = SubResource( 6 )
+position = Vector2( 12, 0 )
+emitting = false
+amount = 100
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 9 )
+texture = ExtResource( 3 )

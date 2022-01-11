@@ -7,7 +7,7 @@
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=5]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=6]
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id=12]
 blend_mode = 1
 particles_animation = true
 particles_anim_h_frames = 5
@@ -18,13 +18,13 @@ particles_anim_loop = false
 offsets = PoolRealArray( 0, 0.181818, 0.353535, 0.784512 )
 colors = PoolColorArray( 0.0832214, 0.128215, 0.394531, 1, 0.390625, 0.110167, 0.050354, 1, 0.265625, 0.142232, 0.0819702, 1, 0.492188, 0.423927, 0.205719, 1 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=13]
 gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.715625, 1 ), -0.090909, -0.090909, 0, 0, Vector2( 1, 0 ), -5.39394, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
+[sub_resource type="CurveTexture" id=14]
 curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=6]
@@ -43,8 +43,8 @@ angle = 360.0
 angle_random = 1.0
 scale = 2.0
 scale_random = 0.85
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 14 )
+color_ramp = SubResource( 13 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 65, -5, 65, 5 )
@@ -133,7 +133,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 11, 3 )
 
 [node name="Fire" type="Particles2D" parent="Gun" index="1"]
-material = SubResource( 1 )
+material = SubResource( 12 )
 position = Vector2( 24, 3 )
 amount = 200
 lifetime = 0.5

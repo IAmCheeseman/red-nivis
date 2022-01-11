@@ -12,7 +12,7 @@ var player: Node2D
 func _ready() -> void:
 	cooldown = Timer.new()
 	cooldown.one_shot = true
-	cooldown.wait_time = 15
+	cooldown.wait_time = .15
 	add_child(cooldown)
 
 
@@ -21,7 +21,7 @@ func _input(event: InputEvent) -> void:
 		var newBomb = BOMB.instance()
 		newBomb.global_position = player.global_position - Vector2(0, 8)
 		var mousePos = player.get_local_mouse_position()
-		var throwStrength:float = mousePos.length() * 3
+		var throwStrength:float = clamp(mousePos.length() * 3, 0, 128 * 3)
 		newBomb.apply_central_impulse(
 			mousePos.normalized() * throwStrength # `mousePos` acts as a direction, since it's local
 		)
