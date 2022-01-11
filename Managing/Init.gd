@@ -21,6 +21,7 @@ var subtitles = [
 	"Could you not?"
 ]
 
+
 const STARTING_AREA = "res://World/StartingArea/StartingArea.tscn"
 const WORLD = "res://World/WorldManagement/World.tscn"
 
