@@ -12,10 +12,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.5, 3 )
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=2]
 radius = 6.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 radius = 160.012
 
 [node name="Bandit" type="KinematicBody2D"]
@@ -39,7 +39,7 @@ position = Vector2( -0.5, -2.5 )
 shape = SubResource( 1 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
-maxHealth = 200
+maxHealth = 145
 kbAmount = 128.0
 upwardsKB = 64.0
 
@@ -53,14 +53,14 @@ position = Vector2( 0, -8 )
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 3 )]
 visible = false
 mustBeInSight = false
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionChecker" type="RayCast2D" parent="Collisions"]
 visible = false
