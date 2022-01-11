@@ -50,6 +50,7 @@ damage = 12.0
 accuracy = 9.0
 cooldown = 0.15
 projLifetime = 0.1
+recoil = 10.0
 magazineSize = 30
 kickUp = 0.0
 bulletSpawnDist = 28.0
