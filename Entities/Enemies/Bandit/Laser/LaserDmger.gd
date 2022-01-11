@@ -5,7 +5,7 @@ onready var graphics = $TextureRect
 onready var collider = $Hitbox/CollisionShape2D
 
 const ACTIVE_COLOR = Color.red
-const TELEGRAPH_COLOR = Color.blue
+const TELEGRAPH_COLOR = Color(1, 0, 0, .222)
 
 var end := Vector2.ZERO
 var active = false
@@ -24,12 +24,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if active:
 		collider.disabled = false
-		size = lerp(size, 0, 4 * delta)
-		graphics.rect_scale.y = size
+		size = lerp(size, 0, 8 * delta)
 		if size < .05: queue_free()
 		if size < .25: collider.disabled = true
 	else:
 		collider.disabled = true
+		size = .25
 	set_sizes()
 	update()
 
@@ -37,6 +37,7 @@ func _draw() -> void:
 	var clr = ACTIVE_COLOR if active else TELEGRAPH_COLOR
 	draw_circle(to_local(end), 5 * size, clr)
 	draw_circle(Vector2.ZERO, 5 * size, clr)
+	graphics.rect_scale.y = size
 	graphics.color = clr
 
 
@@ -50,4 +51,4 @@ func set_sizes() -> void:
 
 func set_active() -> void:
 	active = true
-	size = 1.2
+	size = 2
