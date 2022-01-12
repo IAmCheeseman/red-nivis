@@ -14,6 +14,8 @@ maxHoldShots = 1
 magazineSize = 2
 bulletSprite = ExtResource( 2 )
 shellSprite = null
+kickUp = -25.0
+ssStrength = -2.0
 isTwoHanded = true
 
 [node name="GunLogic" parent="." index="0"]

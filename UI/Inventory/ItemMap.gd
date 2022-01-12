@@ -2,6 +2,7 @@ extends Reference
 class_name ItemMap
 
 const ITEMS = {
+	# LABS ITEMS
 	"pistol" : {
 		"key" : "pistol",
 		"name" : "Pistol",
@@ -16,6 +17,7 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Revolver.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Revolver.png"
 	},
+	# CAVE ITEMS
 	"pump-shotgun" : {
 		"key" : "pump-shotgun",
 		"name" : "Pump Shotgun",
@@ -37,6 +39,7 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/FlameThrower.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Flamethrower.png"
 	},
+	# DEEP LABS ITEMS
 	"assault-rifle" : {
 		"key" : "assault-rifle",
 		"name" : "Assault Rifle",
