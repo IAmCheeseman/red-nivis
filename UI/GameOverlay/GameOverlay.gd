@@ -13,8 +13,9 @@ onready var justLostTween = $VBox/HealthBar/JustLost/JustLostTween
 onready var justLostTimer = $VBox/HealthBar/JustLost/JustLostTimer
 
 # Ammo bar
-onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
-onready var reloadNotif = $VBox/Bottom/AmmoBar/ReloadNotif
+#onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
+onready var ammoBar = $VBox/Bottom/AmmoBar/TextureProgress
+onready var reloadNotif = $VBox/Bottom/ReloadNotif
 
 onready var healsBar = $VBox/Bottom/Heals/Icons
 
@@ -58,20 +59,24 @@ func update_money() -> void:
 
 
 func update_ammo() -> void:
-	if ammoBar.get_child_count() != playerData.maxAmmo:
-		Utils.free_children(ammoBar)
-
-		var ammoPoint = preload("res://UI/GameOverlay/AmmoPoint.tscn")
-		for i in playerData.maxAmmo:
-			var newAmmoPoint = ammoPoint.instance()
-			ammoBar.add_child(newAmmoPoint)
+	ammoBar.value = float(playerData.ammo) / float(playerData.maxAmmo)
+#	if ammoBar.get_child_count() != playerData.maxAmmo:
+#		Utils.free_children(ammoBar)
+#
+#		var ammoPoint = preload("res://UI/GameOverlay/AmmoPoint.tscn")
+#		for i in playerData.maxAmmo:
+#			var newAmmoPoint = ammoPoint.instance()
+#			ammoBar.add_child(newAmmoPoint)
+#	else:
+#		for i in ammoBar.get_children():
+#			if i.get_index()+1 > playerData.ammo:
+#				i.self_modulate.a = 0
+#			else:
+#				i.self_modulate.a = 1
+	if playerData.ammo == 0:
+		reloadNotif.text = "Reloading!"
 	else:
-		for i in ammoBar.get_children():
-			if i.get_index()+1 > playerData.ammo:
-				i.self_modulate.a = 0
-			else:
-				i.self_modulate.a = 1
-		reloadNotif.visible = playerData.ammo == 0
+		reloadNotif.text = "%s/%s" % [playerData.ammo, playerData.maxAmmo]
 
 
 func update_heals() -> void:

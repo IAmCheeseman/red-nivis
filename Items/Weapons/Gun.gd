@@ -42,7 +42,6 @@ onready var gunLogic = $GunLogic
 onready var pivot = $Pivot
 onready var shootSound = $ShootSound
 onready var noAmmoClick = $NoAmmoClickSFX
-onready var ammoLabel = $AmmoCount
 onready var cooldownTimer = $Cooldown
 onready var meleeCooldown = $MeleeCooldown
 onready var visuals = $Pivot/GunSprite
@@ -57,7 +56,6 @@ var player: Resource
 
 
 func _ready():
-	ammoLabel.hide()
 	cooldownTimer.start(reloadSpeed*.333)
 	meleeCooldown.wait_time = meleeSpeed
 	for perk in perks:

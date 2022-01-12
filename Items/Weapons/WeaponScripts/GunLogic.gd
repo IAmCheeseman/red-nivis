@@ -54,7 +54,7 @@ func _physics_process(delta) -> void:
 	if local.x < 0: gun.visuals.scale.y = -1
 	else: gun.visuals.scale.y = 1
 	# Showing the gun behind the parent based on rotation
-	gun.get_parent().show_behind_parent = local.y < 0
+	#gun.get_parent().show_behind_parent = local.y < 0
 
 	# Settling the rotation of the gun down after it's been kicked up
 	if !swinging:

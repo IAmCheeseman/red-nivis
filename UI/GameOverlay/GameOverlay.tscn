@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/HeartFull.png" type="Texture" id=2]
 [ext_resource path="res://UI/Assets/HeartEmpty.png" type="Texture" id=3]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Items/Money/Coin.png" type="Texture" id=5]
-[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/Assets/ui.png" type="Texture" id=7]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -52,7 +52,25 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 2, 0 ), Vector2( -2, -2 ), Vector2( 1, -2 ), Vector2( 2, -3 ) ]
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=9]
+size = 4
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 7 )
+region = Rect2( 9, 0, 7, 10 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 7 )
+region = Rect2( 125, 88, 49, 5 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 7 )
+region = Rect2( 125, 83, 49, 5 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 5
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -124,8 +142,9 @@ anims/Flash = SubResource( 4 )
 anims/Shake = SubResource( 5 )
 
 [node name="Separator" type="ColorRect" parent="VBox"]
+visible = false
 margin_top = 16.0
-margin_right = 60.0
+margin_right = 64.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 60, 1 )
 __meta__ = {
@@ -133,47 +152,73 @@ __meta__ = {
 }
 
 [node name="Bottom" type="VBoxContainer" parent="VBox"]
-margin_top = 21.0
-margin_right = 60.0
-margin_bottom = 37.0
+margin_top = 16.0
+margin_right = 64.0
+margin_bottom = 51.0
 
-[node name="Heals" type="VBoxContainer" parent="VBox/Bottom"]
-margin_right = 60.0
-
-[node name="Icons" type="GridContainer" parent="VBox/Bottom/Heals"]
-margin_right = 60.0
-custom_constants/vseparation = 3
-custom_constants/hseparation = 0
-columns = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom"]
-margin_top = 4.0
-margin_right = 60.0
-margin_bottom = 4.0
-
-[node name="Icons" type="GridContainer" parent="VBox/Bottom/AmmoBar"]
-custom_constants/vseparation = 3
-custom_constants/hseparation = 0
-columns = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ReloadNotif" type="Label" parent="VBox/Bottom/AmmoBar"]
-visible = false
-margin_left = 4.0
-margin_right = 40.0
-margin_bottom = 10.0
-custom_fonts/font = ExtResource( 6 )
+[node name="ReloadNotif" type="Label" parent="VBox/Bottom"]
+margin_right = 64.0
+margin_bottom = 5.0
+custom_fonts/font = SubResource( 9 )
 text = "Reloading!"
 
+[node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom"]
+margin_top = 9.0
+margin_right = 64.0
+margin_bottom = 19.0
+custom_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBox/Bottom/AmmoBar"]
+margin_right = 7.0
+margin_bottom = 10.0
+texture = SubResource( 8 )
+
+[node name="TextureProgress" type="TextureProgress" parent="VBox/Bottom/AmmoBar"]
+margin_left = 9.0
+margin_top = 2.0
+margin_right = 57.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 48, 0 )
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+texture_under = SubResource( 7 )
+texture_progress = SubResource( 1 )
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 2
+stretch_margin_right = 1
+stretch_margin_bottom = 3
+
+[node name="Icons" type="GridContainer" parent="VBox/Bottom/AmmoBar"]
+margin_left = 59.0
+margin_right = 59.0
+margin_bottom = 10.0
+custom_constants/vseparation = 3
+custom_constants/hseparation = 0
+columns = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heals" type="VBoxContainer" parent="VBox/Bottom"]
+margin_top = 23.0
+margin_right = 64.0
+margin_bottom = 23.0
+
+[node name="Icons" type="GridContainer" parent="VBox/Bottom/Heals"]
+margin_right = 64.0
+custom_constants/vseparation = 3
+custom_constants/hseparation = 0
+columns = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MoneyDisplay" type="HBoxContainer" parent="VBox/Bottom"]
-margin_top = 8.0
-margin_right = 60.0
-margin_bottom = 16.0
+margin_top = 27.0
+margin_right = 64.0
+margin_bottom = 35.0
 custom_constants/separation = 2
 
 [node name="Icon" type="TextureRect" parent="VBox/Bottom/MoneyDisplay"]
@@ -188,9 +233,9 @@ margin_right = 21.0
 margin_bottom = 8.0
 rect_min_size = Vector2( 0, 8 )
 size_flags_vertical = 0
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
-custom_fonts/font = SubResource( 1 )
 text = "320"
 __meta__ = {
 "_edit_use_anchors_": false

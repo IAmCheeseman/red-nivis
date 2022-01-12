@@ -49,11 +49,11 @@ color_ramp = SubResource( 3 )
 position = Vector2( 0, 7 )
 damage = 3.0
 accuracy = 12.0
-cooldown = 0.0
-reloadSpeed = 0.15
+cooldown = 0.1
+reloadSpeed = 4.5
 projLifetime = 0.1
 recoil = 10.0
-magazineSize = 1
+magazineSize = 64
 shellSprite = null
 kickUp = 0.0
 bulletSpawnDist = 28.0
@@ -88,5 +88,5 @@ local_coords = false
 process_material = SubResource( 9 )
 texture = ExtResource( 3 )
 
-[node name="ShootSound" parent="." index="5"]
+[node name="ShootSound" parent="." index="4"]
 audio = null
