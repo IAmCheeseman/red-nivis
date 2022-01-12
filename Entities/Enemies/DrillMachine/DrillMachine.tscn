@@ -50,7 +50,7 @@ radius = 4.0
 length = 0.4
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("ScaleHelper/Sprite:position")
+tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -62,7 +62,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ScaleHelper/Sprite/Drill:position")
+tracks/1/path = NodePath("Sprite/Drill:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -72,18 +72,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 11 ), Vector2( 0, 12 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ScaleHelper:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ) ]
 }
 
 [node name="DrillMachine" type="KinematicBody2D"]
@@ -97,21 +85,19 @@ accel = 24.0
 friction = 12.0
 wanderRange = 32
 
-[node name="ScaleHelper" type="Node2D" parent="."]
-
-[node name="Sprite" type="Sprite" parent="ScaleHelper"]
+[node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 10 )
-position = Vector2( 0, -0.933396 )
+position = Vector2( 0, -0.00719368 )
 texture = ExtResource( 2 )
 
-[node name="Drill" type="Sprite" parent="ScaleHelper/Sprite"]
+[node name="Drill" type="Sprite" parent="Sprite"]
 show_behind_parent = true
 material = ExtResource( 10 )
-position = Vector2( 0, 11.4667 )
+position = Vector2( 0, 11.0108 )
 texture = ExtResource( 3 )
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ScaleHelper/Sprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "Spin"
 anims/Spin = SubResource( 1 )
 

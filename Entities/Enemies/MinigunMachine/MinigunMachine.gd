@@ -7,13 +7,13 @@ export var wanderRange:float = 48
 export var kbAmount:float = .5
 
 
-onready var minigun = $ScaleHelper/Sprite/Minigun
+onready var minigun = $Sprite/Minigun
 onready var collision = $CollisionShape2D
 onready var playerDetection = $Collisions/PlayerDetection
 onready var softCollision = $Collisions/SoftCollision
 onready var bounceRay = $Collisions/BounceRay
-onready var sprite = $ScaleHelper/Sprite
-onready var minigunSprite = $ScaleHelper/Sprite/Minigun/Sprite
+onready var sprite = $Sprite
+onready var minigunSprite = $Sprite/Minigun/Sprite
 onready var wanderTimer = $Timers/WanderTimer
 onready var hpBar = $Healthbar
 onready var healthManager = $DamageManager

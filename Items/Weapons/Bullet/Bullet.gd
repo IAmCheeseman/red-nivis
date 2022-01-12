@@ -5,6 +5,7 @@ var speed : float
 var peircing = false
 var damage : float 
 var lifetime = 5.0
+
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
 onready var particles = $Particles

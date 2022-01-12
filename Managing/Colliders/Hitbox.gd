@@ -2,6 +2,7 @@ extends Area2D
 
 onready var collisionShape = $CollisionShape2D
 
+export(Script) var effect
 export var maskedHurtbox := ""
 export var damage = 15
 export var kbStrengh = 3
@@ -35,3 +36,11 @@ func do_damage(area) -> void:
 	
 	if setDirection: dir = setDirection
 	area.take_damage(damage, dir)
+	
+	var par = area.get_parent()
+	if effect and !par.has_node("Effect"):
+		var newEffect = Node2D.new()
+		newEffect.name = "Effect"
+		newEffect.set_script(effect)
+		newEffect.hurtbox = area
+		par.add_child(newEffect)

@@ -4,7 +4,7 @@ export var fire: NodePath
 
 
 func _ready() -> void:
-	connect("gun_shot", self, "_on_shoot")
+	var _discard = connect("gun_shot", self, "_on_shoot")
 
 
 func _on_shoot(bullet: Node2D) -> void:

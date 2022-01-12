@@ -34,7 +34,7 @@ radius = 2.0
 length = 0.2
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -44,18 +44,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ScaleHelper:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ) ]
 }
 
 [node name="MDM" type="KinematicBody2D" groups=["MDM"]]
@@ -68,9 +56,7 @@ accel = 24.0
 friction = 12.0
 wanderRange = 32
 
-[node name="ScaleHelper" type="Node2D" parent="."]
-
-[node name="Sprite" type="Sprite" parent="ScaleHelper"]
+[node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 6 )
 texture = ExtResource( 7 )
 hframes = 2
