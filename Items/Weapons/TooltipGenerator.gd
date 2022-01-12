@@ -5,12 +5,13 @@ class_name ToolTipGenerator
 
 const PLAYER_DATA = preload("res://Entities/Player/Player.tres")
 
-enum TIERS {LAB, CAVE, DEEPLABS}
+enum TIERS {LAB, CAVE, DEEPLABS, MEADOWCAVERNS}
 
 const TIER_COLORS = {
-	TIERS.LAB      : "#c7cfcc",
-	TIERS.CAVE     : "#75a743",
-	TIERS.DEEPLABS : "#a53030"
+	TIERS.LAB           : "#c7cfcc",
+	TIERS.CAVE          : "#75a743",
+	TIERS.DEEPLABS      : "#a53030",
+	TIERS.MEADOWCAVERNS : "#ffffff",
 }
 
 

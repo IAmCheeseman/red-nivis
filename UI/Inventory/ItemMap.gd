@@ -23,6 +23,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Shotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Shotgun.png"
 	},
+	"homing-boomerang" : {
+		"key" : "homing-boomerang",
+		"name" : "Homing Boomerang",
+		"tier" : ToolTipGenerator.TIERS.CAVE,
+		"scene" : "res://Items/Weapons/Scenes/HomingBoomerang.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/HomingBoomerang.png"
+	},
 	"flamethrower" : {
 		"key" : "flamethrower",
 		"name" : "Flamethrower",
