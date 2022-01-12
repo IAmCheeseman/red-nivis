@@ -153,18 +153,19 @@ __meta__ = {
 
 [node name="Bottom" type="VBoxContainer" parent="VBox"]
 margin_top = 16.0
-margin_right = 64.0
+margin_right = 59.0
 margin_bottom = 51.0
 
 [node name="ReloadNotif" type="Label" parent="VBox/Bottom"]
-margin_right = 64.0
+margin_right = 59.0
 margin_bottom = 5.0
 custom_fonts/font = SubResource( 9 )
 text = "Reloading!"
+align = 1
 
 [node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom"]
 margin_top = 9.0
-margin_right = 64.0
+margin_right = 59.0
 margin_bottom = 19.0
 custom_constants/separation = 2
 
@@ -203,11 +204,11 @@ __meta__ = {
 
 [node name="Heals" type="VBoxContainer" parent="VBox/Bottom"]
 margin_top = 23.0
-margin_right = 64.0
+margin_right = 59.0
 margin_bottom = 23.0
 
 [node name="Icons" type="GridContainer" parent="VBox/Bottom/Heals"]
-margin_right = 64.0
+margin_right = 59.0
 custom_constants/vseparation = 3
 custom_constants/hseparation = 0
 columns = 8
@@ -217,7 +218,7 @@ __meta__ = {
 
 [node name="MoneyDisplay" type="HBoxContainer" parent="VBox/Bottom"]
 margin_top = 27.0
-margin_right = 64.0
+margin_right = 59.0
 margin_bottom = 35.0
 custom_constants/separation = 2
 

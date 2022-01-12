@@ -1,6 +1,6 @@
 extends Node2D
 
-export(int, "pistol", "shotgun") var gunType = 0
+export(int, "pistol", "shotgun", "rifle") var gunType = 0
 
 # warning-ignore:unused_signal
 signal onShoot
