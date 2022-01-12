@@ -18,6 +18,7 @@ func _ready() -> void:
 	yield(TempTimer.idle_frame(self), "timeout")
 	interaction.disabled = GameManager.worldData.get_room_data(
 		self, false)
+	light.energy = 0
 
 
 func _on_interaction() -> void:

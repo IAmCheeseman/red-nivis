@@ -54,4 +54,11 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Minigun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Minigun.png"
 	},
+	"robot-shotgun" : {
+		"key" : "robot-shotgun",
+		"name" : "Robot Shotgun",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/RobotShotgun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/RobotShotgun.png"
+	},
 }
