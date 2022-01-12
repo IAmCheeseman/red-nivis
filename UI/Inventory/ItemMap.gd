@@ -37,4 +37,11 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/AssaultRifle.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/AssaultRifle.png"
 	},
+	"minigun" : {
+		"key" : "minigun",
+		"name" : "Minigun",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/Minigun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Minigun.png"
+	},
 }
