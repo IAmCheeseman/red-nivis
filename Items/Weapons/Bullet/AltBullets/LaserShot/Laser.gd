@@ -12,6 +12,11 @@ var player
 var peircing
 var lifetime
 
+# warning-ignore:unused_signal
+signal hit_wall
+# warning-ignore:unused_signal
+signal hit_enemy
+
 func _ready():
 	raycast.cast_to = direction*1000
 	raycast.force_raycast_update()

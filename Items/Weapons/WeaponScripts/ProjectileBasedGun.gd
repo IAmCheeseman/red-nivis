@@ -48,7 +48,7 @@ func shoot():
 	if gun.bulletSprite:
 		for i in bullets:
 			if is_instance_valid(i):
-				i.set_texture(gun.bulletSprite)
+				if i.has_method("set_texture"): i.set_texture(gun.bulletSprite)
 	# Screenshake
 
 	# Getting the parameters

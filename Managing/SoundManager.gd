@@ -12,6 +12,7 @@ signal finished
 
 func play(volMod=volumeMod):
 	# Creating the audio player
+	if !audio: return
 	
 	var newAudioPlayer
 	match directional:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Weapons/Sprites/Flamethrower.png" type="Texture" id=2]
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=3]
 [ext_resource path="res://Items/Weapons/WeaponScripts/Flamethrower.gd" type="Script" id=4]
+[ext_resource path="res://Items/Weapons/Bullet/AltBullets/Flamethrower/FlameThrowerBullet.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=6]
 blend_mode = 1
@@ -46,18 +47,23 @@ color_ramp = SubResource( 3 )
 
 [node name="Gun" instance=ExtResource( 1 )]
 position = Vector2( 0, 7 )
-damage = 12.0
-accuracy = 9.0
+damage = 17.0
+accuracy = 12.0
 cooldown = 0.15
+reloadSpeed = 0.15
 projLifetime = 0.1
 recoil = 10.0
-magazineSize = 30
+magazineSize = 1
+shellSprite = null
 kickUp = 0.0
 bulletSpawnDist = 28.0
+ssFreq = 0.0
+ssStrength = 0.0
 isTwoHanded = true
 
 [node name="GunLogic" parent="." index="0"]
 script = ExtResource( 4 )
+bullet = ExtResource( 5 )
 fire = NodePath("../Pivot/GunSprite/Fire")
 
 [node name="GunSprite" parent="Pivot" index="2"]
@@ -81,3 +87,6 @@ one_shot = true
 local_coords = false
 process_material = SubResource( 9 )
 texture = ExtResource( 3 )
+
+[node name="ShootSound" parent="." index="5"]
+audio = null
