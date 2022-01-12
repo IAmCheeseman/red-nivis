@@ -26,13 +26,13 @@ anim_offset_random = 0.09
 [sub_resource type="CanvasItemMaterial" id=3]
 light_mode = 1
 
+[sub_resource type="CircleShape2D" id=6]
+radius = 40.1995
+
 [sub_resource type="CircleShape2D" id=4]
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 1.0
-
-[sub_resource type="CircleShape2D" id=8]
 radius = 1.0
 
 [node name="Bullet" type="KinematicBody2D"]
@@ -55,6 +55,13 @@ texture = ExtResource( 5 )
 material = SubResource( 3 )
 texture = ExtResource( 3 )
 
+[node name="HomingArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomingArea"]
+shape = SubResource( 6 )
+
 [node name="Hitbox" parent="." groups=[
 "playerBullet",
 ] instance=ExtResource( 1 )]
@@ -76,20 +83,13 @@ collision_mask = 32769
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QueueArea"]
 shape = SubResource( 5 )
 
-[node name="Kill" type="StaticBody2D" parent="."]
-position = Vector2( -11, 0 )
-collision_layer = 32768
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill"]
-shape = SubResource( 8 )
-
 [node name="DieTween" type="Tween" parent="."]
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
+[connection signal="area_entered" from="HomingArea" to="." method="_on_homing_area_area_entered"]
 [connection signal="hit_object" from="Hitbox" to="." method="_on_Hitbox_hit_object"]
 [connection signal="body_entered" from="QueueArea" to="." method="_on_QueueArea_body_entered"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

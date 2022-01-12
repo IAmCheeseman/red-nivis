@@ -6,19 +6,16 @@ var peircing = false
 var damage : float 
 var lifetime = 5.0
 
-var startingPos: Vector2
-
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
 onready var particles = $Particles
 onready var lifetimeTimer = $Lifetime
 onready var dieTween = $DieTween
-onready var kill = $Kill
 onready var trail = $Trail
 
-#var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
-var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
 var toPlayer = false
+var homing = true
+var homingTarget: Node2D
 
 signal hit_wall(bullet)
 signal hit_enemy(bullet)
@@ -42,7 +39,6 @@ func _ready():
 	hitbox.setDirection = direction
 	hitbox.damage = damage
 	lifetimeTimer.start(clamp(lifetime-0.2, .001, INF))
-	startingPos = global_position - ( direction * 16 )
 
 func _physics_process(delta):
 	position += (direction*speed)*delta
@@ -50,12 +46,16 @@ func _physics_process(delta):
 	if toPlayer:
 		direction = direction.move_toward(
 			global_position.direction_to(GameManager.player.global_position),
-			speed
+			speed * delta
 		)
 		if global_position.distance_to(GameManager.player.global_position) < 5:
 			add_trail_to_parent()
 			queue_free()
-#	kill.global_position = startingPos
+	elif is_instance_valid(homingTarget) and homing:
+		direction = direction.move_toward(
+			global_position.direction_to(homingTarget.global_position),
+			5 * delta
+		)
 
 
 func _on_QueueArea_body_entered(body):
@@ -64,15 +64,6 @@ func _on_QueueArea_body_entered(body):
 	emit_signal("hit_wall", self)
 	toPlayer = true
 	direction = global_position.direction_to(GameManager.player.global_position) * 4
-#	add_trail_to_parent()
-#	add_particles()
-#	queue_free()
-
-
-func add_particles():
-	var newParticles = particleScene.instance()
-	newParticles.position = position
-	get_parent().add_child(newParticles)
 
 
 func add_trail_to_parent():
@@ -99,10 +90,7 @@ func _on_Hitbox_hit_object(object):
 
 func _on_lifetime_timeout():
 	toPlayer = true
-#	dieTween.interpolate_property(
-#		self, "speed", speed,
-#		-speed, .2, Tween.TRANS_LINEAR,
-#		Tween.EASE_IN_OUT
-#	)
-#	dieTween.start()
 
+
+func _on_homing_area_area_entered(area: Area2D) -> void:
+	if !area.is_in_group("EnemyBullet"): homingTarget = area
