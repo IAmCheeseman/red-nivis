@@ -95,7 +95,8 @@ func load_run() -> int:
 	var runData = dm.load_data(Globals.RUN_FILE_NAME)
 	
 	if runData.size() == 0: return ERR_DOES_NOT_EXIST
-	
+
+	print_debug("------ Run -------")
 	for i in runData.keys():
 		var splitKey = i.split(":")
 		var obj = splitKey[0]
@@ -109,8 +110,9 @@ func load_run() -> int:
 		
 		obj.set(val, runData[i])
 		if runData[i] is Array: runData[i] = "[Array]"
-		print(splitKey[0] + "." + str(val) + " = " + str(runData[i]))
+		print_debug(splitKey[0] + "." + str(val) + " = " + str(runData[i]))
 	worldData.moveDir = Vector2.DOWN
+	print_debug("------------------")
 	return OK
 
 

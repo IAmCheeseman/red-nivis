@@ -146,6 +146,7 @@ __meta__ = {
 }
 
 [node name="Keybinds" type="VBoxContainer" parent="Menus"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -181,8 +182,8 @@ __meta__ = {
 }
 
 [node name="Scroll" type="ScrollContainer" parent="Menus/Keybinds/KBKeybinds"]
-margin_left = 141.0
-margin_right = 179.0
+margin_left = 144.0
+margin_right = 175.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 130 )
 scroll_horizontal_enabled = false
@@ -300,7 +301,6 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../NavMenu")
 
 [node name="Visuals" type="VBoxContainer" parent="Menus"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
@@ -309,9 +309,9 @@ __meta__ = {
 }
 
 [node name="VisualsText" type="RichTextLabel" parent="Menus/Visuals"]
-margin_top = 59.0
+margin_top = 45.0
 margin_right = 320.0
-margin_bottom = 113.0
+margin_bottom = 99.0
 rect_min_size = Vector2( 0, 32 )
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 7 )
@@ -328,13 +328,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Fullscreen" type="CheckBox" parent="Menus/Visuals"]
+margin_left = 120.0
+margin_top = 103.0
+margin_right = 199.0
+margin_bottom = 127.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+text = "Fullscreen"
+
 [node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 94.0
-margin_top = 117.0
+margin_top = 131.0
 margin_right = 226.0
-margin_bottom = 127.0
+margin_bottom = 141.0
 size_flags_horizontal = 4
 optionName = "Screenshake"
 
@@ -342,9 +351,9 @@ optionName = "Screenshake"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 94.0
-margin_top = 131.0
+margin_top = 145.0
 margin_right = 226.0
-margin_bottom = 141.0
+margin_bottom = 155.0
 size_flags_horizontal = 4
 optionName = "Max FPS"
 maxedMsg = "None"
@@ -355,9 +364,9 @@ step = 2
 
 [node name="Back" type="Button" parent="Menus/Visuals"]
 margin_left = 142.0
-margin_top = 145.0
+margin_top = 159.0
 margin_right = 177.0
-margin_bottom = 161.0
+margin_bottom = 175.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
@@ -440,6 +449,7 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../NavMenu")
 
 [connection signal="pressed" from="NavMenu/Back" to="." method="_on_quit"]
+[connection signal="toggled" from="Menus/Visuals/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="value_changed" from="Menus/Visuals/Screenshake" to="." method="_on_screenshake_value_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Framerate" to="." method="_on_framerate_value_changed"]
 [connection signal="value_changed" from="Menus/Audio/MSTRVolume" to="." method="_on_master_volume_value_changed"]

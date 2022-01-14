@@ -24,6 +24,7 @@ func _on_continue_pressed():
 func _on_quittm_pressed():
 	Resetter.reset()
 	get_tree().paused = false
+	GameManager.clear_run()
 	VisualServer.set_shader_time_scale(1)
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")

@@ -9,10 +9,14 @@ func _init() -> void:
 		save_defaults(dm)
 		settings = dm.load_data(Globals.SETTINGS_FILE_NAME)
 	
+	print_debug("---- SETTINGS ----")
 	for i in settings.keys(): # Applying save
-		if !get(i): continue
+		if !get(i): print(i); continue
+		print_debug("%s = %s" % [i, settings[i]])
 		set(i, settings[i])
+	print_debug("------------------")
 	if settings.has("keybinds"): keybinds = settings.keybinds
+	if settings.has("fullscreen"): fullscreen = settings.fullscreen
 	
 	for i in keybinds.keys(): # Applying keybinds 
 		var newKey = InputEventKey.new() 
@@ -23,6 +27,7 @@ func _init() -> void:
 
 func save_defaults(dm: DataManager) -> void:
 	var ok = dm.save_data({
+		"fullscreen"      : Settings.fullscreen,
 		"maxfps"          : Settings.maxfps,
 		"screenshake"     : Settings.screenshake,
 		"brightness"      : Settings.brightness,
@@ -34,6 +39,7 @@ func save_defaults(dm: DataManager) -> void:
 	if ok != OK: assert(false, "lmao time for pain")
 
 # Graphics
+var fullscreen := OS.has_feature("standalone")
 
 # Performance
 var maxfps := 60

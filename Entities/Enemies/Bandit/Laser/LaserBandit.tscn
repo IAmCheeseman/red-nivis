@@ -167,7 +167,7 @@ tracks/2/keys = {
 position = Vector2( 0, 3 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -12 )
-frame = 11
+frame = 8
 
 [node name="Gun" parent="." index="1"]
 visible = false
@@ -175,14 +175,12 @@ position = Vector2( -3, -12 )
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Gun" index="0"]
+visible = false
 texture = ExtResource( 3 )
 
 [node name="AttackTimer" type="Timer" parent="Gun" index="1"]
 one_shot = true
 autostart = true
-
-[node name="Collisions" parent="." index="5"]
-visible = false
 
 [node name="AnimationPlayer" parent="." index="7"]
 autoplay = "Idle"

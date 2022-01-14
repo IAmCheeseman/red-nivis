@@ -7,6 +7,7 @@ onready var navMenu = $NavMenu
 
 
 func _ready() -> void:
+	update_settings()
 	set_values()
 
 
@@ -14,6 +15,7 @@ func _on_quit():
 	update_settings()
 	
 	var settings = {
+		"fullscreen"      : Settings.fullscreen,
 		"maxfps"          : Settings.maxfps,
 		"screenshake"     : Settings.screenshake,
 		"brightness"      : Settings.brightness,
@@ -31,9 +33,11 @@ func _on_quit():
 
 
 func update_settings() -> void:
+	OS.window_fullscreen = Settings.fullscreen
 	Engine.target_fps = Settings.maxfps
 	AudioServer.set_bus_volume_db(0, linear2db(Settings.masterVol))
 	AudioServer.set_bus_volume_db(3, linear2db(Settings.sfx))
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -41,7 +45,8 @@ func _input(event: InputEvent) -> void:
 		_on_quit()
 
 
-
+func _on_fullscreen_toggled(buttonPressed: bool) -> void:
+	Settings.fullscreen = buttonPressed
 func _on_graphic_quality_changed() -> void:
 	Settings.graphicsQuality = wrapi(find_node("GraphicalQuality").selectedIdx+1, 0, 2)
 func _on_screenshake_value_changed(value: float) -> void:
@@ -58,9 +63,13 @@ func _on_music_volume_value_changed(value) -> void:
 
 
 func set_values() -> void:
+	find_node("Fullscreen").pressed = Settings.fullscreen
 	find_node("Screenshake").get_node("HSlider").value = Settings.screenshake * 100
 	find_node("Framerate").get_node("HSlider").value = Settings.maxfps
 	if Settings.maxfps == -1: find_node("Screenshake").get_node("HSlider").value = 145
 	find_node("MSTRVolume").get_node("HSlider").value = Settings.masterVol * 100
 	find_node("SFXVolume").get_node("HSlider").value = Settings.sfx * 100
 	find_node("MSXVolume").get_node("HSlider").value = Settings.music * 100
+
+
+
