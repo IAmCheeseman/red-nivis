@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Items/Upgrades/Grenade/Grenade.png" type="Texture" id=1]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Upgrades/Grenade/Grenade.gd" type="Script" id=3]
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=4]
+[ext_resource path="res://Items/Upgrades/Grenade/Explosion.wav" type="AudioStream" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 100.0
@@ -59,7 +60,7 @@ anim_offset = 1.0
 anim_offset_random = 1.0
 
 [sub_resource type="Animation" id=11]
-length = 2.45
+length = 3.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1
@@ -127,7 +128,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 2.45 ),
+"times": PoolRealArray( 3.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -147,6 +148,20 @@ tracks/6/keys = {
 "args": [  ],
 "method": "screenshake"
 } ]
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("AudioStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 2 )
 }
 
 [sub_resource type="Animation" id=12]
@@ -222,6 +237,7 @@ script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
+modulate = Color( 100, 100, 100, 1 )
 position = Vector2( 0.5, -0.5 )
 texture = ExtResource( 1 )
 
@@ -263,6 +279,11 @@ texture = ExtResource( 4 )
 autoplay = "Init"
 anims/Init = SubResource( 11 )
 anims/RESET = SubResource( 12 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -6.0
+bus = "SFX"
 
 [editable path="PlayerHitbox"]
 [editable path="EnemyHitbox"]
