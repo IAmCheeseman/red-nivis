@@ -87,10 +87,10 @@ __meta__ = {
 }
 
 [node name="Particles" type="Particles2D" parent="."]
-modulate = Color( 1, 1, 1, 0.498039 )
+modulate = Color( 1, 1, 1, 0.247059 )
 material = SubResource( 11 )
 position = Vector2( 564.966, 448.649 )
-amount = 1000
+amount = 125
 lifetime = 3.0
 preprocess = 1.5
 visibility_rect = Rect2( -1000, -1000, 2000, 2000 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=2]
@@ -42,6 +42,14 @@ VScrollBar/styles/grabber_highlight = SubResource( 3 )
 VScrollBar/styles/grabber_pressed = SubResource( 4 )
 VScrollBar/styles/scroll = SubResource( 5 )
 VScrollBar/styles/scroll_focus = SubResource( 6 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 95, 79, 12, 12 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 82, 79, 12, 12 )
 
 [node name="OptionsMenu" type="Control"]
 pause_mode = 2
@@ -309,9 +317,9 @@ __meta__ = {
 }
 
 [node name="VisualsText" type="RichTextLabel" parent="Menus/Visuals"]
-margin_top = 31.0
+margin_top = 45.0
 margin_right = 320.0
-margin_bottom = 85.0
+margin_bottom = 99.0
 rect_min_size = Vector2( 0, 32 )
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
@@ -330,19 +338,23 @@ __meta__ = {
 
 [node name="Fullscreen" type="CheckBox" parent="Menus/Visuals"]
 margin_left = 120.0
-margin_top = 89.0
+margin_top = 103.0
 margin_right = 199.0
-margin_bottom = 113.0
+margin_bottom = 127.0
 size_flags_horizontal = 4
+custom_icons/checked = SubResource( 9 )
+custom_icons/unchecked = SubResource( 8 )
 custom_fonts/font = ExtResource( 1 )
 text = "Fullscreen"
 
 [node name="GFX" type="CheckBox" parent="Menus/Visuals"]
 margin_left = 117.0
-margin_top = 117.0
+margin_top = 131.0
 margin_right = 202.0
-margin_bottom = 141.0
+margin_bottom = 155.0
 size_flags_horizontal = 4
+custom_icons/checked = SubResource( 9 )
+custom_icons/unchecked = SubResource( 8 )
 custom_fonts/font = ExtResource( 1 )
 text = "Low Quality"
 
@@ -350,9 +362,9 @@ text = "Low Quality"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 94.0
-margin_top = 145.0
+margin_top = 159.0
 margin_right = 226.0
-margin_bottom = 155.0
+margin_bottom = 169.0
 size_flags_horizontal = 4
 optionName = "Screenshake"
 
@@ -360,9 +372,9 @@ optionName = "Screenshake"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 94.0
-margin_top = 159.0
+margin_top = 173.0
 margin_right = 226.0
-margin_bottom = 169.0
+margin_bottom = 183.0
 size_flags_horizontal = 4
 optionName = "Max FPS"
 maxedMsg = "None"
@@ -373,9 +385,9 @@ step = 2
 
 [node name="Back" type="Button" parent="Menus/Visuals"]
 margin_left = 142.0
-margin_top = 173.0
+margin_top = 187.0
 margin_right = 177.0
-margin_bottom = 189.0
+margin_bottom = 203.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back"

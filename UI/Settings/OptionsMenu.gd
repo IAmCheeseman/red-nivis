@@ -65,6 +65,7 @@ func _on_music_volume_value_changed(value) -> void:
 
 func set_values() -> void:
 	find_node("Fullscreen").pressed = Settings.fullscreen
+	find_node("GFX").pressed = Settings.gfx == Settings.GFX_BAD
 	find_node("Screenshake").get_node("HSlider").value = Settings.screenshake * 100
 	find_node("Framerate").get_node("HSlider").value = Settings.maxfps
 	if Settings.maxfps == -1: find_node("Screenshake").get_node("HSlider").value = 145
