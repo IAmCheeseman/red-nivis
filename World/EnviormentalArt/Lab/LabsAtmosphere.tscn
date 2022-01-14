@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://World/EnviormentalArt/Lab/LabsAtmosphere.gd" type="Script" id=1]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -14,14 +16,14 @@ void fragment() {
 	COLOR = vec4(texture(TEXTURE, UV).rgb, alpha*strength);
 }"
 
-[sub_resource type="OpenSimplexNoise" id=4]
+[sub_resource type="OpenSimplexNoise" id=2]
 period = 14.0
 
 [sub_resource type="NoiseTexture" id=3]
 seamless = true
-noise = SubResource( 4 )
+noise = SubResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 1 )
 shader_param/strength = 0.3
 shader_param/size = 300.0
@@ -30,9 +32,10 @@ shader_param/noise = SubResource( 3 )
 
 [node name="LabsAtmosphere" type="Node2D"]
 z_index = -1
+script = ExtResource( 1 )
 
 [node name="Mist" type="ColorRect" parent="."]
-material = SubResource( 2 )
+material = SubResource( 4 )
 margin_left = -1841.0
 margin_top = -1841.0
 margin_right = 1841.0

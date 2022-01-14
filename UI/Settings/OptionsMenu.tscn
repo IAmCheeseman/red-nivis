@@ -8,21 +8,17 @@
 [ext_resource path="res://UI/Settings/RebindingButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Assets/FFFFORWA.TTF" type="DynamicFontData" id=7]
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=1]
 size = 12
 outline_size = 1
 outline_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 font_data = ExtResource( 7 )
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 5 )
 region_rect = Rect2( 151, 65, 5, 17 )
 margin_left = 5.0
 margin_right = 5.0
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 5 )
-region_rect = Rect2( 157, 65, 5, 17 )
 
 [sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 5 )
@@ -30,18 +26,22 @@ region_rect = Rect2( 157, 65, 5, 17 )
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 5 )
+region_rect = Rect2( 157, 65, 5, 17 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 5 )
 region_rect = Rect2( 184, 70, 7, 10 )
 margin_top = 9.0
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=6]
 
-[sub_resource type="Theme" id=6]
+[sub_resource type="Theme" id=7]
 VScrollBar/icons/decrement = null
-VScrollBar/styles/grabber = SubResource( 1 )
-VScrollBar/styles/grabber_highlight = SubResource( 2 )
-VScrollBar/styles/grabber_pressed = SubResource( 3 )
-VScrollBar/styles/scroll = SubResource( 4 )
-VScrollBar/styles/scroll_focus = SubResource( 5 )
+VScrollBar/styles/grabber = SubResource( 2 )
+VScrollBar/styles/grabber_highlight = SubResource( 3 )
+VScrollBar/styles/grabber_pressed = SubResource( 4 )
+VScrollBar/styles/scroll = SubResource( 5 )
+VScrollBar/styles/scroll_focus = SubResource( 6 )
 
 [node name="OptionsMenu" type="Control"]
 pause_mode = 2
@@ -77,7 +77,7 @@ margin_right = 320.0
 margin_bottom = 86.0
 rect_min_size = Vector2( 0, 32 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center][wave amp=32 freq=5]Options[/wave][/center]"
 text = "Options"
@@ -158,7 +158,7 @@ margin_right = 320.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 0, 32 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "
 [center][wave amp=32 freq=5]Controls[/wave][/center]
@@ -176,7 +176,7 @@ __meta__ = {
 margin_top = 58.0
 margin_right = 320.0
 margin_bottom = 188.0
-theme = SubResource( 6 )
+theme = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -309,12 +309,12 @@ __meta__ = {
 }
 
 [node name="VisualsText" type="RichTextLabel" parent="Menus/Visuals"]
-margin_top = 45.0
+margin_top = 31.0
 margin_right = 320.0
-margin_bottom = 99.0
+margin_bottom = 85.0
 rect_min_size = Vector2( 0, 32 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "
 [center][wave amp=32 freq=5]Visuals[/wave][/center]
@@ -330,20 +330,29 @@ __meta__ = {
 
 [node name="Fullscreen" type="CheckBox" parent="Menus/Visuals"]
 margin_left = 120.0
-margin_top = 103.0
+margin_top = 89.0
 margin_right = 199.0
-margin_bottom = 127.0
+margin_bottom = 113.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Fullscreen"
+
+[node name="GFX" type="CheckBox" parent="Menus/Visuals"]
+margin_left = 117.0
+margin_top = 117.0
+margin_right = 202.0
+margin_bottom = 141.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+text = "Low Quality"
 
 [node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 94.0
-margin_top = 131.0
+margin_top = 145.0
 margin_right = 226.0
-margin_bottom = 141.0
+margin_bottom = 155.0
 size_flags_horizontal = 4
 optionName = "Screenshake"
 
@@ -351,9 +360,9 @@ optionName = "Screenshake"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 94.0
-margin_top = 145.0
+margin_top = 159.0
 margin_right = 226.0
-margin_bottom = 155.0
+margin_bottom = 169.0
 size_flags_horizontal = 4
 optionName = "Max FPS"
 maxedMsg = "None"
@@ -364,9 +373,9 @@ step = 2
 
 [node name="Back" type="Button" parent="Menus/Visuals"]
 margin_left = 142.0
-margin_top = 159.0
+margin_top = 173.0
 margin_right = 177.0
-margin_bottom = 175.0
+margin_bottom = 189.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
@@ -390,7 +399,7 @@ margin_right = 320.0
 margin_bottom = 126.0
 rect_min_size = Vector2( 0, 32 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "
 [center][wave amp=32 freq=5]Audio[/wave][/center]
@@ -450,6 +459,7 @@ toPth = NodePath("../../../NavMenu")
 
 [connection signal="pressed" from="NavMenu/Back" to="." method="_on_quit"]
 [connection signal="toggled" from="Menus/Visuals/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="Menus/Visuals/GFX" to="." method="_on_graphic_quality_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Screenshake" to="." method="_on_screenshake_value_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Framerate" to="." method="_on_framerate_value_changed"]
 [connection signal="value_changed" from="Menus/Audio/MSTRVolume" to="." method="_on_master_volume_value_changed"]

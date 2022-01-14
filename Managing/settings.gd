@@ -1,5 +1,6 @@
 extends Node
 
+enum {GFX_BAD, GFX_GOOD}
 
 func _init() -> void:
 	var dm := DataManager.new()
@@ -17,6 +18,7 @@ func _init() -> void:
 	print_debug("------------------")
 	if settings.has("keybinds"): keybinds = settings.keybinds
 	if settings.has("fullscreen"): fullscreen = settings.fullscreen
+	if settings.has("gfx"): gfx = settings.gfx
 	
 	for i in keybinds.keys(): # Applying keybinds 
 		var newKey = InputEventKey.new() 
@@ -27,18 +29,20 @@ func _init() -> void:
 
 func save_defaults(dm: DataManager) -> void:
 	var ok = dm.save_data({
-		"fullscreen"      : Settings.fullscreen,
-		"maxfps"          : Settings.maxfps,
-		"screenshake"     : Settings.screenshake,
-		"brightness"      : Settings.brightness,
-		"keybinds"        : Settings.keybinds,
-		"masterVol"       : Settings.masterVol,
-		"sfx"             : Settings.sfx,
-		"music"           : Settings.music
+		"gfx"             : gfx,
+		"fullscreen"      : fullscreen,
+		"maxfps"          : maxfps,
+		"screenshake"     : screenshake,
+		"brightness"      : brightness,
+		"keybinds"        : keybinds,
+		"masterVol"       : masterVol,
+		"sfx"             : sfx,
+		"music"           : music
 	}, Globals.SETTINGS_FILE_NAME)
 	if ok != OK: assert(false, "lmao time for pain")
 
 # Graphics
+var gfx := GFX_GOOD
 var fullscreen := OS.has_feature("standalone")
 
 # Performance

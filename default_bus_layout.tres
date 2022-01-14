@@ -1,19 +1,19 @@
 [gd_resource type="AudioBusLayout" load_steps=5 format=2]
 
-[sub_resource type="AudioEffectLimiter" id=4]
+[sub_resource type="AudioEffectLimiter" id=1]
 resource_name = "Limiter"
 
-[sub_resource type="AudioEffectLowPassFilter" id=5]
+[sub_resource type="AudioEffectLowPassFilter" id=2]
 resource_name = "LowPassFilter"
 cutoff_hz = 4000.0
 
-[sub_resource type="AudioEffectReverb" id=1]
+[sub_resource type="AudioEffectReverb" id=3]
 resource_name = "Reverb"
 room_size = 0.2
 damping = 0.55
 hipass = 0.24
 
-[sub_resource type="AudioEffectCompressor" id=3]
+[sub_resource type="AudioEffectCompressor" id=4]
 resource_name = "Compressor"
 
 [resource]
@@ -42,11 +42,11 @@ bus/4/mute = false
 bus/4/bypass_fx = false
 bus/4/volume_db = 3.04474
 bus/4/send = "SFXMain"
-bus/4/effect/0/effect = SubResource( 4 )
+bus/4/effect/0/effect = SubResource( 1 )
 bus/4/effect/0/enabled = true
-bus/4/effect/1/effect = SubResource( 5 )
+bus/4/effect/1/effect = SubResource( 2 )
 bus/4/effect/1/enabled = true
-bus/4/effect/2/effect = SubResource( 1 )
+bus/4/effect/2/effect = SubResource( 3 )
 bus/4/effect/2/enabled = true
-bus/4/effect/3/effect = SubResource( 3 )
+bus/4/effect/3/effect = SubResource( 4 )
 bus/4/effect/3/enabled = true

@@ -15,6 +15,7 @@ func _on_quit():
 	update_settings()
 	
 	var settings = {
+		"gfx"             : Settings.gfx,
 		"fullscreen"      : Settings.fullscreen,
 		"maxfps"          : Settings.maxfps,
 		"screenshake"     : Settings.screenshake,
@@ -47,8 +48,8 @@ func _input(event: InputEvent) -> void:
 
 func _on_fullscreen_toggled(buttonPressed: bool) -> void:
 	Settings.fullscreen = buttonPressed
-func _on_graphic_quality_changed() -> void:
-	Settings.graphicsQuality = wrapi(find_node("GraphicalQuality").selectedIdx+1, 0, 2)
+func _on_graphic_quality_changed(buttonPressed: bool) -> void:
+	Settings.gfx = Settings.GFX_BAD if buttonPressed else Settings.GFX_GOOD
 func _on_screenshake_value_changed(value: float) -> void:
 	Settings.screenshake = value / 100
 func _on_framerate_value_changed(value) -> void:
