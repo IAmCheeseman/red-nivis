@@ -229,6 +229,7 @@ tracks/4/keys = {
 
 [node name="Grenade" type="RigidBody2D"]
 collision_layer = 0
+collision_mask = 17
 physics_material_override = SubResource( 1 )
 gravity_scale = 6.0
 can_sleep = false
