@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -18,6 +18,43 @@
 [ext_resource path="res://World/EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=16]
 [ext_resource path="res://World/Props/Constructor/Constructor.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Props/AbilitySelector/AbilitySelector.tscn" type="PackedScene" id=18]
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise;
+uniform float strength = .5; 
+uniform float size = 5;
+uniform float speed = 250.0;
+uniform float height = 0.0;
+uniform float steps = 3.0;
+
+void fragment() {
+	vec2 offset = vec2(0, TIME / speed);
+	float heightMod = UV.y + (height * UV.y);
+	float alpha = texture(noise, UV + offset * size).r * heightMod;
+	for (float i=0.0; i<=steps; i++) {
+		alpha = min(alpha, 1.0 / i);
+		if (alpha == 1.0 / i) { break; }
+	}
+	COLOR = vec4(texture(TEXTURE, UV).rgb, (alpha * strength * .333));
+}"
+
+[sub_resource type="OpenSimplexNoise" id=9]
+period = 14.0
+
+[sub_resource type="NoiseTexture" id=10]
+seamless = true
+noise = SubResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/strength = 0.5
+shader_param/size = 5.0
+shader_param/speed = 1000.0
+shader_param/height = 16.684
+shader_param/steps = 3.0
+shader_param/noise = SubResource( 10 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 181.343, 120 )
@@ -69,6 +106,18 @@ rect_min_size = Vector2( 0.609, 0 )
 texture = ExtResource( 14 )
 expand = true
 stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mist" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Mist"]
+material = SubResource( 8 )
+margin_left = 274.0
+margin_top = 3.0
+margin_right = 711.0
+margin_bottom = 437.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

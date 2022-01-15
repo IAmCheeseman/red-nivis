@@ -1,20 +1,20 @@
 [gd_resource type="AudioBusLayout" load_steps=5 format=2]
 
-[sub_resource type="AudioEffectLimiter" id=1]
-resource_name = "Limiter"
-
-[sub_resource type="AudioEffectLowPassFilter" id=2]
-resource_name = "LowPassFilter"
-cutoff_hz = 4000.0
-
-[sub_resource type="AudioEffectReverb" id=3]
+[sub_resource type="AudioEffectReverb" id=1]
 resource_name = "Reverb"
 room_size = 0.2
 damping = 0.55
 hipass = 0.24
 
-[sub_resource type="AudioEffectCompressor" id=4]
+[sub_resource type="AudioEffectLowPassFilter" id=2]
+resource_name = "LowPassFilter"
+cutoff_hz = 4000.0
+
+[sub_resource type="AudioEffectCompressor" id=3]
 resource_name = "Compressor"
+
+[sub_resource type="AudioEffectLimiter" id=4]
+resource_name = "Limiter"
 
 [resource]
 bus/0/volume_db = -15.7883
