@@ -31,6 +31,7 @@ var ammo:int setget set_ammo
 var healsLeft := 3 setget set_heals
 var dashesLeft := 1
 var godmode := false
+var isReloading := false
 
 var stamina := 3 setget set_stamina
 

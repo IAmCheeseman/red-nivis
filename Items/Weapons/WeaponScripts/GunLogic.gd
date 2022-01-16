@@ -70,7 +70,9 @@ func _physics_process(delta) -> void:
 
 	# Shooting
 	var hasEnoughAmmo := playerData.ammo > 0
-
+	
+	playerData.isReloading = gun.isReloading
+	
 	if Input.is_action_pressed("use_item")\
 	and gun.canShoot\
 	and hasEnoughAmmo\
@@ -140,6 +142,10 @@ func _input(event: InputEvent) -> void:
 		
 		gun.meleeCooldown.start()
 		gun.canSwing = false
+	
+	if event.is_action_pressed("reload"):
+		cooldownTimer.start(gun.reloadSpeed)
+		gun.isReloading = true
 
 
 # warning-ignore:shadowed_variable

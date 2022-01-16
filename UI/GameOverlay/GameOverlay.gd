@@ -46,6 +46,13 @@ func _ready() -> void:
 	update_money()
 
 
+func _process(delta: float) -> void:
+	reloadNotif.hide()
+	if playerData.isReloading:
+		reloadNotif.show()
+		reloadNotif.text = "..."
+
+
 func update_health(_kb:Vector2) -> void:
 	healthBar.rect_min_size.x = (playerData.health*healthBarTexSize.x)
 	healthBarEmpty.rect_size.x = playerData.maxHealth*healthBarTexSize.x
@@ -73,10 +80,6 @@ func update_grenade(val: float, enabled: bool) -> void:
 
 func update_ammo() -> void:
 	#ammoBar.value = float(playerData.ammo) / float(playerData.maxAmmo)
-	if playerData.ammo == 0:
-		reloadNotif.text = "..."
-	else:
-		reloadNotif.text = "%s/%s" % [playerData.ammo, playerData.maxAmmo]
 	ammoTween.interpolate_property(
 		ammoBar, "value",
 		ammoBar.value, float(playerData.ammo) / float(playerData.maxAmmo),
