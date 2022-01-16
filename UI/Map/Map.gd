@@ -30,7 +30,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("map"):
-		if inMiniMode:
+		if inMiniMode and !GameManager.inGUI:
 			rect_position = Vector2.ZERO
 			rect_size = get_viewport_rect().end
 			viewport.size = rect_size
@@ -39,7 +39,7 @@ func _input(event: InputEvent) -> void:
 			inMiniMode = false
 			GameManager.inGUI = true
 			tiles.material.set_shader_param("isOn", false)
-		else:
+		elif !inMiniMode:
 			rect_position = miniPosition
 			rect_size = miniSize
 			viewport.size = rect_size

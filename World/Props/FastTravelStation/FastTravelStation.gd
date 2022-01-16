@@ -36,7 +36,6 @@ func _on_interaction() -> void:
 	fastTravelMenu.show()
 	GameManager.inGUI = true
 
-
 # Gets called when the teleportation animation is done
 func teleport() -> void:
 	GameManager.inGUI = false
@@ -62,4 +61,5 @@ func _on_room_selected() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		fastTravelMenu.hide()
+		yield(TempTimer.idle_frame(self),"timeout")
 		GameManager.inGUI = false
