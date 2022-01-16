@@ -14,6 +14,7 @@ func _ready():
 func _input(inputEvent: InputEvent) -> void:
 	if inputEvent.is_action_pressed("pause"): return
 	if inputEvent is InputEventGesture: return
+	if inputEvent is InputEventJoypadMotion: return
 	
 	if _editing and !inputEvent is InputEventMouseMotion:
 		get_tree().set_input_as_handled()
