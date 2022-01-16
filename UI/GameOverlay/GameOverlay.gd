@@ -64,6 +64,10 @@ func update_money() -> void:
 func update_grenade(val: float, enabled: bool) -> void:
 	grenade.visible = enabled
 	grenade.value = grenade.max_value - val
+	if grenade.value != grenade.max_value:
+		grenade.modulate = Color.darkgray
+		return
+	grenade.modulate = Color.white
 
 
 func update_ammo() -> void:
