@@ -76,10 +76,10 @@ func _on_Cooldown_timeout():
 		if reloadAmount == -1:
 			player.ammo = player.maxAmmo
 		else:
-			player.ammo += reloadAmount
-			noAmmoClick.play()
-			if player.ammo == player.maxAmmo:
+			if player.ammo >= player.maxAmmo:
 				return
+			noAmmoClick.play()
+			player.ammo += reloadAmount
 			isReloading = true
 			cooldownTimer.start(reloadSpeed)
 

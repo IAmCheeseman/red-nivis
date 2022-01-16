@@ -112,7 +112,7 @@ func _input(event: InputEvent) -> void:
 	and !GameManager.inGUI\
 	and playerData.stamina > 0:
 		playerData.stamina -= 1
-		playerData.playerObject.vel += get_local_mouse_position().normalized()*gun.recoil*5
+		playerData.playerObject.vel += get_local_mouse_position().normalized()*gun.recoil
 		
 		swinging = true
 		swingDir = -swingDir

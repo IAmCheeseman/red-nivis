@@ -41,6 +41,7 @@ func shoot():
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
 		cooldownTimer.start(gun.cooldown*playerData.attackSpeed)
+		gun.isReloading = false
 		
 		emit_signal("gun_shot", newBullet)
 	

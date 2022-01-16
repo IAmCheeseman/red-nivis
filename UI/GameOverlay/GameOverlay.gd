@@ -16,6 +16,7 @@ onready var justLostTimer = $VBox/HealthBar/JustLost/JustLostTimer
 #onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
 onready var ammoBar = $VBox/Bottom/AmmoAndBomb/AmmoBar/TextureProgress
 onready var reloadNotif = $VBox/Bottom/AmmoAndBomb/AmmoBar/ReloadNotif
+onready var ammoTween = $VBox/Bottom/AmmoAndBomb/AmmoBar/Tween
 
 onready var healsBar = $VBox/Bottom/Heals/Icons
 
@@ -71,12 +72,17 @@ func update_grenade(val: float, enabled: bool) -> void:
 
 
 func update_ammo() -> void:
-	ammoBar.value = float(playerData.ammo) / float(playerData.maxAmmo)
+	#ammoBar.value = float(playerData.ammo) / float(playerData.maxAmmo)
 	if playerData.ammo == 0:
 		reloadNotif.text = "..."
 	else:
 		reloadNotif.text = "%s/%s" % [playerData.ammo, playerData.maxAmmo]
-
+	ammoTween.interpolate_property(
+		ammoBar, "value",
+		ammoBar.value, float(playerData.ammo) / float(playerData.maxAmmo),
+		.05
+	)
+	ammoTween.start()
 
 func update_heals() -> void:
 	if healsBar.get_child_count() != playerData.maxHeals:

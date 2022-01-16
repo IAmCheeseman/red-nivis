@@ -65,6 +65,9 @@ func _ready():
 	grayscale.material.set_shader_param("strength", 1)
 	playerData.connect("healthChanged", self, "_on_health_changed")
 	hurtbox.connect("hurt", playerData, "_on_damage_taken")
+	
+	yield(TempTimer.idle_frame(self), "timeout")
+	playerData.ammo = playerData.maxAmmo
 
 
 func _physics_process(delta: float) -> void:
