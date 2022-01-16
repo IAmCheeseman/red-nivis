@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Flamethrower.png-39a0cc77ad6a866906a13aa96d1e8649.stex"
+path="res://.import/Bomb.png-b313fac0c33864451a2142ef8a3d8a9c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Weapons/Sprites/Flamethrower.png"
-dest_files=[ "res://.import/Flamethrower.png-39a0cc77ad6a866906a13aa96d1e8649.stex" ]
+source_file="res://UI/Assets/Bomb.png"
+dest_files=[ "res://.import/Bomb.png-b313fac0c33864451a2142ef8a3d8a9c.stex" ]
 
 [params]
 

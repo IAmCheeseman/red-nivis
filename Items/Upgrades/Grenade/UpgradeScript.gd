@@ -16,6 +16,10 @@ func _ready() -> void:
 	add_child(cooldown)
 
 
+func _process(delta: float) -> void:
+	player.playerData.emit_signal("updateGrenade", cooldown.time_left, true)
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("grenade") and cooldown.is_stopped():
 		var newBomb = BOMB.instance()

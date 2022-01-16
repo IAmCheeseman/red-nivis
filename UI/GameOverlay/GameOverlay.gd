@@ -22,6 +22,8 @@ onready var healsBar = $VBox/Bottom/Heals/Icons
 # Money Counter
 onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
 
+onready var grenade = $VBox/Bottom/BombProgressBar
+
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
 var ammoBarTexSize:Vector2
@@ -35,6 +37,7 @@ func _ready() -> void:
 	playerData.connect("ammoChanged", self, "update_ammo")
 	playerData.connect("healsChanged", self, "update_heals")
 	playerData.connect("moneyChanged", self, "update_money")
+	playerData.connect("updateGrenade", self, "update_grenade")
 	
 	update_health(Vector2.ZERO)
 	update_ammo()
@@ -58,21 +61,13 @@ func update_money() -> void:
 	moneyLabel.text = "%s" % playerData.money
 
 
+func update_grenade(val: float, enabled: bool) -> void:
+	grenade.visible = enabled
+	grenade.value = grenade.max_value - val
+
+
 func update_ammo() -> void:
 	ammoBar.value = float(playerData.ammo) / float(playerData.maxAmmo)
-#	if ammoBar.get_child_count() != playerData.maxAmmo:
-#		Utils.free_children(ammoBar)
-#
-#		var ammoPoint = preload("res://UI/GameOverlay/AmmoPoint.tscn")
-#		for i in playerData.maxAmmo:
-#			var newAmmoPoint = ammoPoint.instance()
-#			ammoBar.add_child(newAmmoPoint)
-#	else:
-#		for i in ammoBar.get_children():
-#			if i.get_index()+1 > playerData.ammo:
-#				i.self_modulate.a = 0
-#			else:
-#				i.self_modulate.a = 1
 	if playerData.ammo == 0:
 		reloadNotif.text = "Reloading!"
 	else:
