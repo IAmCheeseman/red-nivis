@@ -14,16 +14,16 @@ onready var justLostTimer = $VBox/HealthBar/JustLost/JustLostTimer
 
 # Ammo bar
 #onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
-onready var ammoBar = $VBox/Bottom/AmmoAndBomb/AmmoBar/TextureProgress
-onready var reloadNotif = $VBox/Bottom/AmmoAndBomb/AmmoBar/ReloadNotif
-onready var ammoTween = $VBox/Bottom/AmmoAndBomb/AmmoBar/Tween
+onready var ammoBar = $VBox/Bottom/AmmoBar/TextureProgress
+onready var reloadNotif = $VBox/Bottom/AmmoBar/ReloadNotif
+onready var ammoTween = $VBox/Bottom/AmmoBar/Tween
 
-onready var healsBar = $VBox/Bottom/Heals/Icons
+onready var healsBar = $VBox/Bottom/HealsAndBomb/Heals/Icons
 
 # Money Counter
 onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
 
-onready var grenade = $VBox/Bottom/AmmoAndBomb/BombProgressBar
+onready var grenade = $VBox/Bottom/HealsAndBomb/BombProgressBar
 
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
