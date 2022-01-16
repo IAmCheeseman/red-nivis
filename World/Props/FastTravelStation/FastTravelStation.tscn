@@ -192,6 +192,7 @@ shape = SubResource( 3 )
 layer = 3
 
 [node name="TeleportMenu" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 7 )]
 

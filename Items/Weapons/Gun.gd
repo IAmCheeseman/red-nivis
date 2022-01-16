@@ -77,6 +77,7 @@ func _on_Cooldown_timeout():
 			player.ammo = player.maxAmmo
 		else:
 			player.ammo += reloadAmount
+			noAmmoClick.play()
 			if player.ammo == player.maxAmmo:
 				return
 			isReloading = true
