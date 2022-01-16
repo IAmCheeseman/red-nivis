@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/HeartFull.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Items/Money/Coin.png" type="Texture" id=5]
 [ext_resource path="res://UI/Assets/Bomb.png" type="Texture" id=6]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=7]
+[ext_resource path="res://UI/GameOverlay/Heal.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -53,26 +54,20 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 2, 0 ), Vector2( -2, -2 ), Vector2( 1, -2 ), Vector2( 2, -3 ) ]
 }
 
-[sub_resource type="DynamicFont" id=9]
-size = 4
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
-
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 7 )
 region = Rect2( 9, 0, 7, 10 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 7 )
-region = Rect2( 125, 88, 49, 5 )
+region = Rect2( 125, 88, 33, 5 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 7 )
-region = Rect2( 125, 83, 49, 5 )
+region = Rect2( 125, 83, 33, 5 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 5
+[sub_resource type="DynamicFont" id=9]
+size = 4
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
@@ -80,6 +75,12 @@ font_data = ExtResource( 4 )
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 7 )
 region = Rect2( 165, 94, 9, 11 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 5
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="GameOverlay" type="Control"]
 anchor_right = 1.0
@@ -158,33 +159,30 @@ __meta__ = {
 
 [node name="Bottom" type="VBoxContainer" parent="VBox"]
 margin_top = 16.0
-margin_right = 59.0
-margin_bottom = 39.0
+margin_right = 42.0
+margin_bottom = 42.0
+custom_constants/separation = 0
 
-[node name="ReloadNotif" type="Label" parent="VBox/Bottom"]
-margin_right = 59.0
-margin_bottom = 5.0
-custom_fonts/font = SubResource( 9 )
-text = "Reloading!"
-align = 1
+[node name="AmmoAndBomb" type="HBoxContainer" parent="VBox/Bottom"]
+margin_right = 42.0
+margin_bottom = 10.0
 
-[node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom"]
-margin_top = 9.0
-margin_right = 59.0
-margin_bottom = 19.0
+[node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom/AmmoAndBomb"]
+margin_right = 41.0
+margin_bottom = 10.0
 custom_constants/separation = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBox/Bottom/AmmoBar"]
+[node name="TextureRect" type="TextureRect" parent="VBox/Bottom/AmmoAndBomb/AmmoBar"]
 margin_right = 7.0
 margin_bottom = 10.0
 texture = SubResource( 8 )
 
-[node name="TextureProgress" type="TextureProgress" parent="VBox/Bottom/AmmoBar"]
+[node name="TextureProgress" type="TextureProgress" parent="VBox/Bottom/AmmoAndBomb/AmmoBar"]
 margin_left = 9.0
 margin_top = 2.0
-margin_right = 57.0
+margin_right = 41.0
 margin_bottom = 7.0
-rect_min_size = Vector2( 48, 0 )
+rect_min_size = Vector2( 32, 0 )
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.01
@@ -196,30 +194,58 @@ stretch_margin_top = 2
 stretch_margin_right = 1
 stretch_margin_bottom = 3
 
-[node name="Icons" type="GridContainer" parent="VBox/Bottom/AmmoBar"]
-margin_left = 59.0
-margin_right = 59.0
-margin_bottom = 10.0
-custom_constants/vseparation = 3
-custom_constants/hseparation = 0
-columns = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ReloadNotif" type="Label" parent="VBox/Bottom/AmmoAndBomb/AmmoBar"]
+visible = false
+margin_left = 43.0
+margin_top = 3.0
+margin_right = 43.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 9 )
+align = 1
+
+[node name="BombProgressBar" type="TextureProgress" parent="VBox/Bottom/AmmoAndBomb"]
+visible = false
+margin_left = 45.0
+margin_right = 54.0
+margin_bottom = 11.0
+max_value = 15.0
+step = 0.01
+value = 15.0
+texture_under = SubResource( 10 )
+texture_progress = ExtResource( 6 )
+fill_mode = 4
 
 [node name="Heals" type="VBoxContainer" parent="VBox/Bottom"]
-margin_top = 23.0
-margin_right = 59.0
-margin_bottom = 23.0
+margin_top = 10.0
+margin_right = 42.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 0, 16 )
+alignment = 2
 
 [node name="Icons" type="GridContainer" parent="VBox/Bottom/Heals"]
-margin_right = 59.0
+margin_top = 3.0
+margin_right = 42.0
+margin_bottom = 16.0
 custom_constants/vseparation = 3
 custom_constants/hseparation = 0
 columns = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Heal" parent="VBox/Bottom/Heals/Icons" instance=ExtResource( 8 )]
+margin_right = 14.0
+margin_bottom = 13.0
+
+[node name="Heal2" parent="VBox/Bottom/Heals/Icons" instance=ExtResource( 8 )]
+margin_left = 14.0
+margin_right = 28.0
+margin_bottom = 13.0
+
+[node name="Heal3" parent="VBox/Bottom/Heals/Icons" instance=ExtResource( 8 )]
+margin_left = 28.0
+margin_right = 42.0
+margin_bottom = 13.0
 
 [node name="MoneyDisplay" type="HBoxContainer" parent="VBox/Bottom"]
 visible = false
@@ -247,17 +273,5 @@ text = "320"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="BombProgressBar" type="TextureProgress" parent="VBox/Bottom"]
-visible = false
-margin_top = 27.0
-margin_right = 59.0
-margin_bottom = 38.0
-max_value = 15.0
-step = 0.01
-value = 15.0
-texture_under = SubResource( 10 )
-texture_progress = ExtResource( 6 )
-fill_mode = 4
 
 [connection signal="timeout" from="VBox/HealthBar/JustLost/JustLostTimer" to="." method="_on_just_lost_timer_timeout"]

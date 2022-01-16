@@ -14,15 +14,15 @@ onready var justLostTimer = $VBox/HealthBar/JustLost/JustLostTimer
 
 # Ammo bar
 #onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
-onready var ammoBar = $VBox/Bottom/AmmoBar/TextureProgress
-onready var reloadNotif = $VBox/Bottom/ReloadNotif
+onready var ammoBar = $VBox/Bottom/AmmoAndBomb/AmmoBar/TextureProgress
+onready var reloadNotif = $VBox/Bottom/AmmoAndBomb/AmmoBar/ReloadNotif
 
 onready var healsBar = $VBox/Bottom/Heals/Icons
 
 # Money Counter
 onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
 
-onready var grenade = $VBox/Bottom/BombProgressBar
+onready var grenade = $VBox/Bottom/AmmoAndBomb/BombProgressBar
 
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
@@ -69,7 +69,7 @@ func update_grenade(val: float, enabled: bool) -> void:
 func update_ammo() -> void:
 	ammoBar.value = float(playerData.ammo) / float(playerData.maxAmmo)
 	if playerData.ammo == 0:
-		reloadNotif.text = "Reloading!"
+		reloadNotif.text = "..."
 	else:
 		reloadNotif.text = "%s/%s" % [playerData.ammo, playerData.maxAmmo]
 
