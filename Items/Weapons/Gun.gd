@@ -26,6 +26,7 @@ export var customBullet: PackedScene
 export var magazineSize: int = 5
 export(Array, Resource) var perks: Array = []
 export var burst: bool = false
+export var reloadAmount: int = -1
 
 # Visual
 export var bulletSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")
@@ -56,7 +57,10 @@ var player: Resource
 
 
 func _ready():
-	cooldownTimer.start(reloadSpeed*.333)
+	player.ammo = 0
+	cooldownTimer.start(reloadSpeed)
+	isReloading = true
+	
 	meleeCooldown.wait_time = meleeSpeed
 	for perk in perks:
 		var perkNode = Node.new()
@@ -69,7 +73,14 @@ func _on_Cooldown_timeout():
 	canShoot = true
 	if isReloading:
 		isReloading = false
-		player.ammo = player.maxAmmo
+		if reloadAmount == -1:
+			player.ammo = player.maxAmmo
+		else:
+			player.ammo += reloadAmount
+			if player.ammo == player.maxAmmo:
+				return
+			isReloading = true
+			cooldownTimer.start(reloadSpeed)
 
 
 func _on_melee_timeout() -> void:
