@@ -10,6 +10,8 @@ var revealMap := false
 
 var usingController := false
 
+var pickedUpItems := []
+
 var spawnManager:Node2D
 var itemManager:ItemManagement = ItemManagement.new()
 var frameFreezer:FrameFreezer = FrameFreezer.new()

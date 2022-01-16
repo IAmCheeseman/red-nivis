@@ -20,5 +20,6 @@ static func reset() -> void:
 	worldData.playerPos = Vector2(160, 32)
 	
 	FastTravel.discoveredStations.clear()
+	GameManager.pickedUpItems.clear()
 	
 	Engine.time_scale = 1

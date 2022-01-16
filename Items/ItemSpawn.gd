@@ -2,6 +2,7 @@ extends Position2D
 
 export(float, 0, 1) var failChance:float = 1.0
 export(Array, String) var itemPool
+export var allowDuplicates := false
 export var addForce:bool = false
 export var appearOnready:bool = true
 
@@ -14,7 +15,13 @@ func add_item():
 	if itemPool.size() <= 0: queue_free()
 	if rand_range(0, 1) > failChance:
 		itemPool.shuffle()
-		var weapon = itemPool.pop_front()
+		var weapon = itemPool.front()
+		var i = 0
+		while !allowDuplicates and weapon in GameManager.pickedUpItems and i <= 100:
+			itemPool.shuffle()
+			weapon = itemPool.front()
+			i += 1
+		GameManager.pickedUpItems.append(weapon)
 		
 		# Creating the dropped item
 		var itemManager = ItemManagement.new()
