@@ -5,7 +5,7 @@ export var scaleSpeed:float = 2
 
 onready var tween = $Tween
 
-var target = 0
+var target := 0.0
 
 
 func _ready():
@@ -23,9 +23,9 @@ func rotate_cursor(time:float):
 	target += rotAmount
 	if tween.is_active():
 		tween.stop_all()
-		target += rotAmount
+		target += rotAmount * 2
 	tween.interpolate_property(self, "rotation_degrees",
-	rotation_degrees, target, time-.05)
+	rotation_degrees, target, time+.2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.start()
-	scale = Vector2.ONE*1.3
+	scale = Vector2.ONE*1.5
 

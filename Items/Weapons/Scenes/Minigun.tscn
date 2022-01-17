@@ -19,7 +19,8 @@ isTwoHanded = true
 
 [node name="GunLogic" parent="." index="0"]
 script = ExtResource( 3 )
-cooldownReduceRate = 0.007
+cooldownReduceRate = 0.01
+minCooldown = 0.15
 
 [node name="Pivot" parent="." index="1"]
 position = Vector2( 0, 1 )
