@@ -98,7 +98,7 @@ func load_run() -> int:
 	
 	if runData.size() == 0: return ERR_DOES_NOT_EXIST
 
-	print_debug("------ Run -------")
+	print("------ Run -------")
 	for i in runData.keys():
 		var splitKey = i.split(":")
 		var obj = splitKey[0]
@@ -112,9 +112,9 @@ func load_run() -> int:
 		
 		obj.set(val, runData[i])
 		if runData[i] is Array: runData[i] = "[Array]"
-		print_debug(splitKey[0] + "." + str(val) + " = " + str(runData[i]))
+		print(splitKey[0] + "." + str(val) + " = " + str(runData[i]))
 	worldData.moveDir = Vector2.DOWN
-	print_debug("------------------")
+	print("------------------")
 	return OK
 
 

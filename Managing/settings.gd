@@ -10,15 +10,16 @@ func _init() -> void:
 		save_defaults(dm)
 		settings = dm.load_data(Globals.SETTINGS_FILE_NAME)
 	
-	print_debug("---- SETTINGS ----")
+	print("---- SETTINGS ----")
 	for i in settings.keys(): # Applying save
-		if !get(i): print(i); continue
-		print_debug("%s = %s" % [i, settings[i]])
+		if get(i) == null: continue
+		var disp = "{Dictionary}" if settings[i] is Dictionary else "[Array]" if settings[i] is Array else settings[i]
+		print("%s = %s" % [i, disp])
 		set(i, settings[i])
-	print_debug("------------------")
-	if settings.has("keybinds"): keybinds = settings.keybinds
-	if settings.has("fullscreen"): fullscreen = settings.fullscreen
-	if settings.has("gfx"): gfx = settings.gfx
+#	print("keybinds = {Dictionary}")
+#	if settings.has("keybinds"): keybinds = settings.keybinds
+#	if settings.has("fullscreen"): fullscreen = settings.fullscreen
+#	if settings.has("gfx"): gfx = settings.gfx
 	
 	for i in keybinds.keys(): # Applying keybinds 
 		var newKey = InputEventKey.new() 
