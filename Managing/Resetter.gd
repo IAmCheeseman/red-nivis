@@ -18,6 +18,8 @@ static func reset() -> void:
 	
 	worldData.rooms.clear()
 	worldData.playerPos = Vector2(160, 32)
+	worldData.savePlayerPos = worldData.playerPos
+	worldData.savePosition = Vector2.ZERO
 	
 	FastTravel.discoveredStations.clear()
 	GameManager.pickedUpItems.clear()
