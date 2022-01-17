@@ -14,7 +14,7 @@ onready var dieTween = $DieTween
 onready var trail = $Trail
 
 var toPlayer = false
-var homing = true
+export var homing = true
 var homingTarget: Node2D
 
 signal hit_wall(bullet)

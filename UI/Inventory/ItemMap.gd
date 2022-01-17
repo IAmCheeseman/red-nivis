@@ -54,6 +54,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Minigun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Minigun.png"
 	},
+	"multishot-boomerang" : {
+		"key" : "multishot-boomerang",
+		"name" : "Multishot Boomerang",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/MultishotBoomerang.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/MultishotBoomerang.png"
+	},
 	"robot-shotgun" : {
 		"key" : "robot-shotgun",
 		"name" : "Robot Shotgun",

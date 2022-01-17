@@ -23,7 +23,7 @@ onready var healsBar = $VBox/Bottom/HealsAndBomb/Heals/Icons
 # Money Counter
 onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
 
-onready var grenade = $VBox/Bottom/HealsAndBomb/BombProgressBar
+onready var grenade = $VBox/Bottom/BombProgressBar
 
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
@@ -70,7 +70,7 @@ func update_money() -> void:
 
 
 func update_grenade(val: float, enabled: bool) -> void:
-	grenade.visible = enabled
+	grenade.visible = enabled 
 	grenade.value = grenade.max_value - val
 	if grenade.value != grenade.max_value:
 		grenade.modulate = Color.darkgray
