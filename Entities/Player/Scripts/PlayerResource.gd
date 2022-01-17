@@ -48,6 +48,7 @@ signal ammoChanged
 signal healsChanged
 signal moneyChanged
 signal stamina_changed
+# warning-ignore:unused_signal
 signal updateGrenade
 # warning-ignore:unused_signal
 signal updateAbilities

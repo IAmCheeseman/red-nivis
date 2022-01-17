@@ -46,7 +46,7 @@ func _ready() -> void:
 	update_money()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	reloadNotif.hide()
 	if playerData.isReloading:
 		reloadNotif.show()

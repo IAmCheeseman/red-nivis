@@ -160,7 +160,7 @@ __meta__ = {
 [node name="Bottom" type="VBoxContainer" parent="VBox"]
 margin_top = 16.0
 margin_right = 42.0
-margin_bottom = 58.0
+margin_bottom = 44.0
 custom_constants/separation = 2
 
 [node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom"]
@@ -265,6 +265,7 @@ __meta__ = {
 }
 
 [node name="BombProgressBar" type="TextureProgress" parent="VBox/Bottom"]
+visible = false
 margin_top = 30.0
 margin_right = 42.0
 margin_bottom = 42.0

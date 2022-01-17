@@ -16,7 +16,7 @@ func _ready() -> void:
 	add_child(cooldown)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	player.playerData.emit_signal("updateGrenade", cooldown.time_left, true)
 
 
