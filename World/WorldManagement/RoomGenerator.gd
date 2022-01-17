@@ -1,7 +1,7 @@
 extends Node
 class_name RoomGenerator
 
-const TEMPLATE_SIZE = 10
+const TEMPLATE_SIZE = 12
 
 const EMPTY = Color("#ffffff")
 const TILE = Color("#000000")
