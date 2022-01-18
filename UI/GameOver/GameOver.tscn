@@ -22,13 +22,15 @@ __meta__ = {
 
 [node name="GameOverLabel" type="RichTextLabel" parent="."]
 margin_left = 85.0
-margin_top = 75.0
+margin_top = 36.0
 margin_right = 235.0
-margin_bottom = 91.0
-rect_min_size = Vector2( 150, 16 )
+margin_bottom = 84.0
+rect_min_size = Vector2( 150, 48 )
 rect_clip_content = false
 size_flags_horizontal = 4
 custom_fonts/normal_font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 4
 bbcode_enabled = true
 bbcode_text = "[center][shake rate=45 level=8]Game Over[/shake]"
 text = "Game Over"
@@ -36,17 +38,21 @@ scroll_active = false
 
 [node name="Stats" type="HBoxContainer" parent="."]
 margin_left = 76.0
-margin_top = 99.0
+margin_top = 92.0
 margin_right = 244.0
-margin_bottom = 121.0
+margin_bottom = 118.0
 size_flags_horizontal = 4
 
 [node name="Kills" type="RichTextLabel" parent="Stats"]
 margin_right = 48.0
-margin_bottom = 22.0
+margin_bottom = 26.0
 rect_min_size = Vector2( 48, 16 )
 rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 2
+custom_constants/line_separation = 3
 bbcode_enabled = true
 bbcode_text = "[center]Kills
 [color=yellow]%s"
@@ -57,10 +63,14 @@ scroll_active = false
 [node name="Score" type="RichTextLabel" parent="Stats"]
 margin_left = 52.0
 margin_right = 100.0
-margin_bottom = 22.0
+margin_bottom = 26.0
 rect_min_size = Vector2( 48, 16 )
 rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 2
+custom_constants/line_separation = 3
 bbcode_enabled = true
 bbcode_text = "[center]Score
 [color=yellow]%s"
@@ -71,10 +81,14 @@ scroll_active = false
 [node name="Time" type="RichTextLabel" parent="Stats"]
 margin_left = 104.0
 margin_right = 168.0
-margin_bottom = 22.0
+margin_bottom = 26.0
 rect_min_size = Vector2( 64, 16 )
 rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 2
+custom_constants/line_separation = 3
 bbcode_enabled = true
 bbcode_text = "[center]Time
 [color=yellow]%s minutes"
@@ -83,22 +97,29 @@ text = "Time
 fit_content_height = true
 scroll_active = false
 
-[node name="HighScore" type="Label" parent="."]
-visible = false
-margin_left = 125.0
-margin_top = 114.0
-margin_right = 194.0
-margin_bottom = 124.0
-size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 2 )
-text = "High Score: %s"
-align = 1
+[node name="HighScore" type="RichTextLabel" parent="."]
+margin_top = 126.0
+margin_right = 320.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 48, 34 )
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 2
+custom_constants/line_separation = 3
+bbcode_enabled = true
+bbcode_text = "[center]High Score
+[color=purple]%s"
+text = "High Score
+%s"
+scroll_active = false
 
 [node name="ContinueOptions" type="HBoxContainer" parent="."]
 margin_left = 115.0
-margin_top = 129.0
+margin_top = 168.0
 margin_right = 205.0
-margin_bottom = 145.0
+margin_bottom = 184.0
 size_flags_horizontal = 4
 
 [node name="NewRun" type="Button" parent="ContinueOptions"]

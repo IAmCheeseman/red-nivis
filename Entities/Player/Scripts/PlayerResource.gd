@@ -32,6 +32,7 @@ var healsLeft := 3 setget set_heals
 var dashesLeft := 1
 
 var score := 0
+var highScore := 0
 var time := 0.0
 var kills := 0
 

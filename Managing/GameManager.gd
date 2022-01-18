@@ -125,3 +125,24 @@ func load_run() -> int:
 func clear_run() -> void:
 	var dm := DataManager.new()
 	dm.clear_data(Globals.RUN_FILE_NAME)
+
+
+func save_game() -> void:
+	var dm := DataManager.new()
+	var playerData = preload("res://Entities/Player/Player.tres")
+	
+	var saveData := {
+		"highScore" : playerData.highScore
+	}
+	
+	var _ok = dm.save_data(saveData, Globals.GAME_FILE_NAME)
+
+
+func load_game() -> void:
+	var dm := DataManager.new()
+	var playerData = preload("res://Entities/Player/Player.tres")
+	
+	var saveData := dm.load_data(Globals.GAME_FILE_NAME)
+	
+	for i in saveData.keys():
+		playerData.set(i, saveData[i])
