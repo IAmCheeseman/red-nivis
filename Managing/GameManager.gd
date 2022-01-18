@@ -31,6 +31,7 @@ signal zoom_in(zoom,time,zoomPos)
 var controlMaterial = CanvasItemMaterial.new()
 
 func _ready() -> void:
+	load_game()
 	controlMaterial.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
 	var _discard = get_tree().connect("node_added", self, "_on_node_added")
 

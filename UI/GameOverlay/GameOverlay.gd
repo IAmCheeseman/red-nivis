@@ -25,6 +25,8 @@ onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
 
 onready var grenade = $VBox/Bottom/BombProgressBar
 
+onready var time = $Time
+
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
 var ammoBarTexSize:Vector2
@@ -51,6 +53,10 @@ func _process(_delta: float) -> void:
 	if playerData.isReloading:
 		reloadNotif.show()
 		reloadNotif.text = "..."
+	var seconds = str(int(playerData.time) % 60)
+	if seconds.length() == 1: seconds = "0"+seconds
+	var minutes = str(int(playerData.time) % 3600 / 60)
+	time.text = "Time\n%s:%s" % [minutes, seconds]
 
 
 func update_health(_kb:Vector2) -> void:

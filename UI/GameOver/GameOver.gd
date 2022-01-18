@@ -8,20 +8,24 @@ onready var time = find_node("Time")
 
 func _ready() -> void:
 	update_stats()
-#	hide()
+	hide()
 
 
 func update_stats() -> void:
 	var playerData = preload("res://Entities/Player/Player.tres")
-	kills.bbcode_text = "[center]Kills\n----\n[color=red]%s" % playerData.kills
-	score.bbcode_text = "[center]Score\n----\n[color=yellow]%s" % playerData.score
+	
+	kills.bbcode_text = "[center]Kills\n[color=red]%s" % playerData.kills
+	score.bbcode_text = "[center]Score\n[color=yellow]%s" % playerData.score
 	
 	var seconds = str(int(playerData.time) % 60)
 	if seconds.length() == 1: seconds = "0"+seconds
 	var minutes = str(int(playerData.time) % 3600 / 60)
-	time.bbcode_text = "[center]Time\n----\n[color=green]%s:%s" % [minutes, seconds]
+	time.bbcode_text = "[center]Time\n[color=green]%s:%s" % [minutes, seconds]
 	
-	highScore.bbcode_text = "[center]High Score\n----\n[color=purple]%s" % playerData.highScore
+	playerData.highScore = max(playerData.highScore, playerData.score)
+	highScore.bbcode_text = "[center]High Score\n[color=purple]%s" % playerData.highScore
+	
+	GameManager.save_game()
 
 
 func _on_continue_button_up():
