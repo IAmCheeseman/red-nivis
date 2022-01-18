@@ -29,5 +29,5 @@ func _input(event: InputEvent) -> void:
 		newBomb.apply_central_impulse(
 			mousePos.normalized() * throwStrength # `mousePos` acts as a direction, since it's local
 		)
-		GameManager.add_child(newBomb)
+		GameManager.spawnManager.spawn_object(newBomb)
 		cooldown.start()
