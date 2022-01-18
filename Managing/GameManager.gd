@@ -114,6 +114,11 @@ func load_run() -> int:
 		if runData[i] is Array: runData[i] = "[Array]"
 		print(splitKey[0] + "." + str(val) + " = " + str(runData[i]))
 	worldData.moveDir = Vector2.DOWN
+	
+	for i in worldData.rooms:
+		for r in i:
+			if r.constantRoom:
+				r.roomIcon = load(r.constantRoom).roomIcon
 	print("------------------")
 	return OK
 

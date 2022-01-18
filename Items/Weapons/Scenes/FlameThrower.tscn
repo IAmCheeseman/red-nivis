@@ -6,27 +6,27 @@
 [ext_resource path="res://Items/Weapons/WeaponScripts/Flamethrower.gd" type="Script" id=4]
 [ext_resource path="res://Items/Weapons/Bullet/AltBullets/Flamethrower/FlameThrowerBullet.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CanvasItemMaterial" id=6]
+[sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
 particles_animation = true
 particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.181818, 0.353535, 0.784512 )
 colors = PoolColorArray( 0.0832214, 0.128215, 0.394531, 1, 0.390625, 0.110167, 0.050354, 1, 0.265625, 0.142232, 0.0819702, 1, 0.492188, 0.423927, 0.205719, 1 )
 
 [sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 7 )
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.715625, 1 ), -0.090909, -0.090909, 0, 0, Vector2( 1, 0 ), -5.39394, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=5]
-curve = SubResource( 8 )
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=6]
 lifetime_randomness = 0.5
 flag_disable_z = true
 spread = 12.0
@@ -47,7 +47,7 @@ color_ramp = SubResource( 3 )
 
 [node name="Gun" instance=ExtResource( 1 )]
 position = Vector2( 0, 7 )
-damage = 3.0
+damage = 5.0
 accuracy = 12.0
 cooldown = 0.1
 reloadSpeed = 4.5
@@ -78,14 +78,14 @@ position = Vector2( -4, -4 )
 
 [node name="Fire" type="Particles2D" parent="Pivot/GunSprite" index="2"]
 show_behind_parent = true
-material = SubResource( 6 )
+material = SubResource( 1 )
 position = Vector2( 12, 0 )
 emitting = false
 amount = 100
 lifetime = 0.3
 one_shot = true
 local_coords = false
-process_material = SubResource( 9 )
+process_material = SubResource( 6 )
 texture = ExtResource( 3 )
 
 [node name="ShootSound" parent="." index="4"]
