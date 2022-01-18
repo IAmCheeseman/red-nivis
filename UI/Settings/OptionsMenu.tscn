@@ -28,10 +28,8 @@ region_rect = Rect2( 157, 65, 5, 17 )
 texture = ExtResource( 5 )
 region_rect = Rect2( 157, 65, 5, 17 )
 
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 5 )
-region_rect = Rect2( 184, 70, 7, 10 )
-margin_top = 9.0
+[sub_resource type="StyleBoxEmpty" id=10]
+content_margin_right = 6.0
 
 [sub_resource type="StyleBoxTexture" id=6]
 
@@ -40,7 +38,7 @@ VScrollBar/icons/decrement = null
 VScrollBar/styles/grabber = SubResource( 2 )
 VScrollBar/styles/grabber_highlight = SubResource( 3 )
 VScrollBar/styles/grabber_pressed = SubResource( 4 )
-VScrollBar/styles/scroll = SubResource( 5 )
+VScrollBar/styles/scroll = SubResource( 10 )
 VScrollBar/styles/scroll_focus = SubResource( 6 )
 
 [sub_resource type="AtlasTexture" id=9]
@@ -190,7 +188,7 @@ __meta__ = {
 
 [node name="Scroll" type="ScrollContainer" parent="Menus/Keybinds/KBKeybinds"]
 margin_left = 137.0
-margin_right = 183.0
+margin_right = 182.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 130 )
 scroll_horizontal_enabled = false
