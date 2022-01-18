@@ -23,5 +23,7 @@ func _input(event: InputEvent) -> void:
 		hasJumped = true
 		player.jump()
 		player.vel.y *= .9
+		for i in player.djParticles.get_children():
+			i.rotation = player.vel.angle()+deg2rad(90)
 		player.animationPlayer.play("DoubleJump")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Entities/Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Scripts/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Player/Scripts/ItemManagement.gd" type="Script" id=5]
 [ext_resource path="res://UI/GameOver/GameOver.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/VisualEffects/Smoke.png" type="Texture" id=7]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Player/Camera/Camera.tscn" type="PackedScene" id=11]
@@ -60,6 +61,34 @@ radius = 4.0
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 3, 1.5 )
+
+[sub_resource type="CanvasItemMaterial" id=28]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=30]
+offsets = PoolRealArray( 0.155251, 0.246575, 0.552511, 0.872146, 1 )
+colors = PoolColorArray( 0.148929, 0.115738, 0.722656, 1, 0.784668, 0.343292, 0.343292, 1, 0.684326, 0.182851, 0.0695844, 1, 0.862745, 0.772549, 0.0509804, 1, 0.862745, 0.772549, 0.0509804, 0 )
+
+[sub_resource type="GradientTexture" id=31]
+gradient = SubResource( 30 )
+
+[sub_resource type="ParticlesMaterial" id=27]
+lifetime_randomness = 1.0
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 12.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 80.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+color_ramp = SubResource( 31 )
+anim_speed = 1.0
 
 [sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
@@ -142,6 +171,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=17]
 length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
 tracks/0/interp = 1
@@ -165,6 +195,58 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( -7, 1 ), Vector2( -7, 2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("DoubleJumpParticles/DoubleJump1")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("DoubleJumpParticles/DoubleJump2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DoubleJumpParticles/DoubleJump1:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DoubleJumpParticles/DoubleJump2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -257,6 +339,33 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( -7, 3 ), Vector2( -7, 1 ), Vector2( -7, 2 ), Vector2( -7, 3 ), Vector2( -7, 1 ), Vector2( -7, 2 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoubleJumpParticles/DoubleJump1:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DoubleJumpParticles/DoubleJump2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -387,7 +496,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=22]
-length = 0.2
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -396,7 +505,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.8, 0.2 ), Vector2( 1, 1 ) ]
@@ -408,7 +517,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.15 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
@@ -474,9 +583,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0, 1.0, 0.0, 1.0, 0.0 ]
 }
 
-[node name="Player" type="KinematicBody2D" groups=[
-"Player",
-]]
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 material = SubResource( 2 )
 position = Vector2( 0, -3 )
 collision_layer = 0
@@ -505,11 +612,11 @@ offset = Vector2( -5, 1 )
 flip_h = true
 hframes = 6
 vframes = 6
-frame = 11
+frame = 26
 
 [node name="Arm" type="Sprite" parent="ScaleHelper/Sprite"]
 use_parent_material = true
-position = Vector2( -7, 1 )
+position = Vector2( -7, 2 )
 texture = ExtResource( 21 )
 centered = false
 offset = Vector2( 0.5, 0 )
@@ -545,9 +652,7 @@ volumeMod = 5.0
 pitchShiftRange = 1.2
 bus = "SFX"
 
-[node name="Hurtbox" parent="." groups=[
-"player",
-] instance=ExtResource( 4 )]
+[node name="Hurtbox" parent="." groups=["player"] instance=ExtResource( 4 )]
 visible = false
 collision_layer = 2
 collision_mask = 2147483648
@@ -612,6 +717,31 @@ position = Vector2( 0, -10 )
 [node name="Camera" parent="." instance=ExtResource( 11 )]
 visible = false
 trackNodePath = NodePath("..")
+
+[node name="DoubleJumpParticles" type="Node2D" parent="."]
+
+[node name="DoubleJump1" type="Particles2D" parent="DoubleJumpParticles"]
+material = SubResource( 28 )
+position = Vector2( -6, 1 )
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 16
+local_coords = false
+process_material = SubResource( 27 )
+texture = ExtResource( 7 )
+
+[node name="DoubleJump2" type="Particles2D" parent="DoubleJumpParticles"]
+material = SubResource( 28 )
+position = Vector2( 3, 1 )
+amount = 12
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 16
+local_coords = false
+process_material = SubResource( 27 )
+texture = ExtResource( 7 )
 
 [node name="Abilities" type="Node" parent="."]
 script = ExtResource( 12 )
@@ -729,6 +859,7 @@ anims/Die = SubResource( 16 )
 anims/DoubleJump = SubResource( 17 )
 anims/Idle = SubResource( 18 )
 anims/Jump = SubResource( 19 )
+anims/RESET = SubResource( 29 )
 anims/Run = SubResource( 20 )
 anims/WallSlide = SubResource( 21 )
 

@@ -32,6 +32,7 @@ onready var healthVig = $CanvasLayer/HealthVig
 onready var healVignette = $CanvasLayer/HealVig
 onready var gameOverlay = $CanvasLayer/GameOverlay
 onready var tileChecker = $TileCheckers/BottomTileChecker
+onready var djParticles = $DoubleJumpParticles
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
