@@ -22,8 +22,7 @@ func _input(inputEvent: InputEvent) -> void:
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, inputEvent)
 		Settings.keybinds[action] = inputEvent.as_text()
-
-
+		print(inputEvent.as_text())
 		_update_button_text(inputEvent)
 		_editing = false
 		pressed = false
@@ -31,12 +30,17 @@ func _input(inputEvent: InputEvent) -> void:
 
 func _update_button_text(inputEvent: InputEvent) -> void:
 	if inputEvent is InputEventMouseButton:
-			if inputEvent.button_index == BUTTON_LEFT:
-				text = "%s: LMB" % actionDisplay
-			elif inputEvent.button_index == BUTTON_RIGHT:
-				text = "%s: RMB" % actionDisplay
-			elif inputEvent.button_index == BUTTON_MIDDLE:
-				text = "%s: MMB" % actionDisplay
+			match inputEvent.button_index:
+				BUTTON_LEFT:
+					text = "%s: LMB" % actionDisplay
+				BUTTON_RIGHT:
+					text = "%s: RMB" % actionDisplay
+				BUTTON_MIDDLE:
+					text = "%s: MMB" % actionDisplay
+				BUTTON_XBUTTON2:
+					text = "%s: MB4" % actionDisplay
+				BUTTON_XBUTTON1:
+					text = "%s: MB5" % actionDisplay
 	else:
 		text = "%s: %s" % [actionDisplay, inputEvent.as_text()]
 
