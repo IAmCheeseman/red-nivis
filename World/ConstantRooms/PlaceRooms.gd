@@ -27,7 +27,9 @@ wg) -> void:
 				if j.distance_to(selectedPos) <= minDistance:
 					roomOkay = false
 			if selectedRoom.biome == null: continue
-			if wg.get_biome_by_index(selectedRoom.biome) != b or !roomOkay or selectedRoom.constantRoom: continue
+			var biome = wg.get_biome_by_index(selectedRoom.biome)
+			if biome != b or !roomOkay or selectedRoom.constantRoom: continue
+			
 			selectedRoom.constantRoom = room.resource_path
 			selectedRoom.roomIcon = room.roomIcon
 			selectedRoom.typeAlwaysVisible = room.typeAlwaysVisible

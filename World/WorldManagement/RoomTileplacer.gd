@@ -57,7 +57,12 @@ func create_room() -> void:
 		worldData.rooms[worldData.position.x+i.x][worldData.position.y+i.y].nearDiscovered = true
 	
 	var cr = worldData.rooms[worldData.position.x][worldData.position.y].constantRoom
-	if cr: room = load(cr).scene.instance()
+	if cr:
+		var _cr = load(cr)
+		room = _cr.scene.instance()
+		if _cr.biomeSpecific.size() != 0:
+			var idx = _cr.biomes.find(biome)
+			room = _cr.biomeSpecific[idx].instance()
 	
 	# Adding the tiles
 	if room:

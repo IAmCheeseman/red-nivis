@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource( 1 )
 scene = ExtResource( 2 )
+biomeSpecific = [  ]
 biomes = [ ExtResource( 3 ) ]
 mustHave = true
 typeAlwaysVisible = true

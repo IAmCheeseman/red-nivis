@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
+[ext_resource path="res://World/Biomes/Caves.tres" type="Resource" id=2]
+[ext_resource path="res://World/Biomes/Lab.tres" type="Resource" id=3]
+[ext_resource path="res://World/Biomes/DeepLabs.tres" type="Resource" id=4]
+[ext_resource path="res://UI/Assets/ui.png" type="Texture" id=5]
+[ext_resource path="res://World/ConstantRooms/Rooms/LabsTreasureRoom.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/ConstantRooms/Rooms/DeepLabsTreasureRoom.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/ConstantRooms/Rooms/CavesTreasureRoom.tscn" type="PackedScene" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 24, 65, 12, 12 )
+
+[resource]
+script = ExtResource( 1 )
+scene = ExtResource( 6 )
+biomeSpecific = [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ) ]
+biomes = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ]
+mustHave = true
+typeAlwaysVisible = false
+roomIcon = SubResource( 1 )
+perBiome = 2
+minDistOfSameType = 2.8
