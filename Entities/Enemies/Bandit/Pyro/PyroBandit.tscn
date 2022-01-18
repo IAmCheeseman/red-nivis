@@ -113,6 +113,7 @@ tracks/0/keys = {
 }
 
 [node name="PyroBandit" instance=ExtResource( 1 )]
+speed = 40
 jumpForce = 225
 targetRange = 32
 jumpRange = Vector2( 3, 6 )
@@ -150,7 +151,12 @@ tick = 0.05
 position = Vector2( 1, 3 )
 shape = SubResource( 7 )
 
-[node name="ToggleTimer" type="Timer" parent="Gun" index="3"]
+[node name="CollisionChecker" type="RayCast2D" parent="Gun" index="3"]
+position = Vector2( 1, 3 )
+enabled = true
+cast_to = Vector2( 65, 0 )
+
+[node name="ToggleTimer" type="Timer" parent="Gun" index="4"]
 one_shot = true
 
 [node name="CollisionShape2D" parent="." index="2"]

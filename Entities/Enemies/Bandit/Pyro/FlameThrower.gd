@@ -4,6 +4,7 @@ onready var sprite = $Sprite
 onready var damager = $Damager
 onready var fire = $Fire
 onready var toggleTimer = $ToggleTimer
+onready var collisionChecker = $CollisionChecker
 
 var player: Node2D
 
@@ -24,6 +25,8 @@ func _process(delta: float) -> void:
 	if fire.emitting:
 		get_parent().state = get_parent().IDLE
 		get_parent().vel.y = Globals.GRAVITY
+		if collisionChecker.is_colliding():
+			toggle()
 	
 	look_at(player.global_position-Vector2(0, 8))
 	sprite.flip_v = Vector2.RIGHT.rotated(rotation).x < 0

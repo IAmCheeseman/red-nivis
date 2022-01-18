@@ -22,8 +22,7 @@ func _init() -> void:
 		var action = InputMap.get_action_list(i)
 		if action.size() == 0 or i.begins_with("ui"): continue
 		defaultKeybinds[i] = action[0].duplicate()
-	print(defaultKeybinds.keys())
-	print(keybinds)
+	
 	for i in keybinds.keys(): # Applying keybinds 
 		var newKey = InputEventKey.new() 
 		newKey.scancode = OS.find_scancode_from_string(keybinds[i])

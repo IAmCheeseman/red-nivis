@@ -33,7 +33,7 @@ func shoot() -> void:
 		
 		var newBullet = bullet.instance()
 		newBullet.direction = dir
-		newBullet.speed = 130
+		newBullet.speed = 100
 		newBullet.damage = 1
 		newBullet.global_position = barrelEnd.global_position
 		GameManager.spawnManager.spawn_object(newBullet)
