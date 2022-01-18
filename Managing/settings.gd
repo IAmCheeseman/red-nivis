@@ -20,12 +20,20 @@ func _init() -> void:
 	var defaults = InputMap.get_actions()
 	for i in defaults:
 		var action = InputMap.get_action_list(i)
-		if action.size() == 0: continue
-		defaultKeybinds[i] = action[0]
-	
+		if action.size() == 0 or i.begins_with("ui"): continue
+		defaultKeybinds[i] = action[0].duplicate()
+	print(defaultKeybinds.keys())
+	print(keybinds)
 	for i in keybinds.keys(): # Applying keybinds 
 		var newKey = InputEventKey.new() 
 		newKey.scancode = OS.find_scancode_from_string(keybinds[i])
+		if "InputEventMouseButton" in keybinds[i]: 
+			newKey = InputEventMouseButton.new()
+			if "BUTTON_LEFT" in keybinds[i]: newKey.button_index = BUTTON_LEFT
+			elif "BUTTON_RIGHT" in keybinds[i]: newKey.button_index = BUTTON_RIGHT
+			elif "BUTTON_XBUTTON1" in keybinds[i]: newKey.button_index = BUTTON_XBUTTON1
+			elif "BUTTON_XBUTTON2" in keybinds[i]: newKey.button_index = BUTTON_XBUTTON2
+		
 		InputMap.action_erase_events(i)
 		InputMap.action_add_event(i, newKey)
 
