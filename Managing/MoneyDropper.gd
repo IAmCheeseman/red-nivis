@@ -9,6 +9,9 @@ var used = false
 var money = preload("res://Items/Money/Money.tscn")
 
 
+func _ready() -> void: queue_free()
+
+
 func drop_money():
 	if used: return
 	used = true
