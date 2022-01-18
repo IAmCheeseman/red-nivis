@@ -2,11 +2,13 @@ extends Node2D
 
 onready var par:Node = get_parent()
 
+enum {EASY, NORMAL, HARD}
 
 export var maxHealth := 120
 export var kbAmount := 32.0
 export var upwardsKB := 0.0
 export var hurtSFXPath: NodePath
+export(int, "Easy", "Normal", "Hard") var difficulty = 1
 
 var hurtSFX:Node2D
 
@@ -70,5 +72,14 @@ func _die(dir) -> void:
 	
 	if par.has_signal("death"):
 		par.emit_signal("death")
+	
+	var scoreInc: int
+	match difficulty:
+		EASY: scoreInc = Globals.EASY_ENEMY_POINTS
+		NORMAL: scoreInc = Globals.MEDIUM_ENEMY_POINTS
+		HARD: scoreInc = Globals.HARD_ENEMY_POINTS
+	
+	GameManager.player.playerData.score += scoreInc
+	GameManager.player.playerData.kills += 1
 	
 	par.queue_free()

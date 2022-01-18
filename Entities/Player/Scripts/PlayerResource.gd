@@ -30,6 +30,11 @@ var money := 0 setget set_money
 var ammo:int setget set_ammo
 var healsLeft := 3 setget set_heals
 var dashesLeft := 1
+
+var score := 0
+var time := 0.0
+var kills := 0
+
 var godmode := false
 var isReloading := false
 

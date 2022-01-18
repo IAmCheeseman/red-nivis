@@ -26,6 +26,8 @@ var exitBlockers := []
 
 
 func _ready() -> void:
+	if !worldData.get_current_room().discovered:
+		player.playerData.score += Globals.ROOM_POINTS
 	generator.create_room()
 	seed(worldData.position.x*worldData.position.y)
 	lockedIn = rand_range(0, 1) < .2
@@ -44,10 +46,12 @@ func _ready() -> void:
 	background.modulate = Color.darkgray
 	timer.connect("timeout", self, "_on_index_timer_timeout")
 	
-	
 	if worldData.savePosition == Vector2.ZERO: worldData.savePosition = worldData.position
 	GameManager.save_run()
 
+
+func _process(delta: float) -> void:
+	player.playerData.time += delta
 
 
 func _on_index_timer_timeout() -> void:

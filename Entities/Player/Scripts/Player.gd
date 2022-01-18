@@ -18,7 +18,7 @@ onready var grayscale = $CanvasLayer/GrayScaleDeath
 onready var animationPlayer = $AnimationPlayer
 onready var SaS = $SquashAndStretch
 onready var flashPlayer = $Flash
-onready var deathScreen = $CanvasLayer/GameOverScreen
+onready var deathScreen = $CanvasLayer/GameOver
 onready var itemHolder = $ItemHolder
 onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/HurtSFX
@@ -295,6 +295,7 @@ func die():
 
 
 func show_death_screen(timer:Timer) -> void:
+	deathScreen.update_stats()
 	deathScreen.show()
 	if animationPlayer.current_animation != "Dead": animationPlayer.play("Dead")
 	timer.queue_free()

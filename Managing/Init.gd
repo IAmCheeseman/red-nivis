@@ -28,6 +28,7 @@ const WORLD = "res://World/WorldManagement/World.tscn"
 func _ready():
 	randomize()
 	
+	
 	subtitles.shuffle()
 	OS.set_window_title("Astronaut Game: %s" % subtitles.front())
 	if OS.get_name() == "OSX":

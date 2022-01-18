@@ -98,6 +98,7 @@ position = Vector2( 21, -2 )
 
 [node name="DamageManager" parent="." index="3"]
 maxHealth = 150
+difficulty = 2
 
 [node name="Collisions" parent="." index="5"]
 visible = false

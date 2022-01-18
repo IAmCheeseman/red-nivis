@@ -12,19 +12,18 @@
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=10]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=11]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 7.5 )
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 91.0055
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=3]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=4]
 radius = 5.0
 
-[sub_resource type="Animation" id=3]
-resource_name = "Land"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
@@ -50,7 +49,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -8 ), Vector2( 0, -10 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -91,13 +90,14 @@ offset = Vector2( 0, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -7.5 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 maxHealth = 150
 kbAmount = 128.0
 upwardsKB = 128.0
 hurtSFXPath = NodePath("../HitSFX")
+difficulty = 0
 
 [node name="MoneyDropper" type="Node2D" parent="."]
 script = ExtResource( 11 )
@@ -110,16 +110,18 @@ visible = false
 mustBeInSight = false
 
 [node name="CollisionShape2D" parent="Collision/PlayerDetection" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
-[node name="Hurtbox" type="Area2D" parent="Collision" groups=["hurtbox"]]
+[node name="Hurtbox" type="Area2D" parent="Collision" groups=[
+"hurtbox",
+]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/Hurtbox"]
 position = Vector2( 0, -9 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="ImmunityTimer" type="Timer" parent="Collision/Hurtbox"]
 
@@ -130,7 +132,7 @@ damage = 1
 
 [node name="CollisionShape2D" parent="Collision/Hitbox" index="0"]
 position = Vector2( 0, -9 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="BounceRay" type="RayCast2D" parent="Collision"]
 visible = false
@@ -146,8 +148,8 @@ bus = "Master"
 autostart = true
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]
-anims/Land = SubResource( 3 )
-anims/RESET = SubResource( 4 )
+anims/Land = SubResource( 5 )
+anims/RESET = SubResource( 6 )
 
 [node name="Healthbar" type="TextureProgress" parent="."]
 margin_left = -9.0

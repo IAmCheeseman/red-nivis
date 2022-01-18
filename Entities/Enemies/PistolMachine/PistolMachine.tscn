@@ -137,6 +137,7 @@ maxHealth = 80
 kbAmount = 128.0
 upwardsKB = 128.0
 hurtSFXPath = NodePath("../HitSFX")
+difficulty = 0
 
 [node name="HitSFX" type="Node2D" parent="."]
 script = ExtResource( 11 )
