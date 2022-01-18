@@ -36,6 +36,7 @@ tracks/0/keys = {
 radius = 96.7471
 
 [sub_resource type="CircleShape2D" id=3]
+radius = 10.0499
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 2, 4 )

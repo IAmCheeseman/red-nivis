@@ -14,7 +14,7 @@
 [ext_resource path="res://Entities/Enemies/MachineHurt.wav" type="AudioStream" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 6.0
+radius = 11.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 12, 6 )
@@ -95,8 +95,7 @@ vframes = 2
 frame = 8
 
 [node name="Hurtbox" parent="Sprite" instance=ExtResource( 3 )]
-visible = false
-position = Vector2( -3, -9 )
+position = Vector2( -2, -9 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 collision_layer = 4
