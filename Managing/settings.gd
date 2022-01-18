@@ -16,10 +16,12 @@ func _init() -> void:
 		var disp = "{Dictionary}" if settings[i] is Dictionary else "[Array]" if settings[i] is Array else settings[i]
 		print("%s = %s" % [i, disp])
 		set(i, settings[i])
-#	print("keybinds = {Dictionary}")
-#	if settings.has("keybinds"): keybinds = settings.keybinds
-#	if settings.has("fullscreen"): fullscreen = settings.fullscreen
-#	if settings.has("gfx"): gfx = settings.gfx
+	
+	var defaults = InputMap.get_actions()
+	for i in defaults:
+		var action = InputMap.get_action_list(i)
+		if action.size() == 0: continue
+		defaultKeybinds[i] = action[0]
 	
 	for i in keybinds.keys(): # Applying keybinds 
 		var newKey = InputEventKey.new() 
@@ -56,7 +58,8 @@ var brightness := 1.0
 
 # Gameplay
 
-var keybinds := {}
+var keybinds           := {}
+var defaultKeybinds    := {}
 var controllerKeybinds := {}
 
 # Audio

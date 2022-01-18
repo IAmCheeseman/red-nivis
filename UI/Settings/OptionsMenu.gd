@@ -4,6 +4,7 @@ var dataManager = DataManager.new()
 
 onready var menus = $Menus
 onready var navMenu = $NavMenu
+onready var keybinds = $Menus/Keybinds/KBKeybinds/Scroll/VBox
 
 
 func _ready() -> void:
@@ -74,4 +75,6 @@ func set_values() -> void:
 	find_node("MSXVolume").get_node("HSlider").value = Settings.music * 100
 
 
-
+func _on_reset_kb_bindings_pressed() -> void:
+	for i in keybinds.get_children():
+		if i.has_method("reset"): i.reset()

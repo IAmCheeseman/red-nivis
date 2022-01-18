@@ -74,9 +74,9 @@ func shoot():
 		gun.visuals.rotation_degrees = gun.kickUp*5.2\
 		if gun.visuals.scale.y == -1\
 		else -gun.kickUp*5.2
-		Cursor.get_node("Sprite").rotate_cursor(gun.reloadSpeed)
+		Cursor.get_node("Sprite").rotate_cursor(gun.reloadSpeed, 360)
 	else:
-		Cursor.get_node("Sprite").rotate_cursor(gun.cooldown)
+		Cursor.get_node("Sprite").rotate_cursor(gun.cooldown, 90)
 		cooldownTimer.set_meta("fromReload", false)
 
 

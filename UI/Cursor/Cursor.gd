@@ -19,11 +19,10 @@ func _process(delta):
 		global_position = get_global_mouse_position()
 
 
-func rotate_cursor(time:float):
-	target += rotAmount
+func rotate_cursor(time:float, amt:float=rotAmount):
+	target += amt
 	if tween.is_active():
 		tween.stop_all()
-		target += rotAmount * 2
 	tween.interpolate_property(self, "rotation_degrees",
 	rotation_degrees, target, time+.2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.start()

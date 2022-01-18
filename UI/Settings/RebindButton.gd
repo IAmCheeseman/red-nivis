@@ -4,6 +4,7 @@ export(String) var action
 export var actionDisplay: String = ""
 
 var _editing = false
+var defaultBind: InputEvent
 
 
 func _ready():
@@ -38,6 +39,14 @@ func _update_button_text(inputEvent: InputEvent) -> void:
 				text = "%s: MMB" % actionDisplay
 	else:
 		text = "%s: %s" % [actionDisplay, inputEvent.as_text()]
+
+
+func reset() -> void:
+	var defaultKey = Settings.defaultKeybinds[action]
+	InputMap.action_erase_events(action)
+	InputMap.action_add_event(action, defaultKey)
+	Settings.keybinds[action] = defaultKey.as_text()
+	_update_button_text(defaultKey)
 
 
 func _on_rebind() -> void:

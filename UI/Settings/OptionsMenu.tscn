@@ -154,7 +154,6 @@ __meta__ = {
 }
 
 [node name="Keybinds" type="VBoxContainer" parent="Menus"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -190,8 +189,8 @@ __meta__ = {
 }
 
 [node name="Scroll" type="ScrollContainer" parent="Menus/Keybinds/KBKeybinds"]
-margin_left = 144.0
-margin_right = 175.0
+margin_left = 137.0
+margin_right = 183.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 130 )
 scroll_horizontal_enabled = false
@@ -200,8 +199,8 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="Menus/Keybinds/KBKeybinds/Scroll"]
-margin_right = 31.0
-margin_bottom = 216.0
+margin_right = 39.0
+margin_bottom = 236.0
 rect_min_size = Vector2( 0, 200 )
 alignment = 1
 __meta__ = {
@@ -209,7 +208,7 @@ __meta__ = {
 }
 
 [node name="MoveLeft" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 16.0
 text = "LMB"
 action = "move_left"
@@ -217,7 +216,7 @@ actionDisplay = "Move Left"
 
 [node name="MoveRight" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 20.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 36.0
 text = "LMB"
 action = "move_right"
@@ -225,7 +224,7 @@ actionDisplay = "Move Right"
 
 [node name="Down" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 40.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 56.0
 text = "LMB"
 action = "down"
@@ -233,7 +232,7 @@ actionDisplay = "Down"
 
 [node name="Jump" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 60.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 76.0
 text = "LMB"
 action = "jump"
@@ -241,7 +240,7 @@ actionDisplay = "Jump"
 
 [node name="Shoot" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 80.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 96.0
 text = "LMB"
 action = "use_item"
@@ -249,7 +248,7 @@ actionDisplay = "Shoot"
 
 [node name="Melee" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 100.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 116.0
 text = "LMB"
 action = "melee"
@@ -257,7 +256,7 @@ actionDisplay = "Melee"
 
 [node name="Grenade" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 120.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 136.0
 text = "LMB"
 action = "grenade"
@@ -265,7 +264,7 @@ actionDisplay = "Grenade"
 
 [node name="Heal" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 140.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 156.0
 text = "LMB"
 action = "heal"
@@ -273,7 +272,7 @@ actionDisplay = "Heal"
 
 [node name="Dash" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 160.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 176.0
 text = "LMB"
 action = "dash"
@@ -281,7 +280,7 @@ actionDisplay = "Dash"
 
 [node name="Drop" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 180.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 196.0
 text = "LMB"
 action = "drop_item"
@@ -289,11 +288,20 @@ actionDisplay = "Drop Item"
 
 [node name="Interact" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 200.0
-margin_right = 31.0
+margin_right = 39.0
 margin_bottom = 216.0
 text = "LMB"
 action = "interact"
 actionDisplay = "Interact"
+
+[node name="Reset" type="Button" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox"]
+margin_top = 220.0
+margin_right = 39.0
+margin_bottom = 236.0
+custom_fonts/font = ExtResource( 1 )
+text = "Reset"
+script = ExtResource( 2 )
+isNegative = true
 
 [node name="Back" type="Button" parent="Menus/Keybinds"]
 margin_left = 142.0
@@ -309,6 +317,7 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../NavMenu")
 
 [node name="Visuals" type="VBoxContainer" parent="Menus"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
@@ -317,9 +326,9 @@ __meta__ = {
 }
 
 [node name="VisualsText" type="RichTextLabel" parent="Menus/Visuals"]
-margin_top = 45.0
+margin_top = 31.0
 margin_right = 320.0
-margin_bottom = 99.0
+margin_bottom = 85.0
 rect_min_size = Vector2( 0, 32 )
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
@@ -338,33 +347,33 @@ __meta__ = {
 
 [node name="Fullscreen" type="CheckBox" parent="Menus/Visuals"]
 margin_left = 120.0
-margin_top = 103.0
+margin_top = 89.0
 margin_right = 199.0
-margin_bottom = 127.0
+margin_bottom = 113.0
 size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 9 )
 custom_icons/unchecked = SubResource( 8 )
-custom_fonts/font = ExtResource( 1 )
 text = "Fullscreen"
 
 [node name="GFX" type="CheckBox" parent="Menus/Visuals"]
 margin_left = 117.0
-margin_top = 131.0
+margin_top = 117.0
 margin_right = 202.0
-margin_bottom = 155.0
+margin_bottom = 141.0
 size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 9 )
 custom_icons/unchecked = SubResource( 8 )
-custom_fonts/font = ExtResource( 1 )
 text = "Low Quality"
 
 [node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 94.0
-margin_top = 159.0
+margin_top = 145.0
 margin_right = 226.0
-margin_bottom = 169.0
+margin_bottom = 155.0
 size_flags_horizontal = 4
 optionName = "Screenshake"
 
@@ -372,9 +381,9 @@ optionName = "Screenshake"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 94.0
-margin_top = 173.0
+margin_top = 159.0
 margin_right = 226.0
-margin_bottom = 183.0
+margin_bottom = 169.0
 size_flags_horizontal = 4
 optionName = "Max FPS"
 maxedMsg = "None"
@@ -385,9 +394,9 @@ step = 2
 
 [node name="Back" type="Button" parent="Menus/Visuals"]
 margin_left = 142.0
-margin_top = 187.0
+margin_top = 173.0
 margin_right = 177.0
-margin_bottom = 203.0
+margin_bottom = 189.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
@@ -470,6 +479,7 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../NavMenu")
 
 [connection signal="pressed" from="NavMenu/Back" to="." method="_on_quit"]
+[connection signal="pressed" from="Menus/Keybinds/KBKeybinds/Scroll/VBox/Reset" to="." method="_on_reset_kb_bindings_pressed"]
 [connection signal="toggled" from="Menus/Visuals/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="Menus/Visuals/GFX" to="." method="_on_graphic_quality_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Screenshake" to="." method="_on_screenshake_value_changed"]
