@@ -231,6 +231,7 @@ enabled = true
 script = ExtResource( 9 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 12 )]
+maxHealth = 90
 kbAmount = 64.0
 hurtSFXPath = NodePath("../HitSFX")
 

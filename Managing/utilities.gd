@@ -45,12 +45,6 @@ static func set_mouse_position(pos: Vector2) -> void:
 	Cursor.find_node("Sprite").global_position = pos
 
 
-static func dmg_to_hp(
-	dmg: float, cooldown: float, fightTime: float):
-	var dps = dmg/cooldown
-	return (dps*fightTime)*.75
-
-
 static func round_dir_to_target(
 node: Node2D, dir: Vector2,
 correction_range: int=20, targetLayer: int=4) -> Vector2:

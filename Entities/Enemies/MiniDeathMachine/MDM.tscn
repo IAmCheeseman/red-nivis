@@ -106,6 +106,7 @@ shape = SubResource( 5 )
 script = ExtResource( 10 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 11 )]
+maxHealth = 50
 hurtSFXPath = NodePath("../HitSFX")
 
 [node name="HitSFX" type="Node2D" parent="."]
