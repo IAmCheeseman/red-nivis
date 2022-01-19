@@ -58,7 +58,6 @@ func _on_animation_finished(anim_name: String) -> void:
 			.5
 		)
 		lightTween.start()
-		
 		emit_signal("done")
 
 

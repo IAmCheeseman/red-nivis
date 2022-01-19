@@ -32,11 +32,10 @@ extents = Vector2( 331.125, 153.5 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 84 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 464, 10 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "Disappear"
+[sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -65,7 +64,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper:scale")
@@ -203,7 +202,7 @@ emitSignalInstead = true
 
 [node name="CollisionShape2D" parent="Managing/LoadingZone" index="0"]
 position = Vector2( -56, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="Props" type="Node2D" parent="."]
 z_index = -2
@@ -220,15 +219,12 @@ itemPool = [ "pistol" ]
 position = Vector2( 1736, 16 )
 z_index = 1
 
-[node name="Sprite" parent="Props/ParrySign/ScaleHelper" index="0"]
-visible = false
-
 [node name="Dialog" parent="Props/ParrySign/Dialog" index="0"]
 dialog = ExtResource( 18 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Props/ParrySign"]
-anims/Disappear = SubResource( 4 )
-anims/RESET = SubResource( 5 )
+anims/Disappear = SubResource( 5 )
+anims/RESET = SubResource( 6 )
 
 [node name="DeathSign" parent="Props" instance=ExtResource( 17 )]
 position = Vector2( 2072, -16 )
@@ -305,7 +301,6 @@ startOnready = false
 enemyPool = ExtResource( 12 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1976, -16 )
 
 [node name="GameOver" parent="Player/CanvasLayer" index="8"]
 continueScene = "res://World/Tutorial/Tutorial.tscn"
