@@ -870,6 +870,7 @@ visible = false
 mouse_filter = 2
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource( 6 )]
+visible = false
 
 [node name="Stamina" type="HBoxContainer" parent="."]
 margin_left = -24.0

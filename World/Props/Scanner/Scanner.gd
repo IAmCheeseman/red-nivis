@@ -10,14 +10,18 @@ onready var light = $Light
 
 var ending := false
 var worldPos = GameManager.worldData.position
-var roomData = GameManager.worldData.rooms\
-	[worldPos.x][worldPos.y].nodeData
+var roomData
 var key
 
+signal done
+
 func _ready() -> void:
-	yield(TempTimer.idle_frame(self), "timeout")
-	interaction.disabled = GameManager.worldData.get_room_data(
-		self, false)
+	if GameManager.worldData.rooms.size() > 0:
+		roomData = GameManager.worldData.rooms\
+		[worldPos.x][worldPos.y].nodeData
+		yield(TempTimer.idle_frame(self), "timeout")
+		interaction.disabled = GameManager.worldData.get_room_data(
+			self, false)
 	light.energy = 0
 
 
@@ -54,6 +58,8 @@ func _on_animation_finished(anim_name: String) -> void:
 			.5
 		)
 		lightTween.start()
+		
+		emit_signal("done")
 
 
 func _on_shake_timer_timeout() -> void:

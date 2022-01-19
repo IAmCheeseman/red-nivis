@@ -200,6 +200,7 @@ tracks/1/keys = {
 script = ExtResource( 4 )
 
 [node name="In" type="Particles2D" parent="."]
+emitting = false
 amount = 100
 process_material = SubResource( 7 )
 

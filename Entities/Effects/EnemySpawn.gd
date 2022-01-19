@@ -3,13 +3,19 @@ extends Node2D
 onready var enemySpawner = $EnemySpawner
 onready var anim = $AnimationPlayer
 onready var startTimer = $Timer
+onready var in_ = $In
 
-var enemyPool:Resource
+export var startOnready := true
+export var enemyPool:Resource
 
 
 func _ready() -> void:
 	enemySpawner.enemyTable = enemyPool
+	if startOnready: start()
+
+func start() -> void:
 	startTimer.start(rand_range(0.001, .5))
+	in_.emitting = true
 
 
 func _on_start_timer_timeout() -> void:

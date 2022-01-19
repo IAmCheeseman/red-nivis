@@ -33,8 +33,9 @@ func get_current_room() -> Dictionary:
 
 
 func store_room_data(node:Node, value):
-	var key = str(node.get_index())
-	rooms[position.x][position.y].nodeData[key] = value
+	if rooms.size() > 0:
+		var key = str(node.get_index())
+		rooms[position.x][position.y].nodeData[key] = value
 
 
 func get_room_data(node:Node, defaultValue=null):
