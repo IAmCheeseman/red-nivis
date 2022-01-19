@@ -47,7 +47,6 @@ func reposition_bg(resizeText: String=text.text) -> void:
 	
 	var size := font.get_string_size(resizeText)
 	# Background
-	
 	text.rect_size.y = 0
 	
 	# 16 just makes sure that it can completely fit the thing
