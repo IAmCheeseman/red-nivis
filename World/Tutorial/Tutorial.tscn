@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -22,6 +22,88 @@
 [ext_resource path="res://World/Tutorial/Shooter.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Managing/Colliders/LoadingZone.tscn" type="PackedScene" id=21]
 [ext_resource path="res://World/Tutorial/SuicideEncouragement.tres" type="Resource" id=22]
+[ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=23]
+
+[sub_resource type="Animation" id=7]
+resource_name = "Block"
+length = 7.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Show1:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Show2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 7.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 7.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:collision_layer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 7.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=9]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.509554, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.32814, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 8, 48, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 55.56
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 50.0
+damping_random = 1.0
+scale = 3.0
+scale_random = 1.0
+scale_curve = SubResource( 11 )
+anim_offset = 1.0
+anim_offset_random = 1.0
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 169.5, 120 )
@@ -120,6 +202,40 @@ __meta__ = {
 [node name="LabSolids" parent="Tiles" instance=ExtResource( 1 )]
 z_index = 1
 tile_data = PoolIntArray( -524185, 0, 524288, -524184, 0, 6, -524183, 0, 1, -524182, 0, 327681, -524181, 0, 327681, -524180, 0, 1, -524179, 0, 1, -524178, 0, 327681, -524177, 0, 327682, -524175, 0, 0, -524174, 0, 327682, -458648, 0, 65536, -458647, 0, 65537, -458646, 0, 65537, -458645, 0, 65537, -458644, 0, 65537, -458643, 0, 393217, -458642, 0, 65537, -458641, 0, 458757, -458640, 0, 327681, -458639, 0, 458758, -458638, 0, 393218, -393113, 0, 524288, -393112, 0, 196614, -393111, 0, 458753, -393110, 0, 131073, -393109, 0, 131073, -393108, 0, 458753, -393107, 0, 458753, -393106, 0, 458753, -393105, 0, 458753, -393104, 0, 131073, -393103, 0, 458753, -393102, 0, 131074, 65639, 0, 0, 65640, 0, 1, 65641, 0, 327681, 65642, 0, 327681, 65643, 0, 327681, 65644, 0, 327681, 65645, 0, 1, 65646, 0, 327681, 65647, 0, 327681, 65648, 0, 327681, 65649, 0, 327681, 65650, 0, 2, 131175, 0, 65536, 131176, 0, 65537, 131177, 0, 65537, 131178, 0, 65537, 131179, 0, 393217, 131180, 0, 65537, 131181, 0, 65537, 131182, 0, 393221, 131183, 0, 131073, 131184, 0, 65544, 131185, 0, 458753, 131186, 0, 131074, 196711, 0, 393216, 196712, 0, 65541, 196713, 0, 131073, 196714, 0, 131073, 196715, 0, 393222, 196716, 0, 393221, 196717, 0, 458753, 196718, 0, 131074, 196720, 0, 65539, 262247, 0, 131072, 262248, 0, 131074, 262251, 0, 131072, 262252, 0, 458754, 262256, 0, 458755 )
+
+[node name="Blocking" parent="Tiles" instance=ExtResource( 1 )]
+visible = false
+z_index = 1
+collision_layer = 0
+collision_mask = 0
+tile_data = PoolIntArray( -524185, 0, 524288, -524184, 0, 6, -524183, 0, 1, -524182, 0, 327681, -524181, 0, 327681, -524180, 0, 1, -524179, 0, 1, -524178, 0, 327681, -524177, 0, 327682, -524175, 0, 0, -524174, 0, 327682, -458648, 0, 65536, -458647, 0, 65537, -458646, 0, 65537, -458645, 0, 65537, -458644, 0, 65537, -458643, 0, 393217, -458642, 0, 65537, -458641, 0, 458757, -458640, 0, 327681, -458639, 0, 458758, -458638, 0, 393218, -393113, 0, 524288, -393112, 0, 196614, -393111, 0, 458753, -393110, 0, 131073, -393109, 0, 131073, -393108, 0, 458753, -393107, 0, 458753, -393106, 0, 458753, -393105, 0, 458753, -393104, 0, 131073, -393103, 0, 458753, -393102, 0, 458754, -327565, 0, 3, -262042, 0, 3, -262029, 0, 65539, -196506, 0, 65539, -196493, 0, 65539, -130970, 0, 65539, -130957, 0, 65539, -65434, 0, 65539, -65421, 0, 131075, 102, 0, 131075, 65639, 0, 327680, 65640, 0, 1, 65641, 0, 327681, 65642, 0, 327681, 65643, 0, 327681, 65644, 0, 327681, 65645, 0, 1, 65646, 0, 327681, 65647, 0, 327681, 65648, 0, 327681, 65649, 0, 327681, 65650, 0, 2, 131175, 0, 65536, 131176, 0, 65537, 131177, 0, 65537, 131178, 0, 65537, 131179, 0, 393217, 131180, 0, 65537, 131181, 0, 65537, 131182, 0, 393221, 131183, 0, 131073, 131184, 0, 65544, 131185, 0, 458753, 131186, 0, 131074, 196711, 0, 393216, 196712, 0, 65541, 196713, 0, 131073, 196714, 0, 131073, 196715, 0, 393222, 196716, 0, 393221, 196717, 0, 458753, 196718, 0, 131074, 196720, 0, 65539, 262247, 0, 131072, 262248, 0, 131074, 262251, 0, 131072, 262252, 0, 458754, 262256, 0, 458755 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tiles/Blocking"]
+anims/Block = SubResource( 7 )
+
+[node name="Show1" type="Particles2D" parent="Tiles"]
+material = SubResource( 9 )
+position = Vector2( 1640, -25 )
+z_index = 3
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 8 )
+texture = ExtResource( 23 )
+
+[node name="Show2" type="Particles2D" parent="Tiles"]
+material = SubResource( 9 )
+position = Vector2( 1848, -41 )
+z_index = 3
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 8 )
+texture = ExtResource( 23 )
 
 [node name="OneWayPlatforms" parent="Tiles" instance=ExtResource( 7 )]
 
@@ -314,9 +430,10 @@ visible = false
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
 
 [connection signal="loadArea" from="Managing/LoadingZone" to="." method="_on_load_area"]
-[connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn1" method="start"]
-[connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn2" method="start"]
 [connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn3" method="start"]
+[connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn2" method="start"]
+[connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn1" method="start"]
+[connection signal="dialog_finished" from="Props/ParrySign" to="." method="lock_player"]
 [connection signal="dialog_finished" from="Props/ParrySign" to="Props/Shooters" method="enable_shooters"]
 
 [editable path="Managing/CameraZones/CameraMoveZone1"]

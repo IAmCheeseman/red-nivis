@@ -11,6 +11,6 @@ func shoot() -> void:
 	var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn").instance()
 	bullet.direction = Vector2.DOWN
 	bullet.speed = 80
-	bullet.global_position = global_position + Vector2(0, 16)
+	bullet.global_position = global_position + Vector2(8, 16)
 	GameManager.spawnManager.spawn_object(bullet)
 	

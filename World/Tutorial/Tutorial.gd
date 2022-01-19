@@ -34,3 +34,7 @@ func start_load() -> void:
 func load_world():
 	randomize()
 	var _discard = get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+
+
+func lock_player() -> void:
+	$Tiles/Blocking/AnimationPlayer.play("Block")
