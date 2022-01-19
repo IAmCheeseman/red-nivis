@@ -14,6 +14,14 @@ outline_size = 1
 outline_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 font_data = ExtResource( 7 )
 
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 95, 79, 12, 12 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 82, 79, 12, 12 )
+
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 5 )
 region_rect = Rect2( 151, 65, 5, 17 )
@@ -40,14 +48,6 @@ VScrollBar/styles/grabber_highlight = SubResource( 3 )
 VScrollBar/styles/grabber_pressed = SubResource( 4 )
 VScrollBar/styles/scroll = SubResource( 10 )
 VScrollBar/styles/scroll_focus = SubResource( 6 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 5 )
-region = Rect2( 95, 79, 12, 12 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 5 )
-region = Rect2( 82, 79, 12, 12 )
 
 [node name="OptionsMenu" type="Control"]
 pause_mode = 2
@@ -78,9 +78,9 @@ __meta__ = {
 }
 
 [node name="SettingsText" type="RichTextLabel" parent="NavMenu"]
-margin_top = 54.0
+margin_top = 44.0
 margin_right = 320.0
-margin_bottom = 86.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 0, 32 )
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
@@ -93,11 +93,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Gameplay" type="Button" parent="NavMenu"]
+margin_left = 140.0
+margin_top = 80.0
+margin_right = 179.0
+margin_bottom = 96.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+text = "Game"
+script = ExtResource( 2 )
+fromPth = NodePath("..")
+toPth = NodePath("../../Menus/Game")
+
 [node name="Controls" type="Button" parent="NavMenu"]
 margin_left = 133.0
-margin_top = 90.0
+margin_top = 100.0
 margin_right = 186.0
-margin_bottom = 106.0
+margin_bottom = 116.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Controls"
@@ -110,9 +122,9 @@ toPth = NodePath("../../Menus/Keybinds")
 
 [node name="Visuals" type="Button" parent="NavMenu"]
 margin_left = 139.0
-margin_top = 110.0
+margin_top = 120.0
 margin_right = 181.0
-margin_bottom = 126.0
+margin_bottom = 136.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Visual"
@@ -122,9 +134,9 @@ toPth = NodePath("../../Menus/Visuals")
 
 [node name="Audio" type="Button" parent="NavMenu"]
 margin_left = 140.0
-margin_top = 130.0
+margin_top = 140.0
 margin_right = 179.0
-margin_bottom = 146.0
+margin_bottom = 156.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Audio"
@@ -134,9 +146,9 @@ toPth = NodePath("../../Menus/Audio")
 
 [node name="Back" type="Button" parent="NavMenu"]
 margin_left = 142.0
-margin_top = 150.0
+margin_top = 160.0
 margin_right = 177.0
-margin_bottom = 166.0
+margin_bottom = 176.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
@@ -151,7 +163,63 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Game" type="VBoxContainer" parent="Menus"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" type="CheckBox" parent="Menus/Game"]
+visible = false
+margin_left = 126.0
+margin_top = 60.0
+margin_right = 194.0
+margin_bottom = 84.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+custom_icons/checked = SubResource( 9 )
+custom_icons/unchecked = SubResource( 8 )
+text = "Tutorial"
+
+[node name="SpeedrunMode" type="CheckBox" parent="Menus/Game"]
+margin_left = 108.0
+margin_top = 74.0
+margin_right = 211.0
+margin_bottom = 98.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+custom_icons/checked = SubResource( 9 )
+custom_icons/unchecked = SubResource( 8 )
+text = "Speedrun Mode"
+
+[node name="DoubleDamage" type="CheckBox" parent="Menus/Game"]
+margin_left = 94.0
+margin_top = 102.0
+margin_right = 226.0
+margin_bottom = 126.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+custom_icons/checked = SubResource( 9 )
+custom_icons/unchecked = SubResource( 8 )
+text = "Double Damage Mode"
+
+[node name="Back" type="Button" parent="Menus/Game"]
+margin_left = 142.0
+margin_top = 130.0
+margin_right = 177.0
+margin_bottom = 146.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+script = ExtResource( 2 )
+isNegative = true
+fromPth = NodePath("..")
+toPth = NodePath("../../../NavMenu")
+
 [node name="Keybinds" type="VBoxContainer" parent="Menus"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -187,8 +255,8 @@ __meta__ = {
 }
 
 [node name="Scroll" type="ScrollContainer" parent="Menus/Keybinds/KBKeybinds"]
-margin_left = 137.0
-margin_right = 182.0
+margin_left = 140.0
+margin_right = 179.0
 margin_bottom = 130.0
 rect_min_size = Vector2( 0, 130 )
 scroll_horizontal_enabled = false
@@ -477,6 +545,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../NavMenu")
 
 [connection signal="pressed" from="NavMenu/Back" to="." method="_on_quit"]
+[connection signal="toggled" from="Menus/Game/Tutorial" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="Menus/Game/SpeedrunMode" to="." method="_on_speedrun_mode_toggled"]
+[connection signal="toggled" from="Menus/Game/DoubleDamage" to="." method="_on_double_damage_toggled"]
 [connection signal="pressed" from="Menus/Keybinds/KBKeybinds/Scroll/VBox/Reset" to="." method="_on_reset_kb_bindings_pressed"]
 [connection signal="toggled" from="Menus/Visuals/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="Menus/Visuals/GFX" to="." method="_on_graphic_quality_changed"]

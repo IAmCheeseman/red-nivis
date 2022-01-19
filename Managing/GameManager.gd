@@ -46,6 +46,8 @@ func _on_node_added(node: Node) -> void:
 		node.queue_free()
 	if node is Control and !node.material:
 		node.material = controlMaterial
+	if node is Button:
+		node.focus_mode = Control.FOCUS_NONE
 
 
 func attacks_capped() -> bool:

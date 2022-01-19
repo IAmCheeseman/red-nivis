@@ -39,16 +39,18 @@ func _init() -> void:
 
 func save_defaults(dm: DataManager) -> void:
 	var ok = dm.save_data({
-		"gfx"             : gfx,
-		"fullscreen"      : fullscreen,
-		"maxfps"          : maxfps,
-		"screenshake"     : screenshake,
-		"brightness"      : brightness,
-		"keybinds"        : keybinds,
-		"masterVol"       : masterVol,
-		"sfx"             : sfx,
-		"music"           : music
-	}, Globals.SETTINGS_FILE_NAME)
+		"gfx"              : gfx,
+		"fullscreen"       : fullscreen,
+		"maxfps"           : maxfps,
+		"screenshake"      : screenshake,
+		"brightness"       : brightness,
+		"keybinds"         : keybinds,
+		"masterVol"        : masterVol,
+		"sfx"              : sfx,
+		"music"            : music,
+		"speedrunTimer"    : speedrunTimer,
+		"doubleDamageMode" : doubleDamageMode
+	}, Globals.SETTINGS_FFILE_NAME)
 	if ok != OK: assert(false, "lmao time for pain")
 
 # Graphics
@@ -64,6 +66,10 @@ var brightness := 1.0
 
 
 # Gameplay
+
+var speedrunTimer      := false
+var doubleDamageMode   := false
+var tutorialEnabled    := false
 
 var keybinds           := {}
 var defaultKeybinds    := {}

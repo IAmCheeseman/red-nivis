@@ -16,15 +16,17 @@ func _on_quit():
 	update_settings()
 	
 	var settings = {
-		"gfx"             : Settings.gfx,
-		"fullscreen"      : Settings.fullscreen,
-		"maxfps"          : Settings.maxfps,
-		"screenshake"     : Settings.screenshake,
-		"brightness"      : Settings.brightness,
-		"keybinds"        : Settings.keybinds,
-		"masterVol"       : Settings.masterVol,
-		"sfx"             : Settings.sfx,
-		"music"           : Settings.music
+		"gfx"              : Settings.gfx,
+		"fullscreen"       : Settings.fullscreen,
+		"maxfps"           : Settings.maxfps,
+		"screenshake"      : Settings.screenshake,
+		"brightness"       : Settings.brightness,
+		"keybinds"         : Settings.keybinds,
+		"masterVol"        : Settings.masterVol,
+		"sfx"              : Settings.sfx,
+		"music"            : Settings.music,
+		"speedrunTimer"    : Settings.speedrunTimer,
+		"doubleDamageMode" : Settings.doubleDamageMode
 	}
 	# Saving the data
 	dataManager.save_data(settings, Globals.SETTINGS_FILE_NAME)
@@ -62,11 +64,17 @@ func _on_sfx_volume_value_changed(value) -> void:
 	Settings.sfx = value / 100
 func _on_music_volume_value_changed(value) -> void:
 	Settings.music = value / 100
+func _on_speedrun_mode_toggled(button_pressed: bool) -> void:
+	Settings.speedrunTimer = button_pressed
+func _on_double_damage_toggled(button_pressed: bool) -> void:
+	Settings.doubleDamageMode = button_pressed
 
 
 func set_values() -> void:
 	find_node("Fullscreen").pressed = Settings.fullscreen
 	find_node("GFX").pressed = Settings.gfx == Settings.GFX_BAD
+	find_node("SpeedrunMode").pressed = Settings.speedrunTimer
+	find_node("DoubleDamage").pressed = Settings.doubleDamageMode
 	find_node("Screenshake").get_node("HSlider").value = Settings.screenshake * 100
 	find_node("Framerate").get_node("HSlider").value = Settings.maxfps
 	if Settings.maxfps == -1: find_node("Screenshake").get_node("HSlider").value = 145
@@ -78,3 +86,4 @@ func set_values() -> void:
 func _on_reset_kb_bindings_pressed() -> void:
 	for i in keybinds.get_children():
 		if i.has_method("reset"): i.reset()
+
