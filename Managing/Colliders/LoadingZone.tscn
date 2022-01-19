@@ -3,9 +3,7 @@
 [ext_resource path="res://Managing/Colliders/LoadingZone.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
 
-[node name="LoadingZone" type="Area2D" groups=[
-"LoadingZone",
-]]
+[node name="LoadingZone" type="Area2D" groups=["LoadingZone"]]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource( 1 )

@@ -23,7 +23,6 @@ signal done
 
 
 func start_dialog(interaction:String="Introduction") -> void:
-#	set_dialog()
 	currentDialog = 0
 	currentDialogID = interaction
 	
@@ -32,6 +31,7 @@ func start_dialog(interaction:String="Introduction") -> void:
 	
 	increment_text()
 	charIncTimer.start()
+	show()
 
 
 func stop_dialog() -> void:
