@@ -12,6 +12,8 @@ onready var advanceTimer = $AdvanceTimer
 onready var charIncTimer = $CharIncTimer
 onready var speakSound = $Bleep
 
+const MAX_SIZE = 120
+
 #var dialogIst:AnimationPlayer
 var currentDialogID := ""
 var targetText := ""
@@ -27,6 +29,8 @@ func start_dialog(interaction:String="Introduction") -> void:
 	currentDialogID = interaction
 	
 	text.text = ""
+	text.rect_size.y = 0
+	background.rect_size.y = 0
 	reposition_bg()
 	
 	increment_text()
@@ -38,29 +42,26 @@ func stop_dialog() -> void:
 	currentDialogID = ""
 
 
-#func set_dialog() -> void:
-#	if dialogIst:
-#		return
-#	dialogIst = dialog.instance()
-#	add_child(dialogIst)
-
-
-func reposition_bg() -> void:
+func reposition_bg(resizeText: String=text.text) -> void:
 	var font:Font = text.get_font("normal_font")
 	
-	var size := font.get_string_size(text.text)
+	var size := font.get_string_size(resizeText)
 	# Background
 	
+	text.rect_size.y = 0
+	
 	# 16 just makes sure that it can completely fit the thing
-	background.rect_size.x = size.x + 16 
-	background.rect_position.x = -background.rect_size.x*.666
+	background.rect_size.x = min(size.x + 16, MAX_SIZE)
+	background.rect_size.y = text.rect_size.y + 4
+	background.rect_position = -background.rect_size*.5
+	background.rect_position.y = -background.rect_size.y
 	
 	# Pointer
 	pointer.position.x = 0
 	
 	# Label
 	text.rect_size.x = background.rect_size.x
-	text.rect_position.x = background.rect_position.x
+	text.rect_position = background.rect_position + Vector2(0, (size.y/2)-2)
 
 
 func add_center_tags(string:String) -> String:

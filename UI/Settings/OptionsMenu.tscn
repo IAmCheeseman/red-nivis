@@ -14,40 +14,40 @@ outline_size = 1
 outline_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 font_data = ExtResource( 7 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
 region = Rect2( 95, 79, 12, 12 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 5 )
 region = Rect2( 82, 79, 12, 12 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 5 )
 region_rect = Rect2( 151, 65, 5, 17 )
 margin_left = 5.0
 margin_right = 5.0
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 5 )
 region_rect = Rect2( 157, 65, 5, 17 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 5 )
-region_rect = Rect2( 157, 65, 5, 17 )
-
-[sub_resource type="StyleBoxEmpty" id=10]
-content_margin_right = 6.0
 
 [sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 5 )
+region_rect = Rect2( 157, 65, 5, 17 )
 
-[sub_resource type="Theme" id=7]
+[sub_resource type="StyleBoxEmpty" id=7]
+content_margin_right = 6.0
+
+[sub_resource type="StyleBoxTexture" id=8]
+
+[sub_resource type="Theme" id=9]
 VScrollBar/icons/decrement = null
-VScrollBar/styles/grabber = SubResource( 2 )
-VScrollBar/styles/grabber_highlight = SubResource( 3 )
-VScrollBar/styles/grabber_pressed = SubResource( 4 )
-VScrollBar/styles/scroll = SubResource( 10 )
-VScrollBar/styles/scroll_focus = SubResource( 6 )
+VScrollBar/styles/grabber = SubResource( 4 )
+VScrollBar/styles/grabber_highlight = SubResource( 5 )
+VScrollBar/styles/grabber_pressed = SubResource( 6 )
+VScrollBar/styles/scroll = SubResource( 7 )
+VScrollBar/styles/scroll_focus = SubResource( 8 )
 
 [node name="OptionsMenu" type="Control"]
 pause_mode = 2
@@ -171,6 +171,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ControlsText" type="RichTextLabel" parent="Menus/Game"]
+margin_top = 45.0
+margin_right = 320.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 0, 32 )
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "
+[center][wave amp=32 freq=5]Game[/wave][/center]
+"
+text = "
+Game
+"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Tutorial" type="CheckBox" parent="Menus/Game"]
 visible = false
 margin_left = 126.0
@@ -178,38 +198,38 @@ margin_top = 60.0
 margin_right = 194.0
 margin_bottom = 84.0
 size_flags_horizontal = 4
+custom_icons/checked = SubResource( 2 )
+custom_icons/unchecked = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
-custom_icons/checked = SubResource( 9 )
-custom_icons/unchecked = SubResource( 8 )
 text = "Tutorial"
 
 [node name="SpeedrunMode" type="CheckBox" parent="Menus/Game"]
-margin_left = 108.0
-margin_top = 74.0
-margin_right = 211.0
-margin_bottom = 98.0
+margin_left = 106.0
+margin_top = 103.0
+margin_right = 213.0
+margin_bottom = 127.0
 size_flags_horizontal = 4
+custom_icons/checked = SubResource( 2 )
+custom_icons/unchecked = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
-custom_icons/checked = SubResource( 9 )
-custom_icons/unchecked = SubResource( 8 )
-text = "Speedrun Mode"
+text = "Speedrun Timer"
 
 [node name="DoubleDamage" type="CheckBox" parent="Menus/Game"]
 margin_left = 94.0
-margin_top = 102.0
+margin_top = 131.0
 margin_right = 226.0
-margin_bottom = 126.0
+margin_bottom = 155.0
 size_flags_horizontal = 4
+custom_icons/checked = SubResource( 2 )
+custom_icons/unchecked = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
-custom_icons/checked = SubResource( 9 )
-custom_icons/unchecked = SubResource( 8 )
 text = "Double Damage Mode"
 
 [node name="Back" type="Button" parent="Menus/Game"]
 margin_left = 142.0
-margin_top = 130.0
+margin_top = 159.0
 margin_right = 177.0
-margin_bottom = 146.0
+margin_bottom = 175.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
@@ -249,7 +269,7 @@ __meta__ = {
 margin_top = 58.0
 margin_right = 320.0
 margin_bottom = 188.0
-theme = SubResource( 7 )
+theme = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -344,14 +364,6 @@ text = "LMB"
 action = "dash"
 actionDisplay = "Dash"
 
-[node name="Drop" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 180.0
-margin_right = 39.0
-margin_bottom = 196.0
-text = "LMB"
-action = "drop_item"
-actionDisplay = "Drop Item"
-
 [node name="Interact" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
 margin_top = 200.0
 margin_right = 39.0
@@ -417,9 +429,9 @@ margin_top = 89.0
 margin_right = 199.0
 margin_bottom = 113.0
 size_flags_horizontal = 4
+custom_icons/checked = SubResource( 2 )
+custom_icons/unchecked = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
-custom_icons/checked = SubResource( 9 )
-custom_icons/unchecked = SubResource( 8 )
 text = "Fullscreen"
 
 [node name="GFX" type="CheckBox" parent="Menus/Visuals"]
@@ -428,9 +440,9 @@ margin_top = 117.0
 margin_right = 202.0
 margin_bottom = 141.0
 size_flags_horizontal = 4
+custom_icons/checked = SubResource( 2 )
+custom_icons/unchecked = SubResource( 3 )
 custom_fonts/font = ExtResource( 1 )
-custom_icons/checked = SubResource( 9 )
-custom_icons/unchecked = SubResource( 8 )
 text = "Low Quality"
 
 [node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]

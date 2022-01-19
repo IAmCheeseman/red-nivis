@@ -85,12 +85,11 @@ func set_slot_cursor_position():
 
 func _input(event):
 	randomize()
-
 	# Slot scrolling
 	if !playerData.isDead and !GameManager.inGUI:
 		if event.is_action_released("hotbar_scroll_left"):
 			inventory.selectedSlot = wrapi(inventory.selectedSlot-1,
-									0, slots.get_child_count())
+									 0, slots.get_child_count())
 		if event.is_action_released("hotbar_scroll_right"):
 			inventory.selectedSlot = wrapi(inventory.selectedSlot+1,
 									0, slots.get_child_count())
@@ -99,22 +98,6 @@ func _input(event):
 			if Input.is_key_pressed(key):
 				inventory.selectedSlot = key-KEY_1
 
-		if event.is_action_pressed("drop_item"):
-			var item = inventory.items[inventory.selectedSlot]
-			if item == null:
-				return
-
-			# Spawning the item
-			var itemManager = ItemManagement.new()
-			var newItem = itemManager.create_item(item.key, true)
-			newItem.global_position = playerData.playerObject.global_position+Vector2(0, -8)
-			GameManager.spawnManager.spawn_object(newItem)
-
-			inventory.remove_item(inventory.selectedSlot)
-
-	# Item moving for controller
-#	if event.is_action_pressed("move_item"):
-#		_on_button_pressed(slots.get_child(inventory.selectedSlot))
 
 func _on_mouse_entered():
 	GameManager.editingInventory = true

@@ -38,8 +38,9 @@ dialog = ExtResource( 5 )
 
 [node name="Background" type="NinePatchRect" parent="."]
 margin_left = -24.0
+margin_top = -17.0
 margin_right = 25.0
-margin_bottom = 16.0
+margin_bottom = -1.0
 texture = ExtResource( 1 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -53,19 +54,20 @@ __meta__ = {
 
 [node name="Text" type="RichTextLabel" parent="."]
 margin_left = -24.0
-margin_top = 3.0
+margin_top = -14.0
 margin_right = 25.0
-margin_bottom = 19.0
+margin_bottom = 2.0
 rect_clip_content = false
 custom_fonts/normal_font = ExtResource( 4 )
 bbcode_enabled = true
+fit_content_height = true
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Pointer" type="Sprite" parent="."]
-position = Vector2( 0, 20 )
+position = Vector2( 0, 4 )
 texture = ExtResource( 3 )
 hframes = 4
 frame = 2
