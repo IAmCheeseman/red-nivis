@@ -21,7 +21,7 @@ func update_stats() -> void:
 	
 	var seconds = str(int(playerData.time) % 60)
 	if seconds.length() == 1: seconds = "0"+seconds
-	var minutes = str(int(playerData.time) % 3600 / 60)
+	var minutes = str(int(playerData.time) % int(3600 / 60))
 	time.bbcode_text = "[center]Time\n[color=green]%s:%s" % [minutes, seconds]
 	
 	playerData.highScore = max(playerData.highScore, playerData.score)
@@ -32,7 +32,7 @@ func update_stats() -> void:
 
 func _on_continue_button_up():
 	Resetter.reset()
-	get_tree().change_scene(continueScene)
+	var _discard = get_tree().change_scene(continueScene)
 
 func _on_quit_pressed():
 	get_tree().quit()

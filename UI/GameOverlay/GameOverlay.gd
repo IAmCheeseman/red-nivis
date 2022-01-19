@@ -62,7 +62,7 @@ func _process(_delta: float) -> void:
 	if Settings.speedrunTimer:
 		var seconds = str(int(playerData.time) % 60)
 		if seconds.length() == 1: seconds = "0"+seconds
-		var minutes = str(int(playerData.time) % 3600 / 60)
+		var minutes = str(int(playerData.time) % int(3600 / 60))
 		time.text = "Time\n%s:%s" % [minutes, seconds]
 	else:
 		time.text = ""
@@ -131,4 +131,4 @@ func _on_just_lost_timer_timeout() -> void:
 	)
 	justLostTween.start()
 
-func _on_item_picked_up(id) -> void: show()
+func _on_item_picked_up(_id) -> void: show()

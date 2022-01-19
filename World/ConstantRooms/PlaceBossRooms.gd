@@ -8,6 +8,7 @@ static func generate_rooms(rooms:Array, brooms: Array, worldGenerator):
 			for y in rooms[x].size():
 				var room = rooms[x][y]
 				if !room.bossRoom: continue
+				
 				var neighbors = worldGenerator.get_neighbors(
 					Vector2(x, y),
 					false,
@@ -16,12 +17,13 @@ static func generate_rooms(rooms:Array, brooms: Array, worldGenerator):
 				var correctBiome = false
 				for i in neighbors:
 					var iroom = rooms[i.x][i.y]
-					if iroom.biome in r.biomes:
+					if worldGenerator.get_biome_by_index(iroom.biome) in r.biomes:
 						room.biome = iroom.biome
 						room.typeAlwaysVisible = true
 						correctBiome = true
 						break
 				if !correctBiome: continue
+				
 				room.constantRoom = r.resource_path
 				room.roomIcon = r.roomIcon
 				

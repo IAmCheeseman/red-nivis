@@ -2,7 +2,7 @@ extends Node2D
 
 onready var sprite = $Sprite
 
-export var upgrade:Resource = preload("res://Items/Upgrades/DoubleJump/DoubleJump.tres")
+export var upgrade:Resource = preload("res://Items/Upgrades/Teleport/Teleport.tres")
 
 var player = preload("res://Entities/Player/Player.tres")
 
