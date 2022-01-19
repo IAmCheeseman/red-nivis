@@ -248,6 +248,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("DoubleJumpParticles/DoubleJump1:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("DoubleJumpParticles/DoubleJump2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=18]
 length = 0.4
@@ -365,7 +389,31 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DoubleJumpParticles/DoubleJump1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DoubleJumpParticles/DoubleJump2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -612,7 +660,6 @@ offset = Vector2( -5, 1 )
 flip_h = true
 hframes = 6
 vframes = 6
-frame = 26
 
 [node name="Arm" type="Sprite" parent="ScaleHelper/Sprite"]
 use_parent_material = true
@@ -735,6 +782,7 @@ texture = ExtResource( 7 )
 [node name="DoubleJump2" type="Particles2D" parent="DoubleJumpParticles"]
 material = SubResource( 28 )
 position = Vector2( 3, 1 )
+emitting = false
 amount = 12
 one_shot = true
 explosiveness = 1.0
@@ -755,7 +803,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.115
 one_shot = true
 
 [node name="DropDownTimer" type="Timer" parent="."]

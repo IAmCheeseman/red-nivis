@@ -98,7 +98,7 @@ func _physics_process(delta: float) -> void:
 			sprite.scale.x = -tileChecker.cast_to.normalized().x
 			vel.y /= 1.2
 		states.DASH:
-			SaS.stop()
+			SaS.play("Dash")
 			if dashCooldown.is_stopped():
 				state = states.WALK
 				vel.y = 0
