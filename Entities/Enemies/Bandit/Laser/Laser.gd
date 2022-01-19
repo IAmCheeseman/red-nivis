@@ -41,11 +41,16 @@ func _process(delta: float) -> void:
 
 
 func shoot() -> void:
+	if GameManager.attacks_capped(1): return
+	
 	var newLaser = laser.instance()
 	newLaser.global_position = global_position
 	GameManager.spawnManager.add_child(newLaser)
 	yield(TempTimer.idle_frame(self), "timeout")
 	newLaser.look_at(newLaser.position+Vector2.RIGHT.rotated(rotation))
+	
+	GameManager.add_attacking_enemy(newLaser)
+	newLaser.connect("tree_exiting", GameManager, "remove_attacking_enemy", [newLaser])
 
 
 func _on_attack_timer_timeout() -> void:
