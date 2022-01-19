@@ -1,11 +1,30 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bandit/Bandit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemies/Bandit/Shotgun/Shotgun.gd" type="Script" id=2]
 [ext_resource path="res://Entities/Enemies/Bandit/Shotgun/Arm.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Fall"
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float isOn = 1.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	vec4 flash = vec4(
+		mix(color.r, 1, isOn),
+		mix(color.g, 1, isOn),
+		mix(color.b, 1, isOn),
+		color.a
+	);
+	COLOR = flash;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/isOn = 0.0
+
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -21,8 +40,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 9 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Idle"
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -81,12 +99,13 @@ position = Vector2( 0, -9 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Gun" index="0"]
+material = SubResource( 2 )
 position = Vector2( 0, -0.5 )
 texture = ExtResource( 3 )
 offset = Vector2( 9, 0 )
 
 [node name="PewPewTiemr" type="Timer" parent="Gun" index="1"]
-wait_time = 1.5
+wait_time = 3.0
 one_shot = true
 autostart = true
 
@@ -105,8 +124,8 @@ visible = false
 
 [node name="AnimationPlayer" parent="." index="7"]
 autoplay = "Idle"
-anims/Fall = SubResource( 1 )
-anims/Idle = SubResource( 2 )
+anims/Fall = SubResource( 5 )
+anims/Idle = SubResource( 6 )
 anims/RESET = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 

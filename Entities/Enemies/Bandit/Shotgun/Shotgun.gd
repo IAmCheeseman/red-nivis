@@ -14,6 +14,9 @@ func _process(_delta: float) -> void:
 	if !player: return
 	look_at(player.global_position-Vector2(0, 8))
 	sprite.flip_v = Vector2.RIGHT.rotated(rotation).x < 0
+	sprite.material.set_shader_param("isOn", int(PEWPEWTIERWOOO.time_left < .6))
+	sprite.scale.x = clamp(PEWPEWTIERWOOO.time_left / PEWPEWTIERWOOO.wait_time, .5, INF)
+	sprite.scale.y = (1 - sprite.scale.x) + 1
 
 
 func shoot() -> void:
@@ -24,8 +27,11 @@ func shoot() -> void:
 		return
 	if global_position.distance_to(player.global_position) < 32:
 		return
+	if global_position.distance_to(player.global_position) > 160:
+		return
+	
 	var spread = 12
-	get_parent().vel = -Vector2.RIGHT.rotated(rotation)*250
+	owner.vel = -Vector2.RIGHT.rotated(rotation)*250
 	for i in 3:
 		var angle = i-1
 		angle *= spread

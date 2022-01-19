@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bandit/Shotgun/Bandit.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bandit/Bandit.gd" type="Script" id=2]
@@ -9,12 +9,32 @@
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=7]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float isOn = 1.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	vec4 flash = vec4(
+		mix(color.r, 1, isOn),
+		mix(color.g, 1, isOn),
+		mix(color.b, 1, isOn),
+		color.a
+	);
+	COLOR = flash;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/isOn = 0.0
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 6.5, 3 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=4]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=5]
 radius = 160.012
 
 [node name="Bandit" type="KinematicBody2D"]
@@ -23,6 +43,7 @@ collision_mask = 49
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
 position = Vector2( 0, 1 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -11 )
@@ -35,7 +56,7 @@ frame = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -0.5, -2.5 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
 maxHealth = 145
@@ -52,14 +73,14 @@ position = Vector2( 0, -8 )
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 3 )]
 visible = false
 mustBeInSight = false
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="CollisionChecker" type="RayCast2D" parent="Collisions"]
 visible = false
