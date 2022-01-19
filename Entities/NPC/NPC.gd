@@ -8,6 +8,8 @@ onready var interactionZone = $Iteraction
 
 var vel:Vector2 = Vector2.ZERO
 
+signal dialog_finished
+
 
 func _ready() -> void:
 	dialog.hide()
@@ -26,3 +28,4 @@ func _on_interaction() -> void:
 
 func _on_dialog_finished() -> void:
 	interactionZone.disabled = false
+	emit_signal("dialog_finished")

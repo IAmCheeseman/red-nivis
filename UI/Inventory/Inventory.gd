@@ -61,6 +61,13 @@ func move_item(from:int, to:int):
 	emit_signal("itemsChanged")
 
 
+func is_empty() -> bool:
+	for item in items:
+		if item:
+			return false
+	return true
+
+
 func remove_item(id):
 	if id is String:
 		if !has_item(id):

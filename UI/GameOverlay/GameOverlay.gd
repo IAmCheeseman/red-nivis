@@ -1,6 +1,7 @@
 extends Control
 
 var playerData = preload("res://Entities/Player/Player.tres")
+var inventory = preload("res://UI/Inventory/Inventory.tres")
 
 # Health Bar
 onready var healthBar = $VBox/HealthBar
@@ -41,11 +42,15 @@ func _ready() -> void:
 	playerData.connect("healsChanged", self, "update_heals")
 	playerData.connect("moneyChanged", self, "update_money")
 	playerData.connect("updateGrenade", self, "update_grenade")
+	inventory.connect("itemAdded", self, "_on_item_picked_up")
 	
 	update_health(Vector2.ZERO)
 	update_ammo()
 	update_heals()
 	update_money()
+	
+	yield(TempTimer.idle_frame(self, 2), "timeout")
+	if inventory.is_empty(): hide()
 
 
 func _process(_delta: float) -> void:
@@ -126,3 +131,4 @@ func _on_just_lost_timer_timeout() -> void:
 	)
 	justLostTween.start()
 
+func _on_item_picked_up(id) -> void: show()

@@ -5,6 +5,8 @@ onready var highScore = find_node("HighScore")
 onready var kills = find_node("Kills")
 onready var time = find_node("Time")
 
+export var continueScene := "res://World/StartingArea/StartingArea.tscn"
+
 
 func _ready() -> void:
 	update_stats()
@@ -30,7 +32,7 @@ func update_stats() -> void:
 
 func _on_continue_button_up():
 	Resetter.reset()
-	get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
+	get_tree().change_scene(continueScene)
 
 func _on_quit_pressed():
 	get_tree().quit()

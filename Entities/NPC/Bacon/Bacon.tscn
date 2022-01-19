@@ -16,6 +16,7 @@ radius = 21.095
 position = Vector2( 0, -12 )
 texture = ExtResource( 2 )
 flip_h = false
+frame = 3
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false

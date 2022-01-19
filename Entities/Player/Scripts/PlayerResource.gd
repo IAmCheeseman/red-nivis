@@ -67,7 +67,8 @@ func _init() -> void:
 func _on_damage_taken(damage: int, kbDir: Vector2) -> void:
 	if playerObject.state == playerObject.states.DASH:
 		return
-	health -= int(damage) * (2 * int(Settings.doubleDamageMode))
+	health -= int(damage)
+	if Settings.doubleDamageMode: health -= int(damage)
 	health = int(clamp(health, 0, maxHealth))
 	emit_signal("healthChanged", kbDir)
 
