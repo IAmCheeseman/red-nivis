@@ -25,9 +25,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[node name="Dialog" type="Control" groups=[
-"Dialog",
-]]
+[node name="Dialog" type="Control" groups=["Dialog"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -35,6 +33,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 dialog = ExtResource( 5 )
+advanceTime = 1.0
 
 [node name="Background" type="NinePatchRect" parent="."]
 margin_left = -24.0
@@ -88,6 +87,7 @@ wait_time = 0.05
 one_shot = true
 
 [node name="AdvanceTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="CharIncTimer" to="." method="increment_char"]

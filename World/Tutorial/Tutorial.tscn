@@ -430,9 +430,9 @@ visible = false
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
 
 [connection signal="loadArea" from="Managing/LoadingZone" to="." method="_on_load_area"]
-[connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn3" method="start"]
-[connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn2" method="start"]
 [connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn1" method="start"]
+[connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn2" method="start"]
+[connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn3" method="start"]
 [connection signal="dialog_finished" from="Props/ParrySign" to="." method="lock_player"]
 [connection signal="dialog_finished" from="Props/ParrySign" to="Props/Shooters" method="enable_shooters"]
 
