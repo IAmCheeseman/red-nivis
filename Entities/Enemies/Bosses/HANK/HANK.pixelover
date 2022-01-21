@@ -1,0 +1,3416 @@
+[pixelover]
+
+version="0.8.1"
+
+[object.0]
+
+type="canvas"
+tree_item_collapsed=false
+object_name="Canvas"
+canvas_fit_childs=false
+object_position=Vector2( 570, 532 )
+canvas_max_size=Vector3( 1000, 1000, 1 )
+object_size=Vector3( 216, 139, 0 )
+object_pivot=Vector2( 108, 69 )
+
+[shader.2]
+
+object_name="Default shader"
+object_path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"","relative_path":"","favorite":false,"is_folder":false)
+
+shader_modulate_color=Color( 1, 1, 1, 1 )
+shader_hue_shift=0.0
+shader_brightness=100.0
+shader_contrast=100.0
+shader_saturation=100.0
+shader_gamma=100.0
+shader_indexed=false
+shader_match=false
+shader_match_palette=Object(ImageTexture,"resource_local_to_scene":false,"resource_name":"","flags":2,"storage":0,"lossy_quality":0.7,"flags":2,"image":Object(Image,"resource_local_to_scene":false,"resource_name":"","data":{
+"data": PoolByteArray( 0, 0, 0, 255, 37, 86, 46, 255, 165, 48, 48, 255, 70, 130, 50, 255, 21, 29, 40, 255, 222, 158, 65, 255, 25, 51, 45, 255, 117, 36, 56, 255, 12, 15, 25, 255, 190, 119, 43, 255, 232, 193, 112, 255, 9, 10, 20, 255, 122, 54, 123, 255, 64, 39, 81, 255, 16, 20, 31, 255, 12, 14, 24, 255, 17, 22, 33, 255, 18, 24, 35, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 18
+},"script":null)
+,"size":Vector2( 18, 1 ),"script":null)
+
+shader_match_shift=0.0
+shader_dithering_enable=false
+shader_dithering_amount=36.0
+shader_dithering_invert=true
+shader_lines_only=false
+shader_lines_indexed=false
+shader_outline_enable=true
+shader_outline_screen_border=true
+shader_outline_size=1.0
+shader_outline_color=Color( 0, 0, 0, 1 )
+shader_inline_enable=false
+shader_inline_screen_border=false
+shader_inline_size=4.0
+shader_inline_blend=true
+shader_inline_color=Color( 0, 0, 0, 1 )
+shader_internal_line_enable=false
+shader_internal_line_invert=false
+shader_internal_line_threshold=30.0
+shader_internal_line_size=1.0
+shader_internal_line_color_secondary=Color( 0, 0, 0, 1 )
+shader_internal_line_color=Color( 1, 1, 1, 1 )
+shader_internal_line_depth_enable=false
+shader_internal_line_depth_invert=false
+shader_internal_line_depth_threshold=100.0
+shader_internal_line_depth_color=Color( 1, 1, 1, 1 )
+shader_mask=false
+shader_mask_for={
+"Inline": false,
+"Outline": false
+}
+shader_mask_palette=Object(ImageTexture,"resource_local_to_scene":false,"resource_name":"","flags":2,"storage":0,"lossy_quality":0.7,"flags":2,"image":Object(Image,"resource_local_to_scene":false,"resource_name":"","data":{
+"data": PoolByteArray( 0, 0, 0, 255, 37, 86, 46, 255, 165, 48, 48, 255, 70, 130, 50, 255, 21, 29, 40, 255, 222, 158, 65, 255, 25, 51, 45, 255, 117, 36, 56, 255, 12, 15, 25, 255, 190, 119, 43, 255, 232, 193, 112, 255, 9, 10, 20, 255, 122, 54, 123, 255, 64, 39, 81, 255, 16, 20, 31, 255 ),
+"format": "RGBA8",
+"height": 1,
+"mipmaps": false,
+"width": 15
+},"script":null)
+,"size":Vector2( 15, 1 ),"script":null)
+
+shader_transparency=true
+shader_alpha_to_zero=0.0
+shader_denoise=false
+shader_denoise_threshold=0.01
+shader_denoise_sigma=2.0
+shader_denoise_ksigma=3.0
+effect_tiled_mode=0
+effect_tiled_opacity=25.0
+effect_wave=false
+effect_wave_time=0.0
+effect_wave_angle=45.0
+effect_wave_length=1.0
+effect_wave_amplitude=10.0
+effect_shockwave=false
+effect_shockwave_position=Vector2( 50, 50 )
+effect_shockwave_time=0.0
+effect_shockwave_width=10.0
+effect_shockwave_height=10.0
+
+[object.1]
+
+type="shader2dlayer"
+tree_item_collapsed=false
+object_name="Shader Layer"
+layer_clipping_mask=false
+shader_file=2
+layer_clipping_mask_invert=false
+object_visible=true
+object_opacity=100.0
+object_zlayer=0.0
+parent_id=0
+
+[resource.0]
+
+path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"/home/xander-swan/Documents/AstronautGame/Entities/Enemies/Bosses/HANK/HANK.png","relative_path":"","favorite":false,"is_folder":false)
+
+type="image"
+image=PoolByteArray( 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 85, 0, 0, 0, 113, 8, 6, 0, 0, 0, 164, 200, 239, 122, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 233, 0, 0, 11, 12, 73, 68, 65, 84, 120, 156, 237, 93, 77, 111, 27, 199, 25, 126, 214, 33, 19, 147, 33, 28, 6, 38, 5, 16, 53, 77, 27, 146, 82, 58, 176, 216, 64, 2, 98, 185, 64, 46, 5, 170, 67, 208, 34, 190, 68, 1, 242, 63, 4, 164, 45, 16, 24, 186, 52, 128, 126, 66, 239, 1, 34, 31, 146, 94, 90, 32, 5, 114, 9, 16, 203, 7, 185, 214, 7, 28, 41, 146, 32, 169, 74, 171, 86, 162, 33, 42, 160, 184, 177, 201, 100, 123, 224, 206, 112, 118, 118, 102, 119, 103, 63, 41, 145, 15, 64, 136, 92, 238, 206, 188, 243, 240, 153, 119, 222, 119, 118, 118, 164, 225, 252, 194, 16, 28, 211, 98, 183, 66, 128, 190, 48, 66, 134, 98, 185, 106, 59, 118, 124, 176, 97, 0, 192, 141, 218, 29, 219, 119, 123, 171, 143, 200, 219, 68, 219, 213, 87, 164, 138, 72, 100, 113, 124, 176, 97, 176, 100, 150, 174, 149, 108, 231, 28, 126, 127, 72, 200, 77, 172, 109, 73, 84, 44, 234, 182, 190, 112, 163, 118, 167, 47, 137, 77, 197, 92, 159, 193, 170, 241, 213, 215, 95, 3, 32, 86, 156, 27, 122, 196, 89, 137, 61, 252, 254, 48, 176, 145, 65, 17, 231, 47, 105, 20, 203, 85, 52, 159, 213, 233, 129, 220, 213, 66, 96, 98, 207, 78, 78, 105, 25, 60, 146, 82, 235, 165, 152, 234, 177, 17, 10, 0, 205, 103, 117, 156, 157, 156, 198, 100, 66, 124, 136, 187, 251, 75, 209, 15, 221, 54, 44, 196, 165, 212, 216, 145, 100, 15, 232, 11, 159, 234, 151, 0, 114, 45, 239, 83, 207, 78, 78, 113, 124, 176, 1, 36, 52, 250, 199, 93, 169, 109, 244, 15, 66, 232, 222, 234, 35, 20, 203, 85, 74, 42, 41, 171, 249, 172, 14, 189, 85, 7, 6, 132, 84, 32, 196, 56, 85, 148, 44, 36, 77, 168, 223, 138, 131, 144, 18, 168, 161, 197, 114, 149, 166, 169, 44, 161, 196, 165, 152, 100, 6, 174, 39, 40, 216, 202, 61, 145, 37, 202, 185, 121, 200, 98, 206, 135, 127, 251, 130, 175, 51, 8, 250, 118, 66, 133, 132, 84, 70, 190, 80, 113, 61, 57, 157, 201, 176, 147, 22, 54, 56, 17, 30, 65, 200, 164, 129, 177, 187, 81, 223, 15, 187, 124, 223, 72, 65, 48, 120, 52, 254, 243, 95, 164, 51, 25, 219, 49, 0, 184, 251, 238, 61, 105, 97, 36, 195, 185, 56, 17, 167, 63, 208, 56, 149, 207, 118, 100, 199, 100, 16, 41, 241, 243, 91, 105, 124, 126, 43, 237, 211, 52, 87, 240, 42, 117, 234, 250, 6, 196, 238, 194, 240, 248, 82, 2, 205, 168, 114, 87, 11, 182, 47, 69, 199, 206, 97, 230, 99, 220, 168, 221, 33, 177, 171, 129, 30, 249, 134, 108, 170, 145, 143, 123, 247, 86, 31, 177, 215, 185, 34, 5, 64, 59, 62, 216, 232, 253, 234, 186, 14, 0, 104, 155, 127, 217, 99, 102, 5, 210, 194, 68, 70, 62, 221, 108, 2, 120, 197, 171, 61, 65, 32, 84, 20, 33, 84, 116, 158, 153, 32, 80, 176, 246, 191, 255, 135, 28, 0, 224, 193, 159, 155, 202, 134, 68, 226, 83, 9, 158, 110, 54, 241, 164, 121, 25, 200, 134, 22, 154, 74, 33, 75, 42, 72, 198, 85, 186, 86, 194, 216, 132, 243, 36, 56, 111, 191, 95, 208, 238, 223, 124, 86, 183, 117, 119, 209, 49, 39, 131, 120, 60, 105, 94, 14, 104, 158, 26, 120, 123, 217, 207, 78, 110, 171, 116, 173, 36, 252, 126, 101, 235, 4, 128, 250, 152, 112, 161, 124, 42, 111, 47, 251, 249, 127, 219, 59, 0, 128, 87, 178, 175, 226, 121, 235, 204, 242, 87, 132, 149, 173, 19, 236, 174, 119, 224, 151, 212, 200, 124, 234, 131, 24, 186, 61, 193, 241, 193, 6, 50, 217, 46, 137, 162, 121, 91, 39, 144, 54, 177, 246, 119, 9, 245, 7, 162, 84, 173, 81, 223, 247, 196, 128, 83, 146, 208, 214, 117, 139, 47, 62, 47, 16, 13, 176, 237, 13, 255, 237, 56, 87, 185, 63, 7, 81, 156, 26, 85, 215, 80, 178, 59, 236, 92, 89, 37, 32, 239, 183, 122, 66, 43, 51, 236, 153, 127, 141, 228, 224, 166, 129, 241, 57, 213, 96, 8, 245, 71, 186, 176, 183, 83, 146, 68, 20, 164, 158, 55, 181, 134, 238, 74, 134, 74, 141, 0, 81, 145, 122, 94, 212, 26, 201, 192, 58, 84, 106, 4, 136, 146, 212, 126, 87, 107, 100, 225, 223, 80, 169, 17, 32, 142, 27, 101, 97, 43, 34, 140, 242, 34, 77, 82, 134, 74, 141, 0, 113, 144, 218, 111, 190, 53, 242, 84, 122, 168, 212, 8, 16, 23, 169, 253, 162, 214, 88, 38, 124, 134, 74, 141, 0, 113, 146, 154, 180, 90, 227, 154, 150, 28, 42, 53, 10, 36, 178, 148, 50, 128, 98, 252, 94, 27, 155, 74, 129, 161, 82, 35, 65, 18, 164, 198, 237, 91, 99, 85, 41, 48, 84, 106, 36, 72, 138, 212, 184, 212, 26, 187, 74, 129, 112, 158, 163, 98, 9, 233, 139, 149, 204, 73, 35, 8, 169, 6, 0, 140, 207, 214, 232, 129, 173, 197, 85, 165, 37, 135, 172, 90, 205, 197, 28, 81, 175, 11, 136, 5, 126, 72, 181, 145, 73, 48, 62, 91, 243, 74, 172, 101, 57, 124, 63, 45, 45, 15, 3, 74, 49, 34, 208, 35, 243, 254, 119, 151, 240, 164, 121, 25, 111, 229, 126, 196, 253, 55, 126, 182, 156, 184, 181, 184, 234, 84, 182, 240, 249, 2, 134, 88, 199, 21, 209, 30, 213, 151, 152, 74, 1, 111, 3, 149, 1, 192, 248, 227, 219, 127, 178, 168, 243, 73, 243, 50, 190, 152, 108, 225, 254, 27, 63, 227, 254, 119, 158, 199, 187, 32, 3, 82, 162, 68, 169, 192, 137, 13, 3, 128, 49, 62, 91, 195, 248, 108, 13, 223, 156, 62, 149, 158, 200, 175, 67, 53, 201, 231, 9, 148, 46, 7, 39, 8, 41, 18, 72, 156, 124, 25, 169, 198, 204, 252, 36, 102, 230, 39, 241, 254, 222, 239, 241, 139, 149, 81, 252, 250, 181, 55, 45, 39, 188, 149, 251, 81, 248, 94, 86, 30, 33, 180, 88, 174, 218, 124, 168, 196, 167, 218, 30, 102, 104, 212, 247, 207, 133, 255, 21, 13, 84, 198, 248, 108, 173, 183, 62, 243, 119, 127, 199, 191, 215, 59, 120, 128, 29, 219, 137, 247, 30, 103, 187, 111, 156, 73, 181, 40, 148, 60, 136, 203, 46, 221, 52, 159, 228, 179, 217, 32, 131, 233, 179, 13, 0, 152, 27, 155, 166, 74, 92, 216, 94, 74, 92, 165, 162, 74, 133, 141, 185, 121, 59, 37, 93, 4, 123, 239, 113, 214, 50, 88, 53, 119, 122, 189, 247, 112, 121, 13, 60, 161, 197, 114, 85, 99, 8, 164, 132, 147, 99, 164, 254, 155, 183, 237, 191, 183, 200, 134, 173, 197, 85, 74, 108, 63, 146, 106, 243, 101, 44, 193, 78, 196, 2, 86, 50, 9, 58, 71, 109, 250, 94, 242, 168, 184, 133, 212, 241, 217, 154, 144, 76, 22, 172, 13, 205, 29, 3, 19, 239, 165, 241, 229, 199, 143, 1, 244, 22, 36, 39, 61, 144, 209, 199, 40, 133, 123, 64, 125, 117, 138, 226, 111, 186, 207, 20, 201, 8, 21, 145, 153, 27, 237, 182, 167, 113, 164, 102, 140, 10, 161, 44, 102, 230, 39, 41, 177, 253, 0, 219, 35, 63, 44, 210, 153, 140, 133, 88, 86, 173, 44, 153, 132, 68, 25, 194, 216, 208, 128, 39, 148, 168, 148, 28, 47, 77, 77, 224, 112, 121, 141, 124, 157, 104, 184, 101, 145, 198, 103, 31, 190, 68, 223, 127, 240, 233, 79, 182, 147, 119, 215, 59, 148, 76, 39, 34, 89, 194, 5, 126, 148, 192, 48, 51, 48, 20, 203, 85, 20, 203, 85, 139, 218, 102, 230, 39, 45, 245, 138, 192, 30, 207, 141, 106, 192, 178, 212, 164, 88, 65, 73, 101, 9, 37, 159, 121, 98, 111, 222, 78, 97, 23, 246, 6, 138, 92, 0, 208, 83, 168, 140, 80, 30, 165, 169, 9, 250, 254, 159, 127, 105, 33, 127, 247, 101, 103, 235, 205, 186, 201, 15, 204, 169, 53, 49, 88, 148, 122, 227, 151, 35, 244, 253, 222, 166, 179, 67, 148, 17, 105, 81, 176, 139, 114, 182, 22, 87, 81, 154, 154, 160, 3, 154, 190, 255, 3, 0, 32, 83, 185, 130, 212, 72, 26, 141, 135, 47, 92, 137, 101, 93, 64, 191, 192, 54, 50, 100, 71, 127, 213, 125, 179, 249, 15, 219, 201, 108, 247, 7, 196, 46, 64, 70, 182, 23, 164, 51, 25, 180, 117, 29, 250, 254, 15, 200, 84, 174, 120, 186, 134, 247, 241, 204, 238, 21, 137, 143, 254, 158, 192, 119, 127, 39, 2, 205, 110, 24, 184, 97, 141, 135, 47, 144, 26, 233, 62, 117, 199, 255, 136, 108, 253, 68, 237, 169, 145, 52, 112, 16, 180, 214, 96, 184, 4, 211, 231, 125, 240, 233, 79, 216, 219, 60, 66, 107, 103, 5, 0, 240, 230, 187, 191, 197, 103, 31, 190, 68, 35, 0, 160, 167, 84, 242, 34, 232, 28, 181, 109, 47, 21, 176, 79, 23, 242, 200, 223, 125, 25, 19, 239, 217, 31, 101, 204, 141, 106, 150, 87, 106, 36, 77, 201, 79, 26, 202, 243, 169, 170, 132, 121, 133, 19, 177, 110, 62, 51, 136, 203, 137, 2, 74, 164, 54, 30, 190, 16, 23, 194, 41, 68, 181, 235, 103, 42, 87, 232, 32, 69, 62, 251, 69, 88, 110, 39, 8, 132, 164, 182, 118, 86, 122, 3, 22, 127, 129, 160, 139, 249, 85, 47, 137, 83, 75, 83, 19, 54, 34, 73, 153, 172, 79, 21, 161, 223, 84, 10, 8, 182, 190, 16, 37, 0, 109, 93, 167, 141, 118, 35, 208, 99, 246, 100, 176, 49, 169, 40, 182, 116, 154, 165, 34, 224, 9, 237, 151, 140, 202, 50, 161, 34, 75, 87, 205, 172, 200, 181, 48, 133, 116, 212, 32, 25, 211, 218, 95, 219, 174, 105, 174, 8, 34, 133, 134, 76, 42, 169, 64, 185, 44, 219, 172, 145, 232, 36, 39, 178, 61, 150, 43, 130, 49, 62, 91, 179, 100, 68, 128, 115, 119, 206, 141, 106, 210, 239, 57, 181, 251, 37, 149, 22, 30, 100, 198, 75, 122, 227, 204, 203, 197, 249, 66, 133, 62, 223, 79, 70, 239, 231, 173, 51, 118, 123, 56, 55, 131, 140, 98, 185, 106, 137, 67, 201, 68, 9, 1, 9, 227, 58, 71, 109, 169, 111, 21, 184, 15, 229, 27, 154, 0, 144, 201, 22, 232, 78, 21, 108, 187, 26, 245, 125, 203, 100, 56, 0, 44, 108, 47, 73, 11, 244, 92, 249, 220, 216, 52, 91, 160, 193, 18, 74, 208, 214, 117, 60, 111, 157, 1, 232, 109, 171, 225, 97, 255, 61, 139, 127, 237, 28, 181, 45, 169, 41, 81, 166, 140, 212, 195, 229, 53, 100, 178, 5, 232, 173, 58, 253, 235, 177, 93, 6, 208, 35, 146, 181, 91, 212, 46, 158, 88, 39, 82, 67, 95, 246, 195, 239, 73, 146, 47, 84, 216, 27, 122, 162, 205, 179, 52, 86, 105, 36, 231, 231, 19, 140, 212, 72, 218, 54, 72, 178, 215, 145, 173, 62, 76, 200, 122, 26, 181, 129, 177, 75, 106, 187, 95, 68, 186, 125, 50, 187, 249, 11, 183, 120, 130, 31, 4, 180, 195, 229, 53, 43, 17, 178, 84, 147, 57, 158, 47, 84, 44, 155, 204, 232, 173, 58, 157, 50, 252, 242, 227, 199, 150, 141, 189, 200, 249, 44, 156, 54, 166, 9, 130, 208, 72, 117, 202, 136, 120, 16, 50, 244, 86, 157, 37, 151, 18, 64, 84, 71, 186, 52, 1, 249, 44, 34, 130, 37, 148, 129, 165, 139, 123, 69, 208, 189, 96, 2, 145, 42, 34, 146, 248, 38, 2, 167, 173, 138, 152, 17, 214, 162, 92, 246, 92, 254, 58, 214, 255, 1, 93, 50, 223, 249, 232, 58, 128, 171, 244, 24, 127, 207, 138, 183, 137, 28, 227, 203, 102, 143, 169, 136, 132, 135, 111, 82, 221, 186, 14, 235, 248, 69, 16, 185, 134, 70, 125, 223, 152, 153, 159, 196, 215, 159, 252, 11, 0, 248, 40, 130, 126, 238, 146, 72, 208, 123, 191, 187, 222, 193, 214, 226, 170, 165, 155, 123, 181, 211, 9, 94, 206, 97, 225, 155, 84, 145, 2, 157, 20, 225, 214, 184, 70, 125, 159, 102, 81, 239, 124, 116, 29, 187, 235, 29, 220, 188, 125, 157, 59, 139, 255, 220, 5, 9, 187, 72, 36, 224, 6, 214, 38, 217, 119, 252, 103, 254, 7, 118, 66, 160, 238, 207, 239, 70, 70, 42, 230, 27, 70, 140, 231, 213, 43, 34, 155, 204, 72, 57, 221, 89, 229, 111, 83, 147, 40, 128, 248, 106, 182, 94, 217, 143, 46, 34, 148, 37, 206, 139, 16, 100, 80, 38, 149, 93, 176, 192, 86, 78, 48, 55, 54, 173, 45, 108, 47, 89, 2, 106, 30, 178, 238, 196, 134, 80, 162, 123, 97, 178, 115, 89, 223, 41, 242, 147, 78, 96, 137, 100, 109, 231, 203, 202, 23, 42, 88, 216, 94, 50, 248, 36, 64, 132, 80, 70, 127, 150, 88, 51, 40, 214, 72, 178, 224, 70, 48, 185, 54, 95, 168, 224, 112, 121, 77, 105, 34, 133, 157, 46, 228, 225, 212, 197, 121, 34, 137, 221, 108, 64, 31, 36, 212, 10, 45, 164, 146, 101, 50, 252, 90, 39, 192, 74, 46, 235, 26, 50, 217, 2, 182, 22, 87, 133, 196, 138, 110, 157, 176, 16, 145, 200, 19, 74, 200, 116, 81, 155, 166, 183, 234, 70, 236, 164, 122, 241, 53, 11, 219, 75, 150, 212, 22, 176, 168, 194, 81, 189, 252, 36, 11, 1, 57, 214, 52, 119, 138, 108, 126, 107, 29, 60, 188, 170, 82, 100, 171, 27, 84, 34, 0, 95, 164, 242, 78, 92, 86, 33, 49, 86, 70, 174, 121, 142, 77, 189, 128, 125, 182, 170, 115, 212, 166, 100, 2, 64, 227, 91, 231, 45, 71, 189, 168, 210, 137, 76, 190, 125, 42, 17, 128, 239, 220, 95, 230, 175, 68, 112, 50, 126, 110, 108, 90, 155, 27, 155, 214, 244, 22, 253, 79, 18, 158, 22, 68, 228, 111, 217, 255, 151, 0, 41, 67, 111, 213, 105, 185, 126, 108, 98, 225, 39, 2, 8, 37, 164, 242, 2, 89, 35, 136, 138, 121, 245, 10, 137, 117, 185, 245, 44, 34, 209, 43, 121, 34, 248, 13, 169, 2, 207, 82, 49, 221, 66, 121, 98, 152, 119, 11, 204, 113, 50, 23, 224, 249, 37, 83, 165, 172, 14, 23, 104, 122, 171, 30, 201, 100, 139, 5, 166, 113, 70, 38, 91, 48, 242, 133, 138, 229, 133, 228, 247, 69, 137, 2, 182, 118, 102, 178, 5, 3, 128, 225, 246, 67, 41, 43, 85, 165, 203, 95, 36, 168, 184, 2, 95, 221, 159, 37, 246, 34, 19, 204, 182, 81, 197, 21, 196, 50, 250, 159, 103, 248, 25, 172, 2, 13, 84, 145, 59, 242, 62, 64, 236, 163, 63, 51, 51, 213, 183, 79, 223, 5, 128, 166, 183, 234, 190, 122, 227, 112, 19, 133, 8, 160, 116, 127, 156, 191, 215, 115, 193, 149, 10, 248, 108, 179, 146, 82, 7, 101, 112, 146, 193, 235, 160, 53, 140, 83, 61, 66, 37, 10, 8, 52, 75, 117, 193, 187, 62, 96, 206, 173, 2, 106, 81, 64, 160, 56, 117, 80, 16, 91, 156, 58, 72, 46, 64, 181, 173, 195, 144, 42, 2, 40, 145, 58, 72, 234, 148, 193, 11, 7, 94, 73, 53, 242, 133, 202, 192, 142, 252, 4, 220, 138, 26, 233, 116, 167, 242, 232, 63, 64, 35, 63, 129, 114, 4, 224, 123, 234, 111, 208, 160, 210, 102, 207, 74, 29, 228, 110, 15, 132, 215, 126, 126, 183, 29, 250, 34, 183, 21, 66, 169, 229, 124, 128, 109, 179, 236, 69, 33, 242, 137, 6, 0, 209, 2, 90, 10, 102, 179, 131, 65, 240, 169, 128, 2, 39, 197, 114, 85, 179, 61, 242, 227, 116, 33, 1, 187, 116, 17, 23, 159, 88, 163, 52, 53, 129, 220, 168, 230, 186, 199, 11, 208, 37, 215, 118, 86, 119, 93, 168, 248, 98, 209, 254, 41, 131, 130, 230, 142, 65, 87, 34, 186, 241, 35, 252, 86, 101, 103, 159, 65, 2, 105, 191, 219, 50, 79, 79, 79, 252, 185, 224, 194, 119, 127, 213, 11, 254, 15, 196, 111, 183, 213, 108, 17, 179, 172, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 )
+
+[object.3]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="HANK"
+image=0
+pixel_scale=1
+filter=false
+fill=0
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=false
+object_basis=0
+object_position=Vector2( 7, 0 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=0.0
+object_pivot_percent=Vector2( 0, 0 )
+object_skew=0.0
+parent_id=1
+
+[resource.4]
+
+path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"/home/xander-swan/Documents/AstronautGame/Entities/Enemies/Bosses/HANK/NeckJoint.png","relative_path":"","favorite":false,"is_folder":false)
+
+type="image"
+image=PoolByteArray( 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 7, 0, 0, 0, 7, 8, 6, 0, 0, 0, 196, 82, 87, 211, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 233, 0, 0, 0, 60, 73, 68, 65, 84, 8, 153, 99, 96, 32, 4, 74, 85, 44, 24, 4, 68, 228, 255, 195, 112, 169, 138, 5, 3, 3, 3, 3, 3, 35, 3, 3, 3, 131, 128, 136, 252, 127, 116, 13, 31, 222, 60, 100, 100, 194, 103, 34, 97, 201, 84, 1, 73, 70, 100, 65, 116, 62, 86, 0, 0, 131, 232, 10, 142, 12, 217, 9, 35, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 )
+
+[object.8]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="NeckJoint"
+image=4
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 10, -8 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=2.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=0.0
+object_pivot_percent=Vector2( 0.429, 0.571 )
+object_skew=0.0
+parent_id=1
+
+[resource.3]
+
+path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"/home/xander-swan/Documents/AstronautGame/Entities/Enemies/Bosses/HANK/Neck.png","relative_path":"","favorite":false,"is_folder":false)
+
+type="image"
+image=PoolByteArray( 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 24, 0, 0, 0, 5, 8, 6, 0, 0, 0, 95, 63, 44, 189, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 233, 0, 0, 0, 28, 73, 68, 65, 84, 24, 149, 99, 96, 160, 49, 96, 20, 149, 213, 248, 79, 75, 11, 152, 104, 105, 56, 93, 44, 160, 57, 0, 0, 13, 114, 1, 95, 212, 43, 3, 112, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 )
+
+[object.6]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Neck1"
+image=3
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 8, -7 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 42.47 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 79.167, 100, 0.79167 )
+object_rotation=293.7
+object_pivot_percent=Vector2( 0.917, 0.6 )
+object_skew=0.0
+parent_id=1
+
+[object.7]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Neck2"
+image=3
+pixel_scale=1
+filter=false
+fill=0
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 10, -5 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=1.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 75, 60, 1.25 )
+object_rotation=256.1
+object_pivot_percent=Vector2( 0.778, 0.4 )
+object_skew=0.0
+parent_id=1
+
+[object.10]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="WeaponStick1"
+image=3
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 33, -30 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 179.167, 60, 2.98612 )
+object_rotation=-85.6
+object_pivot_percent=Vector2( 0.778, 0.4 )
+object_skew=0.0
+parent_id=1
+
+[object.11]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="WeaponStick2"
+image=3
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 47, -23 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 150, 60, 2.5 )
+object_rotation=294.9
+object_pivot_percent=Vector2( 0.778, 0.4 )
+object_skew=0.0
+parent_id=1
+
+[object.12]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="WeaponStick3"
+image=3
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 17, -19 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 183.333, 80, 2.29166 )
+object_rotation=-109.1
+object_pivot_percent=Vector2( 0.778, 0.4 )
+object_skew=0.0
+parent_id=1
+
+[resource.1]
+
+path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"/home/xander-swan/Documents/AstronautGame/Entities/Enemies/Bosses/HANK/Body.png","relative_path":"","favorite":false,"is_folder":false)
+
+type="image"
+image=PoolByteArray( 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 25, 0, 0, 0, 22, 8, 6, 0, 0, 0, 53, 191, 55, 182, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 233, 0, 0, 1, 193, 73, 68, 65, 84, 72, 137, 189, 149, 191, 106, 194, 80, 20, 198, 191, 200, 53, 208, 42, 213, 73, 112, 42, 162, 110, 254, 1, 93, 244, 5, 186, 218, 201, 73, 124, 11, 95, 160, 107, 31, 161, 139, 136, 83, 167, 250, 20, 118, 169, 197, 198, 173, 13, 82, 58, 20, 156, 98, 137, 22, 147, 192, 237, 16, 238, 245, 38, 55, 55, 169, 139, 31, 4, 201, 57, 201, 247, 59, 231, 228, 222, 43, 112, 6, 105, 113, 201, 81, 165, 3, 0, 120, 106, 237, 169, 234, 153, 219, 197, 165, 210, 227, 254, 227, 25, 0, 64, 226, 0, 204, 188, 84, 147, 31, 91, 175, 60, 169, 0, 21, 80, 122, 91, 172, 62, 202, 156, 169, 84, 35, 28, 4, 0, 182, 73, 177, 28, 58, 180, 57, 209, 37, 80, 42, 170, 250, 36, 128, 216, 73, 88, 203, 161, 195, 59, 99, 5, 19, 49, 16, 55, 251, 56, 128, 109, 82, 212, 123, 105, 30, 55, 114, 46, 29, 108, 51, 188, 35, 18, 6, 188, 63, 190, 193, 255, 61, 154, 220, 220, 181, 18, 59, 16, 227, 217, 178, 6, 44, 142, 57, 2, 32, 0, 40, 182, 235, 146, 193, 235, 195, 30, 249, 174, 158, 216, 161, 109, 82, 31, 0, 96, 154, 219, 241, 110, 248, 55, 17, 1, 191, 159, 63, 252, 2, 0, 82, 72, 195, 154, 59, 137, 144, 122, 47, 29, 25, 79, 133, 3, 204, 88, 117, 31, 39, 54, 50, 219, 244, 63, 237, 248, 96, 81, 32, 102, 159, 68, 201, 154, 59, 32, 5, 191, 90, 54, 22, 38, 102, 12, 0, 222, 198, 5, 224, 79, 0, 95, 39, 66, 242, 93, 29, 165, 26, 129, 49, 115, 3, 113, 9, 136, 224, 216, 164, 113, 37, 73, 181, 186, 56, 192, 148, 119, 129, 4, 185, 184, 190, 138, 189, 63, 69, 210, 234, 170, 246, 27, 248, 126, 49, 184, 49, 187, 128, 227, 140, 173, 185, 19, 89, 41, 147, 42, 167, 1, 64, 177, 93, 231, 89, 6, 18, 85, 237, 55, 18, 171, 14, 3, 6, 219, 140, 22, 56, 133, 217, 250, 54, 102, 238, 191, 12, 147, 0, 97, 17, 0, 104, 78, 116, 45, 234, 220, 138, 123, 57, 91, 214, 148, 121, 177, 11, 64, 248, 211, 26, 85, 58, 24, 31, 44, 42, 238, 3, 118, 240, 49, 173, 87, 30, 108, 147, 194, 219, 184, 124, 191, 36, 1, 2, 16, 6, 154, 230, 118, 188, 60, 111, 227, 6, 206, 44, 86, 185, 10, 18, 5, 144, 32, 42, 80, 148, 97, 56, 174, 2, 156, 77, 127, 55, 180, 236, 184, 156, 93, 29, 225, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 )
+
+[object.4]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Body"
+image=1
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 20, 8 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=0.0
+object_pivot_percent=Vector2( 0.48, 0.545 )
+object_skew=0.0
+parent_id=1
+
+[resource.2]
+
+path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"/home/xander-swan/Documents/AstronautGame/Entities/Enemies/Bosses/HANK/Head.png","relative_path":"","favorite":false,"is_folder":false)
+
+type="image"
+image=PoolByteArray( 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 24, 0, 0, 0, 25, 8, 6, 0, 0, 0, 43, 43, 238, 93, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 233, 0, 0, 2, 18, 73, 68, 65, 84, 72, 137, 189, 84, 191, 107, 219, 64, 24, 125, 78, 44, 252, 35, 6, 135, 130, 189, 132, 64, 131, 91, 215, 132, 208, 26, 77, 165, 99, 75, 151, 210, 66, 150, 214, 96, 66, 200, 63, 145, 93, 123, 254, 9, 15, 197, 224, 116, 209, 214, 33, 208, 177, 233, 226, 96, 21, 81, 112, 26, 97, 103, 200, 226, 118, 176, 65, 21, 182, 43, 251, 58, 68, 186, 220, 233, 78, 82, 236, 144, 62, 56, 248, 238, 238, 187, 247, 244, 190, 251, 78, 192, 61, 35, 1, 0, 135, 143, 158, 47, 77, 160, 171, 14, 241, 227, 221, 179, 108, 130, 221, 59, 186, 248, 134, 149, 187, 16, 179, 228, 65, 49, 31, 201, 101, 136, 1, 64, 59, 95, 65, 199, 78, 163, 154, 27, 67, 43, 207, 185, 125, 214, 201, 173, 29, 40, 15, 94, 113, 95, 220, 177, 211, 208, 85, 7, 90, 121, 14, 237, 60, 156, 38, 86, 192, 47, 197, 215, 209, 143, 208, 156, 142, 157, 22, 206, 196, 10, 24, 251, 83, 98, 236, 79, 201, 251, 254, 59, 108, 24, 37, 188, 200, 111, 115, 251, 213, 220, 88, 26, 7, 33, 189, 3, 93, 117, 8, 76, 111, 242, 246, 51, 174, 76, 23, 159, 96, 9, 121, 187, 103, 217, 235, 32, 66, 64, 112, 16, 236, 132, 158, 233, 98, 107, 71, 252, 14, 173, 60, 135, 174, 58, 194, 186, 109, 17, 216, 22, 193, 199, 252, 31, 34, 117, 240, 243, 248, 59, 141, 31, 127, 120, 202, 137, 244, 76, 87, 32, 212, 85, 7, 186, 71, 44, 3, 21, 104, 76, 134, 4, 0, 10, 155, 21, 186, 249, 235, 203, 8, 133, 151, 121, 42, 34, 131, 140, 56, 87, 242, 186, 180, 237, 9, 248, 228, 65, 40, 153, 12, 39, 194, 186, 96, 137, 41, 97, 148, 3, 0, 104, 213, 87, 105, 92, 107, 206, 132, 228, 158, 233, 82, 226, 40, 82, 86, 156, 10, 176, 228, 254, 60, 40, 178, 181, 147, 68, 15, 98, 169, 194, 234, 207, 9, 0, 192, 195, 39, 69, 26, 247, 187, 131, 208, 67, 81, 164, 156, 179, 182, 164, 139, 178, 165, 103, 215, 65, 247, 68, 56, 204, 150, 72, 32, 11, 17, 94, 232, 103, 23, 44, 81, 84, 105, 246, 70, 107, 137, 35, 120, 15, 237, 32, 181, 158, 168, 53, 103, 232, 119, 7, 112, 44, 3, 0, 176, 253, 230, 53, 90, 245, 85, 218, 73, 172, 3, 127, 248, 112, 7, 127, 133, 177, 148, 3, 159, 108, 17, 44, 36, 48, 60, 157, 202, 73, 138, 10, 55, 223, 27, 173, 209, 203, 145, 10, 56, 150, 113, 115, 217, 49, 100, 128, 196, 85, 138, 201, 103, 215, 107, 205, 25, 90, 117, 175, 61, 187, 39, 220, 59, 176, 45, 130, 100, 81, 137, 45, 209, 65, 106, 157, 107, 173, 36, 187, 209, 152, 12, 137, 236, 5, 15, 127, 95, 66, 201, 84, 132, 245, 56, 114, 193, 129, 44, 1, 0, 26, 155, 21, 105, 63, 134, 229, 255, 87, 252, 3, 189, 216, 254, 30, 45, 223, 171, 158, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 )
+
+[object.5]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Head"
+image=2
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( -8, 5 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=1.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=0.0
+object_pivot_percent=Vector2( 0.5, 0.5 )
+object_skew=0.0
+parent_id=1
+
+[resource.5]
+
+path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"/home/xander-swan/Documents/AstronautGame/Entities/Enemies/Bosses/HANK/BodyLower.png","relative_path":"","favorite":false,"is_folder":false)
+
+type="image"
+image=PoolByteArray( 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 21, 0, 0, 0, 24, 8, 6, 0, 0, 0, 21, 137, 182, 72, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 233, 0, 0, 1, 90, 73, 68, 65, 84, 56, 141, 229, 149, 63, 75, 195, 64, 24, 198, 159, 43, 145, 210, 68, 80, 176, 147, 67, 65, 140, 155, 56, 116, 202, 226, 234, 71, 112, 42, 197, 15, 224, 26, 232, 228, 224, 36, 100, 245, 35, 248, 1, 252, 24, 93, 11, 29, 35, 221, 28, 36, 75, 160, 185, 80, 13, 196, 33, 125, 175, 239, 229, 242, 79, 40, 58, 248, 64, 200, 221, 155, 231, 126, 60, 9, 151, 247, 128, 191, 146, 239, 122, 24, 216, 195, 188, 238, 242, 93, 79, 243, 139, 46, 192, 231, 247, 48, 111, 243, 221, 159, 186, 34, 8, 231, 0, 0, 171, 10, 194, 213, 5, 88, 150, 6, 237, 154, 170, 77, 189, 42, 96, 42, 35, 205, 84, 158, 243, 90, 42, 35, 227, 121, 207, 112, 239, 65, 255, 12, 58, 176, 135, 251, 133, 114, 32, 109, 71, 99, 159, 118, 81, 223, 118, 212, 125, 35, 19, 164, 50, 194, 98, 58, 42, 182, 226, 3, 196, 143, 160, 4, 227, 74, 101, 132, 155, 199, 177, 86, 211, 160, 124, 81, 25, 64, 169, 56, 236, 122, 54, 2, 112, 162, 106, 171, 101, 182, 131, 250, 174, 135, 197, 244, 51, 223, 60, 37, 106, 65, 57, 13, 128, 45, 132, 180, 27, 175, 150, 25, 214, 111, 57, 38, 177, 35, 2, 108, 27, 202, 197, 237, 85, 126, 118, 105, 41, 3, 141, 219, 196, 97, 0, 96, 52, 20, 138, 222, 4, 36, 15, 128, 74, 24, 201, 34, 131, 90, 136, 12, 77, 226, 222, 42, 160, 130, 78, 98, 71, 188, 142, 101, 107, 119, 34, 96, 93, 66, 146, 106, 210, 190, 235, 161, 10, 204, 147, 101, 31, 95, 0, 128, 187, 254, 177, 168, 3, 170, 164, 28, 112, 120, 110, 30, 6, 84, 91, 227, 160, 40, 196, 181, 60, 19, 90, 78, 70, 233, 20, 12, 197, 171, 55, 165, 4, 216, 191, 31, 132, 115, 245, 173, 154, 244, 114, 148, 24, 7, 221, 175, 232, 27, 77, 95, 168, 7, 9, 138, 6, 136, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 )
+
+[object.9]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="BodyLower"
+image=5
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 24, 21 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=-1.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=0.0
+object_pivot_percent=Vector2( 0.5, 0.5 )
+object_skew=0.0
+parent_id=1
+
+[resource.6]
+
+path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"/home/xander-swan/Documents/AstronautGame/Entities/Enemies/Bosses/HANK/Foot.png","relative_path":"","favorite":false,"is_folder":false)
+
+type="image"
+image=PoolByteArray( 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 13, 0, 0, 0, 6, 8, 6, 0, 0, 0, 24, 44, 20, 191, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 233, 0, 0, 0, 79, 73, 68, 65, 84, 24, 149, 99, 96, 32, 3, 48, 34, 115, 220, 154, 140, 254, 227, 82, 184, 171, 238, 28, 92, 45, 35, 3, 3, 3, 131, 164, 177, 238, 127, 30, 101, 70, 6, 69, 29, 22, 130, 182, 236, 170, 59, 199, 8, 87, 245, 229, 238, 127, 134, 251, 12, 127, 24, 24, 24, 24, 112, 106, 190, 127, 5, 34, 143, 34, 251, 229, 46, 196, 117, 48, 205, 84, 5, 0, 59, 178, 20, 97, 91, 58, 98, 85, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 )
+
+[object.13]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Foot1"
+image=6
+pixel_scale=1
+filter=false
+image_flip_h=true
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 52, 57 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=0.0
+object_pivot_percent=Vector2( 0.5, 0.5 )
+object_skew=0.0
+parent_id=1
+
+[object.14]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Foot2"
+image=6
+pixel_scale=1
+filter=false
+image_flip_h=true
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( -10, 44 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=12.1
+object_pivot_percent=Vector2( 0.538, 0.5 )
+object_skew=0.0
+parent_id=1
+
+[resource.7]
+
+path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"/home/xander-swan/Documents/AstronautGame/Entities/Enemies/Bosses/HANK/Leg.png","relative_path":"","favorite":false,"is_folder":false)
+
+type="image"
+image=PoolByteArray( 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 11, 0, 0, 0, 38, 8, 6, 0, 0, 0, 18, 158, 97, 206, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 233, 0, 0, 0, 230, 73, 68, 65, 84, 56, 141, 165, 148, 49, 14, 131, 48, 12, 69, 29, 68, 85, 209, 46, 93, 203, 156, 67, 244, 66, 221, 178, 246, 38, 221, 184, 90, 231, 178, 178, 64, 132, 24, 232, 100, 8, 142, 141, 141, 106, 9, 201, 66, 47, 63, 206, 35, 194, 189, 252, 3, 176, 154, 174, 157, 1, 0, 158, 183, 187, 3, 166, 202, 20, 58, 85, 213, 178, 136, 91, 80, 96, 131, 32, 246, 24, 176, 129, 185, 151, 82, 21, 58, 194, 192, 83, 140, 58, 156, 30, 100, 138, 113, 121, 14, 141, 49, 14, 61, 15, 83, 77, 227, 208, 195, 249, 114, 149, 147, 49, 73, 2, 179, 49, 40, 72, 181, 110, 96, 41, 49, 131, 67, 237, 217, 251, 32, 38, 211, 162, 70, 178, 153, 211, 158, 142, 197, 38, 171, 234, 52, 48, 131, 67, 237, 221, 158, 17, 245, 214, 189, 191, 159, 197, 181, 106, 35, 221, 137, 157, 153, 3, 197, 100, 179, 13, 0, 249, 179, 103, 112, 168, 189, 227, 238, 178, 152, 44, 149, 9, 70, 125, 42, 156, 30, 246, 63, 207, 0, 235, 33, 77, 158, 1, 120, 125, 199, 127, 5, 214, 50, 193, 184, 139, 89, 93, 211, 181, 179, 8, 115, 70, 118, 147, 169, 145, 210, 50, 171, 9, 198, 113, 176, 255, 1, 189, 102, 118, 155, 233, 253, 95, 67, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 )
+
+[object.15]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Leg1"
+image=7
+pixel_scale=1
+filter=false
+image_flip_h=true
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( -1, 30 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=368.0
+object_pivot_percent=Vector2( 0.455, 0.579 )
+object_skew=0.0
+parent_id=1
+
+[object.17]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Leg2"
+image=7
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 52, 38 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=-2.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=4.0
+object_pivot_percent=Vector2( 0.5, 0.5 )
+object_skew=0.0
+parent_id=1
+
+[resource.8]
+
+path=Object(Object,"script":Resource( "res://script/path_container.gd"),"absolute_path":"/home/xander-swan/Documents/AstronautGame/Entities/Enemies/Bosses/HANK/Thigh.png","relative_path":"","favorite":false,"is_folder":false)
+
+type="image"
+image=PoolByteArray( 137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 28, 0, 0, 0, 16, 8, 6, 0, 0, 0, 5, 207, 31, 239, 0, 0, 0, 1, 115, 82, 71, 66, 0, 174, 206, 28, 233, 0, 0, 1, 17, 73, 68, 65, 84, 56, 141, 181, 211, 49, 110, 131, 48, 24, 197, 241, 191, 43, 42, 4, 233, 128, 212, 100, 72, 164, 108, 12, 57, 66, 143, 211, 37, 91, 214, 158, 162, 107, 183, 94, 168, 135, 200, 210, 165, 89, 136, 148, 33, 240, 9, 121, 72, 39, 187, 134, 24, 27, 148, 230, 77, 22, 66, 252, 244, 158, 140, 226, 14, 121, 43, 95, 236, 249, 243, 116, 184, 0, 108, 139, 165, 2, 80, 247, 64, 62, 126, 246, 151, 52, 159, 1, 240, 152, 101, 0, 104, 17, 182, 197, 82, 221, 12, 26, 200, 32, 109, 83, 3, 144, 230, 51, 139, 153, 104, 17, 146, 91, 16, 248, 155, 204, 141, 105, 231, 203, 36, 208, 64, 125, 164, 109, 234, 32, 50, 25, 236, 207, 54, 54, 90, 228, 106, 214, 32, 56, 212, 200, 141, 175, 157, 251, 76, 139, 196, 193, 197, 122, 195, 107, 90, 116, 160, 216, 108, 230, 178, 132, 114, 170, 190, 187, 183, 116, 177, 222, 216, 243, 249, 88, 117, 230, 11, 53, 25, 194, 164, 169, 174, 254, 130, 7, 3, 185, 152, 22, 9, 94, 138, 182, 169, 45, 226, 195, 118, 171, 82, 249, 48, 0, 229, 131, 124, 64, 44, 187, 85, 105, 129, 247, 253, 215, 224, 123, 137, 11, 249, 18, 154, 205, 69, 198, 96, 22, 140, 1, 125, 204, 7, 141, 77, 226, 251, 224, 216, 54, 253, 196, 218, 1, 168, 44, 159, 15, 206, 249, 159, 144, 73, 242, 244, 60, 87, 231, 99, 213, 65, 167, 76, 54, 5, 3, 248, 5, 140, 80, 158, 100, 205, 135, 240, 171, 0, 0, 0, 0, 73, 69, 78, 68, 174, 66, 96, 130 )
+
+[object.16]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Thigh1"
+image=8
+pixel_scale=1
+filter=false
+image_flip_h=false
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 39, 25 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=0.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 100, 100, 1 )
+object_rotation=7.1
+object_pivot_percent=Vector2( 0.5, 0.5 )
+object_skew=0.0
+parent_id=1
+
+[object.18]
+
+type="sprite"
+tree_item_collapsed=false
+object_name="Thigh2"
+image=8
+pixel_scale=1
+filter=false
+image_flip_h=true
+sharp_bilinear=false
+mipmaps=false
+fill_color=Color( 1, 1, 1, 1 )
+image_flip_v=false
+object_visible=true
+object_basis=0
+object_position=Vector2( 13, 19 )
+object_deform_top_left=Vector2( 0, 0 )
+object_deform_top_right=Vector2( 0, 0 )
+object_deform_bottom_left=Vector2( 0, 0 )
+object_deform_bottom_right=Vector2( 0, 0 )
+object_opacity=100.0
+object_zlayer=-2.0
+effect_trail=false
+effect_trail_time=0.1
+effect_trail_quality=10.0
+object_scale=Vector3( 82.143, 100, 0.82143 )
+object_rotation=18.7
+object_pivot_percent=Vector2( 0.5, 0.5 )
+object_skew=0.0
+parent_id=1
+
+[animation.0]
+
+animation_name="Idle "
+fps=0.1
+speed_scale=0.75
+snap=true
+step=0.1
+zoom=2.673
+loop=true
+collapsed=false
+length=1.0
+
+[object_tracks.0.4]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 2, 3 ),
+"tracks_data": [ {
+"id": 2,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 30.0
+}, {
+"in": Vector2( -0.27, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.6,
+"value": 30.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 3,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 11.0
+}, {
+"in": Vector2( -0.27, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.6,
+"value": 9.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=0
+
+[object_tracks.0.9]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 4, 5 ),
+"tracks_data": [ {
+"id": 4,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 32.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 32.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 5,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 23.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 19.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=1
+
+[object_tracks.0.16]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 6, 7 ),
+"tracks_data": [ {
+"id": 6,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 47.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 48.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 7,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 26.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 23.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 8,
+"tracks_data": [ {
+"id": 8,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 7.6
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_size": {
+"disabled": false,
+"order": 2,
+"step": 1.0,
+"tracks": Vector2( 45, 46 ),
+"tracks_data": [ {
+"id": 45,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 28.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 28.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 46,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 16.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 16.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=2
+
+[object_tracks.0.17]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 10, 11 ),
+"tracks_data": [ {
+"id": 10,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 60.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 61.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 11,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 39.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 37.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 9,
+"tracks_data": [ {
+"id": 9,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 4.4
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_size": {
+"disabled": false,
+"order": 2,
+"step": 1.0,
+"tracks": Vector2( 43, 44 ),
+"tracks_data": [ {
+"id": 43,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 11.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 44,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 38.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=3
+
+[object_tracks.0.18]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 12, 13 ),
+"tracks_data": [ {
+"id": 12,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 14.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 15.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 13,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 26.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 24.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 14,
+"tracks_data": [ {
+"id": 14,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 348.7
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=4
+
+[object_tracks.0.15]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 17, 18 ),
+"tracks_data": [ {
+"id": 17,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 0.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 18,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 40.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 40.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 16,
+"tracks_data": [ {
+"id": 16,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 357.0
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_size": {
+"disabled": false,
+"order": 2,
+"step": 1.0,
+"tracks": Vector2( 41, 42 ),
+"tracks_data": [ {
+"id": 41,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 11.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 42,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 38.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_skew": {
+"disabled": false,
+"order": 3,
+"step": 0.1,
+"tracks": 15,
+"tracks_data": [ {
+"id": 15,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=5
+
+[object_tracks.0.5]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 19, 20 ),
+"tracks_data": [ {
+"id": 19,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( -0.315, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.7,
+"value": 1.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 20,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 5.0
+}, {
+"in": Vector2( -0.315, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.7,
+"value": -1.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=6
+
+[object_tracks.0.7]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 21, 22 ),
+"tracks_data": [ {
+"id": 21,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 20.0
+}, {
+"in": Vector2( -0.185, 0 ),
+"in_normalized": Vector2( 0.37, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 20.0
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.9,
+"value": 20.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 22,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( -0.185, 0 ),
+"in_normalized": Vector2( 0.37, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": -3.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.6,
+"value": -4.0
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.9,
+"value": -2.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=7
+
+[object_tracks.0.6]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 23, 24 ),
+"tracks_data": [ {
+"id": 23,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 16.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 16.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 24,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": -5.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": -7.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 27,
+"tracks_data": [ {
+"id": 27,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": -62.2
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.5,
+"value": -48.3
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=8
+
+[object_tracks.0.8]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 25, 26 ),
+"tracks_data": [ {
+"id": 25,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 18.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 20.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 26,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": -5.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": -7.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=9
+
+[object_tracks.0.11]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 28, 29 ),
+"tracks_data": [ {
+"id": 28,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 47.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 47.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 29,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": -22.0
+}, {
+"in": Vector2( -0.225, 0 ),
+"in_normalized": Vector2( 0.45, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": -24.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=false
+order=10
+
+[object_tracks.0.10]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 31, 32 ),
+"tracks_data": [ {
+"id": 31,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 33.0
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 33.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 32,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": -30.0
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.5,
+"value": -32.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=false
+order=11
+
+[object_tracks.0.12]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 33, 34 ),
+"tracks_data": [ {
+"id": 33,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 17.0
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 17.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 34,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": -19.0
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.5,
+"value": -21.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=false
+order=12
+
+[object_tracks.0.13]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 35, 36 ),
+"tracks_data": [ {
+"id": 35,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 62.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 36,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 57.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 39,
+"tracks_data": [ {
+"id": 39,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=false
+order=13
+
+[object_tracks.0.14]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 37, 38 ),
+"tracks_data": [ {
+"id": 37,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": -4.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 38,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 57.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 40,
+"tracks_data": [ {
+"id": 40,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=false
+order=14
+
+[animation.1]
+
+animation_name="Walk"
+fps=0.1
+speed_scale=1.0
+snap=true
+step=0.1
+zoom=1.059
+loop=true
+collapsed=false
+length=1.6
+
+[object_tracks.1.9]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 0, 1 ),
+"tracks_data": [ {
+"id": 0,
+"keys": [ {
+"in": Vector2( 0, -1.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.185, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 22.0
+}, {
+"in": Vector2( -0.34, 1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.5,
+"value": 24.0
+}, {
+"in": Vector2( -0.204, -0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.185, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.8,
+"value": 23.0
+}, {
+"in": Vector2( -0.34, 3.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.3,
+"value": 29.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 25.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 1,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 25.0
+}, {
+"in": Vector2( -0.408, -4.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.074, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": 18.0
+}, {
+"in": Vector2( -0.136, 4.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.8,
+"value": 25.0
+}, {
+"in": Vector2( -0.408, -3.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.074, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.4,
+"value": 19.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 25.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=0
+
+[object_tracks.1.14]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 2, 3 ),
+"tracks_data": [ {
+"id": 2,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": -5.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 0.5,
+"value": -13.0
+}, {
+"in": Vector2( -0.204, -1.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": -16.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 3,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 58.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 0.5,
+"value": 38.0
+}, {
+"in": Vector2( -0.204, 12 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 58.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 4,
+"tracks_data": [ {
+"id": 4,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 0.5,
+"value": 30.2
+}, {
+"in": Vector2( -0.204, -18.12 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 0.0
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=1
+
+[object_tracks.1.13]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 5, 6 ),
+"tracks_data": [ {
+"id": 5,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 61.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 1.3,
+"value": 48.0
+}, {
+"in": Vector2( -0.204, 0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 49.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 6,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 57.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 1.3,
+"value": 43.0
+}, {
+"in": Vector2( -0.204, 8.4 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 57.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 7,
+"tracks_data": [ {
+"id": 7,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 0.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 1.3,
+"value": 17.6
+}, {
+"in": Vector2( -0.204, -10.56 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 0.0
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=2
+
+[object_tracks.1.15]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 1,
+"step": 1.0,
+"tracks": Vector2( 9, 10 ),
+"tracks_data": [ {
+"id": 9,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 0.5,
+"value": -2.0
+}, {
+"in": Vector2( -0.204, -3 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": -7.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 10,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 40.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 0.5,
+"value": 25.0
+}, {
+"in": Vector2( -0.204, 10.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 42.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 0,
+"step": 0.1,
+"tracks": 8,
+"tracks_data": [ {
+"id": 8,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 359.4
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 20.8
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=3
+
+[object_tracks.1.17]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 11, 12 ),
+"tracks_data": [ {
+"id": 11,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 60.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 1.3,
+"value": 47.0
+}, {
+"in": Vector2( -0.204, 1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 49.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 12,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 39.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 1.3,
+"value": 25.0
+}, {
+"in": Vector2( -0.204, 7.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 38.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 13,
+"tracks_data": [ {
+"id": 13,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 0.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.3,
+"value": -0.5
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 5.3
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=4
+
+[object_tracks.1.18]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 14, 15 ),
+"tracks_data": [ {
+"id": 14,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 11.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 0.5,
+"value": 14.0
+}, {
+"in": Vector2( -0.204, -1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 12.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.3,
+"value": 13.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 15,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 27.0
+}, {
+"in": Vector2( -0.325, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.261, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 0.5,
+"value": 16.0
+}, {
+"in": Vector2( -0.204, 7.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 28.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.3,
+"value": 23.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 17,
+"tracks_data": [ {
+"id": 17,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 9.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.5,
+"value": 33.2
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.7,
+"value": -6.2
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.8,
+"value": 0.9
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.3,
+"value": -17.6
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=5
+
+[object_tracks.1.16]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 18, 19 ),
+"tracks_data": [ {
+"id": 18,
+"keys": [ {
+"in": Vector2( 0, -1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 37.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.1,
+"value": 38.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.3,
+"value": 40.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.5,
+"value": 41.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.6,
+"value": 42.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.7,
+"value": 42.0
+}, {
+"in": Vector2( -0.068, 0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.8,
+"value": 43.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.9,
+"value": 42.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.0,
+"value": 40.0
+}, {
+"in": Vector2( -0.195, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.087, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 1.3,
+"value": 39.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.4,
+"value": 38.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.5,
+"value": 40.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 39.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 19,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 27.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.1,
+"value": 27.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.3,
+"value": 23.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.5,
+"value": 24.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.6,
+"value": 23.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.7,
+"value": 27.0
+}, {
+"in": Vector2( -0.068, 0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.8,
+"value": 28.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.9,
+"value": 24.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.0,
+"value": 21.0
+}, {
+"in": Vector2( -0.195, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.087, 0 ),
+"out_normalized": Vector2( 0.87, 0 ),
+"time": 1.3,
+"value": 16.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.4,
+"value": 18.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.5,
+"value": 25.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 27.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 20,
+"tracks_data": [ {
+"id": 20,
+"keys": [ {
+"in": Vector2( -0.136, 12.78 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.3,
+"value": 13.3
+}, {
+"in": Vector2( -0.136, 2.4 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.5,
+"value": 17.3
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.6,
+"value": 13.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.7,
+"value": -2.5
+}, {
+"in": Vector2( -0.068, 1.08 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.074, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.8,
+"value": -0.7
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.0,
+"value": -22.1
+}, {
+"in": Vector2( -0.204, -5.7 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.3,
+"value": -31.6
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.4,
+"value": -21.3
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_size": {
+"disabled": false,
+"order": 2,
+"step": 1.0,
+"tracks": Vector2( 21, 22 ),
+"tracks_data": [ {
+"id": 21,
+"keys": [ {
+"in": Vector2( 0, 2.4 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 28.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.1,
+"value": 27.0
+}, {
+"in": Vector2( -0.26, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.5,
+"value": 30.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.6,
+"value": 33.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.7,
+"value": 34.0
+}, {
+"in": Vector2( -0.068, 0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.185, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.8,
+"value": 35.0
+}, {
+"in": Vector2( -0.34, -7.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.3,
+"value": 23.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 24.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 22,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 16.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.1,
+"value": 16.0
+}, {
+"in": Vector2( -0.26, 0 ),
+"in_normalized": Vector2( 0.65, 0 ),
+"out": Vector2( 0.037, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.5,
+"value": 17.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.6,
+"value": 16.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.7,
+"value": 16.0
+}, {
+"in": Vector2( -0.068, 0 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.185, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.8,
+"value": 16.0
+}, {
+"in": Vector2( -0.34, 0 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.3,
+"value": 16.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 16.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=6
+
+[object_tracks.1.4]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 23, 24 ),
+"tracks_data": [ {
+"id": 23,
+"keys": [ {
+"in": Vector2( 0, -1.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 19.0
+}, {
+"in": Vector2( -0.408, 1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": 21.0
+}, {
+"in": Vector2( -0.204, -0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": 20.0
+}, {
+"in": Vector2( -0.204, 3.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": 26.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 22.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 24,
+"keys": [ {
+"in": Vector2( 0, -1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 13.0
+}, {
+"in": Vector2( -0.408, -4.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": 5.0
+}, {
+"in": Vector2( -0.204, 5.4 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": 14.0
+}, {
+"in": Vector2( -0.204, -4.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": 6.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 15.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=true
+order=7
+
+[object_tracks.1.7]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 25, 26 ),
+"tracks_data": [ {
+"id": 25,
+"keys": [ {
+"in": Vector2( 0, -1.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 10.0
+}, {
+"in": Vector2( -0.408, 0 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": 10.0
+}, {
+"in": Vector2( -0.204, 0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": 11.0
+}, {
+"in": Vector2( -0.204, 3.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": 17.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 13.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 26,
+"keys": [ {
+"in": Vector2( 0, -1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 0.0
+}, {
+"in": Vector2( -0.408, -4.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": -8.0
+}, {
+"in": Vector2( -0.204, 4.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": 0.0
+}, {
+"in": Vector2( -0.204, -4.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": -7.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 2.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 27,
+"tracks_data": [ {
+"id": 27,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0.408, 3.54 ),
+"out_normalized": Vector2( 0.68, -0.6 ),
+"time": 0.0,
+"value": -104.1
+}, {
+"in": Vector2( -0.408, -3.54 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.6,
+"value": -110.0
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=false
+order=8
+
+[object_tracks.1.8]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 28, 29 ),
+"tracks_data": [ {
+"id": 28,
+"keys": [ {
+"in": Vector2( -0.272, -3.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 10.0
+}, {
+"in": Vector2( -0.408, 0 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": 10.0
+}, {
+"in": Vector2( -0.204, 0 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": 10.0
+}, {
+"in": Vector2( -0.204, 3.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": 16.0
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 11.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 29,
+"keys": [ {
+"in": Vector2( -0.272, 4.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": -3.0
+}, {
+"in": Vector2( -0.408, -4.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": -11.0
+}, {
+"in": Vector2( -0.204, 4.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": -4.0
+}, {
+"in": Vector2( -0.204, -3.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": -10.0
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 1.6,
+"value": -3.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=false
+order=9
+
+[object_tracks.1.6]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 30, 31 ),
+"tracks_data": [ {
+"id": 30,
+"keys": [ {
+"in": Vector2( 0, -0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 8.0
+}, {
+"in": Vector2( -0.408, 0 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": 8.0
+}, {
+"in": Vector2( -0.204, 0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": 9.0
+}, {
+"in": Vector2( -0.204, 3.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": 15.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 9.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 31,
+"keys": [ {
+"in": Vector2( 0, -0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": -2.0
+}, {
+"in": Vector2( -0.408, -5.4 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": -11.0
+}, {
+"in": Vector2( -0.204, 4.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": -4.0
+}, {
+"in": Vector2( -0.204, -3.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": -10.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": -1.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 32,
+"tracks_data": [ {
+"id": 32,
+"keys": [ {
+"in": Vector2( 0, 220.56 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 300.6
+}, {
+"in": Vector2( -0.408, -223.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": -71.4
+}, {
+"in": Vector2( -0.204, 19.74 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": -38.5
+}, {
+"in": Vector2( -0.204, -12 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": -58.5
+}, {
+"in": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"time": 1.6,
+"value": -67.0
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=false
+order=10
+
+[object_tracks.1.5]
+
+inputs={
+"object_position": {
+"disabled": false,
+"order": 0,
+"step": 1.0,
+"tracks": Vector2( 33, 34 ),
+"tracks_data": [ {
+"id": 33,
+"keys": [ {
+"in": Vector2( 0, -1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": -9.0
+}, {
+"in": Vector2( -0.408, 1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": -7.0
+}, {
+"in": Vector2( -0.204, -2.4 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": -11.0
+}, {
+"in": Vector2( -0.204, 4.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": -3.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": -7.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+}, {
+"id": 34,
+"keys": [ {
+"in": Vector2( 0, -1.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.222, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.0,
+"value": 9.0
+}, {
+"in": Vector2( -0.408, -4.2 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.6,
+"value": 2.0
+}, {
+"in": Vector2( -0.204, 1.8 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.111, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 0.9,
+"value": 5.0
+}, {
+"in": Vector2( -0.204, -0.6 ),
+"in_normalized": Vector2( 0.68, -0.6 ),
+"out": Vector2( 0.148, 0 ),
+"out_normalized": Vector2( 0.37, 0 ),
+"time": 1.2,
+"value": 4.0
+}, {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 1.6,
+"value": 11.0
+} ],
+"modulo": 0.0,
+"type": 3,
+"wrap": true
+} ]
+},
+"object_rotation": {
+"disabled": false,
+"order": 1,
+"step": 0.1,
+"tracks": 35,
+"tracks_data": [ {
+"id": 35,
+"keys": [ {
+"in": Vector2( 0, 0 ),
+"in_normalized": Vector2( 0, 0 ),
+"out": Vector2( 0, 0 ),
+"out_normalized": Vector2( 0, 0 ),
+"time": 0.0,
+"value": 0.0
+} ],
+"modulo": 360.0,
+"type": 3,
+"wrap": true
+} ]
+}
+}
+disabled=false
+collapsed=false
+order=11
+
+[settings]
+
+export_path="/home/xander-swan/Documents/Hank.gif"
+export_scale=1000.0
