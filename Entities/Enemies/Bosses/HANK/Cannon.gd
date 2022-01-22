@@ -10,7 +10,7 @@ const BULLET = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	sprite.material.set_shader_param("isOn", 0)
 	if charge.is_stopped():
 		sprite.scale = Vector2(-1, 1)
@@ -35,7 +35,7 @@ func attack() -> bool:
 
 func shoot() -> void:
 	var dir = global_position.direction_to(GameManager.player.global_position)
-	create_bullet(
+	var _discard = create_bullet(
 		dir,
 		global_position + (dir * 24)
 	)

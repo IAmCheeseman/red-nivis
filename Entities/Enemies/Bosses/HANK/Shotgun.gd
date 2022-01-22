@@ -10,7 +10,7 @@ export var flashTime := .8
 const BULLET = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	sprite.material.set_shader_param("isOn", 0)
 	if charge.is_stopped():
 		sprite.scale = Vector2(-1, 1)
@@ -32,6 +32,7 @@ func shoot() -> void:
 	for i in bullets:
 		var newBullet = BULLET.instance()
 		var dir = global_position.direction_to(GameManager.player.global_position)
+# warning-ignore:integer_division
 		dir = dir.rotated(deg2rad((-spread * (bullets / 2)) + (i * spread)))
 		
 		newBullet.direction = dir

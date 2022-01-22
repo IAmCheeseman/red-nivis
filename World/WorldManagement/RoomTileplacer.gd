@@ -43,6 +43,7 @@ func create_room() -> void:
 	world.tilesContainer.add_child(world.background)
 	
 	world.darkness.color = Color(biome.brightness, biome.brightness, biome.brightness)
+# warning-ignore:incompatible_ternary
 	world.darkness.color *= 1.1 if Settings.gfx == Settings.GFX_BAD else 1
 	
 	world.solidColorBG.color = biome.bgColor

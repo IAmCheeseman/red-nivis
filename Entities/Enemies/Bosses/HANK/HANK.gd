@@ -15,8 +15,9 @@ export var attackTimeRange := Vector2(1, 2)
 export var speed := 90
 
 var vel := Vector2.ZERO
-var target := 0
+var target := 0.0
 
+# warning-ignore:unused_signal
 signal dead
 
 
