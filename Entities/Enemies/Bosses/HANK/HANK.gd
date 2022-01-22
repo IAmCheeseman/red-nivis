@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var player := GameManager.player
+onready var player = GameManager.player
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
@@ -16,6 +16,8 @@ export var speed := 90
 
 var vel := Vector2.ZERO
 var target := 0
+
+signal dead
 
 
 func _process(delta: float) -> void:
