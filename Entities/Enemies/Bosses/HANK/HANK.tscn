@@ -186,7 +186,7 @@ script = ExtResource( 6 )
 [node name="MachineGun" type="Node2D" parent="Sprite/Guns"]
 position = Vector2( -15, -89 )
 script = ExtResource( 9 )
-totalShots = 20
+totalShots = 15
 
 [node name="Sprite" type="Sprite" parent="Sprite/Guns/MachineGun"]
 scale = Vector2( -1, 1 )

@@ -133,7 +133,6 @@ func grow_world() -> void:
 			rooms[c.pos.x][c.pos.y].biome = c.to
 
 
-
 func get_biome_by_color(color:Color, getSecondary:bool=false):
 	for b in BIOMES.size():
 		var biome = load(BIOMES[b])
