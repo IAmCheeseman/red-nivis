@@ -5,34 +5,50 @@ onready var player := GameManager.player
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
-onready var jumpTimer := $Timers/Jump
+onready var walkTimer := $Timers/Walk
+onready var attackCooldown := $Timers/AttackCooldown
 
-onready var groundCollider := $GroundCollider
+onready var guns = $Sprite/Guns
 
 export var frict := 20
-export var jumpForce := 360
+export var attackTimeRange := Vector2(1, 2)
 export var speed := 90
 
 var vel := Vector2.ZERO
+var target := 0
 
 
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY * delta
-	if is_grounded():
+	var dir = 1 if global_position.x < target else -1
+	sprite.scale = sprite.scale.abs().move_toward(Vector2.ONE, 5 * delta)
+	
+	if abs(global_position.x - target) < 5:
 		vel.x = lerp(vel.x, 0, frict * delta)
 		anim.play("Idle")
-	var faceDir = 1 if vel.x  < 0 else -1
-	sprite.scale.x = faceDir
+		sprite.scale.x *= 1 if GameManager.player.global_position.x < global_position.x else -1
+	else:
+		vel.x = dir * speed
+		anim.play("Walk")
+		sprite.scale.x *= -dir
 	
 	vel.y = move_and_slide(vel).y
 
 
-func jump() -> void:
-	jumpTimer.start(rand_range(1, 4))
-	if !is_grounded(): return
-	vel.y = -jumpForce
-	vel.x = -1 if Utils.coin_flip() else 1
-	vel.x *= speed
+func choose_new_target() -> void:
+	target = GameManager.player.global_position.x + rand_range(-128, 128)
+	if Utils.coin_flip(): target = global_position.x
+	walkTimer.start(rand_range(1, 4))
 
 
-func is_grounded() -> bool: return groundCollider.is_colliding()
+func _on_animation_changed(_old_name: String, _new_name: String) -> void:
+	sprite.scale = Vector2(1.3, .7)
+
+
+func attack() -> void:
+	var gunList = guns.get_children()
+	for i in gunList.size():
+		gunList.shuffle()
+		var gun = gunList.pop_front()
+		if gun.attack(): break
+	attackCooldown.start(rand_range(attackTimeRange.x, attackTimeRange.y))

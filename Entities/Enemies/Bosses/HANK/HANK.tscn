@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/HANK/HANK.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/HANK/HANK.gd" type="Script" id=2]
@@ -6,9 +6,43 @@
 [ext_resource path="res://Entities/Enemies/Bosses/HANK/Cannon.png" type="Texture" id=4]
 [ext_resource path="res://Entities/Enemies/Bosses/HANK/Shotgun.png" type="Texture" id=5]
 [ext_resource path="res://Entities/Enemies/Bosses/HANK/Guns.gd" type="Script" id=6]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Bosses/HANK/MachineGun.gd" type="Script" id=9]
+[ext_resource path="res://Entities/Enemies/Bosses/HANK/Shotgun.gd" type="Script" id=10]
+[ext_resource path="res://Entities/Enemies/Bosses/HANK/Cannon.gd" type="Script" id=11]
+[ext_resource path="res://Entities/Effects/EnemySpawnGrow.png" type="Texture" id=12]
+[ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+uniform float isOn = 1.0;
+
+void fragment()
+{
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = vec4(
+		mix(color.r, 1, isOn),
+		mix(color.g, 1, isOn),
+		mix(color.b, 1, isOn),
+		color.a
+	);
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 6 )
+shader_param/isOn = 0.0
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/isOn = 0.0
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 40.5, 49 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 20, 22 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -134,7 +168,7 @@ tracks/2/keys = {
 [node name="HANK" type="KinematicBody2D"]
 collision_layer = 0
 script = ExtResource( 2 )
-speed = 150
+speed = 20
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -51 )
@@ -148,42 +182,82 @@ vframes = 2
 position = Vector2( 0, 51 )
 script = ExtResource( 6 )
 
-[node name="Cannon" type="Node2D" parent="Sprite/Guns"]
-position = Vector2( 5, -99 )
-
-[node name="Sprite" type="Sprite" parent="Sprite/Guns/Cannon"]
-scale = Vector2( -1, 1 )
-texture = ExtResource( 4 )
-offset = Vector2( -9, 0 )
-
 [node name="MachineGun" type="Node2D" parent="Sprite/Guns"]
 position = Vector2( -15, -89 )
+script = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="Sprite/Guns/MachineGun"]
 scale = Vector2( -1, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -8, 0 )
 
+[node name="BulletCooldown" type="Timer" parent="Sprite/Guns/MachineGun"]
+wait_time = 0.1
+
+[node name="Cannon" type="Node2D" parent="Sprite/Guns"]
+position = Vector2( 5, -99 )
+script = ExtResource( 11 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Guns/Cannon"]
+material = SubResource( 8 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 4 )
+offset = Vector2( -9, 0 )
+
+[node name="Charge" type="Sprite" parent="Sprite/Guns/Cannon"]
+position = Vector2( 19, 0 )
+scale = Vector2( 1e-05, 1e-05 )
+z_index = 1
+texture = ExtResource( 12 )
+
+[node name="ChargeTimer" type="Timer" parent="Sprite/Guns/Cannon"]
+wait_time = 1.5
+
 [node name="Shotgun" type="Node2D" parent="Sprite/Guns"]
 position = Vector2( 24, -90 )
+script = ExtResource( 10 )
+bullets = 6
+flashTime = 0.3
 
 [node name="Sprite" type="Sprite" parent="Sprite/Guns/Shotgun"]
+material = SubResource( 7 )
 scale = Vector2( -1, 1 )
 texture = ExtResource( 5 )
 offset = Vector2( -6, 0 )
+
+[node name="ChargeTimer" type="Timer" parent="Sprite/Guns/Shotgun"]
+wait_time = 2.0
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -0.5, -49 )
 shape = SubResource( 4 )
 
-[node name="GroundCollider" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 0, 2 )
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="Hurtbox" parent="Collisions" instance=ExtResource( 8 )]
+collision_layer = 4
+monitoring = false
+
+[node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
+position = Vector2( 0, -44 )
+shape = SubResource( 5 )
+
+[node name="DamageManager" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -44 )
+maxHealth = 1280
+kbAmount = 0.0
+difficulty = 2
+isBoss = true
 
 [node name="Timers" type="Node" parent="."]
 
-[node name="Jump" type="Timer" parent="Timers"]
+[node name="Walk" type="Timer" parent="Timers"]
+one_shot = true
+autostart = true
+
+[node name="AttackCooldown" type="Timer" parent="Timers"]
 one_shot = true
 autostart = true
 
@@ -193,4 +267,18 @@ anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/Walk = SubResource( 3 )
 
-[connection signal="timeout" from="Timers/Jump" to="." method="jump"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 13 )]
+bossName = "H.A.N.K."
+dmgManagerPth = NodePath("../../DamageManager")
+
+[connection signal="timeout" from="Sprite/Guns/MachineGun/BulletCooldown" to="Sprite/Guns/MachineGun" method="shoot"]
+[connection signal="timeout" from="Sprite/Guns/Cannon/ChargeTimer" to="Sprite/Guns/Cannon" method="shoot"]
+[connection signal="timeout" from="Sprite/Guns/Shotgun/ChargeTimer" to="Sprite/Guns/Shotgun" method="shoot"]
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
+[connection signal="timeout" from="Timers/Walk" to="." method="choose_new_target"]
+[connection signal="timeout" from="Timers/AttackCooldown" to="." method="attack"]
+[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_changed"]
+
+[editable path="Collisions/Hurtbox"]
