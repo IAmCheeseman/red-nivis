@@ -5,44 +5,34 @@ onready var player := GameManager.player
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
-onready var moveTimer := $Timers/Move
+onready var jumpTimer := $Timers/Jump
 
-export var accel := 20
+onready var groundCollider := $GroundCollider
+
+export var frict := 20
+export var jumpForce := 360
 export var speed := 90
 
 var vel := Vector2.ZERO
-var target := 0.0
-
-
-func _ready() -> void:
-	target = global_position.x
 
 
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY * delta
-	var dir = -1 if target < global_position.x else 1
-	if abs(target-global_position.x) < 5:
-		vel.x = 0
+	if is_grounded():
+		vel.x = lerp(vel.x, 0, frict * delta)
 		anim.play("Idle")
-	else:
-		vel.x = dir * speed
-		anim.play("Walk")
-	
-	sprite.scale = sprite.scale.abs().move_toward(
-		Vector2.ONE, 5 * delta
-	)
-	sprite.scale.x *= -dir
+	var faceDir = 1 if vel.x  < 0 else -1
+	sprite.scale.x = faceDir
 	
 	vel.y = move_and_slide(vel).y
 
 
-func get_new_target_position() -> void:
-	target = GameManager.player.global_position.x + rand_range(-128, 128)
-	if rand_range(0, 1) < .05:
-		target = global_position.x
-	moveTimer.start(rand_range(1, 4))
-	#sprite.scale = Vector2(1.2, .8)
+func jump() -> void:
+	jumpTimer.start(rand_range(1, 4))
+	if !is_grounded(): return
+	vel.y = -jumpForce
+	vel.x = -1 if Utils.coin_flip() else 1
+	vel.x *= speed
 
 
-func _on_animation_changed(_oldName: String, _newName: String) -> void:
-	sprite.scale = Vector2(1.2, .8)
+func is_grounded() -> bool: return groundCollider.is_colliding()

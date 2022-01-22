@@ -134,7 +134,7 @@ tracks/2/keys = {
 [node name="HANK" type="KinematicBody2D"]
 collision_layer = 0
 script = ExtResource( 2 )
-speed = 14
+speed = 150
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -51 )
@@ -177,9 +177,13 @@ visible = false
 position = Vector2( -0.5, -49 )
 shape = SubResource( 4 )
 
+[node name="GroundCollider" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 2 )
+
 [node name="Timers" type="Node" parent="."]
 
-[node name="Move" type="Timer" parent="Timers"]
+[node name="Jump" type="Timer" parent="Timers"]
 one_shot = true
 autostart = true
 
@@ -189,5 +193,4 @@ anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/Walk = SubResource( 3 )
 
-[connection signal="timeout" from="Timers/Move" to="." method="get_new_target_position"]
-[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_changed"]
+[connection signal="timeout" from="Timers/Jump" to="." method="jump"]
