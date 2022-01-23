@@ -5,14 +5,15 @@ var speed : float
 var peircing = false
 var damage: float
 var lifetime = 5.0
-onready var hitbox = $Hitbox
 onready var sprite = $Sprite
 onready var particles = $Particles
 onready var liftimeTimer = $Lifetime
 
 var explosion = preload("res://Entities/Enemies/Explosion/Explosion.tscn")
 
+# warning-ignore:unused_signal
 signal hit_wall
+# warning-ignore:unused_signal
 signal hit_enemy
 
 func set_texture(texture:StreamTexture):
