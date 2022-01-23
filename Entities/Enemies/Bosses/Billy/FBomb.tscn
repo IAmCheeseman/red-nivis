@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Entities/Enemies/Bosses/Bill/FBomb.png" type="Texture" id=1]
-[ext_resource path="res://Entities/Enemies/Bosses/Bill/FBomb.gd" type="Script" id=2]
-[ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=3]
-[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/FBomb.png" type="Texture" id=1]
+[ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=2]
+[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/FBomb.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -145,7 +145,7 @@ tracks/2/keys = {
 
 [node name="FBomb" type="KinematicBody2D"]
 collision_layer = 0
-script = ExtResource( 2 )
+script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -167,9 +167,9 @@ one_shot = true
 explosiveness = 1.0
 local_coords = false
 process_material = SubResource( 17 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 
-[node name="Hitbox" parent="." instance=ExtResource( 4 )]
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
 collision_mask = 2
 damage = 1
 

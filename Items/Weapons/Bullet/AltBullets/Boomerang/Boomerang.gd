@@ -29,7 +29,7 @@ func set_texture(texture:StreamTexture):
 	remove_child(particles)
 	particles.global_position = global_position
 	particles.scale = scale
-	hitbox.damage = damage
+	hitbox.damage = damage * 5
 	get_parent().add_child(particles)
 
 

@@ -1,0 +1,213 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/Bill.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/Bill.gd" type="Script" id=2]
+[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/ElectricSpawn.png" type="Texture" id=6]
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/FBombAttack.gd" type="Script" id=7]
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/FBombTelegraph.png" type="Texture" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 22.0227
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 19.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "ChargeUp"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.7
+loop = true
+step = 0.175
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.175, 0.35, 0.525 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "IdleEnraged"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Billy" type="KinematicBody2D"]
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 6 )
+shape = SubResource( 1 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="Hurtbox" parent="Collisions" instance=ExtResource( 3 )]
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
+position = Vector2( 0, 7 )
+shape = SubResource( 4 )
+
+[node name="Attacks" type="Node2D" parent="."]
+
+[node name="FBomb" type="Node2D" parent="Attacks"]
+visible = false
+script = ExtResource( 7 )
+
+[node name="Sprite1" type="Sprite" parent="Attacks/FBomb"]
+position = Vector2( -59, -15 )
+texture = ExtResource( 6 )
+hframes = 3
+
+[node name="Sprite2" type="Sprite" parent="Attacks/FBomb"]
+position = Vector2( 59, -15 )
+texture = ExtResource( 6 )
+flip_h = true
+hframes = 3
+frame = 1
+
+[node name="FBomb1" type="Sprite" parent="Attacks/FBomb"]
+position = Vector2( -59, -15 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 8 )
+
+[node name="FBomb2" type="Sprite" parent="Attacks/FBomb"]
+position = Vector2( 59, -15 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Attacks/FBomb"]
+autoplay = "ChargeUp"
+anims/ChargeUp = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[node name="Charge" type="Timer" parent="Attacks/FBomb"]
+one_shot = true
+
+[node name="DamageManager" parent="." instance=ExtResource( 4 )]
+maxHealth = 3840
+kbAmount = 0.0
+difficulty = 2
+isBoss = true
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Attack" type="Timer" parent="Timers"]
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 2 )
+anims/IdleEnraged = SubResource( 5 )
+anims/RESET = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 5 )]
+bossName = "Billy"
+dmgManagerPth = NodePath("../../DamageManager")
+
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
+[connection signal="timeout" from="Attacks/FBomb/Charge" to="Attacks/FBomb" method="fBomb"]
+[connection signal="damaged" from="DamageManager" to="." method="_on_damaged"]
+[connection signal="timeout" from="Timers/Attack" to="." method="attack"]
+
+[editable path="Collisions/Hurtbox"]
