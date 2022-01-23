@@ -18,7 +18,6 @@ func _physics_process(delta: float) -> void:
 	
 	vel = move_and_slide(vel)
 
-# 121px
 func fBomb() -> void:
 	var pos := global_position - Vector2(121 / 2, 0)
 	for i in 2:
@@ -26,4 +25,5 @@ func fBomb() -> void:
 		newFBomb.global_position = pos
 		GameManager.spawnManager.spawn_object(newFBomb)
 		pos.x += 121
-	fbombTimer.start(rand_range(1, 2))
+		yield(get_tree().create_timer(.1), "timeout")
+	fbombTimer.start(rand_range(2, 4))
