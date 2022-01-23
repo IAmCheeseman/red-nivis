@@ -1,20 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Weapons/Bullet/Sprites/Grenade.png" type="Texture" id=1]
 [ext_resource path="res://Items/Weapons/Bullet/BulletParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Weapons/Bullet/AltBullets/ExplodingBullet/ExplodingBullet.gd" type="Script" id=3]
-[ext_resource path="res://Items/Weapons/Bullet/Sprites/Bullet1.png" type="Texture" id=4]
-[ext_resource path="res://Items/Weapons/Bullet/Lights/bulletLight1.png" type="Texture" id=5]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 4.0
+[sub_resource type="PhysicsMaterial" id=5]
+bounce = 0.5
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 4.0
+[sub_resource type="CircleShape2D" id=4]
+radius = 4.12311
 
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Light:scale")
+tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -25,25 +23,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -52,38 +38,21 @@ tracks/2/keys = {
 } ]
 }
 
-[node name="Bullet" type="KinematicBody2D"]
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 17
+physics_material_override = SubResource( 5 )
+gravity_scale = 3.0
 script = ExtResource( 3 )
 
 [node name="Particles" parent="." instance=ExtResource( 2 )]
 
-[node name="Light" type="Sprite" parent="."]
-modulate = Color( 1, 0.807843, 0.231373, 1 )
-show_behind_parent = true
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 5 )
-
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
+hframes = 4
 
-[node name="Hitbox" parent="." groups=[
-"playerBullet",
-] instance=ExtResource( 1 )]
-visible = false
-collision_layer = 2
-collision_mask = 4
-maskedHurtbox = "player"
-
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource( 1 )
-
-[node name="QueueArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="QueueArea"]
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Init"
@@ -92,8 +61,4 @@ anims/Init = SubResource( 3 )
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 5.0
 
-[connection signal="hit_object" from="Hitbox" to="." method="_on_Hitbox_hit_object"]
-[connection signal="body_entered" from="QueueArea" to="." method="_on_QueueArea_body_entered"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
-
-[editable path="Hitbox"]

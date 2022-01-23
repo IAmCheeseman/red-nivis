@@ -24,6 +24,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/ak47.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/ak47.png"
 	},
+	"grenade-launcher" : {
+		"key" : "grenade-launcher",
+		"name" : "Grenade Launcher",
+		"tier" : ToolTipGenerator.TIERS.LAB,
+		"scene" : "res://Items/Weapons/Scenes/GrenadeLauncher.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/GrenadeLauncher.png"
+	},
 	# CAVE ITEMS
 	"pump-shotgun" : {
 		"key" : "pump-shotgun",

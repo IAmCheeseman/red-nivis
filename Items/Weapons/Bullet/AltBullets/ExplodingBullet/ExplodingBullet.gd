@@ -1,16 +1,19 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 var direction : Vector2
 var speed : float
 var peircing = false
-var prefix : Prefix
+var damage: float
 var lifetime = 5.0
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
 onready var particles = $Particles
 onready var liftimeTimer = $Lifetime
 
-var explosion = preload("res://Enemies/Explosion.tscn")
+var explosion = preload("res://Entities/Enemies/Explosion/Explosion.tscn")
+
+signal hit_wall
+signal hit_enemy
 
 func set_texture(texture:StreamTexture):
 	sprite.texture = texture
@@ -23,11 +26,9 @@ func set_texture(texture:StreamTexture):
 
 func _ready():
 	look_at(global_position+direction)
+	apply_central_impulse(direction * speed)
+	
 	liftimeTimer.start(lifetime)
-
-
-func _physics_process(delta):
-	position += (direction*speed)*delta
 
 
 func _on_QueueArea_body_entered(_body):
