@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ui.png-6706cbd858b55648cbaaa994b55cb145.stex"
+path="res://.import/ak-47.png-3b1f3f812445b6b70fd5b636a1ba6445.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Assets/ui.png"
-dest_files=[ "res://.import/ui.png-6706cbd858b55648cbaaa994b55cb145.stex" ]
+source_file="res://Items/Weapons/Sprites/ak-47.png"
+dest_files=[ "res://.import/ak-47.png-3b1f3f812445b6b70fd5b636a1ba6445.stex" ]
 
 [params]
 
