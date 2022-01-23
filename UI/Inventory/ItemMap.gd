@@ -17,6 +17,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Revolver.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Revolver.png"
 	},
+	"ak-47" : {
+		"key" : "ak-47",
+		"name" : "AK-47",
+		"tier" : ToolTipGenerator.TIERS.LAB,
+		"scene" : "res://Items/Weapons/Scenes/ak47.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/ak47.png"
+	},
 	# CAVE ITEMS
 	"pump-shotgun" : {
 		"key" : "pump-shotgun",
