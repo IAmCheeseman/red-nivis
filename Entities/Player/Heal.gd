@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	and !finished\
 	and playerData.healsLeft > 0\
 	and playerData.playerObject.is_grounded()\
-	and playerData.health != playerData.maxHealth:
+	and playerData.health < playerData.maxHealth:
 		show()
 		playerData.playerObject.lockMovement = true
 		value += delta
