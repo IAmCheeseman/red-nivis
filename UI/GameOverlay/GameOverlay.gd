@@ -62,7 +62,7 @@ func _process(_delta: float) -> void:
 	if Settings.speedrunTimer:
 		var seconds = str(int(playerData.time) % 60)
 		if seconds.length() == 1: seconds = "0"+seconds
-		var minutes = str(int(playerData.time) % int(3600 / 60))
+		var minutes = str(int(playerData.time) % 3600 / 60)
 # warning-ignore:integer_division
 		time.text = "Time\n%s:%s" % [minutes, seconds]
 	else:

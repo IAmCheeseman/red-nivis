@@ -165,7 +165,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[node name="HANK" type="KinematicBody2D"]
+[node name="HANK" type="KinematicBody2D" groups=["hook_resistent"]]
 z_index = 1
 collision_layer = 0
 script = ExtResource( 2 )

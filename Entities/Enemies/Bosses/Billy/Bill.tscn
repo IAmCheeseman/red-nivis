@@ -121,7 +121,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[node name="Billy" type="KinematicBody2D"]
+[node name="Billy" type="KinematicBody2D" groups=["hook_resistent"]]
 collision_layer = 0
 script = ExtResource( 2 )
 

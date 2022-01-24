@@ -34,11 +34,13 @@ func _process(delta: float) -> void:
 	if !isZippingPlayer:
 		position += zipDir * SPEED * delta
 	else:
-		startingPos += zipDir * SPEED * delta
+		if zipNode: global_position -= zipDir * SPEED * delta
+		else: startingPos += zipDir * SPEED * delta
 		player.vel.y = 1
 		if startingPos.distance_to(global_position) < 24:
-			player.vel.y = -172
-			player.global_position = finalPos
+			if !zipNode:
+				player.vel.y = -90
+				player.global_position = finalPos
 			player.hurtbox.get_node("CollisionShape2D").disabled = true
 			hide()
 			set_process(false)
@@ -66,6 +68,7 @@ func enable_collisions() -> void:
 func get_root(node: Node2D) -> Node2D:
 	if !node is KinematicBody2D:
 		return get_root(node.owner)
+	if node.is_in_group("hook_resistent"): return null
 	return node
 
 
