@@ -36,4 +36,7 @@ shape = SubResource( 1 )
 [node name="ZipPoint" type="RayCast2D" parent="."]
 enabled = true
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="Sprite/Collision" to="." method="_on_body_entered"]

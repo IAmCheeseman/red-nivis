@@ -26,12 +26,19 @@ func _process(delta: float) -> void:
 		position += zipDir * SPEED * delta
 	else:
 		startingPos += zipDir * SPEED * delta
-		GameManager.player.vel.y = 0
+		GameManager.player.vel.y = 1
 		if startingPos.distance_to(global_position) < 16:
 			queue_free()
 	GameManager.player.global_position = startingPos
+	chainSprite.rect_size.y = startingPos.distance_to(global_position) - 8
 
 
 func _on_body_entered(body: Node) -> void:
 	print("*zips*")
 	isZippingPlayer = true
+
+
+func _on_timeout() -> void:
+	if !isZippingPlayer: 
+		GameManager.player.vel.y = 1
+		queue_free()
