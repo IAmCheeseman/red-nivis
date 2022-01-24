@@ -6,12 +6,14 @@ const SPEED = 750
 onready var hookSprite = $Sprite
 onready var chainSprite = $Sprite/Chain
 onready var collisionTimer = $RenableCollisions
+onready var finalPosRC = $Collision
 
 var zipDir: Vector2
 var isZippingPlayer := false
 var startingPos: Vector2
 var player: Node2D
 var zipNode: Node
+var finalPos: Vector2
 
 
 func _ready() -> void:
@@ -20,6 +22,10 @@ func _ready() -> void:
 	zipDir = get_local_mouse_position().normalized()
 	position.y -= 8
 	position += zipDir * 8
+	
+	finalPosRC.cast_to = zipDir * 1000
+	finalPosRC.force_raycast_update()
+	finalPos = finalPosRC.get_collision_point() - zipDir * 16
 	
 	look_at(global_position + zipDir)
 
@@ -32,10 +38,12 @@ func _process(delta: float) -> void:
 		player.vel.y = 1
 		if startingPos.distance_to(global_position) < 24:
 			player.vel.y = -172
+			player.global_position = finalPos
 			player.hurtbox.get_node("CollisionShape2D").disabled = true
 			hide()
 			set_process(false)
 			collisionTimer.start()
+			return
 	player.global_position = startingPos
 	player.scaleHelper.scale = Vector2.ONE
 	if zipNode: zipNode.global_position = global_position
