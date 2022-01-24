@@ -12,5 +12,6 @@ func _input(event: InputEvent) -> void:
 		if is_instance_valid(currentHookshot): return
 		var newHookshot = HOOKSHOT.instance()
 		newHookshot.global_position = player.global_position
+		newHookshot.player = player
 		GameManager.add_child(newHookshot)
 		currentHookshot = newHookshot

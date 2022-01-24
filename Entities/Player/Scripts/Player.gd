@@ -197,7 +197,7 @@ func is_grounded():
 		else Vector2.ZERO
 		return true
 	
-	if vel.y > 0 and state != states.DASH:
+	if vel.y > 0 and state != states.DASH and !lockMovement:
 		scaleHelper.scale.x = clamp(
 			1-abs(vel.y/Globals.GRAVITY),
 			.75, 1.5)

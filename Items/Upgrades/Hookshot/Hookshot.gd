@@ -2,13 +2,14 @@ extends Node2D
 
 const SPEED = 500
 
-onready var zipPointRC = $ZipPoint
+
 onready var hookSprite = $Sprite
 onready var chainSprite = $Sprite/Chain
 
 var zipDir: Vector2
 var isZippingPlayer := false
 var startingPos: Vector2
+var player: Node2D
 
 
 func _ready() -> void:
@@ -26,19 +27,19 @@ func _process(delta: float) -> void:
 		position += zipDir * SPEED * delta
 	else:
 		startingPos += zipDir * SPEED * delta
-		GameManager.player.vel.y = 1
+		player.vel.y = 1
 		if startingPos.distance_to(global_position) < 16:
 			queue_free()
-	GameManager.player.global_position = startingPos
+	player.global_position = startingPos
+	player.scaleHelper.scale = Vector2.ONE
 	chainSprite.rect_size.y = startingPos.distance_to(global_position) - 8
 
 
 func _on_body_entered(body: Node) -> void:
-	print("*zips*")
 	isZippingPlayer = true
 
 
 func _on_timeout() -> void:
 	if !isZippingPlayer: 
-		GameManager.player.vel.y = 1
+		player.vel.y = 1
 		queue_free()
