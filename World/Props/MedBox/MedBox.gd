@@ -8,7 +8,7 @@ var playerData = preload("res://Entities/Player/Player.tres")
 
 
 func _process(_delta: float) -> void:
-	interaction.disabled = playerData.maxHeals-playerData.healsLeft == 0 or anim.is_playing()
+	interaction.disabled = (playerData.maxHeals-playerData.healsLeft == 0 and playerData.maxHealth != playerData.health) or anim.is_playing()
 
 
 func _on_interaction() -> void:
@@ -36,5 +36,5 @@ func spawn_medkits() -> void:
 		newMedkit.apply_central_impulse(pushAngle)
 		newMedkit.global_position = spawnPos.global_position
 		GameManager.spawnManager.spawn_object(newMedkit)
-	playerData.heal(100000)
+	playerData.heal(abs(playerData.health - playerData.maxHealth))
 	playerData.emit_signal("healthChanged", Vector2.ZERO)
