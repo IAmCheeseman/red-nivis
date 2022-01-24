@@ -29,12 +29,15 @@ __meta__ = {
 [node name="Collision" type="Area2D" parent="Sprite"]
 position = Vector2( -2.62268e-07, -6 )
 collision_layer = 0
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Collision"]
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
-[connection signal="body_entered" from="Sprite/Collision" to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Sprite/Collision" to="." method="_on_collision"]
+[connection signal="body_entered" from="Sprite/Collision" to="." method="_on_collision"]
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]

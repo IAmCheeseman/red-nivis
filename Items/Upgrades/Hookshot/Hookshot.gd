@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 500
+const SPEED = 750
 
 
 onready var hookSprite = $Sprite
@@ -28,14 +28,15 @@ func _process(delta: float) -> void:
 	else:
 		startingPos += zipDir * SPEED * delta
 		player.vel.y = 1
-		if startingPos.distance_to(global_position) < 16:
+		if startingPos.distance_to(global_position) < 24:
+			player.vel = zipDir * SPEED
 			queue_free()
 	player.global_position = startingPos
 	player.scaleHelper.scale = Vector2.ONE
 	chainSprite.rect_size.y = startingPos.distance_to(global_position) - 8
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_collision(_body: Node) -> void:
 	isZippingPlayer = true
 
 
