@@ -5,11 +5,13 @@ const SPEED = 750
 
 onready var hookSprite = $Sprite
 onready var chainSprite = $Sprite/Chain
+onready var collisionTimer = $RenableCollisions
 
 var zipDir: Vector2
 var isZippingPlayer := false
 var startingPos: Vector2
 var player: Node2D
+var zipNode: Node
 
 
 func _ready() -> void:
@@ -30,17 +32,35 @@ func _process(delta: float) -> void:
 		player.vel.y = 1
 		if startingPos.distance_to(global_position) < 24:
 			player.vel = zipDir * SPEED
-			queue_free()
+			player.hurtbox.get_node("CollisionShape2D").disabled = true
+			hide()
+			set_process(false)
+			collisionTimer.start()
 	player.global_position = startingPos
 	player.scaleHelper.scale = Vector2.ONE
+	if zipNode: zipNode.global_position = global_position
+	
 	chainSprite.rect_size.y = startingPos.distance_to(global_position) - 8
 
 
-func _on_collision(_body: Node) -> void:
+func _on_collision(body: Node) -> void:
 	isZippingPlayer = true
+	if body is Area2D:
+		zipNode = get_root(body)
+
+
+func enable_collisions() -> void:
+	player.hurtbox.get_node("CollisionShape2D").disabled = false
+	queue_free()
+
+
+func get_root(node: Node2D) -> Node2D:
+	if !node is KinematicBody2D:
+		return get_root(node.owner)
+	return node
 
 
 func _on_timeout() -> void:
-	if !isZippingPlayer: 
+	if !isZippingPlayer:
 		player.vel.y = 1
 		queue_free()
