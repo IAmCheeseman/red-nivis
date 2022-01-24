@@ -61,11 +61,11 @@ region = Rect2( 9, 0, 7, 10 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 7 )
-region = Rect2( 125, 88, 33, 5 )
+region = Rect2( 125, 88, 35, 5 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 7 )
-region = Rect2( 125, 83, 33, 5 )
+region = Rect2( 125, 83, 35, 5 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 4
@@ -172,12 +172,12 @@ __meta__ = {
 
 [node name="Bottom" type="VBoxContainer" parent="VBox"]
 margin_top = 16.0
-margin_right = 42.0
+margin_right = 44.0
 margin_bottom = 44.0
 custom_constants/separation = 2
 
 [node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom"]
-margin_right = 42.0
+margin_right = 44.0
 margin_bottom = 10.0
 custom_constants/separation = 2
 
@@ -189,19 +189,18 @@ texture = SubResource( 5 )
 [node name="TextureProgress" type="TextureProgress" parent="VBox/Bottom/AmmoBar"]
 margin_left = 9.0
 margin_top = 2.0
-margin_right = 41.0
+margin_right = 44.0
 margin_bottom = 7.0
-rect_min_size = Vector2( 32, 0 )
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.01
+value = 0.5
 texture_under = SubResource( 6 )
 texture_progress = SubResource( 7 )
-nine_patch_stretch = true
 stretch_margin_left = 1
 stretch_margin_top = 2
 stretch_margin_right = 1
-stretch_margin_bottom = 3
+stretch_margin_bottom = 2
 
 [node name="Tween" type="Tween" parent="VBox/Bottom/AmmoBar"]
 
@@ -216,7 +215,7 @@ align = 1
 
 [node name="HealsAndBomb" type="HBoxContainer" parent="VBox/Bottom"]
 margin_top = 12.0
-margin_right = 42.0
+margin_right = 44.0
 margin_bottom = 28.0
 
 [node name="Heals" type="VBoxContainer" parent="VBox/Bottom/HealsAndBomb"]

@@ -120,7 +120,8 @@ func load_run() -> int:
 	
 	for i in worldData.rooms:
 		for r in i:
-			if r.constantRoom: r.roomIcon = load(r.constantRoom).roomIcon
+			if r.constantRoom:
+				r.roomIcon = load(r.constantRoom).roomIcon
 	print("------------------")
 	return OK
 

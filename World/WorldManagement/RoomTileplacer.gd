@@ -156,7 +156,6 @@ func create_constant_room(connections) -> void:
 	var roomPr:Node2D = room.props
 	for c in roomPr.get_children():
 		roomPr.remove_child(c)
-		c.z_index = -1
 		add_child(c)
 	# Tiling over none connected rooms
 	var size = world.solids.get_used_rect().end-Vector2.ONE

@@ -31,7 +31,7 @@ func _ready() -> void:
 	generator.create_room()
 	seed(worldData.position.x*worldData.position.y)
 	lockedIn = rand_range(0, 1) < .2
-	if !lockedIn or worldData.get_current_room().cleared:
+	if worldData.get_current_room().cleared:
 		for i in exitBlockers: i.queue_free()
 		exitBlockers.clear()
 	if worldData.playerPos != Vector2.ZERO:

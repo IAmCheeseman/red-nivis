@@ -9,6 +9,7 @@ export var kbAmount := 32.0
 export var upwardsKB := 0.0
 export var hurtSFXPath: NodePath
 export(int, "Easy", "Normal", "Hard") var difficulty = 1
+export var isBoss := false
 
 var hurtSFX:Node2D
 
@@ -19,6 +20,7 @@ var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var damageLabel = preload("res://Entities/Effects/DmgLabel.tscn")
 
 signal dead
+signal damaged
 
 
 func _ready() -> void:
@@ -51,6 +53,7 @@ func take_damage(amount:float, dir:Vector2) -> void:
 	# Killing thingy
 	if health <= 0:
 		_die(dir)
+	emit_signal("damaged")
 
 
 func _die(dir) -> void:
@@ -78,6 +81,7 @@ func _die(dir) -> void:
 		EASY: scoreInc = Globals.EASY_ENEMY_POINTS
 		NORMAL: scoreInc = Globals.MEDIUM_ENEMY_POINTS
 		HARD: scoreInc = Globals.HARD_ENEMY_POINTS
+	if isBoss: scoreInc += Globals.BOSS_KILL
 	
 	GameManager.player.playerData.score += scoreInc
 	GameManager.player.playerData.kills += 1

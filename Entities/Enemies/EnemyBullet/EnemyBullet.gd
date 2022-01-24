@@ -35,7 +35,7 @@ func _physics_process(delta):
 
 func _on_QueueArea_body_entered(body):
 	if !body.is_in_group("Platform"):
-		emit_signal("hitCollision", position)
+		emit_signal("hitCollision", self)
 		queue_free()
 
 

@@ -16,9 +16,9 @@ enum {IS_UP, IS_DOWN, IS_RIGHT, IS_LEFT, IS_TILE}
 
 static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, exits:PoolVector2Array) -> Image:
 	seed(seed_)
-	var size:Vector2 = Vector2(rand_range(2, 3), rand_range(2, 3)).round()
+	var size:Vector2 = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
 	while size == Vector2.ONE:
-		size = Vector2(rand_range(2, 3), rand_range(2, 3)).round()
+		size = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
 	var image:Image = Image.new()
 	image.create(
 		int(size.x*TEMPLATE_SIZE), 
@@ -28,9 +28,7 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 	var blockOuts = []
 	var blockOutCount = floor((size.x*size.y)*.5)
 	
-	while blockOutCount >= size.x or blockOutCount >= size.y:
-		blockOutCount -= 1
-	blockOutCount = 1
+	blockOutCount = 1 if size.x > 1 and size.y > 1 else 0
 	
 	for i in blockOutCount:
 		blockOuts.append(Vector2(

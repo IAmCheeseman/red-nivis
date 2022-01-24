@@ -22,6 +22,7 @@ func update_stats() -> void:
 	var seconds = str(int(playerData.time) % 60)
 	if seconds.length() == 1: seconds = "0"+seconds
 	var minutes = str(int(playerData.time) % int(3600 / 60))
+# warning-ignore:integer_division
 	time.bbcode_text = "[center]Time\n[color=green]%s:%s" % [minutes, seconds]
 	
 	playerData.highScore = max(playerData.highScore, playerData.score)

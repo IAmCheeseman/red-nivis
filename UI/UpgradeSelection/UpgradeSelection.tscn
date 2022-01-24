@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Items/Upgrades/Teleport/Teleport.tres" type="Resource" id=1]
 [ext_resource path="res://Items/Upgrades/StickyGlove/WallJump.tres" type="Resource" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UI/UpgradeSelection/UpgradeSelection.gd" type="Script" id=6]
 [ext_resource path="res://Items/Upgrades/Grenade/Grenade.tres" type="Resource" id=7]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=8]
+[ext_resource path="res://Items/Upgrades/Hookshot/Hookshot.tres" type="Resource" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
@@ -104,6 +105,15 @@ margin_top = 28.0
 margin_right = 26.0
 margin_bottom = 54.0
 upgrade = ExtResource( 7 )
+
+[node name="UpgradeSlot5" parent="CenterContainer/VBoxContainer/Upgrades" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 28.0
+margin_right = 54.0
+margin_bottom = 54.0
+upgrade = ExtResource( 9 )
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
 margin_top = 105.0

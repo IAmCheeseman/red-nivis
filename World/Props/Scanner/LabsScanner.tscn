@@ -5,4 +5,4 @@
 [node name="Scanner" instance=ExtResource( 1 )]
 
 [node name="ItemSpawn" parent="." index="4"]
-itemPool = [ "revolver" ]
+itemPool = [ "revolver", "ak-47", "grenade-launcher" ]
