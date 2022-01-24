@@ -36,3 +36,5 @@ func spawn_medkits() -> void:
 		newMedkit.apply_central_impulse(pushAngle)
 		newMedkit.global_position = spawnPos.global_position
 		GameManager.spawnManager.spawn_object(newMedkit)
+	playerData.heal(100000)
+	playerData.emit_signal("healthChanged", Vector2.ZERO)
