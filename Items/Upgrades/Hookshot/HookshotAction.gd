@@ -17,9 +17,11 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("hookshot") and cooldown.is_stopped():
 		if is_instance_valid(currentHookshot): return
+		
 		var newHookshot = HOOKSHOT.instance()
 		newHookshot.global_position = player.global_position
 		newHookshot.player = player
 		GameManager.add_child(newHookshot)
 		currentHookshot = newHookshot
+		
 		cooldown.start()

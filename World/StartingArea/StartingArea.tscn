@@ -19,7 +19,7 @@
 [ext_resource path="res://World/Props/Constructor/Constructor.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Props/AbilitySelector/AbilitySelector.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/NPC/LmaoMan/LmaoMan.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDM.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -219,13 +219,13 @@ position = Vector2( -16, 1 )
 [node name="LmaoMan" parent="Decoration" instance=ExtResource( 19 )]
 position = Vector2( 220, 1 )
 
+[node name="MinigunMachine" parent="." instance=ExtResource( 20 )]
+position = Vector2( 88, -143 )
+
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( -112, -8 )
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
-
-[node name="MDM" parent="." instance=ExtResource( 20 )]
-position = Vector2( -26, -74 )
 
 [connection signal="loadArea" from="Managing/LoadingZone" to="." method="_on_lab_loading_zone_loadArea"]
 [connection signal="area_entered" from="Managing/MovementLock" to="." method="_on_movement_lock_area_entered"]

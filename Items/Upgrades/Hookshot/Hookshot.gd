@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 		startingPos += zipDir * SPEED * delta
 		player.vel.y = 1
 		if startingPos.distance_to(global_position) < 24:
-			player.vel = zipDir * SPEED
+			player.vel.y = -172
 			player.hurtbox.get_node("CollisionShape2D").disabled = true
 			hide()
 			set_process(false)
@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 
 
 func _on_collision(body: Node) -> void:
+	if body.is_in_group("EnemyBullet"): return
 	isZippingPlayer = true
 	if body is Area2D:
 		zipNode = get_root(body)
