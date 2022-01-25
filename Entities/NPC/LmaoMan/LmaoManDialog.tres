@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "Man...", "I would NOT go down there." ] ]
+dialog = [ [ "Introduction", "[wave]OOoOOooooO[/wave]", "[Insert old man advice]" ] ]

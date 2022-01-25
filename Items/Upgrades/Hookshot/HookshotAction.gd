@@ -10,7 +10,7 @@ var cooldown: Timer
 func _ready() -> void:
 	cooldown = Timer.new()
 	cooldown.one_shot = true
-	cooldown.wait_time = 1.5
+	cooldown.wait_time = 1
 	add_child(cooldown)
 
 
