@@ -21,6 +21,7 @@ func _ready():
 
 	refresh_items()
 	set_slot_cursor_position()
+	update_rp_gun()
 
 
 func _process(delta):
@@ -87,16 +88,29 @@ func _input(event):
 	randomize()
 	# Slot scrolling
 	if !playerData.isDead and !GameManager.inGUI:
+		var updated = false
 		if event.is_action_released("hotbar_scroll_left"):
 			inventory.selectedSlot = wrapi(inventory.selectedSlot-1,
 									 0, slots.get_child_count())
+			updated = true
 		if event.is_action_released("hotbar_scroll_right"):
 			inventory.selectedSlot = wrapi(inventory.selectedSlot+1,
 									0, slots.get_child_count())
+			updated = true
 		# Selecting the slot with numbers
 		for key in range(KEY_1, KEY_1+slots.get_child_count()):
 			if Input.is_key_pressed(key):
 				inventory.selectedSlot = key-KEY_1
+				updated = true
+		
+		if !updated: return
+		update_rp_gun()
+
+func update_rp_gun() -> void:
+	var slot = slots.get_child(inventory.selectedSlot)
+	if slot.item == "": GameManager.rpGun = "No Gun"
+	else: GameManager.rpGun = "Using %s" % ItemMap.ITEMS[slot.item].name
+	GameManager.update_rp()
 
 
 func _on_mouse_entered():

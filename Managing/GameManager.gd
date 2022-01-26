@@ -30,7 +30,28 @@ signal zoom_in(zoom,time,zoomPos)
 
 var controlMaterial = CanvasItemMaterial.new()
 
+var rpBiome = "Above Ground"
+var rpGun = "No gun"
+
+
+func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
+	yield(get_tree(), "idle_frame")
+	var activity = Discord.Activity.new()
+	activity.set_type(Discord.ActivityType.Playing)
+	activity.set_state(state)
+	activity.set_details(details)
+
+	var assets = activity.get_assets()
+	assets.set_large_image("icon")
+	assets.set_large_text("Astronaut Game")
+	
+	var result = yield(Discord.activity_manager.update_activity(activity), "result").result
+	if result != Discord.Result.Ok:
+		push_error(result)
+
+
 func _ready() -> void:
+	update_rp()
 	load_game()
 	controlMaterial.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
 	var _discard = get_tree().connect("node_added", self, "_on_node_added")

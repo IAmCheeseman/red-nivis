@@ -14,7 +14,6 @@ func _ready():
 	update_index()
 	set_focus_mode(Control.FOCUS_CLICK)
 	slotTexture.material = slotTexture.material.duplicate()
-
 	#slotTexture.material = slotTexture.material.duplicate()
 
 

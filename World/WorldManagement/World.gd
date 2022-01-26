@@ -38,6 +38,11 @@ func _ready() -> void:
 		player.global_position = worldData.playerPos
 		worldData.playerPos = Vector2.ZERO
 	
+	var biome = worldData.get_biome_by_index(worldData.get_current_room().biome)
+	
+	GameManager.rpBiome = "Exploring %s" % biome.name
+	GameManager.update_rp()
+	
 	var timer = Timer.new()
 	timer.wait_time = 2.9
 	timer.autostart = true
