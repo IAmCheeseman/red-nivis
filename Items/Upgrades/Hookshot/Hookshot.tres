@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://Items/Upgrades/DoubleJump/DoubleJumpUpgrade.png" type="Texture" id=1]
+[ext_resource path="res://Items/Upgrades/Hookshot/UpgradeIcon.png" type="Texture" id=1]
 [ext_resource path="res://Items/Upgrades/Upgrade.gd" type="Script" id=2]
 [ext_resource path="res://Items/Upgrades/Hookshot/HookshotAction.gd" type="Script" id=3]
 

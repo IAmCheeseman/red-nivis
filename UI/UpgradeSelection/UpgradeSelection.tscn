@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Items/Upgrades/Teleport/Teleport.tres" type="Resource" id=1]
-[ext_resource path="res://Items/Upgrades/StickyGlove/WallJump.tres" type="Resource" id=2]
 [ext_resource path="res://UI/UpgradeSelection/UpgradeSlot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Assets/FFFFORWA.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=5]
@@ -47,14 +46,14 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 119.0
+margin_left = 121.0
 margin_top = 11.0
-margin_right = 201.0
+margin_right = 199.0
 margin_bottom = 208.0
 custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 82.0
+margin_right = 78.0
 margin_bottom = 11.0
 custom_fonts/font = SubResource( 1 )
 text = "Select Abilities"
@@ -62,19 +61,20 @@ align = 1
 
 [node name="HSeparator1" type="HSeparator" parent="CenterContainer/VBoxContainer"]
 margin_top = 23.0
-margin_right = 82.0
+margin_right = 78.0
 margin_bottom = 27.0
 custom_styles/separator = SubResource( 2 )
 
 [node name="Upgrades" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+margin_left = 12.0
 margin_top = 39.0
-margin_right = 82.0
+margin_right = 66.0
 margin_bottom = 93.0
 rect_min_size = Vector2( 0, 26 )
 size_flags_horizontal = 4
 custom_constants/vseparation = 2
 custom_constants/hseparation = 2
-columns = 3
+columns = 2
 
 [node name="UpgradeSlot1" parent="CenterContainer/VBoxContainer/Upgrades" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -89,14 +89,6 @@ anchor_bottom = 0.0
 margin_left = 28.0
 margin_right = 54.0
 margin_bottom = 26.0
-
-[node name="UpgradeSlot3" parent="CenterContainer/VBoxContainer/Upgrades" instance=ExtResource( 3 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 56.0
-margin_right = 82.0
-margin_bottom = 26.0
-upgrade = ExtResource( 2 )
 
 [node name="UpgradeSlot4" parent="CenterContainer/VBoxContainer/Upgrades" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -117,13 +109,13 @@ upgrade = ExtResource( 9 )
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
 margin_top = 105.0
-margin_right = 82.0
+margin_right = 78.0
 margin_bottom = 109.0
 custom_styles/separator = SubResource( 2 )
 
 [node name="SlotsLeft" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 121.0
-margin_right = 82.0
+margin_right = 78.0
 margin_bottom = 131.0
 custom_fonts/font = ExtResource( 8 )
 text = "Slots left: "
@@ -134,14 +126,14 @@ __meta__ = {
 
 [node name="Selections" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_top = 143.0
-margin_right = 82.0
+margin_right = 78.0
 margin_bottom = 169.0
 rect_min_size = Vector2( 0, 26 )
 alignment = 1
 
 [node name="DoneButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 181.0
-margin_right = 82.0
+margin_right = 78.0
 margin_bottom = 197.0
 custom_fonts/font = ExtResource( 8 )
 text = "Start"
