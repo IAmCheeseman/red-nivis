@@ -10,6 +10,10 @@ signal selected(button)
 func _ready():
 	set_focus_mode(Control.FOCUS_CLICK)
 	slotTexture.material = slotTexture.material.duplicate()
+<<<<<<< HEAD
+=======
+	#slotTexture.material = slotTexture.material.duplicate()
+>>>>>>> d4d5e3c250f98efa908c15b79d8acb599941f251
 
 
 func setup(texture, itemID:String):

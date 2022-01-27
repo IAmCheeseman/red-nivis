@@ -11,6 +11,8 @@ static func reset() -> void:
 	playerData.maxHealth = 3
 	playerData.health = playerData.maxHealth
 	playerData.maxStamina = 3
+	playerData.maxHeals = 3
+	playerData.healsLeft = 3
 	playerData.money = 0
 	playerData.score = 0
 	playerData.time = 0

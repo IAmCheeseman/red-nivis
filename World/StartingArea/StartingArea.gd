@@ -9,6 +9,8 @@ onready var movementLock = $Managing/MovementLock
 
 
 func _ready():
+	GameManager.rpBiome = "Aboveground"
+	GameManager.update_rp()
 	set_process(false)
 	AudioServer.set_bus_effect_enabled(4, 0, false)
 
