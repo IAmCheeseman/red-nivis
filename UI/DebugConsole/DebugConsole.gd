@@ -1,19 +1,18 @@
 extends "res://UI/DebugConsole/Commands.gd"
 
-onready var input = $CenterContainer/VBoxContainer/Input
-onready var output = $CenterContainer/VBoxContainer/Output
-onready var definitions = $CommandsDefinitions
+onready var input = $VBoxContainer/Input
+onready var output = $VBoxContainer/Output
 
 
 func process_command(command:String):
+	if command == "": return
 	var expression = Expression.new()
 	var error = expression.parse(command, [])
 	if error != OK:
-		print(expression.get_error_text())
+		output_text(expression.get_error_text())
 		return
-	var result = expression.execute([], self, true)
-	if not expression.has_execute_failed():
-		output_text(str(result))
+	var result = expression.execute([], self, false)
+	output_text(str(result))
 
 
 func output_text(text:String):
@@ -33,11 +32,6 @@ func _on_input_text_entered(new_text):
 
 func _on_input_text_changed(new_text):
 	if new_text == "`": input.text = ""
-
-
-func _on_hide_button_pressed():
-	hide()
-	get_tree().paused = false
 
 
 func _input(event):

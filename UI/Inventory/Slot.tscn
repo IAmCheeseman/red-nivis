@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Inventory/Slot.gd" type="Script" id=1]
-[ext_resource path="res://UI/Assets/SlotFont.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://General/Outline.shader" type="Shader" id=3]
+[ext_resource path="res://Items/Weapons/Sprites/Pistol.png" type="Texture" id=4]
 
 [sub_resource type="StreamTexture" id=1]
 
@@ -10,39 +10,17 @@
 
 [sub_resource type="StreamTexture" id=3]
 
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-
-uniform vec4 color : hint_color; 
-uniform float fadeStart : hint_range(0, 2
-);
-
-void fragment() {
-	vec4 newColor = color;
-	newColor.a = clamp(UV.x, 0.0, 1.0);
-	COLOR = newColor;
-}"
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-shader_param/color = null
-shader_param/fadeStart = 1.0
-
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 3 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="DynamicFont" id=7]
-size = 4
-font_data = ExtResource( 2 )
-
 [node name="Slot" type="TextureButton"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -349.0
-margin_bottom = -280.0
+margin_right = -301.0
+margin_bottom = -201.0
 rect_min_size = Vector2( 0, 19 )
 texture_normal = SubResource( 1 )
 texture_pressed = SubResource( 2 )
@@ -54,42 +32,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackGround" type="ColorRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0.490196 )
-material = SubResource( 5 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource( 6 )
 margin_left = 2.0
 margin_top = 3.0
 margin_right = 16.0
 margin_bottom = 17.0
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Index" type="Label" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-text = "1"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="WeaponHolder" type="Node2D" parent="."]
 position = Vector2( 9, 10 )
-
-[connection signal="pressed" from="." to="." method="_on_press"]

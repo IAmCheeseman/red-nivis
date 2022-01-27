@@ -18,12 +18,27 @@ func help() -> String:
  time_scale(scale)
  toggle_revealed_map()
  op()
+ give(item_id)
 """
 
 
 func toggle_revealed_map():
 	GameManager.revealMap = !GameManager.revealMap
 	return " Map reveal toggled"
+
+
+func give(item: String) -> String:
+	if !ItemMap.ITEMS.has(item): 
+		return " Invalid id: %s" % item
+	var inventory = preload("res://UI/Inventory/Inventory.tres")
+	inventory.add_item(item)
+	return " Gave %s" % ItemMap.ITEMS[item].name
+
+
+func clear_inven() -> String:
+	var inventory = preload("res://UI/Inventory/Inventory.tres")
+	inventory.items.clear()
+	return " Inventory cleared"
 
 
 func time_scale(time_scale):
