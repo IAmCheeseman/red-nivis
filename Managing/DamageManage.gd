@@ -31,7 +31,7 @@ func _ready() -> void:
 func take_damage(amount:float, dir:Vector2) -> void:
 	var dmg := int(amount+rand_range(-2, 1))
 	health -= dmg
-	par.vel = dir*kbAmount-Vector2(0, upwardsKB)
+	if par.get("vel"): par.vel = dir*kbAmount-Vector2(0, upwardsKB)
 	
 	# Instancing label for damage
 	var newDL = damageLabel.instance()
