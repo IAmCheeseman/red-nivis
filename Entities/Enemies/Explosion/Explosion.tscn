@@ -187,6 +187,8 @@ shape = SubResource( 16 )
 [node name="SoundManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
 audio = ExtResource( 4 )
+volumeMod = -4.0
+autoplay = true
 bus = "Reverb"
 
 [editable path="PlayerHitbox"]
