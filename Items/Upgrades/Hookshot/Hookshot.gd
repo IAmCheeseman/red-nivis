@@ -7,6 +7,8 @@ onready var hookSprite = $Sprite
 onready var chainSprite = $Sprite/Chain
 onready var collisionTimer = $RenableCollisions
 onready var finalPosRC = $Collision
+onready var zipSfx = $ZipSfx
+onready var doneSfx = $DoneSfx
 
 var zipDir: Vector2
 var isZippingPlayer := false
@@ -45,6 +47,8 @@ func _process(delta: float) -> void:
 			hide()
 			set_process(false)
 			collisionTimer.start()
+			zipSfx.stop()
+			doneSfx.play()
 			return
 	player.global_position = startingPos
 	player.scaleHelper.scale = Vector2.ONE
@@ -56,6 +60,7 @@ func _process(delta: float) -> void:
 func _on_collision(body: Node) -> void:
 	if body.is_in_group("EnemyBullet"): return
 	isZippingPlayer = true
+	zipSfx.play()
 	if body is Area2D:
 		zipNode = get_root(body)
 
@@ -76,3 +81,8 @@ func _on_timeout() -> void:
 	if !isZippingPlayer:
 		player.vel.y = 1
 		queue_free()
+
+
+
+func _on_zip_sfx_finished() -> void:
+	if isZippingPlayer: zipSfx.play()

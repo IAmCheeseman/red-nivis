@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Items/Upgrades/Hookshot/Hook.png" type="Texture" id=1]
 [ext_resource path="res://Items/Upgrades/Hookshot/Chain.png" type="Texture" id=2]
 [ext_resource path="res://Items/Upgrades/Hookshot/Hookshot.gd" type="Script" id=3]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=4]
+[ext_resource path="res://Items/Upgrades/Hookshot/Zip.wav" type="AudioStream" id=5]
+[ext_resource path="res://Items/Upgrades/Hookshot/Done.wav" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 2.0
+radius = 0.999939
 
 [node name="Hookshot" type="Node2D"]
 script = ExtResource( 3 )
@@ -47,7 +50,18 @@ autostart = true
 wait_time = 0.4
 one_shot = true
 
+[node name="ZipSfx" type="Node2D" parent="."]
+script = ExtResource( 4 )
+audio = ExtResource( 5 )
+bus = "Reverb"
+
+[node name="DoneSfx" type="Node2D" parent="."]
+script = ExtResource( 4 )
+audio = ExtResource( 6 )
+bus = "Reverb"
+
 [connection signal="area_entered" from="Sprite/Collision" to="." method="_on_collision"]
 [connection signal="body_entered" from="Sprite/Collision" to="." method="_on_collision"]
 [connection signal="timeout" from="Timer" to="." method="_on_timeout"]
 [connection signal="timeout" from="RenableCollisions" to="." method="enable_collisions"]
+[connection signal="finished" from="ZipSfx" to="." method="_on_zip_sfx_finished"]

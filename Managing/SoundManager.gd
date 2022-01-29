@@ -37,6 +37,10 @@ func play(volMod=volumeMod):
 	add_child(newAudioPlayer)
 
 
+func stop() -> void:
+	Utils.free_children(self)
+
+
 func _on_audio_finished(player):
 	emit_signal("finished")
 	player.queue_free()
