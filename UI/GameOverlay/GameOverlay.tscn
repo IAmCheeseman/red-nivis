@@ -9,6 +9,7 @@
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=7]
 [ext_resource path="res://UI/GameOverlay/Heal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=9]
+[ext_resource path="res://UI/Assets/BombEmpty.png" type="Texture" id=10]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -78,10 +79,6 @@ size = 5
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 7 )
-region = Rect2( 165, 94, 9, 11 )
 
 [node name="GameOverlay" type="Control"]
 anchor_right = 1.0
@@ -279,14 +276,14 @@ __meta__ = {
 [node name="BombProgressBar" type="TextureProgress" parent="VBox/Bottom"]
 visible = false
 margin_top = 30.0
-margin_right = 42.0
+margin_right = 44.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 0, 12 )
 size_flags_vertical = 8
 max_value = 15.0
 step = 0.01
 value = 5.83
-texture_under = SubResource( 10 )
+texture_under = ExtResource( 10 )
 texture_progress = ExtResource( 6 )
 fill_mode = 4
 
