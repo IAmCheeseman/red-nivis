@@ -21,8 +21,8 @@ var finalPos: Vector2
 func _ready() -> void:
 	startingPos = global_position
 	
-	zipDir = get_local_mouse_position().normalized()
 	position.y -= 8
+	zipDir = get_local_mouse_position().normalized()
 	position += zipDir * 8
 	
 	finalPosRC.cast_to = zipDir * 1000

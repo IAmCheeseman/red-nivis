@@ -2,4 +2,4 @@ extends RigidBody2D
 
 
 func screenshake() -> void:
-	GameManager.emit_signal("screenshake", 3, 12, .025, .15)
+	GameManager.emit_signal("screenshake", 3, 6, .15/6, .15)
