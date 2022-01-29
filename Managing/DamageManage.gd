@@ -9,6 +9,7 @@ export var kbAmount := 32.0
 export var upwardsKB := 0.0
 export var hurtSFXPath: NodePath
 export(int, "Easy", "Normal", "Hard") var difficulty = 1
+export var useDeathParticles := true
 export var isBoss := false
 
 var hurtSFX:Node2D
@@ -59,13 +60,11 @@ func take_damage(amount:float, dir:Vector2) -> void:
 func _die(dir) -> void:
 	emit_signal("dead")
 	# Instancing death particles
-	var newDP = deathParticles.instance()
-	newDP.position = global_position
-	newDP.rotation = dir.angle()
-	GameManager.spawnManager.spawn_object(newDP)
-	
-	# Freezing game
-	GameManager.frameFreezer.freeze_frames(.07)
+	if useDeathParticles:
+		var newDP = deathParticles.instance()
+		newDP.position = global_position
+		newDP.rotation = dir.angle()
+		GameManager.spawnManager.spawn_object(newDP)
 	
 	# Adding health pickup
 	if rand_range(0, 1) < Globals.HEART_CHANCE:
