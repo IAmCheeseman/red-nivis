@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Items/Weapons/Sounds/NoAmmoClick.wav" type="AudioStream" id=1]
 [ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Items/Weapons/Sounds/ShootDefualt1.wav" type="AudioStream" id=3]
+[ext_resource path="res://Items/Weapons/Sounds/DefaultShoot.wav" type="AudioStream" id=3]
 [ext_resource path="res://Items/Weapons/WeaponScripts/ProjectileBasedGun.gd" type="Script" id=4]
 [ext_resource path="res://Entities/Player/Assets/Hand.png" type="Texture" id=6]
 [ext_resource path="res://Items/Weapons/Gun.gd" type="Script" id=9]
@@ -42,7 +42,7 @@ one_shot = true
 [node name="ShootSound" parent="." instance=ExtResource( 2 )]
 audio = ExtResource( 3 )
 volumeMod = -10.0
-bus = "SFX"
+bus = "Reverb"
 
 [node name="NoAmmoClickSFX" parent="." instance=ExtResource( 2 )]
 audio = ExtResource( 1 )

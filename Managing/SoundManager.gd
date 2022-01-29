@@ -5,7 +5,7 @@ export var audio : AudioStream
 export var directional = false
 export(float, -80, 24) var volumeMod = 0
 export var pitchShiftRange:float = 1
-export(String, "Master", "Ambient", "Music", "SFXMain", "SFX") var bus = 0
+export(String, "Master", "Ambient", "Music", "SFX", "Reverb", "ReverbLow") var bus = 0
 
 signal finished
 
