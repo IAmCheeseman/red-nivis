@@ -11,6 +11,7 @@ export var hurtSFXPath: NodePath
 export(int, "Easy", "Normal", "Hard") var difficulty = 1
 export var useDeathParticles := true
 export var isBoss := false
+export var freeOnDeath := true
 
 var hurtSFX:Node2D
 
@@ -85,4 +86,4 @@ func _die(dir) -> void:
 	GameManager.player.playerData.score += scoreInc
 	GameManager.player.playerData.kills += 1
 	
-	par.queue_free()
+	if freeOnDeath: par.queue_free()

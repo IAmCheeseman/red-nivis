@@ -252,6 +252,7 @@ maxHealth = 1280
 kbAmount = 0.0
 difficulty = 2
 isBoss = true
+freeOnDeath = false
 
 [node name="Timers" type="Node" parent="."]
 
@@ -262,6 +263,9 @@ autostart = true
 [node name="AttackCooldown" type="Timer" parent="Timers"]
 one_shot = true
 autostart = true
+
+[node name="DeathExplodeTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -279,8 +283,10 @@ dmgManagerPth = NodePath("../../DamageManager")
 [connection signal="timeout" from="Sprite/Guns/Cannon/ChargeTimer" to="Sprite/Guns/Cannon" method="shoot"]
 [connection signal="timeout" from="Sprite/Guns/Shotgun/ChargeTimer" to="Sprite/Guns/Shotgun" method="shoot"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
+[connection signal="dead" from="DamageManager" to="." method="_on_dead"]
 [connection signal="timeout" from="Timers/Walk" to="." method="choose_new_target"]
 [connection signal="timeout" from="Timers/AttackCooldown" to="." method="attack"]
+[connection signal="timeout" from="Timers/DeathExplodeTimer" to="." method="add_death_explosion"]
 [connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_changed"]
 
 [editable path="Collisions/Hurtbox"]
