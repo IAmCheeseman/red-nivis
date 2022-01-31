@@ -2,7 +2,8 @@ extends Node2D
 
 onready var charge = $ChargeTimer
 onready var sprite = $Sprite
- 
+onready var hank = owner
+
 export var bullets := 8
 export var spread := 12
 export var flashTime := .8
@@ -40,4 +41,6 @@ func shoot() -> void:
 		newBullet.speed = 100
 
 		GameManager.spawnManager.spawn_object(newBullet)
+		
+		hank.bullets.append(newBullet)
 

@@ -19,6 +19,8 @@ var vel := Vector2.ZERO
 var target := 0.0
 var isDead := false
 
+var bullets := []
+
 # warning-ignore:unused_signal
 signal dead
 
@@ -39,8 +41,6 @@ func _process(delta: float) -> void:
 			sprite.scale.x *= -dir
 		
 		vel.y = move_and_slide(vel).y
-	else:
-		pass
 
 
 func choose_new_target() -> void:
@@ -90,3 +90,7 @@ func add_death_explosion(size:int=8) -> void:
 	
 	var timer = get_tree().create_timer(.5)
 	timer.connect("timeout", newExplosion, "queue_free")
+	
+	for i in bullets:
+		if is_instance_valid(i):
+			i.queue_free()

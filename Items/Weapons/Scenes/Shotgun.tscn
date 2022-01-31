@@ -9,7 +9,7 @@
 
 [node name="Shotgun" instance=ExtResource( 1 )]
 gunType = 1
-damage = 8.0
+damage = 3.0
 accuracy = 24.0
 cooldown = 0.6
 reloadSpeed = 0.9

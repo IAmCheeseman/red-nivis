@@ -26,7 +26,7 @@ func setup():
 	for slot in maxSlots:
 		items.append(null)
 	randomize()
-	add_item('pump-shotgun')
+	add_item('ak-47')
 
 
 func has_space() -> bool:

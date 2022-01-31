@@ -2,6 +2,7 @@ extends Node2D
 
 onready var cooldown = $BulletCooldown
 onready var sprite = $Sprite
+onready var hank = owner
 
 export var totalShots := 30
 var shots := 0
@@ -26,8 +27,10 @@ func shoot() -> void:
 	newBullet.direction = global_position.direction_to(GameManager.player.global_position)
 	newBullet.global_position = global_position + (newBullet.direction * 24)
 	newBullet.speed = 100
-
+	
 	GameManager.spawnManager.spawn_object(newBullet)
+	
+	hank.bullets.append(newBullet)
 	
 	sprite.scale = Vector2(1.5, .5)
 	

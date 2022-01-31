@@ -3,6 +3,7 @@ extends Node2D
 onready var charge = $ChargeTimer
 onready var sprite = $Sprite
 onready var chargeSprite = $Charge
+onready var hank = owner
 
 export var flashTime := .8
 
@@ -77,5 +78,7 @@ func create_bullet(dir, pos) -> Node2D:
 	newBullet.connect("hitCollision", self, "_on_bullet_bounce")
 	
 	GameManager.spawnManager.spawn_object(newBullet)
+	
+	hank.bullets.append(newBullet)
 	
 	return newBullet
