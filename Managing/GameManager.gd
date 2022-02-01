@@ -35,6 +35,7 @@ var rpGun = "No gun"
 
 
 func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
+	if OS.get_name() == "OSX": return
 	yield(get_tree(), "idle_frame")
 	var activity = Discord.Activity.new()
 	activity.set_type(Discord.ActivityType.Playing)

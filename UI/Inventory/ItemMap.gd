@@ -75,11 +75,12 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/MultishotBoomerang.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/MultishotBoomerang.png"
 	},
-	"robot-shotgun" : {
-		"key" : "robot-shotgun",
-		"name" : "Robot Shotgun",
+	# TOXIC CAVERNS ITEMs
+	"bullet-chainsaw" : {
+		"key" : "bullet-chainsaw",
+		"name" : "Bullet Chainsaw",
 		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
-		"scene" : "res://Items/Weapons/Scenes/RobotShotgun.tscn",
-		"slotTexture" : "res://Items/Weapons/Sprites/RobotShotgun.png"
-	},
+		"scene" : "res://Items/Weapons/Scenes/BulletChainsaw.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Chainsaw.png"
+	}
 }

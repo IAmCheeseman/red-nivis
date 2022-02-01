@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Items/Weapons/Sprites/Chainsaw.png" type="Texture" id=1]
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Weapons/Bullet/Sprites/Bullet1.png" type="Texture" id=3]
+[ext_resource path="res://Items/Weapons/Perks/BulletBounce.gd" type="Script" id=4]
+
+[node name="Gun" instance=ExtResource( 2 )]
+position = Vector2( 0, 7 )
+accuracy = 90.0
+cooldown = 0.025
+reloadSpeed = 3.0
+multishot = 3.0
+spread = 12.0
+projLifetime = 0.25
+recoil = 20.0
+magazineSize = 125
+perks = [ ExtResource( 4 ) ]
+bulletSprite = ExtResource( 3 )
+kickUp = 0.0
+bulletSpawnDist = 15.0
+ssFreq = 0.005
+ssStrength = 3.0
+isTwoHanded = true
+
+[node name="GunSprite" parent="Pivot" index="2"]
+position = Vector2( 11, 0 )
+texture = ExtResource( 1 )
+
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( -6, -6 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( -8, 2 )

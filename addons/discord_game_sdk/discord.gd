@@ -246,6 +246,7 @@ func _ready():
 		OS.set_environment("DISCORD_INSTANCE_ID", "1")
 	else:
 		OS.set_environment("DISCORD_INSTANCE_ID", "0")
+	if OS.get_name() == "OSX": return
 	
 	discore_core_ = DiscordCore.new()
 	if discore_core_:
