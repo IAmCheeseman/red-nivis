@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Flamethrower.wav-f35f63f429a3b2a668a1c7044d057a42.sample"
+
+[deps]
+
+source_file="res://Items/Weapons/Sounds/Flamethrower.wav"
+dest_files=[ "res://.import/Flamethrower.wav-f35f63f429a3b2a668a1c7044d057a42.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

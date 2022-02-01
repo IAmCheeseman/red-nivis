@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Dash.wav-41d10e27a02512fecf805e79343139ca.sample"
+
+[deps]
+
+source_file="res://Items/Upgrades/Teleport/Dash.wav"
+dest_files=[ "res://.import/Dash.wav-41d10e27a02512fecf805e79343139ca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
