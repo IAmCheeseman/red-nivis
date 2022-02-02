@@ -284,7 +284,7 @@ anims/RESET = SubResource( 12 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -4.0
-bus = "SFX"
+bus = "Reverb"
 
 [editable path="PlayerHitbox"]
 [editable path="EnemyHitbox"]

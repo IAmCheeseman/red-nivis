@@ -679,20 +679,20 @@ shape = SubResource( 5 )
 [node name="HurtSFX" type="Node2D" parent="Sounds"]
 script = ExtResource( 15 )
 audio = ExtResource( 28 )
-volumeMod = -2.0
-bus = "SFXMain"
+volumeMod = -10.0
+bus = "SFX"
 
 [node name="WalkSFX" parent="Sounds" instance=ExtResource( 23 )]
 audio = ExtResource( 24 )
 volumeMod = -5.0
 pitchShiftRange = 1.2
-bus = "SFX"
+bus = "Reverb"
 
 [node name="JumpSFX" parent="Sounds" instance=ExtResource( 23 )]
 audio = ExtResource( 25 )
 volumeMod = 5.0
 pitchShiftRange = 1.2
-bus = "SFX"
+bus = "Reverb"
 
 [node name="Hurtbox" parent="." groups=["player"] instance=ExtResource( 4 )]
 visible = false
