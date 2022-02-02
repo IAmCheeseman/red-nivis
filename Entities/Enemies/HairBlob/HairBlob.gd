@@ -14,7 +14,7 @@ func _ready() -> void:
 	global_position = floorRC.get_collision_point() + Vector2(0, 3)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !player: player = playerDetection.get_player()
 	elif !anim.is_playing(): anim.play("Jump")
 

@@ -43,7 +43,7 @@ func create_room() -> void:
 	world.tilesContainer.add_child(world.background)
 	
 	world.darkness.color = Color(biome.brightness, biome.brightness, biome.brightness)
-	var mod = 1.1 if Settings.gfx == Settings.GFX_BAD else 1
+	var mod := 1.1 if Settings.gfx == Settings.GFX_BAD else 1.0
 	world.darkness.color.r *= mod
 	world.darkness.color.g *= mod
 	world.darkness.color.b *= mod

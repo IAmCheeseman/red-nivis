@@ -1,6 +1,6 @@
 extends Node
 
-enum {GFX_BAD, GFX_GOOD}
+enum {GFX_BAD=0, GFX_GOOD=1}
 
 func _init() -> void:
 	var dm := DataManager.new()

@@ -4,6 +4,7 @@ onready var slotTexture = $TextureRect
 
 var item: String
 
+# warning-ignore:unused_signal
 signal selected(button)
 
 
