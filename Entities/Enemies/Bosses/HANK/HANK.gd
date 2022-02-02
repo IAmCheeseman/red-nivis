@@ -27,7 +27,7 @@ signal dead
 
 func _ready() -> void:
 	yield(TempTimer.idle_frame(self), "timeout")
-	isDead = GameManager.worldData.get_room_data(self, true)
+	isDead = GameManager.worldData.get_room_data(self, false)
 	if isDead: queue_free()
 
 
@@ -74,7 +74,7 @@ func _on_dead() -> void:
 	GameManager.emit_signal("screenshake", 10, 3, .025, 2)
 	var timer = get_tree().create_timer(2.2)
 	timer.connect("timeout", self, "add_death_explosion", [32])
-	timer.connect("timeout", self, "queue_free")
+	timer.connect("timeout", self, "call_deferred", ["queue_free"])
 	
 	isDead = true
 	GameManager.worldData.store_room_data(self, true)
