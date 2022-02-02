@@ -26,9 +26,10 @@ signal dead
 
 
 func _ready() -> void:
-	yield(TempTimer.idle_frame(self), "timeout")
-	isDead = GameManager.worldData.get_room_data(self, false)
-	if isDead: queue_free()
+	if GameManager.worldData.rooms.size() > 0:
+		yield(TempTimer.idle_frame(self), "timeout")
+		isDead = GameManager.worldData.get_room_data(self, false)
+		if isDead: queue_free()
 
 
 func _process(delta: float) -> void:
@@ -73,12 +74,19 @@ func _on_dead() -> void:
 	GameManager.emit_signal("zoom_in", .75, 2, .2, sprite.global_position)
 	GameManager.emit_signal("screenshake", 10, 3, .025, 2)
 	var timer = get_tree().create_timer(2.2)
-	timer.connect("timeout", self, "add_death_explosion", [32])
-	timer.connect("timeout", self, "call_deferred", ["queue_free"])
+	timer.connect("timeout", self, "add_death_explosion", [64])
+	timer.connect("timeout", self, "add_death_explosion", [64])
+	timer.connect("timeout", self, "add_death_explosion", [64])
+	timer.connect("timeout", self, "remove")
 	
 	isDead = true
 	GameManager.worldData.store_room_data(self, true)
 	deathExplodeTimer.start()
+
+
+func remove() -> void:
+	yield(TempTimer.idle_frame(self), "timeout")
+	queue_free()
 
 
 func add_death_explosion(size:int=8) -> void:

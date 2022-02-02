@@ -186,7 +186,7 @@ script = ExtResource( 6 )
 [node name="MachineGun" type="Node2D" parent="Sprite/Guns"]
 position = Vector2( -15, -89 )
 script = ExtResource( 9 )
-totalShots = 10
+totalShots = 20
 
 [node name="Sprite" type="Sprite" parent="Sprite/Guns/MachineGun"]
 scale = Vector2( -1, 1 )
@@ -228,7 +228,7 @@ texture = ExtResource( 5 )
 offset = Vector2( -6, 0 )
 
 [node name="ChargeTimer" type="Timer" parent="Sprite/Guns/Shotgun"]
-wait_time = 2.0
+wait_time = 1.25
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
