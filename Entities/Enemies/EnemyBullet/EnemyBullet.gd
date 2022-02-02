@@ -15,6 +15,9 @@ onready var particles = $Particles
 signal hitCollision
 
 
+var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
+
+
 func set_texture(texture:StreamTexture):
 	sprite.texture = texture
 	particles.process_material.emission_box_extents = Vector3(float(texture.get_width())/2, float(texture.get_height())/2, 1)
@@ -33,12 +36,20 @@ func _physics_process(delta):
 	position += (direction*speed)*delta
 
 
+func add_particles():
+	var newParticles = particleScene.instance()
+	newParticles.position = position
+	get_parent().add_child(newParticles)
+
+
 func _on_QueueArea_body_entered(body):
 	if !body.is_in_group("Platform"):
 		emit_signal("hitCollision", self)
+		add_particles()
 		queue_free()
 
 
 func _on_Hitbox_hit_object(_object):
 	if !peircing:
+		add_particles()
 		queue_free()
