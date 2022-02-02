@@ -25,6 +25,12 @@ var bullets := []
 signal dead
 
 
+func _ready() -> void:
+	yield(TempTimer.idle_frame(self), "timeout")
+	isDead = GameManager.worldData.get_room_data(self, true)
+	if isDead: queue_free()
+
+
 func _process(delta: float) -> void:
 	if !isDead:
 		vel.y += Globals.GRAVITY * delta
@@ -71,6 +77,7 @@ func _on_dead() -> void:
 	timer.connect("timeout", self, "queue_free")
 	
 	isDead = true
+	GameManager.worldData.store_room_data(self, true)
 	deathExplodeTimer.start()
 
 

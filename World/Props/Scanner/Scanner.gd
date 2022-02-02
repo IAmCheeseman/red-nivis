@@ -10,18 +10,13 @@ onready var light = $Light
 
 var ending := false
 var worldPos = GameManager.worldData.position
-var roomData
-var key
 
 signal done
 
 func _ready() -> void:
 	if GameManager.worldData.rooms.size() > 0:
-		roomData = GameManager.worldData.rooms\
-		[worldPos.x][worldPos.y].nodeData
 		yield(TempTimer.idle_frame(self), "timeout")
-		interaction.disabled = GameManager.worldData.get_room_data(
-			self, false)
+		interaction.disabled = GameManager.worldData.get_room_data(self, false)
 	light.energy = 0
 
 

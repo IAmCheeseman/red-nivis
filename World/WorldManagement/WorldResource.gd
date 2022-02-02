@@ -45,7 +45,6 @@ func get_room_data(node:Node, defaultValue=null):
 		store_room_data(node, defaultValue)
 		return defaultValue
 	else:
-		print(roomData[key])
 		return roomData[key]
 
 
