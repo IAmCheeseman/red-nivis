@@ -74,9 +74,7 @@ func _on_dead() -> void:
 	GameManager.emit_signal("zoom_in", .75, 2, .2, sprite.global_position)
 	GameManager.emit_signal("screenshake", 10, 3, .025, 2)
 	var timer = get_tree().create_timer(2.2)
-	timer.connect("timeout", self, "add_death_explosion", [64])
-	timer.connect("timeout", self, "add_death_explosion", [64])
-	timer.connect("timeout", self, "add_death_explosion", [64])
+	timer.connect("timeout", self, "add_death_explosion", [64, 3])
 	timer.connect("timeout", self, "remove")
 	
 	isDead = true
@@ -89,7 +87,7 @@ func remove() -> void:
 	queue_free()
 
 
-func add_death_explosion(size:int=8) -> void:
+func add_death_explosion(size:int=8, amt:int=1) -> void:
 	var newExplosion = preload("res://Entities/Enemies/Explosion/ExplosionParticles.tscn").instance()
 	var pos = sprite.global_position
 	var spawnRange = sprite.texture.get_size() / Vector2(sprite.hframes, sprite.vframes)
@@ -109,3 +107,5 @@ func add_death_explosion(size:int=8) -> void:
 	for i in bullets:
 		if is_instance_valid(i):
 			i.queue_free()
+	if amt-1 > 0:
+		add_death_explosion(size, amt-1)
