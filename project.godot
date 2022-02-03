@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://World/ConstantRooms/PlaceBossRooms.gd"
 }, {
-"base": "Resource",
-"class": "ChatMessage",
-"language": "GDScript",
-"path": "res://addons/discord_game_sdk/example/chat_message.gd"
-}, {
 "base": "Reference",
 "class": "ConnectionRoomPlacer",
 "language": "GDScript",
@@ -104,7 +99,7 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_lobby_manager.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "DiscordLobbyTransaction",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_lobby_transaction.gdns"
@@ -149,11 +144,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Managing/FrameFreezer.gd"
 }, {
-"base": "Resource",
-"class": "GameState",
-"language": "GDScript",
-"path": "res://addons/discord_game_sdk/example/game_state.gd"
-}, {
 "base": "Reference",
 "class": "Globals",
 "language": "GDScript",
@@ -188,11 +178,6 @@ _global_script_classes=[ {
 "class": "LootTable",
 "language": "GDScript",
 "path": "res://Items/LootTable.gd"
-}, {
-"base": "Resource",
-"class": "Member",
-"language": "GDScript",
-"path": "res://addons/discord_game_sdk/example/member.gd"
 }, {
 "base": "Node2D",
 "class": "MoneyDropper",
@@ -281,7 +266,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BossRoomPlacer": "",
-"ChatMessage": "",
 "ConnectionRoomPlacer": "",
 "ConstantRoom": "",
 "CustomButton": "",
@@ -308,7 +292,6 @@ _global_script_class_icons={
 "EnemySpawner": "",
 "EnemyTable": "",
 "FrameFreezer": "",
-"GameState": "",
 "Globals": "",
 "Hurtbox": "",
 "ImageManipulation": "",
@@ -316,7 +299,6 @@ _global_script_class_icons={
 "ItemManagement": "",
 "ItemMap": "",
 "LootTable": "",
-"Member": "",
 "MoneyDropper": "",
 "Player": "",
 "Resetter": "",
