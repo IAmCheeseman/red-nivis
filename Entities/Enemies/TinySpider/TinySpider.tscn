@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Enemies/TinySpider/TinySpider.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/TinySpider/TinySpider.png" type="Texture" id=2]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 7.5, 4.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4, 2 )
@@ -33,12 +37,24 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.7 ),
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "wander"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -54,6 +70,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=1]
@@ -77,12 +105,22 @@ tracks/0/keys = {
 collision_layer = 0
 script = ExtResource( 1 )
 frict = 5
+speed = 200
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -4 )
 texture = ExtResource( 2 )
 hframes = 4
 vframes = 2
+
+[node name="Hitbox" parent="Sprite" instance=ExtResource( 5 )]
+position = Vector2( 0, 4 )
+collision_mask = 2
+damage = 1
+
+[node name="CollisionShape2D" parent="Sprite/Hitbox" index="0"]
+position = Vector2( -7.5, -4.5 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -2 )
@@ -115,4 +153,5 @@ anims/Walk = SubResource( 1 )
 [connection signal="dead" from="DamageManager" to="." method="emit_signal" binds= [ "dead" ]]
 [connection signal="timeout" from="JumpTimer" to="." method="jump"]
 
+[editable path="Sprite/Hitbox"]
 [editable path="Hurtbox"]

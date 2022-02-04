@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const SPIDER = preload("res://Entities/Enemies/TinySpider/TinySpider.tscn")
-const MAX_SPIDERS = 12
+const MAX_SPIDERS = 4
 
 enum { WANDER, ATTACK }
 
@@ -12,6 +12,9 @@ onready var spiderSpawn := $Sprite/SpiderSpawn
 
 onready var walkTimer := $Timers/Walk
 onready var attackCooldown := $Timers/Attack
+
+onready var healthManager = $DamageManager
+onready var hpBar = $Healthbar
 
 export var frict := 20
 export var speed := 90
@@ -53,7 +56,7 @@ func choose_new_target() -> void:
 
 
 func spawn_spiders() -> void:
-	for i in 3:
+	for i in 2:
 		var newSpider = SPIDER.instance()
 		newSpider.global_position = spiderSpawn.global_position
 		newSpider.vel = Vector2.RIGHT.rotated(rand_range(0, PI * 2)) * rand_range(0, 200)
@@ -77,3 +80,8 @@ func attack() -> void:
 		return
 	anim.play("DropSpiders")
 	state = ATTACK
+
+
+func update_healthbar():
+	hpBar.max_value = healthManager.maxHealth
+	hpBar.value = healthManager.health
