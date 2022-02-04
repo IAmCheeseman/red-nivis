@@ -14,9 +14,10 @@ export var attackTimeRange := Vector2(1, 2)
 
 var state := WANDER
 var vel := Vector2.ZERO
-var target := 0
+var target := 0.0
 
 
+# warning-ignore:unused_signal
 signal dead
 
 
