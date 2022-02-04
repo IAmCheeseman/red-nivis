@@ -47,6 +47,11 @@ enum Result {
 	TransactionAborted = 43,
 }
 
+enum CreateFlags {
+	Default = 0,
+	NoRequireDiscord = 1,
+}
+
 enum ActivityType {
 	Playing = 0,
 	Streaming = 1,
@@ -145,6 +150,9 @@ class Activity extends Proxy_:
 	func get_party() -> DiscordActivityParty:
 		return object_to_proxy_.get_party()
 
+	func get_timestamps() -> DiscordActivityTimestamps:
+		return object_to_proxy_.get_timestamps()
+
 class ActivityManager_ extends Proxy_:
 	signal activity_join
 	signal activity_invite
@@ -242,15 +250,15 @@ var lobby_manager:LobbyManager_
 var overlay_manager:OverlayManager_
 
 func _ready():
-	if OS.has_feature("standalone"):
-		OS.set_environment("DISCORD_INSTANCE_ID", "1")
-	else:
-		OS.set_environment("DISCORD_INSTANCE_ID", "0")
-	if OS.get_name() == "OSX": return
+	# uncomment to test against a second canary discord client
+	#if OS.has_feature("standalone"):
+	#	OS.set_environment("DISCORD_INSTANCE_ID", "1")
+	#else:
+	#	OS.set_environment("DISCORD_INSTANCE_ID", "0")
 	
 	discore_core_ = DiscordCore.new()
 	if discore_core_:
-		discore_core_.create(932739479964364800)
+		discore_core_.create(932739479964364800, CreateFlags.NoRequireDiscord)
 		
 		activity_manager = ActivityManager_.new(discore_core_.get_activity_manager())
 		lobby_manager = LobbyManager_.new(discore_core_.get_lobby_manager())

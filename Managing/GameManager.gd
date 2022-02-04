@@ -39,6 +39,7 @@ func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
 	yield(get_tree(), "idle_frame")
 	var activity = Discord.Activity.new()
 	activity.set_type(Discord.ActivityType.Playing)
+	activity.set_name("Astronaut Game")
 	activity.set_state(state)
 	activity.set_details(details)
 
