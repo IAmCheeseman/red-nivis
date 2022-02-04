@@ -13,7 +13,7 @@ func _ready():
 	sprite.texture = upgrade.icon
 	for i in tutorial.get_children(): i.hide()
 	find_node("Tutorial").text = upgrade.howTo
-	find_node("Title").text = "You have acquired %s:" % upgrade.name
+	find_node("Title").bbcode_text = "[center]You have acquired the [color=yellow]%s[/color]:" % upgrade.name
 	find_node("Display").texture = upgrade.icon
 
 
