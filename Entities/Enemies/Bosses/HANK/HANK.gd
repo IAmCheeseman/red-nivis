@@ -19,6 +19,11 @@ var vel := Vector2.ZERO
 var target := 0.0
 var isDead := false
 
+var drops = [
+	preload("res://Items/HeartContiner/HeartContainer.tscn"),
+	preload("res://Items/Upgrades/DroppedUpgrade.tscn")
+]
+
 var bullets := []
 
 # warning-ignore:unused_signal
@@ -84,6 +89,12 @@ func _on_dead() -> void:
 
 func remove() -> void:
 	yield(TempTimer.idle_frame(self), "timeout")
+	for i in drops.size():
+		var d = drops[i]
+		var newDrop:Node2D = d.instance()
+		newDrop.position = position-Vector2(0, sprite.texture.get_height()*.25)
+		newDrop.position.x += (drops.size()*.5-i)*32
+		GameManager.spawnManager.spawn_object(newDrop)
 	queue_free()
 
 

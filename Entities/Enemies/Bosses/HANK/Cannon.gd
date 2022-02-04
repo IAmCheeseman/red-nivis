@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 
 
 func attack() -> bool:
-	if !charge.is_stopped() or rand_range(0, 1) < .90: return false
+	if !charge.is_stopped() or rand_range(0, 1) < .5: return false
 	charge.start()
 	return true
 

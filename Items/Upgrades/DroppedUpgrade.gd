@@ -1,6 +1,8 @@
 extends Node2D
 
 onready var sprite = $Sprite
+onready var tutorial = $CanvasLayer
+onready var tween = $Tween
 
 export var upgrade:Resource = preload("res://Items/Upgrades/Teleport/Teleport.tres")
 
@@ -9,9 +11,23 @@ var player = preload("res://Entities/Player/Player.tres")
 
 func _ready():
 	sprite.texture = upgrade.icon
+	for i in tutorial.get_children(): i.hide()
+	find_node("Tutorial").text = upgrade.howTo
+	find_node("Title").text = "You have acquired %s:" % upgrade.name
+	find_node("Display").texture = upgrade.icon
 
 
 func _on_interaction():
-	player.upgrades.append(upgrade.abilityScript)
+	player.upgrades.append(upgrade.resource_path)
 	player.playerObject.get_node("Abilities").add_abilities()
+	for i in tutorial.get_children(): i.show()
+	tween.interpolate_property(Engine, "time_scale", 1, 0, .2)
+	tween.start()
+	GameManager.inGUI = true
+
+
+func finish() -> void:
+	tween.stop_all()
+	Engine.time_scale = 1
+	GameManager.inGUI = false
 	queue_free()

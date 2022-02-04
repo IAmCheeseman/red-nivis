@@ -169,6 +169,7 @@ tracks/2/keys = {
 z_index = 1
 collision_layer = 0
 script = ExtResource( 2 )
+attackTimeRange = Vector2( 1.5, 2.5 )
 speed = 20
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -214,6 +215,7 @@ texture = ExtResource( 12 )
 
 [node name="ChargeTimer" type="Timer" parent="Sprite/Guns/Cannon"]
 wait_time = 1.5
+one_shot = true
 
 [node name="Shotgun" type="Node2D" parent="Sprite/Guns"]
 position = Vector2( 24, -90 )
