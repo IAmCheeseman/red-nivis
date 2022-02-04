@@ -9,4 +9,5 @@ script = ExtResource( 1 )
 icon = ExtResource( 2 )
 name = "Grenade"
 description = "Allows you to throw an explosive."
+howTo = "Press <F> to throw a grenade. "
 abilityScript = ExtResource( 3 )

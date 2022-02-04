@@ -9,5 +9,5 @@ script = ExtResource( 1 )
 icon = ExtResource( 3 )
 name = "Teleporter"
 description = "Teleports you a short distance"
-howTo = "Press Shift to teleport."
+howTo = "Press <Shift> to teleport."
 abilityScript = ExtResource( 2 )

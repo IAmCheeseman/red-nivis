@@ -9,4 +9,5 @@ script = ExtResource( 2 )
 icon = ExtResource( 1 )
 name = "Hookshot"
 description = "Pulls you to stuff."
+howTo = "Press <C> to zip to walls. You can also pull enemies to you."
 abilityScript = ExtResource( 3 )

@@ -9,4 +9,5 @@ script = ExtResource( 2 )
 icon = ExtResource( 1 )
 name = "Rocket Boots"
 description = "Gives you a midair jump"
+howTo = "Press <Space> in midair to do another jump."
 abilityScript = ExtResource( 3 )
