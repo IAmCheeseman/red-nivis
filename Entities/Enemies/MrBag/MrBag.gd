@@ -28,6 +28,10 @@ var target := 0
 var spiders := []
 
 
+func _ready() -> void:
+	update_healthbar()
+
+
 func _process(delta: float) -> void:
 	match state:
 		WANDER:

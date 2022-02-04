@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 			vel.y = move_and_slide(vel * Vector2(rand_range(.1, 1), 1)).y
 		ATTACK:
 			vel.x = lerp(vel.x, 0, frict * delta)
-			anim.play("Attack", -1, 5)
+			anim.play("Attack", -1, 2)
 			
 			vel.y = move_and_slide(vel * Vector2(rand_range(.1, 1), 1)).y
 
