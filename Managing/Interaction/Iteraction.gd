@@ -9,6 +9,7 @@ onready var label:RichTextLabel = $Label
 export var ignoreDistance := false
 export var disabled := false setget set_disabled
 export var spritePath:NodePath
+export var requireInput:bool = true
 export var action: String = "interact"
 
 var sprite:Sprite
@@ -59,6 +60,10 @@ func _process(_delta: float) -> void:
 # based on player position
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
+		# If no input is required, emit the interaction signal right away, and cancel.
+		if !requireInput:
+			emit_signal("interaction")
+			return
 		playerNear = true
 		# Setting the label to show correct key
 		update_label()

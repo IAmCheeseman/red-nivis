@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Entities/NPC/Birb/BirbStand.png" type="Texture" id=1]
+[ext_resource path="res://Entities/NPC/Birb/Birb.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/NPC/Birb/Stand.gd" type="Script" id=3]
+[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=4]
+[ext_resource path="res://UI/Assets/FFFFORWA.TTF" type="DynamicFontData" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+outline_size = 1
+outline_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+font_data = ExtResource( 5 )
+
+[node name="Stand" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Birb" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -8 )
+collision_mask = 8388609
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -21 )
+texture = ExtResource( 1 )
+
+[node name="Stool" type="StaticBody2D" parent="."]
+collision_layer = 8388608
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stool"]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.741176 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="CanvasLayer/Center"]
+margin_left = 34.0
+margin_top = 87.0
+margin_right = 286.0
+margin_bottom = 133.0
+custom_constants/separation = 48
+
+[node name="VBox1" type="VBoxContainer" parent="CanvasLayer/Center/HBox"]
+margin_right = 98.0
+margin_bottom = 46.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Center/HBox/VBox1"]
+margin_right = 98.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 2 )
+text = "Your Weapons:"
+align = 1
+
+[node name="PlayerWeapons" type="VBoxContainer" parent="CanvasLayer/Center/HBox/VBox1"]
+margin_top = 19.0
+margin_right = 98.0
+margin_bottom = 19.0
+
+[node name="VBox2" type="VBoxContainer" parent="CanvasLayer/Center/HBox"]
+margin_left = 146.0
+margin_right = 252.0
+margin_bottom = 46.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Center/HBox/VBox2"]
+margin_right = 106.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 95, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "Trade Weapons:"
+align = 1
+
+[node name="Warning" type="Label" parent="CanvasLayer/Center/HBox/VBox2"]
+margin_top = 19.0
+margin_right = 106.0
+margin_bottom = 42.0
+custom_colors/font_color = Color( 0.65098, 0.133333, 0.219608, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Please choose a weapon on the left."
+autowrap = true
+
+[node name="ShopWeapons" type="VBoxContainer" parent="CanvasLayer/Center/HBox/VBox2"]
+margin_top = 46.0
+margin_right = 106.0
+margin_bottom = 46.0
+
+[connection signal="dialog_finished" from="Birb" to="." method="open_shop"]

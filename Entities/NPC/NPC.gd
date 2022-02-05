@@ -21,8 +21,12 @@ func _process(delta):
 
 
 func _on_interaction() -> void:
+	start_dialog("Introduction")
+
+
+func start_dialog(lines:String) -> void:
 	dialog.show()
-	dialog.start_dialog("Introduction")
+	dialog.start_dialog(lines)
 	interactionZone.disabled = true
 
 

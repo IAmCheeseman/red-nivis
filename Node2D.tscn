@@ -2,7 +2,7 @@
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Enemies/Bosses/HANK/HANK.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/NPC/Birb/Stand.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
@@ -12,8 +12,8 @@ extents = Vector2( 225.5, 134.694 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="HANK" parent="." instance=ExtResource( 3 )]
-position = Vector2( 211, -49 )
+[node name="Stand" parent="." instance=ExtResource( 3 )]
+position = Vector2( 134, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -11, -4 )
