@@ -7,20 +7,21 @@ onready var warning = find_node("Warning")
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 
+var selectedItem: CustomButton
 
 func _ready() -> void:
 	open_shop(false)
 
 
-func update_items(items:=inventory.items, par:=playerInven) -> void:
+func update_items(items:=inventory.items, par:=playerInven, connection:="_on_player_weapon_chosen") -> void:
 	Utils.free_children(par)
 	for i in items:
 		if !i is Dictionary: return
 		var newButton = preload("res://Entities/NPC/Birb/WeaponButton.tscn").instance()
 		par.add_child(newButton)
 		newButton.toggle_mode = true
-		newButton.setup(load(i.slotTexture), i.name)
-		newButton.connect("pressed", self, "_on_player_weapon_chosen", [newButton])
+		newButton.setup(load(i.slotTexture), i.name, i.key)
+		newButton.connect("pressed", self, connection, [newButton])
 
 
 func open_shop(open:=true) -> void:
@@ -36,9 +37,19 @@ func _on_player_weapon_chosen(button: CustomButton) -> void:
 	for i in playerInven.get_children():
 		if i != button:
 			i.pressed = false
+	selectedItem = button
 	if button:
 		warning.hide()
-		update_items(find_same_tier_items(inventory.items[button.get_index()].tier), shopInven)
+		update_items(find_same_tier_items(inventory.items[button.get_index()].tier), shopInven, "swap_items")
+		if !button.pressed:
+			update_items()
+			warning.show()
+			Utils.free_children(shopInven)
+
+func swap_items(button: CustomButton) -> void:
+	inventory.remove_item(selectedItem.itemID)
+	inventory.add_item(button.itemID)
+	update_items()
 
 
 func find_same_tier_items(tier: int) -> Array:
