@@ -46,82 +46,82 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Center" type="CenterContainer" parent="CanvasLayer"]
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 5.0
+margin_bottom = -5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBox" type="VBoxContainer" parent="CanvasLayer/Center"]
-margin_left = 34.0
-margin_top = 77.0
-margin_right = 286.0
-margin_bottom = 143.0
-
-[node name="HBox" type="HBoxContainer" parent="CanvasLayer/Center/VBox"]
-margin_right = 252.0
-margin_bottom = 46.0
+[node name="HBox" type="HBoxContainer" parent="CanvasLayer/VBox"]
+margin_right = 320.0
+margin_bottom = 190.0
+size_flags_vertical = 11
 custom_constants/separation = 48
+alignment = 1
 
-[node name="VBox1" type="VBoxContainer" parent="CanvasLayer/Center/VBox/HBox"]
-margin_right = 98.0
-margin_bottom = 46.0
+[node name="VBox1" type="VBoxContainer" parent="CanvasLayer/VBox/HBox"]
+margin_right = 136.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Center/VBox/HBox/VBox1"]
-margin_right = 98.0
+[node name="Label" type="Label" parent="CanvasLayer/VBox/HBox/VBox1"]
+margin_right = 136.0
 margin_bottom = 15.0
 custom_fonts/font = SubResource( 2 )
 text = "Your Weapons:"
 align = 1
 
-[node name="PlayerWeapons" type="VBoxContainer" parent="CanvasLayer/Center/VBox/HBox/VBox1"]
+[node name="PlayerWeapons" type="VBoxContainer" parent="CanvasLayer/VBox/HBox/VBox1"]
 margin_top = 19.0
-margin_right = 98.0
+margin_right = 136.0
 margin_bottom = 19.0
 
-[node name="VBox2" type="VBoxContainer" parent="CanvasLayer/Center/VBox/HBox"]
-margin_left = 146.0
-margin_right = 252.0
-margin_bottom = 46.0
+[node name="VBox2" type="VBoxContainer" parent="CanvasLayer/VBox/HBox"]
+margin_left = 184.0
+margin_right = 320.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Center/VBox/HBox/VBox2"]
-margin_right = 106.0
+[node name="Label" type="Label" parent="CanvasLayer/VBox/HBox/VBox2"]
+margin_right = 136.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 95, 0 )
 custom_fonts/font = SubResource( 2 )
-text = "Trade Weapons:"
+text = "Post Weapons:"
 align = 1
 
-[node name="NoSelectionWarning" type="Label" parent="CanvasLayer/Center/VBox/HBox/VBox2"]
+[node name="NoSelectionWarning" type="Label" parent="CanvasLayer/VBox/HBox/VBox2"]
 margin_top = 19.0
-margin_right = 106.0
-margin_bottom = 42.0
+margin_right = 136.0
+margin_bottom = 29.0
 custom_colors/font_color = Color( 0.65098, 0.133333, 0.219608, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Please choose a weapon on the left."
+text = "Choose an item."
 autowrap = true
 
-[node name="NoAvailableItemsWarning" type="Label" parent="CanvasLayer/Center/VBox/HBox/VBox2"]
+[node name="NoAvailableItemsWarning" type="Label" parent="CanvasLayer/VBox/HBox/VBox2"]
 visible = false
 margin_top = 46.0
 margin_right = 106.0
-margin_bottom = 69.0
+margin_bottom = 56.0
 custom_colors/font_color = Color( 0.65098, 0.133333, 0.219608, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "There are no items to trade."
+text = "Can't trade that item."
 autowrap = true
 
-[node name="ShopWeapons" type="VBoxContainer" parent="CanvasLayer/Center/VBox/HBox/VBox2"]
-margin_top = 46.0
-margin_right = 106.0
-margin_bottom = 46.0
+[node name="ShopWeapons" type="VBoxContainer" parent="CanvasLayer/VBox/HBox/VBox2"]
+margin_top = 33.0
+margin_right = 136.0
+margin_bottom = 33.0
 
-[node name="CustomButton" type="Button" parent="CanvasLayer/Center/VBox"]
-margin_left = 110.0
-margin_top = 50.0
-margin_right = 141.0
-margin_bottom = 66.0
+[node name="CustomButton" type="Button" parent="CanvasLayer/VBox"]
+margin_left = 144.0
+margin_top = 194.0
+margin_right = 175.0
+margin_bottom = 210.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 4 )
 text = "Exit"
@@ -129,4 +129,4 @@ script = ExtResource( 6 )
 isNegative = true
 
 [connection signal="dialog_finished" from="Birb" to="." method="open_shop"]
-[connection signal="pressed" from="CanvasLayer/Center/VBox/CustomButton" to="." method="open_shop" binds= [ false ]]
+[connection signal="pressed" from="CanvasLayer/VBox/CustomButton" to="." method="open_shop" binds= [ false ]]
