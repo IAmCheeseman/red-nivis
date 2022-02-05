@@ -448,5 +448,4 @@ visible = false
 [editable path="Props/DeathSign"]
 [editable path="Player"]
 [editable path="Player/Hurtbox"]
-[editable path="Player/SoftCollision"]
 [editable path="Player/CanvasLayer/GameOver"]

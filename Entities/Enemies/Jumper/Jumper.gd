@@ -29,7 +29,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
 	if !player: player = playerDetection.get_player()
-	update() # Updating the eye
 	
 	if is_on_floor(): # Apply friction if on floor
 		vel.x = lerp(vel.x, 0, friction*delta)
@@ -43,6 +42,7 @@ func _process(delta: float) -> void:
 				.75, 1.5)
 			sprite.scale.y = 1+(1-sprite.scale.x)
 		sprite.rotation = vel.angle()-deg2rad(90)
+		sprite.scale.x *= -1 if bounceRay.cast_to.x > 0 else 1
 		
 		# Bouncing
 		bounceRay.cast_to = vel.normalized()*8
@@ -84,14 +84,16 @@ func jump() -> void:
 	select_jump_dir()
 
 
-func _draw() -> void:
-	var pupil = Rect2(
-		(sprite.position+(jumpDir.normalized()-Vector2.ONE)),
-		Vector2.ONE*2
-	)
-	draw_rect(pupil, Color.black)
-
-
 func _on_jump_timer_timeout() -> void:
 	jumpTimer.start(rand_range(1, 2))
 	jump()
+
+
+func attack() -> void:
+	if !player: return
+	var newBullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn").instance()
+	newBullet.particleScene = preload("res://Entities/Enemies/Web/Web.tscn")
+	newBullet.global_position = global_position
+	newBullet.speed = 120
+	newBullet.direction = global_position.direction_to(player.global_position)
+	GameManager.spawnManager.spawn_object(newBullet)

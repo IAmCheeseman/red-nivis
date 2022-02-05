@@ -332,7 +332,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Astronaut Game"
+config/name="Red Nivis"
 run/main_scene="res://Managing/Init.tscn"
 
 [autoload]
