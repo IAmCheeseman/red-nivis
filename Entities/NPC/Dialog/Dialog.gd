@@ -4,6 +4,7 @@ extends Control
 export var dialog:Resource
 export var pointerOffset := 15
 export var advanceTime := 3.0
+export var talkingSpeed := 0.05
 
 onready var text = $Text
 onready var background = $Background
@@ -34,7 +35,7 @@ func start_dialog(interaction:String="Introduction") -> void:
 	reposition_bg()
 	
 	increment_text()
-	charIncTimer.start()
+	charIncTimer.start(talkingSpeed)
 	show()
 
 
@@ -86,7 +87,7 @@ func increment_char() -> void:
 	charsShown += 1
 	reposition_bg()
 	
-	charIncTimer.start(rand_range(.025, .1))
+	charIncTimer.start(talkingSpeed)
  
 
 func increment_text() -> void:
@@ -106,6 +107,6 @@ func increment_text() -> void:
 	
 	# Starting
 	targetText = currentInteraction[currentDialog]
-	charIncTimer.start()
+	charIncTimer.start(talkingSpeed)
 
 

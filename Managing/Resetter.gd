@@ -6,6 +6,7 @@ static func reset() -> void:
 	var playerData = preload("res://Entities/Player/Player.tres")
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
 	var worldData = preload("res://World/WorldManagement/WorldData.tres")
+	var tradingPostData = preload("res://Entities/NPC/Birb/TradingPostData.tres")
 	
 	playerData.isDead = false
 	playerData.maxHealth = 3
@@ -25,6 +26,8 @@ static func reset() -> void:
 	worldData.playerPos = Vector2(160, 32)
 	worldData.savePlayerPos = worldData.playerPos
 	worldData.savePosition = Vector2.ZERO
+	
+	tradingPostData.tradedWeapons.clear()
 	
 	FastTravel.discoveredStations.clear()
 	GameManager.pickedUpItems.clear()
