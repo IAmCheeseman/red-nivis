@@ -2,7 +2,7 @@
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Enemies/Jumper/Jumper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/Bill.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
@@ -11,9 +11,6 @@
 extents = Vector2( 225.5, 134.694 )
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Jumper" parent="." instance=ExtResource( 3 )]
-position = Vector2( 186, -19 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -16, -8 )
@@ -35,5 +32,8 @@ position = Vector2( 11.258, -7.69235 )
 shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
+
+[node name="Billy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 206, -53 )
 
 [editable path="CameraMoveZone"]
