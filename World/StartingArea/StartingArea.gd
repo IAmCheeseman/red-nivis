@@ -1,6 +1,6 @@
 extends Node2D
 
-var audioLayout:AudioBusLayout = preload("res://default_bus_layout.tres")
+var audioLayout:AudioBusLayout = preload("res://BusLayout.tres")
 
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
 
@@ -13,6 +13,7 @@ func _ready():
 	GameManager.update_rp()
 	set_process(false)
 	AudioServer.set_bus_effect_enabled(4, 0, false)
+	AudioServer.set_bus_effect_enabled(5, 0, false)
 
 
 func _process(delta: float) -> void:
@@ -32,6 +33,8 @@ func _on_lab_loading_zone_loadArea() -> void:
 func load_world():
 	randomize()
 	worldData.generate_world()
+	AudioServer.set_bus_effect_enabled(4, 0, true)
+	AudioServer.set_bus_effect_enabled(5, 0, true)
 	var _discard = get_tree().change_scene("res://World/WorldManagement/World.tscn")
 
 
