@@ -93,11 +93,11 @@ position = Vector2( 0, -7.5 )
 shape = SubResource( 1 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
-maxHealth = 150
+maxHealth = 125
 kbAmount = 128.0
 upwardsKB = 128.0
 hurtSFXPath = NodePath("../HitSFX")
-difficulty = 0
+difficulty = 2
 
 [node name="MoneyDropper" type="Node2D" parent="."]
 script = ExtResource( 11 )

@@ -40,6 +40,7 @@ func open_shop(open:=true) -> void:
 	Utils.free_children(shopInven)
 	_on_player_weapon_chosen(null)
 	nsWarning.show()
+	yield(TempTimer.idle_frame(self), "timeout")
 	GameManager.inGUI = open
 	
 	# Opening the shop

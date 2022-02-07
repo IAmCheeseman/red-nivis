@@ -1,10 +1,10 @@
 [gd_resource type="ParticlesMaterial" load_steps=3 format=2]
 
-[sub_resource type="Curve" id=1]
-_data = [ Vector2( 0.00862069, 0.9875 ), 0.0, -1.05455, 0, 0, Vector2( 1, 0 ), -1.09332, 0.0, 0, 0 ]
+[sub_resource type="Curve" id=14]
+_data = [ Vector2( 0.00862069, 0.9875 ), 0.0, -0.0379713, 0, 0, Vector2( 0.713675, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -1.09332, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=2]
-curve = SubResource( 1 )
+curve = SubResource( 14 )
 
 [resource]
 emission_shape = 2
