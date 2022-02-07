@@ -14,7 +14,7 @@ script = ExtResource( 3 )
 position = Vector2( 0, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -22 )
-hframes = 3
+hframes = 16
 
 [node name="Hitbox" parent="." instance=ExtResource( 1 )]
 position = Vector2( 4, -10 )

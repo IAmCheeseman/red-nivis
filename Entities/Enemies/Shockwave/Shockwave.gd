@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 	
 	if lifetimeTimer.time_left != 0:
-		scale.y = lifetimeTimer.time_left / lifeTime
+		sprite.frame = sprite.hframes - ceil(sprite.hframes * (lifetimeTimer.time_left / lifetimeTimer.wait_time))
 	
 	if lifetimeTimer.is_stopped():
 		queue_free()
