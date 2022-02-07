@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 
 func choose_new_target() -> void:
 	target = GameManager.player.global_position.x + rand_range(-128, 128)
-	if Utils.coin_flip(): target = global_position.x
+	if Utils.coin_flip(): target = int(global_position.x)
 	walkTimer.start(rand_range(1, 4))
 
 

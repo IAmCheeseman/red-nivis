@@ -10,4 +10,5 @@ func explode() -> void:
 	var newExplosion = explosion.instance()
 	newExplosion.global_position = global_position
 	GameManager.spawnManager.spawn_object(newExplosion)
+	newExplosion.set_size(40)
 	queue_free()

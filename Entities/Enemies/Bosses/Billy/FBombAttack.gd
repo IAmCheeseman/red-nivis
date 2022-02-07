@@ -12,7 +12,7 @@ func attack() -> bool:
 	return true
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	fbomb1.scale = Vector2.ONE * (1 - (chargeTimer.time_left / chargeTimer.wait_time))
 	fbomb2.scale = Vector2.ONE * (1 - (chargeTimer.time_left / chargeTimer.wait_time))
 

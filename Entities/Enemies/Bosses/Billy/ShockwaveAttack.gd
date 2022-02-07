@@ -7,12 +7,13 @@ onready var fbomb1 = $FBomb1
 onready var fbomb2 = $FBomb2
 
 func attack() -> bool:
+	if rand_range(0, 1) < .25: return false
 	show()
 	chargeTimer.start()
 	return true
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	fbomb1.scale = Vector2.ONE * (1 - (chargeTimer.time_left / chargeTimer.wait_time))
 	fbomb2.scale = Vector2.ONE * (1 - (chargeTimer.time_left / chargeTimer.wait_time))
 

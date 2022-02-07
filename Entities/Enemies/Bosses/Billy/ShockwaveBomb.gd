@@ -11,5 +11,6 @@ func explode() -> void:
 		var newExplosion = preload("res://Entities/Enemies/Shockwave/Shockwave.tscn").instance()
 		newExplosion.global_position = spawnPoint
 		newExplosion.scale.x = -1 if i == 0 else 1
+		newExplosion.speed = 150
 		GameManager.spawnManager.add_child(newExplosion)
 	queue_free()

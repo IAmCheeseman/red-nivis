@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Billy/Bill.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Billy/Bill.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Entities/Enemies/Bosses/Billy/FBombAttack.gd" type="Script" id=7]
 [ext_resource path="res://Entities/Enemies/Bosses/Billy/FBombTelegraph.png" type="Texture" id=8]
 [ext_resource path="res://Entities/Enemies/Bosses/Billy/ShockwaveAttack.gd" type="Script" id=9]
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/ShockwaveTelegraph.png" type="Texture" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 22.0227
@@ -257,12 +258,12 @@ frame = 1
 [node name="FBomb1" type="Sprite" parent="Attacks/ShockwaveBomb"]
 position = Vector2( -59, -15 )
 scale = Vector2( 1e-05, 1e-05 )
-texture = ExtResource( 8 )
+texture = ExtResource( 10 )
 
 [node name="FBomb2" type="Sprite" parent="Attacks/ShockwaveBomb"]
 position = Vector2( 59, -15 )
 scale = Vector2( 1e-05, 1e-05 )
-texture = ExtResource( 8 )
+texture = ExtResource( 10 )
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Attacks/ShockwaveBomb"]
@@ -274,7 +275,7 @@ anims/RESET = SubResource( 9 )
 one_shot = true
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
-maxHealth = 3840
+maxHealth = 1920
 kbAmount = 0.0
 difficulty = 2
 isBoss = true

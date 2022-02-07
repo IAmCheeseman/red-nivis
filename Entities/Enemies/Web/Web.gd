@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var areas = get_overlapping_areas()
 	for i in areas:
 		if i.is_in_group("player"):

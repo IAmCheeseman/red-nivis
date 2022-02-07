@@ -10,6 +10,7 @@ onready var anim = $AnimationPlayer
 export var speed := 50.0
 export var accel := 2.0
 
+
 var vel := Vector2.ZERO
 var isEnraged := false
 
@@ -35,5 +36,6 @@ func attack() -> void:
 	for i in attackNodes.size():
 		var attack = attackNodes.pop_front()
 		if attack.attack(): break
-	attackTimer.start(rand_range(2, 4))
-	if isEnraged: attackTimer.start(rand_range(1, 2))
+	attackTimer.start(rand_range(3, 4))
+	if isEnraged:
+		attackTimer.start(rand_range(1, 3))
