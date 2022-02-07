@@ -147,6 +147,7 @@ bus = "Master"
 autostart = true
 
 [node name="Attack" type="Timer" parent="Timers"]
+one_shot = true
 autostart = true
 
 [node name="SquashAndStretch" type="AnimationPlayer" parent="."]

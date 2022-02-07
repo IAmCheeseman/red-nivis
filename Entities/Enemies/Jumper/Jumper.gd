@@ -7,6 +7,7 @@ onready var playerDetection = $Collision/PlayerDetection
 onready var bounceRay = $Collision/BounceRay
 
 onready var jumpTimer = $Timers/Jump
+onready var attackTimer = $Timers/Attack
 
 onready var hpBar = $Healthbar
 onready var healthManager = $DamageManager
@@ -90,6 +91,7 @@ func _on_jump_timer_timeout() -> void:
 
 
 func attack() -> void:
+	attackTimer.start(rand_range(1, 4))
 	if !player: return
 	var newBullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn").instance()
 	newBullet.particleScene = preload("res://Entities/Enemies/Web/Web.tscn")

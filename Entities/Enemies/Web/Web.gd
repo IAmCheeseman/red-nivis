@@ -16,6 +16,8 @@ func _process(_delta: float) -> void:
 	for i in areas:
 		if i.is_in_group("player"):
 			i.owner.vel *= .75
+	if Engine.get_frames_per_second() < 5:
+		queue_free()
 
 func take_damage(_amt, _kb) -> void: pass
 
