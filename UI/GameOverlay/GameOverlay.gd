@@ -26,7 +26,9 @@ onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
 
 onready var grenade = $VBox/Bottom/BombProgressBar
 
-onready var time = $Time
+onready var upgrades = $TopRight/Upgrades
+
+onready var time = $TopRight/Time
 
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
@@ -35,7 +37,6 @@ var ammoBarTexSize:Vector2
 
 func _ready() -> void:
 	healthBarTexSize = healthBar.texture.get_size()
-#	ammoBarTexSize = ammoBar.texture.get_size()
 	
 	playerData.connect("healthChanged", self, "update_health")
 	playerData.connect("ammoChanged", self, "update_ammo")
@@ -48,9 +49,11 @@ func _ready() -> void:
 	update_ammo()
 	update_heals()
 	update_money()
+	update_abilities()
 	
 	yield(TempTimer.idle_frame(self, 2), "timeout")
 	if inventory.is_empty(): hide()
+
 
 
 func _process(_delta: float) -> void:
@@ -104,6 +107,7 @@ func update_ammo() -> void:
 	)
 	ammoTween.start()
 
+
 func update_heals() -> void:
 	if healsBar.get_child_count() != playerData.maxHeals:
 		Utils.free_children(healsBar)
@@ -123,6 +127,15 @@ func update_heals() -> void:
 			else:
 				i.self_modulate.a = 1
 	update_health(Vector2.ZERO)
+
+
+func update_abilities() -> void:
+	Utils.free_children(upgrades)
+	for i in playerData.upgrades:
+		var u = load(i)
+		var icon = TextureRect.new()
+		icon.texture = u.miniIcon
+		upgrades.add_child(icon)
 
 
 func _on_just_lost_timer_timeout() -> void:
