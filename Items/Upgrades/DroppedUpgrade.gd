@@ -18,8 +18,10 @@ func _ready():
 
 
 func _on_interaction():
+	if player.upgrades.has(upgrade.resource_path): return
 	player.upgrades.append(upgrade.resource_path)
 	player.playerObject.get_node("Abilities").add_abilities()
+	
 	for i in tutorial.get_children(): i.show()
 	tween.interpolate_property(Engine, "time_scale", 1, 0, .2)
 	tween.start()
