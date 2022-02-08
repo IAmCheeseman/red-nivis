@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/NPC/Dialog/Dialog.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/GnomeDialog.tres" type="Resource" id=8]
+[ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 1 )
@@ -20,9 +21,10 @@ radius = 120.004
 
 [sub_resource type="CircleShape2D" id=4]
 
-[sub_resource type="Animation" id=5]
-resource_name = "Attack"
-length = 0.4
+[sub_resource type="Animation" id=9]
+resource_name = "Acsend"
+length = 0.9
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -30,10 +32,26 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 15, 16, 17 ]
+"values": [ 36, 37, 38 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -42,7 +60,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.6 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -62,7 +80,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 11, 12, 13, 14 ]
+"values": [ 18, 19, 20, 21, 22 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -78,7 +96,22 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 5, 6, 7 ]
+"values": [ 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 27 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -105,13 +138,22 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -9 )
 texture = ExtResource( 1 )
-hframes = 5
-vframes = 4
-frame = 10
+hframes = 9
+vframes = 6
+frame = 27
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2 )
+position = Vector2( 3, -2 )
 shape = SubResource( 1 )
+
+[node name="DamageManager" parent="." instance=ExtResource( 6 )]
+maxHealth = 280
+kbAmount = 320.0
+upwardsKB = 200.0
+difficulty = 2
+useDeathParticles = false
+isBoss = true
+freeOnDeath = false
 
 [node name="Collisions" type="Node2D" parent="."]
 
@@ -140,18 +182,15 @@ collision_layer = 4
 shape = SubResource( 4 )
 
 [node name="Floor" type="RayCast2D" parent="Collisions"]
-position = Vector2( 0, -1 )
+position = Vector2( 3, -1 )
 enabled = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 17
 
 [node name="Bounce" type="RayCast2D" parent="Collisions"]
+position = Vector2( 3, 0 )
 enabled = true
-
-[node name="DamageManager" parent="." instance=ExtResource( 6 )]
-maxHealth = 650
-kbAmount = 320.0
-upwardsKB = 200.0
+collision_mask = 17
 
 [node name="Timers" type="Node" parent="."]
 
@@ -172,6 +211,14 @@ autostart = true
 wait_time = 0.2
 one_shot = true
 
+[node name="AscendTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="AscendStick" type="Timer" parent="Timers"]
+wait_time = 0.2
+autostart = true
+
 [node name="Dialog" parent="." instance=ExtResource( 7 )]
 visible = false
 margin_left = 6.0
@@ -181,16 +228,27 @@ margin_bottom = -44.0
 dialog = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Acsend = SubResource( 9 )
 anims/Attack = SubResource( 5 )
 anims/Falling = SubResource( 6 )
 anims/Idle = SubResource( 7 )
+anims/RESET = SubResource( 10 )
 anims/Walk = SubResource( 8 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 9 )]
+bossName = "Gnome (With a Stick)"
+dmgManagerPth = NodePath("../../DamageManager")
+
+[connection signal="dead" from="DamageManager" to="." method="_on_dead"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="Timers/TargetChangeTimer" to="." method="_on_target_change_timer_timeout"]
 [connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Timers/AscendTimer" to="." method="toggle_ascend"]
+[connection signal="timeout" from="Timers/AscendStick" to="." method="_add_ascend_stick"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 
 [editable path="Collisions/BounceHitbox"]
