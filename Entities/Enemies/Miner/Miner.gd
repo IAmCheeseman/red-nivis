@@ -86,7 +86,7 @@ func attack() -> void:
 func throw_head() -> void:
 	var newHead = preload("res://Entities/Enemies/Miner/EnemyBoomerang.tscn").instance()
 	newHead.direction = (global_position - Vector2(0, 9)).direction_to(GameManager.player.global_position)
-	newHead.speed = 230 * 1.2
+	newHead.speed = 200
 	newHead.damage = 1
 	newHead.lifetime = .7
 	newHead.global_position = global_position - Vector2(0, 18)

@@ -103,6 +103,7 @@ tracks/0/keys = {
 
 [node name="TinySpider" type="KinematicBody2D"]
 collision_layer = 0
+collision_mask = 17
 script = ExtResource( 1 )
 frict = 5
 speed = 200
