@@ -545,17 +545,20 @@ position = Vector2( 6, 1 )
 
 [node name="Light1" type="Sprite" parent="Sprite/Lights"]
 visible = false
+use_parent_material = true
 texture = ExtResource( 10 )
 offset = Vector2( 69, -57 )
 
 [node name="Light2" type="Sprite" parent="Sprite/Lights"]
 visible = false
+use_parent_material = true
 rotation = 1.57079
 texture = ExtResource( 10 )
 offset = Vector2( 69, -57 )
 
 [node name="Light3" type="Sprite" parent="Sprite/Lights"]
 visible = false
+use_parent_material = true
 rotation = 2.87979
 scale = Vector2( 1, 1 )
 texture = ExtResource( 10 )
@@ -563,35 +566,41 @@ offset = Vector2( 69, -57 )
 
 [node name="Light4" type="Sprite" parent="Sprite/Lights"]
 visible = false
+use_parent_material = true
 rotation = -1.8326
 texture = ExtResource( 10 )
 offset = Vector2( 69, -57 )
 
 [node name="Light5" type="Sprite" parent="Sprite/Lights"]
 visible = false
+use_parent_material = true
 rotation = -2.618
 texture = ExtResource( 10 )
 offset = Vector2( 69, -57 )
 
 [node name="Light6" type="Sprite" parent="Sprite/Lights"]
 visible = false
+use_parent_material = true
 rotation = 0.785397
 texture = ExtResource( 10 )
 offset = Vector2( 69, -57 )
 
 [node name="Light7" type="Sprite" parent="Sprite/Lights"]
 visible = false
+use_parent_material = true
 rotation = -0.785397
 texture = ExtResource( 10 )
 offset = Vector2( 69, -57 )
 
 [node name="Light8" type="Sprite" parent="Sprite/Lights"]
 visible = false
+use_parent_material = true
 rotation = 2.09439
 texture = ExtResource( 10 )
 offset = Vector2( 69, -57 )
 
 [node name="Sprite" type="Sprite" parent="Sprite/Lights"]
+use_parent_material = true
 scale = Vector2( 1e-05, 1e-05 )
 z_index = 4096
 texture = ExtResource( 11 )

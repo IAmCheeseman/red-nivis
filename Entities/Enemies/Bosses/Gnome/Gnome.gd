@@ -67,6 +67,8 @@ func _physics_process(delta: float) -> void:
 	
 	if vel.x > 300:
 		vel.x = 300
+	if abs(vel.y) > Globals.GRAVITY:
+		vel.y = (vel.y/vel.y) * Globals.GRAVITY
 	vel.y = move_and_slide(vel).y
 
 
@@ -137,7 +139,7 @@ func instance_stick(dir: Vector2, amt: Vector2 = Vector2(1, 2)) -> void:
 		var newStick = stick.instance()
 		newStick.direction = (dir.normalized()).rotated(
 			deg2rad(rand_range(-24, 24))
-			)*450
+			)*350
 		newStick.global_position = global_position
 		GameManager.spawnManager.spawn_object(newStick)
 
