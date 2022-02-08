@@ -69,6 +69,8 @@ func _physics_process(delta: float) -> void:
 						sprite.frame = 46
 						deathStick.queue_free()
 	
+	if vel.x > 300:
+		vel.x = 300
 	vel.y = move_and_slide(vel).y
 
 
