@@ -62,12 +62,8 @@ func _physics_process(delta: float) -> void:
 			ASCEND:
 				ascend_state(delta)
 			DEAD:
-				anim.stop()
-				vel.x = 0
-				if is_instance_valid(deathStick):
-					if deathStick.global_position.y > global_position.y:
-						sprite.frame = 46
-						deathStick.queue_free()
+				vel = Vector2.ZERO
+				anim.play("Die")
 	
 	if vel.x > 300:
 		vel.x = 300
@@ -105,7 +101,7 @@ func bounce_state() -> void:
 			state = TARGET
 			bounceHB.get_node("CollisionShape2D").disabled = false
 			return
-		vel = vel.bounce(normal)*1.05
+		vel = vel.bounce(normal)*.9
 		vel = vel.rotated(to_local(player.global_position).angle()/5)
 
 
@@ -136,10 +132,10 @@ func _on_attack_timer_timeout() -> void:
 	attacktimer.start(1)
 
 
-func instance_stick(dir: Vector2, amt: Vector2 = Vector2(1, 3)) -> void:
+func instance_stick(dir: Vector2, amt: Vector2 = Vector2(1, 2)) -> void:
 	for i in rand_range(amt.x, amt.y):
 		var newStick = stick.instance()
-		newStick.dir = (dir.normalized()).rotated(
+		newStick.direction = (dir.normalized()).rotated(
 			deg2rad(rand_range(-24, 24))
 			)*450
 		newStick.global_position = global_position
@@ -187,12 +183,7 @@ func _on_hurt(_amount, _dir) -> void:
 func _on_dead() -> void:
 	if state == DEAD: return
 	state = DEAD
-	sprite.frame = 45
-	deathStick = stick.instance()
-	deathStick.dir = Vector2.UP*450
-	deathStick.global_position = global_position
-	GameManager.spawnManager.spawn_object(deathStick)
-
+	GameManager.emit_signal("zoom_in", .75, 7, .2, sprite.global_position - Vector2(0, 50))
 
 func position_dialog() -> void:
 	if sprite.scale.x == 1:

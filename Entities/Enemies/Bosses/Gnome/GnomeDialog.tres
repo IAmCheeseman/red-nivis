@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "[shake]I'M GONNA GET YOU[/shake]" ], [ "Hit1", "[shake]I HATE YOU![/shake]" ], [ "Hit2", "[shake]YOU'RE GONNA PAY FOR THIS![/shake]" ], [ "Hit3", "[shake]OUCH![/shake]" ], [ "Ascend1", "[shake]FACE MY WRATH![/shake]" ], [ "Ascend2", "[shake]JUST DIE![/shake]" ] ]
+dialog = [ [ "Introduction", "[shake]I'M GONNA KILL YOU[/shake]" ], [ "Hit1", "[shake]I HATE YOU![/shake]" ], [ "Hit2", "[shake]AAUUUAGH[/shake]" ], [ "Hit3", "[shake]OUCH![/shake]" ], [ "Ascend1", "[shake]STICKS![/shake]" ], [ "Ascend2", "[shake]JUST DIE![/shake]" ] ]
