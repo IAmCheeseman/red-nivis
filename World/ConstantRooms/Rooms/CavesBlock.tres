@@ -1,16 +1,16 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
-[ext_resource path="res://World/ConstantRooms/Rooms/DeepLabsBlock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://World/Biomes/DeepLabs.tres" type="Resource" id=3]
+[ext_resource path="res://World/Biomes/Caves.tres" type="Resource" id=2]
+[ext_resource path="res://World/ConstantRooms/Rooms/CavesBlock.tscn" type="PackedScene" id=3]
 
 [resource]
 script = ExtResource( 1 )
-scene = ExtResource( 2 )
+scene = ExtResource( 3 )
 biomeSpecific = [  ]
 biomes = [  ]
 mustHave = false
 typeAlwaysVisible = false
-perBiome = 3
+perBiome = 0
 minDistOfSameType = 2.8
-constBiome = ExtResource( 3 )
+constBiome = ExtResource( 2 )

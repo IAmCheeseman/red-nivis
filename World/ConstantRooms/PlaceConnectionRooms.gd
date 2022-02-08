@@ -2,9 +2,9 @@ extends Reference
 class_name ConnectionRoomPlacer
 
 const CONNECTION_ROOMS = {
-	"labs-caves"     : preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres"),
+	"labs-caves"     : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"),
 	"labs-deeplabs"  : preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres"),
-	"caves-deeplabs" : preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres"),
+	"caves-deeplabs" : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"),
 }
 
 static func generate_rooms(rooms:Array, wg):
