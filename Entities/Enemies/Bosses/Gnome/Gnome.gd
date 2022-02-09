@@ -107,9 +107,9 @@ func bounce_state() -> void:
 		vel = vel.rotated(to_local(player.global_position).angle()/5)
 
 
-func ascend_state(delta: float) -> void:
+func ascend_state(_delta: float) -> void:
 	anim.play("Acsend")
-	target = player.global_position.x
+	target = int(player.global_position.x)
 	vel = global_position.direction_to(
 		Vector2(target, player.global_position.y - 100)
 	) * speed
@@ -123,7 +123,7 @@ func get_target() -> void:
 func _on_jump_timer_timeout() -> void:
 	if state in [BOUNCE, ASCEND, DEAD]: return 
 	vel.y = -jumpForce
-	jumpTimer.start(rand_range(2, 4))
+	jumpTimer.start(rand_range(1.5, 2))
 	instance_stick(vel)
 
 
