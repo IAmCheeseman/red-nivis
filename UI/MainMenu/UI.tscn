@@ -60,6 +60,7 @@ expand = true
 stretch_mode = 1
 
 [node name="Options" type="VBoxContainer" parent="."]
+visible = false
 anchor_bottom = 1.0
 margin_right = 84.0
 __meta__ = {
@@ -125,14 +126,23 @@ script = ExtResource( 1 )
 isNegative = true
 
 [node name="Credits" type="VBoxContainer" parent="."]
-visible = false
 anchor_bottom = 1.0
 rect_min_size = Vector2( 90, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="Credits"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Credits"]
+margin_right = 102.0
+margin_bottom = 200.0
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/ScrollContainer"]
+margin_right = 90.0
+margin_bottom = 407.0
+
+[node name="Title" type="Label" parent="Credits/ScrollContainer/VBoxContainer"]
 margin_right = 90.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 90, 32 )
@@ -142,9 +152,10 @@ text = "Credits"
 align = 1
 valign = 1
 
-[node name="Dev" type="Label" parent="Credits"]
+[node name="Dev" type="Label" parent="Credits/ScrollContainer/VBoxContainer"]
+margin_top = 36.0
 margin_right = 90.0
-margin_bottom = 32.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 90, 32 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -152,10 +163,74 @@ text = "By: Xander Swan"
 align = 1
 valign = 1
 
-[node name="Back" type="Button" parent="Credits"]
-margin_top = 76.0
+[node name="Title2" type="Label" parent="Credits/ScrollContainer/VBoxContainer"]
+margin_top = 72.0
 margin_right = 90.0
-margin_bottom = 92.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 90, 32 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Testers"
+align = 1
+valign = 1
+
+[node name="Playtesters" type="Label" parent="Credits/ScrollContainer/VBoxContainer"]
+margin_top = 108.0
+margin_right = 90.0
+margin_bottom = 287.0
+rect_min_size = Vector2( 90, 32 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "IAmCatman
+Dot32
+Ne Mene
+Juice Baby
+Quantyy
+Woozy
+Kenshi
+I<3Pepsi
+Fejiberglibstein
+BaconGremlin24
+Lighted
+MRZ_20
+6AM
+Shadow"
+align = 1
+
+[node name="Title3" type="Label" parent="Credits/ScrollContainer/VBoxContainer"]
+margin_top = 291.0
+margin_right = 90.0
+margin_bottom = 328.0
+rect_min_size = Vector2( 90, 32 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "
+Thanks"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Thanks" type="Label" parent="Credits/ScrollContainer/VBoxContainer"]
+margin_top = 332.0
+margin_right = 90.0
+margin_bottom = 407.0
+rect_min_size = Vector2( 90, 32 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Samm
+Firmar
+Yarvin
+Gangly
+Dot32
+Adrian"
+align = 1
+
+[node name="Back" type="Button" parent="Credits"]
+margin_top = 204.0
+margin_right = 102.0
+margin_bottom = 220.0
 custom_fonts/font = ExtResource( 2 )
 text = "Back"
 align = 0
