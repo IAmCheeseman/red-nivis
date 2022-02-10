@@ -12,11 +12,11 @@
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 1 )
 
-[sub_resource type="Gradient" id=3]
-colors = PoolColorArray( 0, 0, 0, 0.368627, 0, 0, 0, 0 )
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 0, 0, 0, 0.454902, 0, 0, 0, 0 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
@@ -39,7 +39,7 @@ anchor_bottom = 1.0
 margin_right = -236.0
 rect_min_size = Vector2( 84, 0 )
 rect_pivot_offset = Vector2( -156, -14 )
-color = Color( 0, 0, 0, 0.368627 )
+color = Color( 0, 0, 0, 0.454902 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,7 +50,7 @@ margin_left = 84.0
 margin_right = 116.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 32, 0 )
-texture = SubResource( 5 )
+texture = SubResource( 6 )
 expand = true
 stretch_mode = 1
 __meta__ = {

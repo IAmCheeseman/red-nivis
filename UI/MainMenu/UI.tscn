@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://UI/MainMenu/UI.gd" type="Script" id=4]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/Confirmation/Confirmation.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/Assets/Title_RedNivis.png" type="Texture" id=7]
+[ext_resource path="res://UI/Settings/OptionsMenu.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Shader" id=6]
 
@@ -64,15 +66,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="Options"]
+[node name="Title" type="TextureRect" parent="Options"]
 margin_right = 90.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 90, 32 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 5 )
-text = "Red Nivis"
-align = 1
-valign = 1
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
 
 [node name="Play" type="Button" parent="Options"]
 margin_top = 36.0
@@ -91,6 +91,8 @@ custom_fonts/font = ExtResource( 2 )
 text = "Options"
 align = 0
 script = ExtResource( 1 )
+fromPth = NodePath("..")
+toPth = NodePath("../../OptionsMenu")
 
 [node name="Credits" type="Button" parent="Options"]
 margin_top = 76.0
@@ -162,6 +164,13 @@ isNegative = true
 fromPth = NodePath("..")
 toPth = NodePath("../../Options")
 
+[node name="OptionsMenu" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="Back" parent="OptionsMenu/NavMenu" index="5"]
+fromPth = NodePath("../..")
+toPth = NodePath("../../../Options")
+
 [node name="ScreenTransition" parent="." instance=ExtResource( 5 )]
 
 [node name="QuitAccept" parent="." instance=ExtResource( 6 )]
@@ -171,3 +180,5 @@ text = "Do you really wanna quit? :("
 [connection signal="pressed" from="Options/Community" to="." method="to_discord"]
 [connection signal="pressed" from="Options/Quit" to="." method="start_quit"]
 [connection signal="optionPressed" from="QuitAccept" to="." method="quit"]
+
+[editable path="OptionsMenu"]
