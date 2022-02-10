@@ -7,16 +7,16 @@
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/Confirmation/Confirmation.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=6]
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+shader = SubResource( 6 )
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=7]
 colors = PoolColorArray( 0, 0, 0, 0.368627, 0, 0, 0, 0 )
 
 [sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+gradient = SubResource( 7 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 13
@@ -47,7 +47,7 @@ margin_bottom = 220.0
 rect_min_size = Vector2( 84, 0 )
 color = Color( 0, 0, 0, 0.368627 )
 
-[node name="Gradient3" type="TextureRect" parent="Panels"]
+[node name="Gradient" type="TextureRect" parent="Panels"]
 material = SubResource( 2 )
 margin_left = 84.0
 margin_right = 116.0

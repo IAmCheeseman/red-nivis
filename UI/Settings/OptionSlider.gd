@@ -1,7 +1,7 @@
-extends HBoxContainer
+extends VBoxContainer
 
-onready var label = $Label
-onready var at = $At
+onready var label = $Title/Label
+onready var at = $Title/At
 onready var slider = $HSlider
 
 

@@ -54,34 +54,41 @@ HSlider/styles/grabber_area = SubResource( 4 )
 HSlider/styles/grabber_area_highlight = SubResource( 6 )
 HSlider/styles/slider = SubResource( 3 )
 
-[node name="OptionSlider" type="HBoxContainer"]
+[node name="OptionSlider" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -236.0
+rect_min_size = Vector2( 84, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_top = 115.0
-margin_right = 45.0
-margin_bottom = 125.0
+[node name="Title" type="HBoxContainer" parent="."]
+margin_right = 84.0
+margin_bottom = 10.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Title"]
+margin_left = 10.0
+margin_right = 55.0
+margin_bottom = 10.0
 custom_fonts/font = ExtResource( 2 )
 text = "Unnamed"
 
-[node name="At" type="Label" parent="."]
-margin_left = 49.0
-margin_top = 115.0
-margin_right = 64.0
-margin_bottom = 125.0
+[node name="At" type="Label" parent="Title"]
+margin_left = 59.0
+margin_right = 74.0
+margin_bottom = 10.0
 custom_fonts/font = ExtResource( 2 )
 text = ":%s"
 
 [node name="HSlider" type="HSlider" parent="."]
-margin_left = 68.0
-margin_right = 132.0
-margin_bottom = 8.0
+margin_top = 14.0
+margin_right = 84.0
+margin_bottom = 22.0
 rect_min_size = Vector2( 64, 0 )
+size_flags_horizontal = 3
 theme = SubResource( 2 )
 value = 100.0
 

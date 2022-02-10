@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=2]
@@ -6,48 +6,26 @@
 [ext_resource path="res://UI/Settings/OptionSlider.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=5]
 [ext_resource path="res://UI/Settings/RebindingButton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://UI/Assets/FFFFORWA.TTF" type="DynamicFontData" id=7]
+[ext_resource path="res://UI/Assets/FFFForwaBig.tres" type="DynamicFont" id=8]
 
-[sub_resource type="DynamicFont" id=1]
-size = 12
-outline_size = 1
-outline_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
-font_data = ExtResource( 7 )
+[sub_resource type="Shader" id=14]
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 14 )
+
+[sub_resource type="Gradient" id=15]
+colors = PoolColorArray( 0, 0, 0, 0.368627, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 15 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
 region = Rect2( 95, 79, 12, 12 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 5 )
 region = Rect2( 82, 79, 12, 12 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 5 )
-region_rect = Rect2( 151, 65, 5, 17 )
-margin_left = 5.0
-margin_right = 5.0
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 5 )
-region_rect = Rect2( 157, 65, 5, 17 )
-
-[sub_resource type="StyleBoxTexture" id=6]
-texture = ExtResource( 5 )
-region_rect = Rect2( 157, 65, 5, 17 )
-
-[sub_resource type="StyleBoxEmpty" id=7]
-content_margin_right = 6.0
-
-[sub_resource type="StyleBoxTexture" id=8]
-
-[sub_resource type="Theme" id=9]
-VScrollBar/icons/decrement = null
-VScrollBar/styles/grabber = SubResource( 4 )
-VScrollBar/styles/grabber_highlight = SubResource( 5 )
-VScrollBar/styles/grabber_pressed = SubResource( 6 )
-VScrollBar/styles/scroll = SubResource( 7 )
-VScrollBar/styles/scroll_focus = SubResource( 8 )
 
 [node name="OptionsMenu" type="Control"]
 pause_mode = 2
@@ -64,7 +42,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -236.0
 rect_min_size = Vector2( 84, 0 )
+rect_pivot_offset = Vector2( -156, -14 )
 color = Color( 0, 0, 0, 0.368627 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="TextureRect" parent="BG"]
+material = SubResource( 10 )
+margin_left = 84.0
+margin_right = 116.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 32, 0 )
+texture = SubResource( 11 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,38 +70,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SettingsText" type="RichTextLabel" parent="NavMenu"]
+[node name="SettingsText" type="Label" parent="NavMenu"]
 margin_top = 44.0
-margin_right = 64.0
+margin_right = 75.0
 margin_bottom = 76.0
 rect_min_size = Vector2( 64, 32 )
-rect_clip_content = false
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "[center][wave amp=32 freq=5]Options[/wave][/center]"
-text = "Options"
-fit_content_height = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_fonts/font = ExtResource( 8 )
+text = " Options"
 
 [node name="Gameplay" type="Button" parent="NavMenu"]
 margin_top = 80.0
-margin_right = 64.0
+margin_right = 75.0
 margin_bottom = 96.0
 custom_fonts/font = ExtResource( 1 )
 text = "Game"
+align = 0
 script = ExtResource( 2 )
 fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Game")
 
 [node name="Controls" type="Button" parent="NavMenu"]
 margin_top = 100.0
-margin_right = 64.0
+margin_right = 75.0
 margin_bottom = 116.0
 custom_fonts/font = ExtResource( 1 )
 text = "Controls"
+align = 0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -119,30 +105,33 @@ toPth = NodePath("../../Menus/Keybinds")
 
 [node name="Visuals" type="Button" parent="NavMenu"]
 margin_top = 120.0
-margin_right = 64.0
+margin_right = 75.0
 margin_bottom = 136.0
 custom_fonts/font = ExtResource( 1 )
 text = "Visual"
+align = 0
 script = ExtResource( 2 )
 fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Visuals")
 
 [node name="Audio" type="Button" parent="NavMenu"]
 margin_top = 140.0
-margin_right = 64.0
+margin_right = 75.0
 margin_bottom = 156.0
 custom_fonts/font = ExtResource( 1 )
 text = "Audio"
+align = 0
 script = ExtResource( 2 )
 fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Audio")
 
 [node name="Back" type="Button" parent="NavMenu"]
 margin_top = 160.0
-margin_right = 64.0
+margin_right = 75.0
 margin_bottom = 176.0
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
+align = 0
 script = ExtResource( 2 )
 isNegative = true
 
@@ -156,32 +145,21 @@ __meta__ = {
 
 [node name="Game" type="VBoxContainer" parent="Menus"]
 visible = false
-anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 132.0
+rect_min_size = Vector2( 84, 0 )
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ControlsText" type="RichTextLabel" parent="Menus/Game"]
-margin_top = 45.0
-margin_right = 320.0
-margin_bottom = 99.0
+[node name="ControlsText" type="Label" parent="Menus/Game"]
+margin_top = 56.0
+margin_right = 132.0
+margin_bottom = 88.0
 rect_min_size = Vector2( 0, 32 )
-rect_clip_content = false
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "
-[center][wave amp=32 freq=5]Game[/wave][/center]
-"
-text = "
-Game
-"
-fit_content_height = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_fonts/font = ExtResource( 8 )
+text = " Game"
 
 [node name="Tutorial" type="CheckBox" parent="Menus/Game"]
 visible = false
@@ -189,42 +167,36 @@ margin_left = 126.0
 margin_top = 60.0
 margin_right = 194.0
 margin_bottom = 84.0
-size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
-custom_icons/unchecked = SubResource( 3 )
+custom_icons/unchecked = SubResource( 13 )
 text = "Tutorial"
 
 [node name="SpeedrunMode" type="CheckBox" parent="Menus/Game"]
-margin_left = 106.0
-margin_top = 103.0
-margin_right = 213.0
-margin_bottom = 127.0
-size_flags_horizontal = 4
+margin_top = 92.0
+margin_right = 132.0
+margin_bottom = 116.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
-custom_icons/unchecked = SubResource( 3 )
+custom_icons/unchecked = SubResource( 13 )
 text = "Speedrun Timer"
 
 [node name="DoubleDamage" type="CheckBox" parent="Menus/Game"]
-margin_left = 94.0
-margin_top = 131.0
-margin_right = 226.0
-margin_bottom = 155.0
-size_flags_horizontal = 4
+margin_top = 120.0
+margin_right = 132.0
+margin_bottom = 144.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
-custom_icons/unchecked = SubResource( 3 )
+custom_icons/unchecked = SubResource( 13 )
 text = "Double Damage Mode"
 
 [node name="Back" type="Button" parent="Menus/Game"]
-margin_left = 142.0
-margin_top = 159.0
-margin_right = 177.0
-margin_bottom = 175.0
-size_flags_horizontal = 4
+margin_top = 148.0
+margin_right = 132.0
+margin_bottom = 164.0
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
+align = 0
 script = ExtResource( 2 )
 isNegative = true
 fromPth = NodePath("..")
@@ -232,155 +204,137 @@ toPth = NodePath("../../../NavMenu")
 
 [node name="Keybinds" type="VBoxContainer" parent="Menus"]
 visible = false
-anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 45.0
+rect_min_size = Vector2( 84, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ControlsText" type="RichTextLabel" parent="Menus/Keybinds"]
-margin_right = 320.0
-margin_bottom = 54.0
+[node name="ControlsText" type="Label" parent="Menus/Keybinds"]
+margin_right = 84.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
-rect_clip_content = false
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "
-[center][wave amp=32 freq=5]Controls[/wave][/center]
-"
-text = "
-Controls
-"
-fit_content_height = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_fonts/font = ExtResource( 8 )
+text = " Controls"
 
-[node name="KBKeybinds" type="CenterContainer" parent="Menus/Keybinds"]
-margin_top = 58.0
-margin_right = 320.0
-margin_bottom = 188.0
-theme = SubResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Scroll" type="ScrollContainer" parent="Menus/Keybinds/KBKeybinds"]
-margin_left = 140.0
-margin_right = 179.0
-margin_bottom = 130.0
+[node name="Scroll" type="ScrollContainer" parent="Menus/Keybinds"]
+margin_top = 36.0
+margin_right = 84.0
+margin_bottom = 180.0
 rect_min_size = Vector2( 0, 130 )
+size_flags_vertical = 3
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBox" type="VBoxContainer" parent="Menus/Keybinds/KBKeybinds/Scroll"]
-margin_right = 39.0
-margin_bottom = 216.0
+[node name="VBox" type="VBoxContainer" parent="Menus/Keybinds/Scroll"]
+margin_right = 31.0
+margin_bottom = 200.0
 rect_min_size = Vector2( 0, 200 )
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MoveLeft" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_right = 39.0
-margin_bottom = 16.0
+[node name="MoveLeft" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 2.0
+margin_right = 31.0
+margin_bottom = 18.0
 text = "LMB"
 action = "move_left"
 actionDisplay = "Move Left"
 
-[node name="MoveRight" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 20.0
-margin_right = 39.0
-margin_bottom = 36.0
+[node name="MoveRight" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 22.0
+margin_right = 31.0
+margin_bottom = 38.0
 text = "LMB"
 action = "move_right"
 actionDisplay = "Move Right"
 
-[node name="Down" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 40.0
-margin_right = 39.0
-margin_bottom = 56.0
+[node name="Down" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 42.0
+margin_right = 31.0
+margin_bottom = 58.0
 text = "LMB"
 action = "down"
 actionDisplay = "Down"
 
-[node name="Jump" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 60.0
-margin_right = 39.0
-margin_bottom = 76.0
+[node name="Jump" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 62.0
+margin_right = 31.0
+margin_bottom = 78.0
 text = "LMB"
 action = "jump"
 actionDisplay = "Jump"
 
-[node name="Shoot" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 80.0
-margin_right = 39.0
-margin_bottom = 96.0
+[node name="Shoot" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 82.0
+margin_right = 31.0
+margin_bottom = 98.0
 text = "LMB"
 action = "use_item"
 actionDisplay = "Shoot"
 
-[node name="Melee" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 100.0
-margin_right = 39.0
-margin_bottom = 116.0
+[node name="Melee" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 102.0
+margin_right = 31.0
+margin_bottom = 118.0
 text = "LMB"
 action = "melee"
 actionDisplay = "Melee"
 
-[node name="Grenade" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 120.0
-margin_right = 39.0
-margin_bottom = 136.0
+[node name="Grenade" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 122.0
+margin_right = 31.0
+margin_bottom = 138.0
 text = "LMB"
 action = "grenade"
 actionDisplay = "Grenade"
 
-[node name="Heal" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 140.0
-margin_right = 39.0
-margin_bottom = 156.0
+[node name="Heal" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 142.0
+margin_right = 31.0
+margin_bottom = 158.0
 text = "LMB"
 action = "heal"
 actionDisplay = "Heal"
 
-[node name="Dash" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 160.0
-margin_right = 39.0
-margin_bottom = 176.0
+[node name="Dash" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 162.0
+margin_right = 31.0
+margin_bottom = 178.0
 text = "LMB"
 action = "dash"
 actionDisplay = "Dash"
 
-[node name="Interact" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 200.0
-margin_right = 39.0
-margin_bottom = 216.0
+[node name="Interact" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 182.0
+margin_right = 31.0
+margin_bottom = 198.0
 text = "LMB"
 action = "interact"
 actionDisplay = "Interact"
 
-[node name="Reset" type="Button" parent="Menus/Keybinds/KBKeybinds/Scroll/VBox"]
-margin_top = 220.0
-margin_right = 39.0
-margin_bottom = 236.0
+[node name="Reset" type="Button" parent="Menus/Keybinds"]
+margin_top = 184.0
+margin_right = 84.0
+margin_bottom = 200.0
 custom_fonts/font = ExtResource( 1 )
 text = "Reset"
+align = 0
 script = ExtResource( 2 )
 isNegative = true
 
 [node name="Back" type="Button" parent="Menus/Keybinds"]
-margin_left = 142.0
-margin_top = 192.0
-margin_right = 177.0
-margin_bottom = 208.0
-size_flags_horizontal = 4
+margin_top = 204.0
+margin_right = 84.0
+margin_bottom = 220.0
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
+align = 0
 script = ExtResource( 2 )
 isNegative = true
 fromPth = NodePath("..")
@@ -388,73 +342,57 @@ toPth = NodePath("../../../NavMenu")
 
 [node name="Visuals" type="VBoxContainer" parent="Menus"]
 visible = false
-anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.0
+margin_right = 132.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VisualsText" type="RichTextLabel" parent="Menus/Visuals"]
-margin_top = 31.0
-margin_right = 320.0
-margin_bottom = 85.0
+[node name="VisualsText" type="Label" parent="Menus/Visuals"]
+margin_top = 24.0
+margin_right = 129.0
+margin_bottom = 67.0
 rect_min_size = Vector2( 0, 32 )
-rect_clip_content = false
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "
-[center][wave amp=32 freq=5]Visuals[/wave][/center]
+custom_fonts/font = ExtResource( 8 )
+text = " Visuals
 "
-text = "
-Visuals
-"
-fit_content_height = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Fullscreen" type="CheckBox" parent="Menus/Visuals"]
-margin_left = 120.0
-margin_top = 89.0
-margin_right = 199.0
-margin_bottom = 113.0
-size_flags_horizontal = 4
+margin_top = 71.0
+margin_right = 129.0
+margin_bottom = 95.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
-custom_icons/unchecked = SubResource( 3 )
+custom_icons/unchecked = SubResource( 13 )
 text = "Fullscreen"
 
 [node name="GFX" type="CheckBox" parent="Menus/Visuals"]
-margin_left = 117.0
-margin_top = 117.0
-margin_right = 202.0
-margin_bottom = 141.0
-size_flags_horizontal = 4
+margin_top = 99.0
+margin_right = 129.0
+margin_bottom = 123.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
-custom_icons/unchecked = SubResource( 3 )
+custom_icons/unchecked = SubResource( 13 )
 text = "Low Quality"
 
 [node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 94.0
-margin_top = 145.0
-margin_right = 226.0
-margin_bottom = 155.0
-size_flags_horizontal = 4
+margin_top = 127.0
+margin_right = 84.0
+margin_bottom = 149.0
+size_flags_horizontal = 0
 optionName = "Screenshake"
 
 [node name="Framerate" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 94.0
-margin_top = 159.0
-margin_right = 226.0
-margin_bottom = 169.0
-size_flags_horizontal = 4
+margin_top = 153.0
+margin_right = 84.0
+margin_bottom = 175.0
+size_flags_horizontal = 0
 optionName = "Max FPS"
 maxedMsg = "None"
 displayAsPercentage = false
@@ -463,13 +401,12 @@ minValue = 20
 step = 2
 
 [node name="Back" type="Button" parent="Menus/Visuals"]
-margin_left = 142.0
-margin_top = 173.0
-margin_right = 177.0
-margin_bottom = 189.0
-size_flags_horizontal = 4
+margin_top = 179.0
+margin_right = 129.0
+margin_bottom = 195.0
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
+align = 0
 script = ExtResource( 2 )
 isNegative = true
 fromPth = NodePath("..")
@@ -477,50 +414,37 @@ toPth = NodePath("../../../NavMenu")
 
 [node name="Audio" type="VBoxContainer" parent="Menus"]
 visible = false
-anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 84.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioText" type="RichTextLabel" parent="Menus/Audio"]
-margin_top = 72.0
-margin_right = 320.0
-margin_bottom = 126.0
+[node name="AudioText" type="Label" parent="Menus/Audio"]
+margin_top = 52.0
+margin_right = 84.0
+margin_bottom = 95.0
 rect_min_size = Vector2( 0, 32 )
-rect_clip_content = false
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "
-[center][wave amp=32 freq=5]Audio[/wave][/center]
+custom_fonts/font = ExtResource( 8 )
+text = " Audio
 "
-text = "
-Audio
-"
-fit_content_height = true
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MSTRVolume" parent="Menus/Audio" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 94.0
-margin_top = 130.0
-margin_right = 226.0
-margin_bottom = 140.0
+margin_top = 99.0
+margin_right = 84.0
+margin_bottom = 121.0
 size_flags_horizontal = 4
 optionName = "Master"
 
 [node name="SFXVolume" parent="Menus/Audio" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 94.0
-margin_top = 144.0
-margin_right = 226.0
-margin_bottom = 154.0
+margin_top = 125.0
+margin_right = 84.0
+margin_bottom = 147.0
 size_flags_horizontal = 4
 optionName = "SFX"
 
@@ -536,13 +460,12 @@ size_flags_horizontal = 4
 optionName = "Music"
 
 [node name="Back" type="Button" parent="Menus/Audio"]
-margin_left = 142.0
-margin_top = 158.0
-margin_right = 177.0
-margin_bottom = 174.0
-size_flags_horizontal = 4
+margin_top = 151.0
+margin_right = 84.0
+margin_bottom = 167.0
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
+align = 0
 script = ExtResource( 2 )
 isNegative = true
 fromPth = NodePath("..")
@@ -552,7 +475,7 @@ toPth = NodePath("../../../NavMenu")
 [connection signal="toggled" from="Menus/Game/Tutorial" to="." method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="Menus/Game/SpeedrunMode" to="." method="_on_speedrun_mode_toggled"]
 [connection signal="toggled" from="Menus/Game/DoubleDamage" to="." method="_on_double_damage_toggled"]
-[connection signal="pressed" from="Menus/Keybinds/KBKeybinds/Scroll/VBox/Reset" to="." method="_on_reset_kb_bindings_pressed"]
+[connection signal="pressed" from="Menus/Keybinds/Reset" to="." method="_on_reset_kb_bindings_pressed"]
 [connection signal="toggled" from="Menus/Visuals/Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="Menus/Visuals/GFX" to="." method="_on_graphic_quality_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Screenshake" to="." method="_on_screenshake_value_changed"]

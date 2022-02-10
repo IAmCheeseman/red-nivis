@@ -13,6 +13,7 @@ custom_fonts/font = ExtResource( 2 )
 toggle_mode = true
 text = "A"
 flat = true
+align = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
