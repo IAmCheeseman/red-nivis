@@ -48,10 +48,10 @@ color_ramp = SubResource( 3 )
 
 [node name="Gun" instance=ExtResource( 1 )]
 position = Vector2( 0, 7 )
-damage = 5.0
+damage = 8.0
 accuracy = 12.0
 cooldown = 0.1
-reloadSpeed = 4.5
+reloadSpeed = 3.0
 projLifetime = 0.1
 recoil = 10.0
 magazineSize = 64

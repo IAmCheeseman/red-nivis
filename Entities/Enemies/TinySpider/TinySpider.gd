@@ -7,6 +7,8 @@ onready var anim := $AnimationPlayer
 
 onready var jumpTimer := $JumpTimer
 
+onready var floorRC = $FloorDetection
+
 export var frict := 20
 export var speed := 90
 export var attackTimeRange := Vector2(1, 2)
@@ -48,7 +50,11 @@ func wander() -> void:
 	state = WANDER
 
 
+func is_on_floor() -> bool:
+	return floorRC.is_colliding()
+
 
 func jump() -> void:
-	vel.y = -200
 	jumpTimer.start(rand_range(.5, 2))
+	if !is_on_floor(): return
+	vel.y = -350

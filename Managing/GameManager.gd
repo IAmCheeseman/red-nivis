@@ -98,18 +98,19 @@ func save_run() -> void:
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
 	
 	var runData = {
-		"playerData:maxHealth"      : playerData.maxHealth,
-		"playerData:health"         : playerData.health,
-		"playerData:maxStamina"     : playerData.maxStamina,
-		"playerData:money"          : playerData.money,
-		"playerData:upgrades"       : playerData.upgrades,
-		"inventory:items"           : inventory.items,
-		"worldData:rooms"           : worldData.rooms,
-		"worldData:position"        : worldData.savePosition,
-		"worldData:savePosition"    : worldData.savePosition,
-		"worldData:playerPos"       : worldData.savePlayerPos,
-		"worldData:savePlayerPos"   : worldData.savePlayerPos,
-		"worldData:moveDir"         : worldData.moveDir
+		"playerData:maxHealth"          : playerData.maxHealth,
+		"playerData:health"             : playerData.health,
+		"playerData:maxStamina"         : playerData.maxStamina,
+		"playerData:money"              : playerData.money,
+		"playerData:upgrades"           : playerData.upgrades,
+		"inventory:items"               : inventory.items,
+		"worldData:rooms"               : worldData.rooms,
+		"worldData:position"            : worldData.savePosition,
+		"worldData:savePosition"        : worldData.savePosition,
+		"worldData:playerPos"           : worldData.savePlayerPos,
+		"worldData:savePlayerPos"       : worldData.savePlayerPos,
+		"worldData:moveDir"             : worldData.moveDir,
+		"fastTravel:discoveredStations" : FastTravel.discoveredStations
 	}
 	
 	var dm := DataManager.new()
@@ -133,8 +134,9 @@ func load_run() -> int:
 		
 		match obj:
 			"playerData": obj = playerData
-			"inventory": obj = inventory
-			"worldData": obj = worldData
+			"inventory":  obj = inventory
+			"worldData":  obj = worldData
+			"fastTravel": obj = FastTravel
 			_: return ERR_INVALID_DATA
 		
 		obj.set(val, runData[i])

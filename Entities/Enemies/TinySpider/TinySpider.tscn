@@ -135,6 +135,11 @@ collision_mask = 2
 position = Vector2( 0, -5 )
 shape = SubResource( 5 )
 
+[node name="FloorDetection" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 5 )
+collision_mask = 17
+
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 maxHealth = 2
 kbAmount = 0.0
