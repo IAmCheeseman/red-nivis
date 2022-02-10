@@ -62,15 +62,16 @@ __meta__ = {
 [node name="BG" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.12549, 0.180392, 0.215686, 1 )
+margin_right = -236.0
+rect_min_size = Vector2( 84, 0 )
+color = Color( 0, 0, 0, 0.368627 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NavMenu" type="VBoxContainer" parent="."]
-visible = false
-anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 53.0
 rect_pivot_offset = Vector2( -166.714, -40.6914 )
 alignment = 1
 __meta__ = {
@@ -79,9 +80,9 @@ __meta__ = {
 
 [node name="SettingsText" type="RichTextLabel" parent="NavMenu"]
 margin_top = 44.0
-margin_right = 320.0
+margin_right = 64.0
 margin_bottom = 76.0
-rect_min_size = Vector2( 0, 32 )
+rect_min_size = Vector2( 64, 32 )
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
@@ -94,11 +95,9 @@ __meta__ = {
 }
 
 [node name="Gameplay" type="Button" parent="NavMenu"]
-margin_left = 140.0
 margin_top = 80.0
-margin_right = 179.0
+margin_right = 64.0
 margin_bottom = 96.0
-size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Game"
 script = ExtResource( 2 )
@@ -106,11 +105,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Game")
 
 [node name="Controls" type="Button" parent="NavMenu"]
-margin_left = 133.0
 margin_top = 100.0
-margin_right = 186.0
+margin_right = 64.0
 margin_bottom = 116.0
-size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Controls"
 script = ExtResource( 2 )
@@ -121,11 +118,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Keybinds")
 
 [node name="Visuals" type="Button" parent="NavMenu"]
-margin_left = 139.0
 margin_top = 120.0
-margin_right = 181.0
+margin_right = 64.0
 margin_bottom = 136.0
-size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Visual"
 script = ExtResource( 2 )
@@ -133,11 +128,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Visuals")
 
 [node name="Audio" type="Button" parent="NavMenu"]
-margin_left = 140.0
 margin_top = 140.0
-margin_right = 179.0
+margin_right = 64.0
 margin_bottom = 156.0
-size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Audio"
 script = ExtResource( 2 )
@@ -145,11 +138,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Audio")
 
 [node name="Back" type="Button" parent="NavMenu"]
-margin_left = 142.0
 margin_top = 160.0
-margin_right = 177.0
+margin_right = 64.0
 margin_bottom = 176.0
-size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 1 )
 text = "Back"
 script = ExtResource( 2 )
@@ -164,6 +155,7 @@ __meta__ = {
 }
 
 [node name="Game" type="VBoxContainer" parent="Menus"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
@@ -198,9 +190,9 @@ margin_top = 60.0
 margin_right = 194.0
 margin_bottom = 84.0
 size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 3 )
-custom_fonts/font = ExtResource( 1 )
 text = "Tutorial"
 
 [node name="SpeedrunMode" type="CheckBox" parent="Menus/Game"]
@@ -209,9 +201,9 @@ margin_top = 103.0
 margin_right = 213.0
 margin_bottom = 127.0
 size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 3 )
-custom_fonts/font = ExtResource( 1 )
 text = "Speedrun Timer"
 
 [node name="DoubleDamage" type="CheckBox" parent="Menus/Game"]
@@ -220,9 +212,9 @@ margin_top = 131.0
 margin_right = 226.0
 margin_bottom = 155.0
 size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 3 )
-custom_fonts/font = ExtResource( 1 )
 text = "Double Damage Mode"
 
 [node name="Back" type="Button" parent="Menus/Game"]
@@ -286,7 +278,7 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="Menus/Keybinds/KBKeybinds/Scroll"]
 margin_right = 39.0
-margin_bottom = 236.0
+margin_bottom = 216.0
 rect_min_size = Vector2( 0, 200 )
 alignment = 1
 __meta__ = {
@@ -429,9 +421,9 @@ margin_top = 89.0
 margin_right = 199.0
 margin_bottom = 113.0
 size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 3 )
-custom_fonts/font = ExtResource( 1 )
 text = "Fullscreen"
 
 [node name="GFX" type="CheckBox" parent="Menus/Visuals"]
@@ -440,9 +432,9 @@ margin_top = 117.0
 margin_right = 202.0
 margin_bottom = 141.0
 size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 3 )
-custom_fonts/font = ExtResource( 1 )
 text = "Low Quality"
 
 [node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]

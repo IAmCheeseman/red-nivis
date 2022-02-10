@@ -31,9 +31,11 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	rect_position.y -= 1
+	rect_size.y += 1
 
 func _on_mouse_exited() -> void:
 	rect_position.y += 1
+	rect_size.y -= 1
 
 func change_menu() -> void:
 	if !has_node(fromPth) or !has_node(toPth): return 
