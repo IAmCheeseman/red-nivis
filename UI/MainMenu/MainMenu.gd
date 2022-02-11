@@ -12,7 +12,7 @@ onready var camera := $Camera2D
 var camStart: Vector2
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !startButton.disabled: camStart = camera.position
 	
 	var viewportSize = get_viewport_rect().end
