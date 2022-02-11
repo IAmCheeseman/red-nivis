@@ -40,13 +40,13 @@ func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
 	yield(get_tree(), "idle_frame")
 	var activity = Discord.Activity.new()
 	activity.set_type(Discord.ActivityType.Playing)
-	activity.set_name("Astronaut Game")
+	activity.set_name("Red Nivis")
 	activity.set_state(state)
 	activity.set_details(details)
 
 	var assets = activity.get_assets()
 	assets.set_large_image("icon")
-	assets.set_large_text("Astronaut Game")
+	assets.set_large_text("Red Nivis")
 	
 	var _result = yield(Discord.activity_manager.update_activity(activity), "result").result
 #	if result != Discord.Result.Ok:
