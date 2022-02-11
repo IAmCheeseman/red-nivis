@@ -198,6 +198,7 @@ Juice Baby
 Quantyy
 Woozy
 Kenshi
+IKEA
 I<3Pepsi
 Fejiberglibstein
 BaconGremlin24
@@ -259,10 +260,12 @@ toPth = NodePath("../../../Options")
 [node name="ScreenTransition" parent="." instance=ExtResource( 5 )]
 
 [node name="QuitAccept" parent="." instance=ExtResource( 6 )]
+visible = false
 text = "Do you really wanna quit?"
 negativeOptions = [ "Yes" ]
 
 [node name="NewGameAccept" parent="." instance=ExtResource( 6 )]
+visible = false
 text = "Do you really wanna clear your current game?"
 negativeOptions = [ "Yes" ]
 
