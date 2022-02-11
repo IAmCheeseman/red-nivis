@@ -66,6 +66,7 @@ func create_room() -> void:
 		room = _cr.scene.instance()
 		if _cr.biomeSpecific.size() != 0:
 			var idx = _cr.biomes.find(biome)
+			room.queue_free()
 			room = _cr.biomeSpecific[idx].instance()
 	
 	# Adding the tiles
@@ -130,6 +131,7 @@ func create_constant_room(connections) -> void:
 		world.solids.update_bitmask_area(i)
 		world.background.set_cellv(i, roomS.get_cellv(i))
 		world.background.update_bitmask_area(i)
+	roomS.queue_free()
 	# Background
 	var roomBG:TileMap = room.BG
 	for i in roomBG.get_used_cells():

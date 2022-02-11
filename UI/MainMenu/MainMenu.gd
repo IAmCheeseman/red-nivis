@@ -9,18 +9,18 @@ onready var startButton := find_node("StartButton")
 onready var camera := $Camera2D
 
 
-var camStart
+var camStart: Vector2
 
 
-func _process(_delta: float) -> void:
-	title.position.x = titleControl.rect_size.x / 2
-	title.position.y = titleControl.rect_size.y / 2
-	
+func _process(delta: float) -> void:
 	if !startButton.disabled: camStart = camera.position
 	
 	var viewportSize = get_viewport_rect().end
 	titleMenu.rect_size = viewportSize
 	titleMenu.rect_position = camStart
+	
+	title.position.x = titleControl.rect_size.x / 2
+	title.position.y = titleControl.rect_size.y / 2
 
 
 func start() -> void:

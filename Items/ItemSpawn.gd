@@ -7,7 +7,7 @@ export var addForce:bool = false
 export var appearOnready:bool = true
 
 
-func _process(_delta):
+func _ready() -> void:
 	if appearOnready: add_item()
 
 
