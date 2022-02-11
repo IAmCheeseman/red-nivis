@@ -7,14 +7,20 @@ render_mode blend_add;
 uniform float speed = 10.0;
 uniform float scale = 1.75;
 
+
 void fragment()
 {
 	vec4 clr = texture(TEXTURE, UV);
 	float time = TIME / speed;
-	float trns = abs(sin((UV.y + time) / (TEXTURE_PIXEL_SIZE.y / scale)));
+	float trns = sin(
+		(UV.y + time) / (TEXTURE_PIXEL_SIZE.y / scale)
+	);
+	trns = abs(trns);
 	trns = sin(trns * trns);
 	trns = round(trns * scale);
-	clr.a = mix(0.0, clr.a, trns);
+	
+	clr.a = mix(clr.a * .25, clr.a, trns);
+	
 	COLOR = clr;
 }"
 
