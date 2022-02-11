@@ -5,6 +5,7 @@ const WORLD = "res://World/WorldManagement/World.tscn"
 
 onready var fadeOut = $ScreenTransition
 onready var quitAccept = $QuitAccept
+onready var newGameAccept = $NewGameAccept
 
 
 func _ready() -> void:
@@ -20,6 +21,15 @@ func play() -> void:
 	var _discard = get_tree().change_scene(target)
 
 
+func new_game() -> void:
+	newGameAccept.show()
+
+func _on_new_game_confirm(option) -> void:
+	if option != "Yes": return
+	GameManager.clear_run()
+	play()
+
+
 func start_quit() -> void:
 	quitAccept.show()
 
@@ -30,3 +40,8 @@ func quit(doQuit: String) -> void:
 
 func to_discord() -> void:
 	var _discard = OS.shell_open("https://discord.gg/UrbYQU7uKv")
+
+
+
+
+
