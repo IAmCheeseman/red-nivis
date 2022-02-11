@@ -43,6 +43,7 @@ var stamina := 3 setget set_stamina
 
 var upgradeSlots = 2
 var upgrades := []
+var unlockedUpgrades := []
 
 var playerObject:KinematicBody2D
 

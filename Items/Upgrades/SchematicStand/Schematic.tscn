@@ -1,0 +1,278 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://RadialGradient.png" type="Texture" id=1]
+[ext_resource path="res://Items/Upgrades/Hologram.tres" type="Material" id=2]
+[ext_resource path="res://Items/Upgrades/Teleport/HologramSprite.png" type="Texture" id=3]
+[ext_resource path="res://Items/Upgrades/SchematicStand/HologramStand.png" type="Texture" id=4]
+[ext_resource path="res://Items/Upgrades/SchematicStand/Schematic.gd" type="Script" id=5]
+
+[sub_resource type="CanvasItemMaterial" id=11]
+blend_mode = 1
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.668016, 1 ), 0.0, -2.68667, 0, 1, Vector2( 1, 0.108068 ), -2.68667, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.53519, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+trail_divisor = 50
+trail_size_modifier = SubResource( 13 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 1.0
+scale_curve = SubResource( 10 )
+color = Color( 0.0588235, 0.643137, 0.623529, 0.498039 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.5, 10 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+uniform float width = .5;
+uniform vec4 defaultColor : hint_color;
+uniform float timeOffset = 0.0;
+
+void fragment() 
+{
+	vec4 color = defaultColor;
+	float time = sin(TIME + timeOffset);
+	float offsetTime = time * sin(TIME);
+	
+	float x = sin(UV.x * 3.14) * time;
+	float y = sin((UV.y) * 3.14) * offsetTime;
+	float finalWidth = width * y;
+	color.a = abs((x * y) * finalWidth);
+	
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/width = 0.333
+shader_param/defaultColor = Color( 0.0588235, 0.643137, 0.623529, 1 )
+shader_param/timeOffset = 5.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 2 )
+shader_param/width = 0.333
+shader_param/defaultColor = Color( 0.0588235, 0.643137, 0.623529, 1 )
+shader_param/timeOffset = 0.5
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 2 )
+shader_param/width = 0.333
+shader_param/defaultColor = Color( 0.0588235, 0.643137, 0.623529, 1 )
+shader_param/timeOffset = 0.333
+
+[sub_resource type="Animation" id=6]
+resource_name = "GiveSchematic"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Explode:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rays:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Light:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Explode:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Rays:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Light:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[node name="Schematic" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 2 )
+position = Vector2( 1, -42 )
+texture = ExtResource( 3 )
+
+[node name="Stand" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+offset = Vector2( 0, -5 )
+
+[node name="Explode" type="Particles2D" parent="."]
+material = SubResource( 11 )
+position = Vector2( 1, -42 )
+emitting = false
+amount = 500
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.84
+fixed_fps = 24
+process_material = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.5, -42 )
+shape = SubResource( 1 )
+
+[node name="Light" type="Light2D" parent="."]
+position = Vector2( -1, -9 )
+texture = ExtResource( 1 )
+texture_scale = 0.05
+color = Color( 0.0588235, 0.643137, 0.623529, 1 )
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="Ray1" type="ColorRect" parent="Rays"]
+material = SubResource( 3 )
+margin_left = -10.0485
+margin_top = -31.792
+margin_right = -8.04846
+margin_bottom = -9.79204
+rect_rotation = -12.4856
+rect_pivot_offset = Vector2( 3.4971, 19.1086 )
+color = Color( 0.643137, 0.866667, 0.858824, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ray2" type="ColorRect" parent="Rays"]
+material = SubResource( 4 )
+margin_left = 9.57179
+margin_top = -31.2063
+margin_right = 11.5718
+margin_bottom = -9.20626
+rect_rotation = 16.5019
+rect_pivot_offset = Vector2( 3.4971, 19.1086 )
+color = Color( 0.643137, 0.866667, 0.858824, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ray3" type="ColorRect" parent="Rays"]
+material = SubResource( 5 )
+margin_left = -4.20522
+margin_top = -34.7396
+margin_right = -2.20522
+margin_bottom = -12.7396
+rect_rotation = -3.63733
+rect_pivot_offset = Vector2( 3.4971, 19.1086 )
+color = Color( 0.643137, 0.866667, 0.858824, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ray4" type="ColorRect" parent="Rays"]
+material = SubResource( 3 )
+margin_left = 3.70309
+margin_top = -35.3011
+margin_right = 5.70309
+margin_bottom = -13.3011
+rect_rotation = 8.02849
+rect_pivot_offset = Vector2( 3.4971, 19.1086 )
+color = Color( 0.643137, 0.866667, 0.858824, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/GiveSchematic = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

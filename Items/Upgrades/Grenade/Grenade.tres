@@ -1,14 +1,16 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://Items/Upgrades/Upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Items/Upgrades/Grenade/GrenadeUpgrade.png" type="Texture" id=2]
 [ext_resource path="res://Items/Upgrades/Grenade/UpgradeScript.gd" type="Script" id=3]
 [ext_resource path="res://Items/Upgrades/Grenade/MiniIcon.png" type="Texture" id=4]
+[ext_resource path="res://Items/Upgrades/Grenade/GrenadeUpgradeHologram.png" type="Texture" id=5]
 
 [resource]
 script = ExtResource( 1 )
 icon = ExtResource( 2 )
 miniIcon = ExtResource( 4 )
+hologramSprite = ExtResource( 5 )
 name = "Grenade"
 description = "Allows you to throw an explosive."
 howTo = "Press <F> to throw a grenade. "

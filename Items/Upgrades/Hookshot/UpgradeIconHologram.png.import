@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HologramStand.png-7288f6341dca75187f704dd2e98448db.stex"
+path="res://.import/UpgradeIconHologram.png-5521ca0a821f357b6a05d5b8fd664b39.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/Upgrades/HologramStand.png"
-dest_files=[ "res://.import/HologramStand.png-7288f6341dca75187f704dd2e98448db.stex" ]
+source_file="res://Items/Upgrades/Hookshot/UpgradeIconHologram.png"
+dest_files=[ "res://.import/UpgradeIconHologram.png-5521ca0a821f357b6a05d5b8fd664b39.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
