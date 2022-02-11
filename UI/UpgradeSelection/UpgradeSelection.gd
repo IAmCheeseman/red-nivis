@@ -9,6 +9,9 @@ var player = preload("res://Entities/Player/Player.tres")
 
 func _ready() -> void:
 	for u in upgrades.get_children():
+		if !u.upgrade.resource_path in player.unlockedUpgrades:
+			u.queue_free()
+			continue
 		u.connect("clicked", self, "_on_upgrade_slot_clicked", [u])
 	slotsLeftLabel.text = "Slots Left: %s" % str(player.upgradeSlots)
 

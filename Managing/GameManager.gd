@@ -162,7 +162,8 @@ func save_game() -> void:
 	var playerData = preload("res://Entities/Player/Player.tres")
 	
 	var saveData := {
-		"highScore" : playerData.highScore
+		"highScore" : playerData.highScore,
+		"unlockedUpgrades" : playerData.unlockedUpgrades,
 	}
 	
 	var _ok = dm.save_data(saveData, Globals.GAME_FILE_NAME)
