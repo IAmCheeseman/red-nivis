@@ -9,14 +9,13 @@ onready var quitAccept = $QuitAccept
 
 func _ready() -> void:
 	GameManager.rpBiome = "Main Menu"
-	GameManager.rpGun = "No Gun"
+	GameManager.rpGun   = "No Gun"
 	GameManager.update_rp()
 
 
 func play() -> void:
 	fadeOut.out()
 	yield(TempTimer.timer(self, 2.5), "timeout")
-	OS.window_fullscreen = Settings.fullscreen
 	var target = STARTING_AREA if GameManager.load_run() != OK else WORLD
 	var _discard = get_tree().change_scene(target)
 

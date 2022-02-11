@@ -334,6 +334,8 @@ _global_script_class_icons={
 
 config/name="Red Nivis"
 run/main_scene="res://Managing/Init.tscn"
+boot_splash/image="res://UI/Assets/Title_RedNivis.png"
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://UI/Assets/Icon.png"
 config/windows_native_icon="res://Icon.ico"
 
