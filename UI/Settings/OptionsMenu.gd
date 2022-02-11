@@ -4,12 +4,19 @@ var dataManager = DataManager.new()
 
 onready var menus = $Menus
 onready var navMenu = $NavMenu
-onready var keybinds = $Menus/Keybinds/KBKeybinds/Scroll/VBox
+onready var keybinds = $Menus/Keybinds/Scroll/VBox
+onready var BGgradient = find_node("Gradient")
+onready var BG = $BG
+onready var backButton = $NavMenu/Back
 
 
 func _ready() -> void:
 	update_settings()
 	set_values()
+
+
+func _process(_delta: float) -> void:
+	BGgradient.rect_position.x = BG.rect_position.x + BG.rect_size.x
 
 
 func _on_quit():
@@ -45,7 +52,7 @@ func update_settings() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		hide()
+		backButton.change_menu()
 		_on_quit()
 
 

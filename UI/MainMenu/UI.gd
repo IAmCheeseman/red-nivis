@@ -7,6 +7,12 @@ onready var fadeOut = $ScreenTransition
 onready var quitAccept = $QuitAccept
 
 
+func _ready() -> void:
+	GameManager.rpBiome = "Main Menu"
+	GameManager.rpGun = "No Gun"
+	GameManager.update_rp()
+
+
 func play() -> void:
 	fadeOut.out()
 	yield(TempTimer.timer(self, 2.5), "timeout")
@@ -24,4 +30,4 @@ func quit(doQuit: String) -> void:
 
 
 func to_discord() -> void:
-	OS.shell_open("https://discord.gg/UrbYQU7uKv")
+	var _discard = OS.shell_open("https://discord.gg/UrbYQU7uKv")

@@ -9,6 +9,9 @@ export(Array, String) var options := [
 	"Yes",
 	"No"
 ]
+export(Array, String) var negativeOptions := [
+	"No"
+]
 
 signal optionPressed(option)
 
@@ -22,6 +25,7 @@ func _ready() -> void:
 	for i in options:
 		var newButton = button.duplicate()
 		newButton.text = i
+		newButton.isNegative = i in negativeOptions
 		newButton.connect("pressed", self, "_on_button_pressed", [i])
 		_buttons.add_child(newButton)
 

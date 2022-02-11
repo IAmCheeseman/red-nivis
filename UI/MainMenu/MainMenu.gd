@@ -1,15 +1,26 @@
 extends Node2D
 
-onready var title = $Menu/TitleControl/Title
-onready var titleControl = $Menu/TitleControl
-onready var anim = $AnimationPlayer
-onready var menu = find_node("UI")
-onready var startButton = find_node("StartButton")
+onready var title := $Menu/TitleControl/Title
+onready var titleControl := $Menu/TitleControl
+onready var titleMenu := $Menu
+onready var anim := $AnimationPlayer
+onready var menu := find_node("UI")
+onready var startButton := find_node("StartButton")
+onready var camera := $Camera2D
 
 
-func _ready() -> void:
+var camStart
+
+
+func _process(_delta: float) -> void:
 	title.position.x = titleControl.rect_size.x / 2
 	title.position.y = titleControl.rect_size.y / 2
+	
+	if !startButton.disabled: camStart = camera.position
+	
+	var viewportSize = get_viewport_rect().end
+	titleMenu.rect_size = viewportSize
+	titleMenu.rect_position = camStart
 
 
 func start() -> void:

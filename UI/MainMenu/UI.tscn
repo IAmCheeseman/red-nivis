@@ -60,7 +60,6 @@ expand = true
 stretch_mode = 1
 
 [node name="Options" type="VBoxContainer" parent="."]
-visible = false
 anchor_bottom = 1.0
 margin_right = 84.0
 __meta__ = {
@@ -126,6 +125,7 @@ script = ExtResource( 1 )
 isNegative = true
 
 [node name="Credits" type="VBoxContainer" parent="."]
+visible = false
 anchor_bottom = 1.0
 rect_min_size = Vector2( 90, 0 )
 __meta__ = {
@@ -250,6 +250,7 @@ toPth = NodePath("../../../Options")
 
 [node name="QuitAccept" parent="." instance=ExtResource( 6 )]
 text = "Do you really wanna quit? :("
+negativeOptions = [ "Yes" ]
 
 [connection signal="pressed" from="Options/Play" to="." method="play"]
 [connection signal="pressed" from="Options/Community" to="." method="to_discord"]
