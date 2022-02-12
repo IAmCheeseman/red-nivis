@@ -9,11 +9,10 @@ export var drops = [
 ]
 
 
-func drop_items() -> void:
-	yield(TempTimer.idle_frame(self), "timeout")
+func _exit_tree() -> void:
 	for i in drops.size():
 		var d = drops[i]
 		var newDrop:Node2D = d.instance()
-		newDrop.position = position-Vector2(0, sprite.texture.get_height()*.25)
-		newDrop.position.x += (drops.size()*.5-i)*32
+		newDrop.global_position = global_position-Vector2(0, sprite.texture.get_height()*.25)
+		newDrop.global_position.x += (drops.size()*.5-i)*32
 		GameManager.spawnManager.spawn_object(newDrop)

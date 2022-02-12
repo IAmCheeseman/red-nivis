@@ -11,6 +11,8 @@ onready var deathExplodeTimer := $Timers/DeathExplodeTimer
 
 onready var guns = $Sprite/Guns
 
+onready var dropper = $BossDropper
+
 export var frict := 20
 export var attackTimeRange := Vector2(1, 2)
 export var speed := 90
@@ -18,11 +20,6 @@ export var speed := 90
 var vel := Vector2.ZERO
 var target := 0.0
 var isDead := false
-
-var drops = [
-	preload("res://Items/HeartContiner/HeartContainer.tscn"),
-	preload("res://Items/Upgrades/DroppedUpgrade.tscn")
-]
 
 var bullets := []
 
@@ -80,22 +77,11 @@ func _on_dead() -> void:
 	GameManager.emit_signal("screenshake", 10, 3, .025, 2)
 	var timer = get_tree().create_timer(2.2)
 	timer.connect("timeout", self, "add_death_explosion", [64, 3])
-	timer.connect("timeout", self, "remove")
+	timer.connect("timeout", self, "queue_free")
 	
 	isDead = true
 	GameManager.worldData.store_room_data(self, true)
 	deathExplodeTimer.start()
-
-
-func remove() -> void:
-	yield(TempTimer.idle_frame(self), "timeout")
-	for i in drops.size():
-		var d = drops[i]
-		var newDrop:Node2D = d.instance()
-		newDrop.position = position-Vector2(0, sprite.texture.get_height()*.25)
-		newDrop.position.x += (drops.size()*.5-i)*32
-		GameManager.spawnManager.spawn_object(newDrop)
-	queue_free()
 
 
 func add_death_explosion(size:int=8, amt:int=1) -> void:
