@@ -130,7 +130,7 @@ position = Vector2( 0, -11 )
 shape = SubResource( 6 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
-maxHealth = 190
+maxHealth = 140
 kbAmount = 20.0
 
 [node name="Timers" type="Node" parent="."]
