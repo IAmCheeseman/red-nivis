@@ -7,7 +7,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Items/Upgrades/Hookshot/Hookshot.tres" type="Resource" id=7]
-[ext_resource path="res://Entities/Enemies/Bosses/HANK/HANK.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Bosses/Billy/Bill.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 225.5, 134.694 )
@@ -40,7 +40,7 @@ shape = SubResource( 1 )
 position = Vector2( 157, 0 )
 upgrade = ExtResource( 7 )
 
-[node name="HANK" parent="." instance=ExtResource( 8 )]
-position = Vector2( 187, -47 )
+[node name="Billy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 159, -61 )
 
 [editable path="CameraMoveZone"]
