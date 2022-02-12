@@ -4,7 +4,7 @@
 [ext_resource path="res://Entities/Enemies/Bosses/HANK/HANKEnraged.png" type="Texture" id=2]
 
 [node name="HANK" instance=ExtResource( 1 )]
-attackTimeRange = Vector2( 0.75, 1.25 )
+attackTimeRange = Vector2( 0.9, 1.25 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -13,9 +13,10 @@ texture = ExtResource( 2 )
 doDrop = false
 
 [node name="DamageManager" parent="." index="4"]
-maxHealth = 2560
+maxHealth = 3840
 
 [node name="AttackCooldown" parent="Timers" index="1"]
 wait_time = 0.438
 
 [editable path="Collisions/Hurtbox"]
+[editable path="Collisions/PlayerDetection"]

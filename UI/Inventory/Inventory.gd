@@ -22,7 +22,7 @@ func _init():
 	setup()
 
 func setup():
-	items.clear()
+	clear()
 	for slot in maxSlots:
 		items.append(null)
 	randomize()
@@ -62,6 +62,10 @@ func move_item(from:int, to:int):
 	items.remove(from)
 	items.insert(to, movedItem)
 	emit_signal("itemsChanged")
+
+
+func clear() -> void:
+	items = [null, null]
 
 
 func is_empty() -> bool:

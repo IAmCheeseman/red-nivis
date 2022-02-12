@@ -4,6 +4,8 @@ export var mouseLook = true
 
 onready var collisionShape = $CollisionShape2D
 
+signal camFocused 
+
 
 func _on_area_entered(area):
 	if area.is_in_group("player"):
@@ -17,3 +19,5 @@ func _on_area_entered(area):
 		limits.end.y = global_position.y+shapeExtents.y
 		cam.limits = limits
 		$SoundManager.play()
+		
+		emit_signal("camFocused")

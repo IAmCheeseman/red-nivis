@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
-onready var player = GameManager.player
-
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
 onready var walkTimer := $Timers/Walk
 onready var attackCooldown := $Timers/AttackCooldown
 onready var deathExplodeTimer := $Timers/DeathExplodeTimer
+
+onready var playerDetection := $Collisions/PlayerDetection
 
 onready var guns = $Sprite/Guns
 
@@ -16,6 +16,8 @@ onready var dropper = $BossDropper
 export var frict := 20
 export var attackTimeRange := Vector2(1, 2)
 export var speed := 90
+
+var player: Node2D
 
 var vel := Vector2.ZERO
 var target := 0.0
@@ -35,6 +37,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if !player:
+		player = playerDetection.get_player()
+		return
 	if !isDead:
 		vel.y += Globals.GRAVITY * delta
 		var dir = 1 if global_position.x < target else -1
@@ -43,7 +48,7 @@ func _process(delta: float) -> void:
 		if abs(global_position.x - target) < 5:
 			vel.x = lerp(vel.x, 0, frict * delta)
 			anim.play("Idle")
-			sprite.scale.x *= 1 if GameManager.player.global_position.x < global_position.x else -1
+			sprite.scale.x *= 1 if player.global_position.x < global_position.x else -1
 		else:
 			vel.x = dir * speed
 			anim.play("Walk")
@@ -53,7 +58,8 @@ func _process(delta: float) -> void:
 
 
 func choose_new_target() -> void:
-	target = GameManager.player.global_position.x + rand_range(-128, 128)
+	if !player: return
+	target = player.global_position.x + rand_range(-128, 128)
 	if Utils.coin_flip(): target = global_position.x
 	walkTimer.start(rand_range(1, 4))
 
@@ -63,13 +69,14 @@ func _on_animation_changed(_old_name: String, _new_name: String) -> void:
 
 
 func attack() -> void:
+	attackCooldown.start(rand_range(attackTimeRange.x, attackTimeRange.y))
 	if isDead: return
+	if !player: return
 	var gunList = guns.get_children()
 	for i in gunList.size():
 		gunList.shuffle()
 		var gun = gunList.pop_front()
 		if gun.attack(): break
-	attackCooldown.start(rand_range(attackTimeRange.x, attackTimeRange.y))
 
 
 func _on_dead() -> void:
