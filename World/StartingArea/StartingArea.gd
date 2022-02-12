@@ -17,6 +17,7 @@ func _ready():
 
 
 func _process(delta: float) -> void:
+	player.playerData.time += delta
 	player.position.x = lerp(player.position.x, movementLock.position.x, 10 * delta)
 
 
