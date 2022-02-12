@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Entities/NPC/Dialog/DialogInteraction.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+dialog = [ [ "Introduction", "Mmmmmm...", "Hello...", "I am the Slug Cultist.", "Do things for me...", "We will be good friends...", "Mmmmm...", "Yes..." ], [ "Pointer", "Mmmm...", "The TO-DO list is right over there...", "Yes..." ] ]

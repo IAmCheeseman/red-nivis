@@ -7,6 +7,7 @@ export var drops = [
 	preload("res://Items/HeartContiner/HeartContainer.tscn"),
 	preload("res://Items/Upgrades/DroppedUpgrade.tscn")
 ]
+export var doDrop := true
 
 var rc: RayCast2D
 
@@ -16,6 +17,8 @@ var rc: RayCast2D
 
 
 func _exit_tree() -> void:
+	if !doDrop: return
+	
 	rc = RayCast2D.new()
 	rc.enabled = true
 	rc.cast_to = Vector2.DOWN * 1000

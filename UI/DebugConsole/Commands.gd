@@ -35,6 +35,24 @@ func give(item: String) -> String:
 	return " Gave %s" % ItemMap.ITEMS[item].name
 
 
+func ability(n: String) -> String:
+	var a := ""
+	match n:
+		"teleport": 
+			a = "res://Items/Upgrades/Teleport/Teleport.tres"
+		"boots":
+			a = "res://Items/Upgrades/DoubleJump/DoubleJump.tres"
+		"grenade":
+			a = "res://Items/Upgrades/Grenade/Grenade.tres"
+		"hookshot":
+			a = "res://Items/Upgrades/Hookshot/Hookshot.tres"
+		_:
+			return " That ability does not exist"
+	player.upgrades.append(a)
+	player.emit_signal("updateAbilities")
+	return " Gave %s" % n
+
+
 func clear_inven() -> String:
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
 	inventory.items.clear()
