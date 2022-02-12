@@ -8,11 +8,27 @@ export var drops = [
 	preload("res://Items/Upgrades/DroppedUpgrade.tscn")
 ]
 
+var rc: RayCast2D
+
+
+#func _ready() -> void:
+	
+
 
 func _exit_tree() -> void:
+	rc = RayCast2D.new()
+	rc.enabled = true
+	rc.cast_to = Vector2.DOWN * 1000
+	add_child(rc)
 	for i in drops.size():
 		var d = drops[i]
 		var newDrop:Node2D = d.instance()
-		newDrop.global_position = global_position-Vector2(0, sprite.texture.get_height()*.25)
-		newDrop.global_position.x += (drops.size()*.5-i)*32
-		GameManager.spawnManager.spawn_object(newDrop)
+		var pos = global_position-Vector2(0, sprite.texture.get_height()*.25)
+		pos.x += (drops.size()*.5-i)*32
+		rc.global_position = pos
+		rc.force_raycast_update()
+		if rc.is_colliding():
+			newDrop.global_position = rc.get_collision_point() + (Vector2.UP * 32)
+			GameManager.spawnManager.spawn_object(newDrop)
+			continue
+		newDrop.queue_free()

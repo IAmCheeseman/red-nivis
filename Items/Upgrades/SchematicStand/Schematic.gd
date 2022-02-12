@@ -14,7 +14,7 @@ func _ready() -> void:
 	sprite.texture = upgrade.hologramSprite
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if unlocked: return
 	sprite.modulate.a = 1 - (global_position.distance_to(GameManager.player.global_position) / 200)
 
