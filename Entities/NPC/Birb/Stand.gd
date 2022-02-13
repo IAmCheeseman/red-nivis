@@ -35,7 +35,7 @@ func update_items(items:=inventory.items, par:=playerInven, connection:="_on_pla
 
 
 func open_shop(open:=true) -> void:
-	if GameManager.inGUI: return
+	if GameManager.inGUI == open: return
 	# Updating shop data
 	update_items()
 	Utils.free_children(shopInven)
