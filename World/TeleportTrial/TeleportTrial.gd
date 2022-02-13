@@ -25,6 +25,9 @@ func _ready() -> void:
 	yield(TempTimer.idle_frame(self), "timeout")
 	inventory.add_item("pump-shotgun")
 	inventory.add_item("flamethrower")
+	inventory.selectedSlot += 1
+	yield(TempTimer.idle_frame(self), "timeout")
+	inventory.selectedSlot -= 1
 
 func _on_boss_arena_cam_focused() -> void:
 	block.show()

@@ -53,7 +53,6 @@ shape = SubResource( 2 )
 z_index = -2
 
 [node name="DoorBlock" parent="Decoration" instance=ExtResource( 7 )]
-visible = false
 position = Vector2( 873, 139 )
 
 [node name="CollisionShape2D" parent="Decoration/DoorBlock" index="1"]

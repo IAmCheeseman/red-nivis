@@ -30,9 +30,7 @@ func setup():
 
 
 func has_space() -> bool:
-	for item in items:
-		if item == null: return true
-	return false
+	return items.has(null)
 
 
 func has_item(id:String) -> bool:
