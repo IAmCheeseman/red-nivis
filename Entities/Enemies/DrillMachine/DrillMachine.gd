@@ -22,7 +22,7 @@ onready var attackTimer = $Timers/AttackTimer
 onready var windUpTimer = $Timers/WindUpTimer
 onready var sprite = $Sprite
 onready var bounceRay = $Collisions/BounceRay
-onready var hpBar = $Healthbar
+onready var hpBar = $HPBar/Healthbar
 onready var healthManager = $DamageManager
 
 
@@ -86,6 +86,8 @@ func _physics_process(delta:float) -> void:
 		states.DEFEND:
 			defend_state(delta)
 	
+	hpBar.owner.global_rotation = 0
+	
 	# Soft collisions
 	vel += softCollision.get_push_vector()*(kbAmount*.05)
 	
@@ -93,7 +95,6 @@ func _physics_process(delta:float) -> void:
 
 
 func wander_state(delta:float) -> void:
-	hpBar.hide()
 	accel_to_point(targetPosition, delta)
 
 
@@ -165,6 +166,7 @@ func accel_to_point(point:Vector2, delta:float) -> void:
 
 
 func update_healthbar():
+	hpBar.show()
 	hpBar.max_value = healthManager.maxHealth
 	hpBar.value = healthManager.health
 

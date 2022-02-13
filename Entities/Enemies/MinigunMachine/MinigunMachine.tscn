@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/Minigun.gd" type="Script" id=7]
-[ext_resource path="res://Entities/Enemies/Assets/EnemyOutline.tres" type="Material" id=8]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=9]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=11]
@@ -163,7 +162,6 @@ script = ExtResource( 1 )
 kbAmount = 32.0
 
 [node name="Sprite" type="Sprite" parent="."]
-material = ExtResource( 8 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -0.5 )
 hframes = 4
@@ -177,7 +175,6 @@ overheatShotCount = 3
 damage = 1
 
 [node name="Sprite" type="Sprite" parent="Sprite/Minigun"]
-material = ExtResource( 8 )
 rotation = 1.5708
 texture = ExtResource( 3 )
 offset = Vector2( 5, 0 )
