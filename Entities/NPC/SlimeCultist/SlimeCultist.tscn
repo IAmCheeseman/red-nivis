@@ -74,4 +74,4 @@ position = Vector2( -11, -50 )
 [node name="Dialog" parent="Dialog" index="0"]
 dialog = ExtResource( 4 )
 advanceTime = 2.0
-font = ExtResource( 3 )
+fontOverride = ExtResource( 3 )
