@@ -267,6 +267,7 @@ func add_walk_particles(spawnPos:Vector2):
 
 
 func jump():
+	if GameManager.inGUI: return
 	# Setting values
 	jumpSFX.play()
 	#snapVector = Vector2.ZERO

@@ -34,11 +34,11 @@ func _ready() -> void:
 		sprite.material.set_shader_param("line_thickness", 0)
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		# Checking if it's the player and
 		# Emitting a signal if it's the player
-		if playerNear and is_closest() and !disabled:
+		if playerNear and is_closest() and !disabled and !GameManager.inGUI:
 			emit_signal("interaction")
 
 

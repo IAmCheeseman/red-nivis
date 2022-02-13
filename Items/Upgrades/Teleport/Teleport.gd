@@ -18,7 +18,11 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("dash") and playerData.dashesLeft > 0 and !player.lockMovement and canDash:
+	if Input.is_action_just_pressed("dash")\
+	and playerData.dashesLeft > 0\
+	and !player.lockMovement\
+	and canDash\
+	and !GameManager.inGUI:
 		var dashDir := Vector2.ZERO
 		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
 		dashDir = dashDir.normalized()*playerData.dashSpeed
