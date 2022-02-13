@@ -88,6 +88,7 @@ func _on_dead() -> void:
 	GameManager.emit_signal("screenshake", 10, 3, .025, 2)
 	var timer = get_tree().create_timer(2.2)
 	timer.connect("timeout", self, "add_death_explosion", [64, 3])
+	timer.connect("timeout", self, "emit_signal", ["dead"])
 	timer.connect("timeout", self, "queue_free")
 	
 	isDead = true

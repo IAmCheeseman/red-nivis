@@ -1,10 +1,9 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
 [ext_resource path="res://World/ConstantRooms/Rooms/SlugCultRoom.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Biomes/Caves.tres" type="Resource" id=3]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=4]
-[ext_resource path="res://World/Biomes/Lab.tres" type="Resource" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -14,7 +13,7 @@ region = Rect2( 13, 78, 12, 12 )
 script = ExtResource( 1 )
 scene = ExtResource( 2 )
 biomeSpecific = [  ]
-biomes = [ ExtResource( 3 ), ExtResource( 5 ) ]
+biomes = [ ExtResource( 3 ) ]
 mustHave = false
 typeAlwaysVisible = true
 roomIcon = SubResource( 1 )

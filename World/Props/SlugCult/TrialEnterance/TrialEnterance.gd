@@ -19,4 +19,4 @@ func new_frame() -> void:
 
 
 func _on_interaction() -> void:
-	get_tree().change_scene_to(trial)
+	var _discard = get_tree().change_scene_to(trial)

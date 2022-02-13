@@ -60,4 +60,5 @@ func _exit_tree() -> void:
 
 
 func _on_HANK_dead() -> void:
-	get_tree().change_scene("res://World/WorldManagement/World.tscn")
+	yield(TempTimer.timer(self, 1), "timeout")
+	var _discard = get_tree().change_scene("res://World/WorldManagement/World.tscn")
