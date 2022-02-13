@@ -27,6 +27,7 @@ func start() -> void:
 	anim.play("Start")
 	startButton.disabled = true
 	yield(TempTimer.timer(self, .8), "timeout")
+	
 	var tween = Tween.new()
 	add_child(tween)
 	menu.show()

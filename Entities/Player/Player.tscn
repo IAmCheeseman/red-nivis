@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Entities/Player/Assets/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Player/Scripts/Player.gd" type="Script" id=2]
@@ -118,6 +118,9 @@ shader_param/vignette = ExtResource( 26 )
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 19 )
 shader_param/strength = 1.0
+
+[sub_resource type="CanvasItemMaterial" id=33]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 10 )
@@ -827,6 +830,7 @@ wait_time = 3.0
 
 [node name="HealProgress" type="TextureProgress" parent="."]
 visible = false
+material = SubResource( 33 )
 margin_left = -6.0
 margin_top = -34.0
 margin_right = 5.0

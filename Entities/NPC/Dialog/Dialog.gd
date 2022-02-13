@@ -5,7 +5,7 @@ export var dialog:Resource
 export var pointerOffset := 15
 export var advanceTime := 3.0
 export var talkingSpeed := 0.05
-export var font: Font = null
+export var fontOverride: Font = null
 
 onready var text = $Text
 onready var background = $Background
@@ -27,7 +27,7 @@ signal done
 
 
 func _ready() -> void:
-	if font: text.add_font_override("normal_font", font)
+	if fontOverride: text.add_font_override("normal_font", fontOverride)
 
 
 func start_dialog(interaction:String="Introduction") -> void:

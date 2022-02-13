@@ -33,7 +33,6 @@ func _on_quittm_pressed():
 	Resetter.reset()
 	GameManager.save_game()
 	GameManager.save_run()
-	
 	get_tree().paused = false
 	VisualServer.set_shader_time_scale(1)
 # warning-ignore:return_value_discarded

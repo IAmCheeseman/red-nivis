@@ -5,6 +5,7 @@ var playerData = preload("res://Entities/Player/Player.tres")
 var finished = false
 
 func _ready() -> void:
+	playerData.connect("healthChanged", self, "_on_health_changed")
 	max_value = playerData.healTime
 	hide()
 
@@ -34,6 +35,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("heal"):
 		finished = false
 		finish()
+
+
+func _on_health_changed(_dir: Vector2) -> void:
+	finish()
 
 
 func finish() -> void:

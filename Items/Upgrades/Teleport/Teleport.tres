@@ -10,8 +10,8 @@
 script = ExtResource( 1 )
 icon = ExtResource( 3 )
 miniIcon = ExtResource( 4 )
+hologramSprite = ExtResource( 5 )
 name = "Teleporter"
 description = "Teleports you a short distance"
 howTo = "Press <Shift> to teleport."
 abilityScript = ExtResource( 2 )
-hologramSprite = ExtResource( 5 )

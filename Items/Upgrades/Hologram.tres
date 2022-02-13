@@ -17,6 +17,7 @@ void fragment()
 	);
 	trns = abs(trns);
 	trns = sin(trns * trns);
+//	trns = round(trns * scale);
 	
 	clr.a = mix(clr.a * .25, clr.a, trns);
 	

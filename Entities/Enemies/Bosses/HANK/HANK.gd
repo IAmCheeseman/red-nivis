@@ -3,6 +3,8 @@ extends KinematicBody2D
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
+onready var bossBar = $CanvasLayer/Bossbar
+
 onready var walkTimer := $Timers/Walk
 onready var attackCooldown := $Timers/AttackCooldown
 onready var deathExplodeTimer := $Timers/DeathExplodeTimer
@@ -39,7 +41,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !player:
 		player = playerDetection.get_player()
+		bossBar.hide()
 		return
+	bossBar.show()
 	if !isDead:
 		vel.y += Globals.GRAVITY * delta
 		var dir = 1 if global_position.x < target else -1
@@ -58,10 +62,10 @@ func _process(delta: float) -> void:
 
 
 func choose_new_target() -> void:
+	walkTimer.start(rand_range(1, 4))
 	if !player: return
 	target = player.global_position.x + rand_range(-128, 128)
 	if Utils.coin_flip(): target = global_position.x
-	walkTimer.start(rand_range(1, 4))
 
 
 func _on_animation_changed(_old_name: String, _new_name: String) -> void:

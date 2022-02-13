@@ -1,18 +1,12 @@
-[gd_resource type="Resource" load_steps=14 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=2]
 [ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsBG.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsPlatforms.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsTiles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/Props/Foliage/Grass/DeepLabs/DeepLabsGrass.tscn" type="PackedScene" id=6]
-[ext_resource path="res://World/Props/Foliage/Vine/DeepLabs/DeepLabsVine.tscn" type="PackedScene" id=7]
-[ext_resource path="res://World/Props/LabStuff/Tables/BrainContainer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://World/Props/LabStuff/Tables/SmallTableMetalEmpty.tscn" type="PackedScene" id=10]
-[ext_resource path="res://World/Props/LabStuff/Tables/SmallTableWoodEmpty.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/EnemyPools/Bandits.tres" type="Resource" id=12]
 [ext_resource path="res://World/Decorators/DeepLabsDecorator.tres" type="Resource" id=13]
-[ext_resource path="res://World/Props/Spikes/Spike.tscn" type="PackedScene" id=14]
 
 [resource]
 script = ExtResource( 1 )
@@ -32,6 +26,3 @@ connectionChance = 0.05
 decorator = ExtResource( 13 )
 roomTemplates = ExtResource( 2 )
 enemyPools = [ ExtResource( 12 ) ]
-roofProps = [ ExtResource( 7 ) ]
-groundProps = [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
-spike = ExtResource( 14 )
