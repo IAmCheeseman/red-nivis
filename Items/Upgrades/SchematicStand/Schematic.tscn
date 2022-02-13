@@ -38,7 +38,7 @@ color = Color( 0.0588235, 0.643137, 0.623529, 0.498039 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.5, 10 )
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=14]
 code = "shader_type canvas_item;
 render_mode blend_add;
 
@@ -61,19 +61,19 @@ void fragment()
 }"
 
 [sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+shader = SubResource( 14 )
 shader_param/width = 0.333
 shader_param/defaultColor = Color( 0.0588235, 0.643137, 0.623529, 1 )
 shader_param/timeOffset = 5.0
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 2 )
+shader = SubResource( 14 )
 shader_param/width = 0.333
 shader_param/defaultColor = Color( 0.0588235, 0.643137, 0.623529, 1 )
 shader_param/timeOffset = 0.5
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 2 )
+shader = SubResource( 14 )
 shader_param/width = 0.333
 shader_param/defaultColor = Color( 0.0588235, 0.643137, 0.623529, 1 )
 shader_param/timeOffset = 0.333

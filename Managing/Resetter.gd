@@ -5,7 +5,7 @@ class_name Resetter
 static func reset() -> void: 
 	var playerData = preload("res://Entities/Player/Player.tres")
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
-	var worldData = preload("res://World/WorldManagement/WorldData.tres")
+	var worldData = GameManager.worldData
 	var tradingPostData = preload("res://Entities/NPC/Birb/TradingPostData.tres")
 	
 	playerData.isDead = false

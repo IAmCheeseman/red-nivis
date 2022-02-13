@@ -1,7 +1,7 @@
 extends Control
 
 var player = preload("res://Entities/Player/Player.tres")
-var mapData = preload("res://World/WorldManagement/WorldData.tres")
+var mapData = GameManager.worldData
 
 
 func help() -> String:

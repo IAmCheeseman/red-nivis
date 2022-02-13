@@ -48,3 +48,16 @@ func _ready() -> void:
 func _on_boss_arena_cam_focused() -> void:
 	block.show()
 	blockCollision.set_deferred("disabled", false)
+
+
+func _exit_tree() -> void:
+	# Resetting the player
+	player.maxHealth = prevMaxHp
+	player.health = prevHealth
+	player.stamina = prevStamina
+	player.upgrades = prevAbilities
+	inventory.items = prevInventory
+
+
+func _on_HANK_dead() -> void:
+	get_tree().change_scene("res://World/WorldManagement/World.tscn")

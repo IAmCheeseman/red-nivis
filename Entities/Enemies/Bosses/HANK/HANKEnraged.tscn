@@ -9,7 +9,10 @@ attackTimeRange = Vector2( 0.9, 1.25 )
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
 
-[node name="DamageManager" parent="." index="3"]
+[node name="BossDropper" parent="." index="2"]
+doDrop = false
+
+[node name="DamageManager" parent="." index="4"]
 maxHealth = 2000
 
 [node name="AttackCooldown" parent="Timers" index="1"]
@@ -19,3 +22,4 @@ wait_time = 0.438
 bossName = "Enraged H.A.N.K."
 
 [editable path="Collisions/Hurtbox"]
+[editable path="Collisions/PlayerDetection"]
