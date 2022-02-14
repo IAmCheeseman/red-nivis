@@ -81,7 +81,7 @@ func walk_state(delta: float) -> void:
 func shoot_state(delta: float) -> void:
 	if aimTimer.is_stopped():
 		shoot()
-		shootStateTimer.start(rand_range(1, 2))
+		shootStateTimer.start(rand_range(.25, .75))
 		new_target_position()
 		state = WALK
 	vel.x = lerp(vel.x, 0, friction*delta)

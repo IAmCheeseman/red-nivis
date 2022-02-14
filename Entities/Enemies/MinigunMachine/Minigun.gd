@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 	or !isOn\
 	or anim.is_playing():
 		return
-	currentCooldown = clamp(currentCooldown*.75, minCooldown, startCooldown)
+	currentCooldown = clamp(currentCooldown*.5, minCooldown, startCooldown)
 	cooldown.stop()
 	cooldown.start(currentCooldown)
 	

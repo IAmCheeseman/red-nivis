@@ -72,7 +72,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-length = 2.3
+length = 1.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1
@@ -80,7 +80,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.3 ),
+"times": PoolRealArray( 0, 1.6 ),
 "transitions": PoolRealArray( 8.57423, 1 ),
 "update": 0,
 "values": [ Color( 1, 0.721569, 0.721569, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -92,7 +92,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 2.3 ),
+"times": PoolRealArray( 1.6 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "WindUp", -1, 1.0, false ],
@@ -170,7 +170,7 @@ hframes = 4
 position = Vector2( 0, 13 )
 script = ExtResource( 7 )
 startCooldown = 0.2
-minCooldown = 0.2
+minCooldown = 0.1
 overheatShotCount = 3
 damage = 1
 
