@@ -21,6 +21,7 @@ signal selectedSlotChanged
 func _init():
 	setup()
 
+
 func setup():
 	clear()
 	randomize()
