@@ -364,11 +364,9 @@ func add_props(propArr:Array, chances:Array, x, y) -> void:
 		world.props.add_child(prop)
 		break
 
-func spawn_enemies() -> void: 
-	if worldData.get_current_room().cleared:
-		return
-	if !roomI is Image:
-		return
+func spawn_enemies() -> void:
+	if worldData.get_current_room().cleared: return
+	if !roomI is Image: return
 	world.viableEnemySpawns.shuffle()
 	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
 # warning-ignore:integer_division
