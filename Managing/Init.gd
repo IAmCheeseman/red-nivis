@@ -2,28 +2,26 @@ extends Node2D
 
 
 var titles = [
-	"I love playing with the title",
 	"Astronaut Game",
-	"Pasta Edition",
-	"When the",
-	"Explosions (BOOM)",
-	"Cheeseman's Creation",
-	"Dot32IsCool",
-	"6AM",
-	"Bacon",
-	"B E A N",
 	"The Video Game",
-	"The One And Only",
 	"The Movie",
+	"The One and Only",
 	"The Sequal",
+	"The Unconfirmed Sequal",
 	"The Prequal",
 	"The Sequal's Sequal",
+	"The Sequal's Sequal's Prequal's Prequal",
 	"The Sequal's Prequal",
 	"The Prequal's Prequal",
 	"The Prequal's Sequal",
 	"The Follow-Up",
 	"The Follow-Up's Follow-Up",
+	"Pilot Episode",
+	"Episode 1",
+	"Episode 2",
+	"Episode 4",
 	"The Beginning",
+	"The Middle",
 	"The Ending",
 	"The First",
 	"The Onest",
@@ -31,9 +29,6 @@ var titles = [
 	"The Twond",
 	"The Third",
 	"The Threed",
-	"Lmao.",
-	". (That's a period (Full-stop))",
-	"What."
 ]
 
 
