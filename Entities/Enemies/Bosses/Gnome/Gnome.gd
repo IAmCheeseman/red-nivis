@@ -17,11 +17,12 @@ onready var bounceRC = $Collisions/Bounce
 
 onready var dialog = $Dialog
 
-export var jumpForce:int = 400
-export var speed:int = 80
-export var accel:float = 4
+export var jumpForce := 400
+export var speed := 80
+export var accel := 4
+export var defaultStickAmount := Vector2(1, 2)
 
-var stick = preload("res://Entities/Enemies/Bosses/Gnome/Stick.tscn")
+var stick := preload("res://Entities/Enemies/Bosses/Gnome/Stick.tscn")
 
 var vel := Vector2.ZERO
 var target := 0
@@ -134,7 +135,7 @@ func _on_attack_timer_timeout() -> void:
 	attacktimer.start(1)
 
 
-func instance_stick(dir: Vector2, amt: Vector2 = Vector2(1, 2)) -> void:
+func instance_stick(dir: Vector2, amt: Vector2=defaultStickAmount) -> void:
 	for i in rand_range(amt.x, amt.y):
 		var newStick = stick.instance()
 		newStick.direction = (dir.normalized()).rotated(

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/Bosses/Gnome/GnomeEnraged.png" type="Texture" id=2]
+
+[node name="Gnome" instance=ExtResource( 1 )]
+defaultStickAmount = Vector2( 3, 4 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="DamageManager" parent="." index="3"]
+maxHealth = 1260
+
+[node name="BounceHitbox" parent="Collisions" index="0"]
+damage = 2
+
+[node name="AscendTimer" parent="Timers" index="4"]
+wait_time = 1.0
+
+[node name="AscendStick" parent="Timers" index="5"]
+wait_time = 0.116
+
+[node name="Bossbar" parent="CanvasLayer" index="0"]
+bossName = "Enraged Gnome (With a Stick)"
+
+[editable path="Collisions/BounceHitbox"]
+[editable path="Collisions/PlayerDetection"]
+[editable path="Collisions/Hurtbox"]
