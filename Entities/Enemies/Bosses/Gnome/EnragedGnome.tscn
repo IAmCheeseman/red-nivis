@@ -4,13 +4,13 @@
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/GnomeEnraged.png" type="Texture" id=2]
 
 [node name="Gnome" instance=ExtResource( 1 )]
-defaultStickAmount = Vector2( 3, 4 )
+defaultStickAmount = Vector2( 2, 4 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
 
 [node name="DamageManager" parent="." index="3"]
-maxHealth = 1260
+maxHealth = 900
 
 [node name="BounceHitbox" parent="Collisions" index="0"]
 damage = 2
