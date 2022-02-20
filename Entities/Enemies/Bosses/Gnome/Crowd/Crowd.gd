@@ -4,11 +4,21 @@ onready var stands = $TileMap
 
 
 const GNOMES = preload("res://Entities/Enemies/Bosses/Gnome/Crowd/Gnomes.png")
+const STAND = preload("res://Entities/Enemies/Bosses/Gnome/Crowd/Stand.png")
 
 var currentSeed = 0
 var currentBounces = []
 var addBounces = true
 var dt:float = 0.0
+var start: float
+var end: float
+
+
+func _ready() -> void:
+	stands.hide()
+	start = stands.get_used_cells()[0].y
+	end = stands.get_used_cells()[-1].y
+
 
 func _process(delta: float) -> void:
 	dt = delta
@@ -18,17 +28,24 @@ func _process(delta: float) -> void:
 func _draw() -> void:
 	var id = 0
 	for i in stands.get_used_cells():
+		seed((i.x + i.x) * (i.y + i.y))
+		var mod = Color(1, 1, 1, 1)
+		mod.r = ((i.y - start) / end) + .15
+		mod.g = mod.r
+		mod.b = mod.r
+		
+		#draw_texture(STAND, stands.map_to_world(i), mod)
+		#if Utils.coin_flip(): continue
+		
 		var frameCount = Vector2(3, 4)
 		var spriteSize = GNOMES.get_size()
 		var frameSize = (spriteSize / frameCount)
 		
 		var drawRect = Rect2(0,0,0,0)
-		seed(i.x * i.y)
 		drawRect.position = Vector2(
 			(spriteSize.x - frameSize.x) * rand_range(0, 1),
 			(spriteSize.y - frameSize.y) * rand_range(0, 1)
 		).snapped(frameSize)
-		print(drawRect.position)
 		drawRect.size = frameSize
 		
 		var positionRect = Rect2(
@@ -36,8 +53,8 @@ func _draw() -> void:
 			frameSize
 		)
 		
-		seed(currentSeed + (i.x * i.y))
-		positionRect.position -= Vector2(0, int(Utils.coin_flip()) * rand_range(1, 3))
+		seed(currentSeed + ((i.x + i.x) * (i.y + i.y)))
+		positionRect.position += Vector2(0, (int(Utils.coin_flip()) * rand_range(1, 3)) + 2)
 		drawRect.size.x *= -1 if Utils.coin_flip() else 1
 		
 		if addBounces:
@@ -46,7 +63,8 @@ func _draw() -> void:
 			currentBounces[id] = lerp(currentBounces[id], positionRect.position.y, 24 * dt)
 			positionRect.position.y = currentBounces[id]
 		
-		draw_texture_rect_region(GNOMES, positionRect, drawRect)
+		draw_texture_rect_region(GNOMES, positionRect, drawRect, mod)
+		draw_texture(STAND, stands.map_to_world(i), mod)
 		
 		id += 1
 	addBounces = false
