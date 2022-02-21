@@ -3,6 +3,7 @@ extends Node2D
 onready var stands = $TileMap
 onready var boo = $Boo
 onready var woo = $Woo
+onready var dialogs = $Dialogs
 
 
 const GNOMES = preload("res://Entities/Enemies/Bosses/Gnome/Crowd/Gnomes.png")
@@ -12,6 +13,7 @@ var currentSeed = 0
 var addBounces = true
 var start: float
 var end: float
+var currDialog := 0
 
 var gnomes = []
 
@@ -20,8 +22,9 @@ func _ready() -> void:
 	GameManager.player.playerData.connect("healsChanged", self, "_on_player_heal")
 	
 	stands.hide()
-	start = stands.get_used_cells()[0].y
-	end = stands.get_used_cells()[-1].y
+	var cells = stands.get_used_cells()
+	start = cells[0].y
+	end = cells[cells.size()-1].y
 	
 	# Adding nodes
 	var lastUpdatedY = 0
@@ -86,8 +89,21 @@ func _on_timeout() -> void:
 	currentSeed = randi()
 
 
-func play_boo() -> void: boo.play()
-func play_woo() -> void: woo.play()
+func random_dialog(isBoo: bool) -> void:
+	randomize()
+	var prefix = "Cheer"
+	if isBoo: prefix = "Boo"
+	dialogs.get_child(currDialog).start_dialog(prefix + str(int(rand_range(1, 3))))
+	currDialog += 1
+	currDialog = wrapi(currDialog, 0, dialogs.get_child_count())
+
+
+func play_boo() -> void:
+	boo.play()
+	random_dialog(true)
+func play_woo(_lmao=Vector2.ZERO) -> void:
+	woo.play()
+	random_dialog(false)
 
 func _on_player_heal() -> void:
 #	woo.stop()

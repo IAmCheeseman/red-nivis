@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Entities/NPC/Dialog/DialogInteraction.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+dialog = [ [ "Cheer1", "YEAH, GET'EM!" ], [ "Cheer2", "I LOVE YOU MR.STICK!!" ], [ "Cheer3", "YEAAAH, I BELIEVE IN YOU!!" ], [ "Boo1", "YOU SUCK!" ], [ "Boo2", "UNWORTHY OF MR.STICK!!!!" ], [ "Boo3", "DON'T WORRY, MR. STICK, YOU GOT THIS!!!!" ] ]
