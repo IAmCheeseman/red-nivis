@@ -758,6 +758,7 @@ bossName = "Gnome (With a Stick)"
 dmgManagerPth = NodePath("../../DamageManager")
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 texture = ExtResource( 17 )
 texture_scale = 0.25
 energy = 0.6
