@@ -35,6 +35,28 @@ func give(item: String) -> String:
 	return " Gave %s" % ItemMap.ITEMS[item].name
 
 
+func l(amt=1) -> String:
+	mapData.position.x -= amt
+	mapData.moveDir = Vector2.LEFT
+	var _discard = get_tree().reload_current_scene()
+	return ""
+func r(amt=1) -> String:
+	mapData.position.x += amt
+	mapData.moveDir = Vector2.RIGHT
+	var _discard = get_tree().reload_current_scene()
+	return ""
+func u(amt=1) -> String:
+	mapData.position.y -= amt
+	mapData.moveDir = Vector2.UP
+	var _discard = get_tree().reload_current_scene()
+	return ""
+func d(amt=1) -> String:
+	mapData.position.y += amt
+	mapData.moveDir = Vector2.DOWN
+	var _discard = get_tree().reload_current_scene()
+	return ""
+
+
 func ability(n: String) -> String:
 	var a := ""
 	match n:

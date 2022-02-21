@@ -1,41 +1,50 @@
 extends Node2D
 
 onready var stands = $TileMap
+onready var boo = $Boo
+onready var woo = $Woo
 
 
 const GNOMES = preload("res://Entities/Enemies/Bosses/Gnome/Crowd/Gnomes.png")
 const STAND = preload("res://Entities/Enemies/Bosses/Gnome/Crowd/Stand.png")
 
 var currentSeed = 0
-var currentBounces = []
 var addBounces = true
-var dt:float = 0.0
 var start: float
 var end: float
 
+var gnomes = []
 
 func _ready() -> void:
+	GameManager.player.playerData.connect("healthChanged", self, "play_woo")
+	GameManager.player.playerData.connect("healsChanged", self, "_on_player_heal")
+	
 	stands.hide()
 	start = stands.get_used_cells()[0].y
 	end = stands.get_used_cells()[-1].y
-
-
-func _process(delta: float) -> void:
-	dt = delta
-	update()
-
-
-func _draw() -> void:
-	var id = 0
+	
+	# Adding nodes
+	var lastUpdatedY = 0
+	var yNode
 	for i in stands.get_used_cells():
-		seed((i.x + i.x) * (i.y + i.y))
+		if lastUpdatedY != i.y:
+			lastUpdatedY = i.y
+			yNode = Node2D.new()
+			add_child(yNode)
 		var mod = Color(1, 1, 1, 1)
 		mod.r = ((i.y - start) / end) + .15
 		mod.g = mod.r
 		mod.b = mod.r
 		
-		#draw_texture(STAND, stands.map_to_world(i), mod)
-		#if Utils.coin_flip(): continue
+		var newStand = Sprite.new()
+		newStand.texture = STAND
+		newStand.position = stands.map_to_world(i)
+		newStand.centered = false
+		newStand.modulate = mod
+		newStand.show_behind_parent = int(i.x) % 2 == 1
+		yNode.add_child(newStand)
+		
+		if rand_range(0, 1) < .25: continue
 		
 		var frameCount = Vector2(3, 4)
 		var spriteSize = GNOMES.get_size()
@@ -48,27 +57,38 @@ func _draw() -> void:
 		).snapped(frameSize)
 		drawRect.size = frameSize
 		
-		var positionRect = Rect2(
-			stands.map_to_world(i) - Vector2(0, frameSize.y),
-			frameSize
-		)
+		var spritePosition = Vector2(0, -((int(Utils.coin_flip()) * rand_range(1, 3)) + 15))
 		
-		seed(currentSeed + ((i.x + i.x) * (i.y + i.y)))
-		positionRect.position += Vector2(0, (int(Utils.coin_flip()) * rand_range(1, 3)) + 2)
-		drawRect.size.x *= -1 if Utils.coin_flip() else 1
+		var newGnome = Sprite.new()
+		newGnome.texture = GNOMES
+		newGnome.region_enabled = true
+		newGnome.region_rect = drawRect
+		newGnome.position = spritePosition
+		newGnome.centered = false
+		newGnome.show_behind_parent = true
+		newStand.add_child(newGnome)
 		
-		if addBounces:
-			currentBounces.append(positionRect.position.y)
-		else:
-			currentBounces[id] = lerp(currentBounces[id], positionRect.position.y, 24 * dt)
-			positionRect.position.y = currentBounces[id]
-		
-		draw_texture_rect_region(GNOMES, positionRect, drawRect, mod)
-		draw_texture(STAND, stands.map_to_world(i), mod)
-		
-		id += 1
-	addBounces = false
+		gnomes.append(newGnome)
+
+
+func _process(delta: float) -> void:
+	var uniqueness = 0
+	for i in gnomes:
+		seed(currentSeed + uniqueness)
+		var targetY = -(rand_range(0, 3) + 15)
+		i.flip_h = Utils.coin_flip()
+		i.position.y = lerp(i.position.y, targetY, 24 * delta)
+		uniqueness += 1
 
 
 func _on_timeout() -> void:
-	currentSeed += 1
+	randomize()
+	currentSeed = randi()
+
+
+func play_boo() -> void: boo.play()
+func play_woo() -> void: woo.play()
+
+func _on_player_heal() -> void:
+#	woo.stop()
+	play_boo()

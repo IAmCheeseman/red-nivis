@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Boo.wav-1e831323e79f546f85e359576c9a2189.sample"
+
+[deps]
+
+source_file="res://Entities/Enemies/Bosses/Gnome/Crowd/Boo.wav"
+dest_files=[ "res://.import/Boo.wav-1e831323e79f546f85e359576c9a2189.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

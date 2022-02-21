@@ -15,7 +15,7 @@ static func percentage_from(percent:float, a:float):
 	return a/tinyPercent
 
 
-static func is_even(number:int): return !(number % 2)
+static func is_even(number:int) -> bool: return !(number % 2)
 
 
 static func coin_flip() -> bool: return is_even(randi())

@@ -35,6 +35,8 @@ var player: Node2D
 var state := TARGET
 
 
+signal hurt
+
 
 func _physics_process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
@@ -171,6 +173,7 @@ func swipe() -> void:
 
 func _on_hurt(_amount, _dir) -> void:
 	if state == DEAD: return
+	emit_signal("hurt")
 	state = BOUNCE
 	vel.y = -200
 	position.y -= 8

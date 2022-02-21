@@ -29,6 +29,7 @@ shape = SubResource( 1 )
 wait_time = 3.0
 autostart = true
 
+[connection signal="hit_object" from="Hitbox" to="." method="emit_signal" binds= [ "thingHit" ]]
 [connection signal="timeout" from="Timer" to="." method="queue_free"]
 
 [editable path="Hitbox"]

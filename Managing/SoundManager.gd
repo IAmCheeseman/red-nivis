@@ -4,7 +4,7 @@ class_name SoundManager
 export var audio : AudioStream
 export var directional = false
 export(float, -80, 24) var volumeMod = 0
-export var pitchShiftRange:float = 1
+export(float, 1, 100) var pitchShiftRange:float = 1
 export var autoplay := false
 export(String, "Master", "Ambient", "Music", "SFX", "Reverb", "ReverbLow") var bus = 0
 
@@ -25,6 +25,8 @@ func play(volMod=volumeMod):
 			newAudioPlayer = AudioStreamPlayer2D.new()
 		false:
 			newAudioPlayer = AudioStreamPlayer.new()
+		_:
+			push_error("What.")
 
 	# Setting parameters
 	newAudioPlayer.stream = audio
@@ -37,8 +39,7 @@ func play(volMod=volumeMod):
 	add_child(newAudioPlayer)
 
 
-func stop() -> void:
-	Utils.free_children(self)
+func stop() -> void: Utils.free_children(self)
 
 
 func _on_audio_finished(player):

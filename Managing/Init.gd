@@ -37,5 +37,6 @@ func _ready():
 	titles.shuffle()
 	OS.set_window_title("Red Nivis: %s" % titles.front())
 	OS.window_fullscreen = Settings.fullscreen
+	OS.window_maximized = !Settings.fullscreen
 	
 	var _discard = get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")
