@@ -93,7 +93,7 @@ func random_dialog(isBoo: bool) -> void:
 	randomize()
 	var prefix = "Cheer"
 	if isBoo: prefix = "Boo"
-	dialogs.get_child(currDialog).start_dialog(prefix + str(int(rand_range(1, 3))))
+	dialogs.get_child(currDialog).start_dialog(prefix + str(floor(rand_range(1, 4))))
 	currDialog += 1
 	currDialog = wrapi(currDialog, 0, dialogs.get_child_count())
 

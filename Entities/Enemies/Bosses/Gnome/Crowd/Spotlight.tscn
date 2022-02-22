@@ -12,7 +12,7 @@ rotation = -1.5708
 texture = ExtResource( 1 )
 offset = Vector2( 0, 250 )
 shadow_enabled = true
-shadow_gradient_length = 2.0
+shadow_gradient_length = 1.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -3, 0 )

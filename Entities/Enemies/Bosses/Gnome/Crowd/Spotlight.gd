@@ -11,4 +11,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if !is_instance_valid(targetNode): targetNode = GameManager.player
+	var oldRot = rotation
 	look_at(targetNode.global_position)
+	rotation = lerp(oldRot, rotation, 5 * delta)

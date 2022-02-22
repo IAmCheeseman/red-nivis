@@ -82,7 +82,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "Die"
-length = 10.0
+length = 7.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
@@ -102,7 +102,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 10 ),
+"times": PoolRealArray( 0, 7.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 120.0 ]
@@ -222,7 +222,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 10 ),
+"times": PoolRealArray( 7.7 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
