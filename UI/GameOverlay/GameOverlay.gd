@@ -120,6 +120,10 @@ func update_heals() -> void:
 		.1
 	)
 	healBarTween.start()
+	if playerData.healMaterial >= 100:
+		healBar.texture_progress =   preload("res://UI/Assets/HealBarFinished.tres")
+	else:
+		healBar.texture_progress = preload("res://UI/Assets/HealBarUnfinished.tres")
 	update_health(Vector2.ZERO)
 #	if healsBar.get_child_count() != playerData.maxHeals:
 #		Utils.free_children(healsBar)

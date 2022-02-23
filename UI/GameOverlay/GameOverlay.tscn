@@ -10,14 +10,11 @@
 [ext_resource path="res://UI/GameOverlay/Heal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=9]
 [ext_resource path="res://UI/Assets/BombEmpty.png" type="Texture" id=10]
+[ext_resource path="res://UI/Assets/HealBarUnfinished.tres" type="Texture" id=11]
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 7 )
 region = Rect2( 42, 78, 16, 18 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 7 )
-region = Rect2( 26, 78, 16, 18 )
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -61,7 +58,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 2, 0 ), Vector2( -2, -2 ), Vector2( 1, -2 ), Vector2( 2, -3 ) ]
+"values": [ Vector2( 20, 3 ), Vector2( 22, 3 ), Vector2( 19, 1 ), Vector2( 21, 1 ), Vector2( 22, 0 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=5]
@@ -116,7 +113,7 @@ margin_right = 16.0
 margin_bottom = 18.0
 value = 75.0
 texture_under = SubResource( 10 )
-texture_progress = SubResource( 11 )
+texture_progress = ExtResource( 11 )
 fill_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,10 +122,11 @@ __meta__ = {
 [node name="HealProgressTween" type="Tween" parent="VBox/Health/HealProgress"]
 
 [node name="HealthBar" type="TextureRect" parent="VBox/Health"]
-margin_left = 20.0
-margin_top = 3.0
-margin_right = 35.0
-margin_bottom = 15.0
+self_modulate = Color( 100, 100, 100, 1 )
+margin_left = 19.5866
+margin_top = 1.0
+margin_right = 34.5866
+margin_bottom = 13.0
 rect_min_size = Vector2( 15, 12 )
 size_flags_horizontal = 2
 size_flags_vertical = 4
