@@ -12,15 +12,14 @@ export var doDrop := true
 var rc: RayCast2D
 
 
-#func _ready() -> void:
-	
+func _ready() -> void:
+	var _discard = connect("tree_exiting", self, "_on_tree_exiting")
 
 
-func _exit_tree() -> void:
+func _on_tree_exiting() -> void:
 	if !doDrop: return
 	
 	rc = RayCast2D.new()
-	rc.enabled = true
 	rc.cast_to = Vector2.DOWN * 1000
 	rc.set_collision_mask_bit(5, true)
 	add_child(rc)
