@@ -11,7 +11,7 @@ signal enemiesCleared
 
 
 func _ready() -> void:
-	yield(get_tree(), "idle_frame")
+	yield(TempTimer.idle_frame(self), "timeout")
 	if enemies.get_child_count() == 0:
 		emit_signal("enemiesCleared")
 
