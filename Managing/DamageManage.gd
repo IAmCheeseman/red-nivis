@@ -86,9 +86,15 @@ func _die(dir) -> void:
 	
 	var scoreInc: int
 	match difficulty:
-		EASY: scoreInc = Globals.EASY_ENEMY_POINTS
-		NORMAL: scoreInc = Globals.MEDIUM_ENEMY_POINTS
-		HARD: scoreInc = Globals.HARD_ENEMY_POINTS
+		EASY:
+			scoreInc = Globals.EASY_ENEMY_POINTS
+			GameManager.player.playerData.healMaterial += Globals.EASY_MATERIAL_POINTS
+		NORMAL:
+			scoreInc = Globals.MEDIUM_ENEMY_POINTS
+			GameManager.player.playerData.healMaterial += Globals.MEDIUM_MATERIAL_POINTS
+		HARD:
+			scoreInc = Globals.HARD_ENEMY_POINTS
+			GameManager.player.playerData.healMaterial += Globals.HARD_MATERIAL_POINTS
 	if isBoss: scoreInc += Globals.BOSS_KILL
 	
 	GameManager.player.playerData.score += scoreInc

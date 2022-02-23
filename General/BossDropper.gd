@@ -22,6 +22,7 @@ func _exit_tree() -> void:
 	rc = RayCast2D.new()
 	rc.enabled = true
 	rc.cast_to = Vector2.DOWN * 1000
+	rc.set_collision_mask_bit(5, true)
 	add_child(rc)
 	for i in drops.size():
 		var d = drops[i]

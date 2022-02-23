@@ -4,14 +4,17 @@ var playerData = preload("res://Entities/Player/Player.tres")
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 
 # Health Bar
-onready var healthBar = $VBox/HealthBar
-onready var healthBarEmpty = $VBox/HealthBar/Empty
-onready var hbAnim = $VBox/HealthBar/AnimationPlayer
-onready var hbShakeAnim = $VBox/HealthBar/ShakeAnim
+onready var healthBar = $VBox/Health/HealthBar
+onready var healthBarEmpty = $VBox/Health/HealthBar/Empty
+onready var hbAnim = $VBox/Health/HealthBar/AnimationPlayer
+onready var hbShakeAnim = $VBox/Health/HealthBar/ShakeAnim
 
-onready var justLostBar = $VBox/HealthBar/JustLost
-onready var justLostTween = $VBox/HealthBar/JustLost/JustLostTween
-onready var justLostTimer = $VBox/HealthBar/JustLost/JustLostTimer
+onready var justLostBar = $VBox/Health/HealthBar/JustLost
+onready var justLostTween = $VBox/Health/HealthBar/JustLost/JustLostTween
+onready var justLostTimer = $VBox/Health/HealthBar/JustLost/JustLostTimer
+
+onready var healBar = $VBox/Health/HealProgress
+onready var healBarTween = $VBox/Health/HealProgress/HealProgressTween
 
 # Ammo bar
 #onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
@@ -40,9 +43,10 @@ func _ready() -> void:
 	
 	playerData.connect("healthChanged", self, "update_health")
 	playerData.connect("ammoChanged", self, "update_ammo")
-	playerData.connect("healsChanged", self, "update_heals")
+#	playerData.connect("healsChanged", self, "update_heals")
 	playerData.connect("moneyChanged", self, "update_money")
 	playerData.connect("updateGrenade", self, "update_grenade")
+	playerData.connect("healMaterialChanged", self, "update_heals")
 	inventory.connect("itemAdded", self, "_on_item_picked_up")
 	
 	update_health(Vector2.ZERO)
@@ -109,24 +113,32 @@ func update_ammo() -> void:
 
 
 func update_heals() -> void:
-	if healsBar.get_child_count() != playerData.maxHeals:
-		Utils.free_children(healsBar)
-		
-		var healPoint = preload("res://UI/GameOverlay/Heal.tscn")
-		for i in playerData.maxHeals:
-			var newHealPoint = healPoint.instance()
-			healsBar.add_child(newHealPoint)
-			if newHealPoint.get_index()+1 > playerData.healsLeft:
-				newHealPoint.self_modulate.a = 0
-			else:
-				newHealPoint.self_modulate.a = 1
-	else:
-		for i in healsBar.get_children():
-			if i.get_index()+1 > playerData.healsLeft:
-				i.self_modulate.a = 0
-			else:
-				i.self_modulate.a = 1
+	healBarTween.stop_all()
+	healBarTween.interpolate_property(
+		healBar, "value",
+		healBar.value, playerData.healMaterial,
+		.1
+	)
+	healBarTween.start()
 	update_health(Vector2.ZERO)
+#	if healsBar.get_child_count() != playerData.maxHeals:
+#		Utils.free_children(healsBar)
+#
+#		var healPoint = preload("res://UI/GameOverlay/Heal.tscn")
+#		for i in playerData.maxHeals:
+#			var newHealPoint = healPoint.instance()
+#			healsBar.add_child(newHealPoint)
+#			if newHealPoint.get_index()+1 > playerData.healsLeft:
+#				newHealPoint.self_modulate.a = 0
+#			else:
+#				newHealPoint.self_modulate.a = 1
+#	else:
+#		for i in healsBar.get_children():
+#			if i.get_index()+1 > playerData.healsLeft:
+#				i.self_modulate.a = 0
+#			else:
+#				i.self_modulate.a = 1
+#	update_health(Vector2.ZERO)
 
 
 func update_abilities() -> void:

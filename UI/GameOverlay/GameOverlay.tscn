@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/HeartFull.png" type="Texture" id=2]
@@ -10,6 +10,14 @@
 [ext_resource path="res://UI/GameOverlay/Heal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=9]
 [ext_resource path="res://UI/Assets/BombEmpty.png" type="Texture" id=10]
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 7 )
+region = Rect2( 42, 78, 16, 18 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 7 )
+region = Rect2( 26, 78, 16, 18 )
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -99,11 +107,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthBar" type="TextureRect" parent="VBox"]
-margin_right = 15.0
-margin_bottom = 12.0
+[node name="Health" type="HBoxContainer" parent="VBox"]
+margin_right = 44.0
+margin_bottom = 18.0
+
+[node name="HealProgress" type="TextureProgress" parent="VBox/Health"]
+margin_right = 16.0
+margin_bottom = 18.0
+value = 75.0
+texture_under = SubResource( 10 )
+texture_progress = SubResource( 11 )
+fill_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealProgressTween" type="Tween" parent="VBox/Health/HealProgress"]
+
+[node name="HealthBar" type="TextureRect" parent="VBox/Health"]
+margin_left = 20.0
+margin_top = 3.0
+margin_right = 35.0
+margin_bottom = 15.0
 rect_min_size = Vector2( 15, 12 )
 size_flags_horizontal = 2
+size_flags_vertical = 4
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
@@ -111,7 +139,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Empty" type="TextureRect" parent="VBox/HealthBar"]
+[node name="Empty" type="TextureRect" parent="VBox/Health/HealthBar"]
 show_behind_parent = true
 margin_top = 1.0
 margin_right = 75.0
@@ -122,7 +150,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="JustLost" type="TextureRect" parent="VBox/HealthBar"]
+[node name="JustLost" type="TextureRect" parent="VBox/Health/HealthBar"]
 show_behind_parent = true
 material = SubResource( 2 )
 margin_bottom = 12.0
@@ -133,16 +161,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="JustLostTween" type="Tween" parent="VBox/HealthBar/JustLost"]
+[node name="JustLostTween" type="Tween" parent="VBox/Health/HealthBar/JustLost"]
 
-[node name="JustLostTimer" type="Timer" parent="VBox/HealthBar/JustLost"]
+[node name="JustLostTimer" type="Timer" parent="VBox/Health/HealthBar/JustLost"]
 wait_time = 0.4
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="VBox/HealthBar"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBox/Health/HealthBar"]
 anims/Flash = SubResource( 3 )
 
-[node name="ShakeAnim" type="AnimationPlayer" parent="VBox/HealthBar"]
+[node name="ShakeAnim" type="AnimationPlayer" parent="VBox/Health/HealthBar"]
 anims/Shake = SubResource( 4 )
 
 [node name="Separator" type="ColorRect" parent="VBox"]
@@ -156,10 +184,46 @@ __meta__ = {
 }
 
 [node name="Bottom" type="VBoxContainer" parent="VBox"]
-margin_top = 16.0
+margin_top = 22.0
 margin_right = 44.0
-margin_bottom = 44.0
+margin_bottom = 32.0
 custom_constants/separation = 2
+
+[node name="HealsAndBomb" type="HBoxContainer" parent="VBox/Bottom"]
+visible = false
+margin_right = 44.0
+margin_bottom = 16.0
+
+[node name="Heals" type="VBoxContainer" parent="VBox/Bottom/HealsAndBomb"]
+margin_right = 42.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+alignment = 2
+
+[node name="Icons" type="GridContainer" parent="VBox/Bottom/HealsAndBomb/Heals"]
+margin_top = 3.0
+margin_right = 42.0
+margin_bottom = 16.0
+custom_constants/vseparation = 3
+custom_constants/hseparation = 0
+columns = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Heal" parent="VBox/Bottom/HealsAndBomb/Heals/Icons" instance=ExtResource( 8 )]
+margin_right = 14.0
+margin_bottom = 13.0
+
+[node name="Heal2" parent="VBox/Bottom/HealsAndBomb/Heals/Icons" instance=ExtResource( 8 )]
+margin_left = 14.0
+margin_right = 28.0
+margin_bottom = 13.0
+
+[node name="Heal3" parent="VBox/Bottom/HealsAndBomb/Heals/Icons" instance=ExtResource( 8 )]
+margin_left = 28.0
+margin_right = 42.0
+margin_bottom = 13.0
 
 [node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom"]
 margin_right = 44.0
@@ -197,42 +261,6 @@ margin_right = 43.0
 margin_bottom = 8.0
 custom_fonts/font = SubResource( 8 )
 align = 1
-
-[node name="HealsAndBomb" type="HBoxContainer" parent="VBox/Bottom"]
-margin_top = 12.0
-margin_right = 44.0
-margin_bottom = 28.0
-
-[node name="Heals" type="VBoxContainer" parent="VBox/Bottom/HealsAndBomb"]
-margin_right = 42.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 0, 16 )
-alignment = 2
-
-[node name="Icons" type="GridContainer" parent="VBox/Bottom/HealsAndBomb/Heals"]
-margin_top = 3.0
-margin_right = 42.0
-margin_bottom = 16.0
-custom_constants/vseparation = 3
-custom_constants/hseparation = 0
-columns = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Heal" parent="VBox/Bottom/HealsAndBomb/Heals/Icons" instance=ExtResource( 8 )]
-margin_right = 14.0
-margin_bottom = 13.0
-
-[node name="Heal2" parent="VBox/Bottom/HealsAndBomb/Heals/Icons" instance=ExtResource( 8 )]
-margin_left = 14.0
-margin_right = 28.0
-margin_bottom = 13.0
-
-[node name="Heal3" parent="VBox/Bottom/HealsAndBomb/Heals/Icons" instance=ExtResource( 8 )]
-margin_left = 28.0
-margin_right = 42.0
-margin_bottom = 13.0
 
 [node name="MoneyDisplay" type="HBoxContainer" parent="VBox/Bottom"]
 visible = false
@@ -285,12 +313,12 @@ __meta__ = {
 }
 
 [node name="Upgrades" type="HBoxContainer" parent="TopRight"]
-margin_right = 316.0
+margin_right = 356.0
 alignment = 2
 
 [node name="Time" type="Label" parent="TopRight"]
 margin_top = 4.0
-margin_right = 316.0
+margin_right = 356.0
 margin_bottom = 27.0
 custom_fonts/font = ExtResource( 9 )
 text = "Time
@@ -300,4 +328,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="timeout" from="VBox/HealthBar/JustLost/JustLostTimer" to="." method="_on_just_lost_timer_timeout"]
+[connection signal="timeout" from="VBox/Health/HealthBar/JustLost/JustLostTimer" to="." method="_on_just_lost_timer_timeout"]

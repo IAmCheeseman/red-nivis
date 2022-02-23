@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("heal")\
 	and !finished\
-	and playerData.healsLeft > 0\
+	and playerData.healMaterial >= 100\
 	and playerData.playerObject.is_grounded()\
 	and playerData.health < playerData.maxHealth:
 		show()
@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 			playerData.heal(1)
 			playerData.healsLeft -= 1
 			finished = true
+			playerData.healMaterial = 0
 			finish()
 			if Input.is_action_pressed("heal"):
 				finished = false

@@ -1,10 +1,15 @@
 extends Node2D
 
 onready var sprite = $Sprite
+onready var hologram = $Hologram
 
 
 export var trial: PackedScene
 export var reward: Resource = preload("res://Items/Upgrades/Teleport/Teleport.tres")
+
+
+func _ready() -> void:
+	hologram.texture = reward.hologramSprite
 
 
 func new_frame() -> void:

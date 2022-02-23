@@ -29,6 +29,7 @@ var health:int
 var money := 0 setget set_money
 var ammo:int setget set_ammo
 var healsLeft := 3 setget set_heals
+var healMaterial := 0 setget set_heal_mat
 var dashesLeft := 1
 
 var score := 0
@@ -55,6 +56,7 @@ signal ammoChanged
 signal healsChanged
 signal moneyChanged
 signal stamina_changed
+signal healMaterialChanged
 # warning-ignore:unused_signal
 signal updateGrenade
 # warning-ignore:unused_signal
@@ -96,6 +98,11 @@ func set_ammo(value:int) -> void:
 func set_heals(value:int) -> void:
 	healsLeft = int(clamp(value, 0, maxHeals))
 	emit_signal("healsChanged")
+
+
+func set_heal_mat(value:int) -> void:
+	healMaterial = int(clamp(value, 0, 100))
+	emit_signal("healMaterialChanged")
 
 
 func set_stamina(val:int) -> void:

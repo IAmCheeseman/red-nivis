@@ -70,7 +70,7 @@ func _ready() -> void:
 		newGnome.centered = false
 		newGnome.show_behind_parent = true
 		newStand.add_child(newGnome)
-		
+
 		gnomes.append(newGnome)
 
 
