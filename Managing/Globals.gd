@@ -1,4 +1,4 @@
-extends Reference
+ extends Reference
 class_name Globals
 
 const SETTINGS_FILE_NAME := "settings.dat"
@@ -22,6 +22,6 @@ const ROOM_BEAT_1M_POINTS := 130
 const ROOM_BEAT_1MH_POINTS := 80
 const ROOM_BEAT_POINTS := 40
 
-const EASY_MATERIAL_POINTS := 10
-const MEDIUM_MATERIAL_POINTS := 15
-const HARD_MATERIAL_POINTS := 20
+const EASY_MATERIAL_POINTS := 15
+const MEDIUM_MATERIAL_POINTS := 20
+const HARD_MATERIAL_POINTS := 25
