@@ -22,8 +22,6 @@ onready var ammoBar = $VBox/Bottom/AmmoBar/TextureProgress
 onready var reloadNotif = $VBox/Bottom/AmmoBar/ReloadNotif
 onready var ammoTween = $VBox/Bottom/AmmoBar/Tween
 
-onready var healsBar = $VBox/Bottom/HealsAndBomb/Heals/Icons
-
 # Money Counter
 onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
 
@@ -42,6 +40,7 @@ func _ready() -> void:
 	healthBarTexSize = healthBar.texture.get_size()
 	
 	playerData.connect("healthChanged", self, "update_health")
+	playerData.connect("updateHealthUI", self, "update_health", [Vector2.ZERO])
 	playerData.connect("ammoChanged", self, "update_ammo")
 #	playerData.connect("healsChanged", self, "update_heals")
 	playerData.connect("moneyChanged", self, "update_money")
@@ -125,24 +124,6 @@ func update_heals() -> void:
 	else:
 		healBar.texture_progress = preload("res://UI/Assets/HealBarUnfinished.tres")
 	update_health(Vector2.ZERO)
-#	if healsBar.get_child_count() != playerData.maxHeals:
-#		Utils.free_children(healsBar)
-#
-#		var healPoint = preload("res://UI/GameOverlay/Heal.tscn")
-#		for i in playerData.maxHeals:
-#			var newHealPoint = healPoint.instance()
-#			healsBar.add_child(newHealPoint)
-#			if newHealPoint.get_index()+1 > playerData.healsLeft:
-#				newHealPoint.self_modulate.a = 0
-#			else:
-#				newHealPoint.self_modulate.a = 1
-#	else:
-#		for i in healsBar.get_children():
-#			if i.get_index()+1 > playerData.healsLeft:
-#				i.self_modulate.a = 0
-#			else:
-#				i.self_modulate.a = 1
-#	update_health(Vector2.ZERO)
 
 
 func update_abilities() -> void:

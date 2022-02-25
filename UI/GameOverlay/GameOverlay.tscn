@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/HeartFull.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Items/Money/Coin.png" type="Texture" id=5]
 [ext_resource path="res://UI/Assets/Bomb.png" type="Texture" id=6]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=7]
-[ext_resource path="res://UI/GameOverlay/Heal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=9]
 [ext_resource path="res://UI/Assets/BombEmpty.png" type="Texture" id=10]
 [ext_resource path="res://UI/Assets/HealBarUnfinished.tres" type="Texture" id=11]
@@ -123,10 +122,10 @@ __meta__ = {
 
 [node name="HealthBar" type="TextureRect" parent="VBox/Health"]
 self_modulate = Color( 100, 100, 100, 1 )
-margin_left = 19.5866
-margin_top = 1.0
-margin_right = 34.5866
-margin_bottom = 13.0
+margin_left = 20.0
+margin_top = 3.0
+margin_right = 35.0
+margin_bottom = 15.0
 rect_min_size = Vector2( 15, 12 )
 size_flags_horizontal = 2
 size_flags_vertical = 4
@@ -186,42 +185,6 @@ margin_top = 22.0
 margin_right = 44.0
 margin_bottom = 32.0
 custom_constants/separation = 2
-
-[node name="HealsAndBomb" type="HBoxContainer" parent="VBox/Bottom"]
-visible = false
-margin_right = 44.0
-margin_bottom = 16.0
-
-[node name="Heals" type="VBoxContainer" parent="VBox/Bottom/HealsAndBomb"]
-margin_right = 42.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 0, 16 )
-alignment = 2
-
-[node name="Icons" type="GridContainer" parent="VBox/Bottom/HealsAndBomb/Heals"]
-margin_top = 3.0
-margin_right = 42.0
-margin_bottom = 16.0
-custom_constants/vseparation = 3
-custom_constants/hseparation = 0
-columns = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Heal" parent="VBox/Bottom/HealsAndBomb/Heals/Icons" instance=ExtResource( 8 )]
-margin_right = 14.0
-margin_bottom = 13.0
-
-[node name="Heal2" parent="VBox/Bottom/HealsAndBomb/Heals/Icons" instance=ExtResource( 8 )]
-margin_left = 14.0
-margin_right = 28.0
-margin_bottom = 13.0
-
-[node name="Heal3" parent="VBox/Bottom/HealsAndBomb/Heals/Icons" instance=ExtResource( 8 )]
-margin_left = 28.0
-margin_right = 42.0
-margin_bottom = 13.0
 
 [node name="AmmoBar" type="HBoxContainer" parent="VBox/Bottom"]
 margin_right = 44.0

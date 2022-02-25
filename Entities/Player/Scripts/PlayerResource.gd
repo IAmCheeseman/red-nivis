@@ -22,13 +22,11 @@ export var maxStamina := 5
 export var staminaRecovery := 2.4
 export var stamRecovCurve: Curve
 export var tiltStrength:float = 5.0
-export var maxHeals := 3
 export var healTime := 2.0
 
 var health:int
 var money := 0 setget set_money
 var ammo:int setget set_ammo
-var healsLeft := 3 setget set_heals
 var healMaterial := 0 setget set_heal_mat
 var dashesLeft := 1
 
@@ -53,10 +51,10 @@ var isDashing := false
 
 signal healthChanged
 signal ammoChanged
-signal healsChanged
 signal moneyChanged
 signal stamina_changed
 signal healMaterialChanged
+signal updateHealthUI
 # warning-ignore:unused_signal
 signal updateGrenade
 # warning-ignore:unused_signal
@@ -82,7 +80,9 @@ func heal(h: int) -> void:
 	playerObject.healVignette.modulate.a = 1
 	GameManager.emit_signal(
 		"screenshake",
-		2, 2, .0333, .1)
+		2, 2, .0333, .1
+	)
+	emit_signal("updateHealthUI")
 
 
 func set_money(val):
@@ -95,14 +95,10 @@ func set_ammo(value:int) -> void:
 	emit_signal("ammoChanged")
 
 
-func set_heals(value:int) -> void:
-	healsLeft = int(clamp(value, 0, maxHeals))
-	emit_signal("healsChanged")
-
-
 func set_heal_mat(value:int) -> void:
 	healMaterial = int(clamp(value, 0, 100))
 	emit_signal("healMaterialChanged")
+	emit_signal("updateHealthUI")
 
 
 func set_stamina(val:int) -> void:
