@@ -38,6 +38,5 @@ func _ready():
 	titles.shuffle()
 	OS.set_window_title("Red Nivis: %s" % titles.front())
 	OS.window_fullscreen = Settings.fullscreen
-	Settings.change_lang("es")
 	
 	var _discard = get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")

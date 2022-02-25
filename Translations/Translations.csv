@@ -19,6 +19,7 @@ OPTIONS_TTL, Options, Ajustes
 GAME_OPT_M,Game,Gameplay
 CONTROLS_OPT_M,Controls,Controles
 VISUALS_OPT_M,Visual,Gráficos
+LANG_OPT_M,Language,Idioma
 AUDIO_OPT_M,Audio	,Sonido
 GAME_TTL, Game, Gameplay
 GAME_SPD_RN_OPT,Speedrun Timer,Contador Speedrun
@@ -41,6 +42,7 @@ VSL_FULLSCREEN,Fullscreen,Pantalla Completa
 VSL_LOW_QUALITY,Low Quality,Modo Baja Calidad
 VSL_SCREENSHAKE,Screenshake,Temblor de Pantalla
 VSL_FRM_RT,Max FPS,FPS Máximos
+LANG_TTL, Language, Idioma
 AUDIO_TTL, Audio, Sonido
 AUDIO_MASTER,Master,General
 AUDIO_SFX,SFX,SFX

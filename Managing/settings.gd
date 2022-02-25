@@ -35,6 +35,7 @@ func _init() -> void:
 		
 		InputMap.action_erase_events(i)
 		InputMap.action_add_event(i, newKey)
+	change_lang(lang)
 
 
 func save_defaults(dm: DataManager) -> void:

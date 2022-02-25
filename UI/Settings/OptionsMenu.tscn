@@ -62,7 +62,6 @@ __meta__ = {
 }
 
 [node name="NavMenu" type="VBoxContainer" parent="."]
-visible = false
 anchor_bottom = 1.0
 margin_right = 53.0
 rect_pivot_offset = Vector2( -166.714, -40.6914 )
@@ -72,17 +71,17 @@ __meta__ = {
 }
 
 [node name="SettingsText" type="Label" parent="NavMenu"]
-margin_top = 44.0
-margin_right = 128.0
-margin_bottom = 76.0
+margin_top = 34.0
+margin_right = 123.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 64, 32 )
 custom_fonts/font = ExtResource( 8 )
 text = "OPTIONS_TTL"
 
 [node name="Gameplay" type="Button" parent="NavMenu"]
-margin_top = 80.0
-margin_right = 128.0
-margin_bottom = 96.0
+margin_top = 70.0
+margin_right = 123.0
+margin_bottom = 86.0
 custom_fonts/font = ExtResource( 1 )
 text = "GAME_OPT_M"
 align = 0
@@ -91,9 +90,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Game")
 
 [node name="Controls" type="Button" parent="NavMenu"]
-margin_top = 100.0
-margin_right = 128.0
-margin_bottom = 116.0
+margin_top = 90.0
+margin_right = 123.0
+margin_bottom = 106.0
 custom_fonts/font = ExtResource( 1 )
 text = "CONTROLS_OPT_M"
 align = 0
@@ -105,9 +104,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Keybinds")
 
 [node name="Visuals" type="Button" parent="NavMenu"]
-margin_top = 120.0
-margin_right = 128.0
-margin_bottom = 136.0
+margin_top = 110.0
+margin_right = 123.0
+margin_bottom = 126.0
 custom_fonts/font = ExtResource( 1 )
 text = "VISUALS_OPT_M"
 align = 0
@@ -115,10 +114,21 @@ script = ExtResource( 2 )
 fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Visuals")
 
+[node name="Language" type="Button" parent="NavMenu"]
+margin_top = 130.0
+margin_right = 123.0
+margin_bottom = 146.0
+custom_fonts/font = ExtResource( 1 )
+text = "LANG_OPT_M"
+align = 0
+script = ExtResource( 2 )
+fromPth = NodePath("..")
+toPth = NodePath("../../Menus/Visuals")
+
 [node name="Audio" type="Button" parent="NavMenu"]
-margin_top = 140.0
-margin_right = 128.0
-margin_bottom = 156.0
+margin_top = 150.0
+margin_right = 123.0
+margin_bottom = 166.0
 custom_fonts/font = ExtResource( 1 )
 text = "AUDIO_OPT_M"
 align = 0
@@ -127,9 +137,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../Menus/Audio")
 
 [node name="Back" type="Button" parent="NavMenu"]
-margin_top = 160.0
-margin_right = 128.0
-margin_bottom = 176.0
+margin_top = 170.0
+margin_right = 123.0
+margin_bottom = 186.0
 custom_fonts/font = ExtResource( 1 )
 text = "BACK_BTN"
 align = 0
@@ -419,7 +429,58 @@ isNegative = true
 fromPth = NodePath("..")
 toPth = NodePath("../../../NavMenu")
 
+[node name="Language" type="VBoxContainer" parent="Menus"]
+visible = false
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VisualsText" type="Label" parent="Menus/Language"]
+margin_top = 64.0
+margin_right = 93.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 0, 32 )
+custom_fonts/font = ExtResource( 8 )
+text = "LANG_TTL"
+
+[node name="Languages" type="VBoxContainer" parent="Menus/Language"]
+margin_top = 100.0
+margin_right = 93.0
+margin_bottom = 136.0
+
+[node name="English" type="Button" parent="Menus/Language/Languages"]
+margin_right = 93.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 1 )
+text = "English"
+align = 0
+script = ExtResource( 2 )
+
+[node name="Spanish" type="Button" parent="Menus/Language/Languages"]
+margin_top = 20.0
+margin_right = 93.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 1 )
+text = "Español"
+align = 0
+script = ExtResource( 2 )
+
+[node name="Back" type="Button" parent="Menus/Language"]
+margin_top = 140.0
+margin_right = 93.0
+margin_bottom = 156.0
+custom_fonts/font = ExtResource( 1 )
+text = "BACK_BTN"
+align = 0
+script = ExtResource( 2 )
+isNegative = true
+fromPth = NodePath("..")
+toPth = NodePath("../../../NavMenu")
+
 [node name="Audio" type="VBoxContainer" parent="Menus"]
+visible = false
 anchor_bottom = 1.0
 margin_right = 84.0
 alignment = 1
@@ -487,6 +548,9 @@ toPth = NodePath("../../../NavMenu")
 [connection signal="toggled" from="Menus/Visuals/GFX" to="." method="_on_graphic_quality_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Screenshake" to="." method="_on_screenshake_value_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Framerate" to="." method="_on_framerate_value_changed"]
+[connection signal="pressed" from="Menus/Language/Languages/English" to="." method="_on_english_pressed"]
+[connection signal="pressed" from="Menus/Language/Languages/Spanish" to="." method="_on_spanish_pressed"]
+[connection signal="pressed" from="Menus/Language/Back" to="." method="_on_quit"]
 [connection signal="value_changed" from="Menus/Audio/MSTRVolume" to="." method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="Menus/Audio/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
 [connection signal="value_changed" from="Menus/Audio/MSXVolume" to="." method="_on_music_volume_value_changed"]

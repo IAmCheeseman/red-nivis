@@ -33,7 +33,8 @@ func _on_quit():
 		"sfx"              : Settings.sfx,
 		"music"            : Settings.music,
 		"speedrunTimer"    : Settings.speedrunTimer,
-		"doubleDamageMode" : Settings.doubleDamageMode
+		"doubleDamageMode" : Settings.doubleDamageMode,
+		"lang"             : Settings.lang
 	}
 	# Saving the data
 	dataManager.save_data(settings, Globals.SETTINGS_FILE_NAME)
@@ -75,6 +76,10 @@ func _on_speedrun_mode_toggled(button_pressed: bool) -> void:
 	Settings.speedrunTimer = button_pressed
 func _on_double_damage_toggled(button_pressed: bool) -> void:
 	Settings.doubleDamageMode = button_pressed
+func _on_english_pressed() -> void:
+	Settings.change_lang("en")
+func _on_spanish_pressed() -> void:
+	Settings.change_lang("es")
 
 
 func set_values() -> void:
@@ -93,4 +98,10 @@ func set_values() -> void:
 func _on_reset_kb_bindings_pressed() -> void:
 	for i in keybinds.get_children():
 		if i.has_method("reset"): i.reset()
+
+
+
+
+
+
 
