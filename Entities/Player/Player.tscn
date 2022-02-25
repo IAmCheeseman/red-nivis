@@ -757,7 +757,6 @@ wait_time = 0.1
 layer = 3
 
 [node name="Vignette" type="ColorRect" parent="CanvasLayer"]
-visible = false
 modulate = Color( 1, 1, 1, 0.643137 )
 material = ExtResource( 16 )
 anchor_right = 1.0

@@ -12,7 +12,7 @@ void fragment() {
 	vec3 vignette_color = texture(vignette, UV).rgb;
 	vignette_color += darkness;
 	
-	COLOR.a -= vignette_color.r;
+	COLOR.a -= clamp(vignette_color.r, 0.0, 1.0);
 	COLOR.rgb *= vec3(0, 0, 0);
 }
 "
