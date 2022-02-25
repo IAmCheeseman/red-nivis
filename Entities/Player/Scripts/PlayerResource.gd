@@ -98,7 +98,6 @@ func set_ammo(value:int) -> void:
 func set_heal_mat(value:int) -> void:
 	healMaterial = int(clamp(value, 0, 100))
 	emit_signal("healMaterialChanged")
-	emit_signal("updateHealthUI")
 
 
 func set_stamina(val:int) -> void:

@@ -53,12 +53,15 @@ func save_defaults(dm: DataManager) -> void:
 	}, Globals.SETTINGS_FFILE_NAME)
 	if ok != OK: assert(false, "lmao time for pain")
 
+
 # Graphics
 var gfx := GFX_GOOD
 var fullscreen := OS.has_feature("standalone")
 
+
 # Performance
 var maxfps := 60
+
 
 # Purely visual
 var screenshake := 1.0
@@ -75,8 +78,10 @@ var keybinds           := {}
 var defaultKeybinds    := {}
 var controllerKeybinds := {}
 
+
 # Audio
 
 var masterVol := 1.0
 var sfx := 1.0
 var music := 1.0
+
