@@ -23,7 +23,7 @@ LANG_OPT_M,Language,Idioma
 AUDIO_OPT_M,Audio	,Sonido
 GAME_TTL, Game, Gameplay
 GAME_SPD_RN_OPT,Speedrun Timer,Contador Speedrun
-GAME_DBL_DMG_MODE_OPT,Double Damage Mode,Modo Duro
+GAME_DBL_DMG_MODE_OPT,Hard Mode,Modo Duro
 CONTROLS_TTL,\n Controls,\n Controles
 CTRL_RESET_BTN,Reset,Reiniciar Ajustes
 CTRL_MV_LEFT,Move Left,Caminar Izq.

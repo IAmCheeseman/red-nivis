@@ -123,7 +123,7 @@ text = "LANG_OPT_M"
 align = 0
 script = ExtResource( 2 )
 fromPth = NodePath("..")
-toPth = NodePath("../../Menus/Visuals")
+toPth = NodePath("../../Menus/Language")
 
 [node name="Audio" type="Button" parent="NavMenu"]
 margin_top = 150.0
