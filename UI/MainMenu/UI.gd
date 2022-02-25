@@ -29,7 +29,7 @@ func new_game() -> void:
 	newGameAccept.show()
 
 func _on_new_game_confirm(option) -> void:
-	if option != "Yes": return
+	if option != "YES": return
 	GameManager.clear_run()
 	play()
 
@@ -39,7 +39,7 @@ func start_quit() -> void:
 
 
 func quit(doQuit: String) -> void:
-	if doQuit == "Yes": get_tree().quit()
+	if doQuit == "YES": get_tree().quit()
 
 
 func to_discord() -> void:

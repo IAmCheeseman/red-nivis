@@ -111,7 +111,7 @@ func increment_text() -> void:
 		return
 	
 	# Starting
-	targetText = currentInteraction[currentDialog]
+	targetText = tr(currentInteraction[currentDialog])
 	charIncTimer.start(talkingSpeed)
 
 

@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "Hey idiot.", "Do things for me." ], [ "Pointer", "Mmmm...", "The TO-DO list is right over there...", "Yes..." ] ]
+dialog = [ [ "Introduction", "SLUG_CULTIST_INTRO_LN1", "SLUG_CULTIST_INTRO_LN2" ] ]

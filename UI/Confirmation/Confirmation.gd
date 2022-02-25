@@ -6,11 +6,11 @@ onready var _buttons = $VBoxContainer/HBoxContainer
 
 export var text := "Empty prompt"
 export(Array, String) var options := [
-	"Yes",
-	"No"
+	"YES",
+	"NO"
 ]
 export(Array, String) var negativeOptions := [
-	"No"
+	"NO"
 ]
 
 signal optionPressed(option)

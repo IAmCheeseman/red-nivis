@@ -66,7 +66,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_top = 68.0
-margin_right = 72.0
+margin_right = 105.0
 margin_bottom = 151.0
 custom_constants/separation = 0
 __meta__ = {
@@ -74,27 +74,27 @@ __meta__ = {
 }
 
 [node name="PausedText" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 72.0
+margin_right = 105.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 custom_fonts/font = ExtResource( 5 )
-text = " Paused"
+text = "PAUSE_TTL"
 
 [node name="Continue" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 32.0
-margin_right = 72.0
+margin_right = 105.0
 margin_bottom = 51.0
 custom_fonts/font = SubResource( 2 )
-text = "Continue"
+text = "CONTINUE_BTN"
 align = 0
 script = ExtResource( 3 )
 
 [node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 51.0
-margin_right = 72.0
+margin_right = 105.0
 margin_bottom = 67.0
 custom_fonts/font = ExtResource( 14 )
-text = "Options"
+text = "OPTIONS_M_BTN"
 align = 0
 script = ExtResource( 3 )
 fromPth = NodePath("../..")
@@ -102,10 +102,10 @@ toPth = NodePath("../../../OptionsMenu")
 
 [node name="Hub" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 67.0
-margin_right = 72.0
+margin_right = 105.0
 margin_bottom = 83.0
 custom_fonts/font = ExtResource( 14 )
-text = "Main Menu"
+text = "MAIN_MENU_BTN"
 align = 0
 script = ExtResource( 3 )
 isNegative = true

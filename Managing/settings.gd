@@ -54,9 +54,19 @@ func save_defaults(dm: DataManager) -> void:
 	if ok != OK: assert(false, "lmao time for pain")
 
 
+func change_lang(newLang: String) -> void:
+	lang = newLang
+	TranslationServer.set_locale(lang)
+	emit_signal("lang_changed")
+
+
+signal lang_changed
+
+
 # Graphics
 var gfx := GFX_GOOD
 var fullscreen := OS.has_feature("standalone")
+var lang = "es"
 
 
 # Performance

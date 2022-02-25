@@ -18,9 +18,15 @@ func _ready() -> void:
 	slider.max_value = maxValue
 	slider.min_value = minValue
 	slider.step = step
-	label.text = optionName+":"
+	label.text = tr(optionName)+":"
 	at.rect_min_size.x = at.get_font("font").get_string_size("100%").x
 	_on_value_changed(slider.value)
+	
+	Settings.connect("lang_changed", self, "_on_language_changed")
+
+
+func _on_language_changed() -> void:
+	label.text = tr(optionName)+":"
 
 
 func _on_value_changed(value: float) -> void:

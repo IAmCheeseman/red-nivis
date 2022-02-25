@@ -293,7 +293,7 @@ anims/Walk = SubResource( 3 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 13 )]
-bossName = "H.A.N.K."
+bossName = "HANK_TTL"
 dmgManagerPth = NodePath("../../DamageManager")
 
 [connection signal="timeout" from="Sprite/Guns/MachineGun/BulletCooldown" to="Sprite/Guns/MachineGun" method="shoot"]
