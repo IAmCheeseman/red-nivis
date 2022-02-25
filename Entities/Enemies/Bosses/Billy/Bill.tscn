@@ -303,7 +303,7 @@ anims/RESET = SubResource( 3 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 5 )]
-bossName = "Billy"
+bossName = "BILLY_TTL"
 dmgManagerPth = NodePath("../../DamageManager")
 
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]

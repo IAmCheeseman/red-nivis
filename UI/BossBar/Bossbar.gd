@@ -11,6 +11,7 @@ onready var damageManager = get_node(dmgManagerPth)
 
 
 func _ready() -> void:
+	Settings.change_lang("es")
 	recntDmg.max_value = damageManager.maxHealth
 	recntDmg.value = damageManager.maxHealth
 	update_bar()

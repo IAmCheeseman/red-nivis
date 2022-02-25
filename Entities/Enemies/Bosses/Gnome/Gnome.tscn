@@ -754,7 +754,7 @@ anims/Walk = SubResource( 8 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 9 )]
-bossName = "Gnome (With a Stick)"
+bossName = "GNOME_TTL"
 dmgManagerPth = NodePath("../../DamageManager")
 
 [node name="Light2D" type="Light2D" parent="."]

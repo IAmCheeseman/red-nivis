@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Cheer1", "YEAH, GET'EM!" ], [ "Cheer2", "I LOVE YOU MR.STICK!!" ], [ "Cheer3", "YEAAAH, I BELIEVE IN YOU!!" ], [ "Boo1", "YOU SUCK!" ], [ "Boo2", "UNWORTHY OF MR.STICK!!!!" ], [ "Boo3", "DON'T WORRY, MR. STICK, YOU GOT THIS!!!!" ] ]
+dialog = [ [ "Cheer1", "GNOME_CROWD_CHEER1" ], [ "Cheer2", "GNOME_CROWD_CHEER2" ], [ "Cheer3", "GNOME_CROWD_CHEER3" ], [ "Boo1", "GNOME_CROWD_BOO1" ], [ "Boo2", "GNOME_CROWD_BOO2" ], [ "Boo3", "GNOME_CROWD_BOO3" ] ]

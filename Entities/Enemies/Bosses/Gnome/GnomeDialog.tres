@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "[shake]I'M GONNA KILL YOU[/shake]" ], [ "Hit1", "[shake]I HATE YOU![/shake]" ], [ "Hit2", "[shake]AAUUUAGH[/shake]" ], [ "Hit3", "[shake]OUCH![/shake]" ], [ "Ascend1", "[shake]STICKS![/shake]" ], [ "Ascend2", "[shake]JUST DIE![/shake]" ] ]
+dialog = [ [ "Introduction", "GNOME_INTRO" ], [ "Hit1", "GNOME_HIT1" ], [ "Hit2", "GNOME_HIT2" ], [ "Hit3", "GNOME_HIT3" ], [ "Ascend1", "GNOME_ASCEND1" ], [ "Ascend2", "GNOME_ASCEND2" ] ]
