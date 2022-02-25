@@ -17,10 +17,14 @@ func _process(_delta: float) -> void:
 
 func _input(event):
 	if event.is_action_pressed("pause") and !GameManager.inGUI:
-		visible = !visible
-		$CenterContainer.visible = visible
-		get_tree().paused = visible
-		VisualServer.set_shader_time_scale(int(!visible))
+		pause(!visible)
+
+
+func pause(on: bool) -> void:
+	visible = on
+	$CenterContainer.visible = visible
+	get_tree().paused = visible
+	VisualServer.set_shader_time_scale(int(!visible))
 
 
 func _on_continue_pressed():
@@ -43,3 +47,8 @@ func _on_quittd_pressed():
 	GameManager.save_game()
 	GameManager.save_run()
 	get_tree().quit()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_FOCUS_OUT:
+		pause(true)
