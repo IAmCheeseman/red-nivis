@@ -18,6 +18,10 @@ func play() -> void:
 	fadeOut.out()
 	yield(TempTimer.timer(self, 2.5), "timeout")
 	var target = STARTING_AREA if GameManager.load_run() != OK else WORLD
+	if target == WORLD:
+		if GameManager.worldData.rooms.size() == 0:
+			target = STARTING_AREA
+			GameManager.clear_run()
 	var _discard = get_tree().change_scene(target)
 
 
