@@ -1,81 +1,81 @@
-keys,en,en_GB,es,fr,de
-NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir,,
-,,,,,
-BACK_BTN,Back,Back,Atrás,,
-QUIT_BTN,Quit,Col'oni's O'fer Ga'es,Quitar,,
-CLEAR_CONFIRM,Do you really wanna clear your current game?,Do 'ew re'al'h wan'a cle'ah 'er curen' ga'e?,¿En serio quieres borrar tu partida?,,
-QUIT_CONFIRM,Do you really wanna quit?,Do 'ew re'al'h wan'a quit?,¿Seguro de que quieres salir?,,
-YES,Yes,Yea' I'm foine wi' tha',Si,,
-NO,No,Nawh man',No,,
-START_BTN,Start,Stah't,Empezar,,
-PLAY_BTN,Play,Pla',Jugar,,
-CONTINUE_BTN,Continue,Contenoo,Continuar,,
-MAIN_MENU_BTN,Main Menu,Mahn Meno,Volver al Menú,,
-,,,,,
-PAUSE_TTL, Paused," Hol' on, mate", Pausado,,
-NEW_GAME_BTN,New Game,Ne' Ga'e,Nueva Run,,
-OPTIONS_M_BTN,Options,Set'ihns,Ajustes,,
-CREDITS_M_BTN,Credits,Cre'its,Creditos,,
-COMMUNITY_BTN,Community,Co'unit'eh,Comunidad,,
-,,,,,
-OPTIONS_TTL, Options, Set'ihns, Ajustes,,
-GAME_OPT_M,Game,Gahmpla',Gameplay,,
-CONTROLS_OPT_M,Controls,Contral's,Controles,,
-VISUALS_OPT_M,Visual,Lewk,Gráficos,,
-LANG_OPT_M,Language,Lan'ua'e,Idioma,,
-AUDIO_OPT_M,Audio	,Au'io,Sonido,,
-,,,,,
-GAME_TTL, Game, Veh Experia'ce, Gameplay,,
-GAME_SPD_RN_OPT,Speedrun Timer,Speadrahn Toimah,Contador Speedrun,,
-GAME_DBL_DMG_MODE_OPT,Hard Mode,Hahd Moud,Modo Duro,,
-,,,,,
-CONTROLS_TTL,\n Controls,\n Contralhs,\n Controles,,
-CTRL_RESET_BTN,Reset,Resaht,Reiniciar Ajustes,,
-CTRL_MV_LEFT,Move Left,Mewv Lahft,Caminar Izq.,,
-CTRL_MV_RIGHT,Move Right,Mewv Raht,Caminar Der.,,
-CTRL_DOWN,Down,Dawn,Abajo,,
-CTRL_JUMP,Jump,Joimp,Saltar,,
-CTRL_SHOOT,Shoot,Shewt,Disparar,,
-CTRL_MELEE,Melee,Shmackin',Golpe de Arma,,
-CTRL_GRENADE,Grenade,Gra'nad,Lanzar Granada,,
-CTRL_HOOKSHOT,Hookshot,HewkShoht,Usar Gancho,,
-CTRL_HEAL,Heal,Hea'l,Curación,,
-CTRL_DASH,Dash,Da'h,Esquivar,,
-CTRL_INTERACT,Interact,In'er'act,Usar,,
-,,,,,
-VISUALS_TTL, Visuals, Lewk, Gráficos,,
-VSL_FULLSCREEN,Fullscreen,Falscrea',Pantalla Completa,,
-VSL_LOW_QUALITY,Low Quality,Lew Qual'ity,Modo Baja Calidad,,
-VSL_SCREENSHAKE,Screenshake,Screa'sha'e,Temblor de Pantalla,,
-VSL_FRM_RT,Max FPS,Maximum Frames 'er Shew'ond,FPS Máximos,,
-,,,,,
-LANG_TTL, Language,Tongue Mewvmen's, Idioma,,
-,,,,,
-AUDIO_TTL, Audio, Au'io, Sonido,,
-AUDIO_MASTER,Master,Mahstah,General,,
-AUDIO_SFX,SFX,SFX,SFX,,
-AUDIO_MUSIC,Music,Mew'sik,Música,,
-,,,,,
-HANK_TTL,H.A.N.K.,H.a.h.n.k.,H.A.N.K.,,
-GNOME_TTL,Gnome (With a Stick),Gnewm (Wi' eai steek),Palo-Gnomo,,
-BILLY_TTL,Billy,Billeh,Billy,,
-,,,,,
-GNOME_INTRO,I'M GONNA KILL YOU!,OIM GONNA KEAL 'EW!,TE VAS A MORIR!,,
-GNOME_HIT1,I HATE YOU!,AI HOIT 'EW!,TE ODIO!,,
-GNOME_HIT2,AAUUUAGH,*painful bri'ish noises*,AAUUUAGH,,
-GNOME_HIT3,OUCH!,"OI MATE, THAT HURT!",OUCH!,,
-GNOME_ASCEND1,STICKS!,STE'KS!,VARITAS!,,
-GNOME_ASCEND2,JUST DIE!,"JOIST DAIH, MATE!",MUERE YA!,,
-,,,,,
-GNOME_CROWD_CHEER1,"YEAH, GET'EM!","YEA' MATE, 'EW GET'EM!","ASÍ ES, ACÁBALO",,
-GNOME_CROWD_CHEER2,"I LOVE YOU, MR. STICK!!",I LEWV 'EW MISTAH STE'K!!,TE AMO PALO-GNOMO!!,,
-GNOME_CROWD_CHEER3,"YEAAAH, I BELIEVE IN YOU!!","YEA', OUI BELIEA' EN 'EW!!",YO CREO EN TI!!,,
-GNOME_CROWD_BOO1,YOU SUCK!,'EW SUCK!,APESTAS!,,
-GNOME_CROWD_BOO2,UNWORTHY OF MR. STICK!!!!,UNWOR'Y EWF MISTAH STE'K,NO ERES DIGNO DEL PALO-GNOMO!!!!,,
-GNOME_CROWD_BOO3,"DON'T WORRY, MR. STICK, YOU GOT THIS!!!!","DON' WOREH MISTAH STE'K, 'EW GO' THI'!!!","NO TE PREOCUPES, PALO-GNOMO, TU PUEDES HACERLO!!!!",,
-,,,,,
-LMAO_MAN_INTRO_LN1,This is the Red Nivis Laboratory.,Thi'  is tha Red Ni'is Labahtoreh,Este es el laboratorio Red Nivis.,,
-LMAO_MAN_INTRO_LN2,It's been shut down for years...,I's bean shut dewn fo' 'ears...,Ha estado cerrado por años...,,
-,,,,,
-SLUG_CULTIST_INTRO_LN1,Hey.,Oi.,Oye.,,
-SLUG_CULTIST_INTRO_LN2,Do things for me.,'ew 'ings fo' 'e.,Házme un favor.,,
+keys,en,en_GB,es
+NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir
+,,,
+BACK_BTN,Back,Preav'eous,Atrás
+QUIT_BTN,Quit,Col'oni's O'fer Gahms,Quitar
+CLEAR_CONFIRM,Do you really wanna clear your current game?,Do 'ew reel'eh wa'a cle'ah 'er curen' gahm?,¿En serio quieres borrar tu partida?
+QUIT_CONFIRM,Do you really wanna quit?,Do 'ew reel'eh wa'a quit?,m
+YES,Yes,Yea' I'm foine wi' tha',Si
+NO,No,Nawh man',No
+START_BTN,Start,Stah't,Empezar
+PLAY_BTN,Play,Plah,Jugar
+CONTINUE_BTN,Continue,Conten'ew,Continuar
+MAIN_MENU_BTN,Main Menu,Main Men'ew,Volver al Menú
+,,,
+PAUSE_TTL, Paused," Hol' on, mate", Pausado
+NEW_GAME_BTN,New Game,Noo Gahm,Nueva Run
+OPTIONS_M_BTN,Options,Set'ihns,Ajustes
+CREDITS_M_BTN,Credits,Cre'its,Creditos
+COMMUNITY_BTN,Community,Co'unit'eh,Comunidad
+,,,
+OPTIONS_TTL, Options, Set'ihns, Ajustes
+GAME_OPT_M,Game,Gahmplah,Gameplay
+CONTROLS_OPT_M,Controls,Cantrolls,Controles
+VISUALS_OPT_M,Visual,Lewk,Gráficos
+LANG_OPT_M,Language,Tongue Mewvmen's,Idioma
+AUDIO_OPT_M,Audio	,Au'io,Sonido
+,,,
+GAME_TTL, Game, Veh Experia'ce, Gameplay
+GAME_SPD_RN_OPT,Speedrun Timer,Speadrahn Toimah,Contador Speedrun
+GAME_DBL_DMG_MODE_OPT,Hard Mode,Hahd Moud,Modo Duro
+,,,
+CONTROLS_TTL,\n Controls,\n Cantrolls,\n Controles
+CTRL_RESET_BTN,Reset,Resaht,Reiniciar Ajustes
+CTRL_MV_LEFT,Move Left,Mewv Lahft,Caminar Izq.
+CTRL_MV_RIGHT,Move Right,Mewv Raht,Caminar Der.
+CTRL_DOWN,Down,Dawn,Abajo
+CTRL_JUMP,Jump,Joimp,Saltar
+CTRL_SHOOT,Shoot,Shewt,Disparar
+CTRL_MELEE,Melee,Shmackin',Golpe de Arma
+CTRL_GRENADE,Grenade,Gra'nad,Lanzar Granada
+CTRL_HOOKSHOT,Hookshot,HewkShewt,Usar Gancho
+CTRL_HEAL,Heal,'eal,Curación
+CTRL_DASH,Dash,Dah'sh,Esquivar
+CTRL_INTERACT,Interact,In'er'a',Usar
+,,,
+VISUALS_TTL, Visuals, Lewk, Gráficos
+VSL_FULLSCREEN,Fullscreen,Falscrea',Pantalla Completa
+VSL_LOW_QUALITY,Low Quality,Lew Qual'ity,Modo Baja Calidad
+VSL_SCREENSHAKE,Screenshake,Screa'sha'e,Temblor de Pantalla
+VSL_FRM_RT,Max FPS,Maximum Frames 'er Shew'ond,FPS Máximos
+,,,
+LANG_TTL, Language,Tongue Mewvmen's, Idioma
+,,,
+AUDIO_TTL, Audio, Au'io, Sonido
+AUDIO_MASTER,Master,Mahstah,General
+AUDIO_SFX,SFX,SFX,SFX
+AUDIO_MUSIC,Music,Mew'sik,Música
+,,,
+HANK_TTL,H.A.N.K.,H.a.h.n.k.,H.A.N.K.
+GNOME_TTL,Gnome (With a Stick),Noom (Wi' eai steek),Palo-Gnomo
+BILLY_TTL,Billy,Billeh,Billy
+,,,
+GNOME_INTRO,I'M GONNA KILL YOU!,OIM GONNA KEAL 'EW!,TE VAS A MORIR!
+GNOME_HIT1,I HATE YOU!,AI HOIT 'EW!,TE ODIO!
+GNOME_HIT2,AAUUUAGH,*painful bri'ish noises*,AAUUUAGH
+GNOME_HIT3,OUCH!,"OI MATE, THAT HURT!",OUCH!
+GNOME_ASCEND1,STICKS!,STE'KS!,VARITAS!
+GNOME_ASCEND2,JUST DIE!,"JOIST DAIH, MATE!",MUERE YA!
+,,,
+GNOME_CROWD_CHEER1,"YEAH, GET'EM!","YEA' MATE, 'EW GET'EM!","ASÍ ES, ACÁBALO"
+GNOME_CROWD_CHEER2,"I LOVE YOU, MR. STICK!!",I LEWV 'EW MISTAH STE'K!!,TE AMO PALO-GNOMO!!
+GNOME_CROWD_CHEER3,"YEAAAH, I BELIEVE IN YOU!!","YEA', OUI BELIEA' EN 'EW!!",YO CREO EN TI!!
+GNOME_CROWD_BOO1,YOU SUCK!,'EW SUCK!,APESTAS!
+GNOME_CROWD_BOO2,UNWORTHY OF MR. STICK!!!!,UNWOR'Y EWF MISTAH STE'K,NO ERES DIGNO DEL PALO-GNOMO!!!!
+GNOME_CROWD_BOO3,"DON'T WORRY, MR. STICK, YOU GOT THIS!!!!","DON' WOREH MISTAH STE'K, 'EW GO' THI'!!!","NO TE PREOCUPES, PALO-GNOMO, TU PUEDES HACERLO!!!!"
+,,,
+LMAO_MAN_INTRO_LN1,This is the Red Nivis Laboratory.,Thi'  is tha Red Ni'is Labahtoreh,Este es el laboratorio Red Nivis.
+LMAO_MAN_INTRO_LN2,It's been shut down for years...,I's bean shut dewn fo' 'ears...,Ha estado cerrado por años...
+,,,
+SLUG_CULTIST_INTRO_LN1,Hey.,Oi.,Oye.
+SLUG_CULTIST_INTRO_LN2,Do things for me.,'ew 'ings fo' 'e.,Házme un favor.
