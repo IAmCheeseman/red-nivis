@@ -16,12 +16,13 @@ func _ready() -> void:
 	var _discard = connect("tree_exiting", self, "_on_tree_exiting")
 
 
-func _on_tree_exiting() -> void:
+func drop() -> void:
 	if !doDrop: return
 	
 	rc = RayCast2D.new()
 	rc.cast_to = Vector2.DOWN * 1000
-	rc.set_collision_mask_bit(5, true)
+	rc.set_collision_mask_bit(4, true)
+	rc.set_collision_mask_bit(0, true)
 	add_child(rc)
 	for i in drops.size():
 		var d = drops[i]
@@ -34,4 +35,7 @@ func _on_tree_exiting() -> void:
 			newDrop.global_position = rc.get_collision_point() + (Vector2.UP * 32)
 			GameManager.spawnManager.spawn_object(newDrop)
 			continue
-		newDrop.queue_free()
+
+
+func _on_tree_exiting() -> void:
+	drop()

@@ -22,7 +22,7 @@ func _ready() -> void:
 	at.rect_min_size.x = at.get_font("font").get_string_size("100%").x
 	_on_value_changed(slider.value)
 	
-	Settings.connect("lang_changed", self, "_on_language_changed")
+	var _discard = Settings.connect("lang_changed", self, "_on_language_changed")
 
 
 func _on_language_changed() -> void:

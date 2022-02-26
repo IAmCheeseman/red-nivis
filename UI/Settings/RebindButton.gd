@@ -12,7 +12,7 @@ func _ready():
 	_update_button_text(InputMap.get_action_list(action)[0])
 	focus_mode = Control.FOCUS_NONE
 	
-	Settings.connect("lang_changed", self, "_on_language_changed")
+	var _discard = Settings.connect("lang_changed", self, "_on_language_changed")
 
 
 func _input(inputEvent: InputEvent) -> void:
