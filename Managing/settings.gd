@@ -67,7 +67,7 @@ signal lang_changed
 # Graphics
 var gfx := GFX_GOOD
 var fullscreen := OS.has_feature("standalone")
-var lang = "en"
+var lang = "en_GB"
 
 
 # Performance
