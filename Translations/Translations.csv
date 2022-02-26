@@ -1,5 +1,6 @@
 keys,en,es
-UNAVAILABLE_TRANS,Unavailable translation,Texto sin traducir
+NO_TRANS,Unavailable translation,Texto sin traducir
+,,
 BACK_BTN,Back,Atrás
 QUIT_BTN,Quit,Quitar
 CLEAR_CONFIRM,Do you really wanna clear your current game?,¿En serio quieres borrar tu partida?
@@ -10,20 +11,24 @@ START_BTN,Start,Empezar
 PLAY_BTN,Play,Jugar
 CONTINUE_BTN,Continue,Continuar
 MAIN_MENU_BTN,Main Menu,Volver al Menú
+,,
 PAUSE_TTL, Paused, Pausado
 NEW_GAME_BTN,New Game,Nueva Run
 OPTIONS_M_BTN,Options,Ajustes
 CREDITS_M_BTN,Credits,Creditos
 COMMUNITY_BTN,Community,Comunidad
+,,
 OPTIONS_TTL, Options, Ajustes
 GAME_OPT_M,Game,Gameplay
 CONTROLS_OPT_M,Controls,Controles
 VISUALS_OPT_M,Visual,Gráficos
 LANG_OPT_M,Language,Idioma
 AUDIO_OPT_M,Audio	,Sonido
+,,
 GAME_TTL, Game, Gameplay
 GAME_SPD_RN_OPT,Speedrun Timer,Contador Speedrun
 GAME_DBL_DMG_MODE_OPT,Hard Mode,Modo Duro
+,,
 CONTROLS_TTL,\n Controls,\n Controles
 CTRL_RESET_BTN,Reset,Reiniciar Ajustes
 CTRL_MV_LEFT,Move Left,Caminar Izq.
@@ -37,32 +42,40 @@ CTRL_HOOKSHOT,Hookshot,Usar Gancho
 CTRL_HEAL,Heal,Curación
 CTRL_DASH,Dash,Esquivar
 CTRL_INTERACT,Interact,Usar
+,,
 VISUALS_TTL, Visuals, Gráficos
 VSL_FULLSCREEN,Fullscreen,Pantalla Completa
 VSL_LOW_QUALITY,Low Quality,Modo Baja Calidad
 VSL_SCREENSHAKE,Screenshake,Temblor de Pantalla
 VSL_FRM_RT,Max FPS,FPS Máximos
+,,
 LANG_TTL, Language, Idioma
+,,
 AUDIO_TTL, Audio, Sonido
 AUDIO_MASTER,Master,General
 AUDIO_SFX,SFX,SFX
 AUDIO_MUSIC,Music,Música
+,,
 HANK_TTL,H.A.N.K.,H.A.N.K.
 GNOME_TTL,Gnome (With a Stick),Palo-Gnomo
 BILLY_TTL,Billy,Billy
+,,
 GNOME_INTRO,I'M GONNA KILL YOU!,TE VAS A MORIR!
 GNOME_HIT1,I HATE YOU!,TE ODIO!
 GNOME_HIT2,AAUUUAGH,AAUUUAGH
 GNOME_HIT3,OUCH!,OUCH!
 GNOME_ASCEND1,STICKS!,VARITAS!
 GNOME_ASCEND2,JUST DIE!,MUERE YA!
+,,
 GNOME_CROWD_CHEER1,"YEAH, GET'EM!","ASÍ ES, ACÁBALO"
 GNOME_CROWD_CHEER2,"I LOVE YOU, MR. STICK!!",TE AMO PALO-GNOMO!!
 GNOME_CROWD_CHEER3,"YEAAAH, I BELIEVE IN YOU!!",YO CREO EN TI!!
 GNOME_CROWD_BOO1,YOU SUCK!,APESTAS!
 GNOME_CROWD_BOO2,UNWORTHY OF MR. STICK!!!!,NO ERES DIGNO DEL PALO-GNOMO!!!!
 GNOME_CROWD_BOO3,"DON'T WORRY, MR. STICK, YOU GOT THIS!!!!","NO TE PREOCUPES, PALO-GNOMO, TU PUEDES HACERLO!!!!"
+,,
 LMAO_MAN_INTRO_LN1,This is the Red Nivis Laboratory.,Este es el laboratorio Red Nivis.
 LMAO_MAN_INTRO_LN2,It's been shut down for years...,Ha estado cerrado por años...
-SLUG_CULTIST_INTRO_LN1,"Hey, idiot.",Oye.
+,,
+SLUG_CULTIST_INTRO_LN1,Hey.,Oye.
 SLUG_CULTIST_INTRO_LN2,Do things for me.,Házme un favor.

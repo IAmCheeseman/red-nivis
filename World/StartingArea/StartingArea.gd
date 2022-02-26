@@ -9,6 +9,7 @@ onready var movementLock = $Managing/MovementLock
 
 
 func _ready():
+	Engine.time_scale = 1
 	GameManager.rpBiome = "Aboveground"
 	GameManager.update_rp()
 	set_process(false)

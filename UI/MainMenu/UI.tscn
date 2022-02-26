@@ -253,7 +253,7 @@ toPth = NodePath("../../Options")
 [node name="OptionsMenu" parent="." instance=ExtResource( 8 )]
 visible = false
 
-[node name="Back" parent="OptionsMenu/NavMenu" index="5"]
+[node name="Back" parent="OptionsMenu/NavMenu" index="6"]
 fromPth = NodePath("../..")
 toPth = NodePath("../../../Options")
 
