@@ -38,6 +38,7 @@ func _on_dead() -> void:
 		dead = true
 		anim.play("Die")
 		bossDropper.drop()
+		damageManager.queue_free()
 
 
 func attack() -> void:

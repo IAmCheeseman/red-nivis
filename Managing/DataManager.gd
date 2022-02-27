@@ -8,7 +8,7 @@ signal game_saved
 signal data_cleared
 
 
-func save_data(data : Dictionary, path) -> bool:
+func save_data(data : Dictionary, path) -> int:
 	var save_path = SAVE_DIR+path
 	var dir = Directory.new()
 	if !dir.dir_exists(SAVE_DIR):
@@ -20,8 +20,8 @@ func save_data(data : Dictionary, path) -> bool:
 		file.store_var(data)
 		file.close()
 		emit_signal("game_saved")
-		return true
-	return false
+		return OK
+	return ERR_CANT_OPEN
 
 
 func load_data(path) -> Dictionary:

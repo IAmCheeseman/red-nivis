@@ -6,7 +6,12 @@ func _init() -> void:
 	var dm := DataManager.new()
 	var settings := dm.load_data(Globals.SETTINGS_FILE_NAME)
 	
-	if settings == {}: # Checking if I need to create save files
+	var defaults = InputMap.get_actions()
+	for i in defaults:
+		var action = InputMap.get_action_list(i)
+		if action.size() == 0 or i.begins_with("ui"): continue
+		defaultKeybinds[i] = action[0].duplicate()
+	if settings.size() == 0: # Checking if I need to create save files
 		save_defaults(dm)
 		settings = dm.load_data(Globals.SETTINGS_FILE_NAME)
 	
@@ -16,12 +21,6 @@ func _init() -> void:
 		var disp = "{Dictionary}" if settings[i] is Dictionary else "[Array]" if settings[i] is Array else settings[i]
 		print("%s = %s" % [i, disp])
 		set(i, settings[i])
-	
-	var defaults = InputMap.get_actions()
-	for i in defaults:
-		var action = InputMap.get_action_list(i)
-		if action.size() == 0 or i.begins_with("ui"): continue
-		defaultKeybinds[i] = action[0].duplicate()
 	
 	for i in keybinds.keys(): # Applying keybinds 
 		var newKey = InputEventKey.new() 
@@ -35,24 +34,26 @@ func _init() -> void:
 		
 		InputMap.action_erase_events(i)
 		InputMap.action_add_event(i, newKey)
-	change_lang(lang)
+	yield(TempTimer.idle_frame(self), "timeout")
+	change_lang(settings.lang)
 
 
 func save_defaults(dm: DataManager) -> void:
 	var ok = dm.save_data({
-		"gfx"              : gfx,
-		"fullscreen"       : fullscreen,
-		"maxfps"           : maxfps,
-		"screenshake"      : screenshake,
-		"brightness"       : brightness,
-		"keybinds"         : keybinds,
-		"masterVol"        : masterVol,
-		"sfx"              : sfx,
-		"music"            : music,
-		"speedrunTimer"    : speedrunTimer,
-		"doubleDamageMode" : doubleDamageMode
-	}, Globals.SETTINGS_FFILE_NAME)
-	if ok != OK: assert(false, "lmao time for pain")
+		"gfx"              : GFX_GOOD,
+		"fullscreen"       : true,
+		"maxfps"           : 60,
+		"screenshake"      : 1.0,
+		"brightness"       : 1.0,
+		"keybinds"         : {},
+		"masterVol"        : 1.0,
+		"sfx"              : 1.0,
+		"music"            : 0.6,
+		"speedrunTimer"    : false,
+		"doubleDamageMode" : false,
+		"lang"             : "en"
+	}, Globals.SETTINGS_FILE_NAME)
+	if ok != OK: push_error("lmao time for pain")
 
 
 func change_lang(newLang: String) -> void:
