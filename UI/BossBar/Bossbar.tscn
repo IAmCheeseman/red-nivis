@@ -23,8 +23,8 @@ __meta__ = {
 }
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-margin_left = 80.0
-margin_right = 240.0
+margin_left = 100.0
+margin_right = 260.0
 margin_bottom = 11.0
 size_flags_horizontal = 4
 value = 50.0
@@ -38,6 +38,7 @@ size_flags_horizontal = 4
 value = 100.0
 texture_under = SubResource( 1 )
 texture_progress = SubResource( 2 )
+fill_mode = 6
 tint_progress = Color( 100, 100, 100, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,9 +47,9 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="TextureProgress"]
 
 [node name="Label" type="Label" parent="."]
-margin_left = 133.0
+margin_left = 153.0
 margin_top = 13.0
-margin_right = 186.0
+margin_right = 206.0
 margin_bottom = 23.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 3 )

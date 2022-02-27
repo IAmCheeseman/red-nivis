@@ -18,6 +18,8 @@ func explode() -> void:
 	for i in bombCount:
 		var newBomb = bomb.instance()
 		newBomb.global_position = global_position - Vector2(0, 12)
-		newBomb.vel = Vector2(rand_range(-48, 48), -rand_range(160, 400))
+		newBomb.apply_central_impulse(Vector2(rand_range(-48, 48), -rand_range(160, 400)))
+		newBomb.time = rand_range(1.0, 3.0)
+		newBomb.size = 8
 		GameManager.spawnManager.call_deferred("spawn_object", newBomb)
 	queue_free()
