@@ -605,7 +605,7 @@ hookshot={
 [locale]
 
 translations=PoolStringArray( "res://Translations/Translations.en.translation", "res://Translations/Translations.es.translation", "res://Translations/Translations.en_GB.translation" )
-locale_filter=[ 0, [ "en_GB" ] ]
+locale_filter=[ 1, [  ] ]
 
 [rendering]
 

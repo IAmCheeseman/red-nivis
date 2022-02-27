@@ -50,6 +50,6 @@ func _on_quittd_pressed():
 
 
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_FOCUS_OUT:
+	if what == NOTIFICATION_WM_FOCUS_OUT and !GameManager.inGUI:
 		yield(TempTimer.idle_frame(self), "timeout")
 		pause(true)

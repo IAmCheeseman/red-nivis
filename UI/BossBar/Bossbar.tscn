@@ -38,7 +38,6 @@ size_flags_horizontal = 4
 value = 100.0
 texture_under = SubResource( 1 )
 texture_progress = SubResource( 2 )
-fill_mode = 6
 tint_progress = Color( 100, 100, 100, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
