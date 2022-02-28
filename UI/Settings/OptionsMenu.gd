@@ -82,6 +82,8 @@ func _on_spanish_pressed() -> void:
 	Settings.change_lang("es")
 func _on_british_pressed() -> void:
 	Settings.change_lang("en_GB")
+func _on_german_pressed() -> void:
+	Settings.change_lang("de")
 
 
 func set_values() -> void:
@@ -100,5 +102,8 @@ func set_values() -> void:
 func _on_reset_kb_bindings_pressed() -> void:
 	for i in keybinds.get_children():
 		if i.has_method("reset"): i.reset()
+
+
+
 
 
