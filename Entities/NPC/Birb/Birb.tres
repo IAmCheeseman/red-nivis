@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "Hey!", "Welcome to my trading post!" ] ]
+dialog = [ [ "Introduction", "BIRB_INTRO_LN1", "BIRB_INTRO_LN2" ] ]
