@@ -106,9 +106,12 @@ func set_disabled(val:bool):
 
 # Updates the label, and centers it
 func update_label() -> void:
-	label.bbcode_text = "[center]Hit [wave amp=6 ]<[color=yellow]%s[/color]>[/wave]\nto %s[/center]" % [OS.get_scancode_string(
-		InputMap.get_action_list("interact")[0].scancode
-	), action]
+	label.bbcode_text = "[center]%s %s[/center]" % [tr("INTERACT_RQST"), tr(action)]
+	label.bbcode_text = label.bbcode_text.replace(
+		"<interact>",
+		"<%s>" % OS.get_scancode_string(InputMap.get_action_list("interact")[0].scancode)
+	)
+	#OS.get_scancode_string(InputMap.get_action_list("interact")[0].scancode), action
 	var font = label.get_font("normal_font")
 	label.rect_size = font.get_string_size(label.text) + (Vector2.ONE * 16)
 	

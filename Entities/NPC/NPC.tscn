@@ -20,7 +20,7 @@ frame = 3
 
 [node name="Iteraction" parent="." instance=ExtResource( 1 )]
 spritePath = NodePath("../ScaleHelper/Sprite")
-action = "talk"
+action = "INTR_TALK"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

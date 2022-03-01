@@ -163,7 +163,6 @@ texture = ExtResource( 1 )
 offset = Vector2( 0.5, -19 )
 hframes = 4
 vframes = 3
-frame = 4
 
 [node name="Light" type="Light2D" parent="."]
 position = Vector2( 0, -22 )
@@ -194,7 +193,7 @@ appearOnready = false
 [node name="Iteraction" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -47 )
 spritePath = NodePath("../Sprite")
-action = "scan in item"
+action = "INTR_SCN_ITM"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
 position = Vector2( 0, 23.5 )
