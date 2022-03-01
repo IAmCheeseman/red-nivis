@@ -11,7 +11,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Caves"
+name = "CAVES_TTL"
 solids = ExtResource( 4 )
 background = ExtResource( 2 )
 platforms = ExtResource( 3 )

@@ -116,7 +116,7 @@ func create_room() -> void:
 	or worldData.moveDir == Vector2.ZERO:
 		var newBiomeTitle = preload("res://UI/BiomeTitle/BiomeTitle.tscn").instance()
 		world.canvasLayer.add_child(newBiomeTitle)
-		newBiomeTitle.get_node("Title/Name").text = "The "+biome.name
+		newBiomeTitle.get_node("Title/Name").text = tr(biome.name)
 
 
 

@@ -10,7 +10,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Deep Labs"
+name = "DEEP_LABS_TTL"
 solids = ExtResource( 5 )
 background = ExtResource( 3 )
 platforms = ExtResource( 4 )
