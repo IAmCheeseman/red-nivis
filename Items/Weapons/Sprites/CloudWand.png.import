@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ScannerLabs.png-49621f934b73fec05421e961fd974cc9.stex"
+path="res://.import/CloudWand.png-7df53951507cc53528f81a2262fb3008.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Props/Scanner/ScannerLabs.png"
-dest_files=[ "res://.import/ScannerLabs.png-49621f934b73fec05421e961fd974cc9.stex" ]
+source_file="res://Items/Weapons/Sprites/CloudWand.png"
+dest_files=[ "res://.import/CloudWand.png-7df53951507cc53528f81a2262fb3008.stex" ]
 
 [params]
 
