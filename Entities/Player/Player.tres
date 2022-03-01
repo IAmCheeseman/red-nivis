@@ -25,4 +25,5 @@ maxStamina = 3
 staminaRecovery = 2.3
 stamRecovCurve = SubResource( 1 )
 tiltStrength = 5.0
+maxHeals = 3
 healTime = 1.2
