@@ -64,6 +64,12 @@ AUDIO_MASTER,Master,Mahstah,General,General
 AUDIO_SFX,SFX,SFX,SFX,SFX
 AUDIO_MUSIC,Music,Mew'sik,Música,Musik
 ,,,,
+CREDITS_TTL,Credits,Mah m8s,,
+CREDITS_DEV,Created By,Crea'or,,
+CREDITS_TRANSLATOR,Translators,Tongue Mewvmentors,,
+CREDITS_PLAYTESTER,Playtesters,Plah Tes'ahs,,
+CREDITS_SPECIAL_THX,Special Thanks,Cool Peo'le,,
+,,,,
 HANK_TTL,H.A.N.K.,Big robo',H.A.N.K.,H.A.N.K.
 GNOME_TTL,Gnome (With a Stick),Noom (Wi' eai steek),Palo-Gnomo,Zwerg (Mit einem Stock)
 BILLY_TTL,Billy,Billeh,Billy,Billy
@@ -92,7 +98,7 @@ BIRB_INTRO_LN1,Hey!,Oi!,Hey!,Hallo!
 BIRB_INTRO_LN2,Welcome to my trading post!,Wel'ome tew moi tra'in' pewst!,Bienvenido a mi negocio!,Wilkommen zu meinen Handelsposten!
 ,,,,
 BIRB_POST_ITEMS,Post items:,Pewst i'ems:,Objetos del Comerciante:,
-BIRB_YOUR_ITEMS,Your items:,Yo' i'ems,Tus Objetos,Deine Gegenstände
+BIRB_YOUR_ITEMS,Your items:,Yo' i'ems:,Tus Objetos:,Deine Gegenstände
 ,,,,
 BIRB_SLCT_WRN,Choose an item.,Chews aih i'em.,Selecciona un objeto.,Wähle ein Gegenstand aus.
 BIRB_NO_TRADE_WRN,Can't trade that item.,"Cahnt tra' tah oitem, bruv.",No puedo intercambiar eso.,Ich kann diesen Gegenstand nicht tauschen.
@@ -109,9 +115,11 @@ TECH_LABS_TTL,The Tech Labs,eh Technoglical La-boreh-tory,Los laboratorios Avanz
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Seven,AK-47,ASK-47
 REVOLVER_ITM,Revolver,Revalveh,Revólver,Revolver
+GRENADE_LAUNCHER_ITM,Grenade Launcher,,,
 PUMP_SHOTGUN_ITM,Pump Shotgun,Pewmp Shewtgun,Escopeta de Bombeo,Schrotflinte
 FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Flammenwerfer
 ASSAULT_RIFLE_ITM,Assault Rifle,Illegal,Rifle de Asalto,Sturmgewehr
 HOMING_BOOMERANG_ITM,Homing Boomerang,Abodin' Bewmerang,Boomerang Seguidor,Aufsteigender Bumerang
 MULTISHOT_BOOMERANG_ITM,Multishot Boomerang,Se'eral Bewmerang,Boomerang Múltiple,Mehrschuss-Bumerang
 MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun
+BULLET_CHAINSAW_ITM,Bullet Chainsaw,,,

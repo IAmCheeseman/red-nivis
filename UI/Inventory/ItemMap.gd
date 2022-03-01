@@ -5,28 +5,28 @@ const ITEMS = {
 	# LABS ITEMS
 	"pistol" : {
 		"key" : "pistol",
-		"name" : "Pistol",
+		"name" : "PISTOL_ITM",
 		"tier" : ToolTipGenerator.TIERS.LAB,
 		"scene" : "res://Items/Weapons/Scenes/Pistol.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Pistol.png"
 	},
 	"revolver" : {
 		"key" : "revolver",
-		"name" : "Revolver",
+		"name" : "REVOLVER_ITM",
 		"tier" : ToolTipGenerator.TIERS.LAB,
 		"scene" : "res://Items/Weapons/Scenes/Revolver.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Revolver.png"
 	},
 	"ak-47" : {
 		"key" : "ak-47",
-		"name" : "AK-47",
+		"name" : "AK47_ITM",
 		"tier" : ToolTipGenerator.TIERS.LAB,
 		"scene" : "res://Items/Weapons/Scenes/ak47.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/ak47.png"
 	},
 	"grenade-launcher" : {
 		"key" : "grenade-launcher",
-		"name" : "Grenade Launcher",
+		"name" : "GRENADE_LAUNCHER_ITM",
 		"tier" : ToolTipGenerator.TIERS.LAB,
 		"scene" : "res://Items/Weapons/Scenes/GrenadeLauncher.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/GrenadeLauncher.png"
@@ -34,21 +34,21 @@ const ITEMS = {
 	# CAVE ITEMS
 	"pump-shotgun" : {
 		"key" : "pump-shotgun",
-		"name" : "Pump Shotgun",
+		"name" : "PUMP_SHOTGUN_ITM",
 		"tier" : ToolTipGenerator.TIERS.CAVE,
 		"scene" : "res://Items/Weapons/Scenes/Shotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Shotgun.png"
 	},
 	"homing-boomerang" : {
 		"key" : "homing-boomerang",
-		"name" : "Homing Boomerang",
+		"name" : "HOMING_BOOMERANG_ITM",
 		"tier" : ToolTipGenerator.TIERS.CAVE,
 		"scene" : "res://Items/Weapons/Scenes/HomingBoomerang.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/HomingBoomerang.png"
 	},
 	"flamethrower" : {
 		"key" : "flamethrower",
-		"name" : "Flamethrower",
+		"name" : "FLAMETHROWER_ITM",
 		"tier" : ToolTipGenerator.TIERS.CAVE,
 		"scene" : "res://Items/Weapons/Scenes/FlameThrower.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Flamethrower.png"
@@ -56,21 +56,21 @@ const ITEMS = {
 	# DEEP LABS ITEMS
 	"assault-rifle" : {
 		"key" : "assault-rifle",
-		"name" : "Assault Rifle",
+		"name" : "ASSAULT_RIFLE_ITM",
 		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
 		"scene" : "res://Items/Weapons/Scenes/AssaultRifle.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/AssaultRifle.png"
 	},
 	"minigun" : {
 		"key" : "minigun",
-		"name" : "Minigun",
+		"name" : "MINIGUN_ITM",
 		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
 		"scene" : "res://Items/Weapons/Scenes/Minigun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Minigun.png"
 	},
 	"multishot-boomerang" : {
 		"key" : "multishot-boomerang",
-		"name" : "Multishot Boomerang",
+		"name" : "MULTISHOT_BOOMERANG_ITM",
 		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
 		"scene" : "res://Items/Weapons/Scenes/MultishotBoomerang.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/MultishotBoomerang.png"
@@ -78,7 +78,7 @@ const ITEMS = {
 	# TOXIC CAVERNS ITEMs
 	"bullet-chainsaw" : {
 		"key" : "bullet-chainsaw",
-		"name" : "Bullet Chainsaw",
+		"name" : "BULLET_CHAINSAW_ITM",
 		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
 		"scene" : "res://Items/Weapons/Scenes/BulletChainsaw.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Chainsaw.png"
