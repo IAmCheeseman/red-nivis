@@ -2,20 +2,28 @@ keys,en,en_GB,es,de
 NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir,Keine Übersetzung verfügbar
 ,,,,
 BACK_BTN,Back,"go back, m8",Atrás,Zurück
+EXIT_BTN,Exit,,,
 QUIT_BTN,Quit,Col'oni's O'fer Gahms,Quitar,Verlassen
 CLEAR_CONFIRM,Do you really want to clear your current game?,Do 'ew reel'eh wa'a cle'ah 'er curen' gahm?,¿En serio quieres borrar tu partida?,Möchtest du wirklich deinen derzeitigen Spielstand leeren?
-QUIT_CONFIRM,Do you really want to quit?,Do 'ew reel'eh wa'a quit?,m,Möchtest du wirklich verlassen?
+QUIT_CONFIRM,Do you really want to quit?,Do 'ew reel'eh wa'a quit?,¿En serio quieres abandonar?,Möchtest du wirklich verlassen?
 YES,Yes,Yea' I'm foine wi' tha' m8,Si,Ja
 NO,No,Naw man',No,Nein
 START_BTN,Start,Stah't,Empezar,Start
 PLAY_BTN,Play,Plah,Jugar,Spielen
 CONTINUE_BTN,Continue,keep goin' bruv,Continuar,Weiter
 MAIN_MENU_BTN,Main Menu,Main Men'ew,Volver al Menú,Hauptmenü
+INTERACT_RQST,Hit <interact> \n to,Heet <interact> \n tew,Presiona <interact> \n para,Benutze <interact> \n um
+,,,,
+INTR_TALK,talk,speak wi' tongue,Hablar,Sprechen
+INTR_PCK_UP,pick up,raise tew 'ew,Tomar,Aufheben
+INTR_SLCT_ABILITY,select abilities,gain loife skills,Seleccionar Habilidades,Fähigkeiten auswählen
+INTR_SCN_ITM,scan in item,scahn en i'ems,Scanear un Item,einen Gegenstand scannen
+INTR_TELEPORT,teleport,ma'eriali'e in an'o'fer place,Usar el viaje Rápido,Teleportieren
 ,,,,
 PAUSE_TTL,Paused," Hol' on, m8",Pausado,Pausiert
 NEW_GAME_BTN,New Game,Noo Gahm,Nueva Run,Neues Spiel
 OPTIONS_M_BTN,Options,Opchuns,Ajustes,Einstellungen
-CREDITS_M_BTN,Credits,Cre'its,Creditos,
+CREDITS_M_BTN,Credits,Cre'its,Creditos,Credits
 COMMUNITY_BTN,Community,Communitah,Comunidad,Gemeinde
 ,,,,
 OPTIONS_TTL,Options,Set'ihns,Ajustes,Einstellungen
@@ -26,7 +34,7 @@ LANG_OPT_M,Language,Tongue Mewvmen's,Idioma,Sprache
 AUDIO_OPT_M,Audio,Au'io,Sonido,Ton
 ,,,,
 GAME_TTL,Game,Veh Experia'ce,Gameplay,Gameplay
-GAME_SPD_RN_OPT,Speedrun Timer,go fast bruv,Contador Speedrun,Speedrun Zeitschaltuhr
+GAME_SPD_RN_OPT,Speedrun Timer,Go Fast Bruv,Contador Speedrun,Speedrun Zeitschaltuhr
 GAME_DBL_DMG_MODE_OPT,Hard Mode,Hahd Moud,Modo Duro,Schwieriger Modus
 ,,,,
 CONTROLS_TTL,\n Controls,\n Cantrolls,\n Controles,\n Steuerung
@@ -63,7 +71,7 @@ BILLY_TTL,Billy,Billeh,Billy,Billy
 GNOME_INTRO,I'M GONNA KILL YOU!,OIM GONNA KEAL 'EW!,TE VAS A MORIR!,ICH WERDE DICH TÖTEN!
 GNOME_HIT1,I HATE YOU!,AI HATE 'EW!,TE ODIO!,ICH HASSE DICH!
 GNOME_HIT2,AAUUUAGH,*painful bri'ish noises*,AAUUUAGH,AAAAAUUUUHHHH
-GNOME_HIT3,OUCH!,"OI MATE, THAT HURT!",OUCH!,AUA!
+GNOME_HIT3,OUCH!,"OI M8, THAT HURT!",OUCH!,AUA!
 GNOME_ASCEND1,STICKS!,STE'KS!,VARITAS!,STÖCKE!
 GNOME_ASCEND2,JUST DIE!,"JOIST DAIH, M8!",MUERE YA!,STIRB EINFACH!
 ,,,,
@@ -79,3 +87,31 @@ LMAO_MAN_INTRO_LN2,It's been shut down for years...,I's bean shut dewn fo' 'ears
 ,,,,
 SLUG_CULTIST_INTRO_LN1,Hey.,Oi.,Oye.,Hallo.
 SLUG_CULTIST_INTRO_LN2,Do things for me.,ew 'ings fo' 'e.,Házme un favor.,Tu etwas für mich.
+,,,,
+BIRB_INTRO_LN1,Hey!,Oi!,Hey!,Hallo!
+BIRB_INTRO_LN2,Welcome to my trading post!,Wel'ome tew moi tra'in' pewst!,Bienvenido a mi negocio!,Wilkommen zu meinen Handelsposten!
+,,,,
+BIRB_POST_ITEMS,Post items:,Pewst i'ems:,Objetos del Comerciante:,
+BIRB_YOUR_ITEMS,Your items:,Yo' i'ems,Tus Objetos,Deine Gegenstände
+,,,,
+BIRB_SLCT_WRN,Choose an item.,Chews aih i'em.,Selecciona un objeto.,Wähle ein Gegenstand aus.
+BIRB_NO_TRADE_WRN,Can't trade that item.,"Cahnt tra' tah oitem, bruv.",No puedo intercambiar eso.,Ich kann diesen Gegenstand nicht tauschen.
+,,,,
+NEW_BIOME_WECLOME,Welcome to,elcome 'ew ,Bienvenido a,Wilkommen zu
+,,,,
+LABS_TTL,The Labs,eh La-boreh-tory,Los Laboratorios,Die Labore
+CAVES_TTL,The Caves,eh Ca'erns,La Caverna,Die Höhlen
+DEEP_LABS_TTL,The Deep Labs,eh Deep La-boreh-torees,Los Laboratorios Subterráneos,Dem tiefen Labor
+FREEZERS_TTL,The Freezers,eh Fre'zahs,Los Laboratorios Helados,Die Gefrierschränke
+TOXIC_CAVERNS_TTL,The Toxic Caverns,eh Toixic Ca'erns,La Caverna Ponzoñosa,Die toxischen Kavernen
+TECH_LABS_TTL,The Tech Labs,eh Technoglical La-boreh-tory,Los laboratorios Avanzados,Die Techniklabore
+,,,,
+PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
+AK47_ITM,AK-47,Ay Kay For'y Seven,AK-47,ASK-47
+REVOLVER_ITM,Revolver,Revalveh,Revólver,Revolver
+PUMP_SHOTGUN_ITM,Pump Shotgun,Pewmp Shewtgun,Escopeta de Bombeo,Schrotflinte
+FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Flammenwerfer
+ASSAULT_RIFLE_ITM,Assault Rifle,Illegal,Rifle de Asalto,Sturmgewehr
+HOMING_BOOMERANG_ITM,Homing Boomerang,Abodin' Bewmerang,Boomerang Seguidor,Aufsteigender Bumerang
+MULTISHOT_BOOMERANG_ITM,Multishot Boomerang,Se'eral Bewmerang,Boomerang Múltiple,Mehrschuss-Bumerang
+MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun

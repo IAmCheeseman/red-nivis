@@ -126,7 +126,7 @@ margin_right = 175.0
 margin_bottom = 210.0
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 4 )
-text = "Exit"
+text = "EXIT_BTN"
 script = ExtResource( 6 )
 isNegative = true
 

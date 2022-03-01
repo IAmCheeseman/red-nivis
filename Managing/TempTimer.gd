@@ -41,6 +41,6 @@ static func idle_frame(node:Node, frames:int=1):
 static func timer(node:Node, time:float=1):
 	var t := DeltaTimer_.new()
 	t.timeLeft = time
-	node.add_child(t)
+	node.call_deferred("add_child", t)
 	
 	return t
