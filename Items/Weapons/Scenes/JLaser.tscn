@@ -8,7 +8,7 @@
 gunType = 2
 damage = 13.0
 cooldown = 0.1
-magazineSize = 100
+magazineSize = 25
 kickUp = 1.0
 bulletSpawnDist = 24.0
 ssStrength = 1.0
