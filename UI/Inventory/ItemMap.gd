@@ -75,6 +75,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/MultishotBoomerang.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/MultishotBoomerang.png"
 	},
+	"j-laser" : {
+		"key" : "j-laser",
+		"name" : "J_LASER_ITM",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/JLaser.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/JLaser.png"
+	},
 	# TOXIC CAVERNS ITEMs
 	"bullet-chainsaw" : {
 		"key" : "bullet-chainsaw",

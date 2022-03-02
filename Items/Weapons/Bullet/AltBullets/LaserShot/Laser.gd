@@ -24,7 +24,7 @@ func _ready():
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider is TileMap:
-			raycast.cast_to = direction*position.distance_to(collider.position)
+			raycast.cast_to = direction*position.distance_to(raycast.get_collision_point())
 			raycast.force_raycast_update()
 
 		if collider.is_in_group("hurtbox"):
