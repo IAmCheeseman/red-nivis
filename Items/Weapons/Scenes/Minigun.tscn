@@ -6,12 +6,12 @@
 
 [node name="Minugun" instance=ExtResource( 2 )]
 position = Vector2( 0, 9 )
-damage = 12.0
+damage = 9.0
 accuracy = 6.0
 cooldown = 0.4
 reloadSpeed = 2.0
 projScale = 0.75
-recoil = 20.0
+recoil = 10.0
 magazineSize = 125
 kickUp = 2.0
 bulletSpawnDist = 28.0
@@ -19,7 +19,7 @@ isTwoHanded = true
 
 [node name="GunLogic" parent="." index="0"]
 script = ExtResource( 3 )
-cooldownReduceRate = 0.02
+cooldownReduceRate = 0.03
 
 [node name="Pivot" parent="." index="1"]
 position = Vector2( 0, 1 )
