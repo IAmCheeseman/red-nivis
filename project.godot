@@ -64,27 +64,27 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/NPC/Dialog/DialogInteraction.gd"
 }, {
-"base": "",
+"base": "Reference",
 "class": "DiscordActivity",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_activity.gdns"
 }, {
-"base": "",
+"base": "Reference",
 "class": "DiscordActivityAssets",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_activity_assets.gdns"
 }, {
-"base": "",
+"base": "Reference",
 "class": "DiscordActivityManager",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_activity_manager.gdns"
 }, {
-"base": "",
+"base": "Reference",
 "class": "DiscordActivityParty",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_activity_party.gdns"
 }, {
-"base": "",
+"base": "Reference",
 "class": "DiscordActivitySecrets",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_activity_secrets.gdns"
@@ -94,7 +94,7 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_activity_timestamps.gdns"
 }, {
-"base": "",
+"base": "Reference",
 "class": "DiscordCore",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_core.gdns"
@@ -109,7 +109,7 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_lobby_manager.gdns"
 }, {
-"base": "",
+"base": "Reference",
 "class": "DiscordLobbyTransaction",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_lobby_transaction.gdns"
@@ -124,12 +124,12 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_party_size.gdns"
 }, {
-"base": "",
+"base": "Reference",
 "class": "DiscordResult",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_result.gdns"
 }, {
-"base": "",
+"base": "Reference",
 "class": "DiscordUser",
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_user.gdns"
@@ -223,6 +223,66 @@ _global_script_classes=[ {
 "class": "SoundManager",
 "language": "GDScript",
 "path": "res://Managing/SoundManager.gd"
+}, {
+"base": "",
+"class": "SteamAPI",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_api.gdns"
+}, {
+"base": "",
+"class": "SteamCallback",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_callback.gdns"
+}, {
+"base": "",
+"class": "SteamFriends",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_friends.gdns"
+}, {
+"base": "Node",
+"class": "SteamI",
+"language": "GDScript",
+"path": "res://addons/steam_api/steam_i.gd"
+}, {
+"base": "",
+"class": "SteamId",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_id.gdns"
+}, {
+"base": "",
+"class": "SteamLeaderboard",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_leaderboard.gdns"
+}, {
+"base": "",
+"class": "SteamLeaderboardEntries",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_leaderboard_entries.gdns"
+}, {
+"base": "",
+"class": "SteamLeaderboardEntry",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_leaderboard_entry.gdns"
+}, {
+"base": "",
+"class": "SteamLeaderboardFindResult",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_find_leaderboard_result.gdns"
+}, {
+"base": "",
+"class": "SteamLeaderboardScoreUploaded",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_leaderboard_uploaded.gdns"
+}, {
+"base": "",
+"class": "SteamLeaderboardScoresDownloaded",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_leaderboard_scores_downloaded.gdns"
+}, {
+"base": "",
+"class": "SteamUserStats",
+"language": "NativeScript",
+"path": "res://addons/steam_api/steam_user_stats.gdns"
 }, {
 "base": "Reference",
 "class": "TempTimer",
@@ -323,6 +383,18 @@ _global_script_class_icons={
 "RoomPlacer": "",
 "Rooms": "",
 "SoundManager": "",
+"SteamAPI": "",
+"SteamCallback": "",
+"SteamFriends": "",
+"SteamI": "",
+"SteamId": "",
+"SteamLeaderboard": "",
+"SteamLeaderboardEntries": "",
+"SteamLeaderboardEntry": "",
+"SteamLeaderboardFindResult": "",
+"SteamLeaderboardScoreUploaded": "",
+"SteamLeaderboardScoresDownloaded": "",
+"SteamUserStats": "",
 "TempTimer": "",
 "ToolTipGenerator": "",
 "Tooltip": "",
@@ -357,6 +429,7 @@ Cursor="*res://UI/Cursor/Cursor.tscn"
 FastTravel="*res://World/Props/FastTravelStation/FastTravel.gd"
 ToolTip="*res://UI/ToolTip/ToolTip.tscn"
 Discord="*res://addons/discord_game_sdk/discord.gd"
+Steam="*res://addons/steam_api/steam.gd"
 
 [debug]
 
@@ -377,7 +450,7 @@ search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/discord_game_sdk/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/discord_game_sdk/plugin.cfg", "res://addons/steam_api/plugin.cfg" )
 
 [gdnative]
 
