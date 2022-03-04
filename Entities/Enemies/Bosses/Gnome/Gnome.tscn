@@ -663,6 +663,7 @@ difficulty = 2
 useDeathParticles = false
 isBoss = true
 freeOnDeath = false
+steamAchievement = "GNOME"
 
 [node name="Collisions" type="Node2D" parent="."]
 

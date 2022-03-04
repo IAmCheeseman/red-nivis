@@ -269,6 +269,7 @@ kbAmount = 0.0
 difficulty = 2
 isBoss = true
 freeOnDeath = false
+steamAchievement = "HANK"
 
 [node name="Timers" type="Node" parent="."]
 
