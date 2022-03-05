@@ -42,7 +42,7 @@ func _ready() -> void:
 	
 	var biome = worldData.get_biome_by_index(worldData.get_current_room().biome)
 	
-	GameManager.rpBiome = "Exploring %s" % biome.name
+	GameManager.rpBiome = biome.name
 	GameManager.update_rp()
 	
 	var timer = Timer.new()

@@ -15,7 +15,7 @@ const BIOMES = [
 	"res://World/Biomes/Lab.tres",
 	"res://World/Biomes/Caves.tres",
 	"res://World/Biomes/DeepLabs.tres",
-	"res://World/Biomes/MeadowCaverns.tres",
+	"res://World/Biomes/Freezers.tres",
 ]
 
 func generate_world(seed_:int=randi()) -> Array:

@@ -109,7 +109,7 @@ func _input(event):
 func update_rp_gun() -> void:
 	var slot = slots.get_child(inventory.selectedSlot)
 	if slot.item == "": GameManager.rpGun = "No Gun"
-	else: GameManager.rpGun = "Using %s" % ItemMap.ITEMS[slot.item].name
+	else: GameManager.rpGun = ItemMap.ITEMS[slot.item].name
 	GameManager.update_rp()
 
 

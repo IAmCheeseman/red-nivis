@@ -41,8 +41,8 @@ func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
 	var activity = Discord.Activity.new()
 	activity.set_type(Discord.ActivityType.Playing)
 	activity.set_name("Red Nivis")
-	activity.set_state(state)
-	activity.set_details(details)
+	activity.set_state("Exploring %s" % tr(state))
+	activity.set_details("Using %s" % tr(details))
 
 	var assets = activity.get_assets()
 	assets.set_large_image("icon")
