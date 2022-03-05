@@ -445,6 +445,7 @@ difficulty = 2
 useDeathParticles = false
 isBoss = true
 freeOnDeath = false
+steamAchievement = "BILLY"
 
 [node name="Timers" type="Node" parent="."]
 

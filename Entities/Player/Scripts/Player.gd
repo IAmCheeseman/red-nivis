@@ -238,7 +238,7 @@ func _input(event: InputEvent) -> void:
 		dropDownTimer.start(.1)
 	# Controller Controls
 	if event is InputEventJoypadMotion:
-		GameManager.usingController = true
+		GameManager.usingController = event.axis_value < .5
 	elif event is InputEventMouseMotion:
 		GameManager.usingController = false
 
@@ -279,6 +279,7 @@ func _on_a_press_window_timeout(): triedJumpRecent = false
 
 
 func die():
+	Steam.set_achievement("DEATH")
 	GameManager.clear_run()
 	GameManager.inGUI = true
 	state = states.DEAD
