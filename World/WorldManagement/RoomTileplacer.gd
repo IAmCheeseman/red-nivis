@@ -39,6 +39,7 @@ func create_room() -> void:
 	world.platforms.z_index = 0
 	world.tilesContainer.add_child(world.platforms)
 	
+
 	world.background = biome.background.instance()
 	world.background.z_index = -3
 	world.tilesContainer.add_child(world.background)

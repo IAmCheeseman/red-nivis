@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://World/Decorators/Decorator.gd" type="Script" id=1]
+[ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=2]
+[ext_resource path="res://World/Props/Foliage/Grass/Freezers/FreezersGrass.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Props/Foliage/Rock/Freezers/FreezersRock.tscn" type="PackedScene" id=4]
+
+[resource]
+script = ExtResource( 1 )
+roomTemplates = ExtResource( 2 )
+roofProps = [  ]
+roofPropsChance = [  ]
+groundProps = [ ExtResource( 3 ), ExtResource( 4 ) ]
+groundPropsChance = [ 1.0, 1.0 ]
