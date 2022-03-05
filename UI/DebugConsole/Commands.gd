@@ -64,6 +64,8 @@ func ability(n: String) -> String:
 			a = "res://Items/Upgrades/Teleport/Teleport.tres"
 		"boots":
 			a = "res://Items/Upgrades/DoubleJump/DoubleJump.tres"
+		"gloves":
+			a = "res://Items/Upgrades/StickyGlove/WallJump.tres"
 		"grenade":
 			a = "res://Items/Upgrades/Grenade/Grenade.tres"
 		"hookshot":
