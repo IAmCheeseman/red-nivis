@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=7]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=8]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=9]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=10]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=11]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=13]
@@ -98,6 +99,20 @@ hframes = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "Spin"
 anims/Spin = SubResource( 1 )
+
+[node name="Eye1" type="Light2D" parent="Sprite"]
+position = Vector2( -4, -0.742806 )
+scale = Vector2( 0.291667, 0.354167 )
+texture = ExtResource( 10 )
+texture_scale = 0.03
+color = Color( 1, 0, 0, 1 )
+
+[node name="Eye2" type="Light2D" parent="Sprite"]
+position = Vector2( 2.25, 0.00719374 )
+scale = Vector2( 0.354167, 0.354167 )
+texture = ExtResource( 10 )
+texture_scale = 0.03
+color = Color( 1, 0, 0, 1 )
 
 [node name="Collisions" type="Node2D" parent="."]
 

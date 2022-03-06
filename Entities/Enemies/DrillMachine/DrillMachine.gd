@@ -152,7 +152,7 @@ func accel_to_point(point:Vector2, delta:float) -> void:
 		vel = vel.move_toward(Vector2.ZERO, friction*delta)
 	
 	sprite.rotation_degrees = vel.x*.7
-	sprite.flip_h = vel.x > 0
+	sprite.scale.x = -1 if vel.x > 0 else 1
 	
 	# Bouncing off walls and moving through platforms
 	bounceRay.cast_to = vel.normalized()*sprite.texture.get_width()*.25

@@ -70,7 +70,7 @@ func _physics_process(delta:float) -> void:
 		state = states.ATTACK
 	
 	sprite.rotation_degrees = vel.x*.7
-	sprite.flip_h = vel.x > 0
+	sprite.scale.x = -1 if vel.x > 0 else 1
 	
 	match state:
 		states.WANDER:

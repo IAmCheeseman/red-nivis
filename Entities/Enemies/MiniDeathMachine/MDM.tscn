@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDM.gd" type="Script" id=5]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=6]
 [ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDM.png" type="Texture" id=7]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=8]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=9]
@@ -58,6 +59,14 @@ wanderRange = 32
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 7 )
 hframes = 2
+frame = 1
+
+[node name="Eye1" type="Light2D" parent="Sprite"]
+position = Vector2( -1, 0 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+texture_scale = 0.03
+color = Color( 1, 0, 0, 1 )
 
 [node name="Collisions" type="Node2D" parent="."]
 

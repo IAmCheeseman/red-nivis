@@ -37,7 +37,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	sprite.rotation_degrees = vel.x*.7
-	sprite.flip_h = vel.x > 0
+	sprite.scale.x = 1 if vel.x < 0 else -1
 	
 	if !player:
 		player = playerDetection.get_player()

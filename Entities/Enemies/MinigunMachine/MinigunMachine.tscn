@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/Minigun.gd" type="Script" id=7]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=8]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=9]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=11]
@@ -127,6 +128,21 @@ radius = 112.0
 [sub_resource type="CircleShape2D" id=8]
 radius = 11.0
 
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Eye1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.625, 0 ) ]
+}
+
 [sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
@@ -154,6 +170,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ Vector2( 0, 13 ), Vector2( 0, 11 ), Vector2( 0, 12 ), Vector2( 0, 14 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Eye1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -2, 0 ), Vector2( -2, -2 ), Vector2( -2, -1 ), Vector2( -2, 1 ) ]
+}
 
 [node name="MinigunMachine" type="KinematicBody2D"]
 collision_layer = 0
@@ -165,9 +193,10 @@ kbAmount = 32.0
 texture = ExtResource( 2 )
 offset = Vector2( 0, -0.5 )
 hframes = 4
+frame = 2
 
 [node name="Minigun" type="Node2D" parent="Sprite"]
-position = Vector2( 0, 13 )
+position = Vector2( 0, 12 )
 script = ExtResource( 7 )
 startCooldown = 0.2
 minCooldown = 0.1
@@ -195,6 +224,13 @@ anims/WindUp = SubResource( 2 )
 anims/cooldown = SubResource( 3 )
 anims/init = SubResource( 4 )
 
+[node name="Eye1" type="Light2D" parent="Sprite"]
+position = Vector2( -1.625, 0 )
+scale = Vector2( 0.385417, 0.5 )
+texture = ExtResource( 8 )
+texture_scale = 0.03
+color = Color( 1, 0, 0, 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 6 )
@@ -203,6 +239,7 @@ shape = SubResource( 5 )
 [node name="Collisions" type="Node2D" parent="."]
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 4 )]
+visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
@@ -259,6 +296,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
+anims/RESET = SubResource( 10 )
 anims/default = SubResource( 9 )
 
 [connection signal="death" from="." to="MoneyDropper" method="drop_money"]
