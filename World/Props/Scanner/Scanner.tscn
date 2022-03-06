@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/Props/Scanner/Scanner.png" type="Texture" id=1]
 [ext_resource path="res://Managing/Interaction/Iteraction.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Props/Scanner/Scanner.gd" type="Script" id=3]
 [ext_resource path="res://Items/ItemSpawn.tscn" type="PackedScene" id=4]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=5]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=6]
+[ext_resource path="res://World/Props/Scanner/ScannerHum.wav" type="AudioStream" id=7]
+[ext_resource path="res://World/Props/Constructor/DoneDing.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "BuildUp"
@@ -198,6 +201,16 @@ action = "INTR_SCN_ITM"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
 position = Vector2( 0, 23.5 )
 shape = SubResource( 4 )
+
+[node name="HumSFX" type="Node2D" parent="."]
+script = ExtResource( 6 )
+audio = ExtResource( 7 )
+bus = "Reverb"
+
+[node name="DingSFX" type="Node2D" parent="."]
+script = ExtResource( 6 )
+audio = ExtResource( 8 )
+bus = "SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="timeout" from="ShakeTimer" to="." method="_on_shake_timer_timeout"]

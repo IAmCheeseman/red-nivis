@@ -7,6 +7,8 @@ onready var interaction = $Iteraction
 onready var itemSpawn = $ItemSpawn
 onready var lightTween = $Light/Tween
 onready var light = $Light
+onready var humSFX = $HumSFX
+onready var dingSFX = $DingSFX
 
 var ending := false
 var worldPos = GameManager.worldData.position
@@ -42,6 +44,7 @@ func _on_animation_finished(anim_name: String) -> void:
 		)
 		shakeTimer.start()
 		lightTween.start()
+		humSFX.play()
 	elif ending:
 		ending = false
 		anim.play("RESET")
@@ -54,6 +57,7 @@ func _on_animation_finished(anim_name: String) -> void:
 		)
 		lightTween.start()
 		emit_signal("done")
+		#dingSFX.play()
 
 
 func _on_shake_timer_timeout() -> void:
