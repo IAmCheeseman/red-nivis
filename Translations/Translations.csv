@@ -2,7 +2,7 @@ keys,en,en_GB,es,de
 NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir,Keine Übersetzung verfügbar
 ,,,,
 BACK_BTN,Back,"go back, m8",Atrás,Zurück
-EXIT_BTN,Exit,,,
+EXIT_BTN,Exit,Gew back tew teh action,Continuar,
 QUIT_BTN,Quit,Col'oni's O'fer Gahms,Quitar,Verlassen
 CLEAR_CONFIRM,Do you really want to clear your current game?,Do 'ew reel'eh wa'a cle'ah 'er curen' gahm?,¿En serio quieres borrar tu partida?,Möchtest du wirklich deinen derzeitigen Spielstand leeren?
 QUIT_CONFIRM,Do you really want to quit?,Do 'ew reel'eh wa'a quit?,¿En serio quieres abandonar?,Möchtest du wirklich verlassen?
@@ -13,6 +13,13 @@ PLAY_BTN,Play,Plah,Jugar,Spielen
 CONTINUE_BTN,Continue,keep goin' bruv,Continuar,Weiter
 MAIN_MENU_BTN,Main Menu,Main Men'ew,Volver al Menú,Hauptmenü
 INTERACT_RQST,Hit <interact> \n to,Heet <interact> \n tew,Presiona <interact> \n para,Benutze <interact> \n um
+,,,,
+GAME_OVER,Game Over,"ew lost, bruv",Fin del Juego,
+KILLS_GO,Kills:,Keals:,Bajas:,
+SCORE_GO,Score:,Scoor:,Puntuación:,
+TIME_GO,Time:,Toime:,Tiempo:,
+TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,
+EXIT_GO,Exit,I'll throw 'n da' towel,Salir,
 ,,,,
 INTR_TALK,talk,speak wi' tongue,Hablar,Sprechen
 INTR_PCK_UP,pick up,raise tew 'ew,Tomar,Aufheben
@@ -64,11 +71,11 @@ AUDIO_MASTER,Master,Mahstah,General,General
 AUDIO_SFX,SFX,SFX,SFX,SFX
 AUDIO_MUSIC,Music,Mew'sik,Música,Musik
 ,,,,
-CREDITS_TTL,Credits,Mah m8s,,
-CREDITS_DEV,Created By,Crea'or,,
-CREDITS_TRANSLATOR,Translators,Tongue Mewvmentors,,
-CREDITS_PLAYTESTER,Playtesters,Plah Tes'ahs,,
-CREDITS_SPECIAL_THX,Special Thanks,Cool Peo'le,,
+CREDITS_TTL,Credits,Mah m8s,Créditos,
+CREDITS_DEV,Created By,Crea'or,Hecho por,
+CREDITS_TRANSLATOR,Translators,Tongue Mewvmentors,Traducciones,
+CREDITS_PLAYTESTER,Playtesters,Plah Tes'ahs,Playtesters,
+CREDITS_SPECIAL_THX,Special Thanks,Cool Peo'le,Gracias Especiales,
 ,,,,
 HANK_TTL,H.A.N.K.,Big robo',H.A.N.K.,H.A.N.K.
 GNOME_TTL,Gnome (With a Stick),Noom (Wi' eai steek),Palo-Gnomo,Zwerg (Mit einem Stock)
@@ -113,13 +120,17 @@ TOXIC_CAVERNS_TTL,The Toxic Caverns,eh Toixic Ca'erns,La Caverna Ponzoñosa,Die 
 TECH_LABS_TTL,The Tech Labs,eh Technoglical La-boreh-tory,Los laboratorios Avanzados,Die Techniklabore
 ,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
-AK47_ITM,AK-47,Ay Kay For'y Seven,AK-47,ASK-47
+AK47_ITM,AK-47,Ay Kay For'y Seven,AK-47,AK-47
 REVOLVER_ITM,Revolver,Revalveh,Revólver,Revolver
-GRENADE_LAUNCHER_ITM,Grenade Launcher,,,
+GRENADE_LAUNCHER_ITM,Grenade Launcher,Gra'newd Lewchah,Lanzagranadas,
 PUMP_SHOTGUN_ITM,Pump Shotgun,Pewmp Shewtgun,Escopeta de Bombeo,Schrotflinte
 FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Flammenwerfer
 ASSAULT_RIFLE_ITM,Assault Rifle,Illegal,Rifle de Asalto,Sturmgewehr
 HOMING_BOOMERANG_ITM,Homing Boomerang,Abodin' Bewmerang,Boomerang Seguidor,Aufsteigender Bumerang
 MULTISHOT_BOOMERANG_ITM,Multishot Boomerang,Se'eral Bewmerang,Boomerang Múltiple,Mehrschuss-Bumerang
 MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun
-BULLET_CHAINSAW_ITM,Bullet Chainsaw,,,
+BULLET_CHAINSAW_ITM,Bullet Chainsaw,Bul'et Chahnsah,Balasierra,
+GOUDA_GREASER_ITM,Gouda Greaser,Americahn Fewd,Cañón de Queso,
+CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,
+SOAP_SLAPPER_ITM,Soap Launcher,Forcfal Violen' Cleansah,Lanzador de Jabón,
+J_LASER_ITM,J-Laser,J-LaZer,Láser J,

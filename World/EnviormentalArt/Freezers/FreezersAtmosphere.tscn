@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://World/EnviormentalArt/Freezers/FreezersAtmosphere.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise;
+uniform float strength = .5; 
+uniform float size = 5;
+uniform float speed = 250.0;
+uniform float steps = 3.0;
+
+void fragment() {
+	vec2 offset = vec2(0, TIME / speed);
+	float alpha = texture(noise, UV + offset * size).r;
+	COLOR = vec4(texture(TEXTURE, UV).rgb, alpha * strength);
+}"
+
+[sub_resource type="OpenSimplexNoise" id=16]
+period = 10.4
+
+[sub_resource type="NoiseTexture" id=17]
+seamless = true
+noise = SubResource( 16 )
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = SubResource( 12 )
+shader_param/strength = 0.301
+shader_param/size = 5.905
+shader_param/speed = 2500.0
+shader_param/steps = 0.0
+shader_param/noise = SubResource( 17 )
+
+[sub_resource type="Curve" id=14]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.0769231, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.877622, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.491891, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 14 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+emission_shape = 2
+emission_box_extents = Vector3( 1000, 1000, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 35.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 4.0
+scale_random = 0.87
+scale_curve = SubResource( 13 )
+
+[node name="FreezersAtmosphere" type="Node2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="Mist" type="ColorRect" parent="."]
+material = SubResource( 18 )
+margin_left = -1841.0
+margin_top = -1841.0
+margin_right = 1841.0
+margin_bottom = 1841.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Snow" type="Particles2D" parent="."]
+z_index = -2
+amount = 1500
+lifetime = 25.0
+preprocess = 15.0
+visibility_rect = Rect2( -1500, -1500, 3000, 3000 )
+local_coords = false
+process_material = SubResource( 15 )

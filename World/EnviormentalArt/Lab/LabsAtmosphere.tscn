@@ -3,7 +3,7 @@
 [ext_resource path="res://World/EnviormentalArt/Lab/LabsAtmosphere.gd" type="Script" id=1]
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=2]
 
-[sub_resource type="Shader" id=12]
+[sub_resource type="Shader" id=15]
 code = "shader_type canvas_item;
 
 uniform sampler2D noise;
@@ -21,17 +21,17 @@ void fragment() {
 [sub_resource type="OpenSimplexNoise" id=14]
 period = 10.4
 
-[sub_resource type="NoiseTexture" id=15]
+[sub_resource type="NoiseTexture" id=16]
 seamless = true
 noise = SubResource( 14 )
 
 [sub_resource type="ShaderMaterial" id=13]
-shader = SubResource( 12 )
+shader = SubResource( 15 )
 shader_param/strength = 0.301
 shader_param/size = 5.905
 shader_param/speed = 2500.0
 shader_param/steps = 0.0
-shader_param/noise = SubResource( 15 )
+shader_param/noise = SubResource( 16 )
 
 [sub_resource type="CanvasItemMaterial" id=11]
 particles_animation = true
