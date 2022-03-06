@@ -9,7 +9,7 @@ onready var naiWarning = find_node("NoAvailableItemsWarning")
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 var shopData = preload("res://Entities/NPC/Birb/TradingPostData.tres")
 
-var selectedItem: CustomButton\
+var selectedItem: CustomButton
 
 
 func _ready() -> void:
@@ -85,7 +85,8 @@ func swap_items(button: CustomButton) -> void:
 	
 	# Removing the items from the shop
 	shopData.tradedWeapons.append(selectedItem.itemID)
-	shopData.tradedWeapons.append(button.itemID)
+	for b in button.get_parent().get_children():
+		shopData.tradedWeapons.append(b.itemID)
 	selectedItem = null
 	
 	# Refreshing everything
@@ -93,6 +94,8 @@ func swap_items(button: CustomButton) -> void:
 	Utils.free_children(shopInven)
 	nsWarning.show()
 	naiWarning.hide()
+	
+	Steam.set_achievement("BIRB")
 
 
 # Loops through every item in the game looking for
