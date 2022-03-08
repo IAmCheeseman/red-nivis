@@ -4,6 +4,7 @@ onready var score = find_node("Score")
 onready var highScore = find_node("HighScore")
 onready var kills = find_node("Kills")
 onready var time = find_node("Time")
+onready var leaderboard = $CanvasLayer/Leaderboard
 
 export var continueScene := "res://World/StartingArea/StartingArea.tscn"
 
@@ -38,3 +39,7 @@ func _on_continue_button_up():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_leaderboards_pressed() -> void:
+	leaderboard.show()

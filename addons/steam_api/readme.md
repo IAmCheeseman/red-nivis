@@ -11,9 +11,12 @@ Now you can use the following functions:
 # check is steam integration is working and enabled, useful if you publish to multiple stores
 Steam.is_init()
 
-# acheivements
+# achievements
+# check if player already unlocked this achievement
+var has_alredy_unlocked_achievement:bool = Steam.get_achievement("gator_god")
+# give the player this achievement, benign if they already have it
 Steam.set_achievement("gator_god")
-Steam.get_achievement("gator_god")
+# clear this achievement (only for debugging)
 Steam.clear_achievement("gator_god")
 
 # leaderboards

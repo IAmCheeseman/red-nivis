@@ -15,7 +15,7 @@ onready var dieTween = $DieTween
 onready var trail = $Trail
 
 #var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
-var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
+var particleScene = preload("res://Entities/Effects/ShockwaveEffect_Air.tscn")
 
 signal hit_wall(bullet)
 signal hit_enemy(bullet)
@@ -56,7 +56,8 @@ func _on_QueueArea_body_entered(body):
 
 func add_particles():
 	var newParticles = particleScene.instance()
-	newParticles.position = position
+	newParticles.position = global_position
+	newParticles.finalSize = .1
 	get_parent().add_child(newParticles)
 
 

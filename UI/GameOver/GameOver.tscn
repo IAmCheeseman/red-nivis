@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=3]
 [ext_resource path="res://UI/GameOver/GameOver.gd" type="Script" id=4]
+[ext_resource path="res://UI/Leaderboard/Leaderboard.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 outline_size = 2
@@ -116,9 +117,9 @@ text = "High Score
 scroll_active = false
 
 [node name="ContinueOptions" type="HBoxContainer" parent="."]
-margin_left = 132.0
+margin_left = 90.0
 margin_top = 168.0
-margin_right = 228.0
+margin_right = 270.0
 margin_bottom = 184.0
 size_flags_horizontal = 4
 
@@ -129,14 +130,29 @@ custom_fonts/font = ExtResource( 2 )
 text = "Try Again"
 script = ExtResource( 3 )
 
-[node name="Quit" type="Button" parent="ContinueOptions"]
+[node name="LeaderBoards" type="Button" parent="ContinueOptions"]
 margin_left = 64.0
-margin_right = 96.0
+margin_right = 144.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 2 )
+text = "Leaderboards"
+script = ExtResource( 3 )
+
+[node name="Quit" type="Button" parent="ContinueOptions"]
+margin_left = 148.0
+margin_right = 180.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 2 )
 text = "Quit"
 script = ExtResource( 3 )
 isNegative = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 127
+
+[node name="Leaderboard" parent="CanvasLayer" instance=ExtResource( 5 )]
+visible = false
+
 [connection signal="pressed" from="ContinueOptions/NewRun" to="." method="_on_continue_button_up"]
+[connection signal="pressed" from="ContinueOptions/LeaderBoards" to="." method="_on_leaderboards_pressed"]
 [connection signal="pressed" from="ContinueOptions/Quit" to="." method="_on_quit_pressed"]

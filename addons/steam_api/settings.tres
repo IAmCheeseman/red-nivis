@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 disable = false
 app_id = "1928130"
-sdk_dir = "/home/xander-swan/Steamworks/sdk"
+sdk_dir = "/home/sam/work/godot-steam-api/lib/steam-sdk"

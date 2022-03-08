@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Leaderboard/Leaderboard.gd" type="Script" id=1]
+[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/Assets/FFFForwa.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=4]
+
+[node name="Leaderboard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.223529, 0.290196, 0.313726, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -6.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="Buttons"]
+margin_left = 148.0
+margin_top = 198.0
+margin_right = 211.0
+margin_bottom = 214.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 2 )
+text = "BACK_BTN"
+script = ExtResource( 4 )
+isNegative = true
+
+[node name="Lists" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Friends" type="VBoxContainer" parent="Lists"]
+margin_right = 153.0
+margin_bottom = 170.0
+size_flags_horizontal = 7
+
+[node name="Title" type="Label" parent="Lists/Friends"]
+margin_right = 153.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+text = "Friends"
+align = 1
+
+[node name="Label" type="RichTextLabel" parent="Lists/Friends"]
+visible = false
+margin_top = 15.0
+margin_right = 153.0
+margin_bottom = 26.0
+rect_clip_content = false
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=gray]#1 - [/color]IAmCheeseman  [color=gray]|[/color]  123134"
+text = "#1 - IAmCheeseman  |  123134"
+fit_content_height = true
+scroll_active = false
+
+[node name="Global" type="VBoxContainer" parent="Lists"]
+margin_left = 157.0
+margin_right = 310.0
+margin_bottom = 170.0
+size_flags_horizontal = 7
+
+[node name="Title" type="Label" parent="Lists/Global"]
+margin_right = 153.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+text = "Global"
+align = 1
+
+[connection signal="pressed" from="Buttons/Back" to="." method="_on_back_pressed"]

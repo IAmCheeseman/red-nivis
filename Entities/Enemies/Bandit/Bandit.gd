@@ -65,7 +65,6 @@ func _physics_process(delta: float) -> void:
 	elif floorCheckerRC.is_colliding():
 		if !prevFloorState: sprite.scale = Vector2(1.5, .5)
 		sprite.scale = sprite.scale.move_toward(Vector2.ONE, 3*delta)
-	
 	vel.y = move_and_slide(vel).y
 	
 	prevFloorState = floorCheckerRC.is_colliding()
@@ -74,7 +73,7 @@ func _physics_process(delta: float) -> void:
 func idle_state(delta, playAnim) -> void:
 	animate(playAnim)
 	vel.x = lerp(vel.x, 0, frict*delta)
-	sprite.flip_h = global_position.x < player.global_position.x
+	#sprite.flip_h = global_position.x < player.global_position.x
 
 
 func select_new_target_pos() -> void:

@@ -9,4 +9,4 @@
 [resource]
 script = ExtResource( 1 )
 enemies = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
-chances = [ 0.5, 0.1, 0.5, 1.0 ]
+chances = [ 1.0, 0.5, 1.0, 0.1 ]
