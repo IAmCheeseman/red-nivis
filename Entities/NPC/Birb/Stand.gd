@@ -41,6 +41,7 @@ func open_shop(open:=true) -> void:
 	Utils.free_children(shopInven)
 	_on_player_weapon_chosen(null)
 	nsWarning.show()
+	naiWarning.hide()
 	yield(TempTimer.idle_frame(self), "timeout")
 	GameManager.inGUI = open
 	
@@ -61,6 +62,12 @@ func _on_player_weapon_chosen(button: CustomButton) -> void:
 		# Hiding any warnings
 		nsWarning.hide()
 		naiWarning.hide()
+		
+		if inventory.items[button.get_index()].key == "pistol":
+			nsWarning.hide()
+			naiWarning.show()
+			update_items([], shopInven, "swap_items")
+			return
 		
 		# Updating the shop items
 		var items = find_same_tier_items(inventory.items[button.get_index()].tier)

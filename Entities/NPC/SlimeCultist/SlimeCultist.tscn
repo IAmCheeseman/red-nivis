@@ -53,10 +53,12 @@ hframes = 3
 frame = 0
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 position = Vector2( -6, -5 )
 shape = SubResource( 1 )
 
 [node name="Iteraction" parent="." index="2"]
+visible = false
 position = Vector2( -11, -45 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction" index="1"]
