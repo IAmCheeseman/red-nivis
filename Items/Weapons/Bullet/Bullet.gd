@@ -15,7 +15,7 @@ onready var dieTween = $DieTween
 onready var trail = $Trail
 
 #var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
-var particleScene = preload("res://Entities/Effects/ShockwaveEffect_Air.tscn")
+var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
 
 signal hit_wall(bullet)
 signal hit_enemy(bullet)
@@ -49,6 +49,7 @@ func _on_QueueArea_body_entered(body):
 	if body.is_in_group("Platform"):
 		return
 	emit_signal("hit_wall", self)
+	yield(TempTimer.idle_frame(self), "timeout")
 	add_trail_to_parent()
 	add_particles()
 	queue_free()
@@ -57,7 +58,6 @@ func _on_QueueArea_body_entered(body):
 func add_particles():
 	var newParticles = particleScene.instance()
 	newParticles.position = global_position
-	newParticles.finalSize = .1
 	get_parent().add_child(newParticles)
 
 
