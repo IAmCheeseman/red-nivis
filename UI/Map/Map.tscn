@@ -104,3 +104,5 @@ texture = SubResource( 3 )
 
 [node name="Camera" type="Camera2D" parent="VBoxContainer/ViewportContainer/Viewport"]
 current = true
+
+[node name="Tween" type="Tween" parent="VBoxContainer/ViewportContainer"]

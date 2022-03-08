@@ -14,6 +14,7 @@ var mapData = preload("res://World/WorldManagement/WorldData.tres")
 var inMiniMode := true
 var miniPosition:Vector2
 var miniSize:Vector2
+var playerTarget: Vector2
 
 
 func _ready() -> void:
@@ -25,7 +26,21 @@ func _ready() -> void:
 	
 	camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
 	camera.position = camera.position.round()
-	player.position = camera.position
+	player.position = camera.position - (mapData.moveDir * (tiles.cell_size * 1))
+	playerTarget = camera.position
+	camera.position = player.position
+	
+	var tween = $Tween
+	tween.interpolate_property(
+		player, "position",
+		player.position, playerTarget,
+		.7, Tween.TRANS_ELASTIC
+	)
+	tween.start()
+
+
+func _process(_delta: float) -> void:
+	camera.position = player.position
 
 
 func _input(event: InputEvent) -> void:
