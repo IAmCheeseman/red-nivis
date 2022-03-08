@@ -29,6 +29,15 @@ signal damaged
 func _ready() -> void:
 	if hurtSFXPath: hurtSFX = get_node(hurtSFXPath)
 	health = maxHealth
+	if isBoss:
+		var playerData = preload("res://Entities/Player/Player.tres")
+		playerData.connect("healthChanged", self, "_on_player_took_damage")
+		set_meta("tookDamage", false)
+
+
+func _on_player_took_damage() -> void:
+	if isBoss:
+		set_meta("tookDamage", true)
 
 
 func take_damage(amount:float, dir:Vector2) -> void:
@@ -102,5 +111,8 @@ func _die(dir) -> void:
 	GameManager.player.playerData.kills += 1
 	
 	if steamAchievement != "": Steam.set_achievement(steamAchievement)
+	
+	if isBoss and get_meta("tookDamage"):
+		Steam.set_achievement("NO_HIT")
 	
 	if freeOnDeath: par.queue_free()
