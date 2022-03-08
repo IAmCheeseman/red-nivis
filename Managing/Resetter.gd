@@ -19,6 +19,7 @@ static func reset() -> void:
 	playerData.upgrades.clear()
 	
 	inventory.setup()
+	inventory.selectedSlot = 0
 	
 	worldData.rooms.clear()
 	worldData.playerPos = Vector2(160, 32)
