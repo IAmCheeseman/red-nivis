@@ -41,6 +41,6 @@ func _ready():
 	
 	print("Steam is working: %s" % Steam.is_init())
 	
-	Steam.set_achievement("PARTICIPATE")
+	Achievement.unlock("PARTICIPATE")
 	
 	var _discard = get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")

@@ -110,9 +110,9 @@ func _die(dir) -> void:
 	GameManager.player.playerData.score += scoreInc
 	GameManager.player.playerData.kills += 1
 	
-	if steamAchievement != "": Steam.set_achievement(steamAchievement)
+	if steamAchievement != "": Achievement.unlock(steamAchievement)
 	
 	if isBoss and get_meta("tookDamage"):
-		Steam.set_achievement("NO_HIT")
+		Achievement.unlock("NO_HIT")
 	
 	if freeOnDeath: par.queue_free()

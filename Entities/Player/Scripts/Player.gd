@@ -279,7 +279,7 @@ func _on_a_press_window_timeout(): triedJumpRecent = false
 
 
 func die():
-	Steam.set_achievement("DEATH")
+	Achievement.unlock("DEATH")
 	GameManager.clear_run()
 	GameManager.inGUI = true
 	state = states.DEAD

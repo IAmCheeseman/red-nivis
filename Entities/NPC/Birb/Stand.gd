@@ -102,7 +102,7 @@ func swap_items(button: CustomButton) -> void:
 	nsWarning.show()
 	naiWarning.hide()
 	
-	Steam.set_achievement("BIRB")
+	Achievement.unlock("BIRB")
 
 
 # Loops through every item in the game looking for

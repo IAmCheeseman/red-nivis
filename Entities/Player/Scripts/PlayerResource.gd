@@ -44,6 +44,8 @@ var upgradeSlots = 2
 var upgrades := []
 var unlockedUpgrades := []
 
+var unlockedAchievements := []
+
 var playerObject:KinematicBody2D
 
 var isDead := false

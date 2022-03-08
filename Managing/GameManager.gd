@@ -164,6 +164,7 @@ func save_game() -> void:
 	var saveData := {
 		"highScore" : playerData.highScore,
 		"unlockedUpgrades" : playerData.unlockedUpgrades,
+		"unlockedAchievements" : playerData.unlockedAchievements,
 	}
 	
 	var _ok = dm.save_data(saveData, Globals.GAME_FILE_NAME)
@@ -177,3 +178,8 @@ func load_game() -> void:
 	
 	for i in saveData.keys():
 		playerData.set(i, saveData[i])
+	
+	if Steam.is_init():
+		for i in playerData.unlockedAchievements:
+			Achievement.unlock(i)
+
