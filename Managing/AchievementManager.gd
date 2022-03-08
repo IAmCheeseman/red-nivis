@@ -21,3 +21,24 @@ static func lock(ach: String) -> void:
 	# Clearing save.
 	var playerData = preload("res://Entities/Player/Player.tres")
 	playerData.unlockedAchievements.erase(ach)
+
+# Achievement.is_unlocked()
+
+static func is_unlocked(ach: String) -> bool:
+	if Steam.is_init():
+		return Steam.get_achievement(ach)
+	return false
+
+# Achievement.get_amount()
+
+static func get_amount() -> int:
+	if Steam.is_init():
+		return Steam.user_stats.get_num_achievements()
+	return 0
+
+# Achievement.get_name_by_id()
+
+static func get_name_by_id(idx: int) -> String:
+	if Steam.is_init():
+		return Steam.user_stats.get_achievement_name(idx)
+	return ""
