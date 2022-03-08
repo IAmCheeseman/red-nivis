@@ -7,7 +7,7 @@ onready var label = $Lists/Friends/Label
 var playerData = preload("res://Entities/Player/Player.tres")
 
 
-func _ready() -> void:
+func update_leaderboard() -> void:
 	Steam.set_leaderboard_score("Score", playerData.highScore)
 	var playerScoreGlobal = yield(
 		Steam.get_leaderboard_scores(
@@ -15,6 +15,13 @@ func _ready() -> void:
 		),
 		"done"
 	)
+	for i in globalScores.get_children():
+		if i.name == "Title" or i == label: continue
+		i.queue_free()
+	for i in friendScores.get_children():
+		if i.name == "Title" or i == label: continue
+		i.queue_free()
+	
 	for i in playerScoreGlobal:
 		var newLabel = label.duplicate()
 		newLabel.show()

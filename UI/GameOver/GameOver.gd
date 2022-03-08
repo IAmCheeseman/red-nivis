@@ -43,3 +43,4 @@ func _on_quit_pressed():
 
 func _on_leaderboards_pressed() -> void:
 	leaderboard.show()
+	leaderboard.update_leaderboard()
