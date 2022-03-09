@@ -15,10 +15,10 @@ void fragment()
 {
     float width = texture(noise, vec2(TIME * speed, UV.y + (TIME * speed))).r;
     float mixVal = distance(UV, vec2(0.0, UV.y)) * distance(UV, vec2(1.0, UV.y));
-    mixVal *= width * strength;
+    mixVal *= clamp(width * strength, .2, 1000.0);
     
     float a = mix(0.0, 1.0, mixVal);
-    a = 1.0 - step(a, .5);
+    //a = 1.0 - step(a, .5);
     
     COLOR = vec4(color.r, color.g, color.b, a);
 }"

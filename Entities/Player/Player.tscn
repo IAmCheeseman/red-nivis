@@ -666,28 +666,6 @@ collision_mask = 17
 position = Vector2( 0, 3.5 )
 shape = SubResource( 8 )
 
-[node name="FloorCheckers" type="Node2D" parent="."]
-visible = false
-z_index = 10
-
-[node name="FloorChecker1" type="RayCast2D" parent="FloorCheckers"]
-position = Vector2( 3, 1 )
-enabled = true
-cast_to = Vector2( 1, 4 )
-collision_mask = 17
-
-[node name="FloorChecker2" type="RayCast2D" parent="FloorCheckers"]
-position = Vector2( 0, 2 )
-enabled = true
-cast_to = Vector2( 0, 3 )
-collision_mask = 17
-
-[node name="FloorChecker3" type="RayCast2D" parent="FloorCheckers"]
-position = Vector2( -3, 1 )
-enabled = true
-cast_to = Vector2( -1, 4 )
-collision_mask = 17
-
 [node name="TileCheckers" type="Node2D" parent="."]
 visible = false
 
