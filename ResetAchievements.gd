@@ -1,6 +1,6 @@
 extends Node
 
-export(int, "Add", "Remove") var mode := 0
+export(int, "Unlock", "Lock") var mode := 0
 export var ach := "PARTICIPATE"
 
 func _ready() -> void:
