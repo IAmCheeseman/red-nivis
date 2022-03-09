@@ -97,5 +97,6 @@ func attack() -> void:
 	newBullet.particleScene = preload("res://Entities/Enemies/Web/Web.tscn")
 	newBullet.global_position = global_position
 	newBullet.speed = 120
+	newBullet.damage = 0
 	newBullet.direction = global_position.direction_to(player.global_position)
 	GameManager.spawnManager.spawn_object(newBullet)
