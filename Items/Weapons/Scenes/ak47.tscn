@@ -4,6 +4,7 @@
 [ext_resource path="res://Items/Weapons/Sprites/ak47.png" type="Texture" id=2]
 
 [node name="ak47" instance=ExtResource( 1 )]
+gunType = 2
 damage = 4.0
 accuracy = 6.0
 cooldown = 0.1
