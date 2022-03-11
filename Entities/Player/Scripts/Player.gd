@@ -24,7 +24,6 @@ onready var inventory = $CanvasLayer/Inventory
 onready var hurtSFX = $Sounds/HurtSFX
 onready var jumpSFX = $Sounds/JumpSFX
 onready var walkSFX = $Sounds/WalkSFX
-onready var floorCheckers = $FloorCheckers
 onready var dropDownTimer = $DropDownTimer
 onready var jumpWindow = $APressWindow
 onready var dashCooldown = $DashCooldown
