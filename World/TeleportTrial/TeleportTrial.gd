@@ -49,6 +49,7 @@ func _on_boss_arena_cam_focused() -> void:
 
 
 func _exit_tree() -> void:
+	if player.isDead: return
 	# Resetting the player
 	player.maxHealth = prevMaxHp
 	player.health = prevHealth
