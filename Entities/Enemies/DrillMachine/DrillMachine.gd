@@ -75,7 +75,7 @@ func _physics_process(delta:float) -> void:
 		state = states.WIND_UP
 		windUpTimer.start()
 	
-	rotation = lerp_angle(rotation, 0, 2*delta)
+	if !state in [ states.WIND_UP, states.DEFEND ]: rotation = lerp_angle(rotation, 0, 2*delta)
 	match state:
 		states.WANDER:
 			wander_state(delta)
@@ -114,8 +114,8 @@ func attack_state(_delta:float) -> void:
 
 func wind_up_state(delta: float) -> void:
 	vel = vel.move_toward(-global_position.direction_to(player.global_position)*130, accel*20*delta)
-	look_at(-vel)
-	rotation_degrees -= 90
+	sprite.look_at(player.global_position)
+	sprite.rotation_degrees -= 90
 	
 	if windUpTimer.is_stopped():
 		state = states.ATTACK

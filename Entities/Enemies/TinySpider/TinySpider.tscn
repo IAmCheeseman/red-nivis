@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Enemies/TinySpider/TinySpider.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/TinySpider/TinySpider.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=6]
+[ext_resource path="res://Entities/Enemies/TinySpider/TinySpiderCorpse.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 4.5, 2.5 )
@@ -234,6 +235,7 @@ collision_mask = 17
 maxHealth = 2
 kbAmount = 0.0
 difficulty = 0
+corpseSprites = [ ExtResource( 7 ) ]
 
 [node name="JumpTimer" type="Timer" parent="."]
 one_shot = true
