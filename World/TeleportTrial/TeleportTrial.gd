@@ -37,11 +37,10 @@ func _ready() -> void:
 	player.emit_signal("updateAbilities")
 	
 	inventory.clear()
-	inventory.add_item("pump-shotgun")
-	inventory.add_item("flamethrower")
-#	inventory.selectedSlot += 1
-#	yield(TempTimer.idle_frame(self), "timeout")
-#	inventory.selectedSlot -= 1
+	var items = ["pump-shotgun", "flamethrower"]
+	for i in items:
+		yield(TempTimer.idle_frame(self), "timeout")
+		inventory.add_item(i)
 
 
 func _on_boss_arena_cam_focused() -> void:

@@ -35,7 +35,7 @@ func _ready() -> void:
 		set_meta("tookDamage", false)
 
 
-func _on_player_took_damage() -> void:
+func _on_player_took_damage(_kb: Vector2) -> void:
 	if isBoss:
 		set_meta("tookDamage", true)
 

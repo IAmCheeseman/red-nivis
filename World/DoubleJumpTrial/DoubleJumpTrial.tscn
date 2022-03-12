@@ -15,7 +15,7 @@
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 555.051, 242.025 )
+extents = Vector2( 508.526, 310.513 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 211.5, 140.5 )
@@ -46,19 +46,25 @@ position = Vector2( 1165, 165 )
 [node name="Managing" type="Node2D" parent="."]
 
 [node name="CameraZones" type="Node2D" parent="Managing"]
-visible = false
 z_index = 1
 
 [node name="CameraMoveZone1" parent="Managing/CameraZones" instance=ExtResource( 2 )]
 position = Vector2( 322, 35 )
 
 [node name="CollisionShape2D" parent="Managing/CameraZones/CameraMoveZone1" index="0"]
+position = Vector2( -46.5255, -68.4875 )
 shape = SubResource( 1 )
 
 [node name="CameraMoveZone2" parent="Managing/CameraZones" instance=ExtResource( 2 )]
 position = Vector2( 1106, 83 )
 
 [node name="CollisionShape2D" parent="Managing/CameraZones/CameraMoveZone2" index="0"]
+shape = SubResource( 2 )
+
+[node name="CameraMoveZone3" parent="Managing/CameraZones" instance=ExtResource( 2 )]
+position = Vector2( 1008, -216 )
+
+[node name="CollisionShape2D" parent="Managing/CameraZones/CameraMoveZone3" index="0"]
 shape = SubResource( 2 )
 
 [node name="SpawningManagment" parent="Managing" instance=ExtResource( 11 )]
@@ -236,4 +242,5 @@ __meta__ = {
 
 [editable path="Managing/CameraZones/CameraMoveZone1"]
 [editable path="Managing/CameraZones/CameraMoveZone2"]
+[editable path="Managing/CameraZones/CameraMoveZone3"]
 [editable path="Decoration/DoorBlock"]
