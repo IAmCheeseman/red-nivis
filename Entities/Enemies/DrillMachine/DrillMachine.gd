@@ -114,12 +114,12 @@ func attack_state(_delta:float) -> void:
 
 func wind_up_state(delta: float) -> void:
 	vel = vel.move_toward(-global_position.direction_to(player.global_position)*130, accel*20*delta)
-	sprite.look_at(player.global_position)
+	sprite.look_at(player.global_position - Vector2(0, 8))
 	sprite.rotation_degrees -= 90
 	
 	if windUpTimer.is_stopped():
 		state = states.ATTACK
-		vel = global_position.direction_to(player.global_position)*attackSpeed
+		vel = global_position.direction_to(player.global_position - Vector2(0, 8))*attackSpeed
 		attackTimer.start()
 
 
