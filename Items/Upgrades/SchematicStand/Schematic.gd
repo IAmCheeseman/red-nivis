@@ -6,6 +6,7 @@ onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
 export var upgrade: Resource = preload("res://Items/Upgrades/Teleport/Teleport.tres")
+export var achievement: String
 
 var unlocked := false
 
@@ -28,6 +29,7 @@ func _on_area_entered(area: Area2D) -> void:
 		give_schematic()
 		unlocked = true
 		emit_signal("pickedUp")
+		Achievement.unlock(achievement)
 
 
 func give_schematic() -> void:

@@ -17,7 +17,7 @@ func set_sprite(texture: StreamTexture) -> void:
 	var height := texture.get_height()
 	
 	var radius := width if width < height else height
-	radius /= 2.5
+	radius /= 2
 	var shape := CircleShape2D.new()
 	shape.radius = radius
 	collision.shape = shape

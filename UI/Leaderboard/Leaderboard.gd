@@ -7,8 +7,11 @@ onready var label = $Lists/Friends/Label
 var playerData = preload("res://Entities/Player/Player.tres")
 
 
-func update_leaderboard() -> void:
+func _ready() -> void:
 	Steam.set_leaderboard_score("Score", playerData.highScore)
+
+
+func update_leaderboard() -> void:
 	var playerScoreGlobal = yield(
 		Steam.get_leaderboard_scores(
 			"Score", -1, 1, Steam.LeaderboardDataRequest.GlobalAroundUser

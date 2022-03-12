@@ -218,6 +218,7 @@ z_index = 0
 [node name="Schematic" parent="Decoration" instance=ExtResource( 14 )]
 visible = false
 position = Vector2( 1099, 193 )
+achievement = "ENRAGED_HANK"
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( -112, -8 )
