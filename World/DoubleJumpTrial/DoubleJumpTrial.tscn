@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World/DoubleJumpTrial/DoubleJumpTrial.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/Upgrades/SchematicStand/Schematic.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 508.526, 310.513 )
@@ -239,6 +240,9 @@ __meta__ = {
 }
 
 [node name="Darkness" type="CanvasModulate" parent="."]
+
+[node name="Schematic" parent="." instance=ExtResource( 14 )]
+position = Vector2( 1096, 192 )
 
 [editable path="Managing/CameraZones/CameraMoveZone1"]
 [editable path="Managing/CameraZones/CameraMoveZone2"]
