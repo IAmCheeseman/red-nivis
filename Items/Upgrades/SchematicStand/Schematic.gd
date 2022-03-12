@@ -9,6 +9,7 @@ export var upgrade: Resource = preload("res://Items/Upgrades/Teleport/Teleport.t
 
 var unlocked := false
 
+signal pickedUp
 
 func _ready() -> void:
 	sprite.texture = upgrade.hologramSprite
@@ -20,10 +21,12 @@ func _process(_delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	if !visible: return
 	if area.is_in_group("player") and !unlocked:
 		anim.play("GiveSchematic")
 		give_schematic()
 		unlocked = true
+		emit_signal("pickedUp")
 
 
 func give_schematic() -> void:

@@ -24,6 +24,7 @@ onready var sprite = $Sprite
 onready var bounceRay = $Collisions/BounceRay
 onready var hpBar = $HPBar/Healthbar
 onready var healthManager = $DamageManager
+onready var wallHitSFX = $WallHitSFX
 
 
 var alertSignal = preload("res://Entities/Enemies/Assets/Alarm.tscn")
@@ -110,6 +111,7 @@ func attack_state(_delta:float) -> void:
 		vel *= -0.333
 		state = states.DEFEND
 		defendTimer.start()
+		wallHitSFX.play()
 
 
 func wind_up_state(delta: float) -> void:

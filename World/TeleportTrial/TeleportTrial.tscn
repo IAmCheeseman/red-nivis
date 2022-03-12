@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Caves/Stone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://World/Props/Foliage/Grass/Normal/Grass.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Props/Foliage/Vine/Normal/Vine.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/Upgrades/SchematicStand/Schematic.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 555.051, 242.025 )
@@ -72,7 +73,7 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="HANK" parent="Decoration" instance=ExtResource( 5 )]
-position = Vector2( 1187, 175 )
+position = Vector2( 1066, 190 )
 
 [node name="LabsAtmosphere" parent="Decoration" instance=ExtResource( 9 )]
 
@@ -214,6 +215,10 @@ z_index = 0
 position = Vector2( 168, -176 )
 z_index = 0
 
+[node name="Schematic" parent="Decoration" instance=ExtResource( 14 )]
+visible = false
+position = Vector2( 1099, 193 )
+
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( -112, -8 )
 
@@ -233,6 +238,7 @@ __meta__ = {
 
 [connection signal="camFocused" from="Managing/CameraZones/CameraMoveZone2" to="." method="_on_boss_arena_cam_focused"]
 [connection signal="dead" from="Decoration/HANK" to="." method="_on_HANK_dead"]
+[connection signal="pickedUp" from="Decoration/Schematic" to="." method="_on_Schematic_pickedUp"]
 
 [editable path="Managing/CameraZones/CameraMoveZone1"]
 [editable path="Managing/CameraZones/CameraMoveZone2"]
