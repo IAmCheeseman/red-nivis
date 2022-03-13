@@ -8,6 +8,7 @@ signal onShoot
 # Functionality
 # Functionality
 export var damage: float = 6.0
+export var meleeDamageOverride: float = -1.0
 export var accuracy: float = 0.0
 export var cooldown: float = 0.2
 export var reloadSpeed: float = 1
