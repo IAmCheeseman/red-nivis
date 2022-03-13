@@ -4,6 +4,7 @@ onready var blockCollision = $Decoration/DoorBlock/CollisionShape2D
 onready var block = $Decoration/DoorBlock
 onready var bg = $CanvasLayer/BG
 onready var darkness = $Darkness
+onready var schematic = $Decoration/Schematic
 
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
@@ -49,6 +50,7 @@ func _on_boss_arena_cam_focused() -> void:
 
 
 func _exit_tree() -> void:
+	if player.isDead: return
 	# Resetting the player
 	player.maxHealth = prevMaxHp
 	player.health = prevHealth
@@ -57,6 +59,12 @@ func _exit_tree() -> void:
 	inventory.items = prevInventory
 
 
-func _on_HANK_dead() -> void:
-	yield(TempTimer.timer(self, 1), "timeout")
+func _on_Schematic_pickedUp() -> void:
+	yield(TempTimer.timer(self, 2), "timeout")
 	var _discard = get_tree().change_scene("res://World/WorldManagement/World.tscn")
+
+
+func _on_gnome_dead() -> void:
+	yield(TempTimer.timer(self, 2), "timeout")
+	schematic.show()
+	GameManager.emit_signal("zoom_in", .8, 2.5, 1, schematic.global_position)

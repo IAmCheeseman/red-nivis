@@ -224,6 +224,10 @@ z_index = 0
 position = Vector2( 168, -176 )
 z_index = 0
 
+[node name="Schematic" parent="Decoration" instance=ExtResource( 14 )]
+visible = false
+position = Vector2( 1096, 192 )
+
 [node name="Player" parent="." instance=ExtResource( 13 )]
 position = Vector2( -112, -8 )
 
@@ -241,8 +245,8 @@ __meta__ = {
 
 [node name="Darkness" type="CanvasModulate" parent="."]
 
-[node name="Schematic" parent="." instance=ExtResource( 14 )]
-position = Vector2( 1096, 192 )
+[connection signal="tree_exiting" from="Tiles/Gnome" to="." method="_on_gnome_dead"]
+[connection signal="pickedUp" from="Decoration/Schematic" to="." method="_on_Schematic_pickedUp"]
 
 [editable path="Managing/CameraZones/CameraMoveZone1"]
 [editable path="Managing/CameraZones/CameraMoveZone2"]

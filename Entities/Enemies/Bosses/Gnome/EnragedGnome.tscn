@@ -9,6 +9,9 @@ defaultStickAmount = Vector2( 2, 4 )
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
 
+[node name="BossDropper" parent="." index="2"]
+drops = [  ]
+
 [node name="DamageManager" parent="." index="3"]
 maxHealth = 900
 

@@ -65,6 +65,6 @@ func _on_Schematic_pickedUp() -> void:
 
 
 func _on_HANK_dead() -> void:
-	schematic.show()
 	yield(TempTimer.timer(self, 2), "timeout")
+	schematic.show()
 	GameManager.emit_signal("zoom_in", .8, 2.5, 1, schematic.global_position)
