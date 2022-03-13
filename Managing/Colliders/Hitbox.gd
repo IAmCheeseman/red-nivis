@@ -5,7 +5,7 @@ onready var collisionShape = $CollisionShape2D
 export(Script) var effect
 export var maskedHurtbox := ""
 export var damage = 15
-export var kbStrengh = 3
+export var kbStrengh = 3.0
 export var setDirection:Vector2
 export var tick := -1.0
 

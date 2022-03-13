@@ -4,6 +4,10 @@ onready var pHB = $PlayerHitbox/CollisionShape2D
 onready var eHB = $EnemyHitbox/CollisionShape2D
 onready var particles = $ExplosionParticles
 
+var damage: int
+
+func _ready() -> void:
+	eHB.owner.damage = damage
 
 func set_size(size: int) -> void:
 	yield(TempTimer.idle_frame(self), "timeout")

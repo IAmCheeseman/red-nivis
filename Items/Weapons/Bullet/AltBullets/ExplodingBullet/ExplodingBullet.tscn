@@ -54,6 +54,7 @@ script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 6 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 hframes = 4
 

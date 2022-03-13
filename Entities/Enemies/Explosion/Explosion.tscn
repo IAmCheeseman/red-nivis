@@ -126,13 +126,14 @@ anims/RESET = SubResource( 15 )
 [node name="PlayerHitbox" parent="." instance=ExtResource( 2 )]
 collision_mask = 2
 damage = 1
+kbStrengh = 3.5
 
 [node name="CollisionShape2D" parent="PlayerHitbox" index="0"]
 shape = SubResource( 16 )
 
 [node name="EnemyHitbox" parent="." instance=ExtResource( 2 )]
 collision_mask = 4
-damage = 35
+damage = 40
 
 [node name="CollisionShape2D" parent="EnemyHitbox" index="0"]
 shape = SubResource( 16 )
