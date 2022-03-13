@@ -27,6 +27,8 @@ var corpse = preload("res://Entities/Effects/EnemyCorpse.tscn")
 signal dead
 signal damaged
 
+var playerTookDamage := false
+
 
 func _ready() -> void:
 	if hurtSFXPath: hurtSFX = get_node(hurtSFXPath)
@@ -34,12 +36,11 @@ func _ready() -> void:
 	if isBoss:
 		var playerData = preload("res://Entities/Player/Player.tres")
 		playerData.connect("healthChanged", self, "_on_player_took_damage")
-		set_meta("tookDamage", false)
 
 
 func _on_player_took_damage(_kb: Vector2) -> void:
 	if isBoss:
-		set_meta("tookDamage", true)
+		playerTookDamage = true
 
 
 func take_damage(amount:float, dir:Vector2) -> void:
@@ -124,7 +125,7 @@ func _die(dir: Vector2) -> void:
 	
 	if steamAchievement != "": Achievement.unlock(steamAchievement)
 	
-	if isBoss and get_meta("tookDamage"):
+	if isBoss and !	playerTookDamage:
 		Achievement.unlock("NO_HIT")
 	
 	if freeOnDeath: par.queue_free()
