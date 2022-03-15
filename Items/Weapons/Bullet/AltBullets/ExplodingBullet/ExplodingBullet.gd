@@ -39,6 +39,7 @@ func _on_QueueArea_body_entered(_body):
 func add_explosion():
 	var newExplosion = explosion.instance()
 	newExplosion.position = position
+	newExplosion.damage = damage
 	get_parent().add_child(newExplosion)
 
 

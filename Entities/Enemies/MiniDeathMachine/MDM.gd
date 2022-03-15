@@ -93,7 +93,7 @@ func wander_state(delta:float) -> void:
 
 func attack_state(delta:float) -> void:
 	hpBar.show()
-	accel_to_point(player.global_position+(get_random_vector())*6, delta)
+	accel_to_point(player.global_position+(get_random_vector())*6-Vector2(0, 8), delta)
 
 
 func defend_state(delta:float) -> void:

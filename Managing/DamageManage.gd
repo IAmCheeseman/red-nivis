@@ -9,6 +9,7 @@ export var kbAmount := 32.0
 export var upwardsKB := 0.0
 export var hurtSFXPath: NodePath
 export(int, "Easy", "Normal", "Hard") var difficulty = 1
+export(Array, StreamTexture) var corpseSprites: Array
 export var useDeathParticles := true
 export var isBoss := false
 export var freeOnDeath := true
@@ -21,9 +22,12 @@ var health:int
 var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var damageLabel = preload("res://Entities/Effects/DmgLabel.tscn")
+var corpse = preload("res://Entities/Effects/EnemyCorpse.tscn")
 
 signal dead
 signal damaged
+
+var playerTookDamage := false
 
 
 func _ready() -> void:
@@ -32,12 +36,11 @@ func _ready() -> void:
 	if isBoss:
 		var playerData = preload("res://Entities/Player/Player.tres")
 		playerData.connect("healthChanged", self, "_on_player_took_damage")
-		set_meta("tookDamage", false)
 
 
-func _on_player_took_damage() -> void:
+func _on_player_took_damage(_kb: Vector2) -> void:
 	if isBoss:
-		set_meta("tookDamage", true)
+		playerTookDamage = true
 
 
 func take_damage(amount:float, dir:Vector2) -> void:
@@ -76,7 +79,7 @@ func take_damage(amount:float, dir:Vector2) -> void:
 	emit_signal("damaged")
 
 
-func _die(dir) -> void:
+func _die(dir: Vector2) -> void:
 	emit_signal("dead")
 	# Instancing death particles
 	if useDeathParticles:
@@ -93,6 +96,16 @@ func _die(dir) -> void:
 	
 	if par.has_signal("death"):
 		par.emit_signal("death")
+	
+	if corpseSprites.size() > 0:
+		for i in corpseSprites:
+			var newCorpse = corpse.instance()
+			newCorpse.set_sprite(i)
+			newCorpse.global_position = global_position
+			newCorpse.rotation = rand_range(0, PI * 2)
+			newCorpse.apply_central_impulse(dir * rand_range(40, 60))
+			newCorpse.apply_torque_impulse(500)
+			GameManager.spawnManager.spawn_object(newCorpse)
 	
 	var scoreInc: int
 	match difficulty:
@@ -112,7 +125,7 @@ func _die(dir) -> void:
 	
 	if steamAchievement != "": Achievement.unlock(steamAchievement)
 	
-	if isBoss and get_meta("tookDamage"):
+	if isBoss and !	playerTookDamage:
 		Achievement.unlock("NO_HIT")
 	
 	if freeOnDeath: par.queue_free()

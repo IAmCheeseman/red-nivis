@@ -24,6 +24,7 @@ onready var sprite = $Sprite
 onready var bounceRay = $Collisions/BounceRay
 onready var hpBar = $HPBar/Healthbar
 onready var healthManager = $DamageManager
+onready var wallHitSFX = $WallHitSFX
 
 
 var alertSignal = preload("res://Entities/Enemies/Assets/Alarm.tscn")
@@ -75,7 +76,7 @@ func _physics_process(delta:float) -> void:
 		state = states.WIND_UP
 		windUpTimer.start()
 	
-	rotation = lerp_angle(rotation, 0, 2*delta)
+	if !state in [ states.WIND_UP, states.DEFEND ]: rotation = lerp_angle(rotation, 0, 2*delta)
 	match state:
 		states.WANDER:
 			wander_state(delta)
@@ -110,16 +111,17 @@ func attack_state(_delta:float) -> void:
 		vel *= -0.333
 		state = states.DEFEND
 		defendTimer.start()
+		wallHitSFX.play()
 
 
 func wind_up_state(delta: float) -> void:
 	vel = vel.move_toward(-global_position.direction_to(player.global_position)*130, accel*20*delta)
-	look_at(-vel)
-	rotation_degrees -= 90
+	sprite.look_at(player.global_position - Vector2(0, 8))
+	sprite.rotation_degrees -= 90
 	
 	if windUpTimer.is_stopped():
 		state = states.ATTACK
-		vel = global_position.direction_to(player.global_position)*attackSpeed
+		vel = global_position.direction_to(player.global_position - Vector2(0, 8))*attackSpeed
 		attackTimer.start()
 
 

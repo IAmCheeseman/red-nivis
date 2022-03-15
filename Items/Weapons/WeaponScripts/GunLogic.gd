@@ -130,7 +130,8 @@ func _input(event: InputEvent) -> void:
 		newSwing.reflectDir = Utils.get_local_mouse_position(self).normalized()
 		GameManager.spawnManager.spawn_object(newSwing)
 		
-		newSwing.get_node("Hitbox").damage = gun.damage*1.25
+		var hb = newSwing.get_node("Hitbox")
+		hb.damage = gun.damage*1.25 if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride
 		
 		newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle)*8
 		

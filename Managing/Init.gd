@@ -25,11 +25,8 @@ var titles = [
 	"The Middle",
 	"The Ending",
 	"The First",
-	"The Onest",
 	"The Second",
-	"The Twond",
 	"The Third",
-	"The Threed",
 ]
 
 

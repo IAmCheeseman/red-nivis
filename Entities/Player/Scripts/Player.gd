@@ -47,10 +47,7 @@ var lastUpdatedAim := Vector2.RIGHT*64
 var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
 var playerData = preload("res://Entities/Player/Player.tres")
 var lockMovement = false
-
-
-# warning-ignore:unused_signal
-signal dropGun(gun, pos)
+var timeOnGround = 0.0
 
 
 func _ready():
@@ -118,6 +115,7 @@ func walk_state(delta):
 		var speed
 		var accel
 		if is_grounded():
+			timeOnGround += delta
 			speed = playerData.maxSpeed
 			accel = playerData.accelaration if abs(moveDir.x * speed) > vel.x else playerData.friction
 		else:
@@ -131,6 +129,7 @@ func walk_state(delta):
 			moveDir.x*speed,
 			accel*delta
 		)
+		sprite.rotation_degrees = vel.x / 25
 		# Do stuff in the air.
 		vel.y += Globals.GRAVITY*delta
 
@@ -183,6 +182,7 @@ func just_landed():
 		if vel.y > 0:
 			SaS.play("Land")
 		dontPlayJump = false
+		timeOnGround = 0
 		if triedJumpRecent:
 			jump()
 			triedJumpRecent = false
@@ -266,11 +266,19 @@ func add_walk_particles(spawnPos:Vector2):
 
 
 func jump():
+	
 	if GameManager.inGUI: return
 	# Setting values
 	jumpSFX.play()
 	#snapVector = Vector2.ZERO
 	vel.y = -playerData.jumpForce
+	if timeOnGround <= 0.05:
+		vel.x *= 1.8
+	elif timeOnGround <= 0.1:
+		vel.x *= 1.25
+	elif timeOnGround <= .2:
+		vel.x *= 1.1
+	
 	triedJumpRecent = false
 
 

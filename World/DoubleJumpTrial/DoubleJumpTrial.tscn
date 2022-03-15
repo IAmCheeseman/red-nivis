@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://World/DoubleJumpTrial/DoubleJumpTrial.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Player/Camera/CameraMoveZone.tscn" type="PackedScene" id=2]
@@ -13,9 +13,11 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Items/Upgrades/SchematicStand/Schematic.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Items/Upgrades/DoubleJump/DoubleJump.tres" type="Resource" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 555.051, 242.025 )
+extents = Vector2( 508.526, 310.513 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 211.5, 140.5 )
@@ -40,25 +42,28 @@ tile_data = PoolIntArray( -1703967, 0, 327680, -1703966, 0, 1, -1703965, 0, 3276
 z_index = 1
 tile_data = PoolIntArray( 262200, 0, 0, 262201, 0, 1, 262202, 0, 1, 262203, 0, 1, 262204, 0, 1, 262205, 0, 1, 262206, 0, 1, 262207, 0, 2, 262215, 0, 0, 262216, 0, 1, 262217, 0, 1, 262218, 0, 1, 262219, 0, 1, 262220, 0, 1, 262221, 0, 1, 262222, 0, 1, 262223, 0, 2, 458816, 0, 0, 458817, 0, 1, 458818, 0, 1, 458819, 0, 1, 458820, 0, 1, 458821, 0, 1, 458822, 0, 1, 458823, 0, 2, 524344, 0, 0, 524345, 0, 1, 524346, 0, 2, 589900, 0, 0, 589901, 0, 1, 589902, 0, 1, 589903, 0, 2 )
 
-[node name="Gnome" parent="Tiles" instance=ExtResource( 10 )]
-position = Vector2( 1165, 165 )
-
 [node name="Managing" type="Node2D" parent="."]
 
 [node name="CameraZones" type="Node2D" parent="Managing"]
-visible = false
 z_index = 1
 
 [node name="CameraMoveZone1" parent="Managing/CameraZones" instance=ExtResource( 2 )]
 position = Vector2( 322, 35 )
 
 [node name="CollisionShape2D" parent="Managing/CameraZones/CameraMoveZone1" index="0"]
+position = Vector2( -46.5255, -68.4875 )
 shape = SubResource( 1 )
 
 [node name="CameraMoveZone2" parent="Managing/CameraZones" instance=ExtResource( 2 )]
 position = Vector2( 1106, 83 )
 
 [node name="CollisionShape2D" parent="Managing/CameraZones/CameraMoveZone2" index="0"]
+shape = SubResource( 2 )
+
+[node name="CameraMoveZone3" parent="Managing/CameraZones" instance=ExtResource( 2 )]
+position = Vector2( 1008, -216 )
+
+[node name="CollisionShape2D" parent="Managing/CameraZones/CameraMoveZone3" index="0"]
 shape = SubResource( 2 )
 
 [node name="SpawningManagment" parent="Managing" instance=ExtResource( 11 )]
@@ -217,6 +222,15 @@ z_index = 0
 position = Vector2( 168, -176 )
 z_index = 0
 
+[node name="Schematic" parent="Decoration" instance=ExtResource( 14 )]
+visible = false
+position = Vector2( 1096, 192 )
+upgrade = ExtResource( 15 )
+achievement = "ENRAGED_GNOME"
+
+[node name="Gnome" parent="Decoration" instance=ExtResource( 10 )]
+position = Vector2( 1165, 165 )
+
 [node name="Player" parent="." instance=ExtResource( 13 )]
 position = Vector2( -112, -8 )
 
@@ -234,6 +248,10 @@ __meta__ = {
 
 [node name="Darkness" type="CanvasModulate" parent="."]
 
+[connection signal="pickedUp" from="Decoration/Schematic" to="." method="_on_Schematic_pickedUp"]
+[connection signal="tree_exiting" from="Decoration/Gnome" to="." method="_on_gnome_dead"]
+
 [editable path="Managing/CameraZones/CameraMoveZone1"]
 [editable path="Managing/CameraZones/CameraMoveZone2"]
+[editable path="Managing/CameraZones/CameraMoveZone3"]
 [editable path="Decoration/DoorBlock"]

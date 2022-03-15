@@ -4,10 +4,13 @@
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/GnomeEnraged.png" type="Texture" id=2]
 
 [node name="Gnome" instance=ExtResource( 1 )]
-defaultStickAmount = Vector2( 2, 4 )
+defaultStickAmount = Vector2( 2, 3 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
+
+[node name="BossDropper" parent="." index="2"]
+drops = [  ]
 
 [node name="DamageManager" parent="." index="3"]
 maxHealth = 900
@@ -19,7 +22,7 @@ damage = 2
 wait_time = 1.0
 
 [node name="AscendStick" parent="Timers" index="5"]
-wait_time = 0.116
+wait_time = 0.174
 
 [node name="Bossbar" parent="CanvasLayer" index="0"]
 bossName = "Enraged Gnome (With a Stick)"

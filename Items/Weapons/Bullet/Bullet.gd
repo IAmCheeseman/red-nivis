@@ -36,6 +36,7 @@ func set_texture(texture:StreamTexture):
 func _ready():
 	sprite.look_at(global_position+direction)
 	hitbox.look_at(global_position+direction)
+	particles.look_at(global_position+direction)
 	hitbox.setDirection = direction
 	hitbox.damage = damage
 	lifetimeTimer.start(clamp(lifetime-0.2, .001, INF))

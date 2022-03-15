@@ -5,4 +5,4 @@
 [node name="ResetAchievements" type="Node"]
 script = ExtResource( 1 )
 mode = 1
-ach = "ALL"
+ach = "HANK_SKIP"
