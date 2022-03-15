@@ -1,13 +1,13 @@
 extends Resource
 class_name Inventory
 
+
 # Inventory stuff
 export var maxSlots:int = 2
 var items:Array = []
 var selectedSlot:int = 0 setget _on_selected_slot_changed
 
 # Item map
-#var itemMapR = preload("res://UI/Inventory/ItemMap.tres")
 var itemMap = ItemMap.ITEMS.duplicate()
 var allowSlotChange = true
 
