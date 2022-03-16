@@ -36,9 +36,9 @@ func _ready():
 	
 	OS.set_window_title("Red Nivis: %s" % titles.front())
 	OS.window_fullscreen = Settings.fullscreen
-	
+
 	print("Steam is working: %s" % Steam.is_init())
-	
+
 	Achievement.unlock("PARTICIPATE")
-	
+
 	var _discard = get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")

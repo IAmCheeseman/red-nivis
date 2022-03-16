@@ -39,12 +39,12 @@ func _ready() -> void:
 	if worldData.playerPos != Vector2.ZERO:
 		player.global_position = worldData.playerPos
 		worldData.playerPos = Vector2.ZERO
-	
+
 	var biome = worldData.get_biome_by_index(worldData.get_current_room().biome)
-	
+
 	GameManager.rpBiome = biome.name
 	GameManager.update_rp()
-	
+
 	var timer = Timer.new()
 	timer.wait_time = 2.9
 	timer.autostart = true
@@ -52,7 +52,7 @@ func _ready() -> void:
 	add_child(timer)
 	background.modulate = Color.darkgray
 	timer.connect("timeout", self, "_on_index_timer_timeout")
-	
+
 	if worldData.savePosition == Vector2.ZERO: worldData.savePosition = worldData.position
 	GameManager.save_run()
 
@@ -84,10 +84,10 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 	timer.connect("timeout", get_tree(), "reload_current_scene")
 	add_child(timer)
 	timer.start()
-	
+
 	var room = worldData.get_current_room()
 	if enemies.get_child_count() == 0: room.cleared = true
-	
+
 	worldData.position += direction
 	worldData.moveDir = direction
 
@@ -98,7 +98,7 @@ func _on_enemies_cleared() -> void:
 	if rand_range(0, 1) < .5 and waves < 1 and lockedIn:
 		generator.spawn_enemies()
 		waves += 1
-		
+
 		var timer = get_tree().create_timer(2.9)
 		timer.connect("timeout", self, "_on_index_timer_timeout")
 		return
@@ -107,7 +107,7 @@ func _on_enemies_cleared() -> void:
 		if eb is Node2D:
 			eb.queue_free()
 	exitBlockers.clear()
-	
+
 	var currRoom = worldData.get_current_room()
 	if currRoom.cleared or currRoom.constantRoom: return
 	var clearEffectPos = roomClearer.lastKilledEnemyPos
