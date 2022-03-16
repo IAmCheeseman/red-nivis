@@ -19,8 +19,8 @@ func shoot():
 		# Creating the bullet.
 		var newBullet = bullet.instance() if !gun.customBullet else gun.customBullet.instance()
 		newBullet.direction = dir.normalized()
-		newBullet.speed = gun.projSpeed+rand_range(-50, 60)
-		newBullet.scale = Vector2.ONE*gun.projScale
+		newBullet.speed = gun.projSpeed+rand_range(gun.projSpeedRange.x, gun.projSpeedRange.y)
+		newBullet.scale = Vector2.ONE*rand_range(gun.projScale.x, gun.projScale.y)
 		newBullet.peircing = gun.peircing
 		newBullet.lifetime = gun.projLifetime
 		newBullet.global_position = global_position+dir*gun.bulletSpawnDist

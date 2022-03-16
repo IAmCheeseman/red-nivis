@@ -84,8 +84,9 @@ func _on_Hitbox_hit_object(object):
 		add_trail_to_parent()
 		add_particles()
 		queue_free()
-	if object.get_parent().is_in_group("enemy"):
-		object.get_parent().bulletDir = direction
+	if is_instance_valid(object):
+		if object.get_parent().is_in_group("enemy"):
+			object.get_parent().bulletDir = direction
 
 
 func _on_lifetime_timeout():

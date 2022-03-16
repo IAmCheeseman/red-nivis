@@ -12,6 +12,7 @@ const TIER_COLORS = {
 	TIERS.CAVE          : "#75a743",
 	TIERS.DEEPLABS      : "#a53030",
 	TIERS.FREEZERS      : "#ffffff",
+	TIERS.TOXIC_CAVERNS : "#468232",
 }
 
 

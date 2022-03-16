@@ -75,10 +75,11 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/MultishotBoomerang.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/MultishotBoomerang.png"
 	},
+	# FREEZERS ITEMS
 	"j-laser" : {
 		"key" : "j-laser",
 		"name" : "J_LASER_ITM",
-		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"tier" : ToolTipGenerator.TIERS.FREEZERS,
 		"scene" : "res://Items/Weapons/Scenes/JLaser.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/JLaser.png"
 	},
@@ -86,8 +87,15 @@ const ITEMS = {
 	"bullet-chainsaw" : {
 		"key" : "bullet-chainsaw",
 		"name" : "BULLET_CHAINSAW_ITM",
-		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
 		"scene" : "res://Items/Weapons/Scenes/BulletChainsaw.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Chainsaw.png"
-	}
+	},
+	"vaporgat" : {
+		"key" : "vaporgat",
+		"name" : "VAPORGAT_ITM",
+		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
+		"scene" : "res://Items/Weapons/Scenes/Vaporgat.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Vaporgat.png"
+	},
 }
