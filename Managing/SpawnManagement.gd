@@ -17,7 +17,7 @@ func spawn_object(object:Node):
 func spawn_shell(shell:Node2D):
 	add_child(shell)
 	shells.append(shell.get_path())
-	
+
 	while shells.size() > 50:
 		get_node(shells.pop_front()).queue_free()
 

@@ -22,46 +22,46 @@ func create_room() -> void:
 		randomize()
 		worldData.get_current_room()["seed"] = randi()
 	seed(worldData.get_current_room().seed)
-	
+
 	for t in world.tilesContainer.get_children():
 		t.queue_free()
 	biome = worldData.get_biome_by_index(worldData.rooms\
 		[worldData.position.x][worldData.position.y].biome)
-	
+
 	# Adding in the nodes
 
 	world.solids = biome.solids.instance()
 	world.solids.z_index = 1
 	world.solids.light_mask = 0
 	world.tilesContainer.add_child(world.solids)
-	
+
 	world.platforms = biome.platforms.instance()
 	world.platforms.z_index = 0
 	world.tilesContainer.add_child(world.platforms)
-	
+
 
 	world.background = biome.background.instance()
 	world.background.z_index = -3
 	world.tilesContainer.add_child(world.background)
-	
+
 	world.darkness.color = Color(biome.brightness, biome.brightness, biome.brightness)
 	var mod := 1.1 if Settings.gfx == Settings.GFX_BAD else 1.0
 	world.darkness.color.r *= mod
 	world.darkness.color.g *= mod
 	world.darkness.color.b *= mod
-	
+
 	world.solidColorBG.color = biome.bgColor
-	
+
 	if biome.atmosphere:
 		world.add_child(biome.atmosphere.instance())
-	
+
 	# Setup
 	var connections:Array = worldData.get_connected_rooms(worldData.position)
-	
+
 	worldData.rooms[worldData.position.x][worldData.position.y].discovered = true
 	for i in worldData.get_connected_rooms(worldData.position):
 		worldData.rooms[worldData.position.x+i.x][worldData.position.y+i.y].nearDiscovered = true
-	
+
 	var cr = worldData.rooms[worldData.position.x][worldData.position.y].constantRoom
 	if cr:
 		var _cr = load(cr)
@@ -70,41 +70,41 @@ func create_room() -> void:
 			var idx = _cr.biomes.find(biome)
 			room.queue_free()
 			room = _cr.biomeSpecific[idx].instance()
-	
+
 	# Adding the tiles
 	if room:
 		create_constant_room(connections)
 	else:
 		create_random_room(connections)
-	
+
 	var roomSize = world.solids.get_used_rect().end
 	create_loading_zone(Vector2(-32/16, roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.LEFT) # Left
 	create_loading_zone(Vector2(roomSize.x+(32/16), roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.RIGHT) # Right
 	create_loading_zone(Vector2(roomSize.x*.5, -24/16)*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.UP) # Up
 	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y+(24/16))*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.DOWN) # Down
-	
+
 	# Setting camera limits
 	var camMoveShape = world.mainCamMove.collisionShape.shape.duplicate()
 	var limits = world.solids.get_used_rect()
 
 	limits.position = world.solids.map_to_world(limits.position)
 	limits.end = world.solids.map_to_world(limits.end)
-	
+
 	var offset:Vector2 = get_viewport_rect().end-limits.end
 	offset.x = clamp(offset.x, 0, INF); offset.y = clamp(offset.y, 0, INF)
-	
+
 	limits.end.x = clamp(limits.end.x, get_viewport_rect().end.x, INF)
 	limits.end.y = clamp(limits.end.y, get_viewport_rect().end.y, INF)
-	
+
 	world.mainCamMove.position = (limits.end*.5).abs()
 	world.mainCamMove.position -= offset*.5
 	camMoveShape.extents = (limits.end*.5).abs()
-	
+
 	world.mainCamMove.collisionShape.shape = camMoveShape
-	
+
 	# Setting player position
 	set_player_pos()
-	
+
 	# PADDING
 	pad(Vector2(0, -PADDING), Vector2(0, roomSize.y+PADDING), Vector2.DOWN, Vector2.LEFT)
 	pad(Vector2(roomSize.x-1, -PADDING), Vector2(roomSize.x-1, roomSize.y+PADDING), Vector2.DOWN, Vector2.RIGHT)
@@ -153,7 +153,7 @@ func create_constant_room(connections) -> void:
 			add_props(biome.decorator.roofProps, biome.decorator.roofPropsChance, i.x, i.y)
 	# Floor Props
 	var roomFloorprops:TileMap = room.groundProp
-	if biome.decorator.groundProps.size() > 0: 
+	if biome.decorator.groundProps.size() > 0:
 		for i in roomFloorprops.get_used_cells():
 			add_props(biome.decorator.groundProps, biome.decorator.groundPropsChance, i.x, i.y+1)
 	# Props
@@ -201,7 +201,7 @@ func create_random_room(connections) -> void:
 		int(float(biome.roomTemplates.get_width())/float(RoomGenerator.TEMPLATE_SIZE)),
 		connections
 	)
-	
+
 	# Placing the props
 	roomI.lock()
 	for x in roomI.get_width():
@@ -211,14 +211,14 @@ func create_random_room(connections) -> void:
 			if pixel.is_equal_approx(RoomGenerator.TILE):
 				world.solids.set_cell(x, y, 0)
 				world.solids.update_bitmask_area(Vector2(x, y))
-				
+
 				world.background.set_cell(x, y, 0)
 				world.background.update_bitmask_area(Vector2(x, y))
 				for i in 3:
 					var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
 					world.background.set_cell(x+plus.x, y+plus.y, 0)
 					world.background.update_bitmask_area(Vector2(x, y)+plus)
-				
+
 # warning-ignore:narrowing_conversion
 				if rand_range(0, 1) < .5 and roomI.get_pixel(x, clamp(y+1, 0, roomI.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
 					if biome.decorator.roofProps.size() > 0: add_props(biome.decorator.roofProps, biome.decorator.roofPropsChance, x, y+1)
@@ -229,7 +229,7 @@ func create_random_room(connections) -> void:
 			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
 				world.platforms.set_cell(x, y, 0)
 				world.platforms.update_bitmask_area(Vector2(x, y))
-				
+
 				world.background.set_cell(x, y, 0)
 				world.background.update_bitmask_area(Vector2(x, y))
 				var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
@@ -238,49 +238,49 @@ func create_random_room(connections) -> void:
 			# If is empty
 			if roomI.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
 				world.viableEnemySpawns.append(Vector2(x, y))
-	
+
 	# Enemy Spawning
 	spawn_enemies()
-	
+
 	# Blocking off exits
 	var dirs = [Vector2.UP, Vector2.DOWN, Vector2.RIGHT, Vector2.LEFT]
 	for i in dirs:
 		var blockOff := preload("res://World/Props/DoorBlock/DoorBlock.tscn").instance()
 		var collisionShape := RectangleShape2D.new()
-		
+
 		var extents:Vector2 = world.solids.get_used_rect().end
 		match i:
 			Vector2.UP:
 				var collisionSize = (extents.x*.5)*world.solids.cell_size.x
 				collisionShape.extents = Vector2(5, collisionSize)
-				
+
 				blockOff.scale.x = -1
 				blockOff.rotation_degrees = 90
 				blockOff.position = Vector2((extents.x*.5), 0)
 			Vector2.DOWN:
 				var collisionSize = (extents.x*.5)*world.solids.cell_size.x
 				collisionShape.extents = Vector2(5, collisionSize)
-				
+
 				blockOff.rotation_degrees = 90
 				blockOff.position = Vector2((extents.x*.5), extents.y)
 			Vector2.RIGHT:
 				var collisionSize = (extents.y*.5)*world.solids.cell_size.x
 				collisionShape.extents = Vector2(5, collisionSize)
-				
+
 				blockOff.position = Vector2(extents.x, (extents.y*.5))
 			Vector2.LEFT:
 				var collisionSize = (extents.y*.5)*world.solids.cell_size.x
 				collisionShape.extents = Vector2(5, collisionSize)
-				
+
 				blockOff.scale.x = -1
 				blockOff.position = Vector2(0, (extents.y*.5))
-		
+
 		add_child(blockOff)
 		blockOff.position *= world.solids.cell_size
 		blockOff.position = blockOff.position.round()
 		blockOff.collision.shape = collisionShape
 		blockOff.position_sprite()
-		
+
 		world.exitBlockers.append(blockOff)
 
 func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
@@ -292,11 +292,11 @@ func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
 	shape.extents = size
 	collision.shape = shape
 	area.add_child(collision)
-	
+
 	area.collision_layer = 0
 	area.collision_mask = 2
 	area.connect("area_entered", world, "_on_load_area", [direction])
-	
+
 	var body = StaticBody2D.new()
 	body.global_position = area.global_position
 	body.collision_layer = 32
@@ -334,7 +334,7 @@ func set_player_pos() -> void:
 
 func pad(startPos:Vector2, endPos:Vector2, incDir:Vector2, padDir:Vector2) -> void:
 	var pos = startPos
-	
+
 	while pos != endPos:
 		if world.solids.get_cellv(pos) > -1:
 			for i in PADDING:
@@ -348,7 +348,7 @@ func pad(startPos:Vector2, endPos:Vector2, incDir:Vector2, padDir:Vector2) -> vo
 				var updatePos:Vector2 = pos+(padDir*i)
 				world.background.set_cellv(updatePos, 0)
 				world.background.update_bitmask_area(updatePos)
-				
+
 				var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
 				world.background.set_cellv(updatePos+plus, 0)
 				world.background.update_bitmask_area(updatePos+plus)
@@ -373,7 +373,7 @@ func spawn_enemies() -> void:
 	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
 # warning-ignore:integer_division
 # warning-ignore:integer_division
-	for i in ceil((roomI.get_width()/Globals.TEMPLATE_SIZE)*(roomI.get_height()/Globals.TEMPLATE_SIZE)):
+	for i in ceil((roomI.get_width()/Globals.TEMPLATE_SIZE)*(roomI.get_height()/Globals.TEMPLATE_SIZE)) * 2.5:
 		if world.viableEnemySpawns.size() == 0:
 			break
 		var spawnPos:Vector2 = world.viableEnemySpawns.pop_front()
@@ -387,7 +387,7 @@ func spawn_enemies() -> void:
 			(world.solids.get_used_rect().end.y*16)-32
 		)
 		spawner.enemyPool = enemyPool
-		
+
 		world.enemies.add_child(spawner)
 
 func get_free_spot(startPos:Vector2, endPos:Vector2, incDir:Vector2) -> Dictionary:
@@ -395,14 +395,14 @@ func get_free_spot(startPos:Vector2, endPos:Vector2, incDir:Vector2) -> Dictiona
 	var lastUpdatedPos := startPos
 	var updateCount = 0
 	var i := startPos
-	
+
 	while i != endPos:
 		if world.solids.get_cellv(i) == -1:
 			if updateCount == 0: firstUpdatedPos = i
 			lastUpdatedPos = i
 			updateCount += 1
 		i += incDir
-	
+
 	return {
 		"start" : firstUpdatedPos,
 		"end" : lastUpdatedPos

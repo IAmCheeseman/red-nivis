@@ -38,7 +38,7 @@ signal dead
 
 func _ready() -> void:
 	targetPosition = global_position.x
-	
+
 	#healthManager.maxHealth = Utils.dmg_to_hp(15, .2, 1.5)
 	#healthManager.health = healthManager.maxHealth
 	update_healthbar()
@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 			SHOOT:
 				shoot_state(delta)
 	vel.y += Globals.GRAVITY*delta
-	
+
 	vel.y = move_and_slide(vel).y
 
 
@@ -65,16 +65,16 @@ func walk_state(delta: float) -> void:
 		vel.x = lerp(vel.x, 0, friction*delta)
 		if abs(vel.x) < .5: new_target_position()
 		flip_sprite(vel)
-		
+
 		anim.play("Idle")
 	else:
 		var targetVel = speed if global_position.direction_to(Vector2(targetPosition, global_position.y)).x > 0 else -speed
 		vel.x = lerp(vel.x, targetVel, acceleration*delta)
 		flip_sprite(vel)
-		
+
 		gun.look_at(Vector2(vel.x, 0)+gun.global_position)
 		flip_gun()
-		
+
 		anim.play("Walk")
 
 
@@ -87,9 +87,9 @@ func shoot_state(delta: float) -> void:
 	vel.x = lerp(vel.x, 0, friction*delta)
 	gun.look_at(player.global_position+Vector2(0, -8))
 	flip_gun()
-	
+
 	flip_sprite(player.global_position)
-	
+
 	anim.play("Idle")
 
 

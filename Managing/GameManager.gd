@@ -36,7 +36,7 @@ var rpGun = "No gun"
 
 func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
 	if OS.get_name() == "OSX": return
-	
+
 	yield(get_tree(), "idle_frame")
 	var activity = Discord.Activity.new()
 	activity.set_type(Discord.ActivityType.Playing)
@@ -47,7 +47,7 @@ func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
 	var assets = activity.get_assets()
 	assets.set_large_image("icon")
 	assets.set_large_text("Red Nivis")
-	
+
 	var _result = yield(Discord.activity_manager.update_activity(activity), "result").result
 #	if result != Discord.Result.Ok:
 #		push_error(result)
@@ -96,7 +96,7 @@ func remove_attacking_enemy(enemy: Node) -> void:
 func save_run() -> void:
 	var playerData = preload("res://Entities/Player/Player.tres")
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
-	
+
 	var runData = {
 		"playerData:maxHealth"          : playerData.maxHealth,
 		"playerData:health"             : playerData.health,
@@ -112,7 +112,7 @@ func save_run() -> void:
 		"worldData:moveDir"             : worldData.moveDir,
 		"fastTravel:discoveredStations" : FastTravel.discoveredStations
 	}
-	
+
 	var dm := DataManager.new()
 	var _ok = dm.save_data(runData, Globals.RUN_FILE_NAME)
 
@@ -120,10 +120,10 @@ func save_run() -> void:
 func load_run() -> int:
 	var playerData = preload("res://Entities/Player/Player.tres")
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
-	
+
 	var dm := DataManager.new()
 	var runData = dm.load_data(Globals.RUN_FILE_NAME)
-	
+
 	if runData.size() == 0: return ERR_DOES_NOT_EXIST
 
 	print("------ Run -------")
@@ -131,19 +131,19 @@ func load_run() -> int:
 		var splitKey = i.split(":")
 		var obj = splitKey[0]
 		var val = splitKey[1]
-		
+
 		match obj:
 			"playerData": obj = playerData
-			"inventory":  obj = inventory
-			"worldData":  obj = worldData
+			"inventory" :  obj = inventory
+			"worldData" :  obj = worldData
 			"fastTravel": obj = FastTravel
 			_: return ERR_INVALID_DATA
-		
+
 		obj.set(val, runData[i])
 		if runData[i] is Array: runData[i] = "[Array]"
 		print(splitKey[0] + "." + str(val) + " = " + str(runData[i]))
 	worldData.moveDir = Vector2.DOWN
-	
+
 	for i in worldData.rooms:
 		for r in i:
 			if r.constantRoom:
@@ -160,25 +160,26 @@ func clear_run() -> void:
 func save_game() -> void:
 	var dm := DataManager.new()
 	var playerData = preload("res://Entities/Player/Player.tres")
-	
+
 	var saveData := {
-		"highScore" : playerData.highScore,
-		"unlockedUpgrades" : playerData.unlockedUpgrades,
+		"highScore"            : playerData.highScore,
+		"unlockedUpgrades"     : playerData.unlockedUpgrades,
 		"unlockedAchievements" : playerData.unlockedAchievements,
+		"deaths"               : playerData.deaths,
 	}
-	
+
 	var _ok = dm.save_data(saveData, Globals.GAME_FILE_NAME)
 
 
 func load_game() -> void:
 	var dm := DataManager.new()
 	var playerData = preload("res://Entities/Player/Player.tres")
-	
+
 	var saveData := dm.load_data(Globals.GAME_FILE_NAME)
-	
+
 	for i in saveData.keys():
 		playerData.set(i, saveData[i])
-	
+
 	if Steam.is_init():
 		for i in playerData.unlockedAchievements:
 			Achievement.unlock(i)

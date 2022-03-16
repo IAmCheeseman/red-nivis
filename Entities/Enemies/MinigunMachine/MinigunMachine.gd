@@ -38,7 +38,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	sprite.rotation_degrees = vel.x*.7
 	sprite.scale.x = 1 if vel.x < 0 else -1
-	
+
 	if !player:
 		player = playerDetection.get_player()
 		hpBar.hide()
@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
 		minigunSprite.flip_v = false if angleVec.x > 0 else true
 		hpBar.show()
-		
+
 	accel_to_point(targetPosition, delta)
 	vel += softCollision.get_push_vector()*(kbAmount*.05)
 	vel = move_and_slide(vel)
@@ -61,7 +61,7 @@ func accel_to_point(point:Vector2, delta:float) -> void:
 		vel = vel.move_toward(position.direction_to(point)*speed, accel*delta)
 	else:
 		vel = vel.move_toward(Vector2.ZERO, friction*delta)
-	
+
 	# Bouncing off walls and moving through platforms
 	bounceRay.cast_to = vel.normalized()*sprite.texture.get_height()*.25
 	bounceRay.force_raycast_update()

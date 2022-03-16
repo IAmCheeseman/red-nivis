@@ -61,7 +61,7 @@ func _ready():
 	player.ammo = 0
 	cooldownTimer.start(reloadSpeed)
 	isReloading = true
-	
+
 	meleeCooldown.wait_time = meleeSpeed
 	for perk in perks:
 		var perkNode = Node.new()

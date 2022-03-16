@@ -62,7 +62,7 @@ func _ready():
 	grayscale.material.set_shader_param("strength", 1)
 	playerData.connect("healthChanged", self, "_on_health_changed")
 	hurtbox.connect("hurt", playerData, "_on_damage_taken")
-	
+
 	yield(TempTimer.idle_frame(self), "timeout")
 	playerData.ammo = playerData.maxAmmo
 
@@ -70,7 +70,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
 	healVignette.modulate.a = lerp(healVignette.modulate.a, 0, 1.25*delta)
-	
+
 	match state:
 		states.WALK:
 			walk_state(delta)
@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 				vel.y += Globals.GRAVITY*delta
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
-			
+
 			var grayscaleStrength = grayscale.material.get_shader_param("strength")
 			grayscale.material.set_shader_param("strength", lerp(grayscaleStrength, .15, 2*delta))
 		states.WALLSLIDE:
@@ -121,7 +121,7 @@ func walk_state(delta):
 		else:
 			speed = playerData.maxAirSpeed
 			accel = playerData.airAccel
-		
+
 		if moveDir.x == 0:
 			accel = playerData.friction
 		vel.x = lerp(
@@ -157,7 +157,7 @@ func animate(moveDir:Vector2):
 		return
 	if animationPlayer.current_animation == "DoubleJump":
 		dontPlayJump = true
-	
+
 	if itemHolder.get_child_count() > 0:
 		hand.visible = !itemHolder.get_child(0).isTwoHanded and state != states.WALLSLIDE
 		rightHand.hide()
@@ -195,7 +195,7 @@ func is_grounded():
 		snapVector = SNAP_DIRECTION*SNAP_LENGTH if !Input.is_action_just_pressed("jump")\
 		else Vector2.ZERO
 		return true
-	
+
 	if vel.y > 0 and state != states.DASH and !lockMovement:
 		scaleHelper.scale.x = clamp(
 			1-abs(vel.y/Globals.GRAVITY),
@@ -213,7 +213,7 @@ func controller_aiming() -> void:
 	if  joystickVector.x == 0 and\
 		joystickVector.y == 0:
 			joystickVector = lastUpdatedAim
-	
+
 	lastUpdatedAim = joystickVector
 	joystickVector += Utils.get_relative_to_camera(itemHolder, $Camera)
 	Utils.set_mouse_position(joystickVector)
@@ -231,7 +231,7 @@ func _input(event: InputEvent) -> void:
 	# Adjustable jump height
 	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
 		vel.y *= 0.5
-	
+
 	if Input.is_action_just_pressed("down") and !lockMovement:
 		set_collision_mask_bit(4, false)
 		dropDownTimer.start(.1)
@@ -266,7 +266,6 @@ func add_walk_particles(spawnPos:Vector2):
 
 
 func jump():
-	
 	if GameManager.inGUI: return
 	# Setting values
 	jumpSFX.play()
@@ -278,7 +277,7 @@ func jump():
 		vel.x *= 1.25
 	elif timeOnGround <= .2:
 		vel.x *= 1.1
-	
+
 	triedJumpRecent = false
 
 
@@ -287,18 +286,21 @@ func _on_a_press_window_timeout(): triedJumpRecent = false
 
 func die():
 	Achievement.unlock("DEATH")
+	playerData.deaths += 1
+	if playerData.deaths >= 100: Achievement.unlock("100_DEATHS")
+
 	GameManager.clear_run()
 	GameManager.inGUI = true
 	state = states.DEAD
 	playerData.isDead = true
 	hurtbox.set_deferred("monitorable", false)
 	animationPlayer.play("Die")
-	
+
 	var defTimah = Timer.new()
 	defTimah.connect("timeout", self, "show_death_screen", [defTimah])
 	add_child(defTimah)
 	defTimah.start(.4)
-	
+
 	for i in itemHolder.get_children():
 		i.queue_free()
 	itemHolder.hide()
@@ -320,7 +322,7 @@ func _on_health_changed(dir: Vector2) -> void:
 		return
 	GameManager.frameFreezer.freeze_frames(.2)
 	healthVig.modulate.a = 1
-	
+
 	hurtSFX.play()
 	flashPlayer.play("flash")
 	if playerData.health <= 0:
@@ -329,7 +331,7 @@ func _on_health_changed(dir: Vector2) -> void:
 		return
 	# Screenshake
 	GameManager.emit_signal("screenshake", 2, 6, .05, .05)
-	
+
 	# Knockback
 	dir = dir*playerData.kbStrength
 	vel = dir

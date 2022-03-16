@@ -30,7 +30,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
 	if !player: player = playerDetection.get_player()
-	
+
 	if is_on_floor(): # Apply friction if on floor
 		vel.x = lerp(vel.x, 0, friction*delta)
 		sprite.rotation = 0
@@ -44,14 +44,14 @@ func _process(delta: float) -> void:
 			sprite.scale.y = 1+(1-sprite.scale.x)
 		sprite.rotation = vel.angle()-deg2rad(90)
 		sprite.scale.x *= -1 if bounceRay.cast_to.x > 0 else 1
-		
+
 		# Bouncing
 		bounceRay.cast_to = vel.normalized()*8
 		bounceRay.force_raycast_update()
 		if bounceRay.is_colliding():
 			var normal = bounceRay.get_collision_normal()
 			if normal != Vector2.UP: vel = vel.bounce(normal)*.8
-	
+
 	vel.y = move_and_slide_with_snap(
 		vel,
 		vel.normalized()*5,
