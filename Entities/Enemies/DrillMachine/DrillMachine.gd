@@ -177,7 +177,7 @@ func update_healthbar():
 func _on_wander_timer_timeout() -> void:
 	if state == states.WANDER:
 		targetPosition = select_position()
-	wanderTimer.start(rand_range(.5, 1.8))
+	wanderTimer.start(rand_range(2, 3))
 
 
 func _on_hit_object(_area:Area2D) -> void:

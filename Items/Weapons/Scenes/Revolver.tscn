@@ -4,7 +4,7 @@
 [ext_resource path="res://Items/Weapons/Sprites/Revolver.png" type="Texture" id=2]
 
 [node name="Gun" instance=ExtResource( 1 )]
-damage = 9.0
+damage = 7.0
 accuracy = 2.0
 cooldown = 0.075
 reloadSpeed = 0.3

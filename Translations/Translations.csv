@@ -2,7 +2,7 @@ keys,en,en_GB,es,de
 NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir,Keine Übersetzung verfügbar
 ,,,,
 BACK_BTN,Back,"go back, m8",Atrás,Zurück
-EXIT_BTN,Exit,Gew back tew teh action,Continuar,
+EXIT_BTN,Exit,Gew back tew teh action,Continuar,Verlassen
 QUIT_BTN,Quit,Col'oni's O'fer Gahms,Quitar,Verlassen
 CLEAR_CONFIRM,Do you really want to clear your current game?,Do 'ew reel'eh wa'a cle'ah 'er curen' gahm?,¿En serio quieres borrar tu partida?,Möchtest du wirklich deinen derzeitigen Spielstand leeren?
 QUIT_CONFIRM,Do you really want to quit?,Do 'ew reel'eh wa'a quit?,¿En serio quieres abandonar?,Möchtest du wirklich verlassen?
@@ -14,12 +14,14 @@ CONTINUE_BTN,Continue,keep goin' bruv,Continuar,Weiter
 MAIN_MENU_BTN,Main Menu,Main Men'ew,Volver al Menú,Hauptmenü
 INTERACT_RQST,Hit <interact> \n to,Heet <interact> \n tew,Presiona <interact> \n para,Benutze <interact> \n um
 ,,,,
-GAME_OVER,Game Over,"ew lost, bruv",Fin del Juego,
-KILLS_GO,Kills:,Keals:,Bajas:,
-SCORE_GO,Score:,Scoor:,Puntuación:,
-TIME_GO,Time:,Toime:,Tiempo:,
-TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,
-EXIT_GO,Exit,I'll throw 'n da' towel,Salir,
+GAME_OVER,Game Over,"ya lost, bruv",Fin del Juego,Spiel Vorbei
+KILLS_GO,Kills:,Murdurs,Bajas:,Tötungen
+SCORE_GO,Score:,Ya poynts:,Puntuación:,Punkte
+TIME_GO,Time:,Ya time:,Tiempo:,Zeit
+TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,Erneut versuchen
+EXIT_GO,Exit,I'll throw 'n da' towel,Salir,Verlassen
+,,,,
+TIME_HUD,Time,Toime,,
 ,,,,
 INTR_TALK,talk,speak wi' tongue,Hablar,Sprechen
 INTR_PCK_UP,pick up,raise tew 'ew,Tomar,Aufheben
@@ -71,11 +73,11 @@ AUDIO_MASTER,Master,Mahstah,General,General
 AUDIO_SFX,SFX,SFX,SFX,SFX
 AUDIO_MUSIC,Music,Mew'sik,Música,Musik
 ,,,,
-CREDITS_TTL,Credits,Mah m8s,Créditos,
-CREDITS_DEV,Created By,Crea'or,Hecho por,
-CREDITS_TRANSLATOR,Translators,Tongue Mewvmentors,Traducciones,
-CREDITS_PLAYTESTER,Playtesters,Plah Tes'ahs,Playtesters,
-CREDITS_SPECIAL_THX,Special Thanks,Cool Peo'le,Gracias Especiales,
+CREDITS_TTL,Credits,Mah m8s,Créditos,Credits
+CREDITS_DEV,Created By,Crea'or,Hecho por,Erstellt von
+CREDITS_TRANSLATOR,Translators,Tongue Mewvmentors,Traducciones,Übersetzer
+CREDITS_PLAYTESTER,Playtesters,Plah Tes'ahs,Playtesters,Spieltester
+CREDITS_SPECIAL_THX,Special Thanks,Cool Peo'le,Gracias Especiales,Besondere Bedankungen
 ,,,,
 HANK_TTL,H.A.N.K.,Big robo',H.A.N.K.,H.A.N.K.
 GNOME_TTL,Gnome (With a Stick),Noom (Wi' eai steek),Palo-Gnomo,Zwerg (Mit einem Stock)
@@ -104,8 +106,8 @@ SLUG_CULTIST_INTRO_LN2,Do things for me.,ew 'ings fo' 'e.,Házme un favor.,Tu et
 BIRB_INTRO_LN1,Hey!,Oi!,Hey!,Hallo!
 BIRB_INTRO_LN2,Welcome to my trading post!,Wel'ome tew moi tra'in' pewst!,Bienvenido a mi negocio!,Wilkommen zu meinen Handelsposten!
 ,,,,
-BIRB_POST_ITEMS,Post items:,Pewst i'ems:,Objetos del Comerciante:,
-BIRB_YOUR_ITEMS,Your items:,Yo' i'ems:,Tus Objetos:,Deine Gegenstände
+BIRB_POST_ITEMS,Post items:,Pewst i'ems:,Objetos del Comerciante:,Biete Gegenstände:
+BIRB_YOUR_ITEMS,Your items:,Yo' i'ems:,Tus Objetos:,Deine Gegenstände:
 ,,,,
 BIRB_SLCT_WRN,Choose an item.,Chews aih i'em.,Selecciona un objeto.,Wähle ein Gegenstand aus.
 BIRB_NO_TRADE_WRN,Can't trade that item.,"Cahnt tra' tah oitem, bruv.",No puedo intercambiar eso.,Ich kann diesen Gegenstand nicht tauschen.
@@ -113,7 +115,7 @@ BIRB_NO_TRADE_WRN,Can't trade that item.,"Cahnt tra' tah oitem, bruv.",No puedo 
 NEW_BIOME_WECLOME,Welcome to,elcome 'ew ,Bienvenido a,Wilkommen zu
 ,,,,
 LABS_TTL,The Labs,eh La-boreh-tory,Los Laboratorios,Die Labore
-CAVES_TTL,The Caves,eh Ca'erns,La Caverna,Die Höhlen
+BACKEND_TTL,The Backend,,,
 DEEP_LABS_TTL,The Deep Labs,eh Deep La-boreh-torees,Los Laboratorios Subterráneos,Dem tiefen Labor
 FREEZERS_TTL,The Freezers,eh Fre'zahs,Los Laboratorios Helados,Die Gefrierschränke
 TOXIC_CAVERNS_TTL,The Toxic Caverns,eh Toixic Ca'erns,La Caverna Ponzoñosa,Die toxischen Kavernen
@@ -122,15 +124,16 @@ TECH_LABS_TTL,The Tech Labs,eh Technoglical La-boreh-tory,Los laboratorios Avanz
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Seven,AK-47,AK-47
 REVOLVER_ITM,Revolver,Revalveh,Revólver,Revolver
-GRENADE_LAUNCHER_ITM,Grenade Launcher,Gra'newd Lewchah,Lanzagranadas,
+GRENADE_LAUNCHER_ITM,Grenade Launcher,Grenayde  Lewncha,Lanzagranadas,Granatenwerfer
 PUMP_SHOTGUN_ITM,Pump Shotgun,Pewmp Shewtgun,Escopeta de Bombeo,Schrotflinte
 FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Flammenwerfer
 ASSAULT_RIFLE_ITM,Assault Rifle,Illegal,Rifle de Asalto,Sturmgewehr
 HOMING_BOOMERANG_ITM,Homing Boomerang,Abodin' Bewmerang,Boomerang Seguidor,Aufsteigender Bumerang
 MULTISHOT_BOOMERANG_ITM,Multishot Boomerang,Se'eral Bewmerang,Boomerang Múltiple,Mehrschuss-Bumerang
 MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun
-BULLET_CHAINSAW_ITM,Bullet Chainsaw,Bul'et Chahnsah,Balasierra,
+BULLET_CHAINSAW_ITM,Bullet Chainsaw,Bul'et Chaynshaw,Balasierra,Kugel Kettensäge
 GOUDA_GREASER_ITM,Gouda Greaser,Americahn Fewd,Cañón de Queso,
 CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,
-SOAP_SLAPPER_ITM,Soap Launcher,Forcfal Violen' Cleansah,Lanzador de Jabón,
-J_LASER_ITM,J-Laser,J-LaZer,Láser J,
+SOAP_SLAPPER_ITM,Soap Launcher,Forcfal Violen' Cleansah,Lanzador de Jabón,Seifenwerfer
+J_LASER_ITM,J-Laser,J-LaZer,Láser J,J-Laser
+VAPORGAT_ITM,Vaporgat,Faht Cannon,,

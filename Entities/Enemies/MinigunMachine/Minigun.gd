@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 	var newBullet = bullet.instance()
 	newBullet.direction = Vector2.RIGHT.rotated(
 		sprite.global_rotation)
-	newBullet.speed = 130
+	newBullet.speed = 100
 	newBullet.damage = damage
 	newBullet.global_position = global_position+(
 		newBullet.direction*16)

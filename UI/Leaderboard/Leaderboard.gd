@@ -14,7 +14,7 @@ func _ready() -> void:
 func update_leaderboard() -> void:
 	var playerScoreGlobal = yield(
 		Steam.get_leaderboard_scores(
-			"Score", -1, 1, Steam.LeaderboardDataRequest.GlobalAroundUser
+			"Score", -5, 5, Steam.LeaderboardDataRequest.GlobalAroundUser
 		),
 		"done"
 	)
@@ -33,7 +33,7 @@ func update_leaderboard() -> void:
 	
 	var playerScoreFriends = yield(
 		Steam.get_leaderboard_scores(
-			"Score", -1, 1, Steam.LeaderboardDataRequest.Friends
+			"Score", -2, 2, Steam.LeaderboardDataRequest.Friends
 		),
 		"done"
 	)
