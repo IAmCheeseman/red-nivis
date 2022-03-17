@@ -83,7 +83,7 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/JLaser.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/JLaser.png"
 	},
-	# TOXIC CAVERNS ITEMs
+	# TOXIC CAVERNS ITEMS
 	"bullet-chainsaw" : {
 		"key" : "bullet-chainsaw",
 		"name" : "BULLET_CHAINSAW_ITM",
@@ -97,5 +97,13 @@ const ITEMS = {
 		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
 		"scene" : "res://Items/Weapons/Scenes/Vaporgat.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Vaporgat.png"
+	},
+	# TECH LABS ITEMS
+	"soap-launcher" : {
+		"key" : "soap-launcher",
+		"name" : "SOAP_SLAPPER_ITM",
+		"tier" : ToolTipGenerator.TIERS.TECH_LABS,
+		"scene" : "res://Items/Weapons/Scenes/SoapLauncher.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/SoapSlapper.png"
 	},
 }

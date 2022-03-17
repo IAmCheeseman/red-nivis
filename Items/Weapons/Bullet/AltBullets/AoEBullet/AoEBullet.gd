@@ -4,14 +4,15 @@ onready var popSound = $PopSFX
 
 var minSpeed = speed / 2.5
 var scaleMod = scale.x
-var ogScale = scale
+onready var ogScale = scale
+var frict := 5
 
 
 func _physics_process(delta):
 	position += (direction * speed) * delta
-	speed = lerp(speed, minSpeed, 5 * delta)
+	speed = lerp(speed, minSpeed, frict * delta)
 	trail.hide()
-	scale = ogScale * (scaleMod * (abs(sin(lifetimeTimer.time_left + scaleMod)) + .3))
+	scale = ogScale * scaleMod * (abs(sin(lifetimeTimer.time_left + scaleMod) / 2) + 1)
 
 
 func _exit_tree() -> void:

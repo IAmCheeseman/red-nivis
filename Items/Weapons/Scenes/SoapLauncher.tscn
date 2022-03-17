@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Weapons/Sprites/SoapSlapper.png" type="Texture" id=2]
+[ext_resource path="res://Items/Weapons/Bullet/AltBullets/Soap/Soap.png" type="Texture" id=3]
+[ext_resource path="res://Items/Weapons/Bullet/AltBullets/Soap/Soap.tscn" type="PackedScene" id=4]
+
+[node name="SoapLauncher" instance=ExtResource( 1 )]
+projLifetime = 1.0
+magazineSize = 2
+bulletSprite = ExtResource( 3 )
+shellSprite = null
+kickUp = 6.0
+bulletSpawnDist = 26.0
+isTwoHanded = true
+
+[node name="GunLogic" parent="." index="0"]
+bullet = ExtResource( 4 )
+
+[node name="Pivot" parent="." index="1"]
+position = Vector2( 0, 5 )
+
+[node name="GunSprite" parent="Pivot" index="2"]
+position = Vector2( 5, 0 )
+texture = ExtResource( 2 )
+
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( 0, -3 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( -3, 3 )
