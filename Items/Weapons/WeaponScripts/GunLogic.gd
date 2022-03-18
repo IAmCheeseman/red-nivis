@@ -70,9 +70,9 @@ func _physics_process(delta) -> void:
 
 	# Shooting
 	var hasEnoughAmmo := playerData.ammo > 0
-	
+
 	playerData.isReloading = gun.isReloading
-	
+
 	if Input.is_action_pressed("use_item")\
 	and gun.canShoot\
 	and hasEnoughAmmo\
@@ -82,7 +82,7 @@ func _physics_process(delta) -> void:
 	and !playerData.playerObject.lockMovement\
 	and !swinging:
 		pre_shoot()
-		
+
 	elif Input.is_action_just_pressed("use_item")\
 	and !hasEnoughAmmo:
 		gun.noAmmoClick.play()
@@ -93,12 +93,13 @@ func pre_shoot() -> void:
 	Cursor.get_node("Sprite").scale = Vector2(
 		rand_range(1, 1.2), rand_range(1, 1.2))
 	shoot()
-	
+
 	var newShell = shell.instance()
 	var dir = -global_position.direction_to(Utils.get_global_mouse_position())-Vector2(0, 2)
 	newShell.direction = -global_position.direction_to(Utils.get_global_mouse_position())-Vector2(0, 2)
 	newShell.position = global_position+(dir*2)
-	GameManager.spawnManager.spawn_shell(newShell)
+	GameManager.spawnManager.spawn_object(newShell)
+	yield(TempTimer.idle_frame(self), "timeout")
 	newShell.sprite.texture = gun.shellSprite
 
 
@@ -115,35 +116,35 @@ func _input(event: InputEvent) -> void:
 	and playerData.stamina > 0:
 		playerData.stamina -= 1
 		playerData.playerObject.vel += get_local_mouse_position().normalized()*gun.recoil
-		
+
 		swinging = true
 		swingDir = -swingDir
 		pivot.rotation_degrees -= 65*swingDir
 		swingStartDeg = pivot.rotation_degrees
 		pivot.scale = Vector2.ONE*1.5
-		
-		
+
+
 		var angle = Utils.get_local_mouse_position(self).angle()
-		
+
 		var newSwing = swing.instance()
 		newSwing.rotation = angle
 		newSwing.reflectDir = Utils.get_local_mouse_position(self).normalized()
 		GameManager.spawnManager.spawn_object(newSwing)
-		
+
 		var hb = newSwing.get_node("Hitbox")
 		hb.damage = gun.damage*1.25 if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride
-		
+
 		newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle)*8
-		
+
 		GameManager.emit_signal(
 			"screenshake",
 			1, 8, .05, .05,
 			Utils.get_local_mouse_position(self).normalized()
 		)
-		
+
 		gun.meleeCooldown.start()
 		gun.canSwing = false
-	
+
 	if event.is_action_pressed("reload"):
 		cooldownTimer.start(gun.reloadSpeed)
 		gun.isReloading = true

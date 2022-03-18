@@ -20,9 +20,9 @@ class FrameTimer_ extends Node:
 # Time real time, instead of game time
 class DeltaTimer_ extends Node:
 	signal timeout
-	
+
 	var timeLeft := 1.0
-	
+
 	func _process(delta: float) -> void:
 		timeLeft -= delta
 		if timeLeft <= 0:
@@ -34,7 +34,7 @@ static func idle_frame(node:Node, frames:int=1):
 	var t := FrameTimer_.new()
 	t.frames = frames
 	node.call_deferred("add_child", t)
-	
+
 	return t
 
 
@@ -42,5 +42,5 @@ static func timer(node:Node, time:float=1):
 	var t := DeltaTimer_.new()
 	t.timeLeft = time
 	node.call_deferred("add_child", t)
-	
+
 	return t
