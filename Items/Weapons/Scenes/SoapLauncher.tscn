@@ -7,6 +7,7 @@
 
 [node name="SoapLauncher" instance=ExtResource( 1 )]
 projLifetime = 1.0
+peircing = true
 magazineSize = 2
 bulletSprite = ExtResource( 3 )
 shellSprite = null
