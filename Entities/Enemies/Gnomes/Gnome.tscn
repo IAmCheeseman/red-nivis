@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Entities/Enemies/Gnomes/Gnome.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Enemies/Gnomes/RevolverGnome/RevolverGnome.png" type="Texture" id=2]
+[ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.5, 5 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 104.043
+
+[node name="Gnome" type="KinematicBody2D"]
+collision_layer = 0
+script = ExtResource( 1 )
+speed = 20
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, -5 )
+shape = SubResource( 1 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="PlayerDetection" parent="Collisions" instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
+shape = SubResource( 2 )
+
+[editable path="Collisions/PlayerDetection"]
