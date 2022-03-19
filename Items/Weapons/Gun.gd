@@ -6,7 +6,6 @@ export(int, "pistol", "shotgun", "rifle") var gunType = 0
 signal onShoot
 
 # Functionality
-# Functionality
 export var damage: float = 6.0
 export var meleeDamageOverride: float = -1.0
 export var accuracy: float = 0.0

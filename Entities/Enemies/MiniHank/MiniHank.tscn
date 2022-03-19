@@ -1,18 +1,19 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Entities/Enemies/PistolMachine/Pistol.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Enemies/MiniHank/MiniHankCorpse.png" type="Texture" id=2]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=4]
-[ext_resource path="res://Entities/Enemies/PistolMachine/PistolMachine.gd" type="Script" id=5]
-[ext_resource path="res://Entities/Enemies/PistolMachine/PistolMachine.png" type="Texture" id=6]
+[ext_resource path="res://Entities/Enemies/MiniHank/MiniHank.gd" type="Script" id=5]
+[ext_resource path="res://Entities/Enemies/MiniHank/MiniHank.png" type="Texture" id=6]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=7]
 [ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=8]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=9]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=11]
 [ext_resource path="res://Entities/Enemies/MachineHurt.wav" type="AudioStream" id=12]
-[ext_resource path="res://Entities/Enemies/PistolMachine/PistolMachineBodyCorpse.png" type="Texture" id=13]
+[ext_resource path="res://Entities/Enemies/MiniHank/MiniHankCorpseStick.png" type="Texture" id=13]
+[ext_resource path="res://Entities/Enemies/MiniHank/Shotgun.png" type="Texture" id=14]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 11.0
@@ -33,7 +34,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 1 ]
@@ -45,14 +46,29 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -18 ), Vector2( 0, -19 ) ]
+"values": [ Vector2( -5, -31 ), Vector2( -5, -32 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5, -31 ) ]
 }
 
 [sub_resource type="Animation" id=5]
-length = 0.5
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -61,10 +77,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 5, 6, 7, 8, 9 ]
+"values": [ 3, 4, 5 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Gun:position")
@@ -73,25 +89,25 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -18 ), Vector2( 0, -19 ), Vector2( 0, -18 ), Vector2( 0, -19 ) ]
+"values": [ Vector2( -5, -32 ), Vector2( -5, -31 ), Vector2( -5, -33 ) ]
 }
 
-[node name="PistolMachine" type="KinematicBody2D"]
+[node name="MiniHank" type="KinematicBody2D"]
 collision_layer = 0
 collision_mask = 17
 script = ExtResource( 5 )
-speed = 50.0
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 6, 0 )
+position = Vector2( 0, -5 )
 scale = Vector2( -1, 1 )
 texture = ExtResource( 6 )
 offset = Vector2( 0, -11 )
-hframes = 5
+hframes = 3
 vframes = 2
+frame = 3
 
 [node name="Hurtbox" parent="Sprite" instance=ExtResource( 3 )]
 visible = false
@@ -99,24 +115,25 @@ position = Vector2( -2, -9 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 collision_layer = 4
+immTime = 0.025
 
 [node name="CollisionShape2D" parent="Sprite/Hurtbox" index="0"]
 shape = SubResource( 1 )
 
 [node name="Eye1" type="Light2D" parent="Sprite"]
-position = Vector2( -2.12695, -8.50823 )
+position = Vector2( -5, -16 )
 scale = Vector2( 0.568863, 0.517303 )
 texture = ExtResource( 9 )
 texture_scale = 0.03
-color = Color( 1, 0, 0, 1 )
+color = Color( 0.647059, 0.580392, 0.12549, 1 )
 
 [node name="Gun" type="Node2D" parent="."]
-position = Vector2( 0, -18 )
+position = Vector2( -5, -31 )
 
 [node name="Sprite" type="Sprite" parent="Gun"]
-position = Vector2( 7, -1 )
-texture = ExtResource( 2 )
-offset = Vector2( -4, 0 )
+position = Vector2( 9, -1 )
+texture = ExtResource( 14 )
+offset = Vector2( -6, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -138,12 +155,11 @@ moneyRange = Vector2( 2, 7 )
 valueRange = Vector2( 1, 4 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 10 )]
-maxHealth = 40
 kbAmount = 128.0
 upwardsKB = 51.0
 hurtSFXPath = NodePath("../HitSFX")
 difficulty = 0
-corpseSprites = [ ExtResource( 2 ), ExtResource( 13 ) ]
+corpseSprites = [ ExtResource( 14 ), ExtResource( 2 ), ExtResource( 13 ) ]
 
 [node name="HitSFX" type="Node2D" parent="."]
 script = ExtResource( 11 )
@@ -164,13 +180,14 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 4 )
+anims/RESET = SubResource( 6 )
 anims/Walk = SubResource( 5 )
 
 [node name="Healthbar" type="TextureProgress" parent="."]
-margin_left = -2.0
-margin_top = -30.0
-margin_right = 16.0
-margin_bottom = -25.0
+margin_left = -9.0
+margin_top = -43.0
+margin_right = 9.0
+margin_bottom = -38.0
 max_value = 50.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )

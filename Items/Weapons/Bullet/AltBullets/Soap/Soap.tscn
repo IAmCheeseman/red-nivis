@@ -8,7 +8,6 @@
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
-hframes = 1
 
 [node name="SoapBubbleSpawner" type="Node2D" parent="." index="8"]
 script = ExtResource( 3 )
