@@ -96,10 +96,10 @@ func shoot_state(delta: float) -> void:
 func shoot() -> void:
 	if global_position.distance_to(player.global_position) < 32:
 		return
-	for i in 10:
+	for i in 5:
 		var newBullet = bullet.instance()
 		newBullet.direction = Vector2.RIGHT.rotated(gunSprite.global_rotation).rotated(deg2rad(rand_range(-25, 25)))
-		newBullet.speed = 100 + rand_range(-50, 50)
+		newBullet.speed = 100 + rand_range(-50, 20)
 		newBullet.damage = damage
 		newBullet.global_position = gunSprite.global_position
 		GameManager.spawnManager.spawn_object(newBullet)
