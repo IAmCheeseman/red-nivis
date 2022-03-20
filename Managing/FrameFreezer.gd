@@ -1,7 +1,7 @@
 extends Resource
 class_name FrameFreezer
 
-
+var gm
 var currentTimerCount = 0
 
 
@@ -10,7 +10,7 @@ func freeze_frames(time:float) -> void:
 	var _ok = timer.connect("timeout", self, "_timer_done", [timer])
 	timer.pause_mode = Node.PAUSE_MODE_PROCESS
 	
-	GameManager.add_child(timer)
+	gm.add_child(timer)
 	
 	timer.start(time)
 	currentTimerCount += 1

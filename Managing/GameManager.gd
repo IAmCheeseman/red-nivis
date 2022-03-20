@@ -34,6 +34,10 @@ var rpBiome = "None"
 var rpGun = "No gun"
 
 
+func _init():
+	frameFreezer.gm = self
+
+
 func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
 	if OS.get_name() == "OSX": return
 

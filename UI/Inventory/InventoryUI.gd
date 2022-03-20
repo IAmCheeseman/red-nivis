@@ -6,8 +6,6 @@ onready var slotSelector = $SlotSelector
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 var playerData = preload("res://Entities/Player/Player.tres")
-var movingSlot:TextureButton
-var oldSlotIndex = -1
 var slotSelectorTarget = 0
 
 func _ready():
@@ -27,43 +25,14 @@ func _ready():
 func _process(delta):
 	slotSelector.rect_position.x = slots.rect_position.x+slots.rect_size.x-slotSelector.texture.get_width()+1
 	slotSelector.rect_position.y = lerp(slotSelector.rect_position.y, slotSelectorTarget, 20*delta)
+	var currentSlot = slots.get_child(inventory.selectedSlot)
+	currentSlot.rect_scale = currentSlot.rect_scale.move_toward(Vector2.ONE * 1.2, 5 * delta)
+	currentSlot.modulate = Color.white
+	for i in slots.get_children():
+		if i == currentSlot: continue
+		i.rect_scale = i.rect_scale.move_toward(Vector2.ONE, 5 * delta)
+		i.modulate = Color.darkgray
 	set_slot_cursor_position()
-
-#	inventory.allowSlotChange = playerData.mode == playerData.DEFAULT_MODE
-	slotSelector.visible = inventory.allowSlotChange
-
-	if movingSlot:
-		var movingSlotTexHeight = movingSlot.texture_pressed.get_height()
-		movingSlot.rect_position.y = Utils.get_local_mouse_position(self).y-(movingSlotTexHeight/2)
-		var hotbarBegin = slots.get_child(0).rect_global_position.y
-		var hotbarEnd = slots.get_child_count()*movingSlotTexHeight
-		hotbarEnd += slots.get_child_count()+hotbarBegin
-		# Clamping the position of the moving slot to stay within the bounds of the hotbar
-		movingSlot.rect_position.y = clamp(movingSlot.rect_position.y, hotbarBegin, hotbarEnd-7)
-		# Moving the slot to it's final y position
-		movingSlot.rect_position.x = lerp(movingSlot.rect_position.x, 48, 8*delta)
-
-
-func _on_button_pressed(button:TextureButton):
-	if movingSlot:
-		add_moving_slot_back(button.get_index())
-		refresh_items()
-	else:
-		inventory.selectedSlot = clamp(inventory.selectedSlot-1, 0, INF)
-		oldSlotIndex = button.get_index()
-		slots.remove_child(button)
-		movingSlot = button
-		movingSlot.rect_position.y = get_viewport_rect().end.y-21
-		add_child(movingSlot)
-
-
-func add_moving_slot_back(index):
-	remove_child(movingSlot)
-	slots.add_child(movingSlot)
-	slots.move_child(movingSlot, index)
-	inventory.move_item(oldSlotIndex, movingSlot.get_index())
-	movingSlot = null
-	inventory.selectedSlot = index
 
 
 func refresh_items():
