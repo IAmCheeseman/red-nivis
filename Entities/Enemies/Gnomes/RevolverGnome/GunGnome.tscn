@@ -181,9 +181,6 @@ margin_bottom = -25.0
 max_value = 50.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="timeout" from="Gun/Timer" to="Gun" method="shoot"]
 [connection signal="dead" from="DamageManager" to="MoneyDropper" method="drop_money"]
