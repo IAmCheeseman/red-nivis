@@ -32,7 +32,7 @@ func pick_up():
 	# Picking up the item
 	if !isPickedUp:
 		if !inventory.has_space():
-			var newItem = GameManager.itemManager.create_item(inventory.items[inventory.selectedSlot].key)
+			var newItem = GameManager.itemManager.create_item(inventory.items[inventory.selectedSlot].itemData.key)
 			newItem.position = position
 			GameManager.spawnManager.spawn_object(newItem)
 			inventory.remove_item(inventory.selectedSlot)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Entities/Enemies/MachineHurt.wav" type="AudioStream" id=14]
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachineCorpseBottom.png" type="Texture" id=15]
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachineCorpseHead.png" type="Texture" id=16]
+[ext_resource path="res://Entities/Effects/RobotSparks/RobotSparks.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Spin"
@@ -164,6 +165,7 @@ maxHealth = 24
 hurtSFXPath = NodePath("../HitSFX")
 difficulty = 0
 corpseSprites = [ ExtResource( 16 ), ExtResource( 15 ) ]
+deathParticles = ExtResource( 17 )
 
 [node name="HitSFX" type="Node2D" parent="."]
 script = ExtResource( 13 )

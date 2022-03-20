@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Entities/Enemies/MachineHurt.wav" type="AudioStream" id=14]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachineCorpseBottom.png" type="Texture" id=15]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachineCorpseTop.png" type="Texture" id=16]
+[ext_resource path="res://Entities/Effects/RobotSparks/RobotSparks.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -273,6 +274,7 @@ kbAmount = 64.0
 hurtSFXPath = NodePath("../HitSFX")
 difficulty = 0
 corpseSprites = [ ExtResource( 16 ), ExtResource( 15 ) ]
+deathParticles = ExtResource( 17 )
 
 [node name="HitSFX" type="Node2D" parent="."]
 script = ExtResource( 13 )

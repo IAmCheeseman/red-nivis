@@ -15,8 +15,9 @@ var selectedItem: CustomButton
 func _ready() -> void:
 	for i in inventory.items:
 		if i is Dictionary:
-			if shopData.tradedWeapons.has(i.key): continue
-			shopData.tradedWeapons.append(i.key)
+
+			if shopData.tradedWeapons.has(i.itemData.key): continue
+			shopData.tradedWeapons.append(i.itemData.key)
 	open_shop(false)
 
 
@@ -25,12 +26,14 @@ func update_items(items:=inventory.items, par:=playerInven, connection:="_on_pla
 	Utils.free_children(par)
 	for i in items:
 		if !i is Dictionary: return
+		var j = i
+		if j.has("itemData"): j = j.itemData
 		
 		# Adding the item to the shop
 		var newButton = preload("res://Entities/NPC/Birb/WeaponButton.tscn").instance()
 		par.add_child(newButton)
 		newButton.toggle_mode = true
-		newButton.setup(load(i.slotTexture), i.name, i.key)
+		newButton.setup(load(j.slotTexture), j.name, j.key)
 		newButton.connect("pressed", self, connection, [newButton])
 
 
@@ -63,14 +66,14 @@ func _on_player_weapon_chosen(button: CustomButton) -> void:
 		nsWarning.hide()
 		naiWarning.hide()
 		
-		if inventory.items[button.get_index()].key == "pistol":
+		if inventory.items[button.get_index()].itemData.key == "pistol":
 			nsWarning.hide()
 			naiWarning.show()
 			update_items([], shopInven, "swap_items")
 			return
 		
 		# Updating the shop items
-		var items = find_same_tier_items(inventory.items[button.get_index()].tier)
+		var items = find_same_tier_items(inventory.items[button.get_index()].itemData.tier)
 		update_items(items, shopInven, "swap_items")
 		
 		# Removing the shop items if the button is unselected

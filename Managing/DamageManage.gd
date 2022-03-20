@@ -19,7 +19,7 @@ var hurtSFX:Node2D
 
 var health:int
 
-var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
+export var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var damageLabel = preload("res://Entities/Effects/DmgLabel.tscn")
 var corpse = preload("res://Entities/Effects/EnemyCorpse.tscn")
@@ -118,7 +118,10 @@ func _die(dir: Vector2) -> void:
 		HARD:
 			scoreInc = Globals.HARD_ENEMY_POINTS
 			GameManager.player.playerData.healMaterial += Globals.HARD_MATERIAL_POINTS * (maxHealth / 80.0)
-	if isBoss: scoreInc += Globals.BOSS_KILL
+	if isBoss:
+		scoreInc += Globals.BOSS_KILL
+	else:
+		GameManager.emit_signal("screenshake", 1, 2, .025, .1)
 	
 	GameManager.player.playerData.score += scoreInc
 	GameManager.player.playerData.kills += 1

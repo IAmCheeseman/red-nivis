@@ -20,9 +20,6 @@ anchor_bottom = 1.0
 margin_right = -3.0
 margin_bottom = -2.0
 alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Slots" type="VBoxContainer" parent="HBox"]
 margin_left = 325.0

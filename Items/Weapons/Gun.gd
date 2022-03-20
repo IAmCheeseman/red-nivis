@@ -59,6 +59,7 @@ var inventory = preload("res://UI/Inventory/Inventory.tres")
 
 
 func _ready():
+	yield(TempTimer.idle_frame(self), "timeout")
 	player.ammo = inventory.items[invenIdx].ammoLeft
 	if player.ammo == 0:
 		cooldownTimer.start(reloadSpeed)

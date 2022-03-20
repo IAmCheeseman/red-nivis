@@ -35,7 +35,7 @@ func has_space() -> bool:
 func has_item(id:String) -> bool:
 	var hasItem = false
 	for i in items:
-		hasItem = i.key == id
+		hasItem = i.itemData.key == id
 		if hasItem: break
 	return hasItem
 
@@ -78,7 +78,7 @@ func remove_item(id):
 			return false
 		for item in items.size():
 			if !items[item] is Dictionary: continue
-			if items[item].key == id:
+			if items[item].itemData.key == id:
 				items[item] = null
 	elif id is int:
 		items[id] = null
