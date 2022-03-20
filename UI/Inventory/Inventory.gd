@@ -92,7 +92,7 @@ func remove_item(id):
 
 func add_item(id):
 	if !has_space(): return
-	items[items.find(null)] = {"itemData" : itemMap[id], "ammoLeft" : 0}
+	items[items.find(null)] = {"itemData" : itemMap[id], "ammoLeft" : -1}
 	emit_signal("itemsChanged")
 	emit_signal("itemAdded", id)
 

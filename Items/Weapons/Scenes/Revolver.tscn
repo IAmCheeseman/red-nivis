@@ -9,7 +9,6 @@ accuracy = 2.0
 cooldown = 0.075
 reloadSpeed = 0.3
 meleeSpeed = 0.7
-projScale = 0.8
 cost = 150
 maxHoldShots = 1
 magazineSize = 6

@@ -63,6 +63,9 @@ func _ready():
 	if player.ammo == 0:
 		cooldownTimer.start(reloadSpeed)
 		isReloading = true
+	elif player.ammo == -1:
+		player.ammo = magazineSize
+		canShoot = true
 	else:
 		canShoot = true
 
@@ -87,6 +90,7 @@ func _on_Cooldown_timeout():
 			player.ammo += reloadAmount
 			isReloading = true
 			cooldownTimer.start(reloadSpeed)
+	inventory.items[invenIdx].ammoLeft = player.ammo
 
 
 func _on_melee_timeout() -> void:
