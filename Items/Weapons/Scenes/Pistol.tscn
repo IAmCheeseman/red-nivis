@@ -8,6 +8,7 @@ damage = 12.0
 accuracy = 3.0
 reloadSpeed = 0.8
 cost = 30
+maxHoldShots = 1
 magazineSize = 3
 kickUp = 13.0
 bulletSpawnDist = 20.0
