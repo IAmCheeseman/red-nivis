@@ -24,7 +24,8 @@ func add_item():
 	if item == null: return
 
 	if item is Dictionary:
-		var newItem = load(item.scene).instance()
+		var newItem = load(item.itemData.scene).instance()
+		newItem.invenIdx = inventory.selectedSlot
 		newItem.player = playerData
 
 		yield(TempTimer.idle_frame(self), "timeout")

@@ -90,6 +90,7 @@ func _physics_process(delta) -> void:
 
 func pre_shoot() -> void:
 	playerData.ammo -= 1
+	gun.inventory.items[gun.invenIdx].ammoLeft = playerData.ammo
 	Cursor.get_node("Sprite").scale = Vector2(
 		rand_range(1, 1.2), rand_range(1, 1.2))
 	shoot()

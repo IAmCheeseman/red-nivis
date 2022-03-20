@@ -53,14 +53,18 @@ var standingOver := false
 var canShoot := false
 var canSwing := true
 var isReloading := false
+var invenIdx = 0
 var player: Resource
-
+var inventory = preload("res://UI/Inventory/Inventory.tres")
 
 
 func _ready():
-	player.ammo = 0
-	cooldownTimer.start(reloadSpeed)
-	isReloading = true
+	player.ammo = inventory.items[invenIdx].ammoLeft
+	if player.ammo == 0:
+		cooldownTimer.start(reloadSpeed)
+		isReloading = true
+	else:
+		canShoot = true
 
 	meleeCooldown.wait_time = meleeSpeed
 	for perk in perks:

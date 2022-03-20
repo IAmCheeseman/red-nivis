@@ -45,7 +45,7 @@ func refresh_items():
 			continue
 		
 		slot.clear()
-		slot.setup(item.slotTexture, item.key)
+		slot.setup(item.itemData.slotTexture, item.itemData.key)
 
 
 func set_slot_cursor_position():
