@@ -14,11 +14,11 @@ var camStart: Vector2
 
 func _process(_delta: float) -> void:
 	if !startButton.disabled: camStart = camera.position
-	
+
 	var viewportSize = get_viewport_rect().end
 	titleMenu.rect_size = viewportSize
 	titleMenu.rect_position = camStart
-	
+
 	title.position.x = titleControl.rect_size.x / 2
 	title.position.y = titleControl.rect_size.y / 2
 
@@ -27,7 +27,7 @@ func start() -> void:
 	anim.play("Start")
 	startButton.disabled = true
 	yield(TempTimer.timer(self, .8), "timeout")
-	
+
 	var tween = Tween.new()
 	add_child(tween)
 	menu.show()
@@ -38,3 +38,7 @@ func start() -> void:
 	)
 	tween.start()
 
+
+
+func quit() -> void:
+	get_tree().quit()
