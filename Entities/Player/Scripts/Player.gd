@@ -32,6 +32,7 @@ onready var healVignette = $CanvasLayer/HealVig
 onready var gameOverlay = $CanvasLayer/GameOverlay
 onready var tileChecker = $TileCheckers/BottomTileChecker
 onready var djParticles = $DoubleJumpParticles
+onready var dmgBuffOrb = $ScaleHelper/SpinningOrb
 
 var vel := Vector2.ZERO
 var snapVector = SNAP_DIRECTION*SNAP_LENGTH
@@ -70,7 +71,9 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
 	healVignette.modulate.a = lerp(healVignette.modulate.a, 0, 1.25*delta)
-
+	
+	dmgBuffOrb.visible = playerData.damageMod != 1.0
+	
 	match state:
 		states.WALK:
 			walk_state(delta)
