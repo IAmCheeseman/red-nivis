@@ -24,6 +24,8 @@ export var stamRecovCurve: Curve
 export var tiltStrength:float = 5.0
 export var healTime := 2.0
 
+var damageMod := 1.0
+
 var health:int
 var money := 0 setget set_money
 var ammo:int setget set_ammo
