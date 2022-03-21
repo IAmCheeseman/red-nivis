@@ -113,9 +113,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee")\
 	and !swinging\
 	and gun.meleeCooldown.is_stopped()\
-	and !GameManager.inGUI\
-	and playerData.stamina > 0:
-		playerData.stamina -= 1
+	and !GameManager.inGUI:#\
+#	and playerData.stamina > 0:
+#		playerData.stamina -= 1
 		playerData.playerObject.vel += get_local_mouse_position().normalized()*gun.recoil
 
 		swinging = true
@@ -130,7 +130,7 @@ func _input(event: InputEvent) -> void:
 		var newSwing = swing.instance()
 		newSwing.rotation = angle
 		newSwing.reflectDir = Utils.get_local_mouse_position(self).normalized()
-		GameManager.spawnManager.spawn_object(newSwing)
+		owner.add_child(newSwing)
 
 		var hb = newSwing.get_node("Hitbox")
 		hb.damage = gun.damage*1.25 if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride
@@ -139,7 +139,7 @@ func _input(event: InputEvent) -> void:
 
 		GameManager.emit_signal(
 			"screenshake",
-			1, 8, .05, .05,
+			1, 3, .05, .05,
 			Utils.get_local_mouse_position(self).normalized()
 		)
 

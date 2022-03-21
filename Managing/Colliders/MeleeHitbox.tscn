@@ -27,6 +27,7 @@ script = ExtResource( 2 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 1 )]
 collision_mask = 4
+giveSelf = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "init"

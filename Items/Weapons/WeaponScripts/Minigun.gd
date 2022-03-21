@@ -7,7 +7,7 @@ onready var actualCooldown = gun.cooldown
 
 func shoot():
 	randomize()
-	
+
 	var bullets = []
 	holdShots += 1
 	for i in gun.multishot:
@@ -16,7 +16,7 @@ func shoot():
 		# Controller aim assist
 		if GameManager.usingController:
 			dir = Utils.round_dir_to_target(gun, dir)
-		
+
 		var spread = deg2rad(gun.spread*i-(gun.spread*(gun.multishot-1)*.5))#*int(gun.spread != 0)
 		var accuracy = deg2rad(rand_range(-gun.accuracy, gun.accuracy))
 		dir = dir.rotated(spread+accuracy)
@@ -34,7 +34,7 @@ func shoot():
 		newBullet.connect("hit_enemy", self, "_on_bullet_hit_enemy")
 		# Adding it to the tree
 		GameManager.spawnManager.spawn_object(newBullet)
-		
+
 		newBullet.damage = gun.damage
 
 		if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
@@ -46,9 +46,9 @@ func shoot():
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
 		cooldownTimer.start(actualCooldown*playerData.attackSpeed)
-		
+
 		emit_signal("gun_shot", newBullet)
-	
+
 	yield(TempTimer.idle_frame(self), "timeout")
 	if gun.bulletSprite:
 		for i in bullets:

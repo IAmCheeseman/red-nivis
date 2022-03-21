@@ -2,7 +2,7 @@ extends "res://Items/Weapons/WeaponScripts/GunLogic.gd"
 
 func shoot():
 	randomize()
-	
+
 	var bullets = []
 	holdShots += 1
 	for i in gun.multishot:
@@ -11,7 +11,7 @@ func shoot():
 		# Controller aim assist
 		if GameManager.usingController:
 			dir = Utils.round_dir_to_target(gun, dir)
-		
+
 		var spread = deg2rad(gun.spread*i-(gun.spread*(gun.multishot-1)*.5))#*int(gun.spread != 0)
 		var accuracy = deg2rad(rand_range(-gun.accuracy, gun.accuracy))
 		dir = dir.rotated(spread+accuracy)
@@ -29,7 +29,7 @@ func shoot():
 		newBullet.connect("hit_enemy", self, "_on_bullet_hit_enemy")
 		# Adding it to the tree
 		GameManager.spawnManager.spawn_object(newBullet)
-		
+
 		newBullet.damage = gun.damage
 
 		if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
@@ -42,9 +42,9 @@ func shoot():
 		get_parent().canShoot = false
 		cooldownTimer.start(gun.cooldown*playerData.attackSpeed)
 		gun.isReloading = false
-		
+
 		emit_signal("gun_shot", newBullet)
-	
+
 	yield(TempTimer.idle_frame(self), "timeout")
 	if gun.bulletSprite:
 		for i in bullets:
@@ -65,7 +65,7 @@ func shoot():
 	# Playing a sound for feedback
 	gun.get_node("ShootSound").play()
 
-	gun.player.playerObject.vel += -get_local_mouse_position().normalized()*gun.recoil
+	gun.player.playerObject.vel.x += (-get_local_mouse_position().normalized()*gun.recoil).x
 	if playerData.ammo <= 0:
 		cooldownTimer.stop()
 		cooldownTimer.start(gun.reloadSpeed)
