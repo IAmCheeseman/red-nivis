@@ -23,6 +23,7 @@ export var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticle
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var damageLabel = preload("res://Entities/Effects/DmgLabel.tscn")
 var corpse = preload("res://Entities/Effects/EnemyCorpse.tscn")
+var damageBoosters = preload("res://Entities/Enemies/DamageBoostPickup/DamageBoostPickup.tscn")
 
 signal dead
 signal damaged
@@ -47,18 +48,18 @@ func take_damage(amount:float, dir:Vector2) -> void:
 	#var dmg := int(amount+rand_range(-2, 1))
 	health -= int(amount)
 	if par.get("vel"): par.vel = dir*kbAmount-Vector2(0, upwardsKB)
-	
+
 	# Instancing label for damage
 	var newDL = damageLabel.instance()
 	newDL.rect_position = global_position
 	newDL.text = str(round(amount+rand_range(-2, 1)))
-	
+
 	# Adding damage label
 	var nn = Node2D.new()
 	nn.z_index = 100
 	GameManager.spawnManager.spawn_object(nn)
 	nn.add_child(newDL)
-	
+
 	var newDP = deathParticles.instance()
 	newDP.position = global_position
 	newDP.rotation = dir.angle()
@@ -66,13 +67,13 @@ func take_damage(amount:float, dir:Vector2) -> void:
 	newDP.process_material = newDP.process_material.duplicate()
 	newDP.process_material.emission_sphere_radius = 1
 	GameManager.spawnManager.spawn_object(newDP)
-	
+
 	if hurtSFX: hurtSFX.play()
-	
+
 	# Updating the healthbar
 	if par.has_method("update_healthbar"):
 		par.update_healthbar()
-	
+
 	# Killing thingy
 	if health <= 0:
 		_die(dir)
@@ -87,16 +88,16 @@ func _die(dir: Vector2) -> void:
 		newDP.position = global_position
 		newDP.rotation = dir.angle()
 		GameManager.spawnManager.spawn_object(newDP)
-	
+
 	# Adding health pickup
 	if rand_range(0, 1) < Globals.HEART_CHANCE:
 		var newHealth = healthPickup.instance()
 		newHealth.position = global_position
 		GameManager.spawnManager.spawn_object(newHealth)
-	
+
 	if par.has_signal("death"):
 		par.emit_signal("death")
-	
+
 	if corpseSprites.size() > 0:
 		for i in corpseSprites:
 			var newCorpse = corpse.instance()
@@ -106,7 +107,7 @@ func _die(dir: Vector2) -> void:
 			newCorpse.apply_central_impulse(dir * rand_range(40, 60))
 			newCorpse.apply_torque_impulse(500)
 			GameManager.spawnManager.spawn_object(newCorpse)
-	
+
 	var scoreInc: int
 	match difficulty:
 		EASY:
@@ -122,13 +123,16 @@ func _die(dir: Vector2) -> void:
 		scoreInc += Globals.BOSS_KILL
 	else:
 		GameManager.emit_signal("screenshake", 1, 2, .025, .1)
-	
+		var newDamageBoost = damageBoosters.instance()
+		newDamageBoost.global_position = global_position
+		GameManager.spawnManager.spawn_object(newDamageBoost)
+
 	GameManager.player.playerData.score += scoreInc
 	GameManager.player.playerData.kills += 1
-	
+
 	if steamAchievement != "": Achievement.unlock(steamAchievement)
-	
+
 	if isBoss and !	playerTookDamage:
 		Achievement.unlock("NO_HIT")
-	
+
 	if freeOnDeath: par.queue_free()

@@ -25,6 +25,7 @@ export var tiltStrength:float = 5.0
 export var healTime := 2.0
 
 var damageMod := 1.0
+var currentMod: Node2D
 
 var health:int
 var money := 0 setget set_money

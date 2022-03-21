@@ -6,10 +6,12 @@ onready var boostTimer = $DamageBoostTimer
 
 export var friction := 100
 export var speed := 100
+export var incdec := .5
 
 var player = preload("res://Entities/Player/Player.tres")
 var vel: Vector2
 var toPlayer := false
+var disabled := false
 
 
 func _ready() -> void:
@@ -34,7 +36,8 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if sprite.visible:
+	if sprite.visible and area.is_in_group("player")\
+	 and (player.currentMod == self or !player.currentMod):
 		GameManager.emit_signal(
 			"screenshake",
 			1,
@@ -44,17 +47,25 @@ func _on_area_entered(area: Area2D) -> void:
 		)
 		sprite.hide()
 		explosion.emitting = true
-		player.damageMod = 1.5
-		player.attackSpeed = .5
+		if disabled: return
+		player.damageMod = 1 + incdec
+		player.attackSpeed = 1 - incdec
 		boostTimer.start()
+		player.currentMod = self
 
 
 func _on_damage_boost_timeout() -> void:
+	if disabled:
+		queue_free()
+		return
 	player.damageMod = 1
 	player.attackSpeed = 1
+	player.currentMod = null
 	queue_free()
 
 
 func _exit_tree() -> void:
+	if disabled: return
 	player.damageMod = 1
 	player.attackSpeed = 1
+	player.currentMod = null
