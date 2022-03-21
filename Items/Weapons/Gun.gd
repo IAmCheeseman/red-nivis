@@ -19,7 +19,7 @@ export var projSpeedRange := Vector2(-50, 60)
 export var projScale: Vector2 = Vector2(1, 1)
 export var projLifetime: float = .5
 export var peircing: bool = false
-export var recoil: float = 30
+export var recoil: float = 120
 export var look: int
 export var cost: int = 1
 export var maxHoldShots: int = -1
