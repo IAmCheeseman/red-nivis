@@ -4,8 +4,8 @@ onready var sprite = $Sprite
 onready var explosion = $Explosion
 onready var boostTimer = $DamageBoostTimer
 
-export var friction := 100
-export var speed := 100
+export var friction := 100.0
+export var speed := 100.0
 export var incdec := .5
 
 var player = preload("res://Entities/Player/Player.tres")

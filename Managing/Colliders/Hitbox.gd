@@ -8,6 +8,7 @@ export var damage = 15
 export var kbStrengh = 3.0
 export var setDirection:Vector2
 export var tick := -1.0
+export var giveSelf := false
 
 var canHit = false
 
@@ -32,12 +33,15 @@ func do_damage(area) -> void:
 	elif tick != -1.0: do_tick(area)
 	emit_signal("hit_object", area)
 	if !is_instance_valid(area): return
-	
+
 	var dir = global_position.direction_to(area.global_position)*kbStrengh
-	
+
 	if setDirection: dir = setDirection
-	area.take_damage(damage, dir)
-	
+	if !giveSelf:
+		area.take_damage(damage, dir)
+	else:
+		area.take_damage(damage, dir, self)
+
 	var par = area.get_parent()
 	if effect and !par.has_node("Effect"):
 		var newEffect = Node2D.new()

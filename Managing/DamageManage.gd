@@ -123,9 +123,13 @@ func _die(dir: Vector2) -> void:
 		scoreInc += Globals.BOSS_KILL
 	else:
 		GameManager.emit_signal("screenshake", 1, 2, .025, .1)
-		var newDamageBoost = damageBoosters.instance()
-		newDamageBoost.global_position = global_position
-		GameManager.spawnManager.spawn_object(newDamageBoost)
+
+		var hurtbox = owner.find_node("Hurtbox")
+		yield(TempTimer.idle_frame(self), "timeout")
+		if hurtbox.lastHitNode:
+			var newDamageBoost = damageBoosters.instance()
+			newDamageBoost.global_position = global_position
+			GameManager.spawnManager.spawn_object(newDamageBoost)
 
 	GameManager.player.playerData.score += scoreInc
 	GameManager.player.playerData.kills += 1

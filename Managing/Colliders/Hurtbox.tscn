@@ -2,9 +2,7 @@
 
 [ext_resource path="res://Managing/Colliders/Hurtbox.gd" type="Script" id=1]
 
-[node name="Hurtbox" type="Area2D" groups=[
-"hurtbox",
-]]
+[node name="Hurtbox" type="Area2D" groups=["hurtbox"]]
 collision_mask = 0
 script = ExtResource( 1 )
 
