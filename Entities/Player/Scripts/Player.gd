@@ -46,6 +46,7 @@ var dontPlayJump = false
 var lastUpdatedAim := Vector2.RIGHT*64
 
 var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
+var landParticles = preload("res://Entities/Player/Assets/LandParticles.tscn")
 var playerData = preload("res://Entities/Player/Player.tres")
 var lockMovement = false
 var timeOnGround = 0.0
@@ -183,6 +184,10 @@ func animate(moveDir:Vector2):
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
 		if vel.y > 0:
+			var newParticles = landParticles.instance()
+			newParticles.position = global_position
+			newParticles.emitting = true
+			GameManager.spawnManager.spawn_object(newParticles)
 			SaS.play("Land")
 		dontPlayJump = false
 		timeOnGround = 0
