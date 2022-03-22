@@ -131,11 +131,11 @@ bus = "SFX"
 script = ExtResource( 12 )
 audio = ExtResource( 16 )
 directional = true
-volumeMod = -10.0
 pitchShiftRange = 2.0
 autoplay = true
 loop = true
-maxDist = 500.0
+attenuation = 1.0
+maxDist = 120.0
 bus = "Reverb"
 
 [node name="Timers" type="Node" parent="."]

@@ -37,8 +37,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if sprite.visible and area.is_in_group("player")\
-	 and (player.currentMod == self or !player.currentMod):
+	if sprite.visible and area.is_in_group("player"):
 		GameManager.emit_signal(
 			"screenshake",
 			1,
@@ -49,12 +48,13 @@ func _on_area_entered(area: Area2D) -> void:
 		sprite.hide()
 		explosion.emitting = true
 		if disabled: return
-		player.damageMod = 1 + incdec
-		player.attackSpeed = 1 - incdec
-		boostTimer.start()
-		player.currentMod = self
+		player.healMaterial += 9
+		if !player.currentMod:
+			player.damageMod = 1 + incdec
+			player.attackSpeed = 1 - incdec
+			boostTimer.start()
+			player.currentMod = self
 		pickupSFX.play()
-
 
 func _on_damage_boost_timeout() -> void:
 	if disabled:

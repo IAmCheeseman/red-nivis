@@ -26,7 +26,7 @@ func play(volMod=volumeMod):
 	match directional:
 		true:
 			newAudioPlayer = AudioStreamPlayer2D.new()
-			newAudioPlayer.attenuation = 5.0
+			newAudioPlayer.attenuation = attenuation
 			newAudioPlayer.max_distance = maxDist
 		false:
 			newAudioPlayer = AudioStreamPlayer.new()

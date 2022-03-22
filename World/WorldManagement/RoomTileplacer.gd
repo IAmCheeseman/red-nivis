@@ -373,7 +373,7 @@ func spawn_enemies() -> void:
 	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
 # warning-ignore:integer_division
 # warning-ignore:integer_division
-	var enemyCount = ceil((roomI.get_width()/Globals.TEMPLATE_SIZE)*(roomI.get_height()/Globals.TEMPLATE_SIZE)) * 1.75
+	var enemyCount = ceil((roomI.get_width()/Globals.TEMPLATE_SIZE)*(roomI.get_height()/Globals.TEMPLATE_SIZE)) * 1.5
 	for i in enemyCount:
 		if world.viableEnemySpawns.size() == 0:
 			break
