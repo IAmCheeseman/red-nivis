@@ -21,7 +21,6 @@ var health:int
 
 export var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
-var damageLabel = preload("res://Entities/Effects/DmgLabel.tscn")
 var corpse = preload("res://Entities/Effects/EnemyCorpse.tscn")
 var damageBoosters = preload("res://Entities/Enemies/DamageBoostPickup/DamageBoostPickup.tscn")
 
@@ -48,17 +47,6 @@ func take_damage(amount:float, dir:Vector2) -> void:
 	#var dmg := int(amount+rand_range(-2, 1))
 	health -= int(amount)
 	if par.get("vel"): par.vel = dir*kbAmount-Vector2(0, upwardsKB)
-
-	# Instancing label for damage
-	var newDL = damageLabel.instance()
-	newDL.rect_position = global_position
-	newDL.text = str(round(amount+rand_range(-2, 1)))
-
-	# Adding damage label
-	var nn = Node2D.new()
-	nn.z_index = 100
-	GameManager.spawnManager.spawn_object(nn)
-	nn.add_child(newDL)
 
 	var newDP = deathParticles.instance()
 	newDP.position = global_position
