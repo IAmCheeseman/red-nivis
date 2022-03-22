@@ -106,7 +106,7 @@ autoplay = "Kill"
 anims/Kill = SubResource( 1 )
 
 [node name="Light" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 2.89, 0, 0, 1 )
 show_behind_parent = true
 material = SubResource( 2 )
 texture = ExtResource( 4 )
@@ -116,6 +116,7 @@ material = SubResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="Hitbox" parent="." groups=["EnemyBullet"] instance=ExtResource( 1 )]
+visible = false
 collision_layer = 4
 collision_mask = 2
 damage = 1
@@ -125,6 +126,7 @@ giveSelf = true
 shape = SubResource( 3 )
 
 [node name="QueueArea" type="Area2D" parent="." groups=["EnemyBullet"]]
+visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QueueArea"]

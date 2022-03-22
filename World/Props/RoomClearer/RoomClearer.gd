@@ -21,11 +21,12 @@ func _on_enemy_die(enemy) -> void:
 
 func add_enemies() -> void:
 	for i in enemies.get_children():
+		if !is_instance_valid(i): break
 		if "_on_enemy_die" in i.get_signal_connection_list("dead"): continue
 		var _discard = i.get_node("DamageManager").connect("dead", self, "_on_enemy_die", [i])
 
 func _process(_delta: float) -> void:
 	if enemies.get_child_count() == 0 and isChecking:
-		emit_signal("enemiesCleared")
+		emit_signal("enemiesCleared")	
 	elif enemies.get_child_count() > 0:
 		isChecking = true

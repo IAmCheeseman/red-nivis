@@ -175,6 +175,7 @@ tile_data = PoolIntArray( -3014602, 0, 3, -2949073, 0, 0, -2949072, 0, 1, -29490
 [node name="SpawningManagment" parent="." instance=ExtResource( 13 )]
 
 [node name="Managing" type="Node2D" parent="."]
+visible = false
 
 [node name="CameraZones" type="Node2D" parent="Managing"]
 z_index = 1

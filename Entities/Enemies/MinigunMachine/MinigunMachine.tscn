@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachineCorpseBottom.png" type="Texture" id=15]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachineCorpseTop.png" type="Texture" id=16]
 [ext_resource path="res://Entities/Effects/RobotSparks/RobotSparks.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Entities/Enemies/Shoot.wav" type="AudioStream" id=18]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -227,6 +228,14 @@ anims/RESET = SubResource( 1 )
 anims/WindUp = SubResource( 2 )
 anims/cooldown = SubResource( 3 )
 anims/init = SubResource( 4 )
+
+[node name="ShootSFX" type="Node2D" parent="Sprite/Minigun"]
+position = Vector2( 0, -12 )
+script = ExtResource( 13 )
+audio = ExtResource( 18 )
+volumeMod = -10.0
+pitchShiftRange = 4.0
+bus = "ReverbLow"
 
 [node name="Eye1" type="Light2D" parent="Sprite"]
 position = Vector2( -1.625, 0 )

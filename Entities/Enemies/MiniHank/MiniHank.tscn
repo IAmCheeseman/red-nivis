@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemies/MiniHank/MiniHankCorpse.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Entities/Enemies/MiniHank/MiniHankCorpseStick.png" type="Texture" id=13]
 [ext_resource path="res://Entities/Enemies/MiniHank/Shotgun.png" type="Texture" id=14]
 [ext_resource path="res://Entities/Effects/RobotSparks/RobotSparks.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Entities/Enemies/Shoot.wav" type="AudioStream" id=16]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 11.0
@@ -168,6 +169,14 @@ script = ExtResource( 11 )
 audio = ExtResource( 12 )
 volumeMod = 5.0
 bus = "SFX"
+
+[node name="ShootSFX" type="Node2D" parent="."]
+position = Vector2( 0, -12 )
+script = ExtResource( 11 )
+audio = ExtResource( 16 )
+volumeMod = -10.0
+pitchShiftRange = 4.0
+bus = "ReverbLow"
 
 [node name="Timers" type="Node" parent="."]
 

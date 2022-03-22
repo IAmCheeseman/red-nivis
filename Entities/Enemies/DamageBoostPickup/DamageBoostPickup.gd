@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var sprite = $Sprite
 onready var explosion = $Explosion
 onready var boostTimer = $DamageBoostTimer
+onready var pickupSFX = $PickUpSFX
 
 export var friction := 100.0
 export var speed := 100.0
@@ -52,6 +53,7 @@ func _on_area_entered(area: Area2D) -> void:
 		player.attackSpeed = 1 - incdec
 		boostTimer.start()
 		player.currentMod = self
+		pickupSFX.play()
 
 
 func _on_damage_boost_timeout() -> void:

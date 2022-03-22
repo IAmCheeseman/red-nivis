@@ -10,6 +10,7 @@ onready var cooldown = $Cooldown
 onready var overheatCooldown = $OverheatCooldown
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
+onready var shootSFX = $ShootSFX
 
 var currentCooldown = 2.3
 var shotsInARow = 0
@@ -69,3 +70,5 @@ func _process(delta: float) -> void:
 		anim.play("cooldown")
 	
 	sprite.frame = wrapi(sprite.frame+1, 0, sprite.hframes)
+	
+	shootSFX.play()

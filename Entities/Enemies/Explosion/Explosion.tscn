@@ -124,6 +124,7 @@ anims/Explode = SubResource( 14 )
 anims/RESET = SubResource( 15 )
 
 [node name="PlayerHitbox" parent="." instance=ExtResource( 2 )]
+visible = false
 collision_mask = 2
 damage = 1
 kbStrengh = 3.5
@@ -132,6 +133,7 @@ kbStrengh = 3.5
 shape = SubResource( 16 )
 
 [node name="EnemyHitbox" parent="." instance=ExtResource( 2 )]
+visible = false
 collision_mask = 4
 damage = 40
 

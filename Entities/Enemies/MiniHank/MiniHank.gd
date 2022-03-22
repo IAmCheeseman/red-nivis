@@ -17,6 +17,8 @@ onready var hpBar = $Healthbar
 
 onready var healthManager = $DamageManager
 
+onready var shootSFX = $ShootSFX
+
 export var speed := 64.0
 export var kbAmount:float = 32
 export var acceleration := 5.0
@@ -103,6 +105,7 @@ func shoot() -> void:
 		newBullet.damage = damage
 		newBullet.global_position = gunSprite.global_position
 		GameManager.spawnManager.spawn_object(newBullet)
+	shootSFX.play()
 
 
 func flip_sprite(fv:Vector2) -> void:

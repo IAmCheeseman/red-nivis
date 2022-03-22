@@ -43,6 +43,7 @@ anim_offset = 1.0
 anim_offset_random = 1.0
 
 [node name="ExplosionParticles" type="Particles2D"]
+modulate = Color( 16.18, 1, 1, 1 )
 material = SubResource( 10 )
 emitting = false
 amount = 300

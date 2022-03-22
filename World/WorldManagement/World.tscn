@@ -21,7 +21,7 @@ enemiesPath = NodePath("../Props/Enemies")
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Player" parent="Props" instance=ExtResource( 7 )]
-position = Vector2( 70, 94 )
+position = Vector2( 186, 125 )
 
 [node name="SpawningManagment" parent="Props" instance=ExtResource( 12 )]
 
@@ -37,6 +37,7 @@ z_index = -1
 z_index = 2
 
 [node name="CameraZones" type="Node2D" parent="Props"]
+visible = false
 
 [node name="CameraMoveZone" parent="Props/CameraZones" instance=ExtResource( 9 )]
 
