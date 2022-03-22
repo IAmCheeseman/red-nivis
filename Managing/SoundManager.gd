@@ -6,6 +6,9 @@ export var directional = false
 export(float, -80, 24) var volumeMod = 0
 export(float, 1, 100) var pitchShiftRange:float = 1
 export var autoplay := false
+export var loop := false
+export var attenuation := 5.0
+export var maxDist := 2000.0
 export(String, "Master", "Ambient", "Music", "SFX", "Reverb", "ReverbLow") var bus = 0
 
 signal finished
@@ -18,11 +21,13 @@ func _ready() -> void:
 func play(volMod=volumeMod):
 	# Creating the audio player
 	if !audio: return
-	
+
 	var newAudioPlayer
 	match directional:
 		true:
 			newAudioPlayer = AudioStreamPlayer2D.new()
+			newAudioPlayer.attenuation = 5.0
+			newAudioPlayer.max_distance = maxDist
 		false:
 			newAudioPlayer = AudioStreamPlayer.new()
 		_:
@@ -44,6 +49,9 @@ func stop() -> void: Utils.free_children(self)
 
 func _on_audio_finished(player):
 	emit_signal("finished")
+	if loop:
+		player.play()
+		return
 	player.queue_free()
 
 
