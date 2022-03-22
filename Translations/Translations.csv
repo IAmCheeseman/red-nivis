@@ -21,12 +21,19 @@ TIME_GO,Time:,Ya time:,Tiempo:,Zeit
 TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,Erneut versuchen
 EXIT_GO,Exit,I'll throw 'n da' towel,Salir,Verlassen
 ,,,,
-TIME_HUD,Time,Toime,,
+TIP_GO,Tip:,,,
+GIT_GUD_TT,Git gud,,,
+DONT_GET_HIT_TT,Don't get hit.,,,
+TRY_NOT_DYING_TT,Try not dying.,,,
+ENEMIES_WILL_KILL_YOU_TT,Enemies will attempt to kill you.,,,
+DONT_STAND_STILL_TT,Don't stand still.,,,
+,,,,
+TIME_HUD,Time,Toime,Tiempo,
 ,,,,
 INTR_TALK,talk,speak wi' tongue,Hablar,Sprechen
 INTR_PCK_UP,pick up,raise tew 'ew,Tomar,Aufheben
 INTR_SLCT_ABILITY,select abilities,gain loife skills,Seleccionar Habilidades,Fähigkeiten auswählen
-INTR_SCN_ITM,scan in item,scahn en i'ems,Scanear un Item,einen Gegenstand scannen
+INTR_SCN_ITM,scan in item,scahn en i'ems,Activar,einen Gegenstand scannen
 INTR_TELEPORT,teleport,ma'eriali'e in an'o'fer place,Usar el viaje Rápido,Teleportieren
 ,,,,
 PAUSE_TTL,Paused," Hol' on, m8",Pausado,Pausiert
@@ -115,14 +122,14 @@ BIRB_NO_TRADE_WRN,Can't trade that item.,"Cahnt tra' tah oitem, bruv.",No puedo 
 NEW_BIOME_WECLOME,Welcome to,elcome 'ew ,Bienvenido a,Wilkommen zu
 ,,,,
 LABS_TTL,The Labs,eh La-boreh-tory,Los Laboratorios,Die Labore
-BACKEND_TTL,The Backend,,,
+BACKEND_TTL,The Maintenance Rooms,eh Maintaineenc Rewms,Salas de Mantenimiento,
 DEEP_LABS_TTL,The Deep Labs,eh Deep La-boreh-torees,Los Laboratorios Subterráneos,Dem tiefen Labor
 FREEZERS_TTL,The Freezers,eh Fre'zahs,Los Laboratorios Helados,Die Gefrierschränke
 TOXIC_CAVERNS_TTL,The Toxic Caverns,eh Toixic Ca'erns,La Caverna Ponzoñosa,Die toxischen Kavernen
 TECH_LABS_TTL,The Tech Labs,eh Technoglical La-boreh-tory,Los laboratorios Avanzados,Die Techniklabore
 ,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
-AK47_ITM,AK-47,Ay Kay For'y Seven,AK-47,AK-47
+AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47
 REVOLVER_ITM,Revolver,Revalveh,Revólver,Revolver
 GRENADE_LAUNCHER_ITM,Grenade Launcher,Grenayde  Lewncha,Lanzagranadas,Granatenwerfer
 PUMP_SHOTGUN_ITM,Pump Shotgun,Pewmp Shewtgun,Escopeta de Bombeo,Schrotflinte
@@ -134,6 +141,6 @@ MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun
 BULLET_CHAINSAW_ITM,Bullet Chainsaw,Bul'et Chaynshaw,Balasierra,Kugel Kettensäge
 GOUDA_GREASER_ITM,Gouda Greaser,Americahn Fewd,Cañón de Queso,
 CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,
-SOAP_SLAPPER_ITM,Soap Launcher,Forcfal Violen' Cleansah,Lanzador de Jabón,Seifenwerfer
+SOAP_SLAPPER_ITM,Bubble Gun,Bu'le Gun,,
 J_LASER_ITM,J-Laser,J-LaZer,Láser J,J-Laser
-VAPORGAT_ITM,Vaporgat,Faht Cannon,,
+VAPORGAT_ITM,Vaporgat,Faht Cannon,Vaporgat,Vaporgat
