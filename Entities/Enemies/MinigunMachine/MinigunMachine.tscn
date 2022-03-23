@@ -283,6 +283,7 @@ kbAmount = 64.0
 hurtSFXPath = NodePath("../HitSFX")
 difficulty = 0
 corpseSprites = [ ExtResource( 16 ), ExtResource( 15 ) ]
+spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 17 )
 
 [node name="HitSFX" type="Node2D" parent="."]

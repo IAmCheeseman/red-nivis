@@ -23,6 +23,9 @@ anchor_bottom = 1.0
 custom_constants/separation = 8
 alignment = 1
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameOverLabel" type="RichTextLabel" parent="."]
 margin_left = 105.0

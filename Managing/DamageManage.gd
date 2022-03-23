@@ -14,6 +14,9 @@ export var useDeathParticles := true
 export var isBoss := false
 export var freeOnDeath := true
 export var steamAchievement := ""
+export var spritePath: NodePath
+
+var sprite: Sprite
 
 var hurtSFX:Node2D
 
@@ -31,6 +34,7 @@ var playerTookDamage := false
 
 
 func _ready() -> void:
+	if spritePath: sprite = get_node(spritePath)
 	if hurtSFXPath: hurtSFX = get_node(hurtSFXPath)
 	health = maxHealth
 	if isBoss:
@@ -66,6 +70,10 @@ func take_damage(amount:float, dir:Vector2) -> void:
 	if health <= 0:
 		_die(dir)
 	emit_signal("damaged")
+
+	sprite.modulate = Color(100, 100, 100, 1)
+	yield(TempTimer.timer(self, .2), "timeout")
+	sprite.modulate = Color(1, 1, 1, 1)
 
 
 func _die(dir: Vector2) -> void:

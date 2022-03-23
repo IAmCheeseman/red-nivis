@@ -72,10 +72,10 @@ func _physics_process(delta:float) -> void:
 		newAS.position = position-Vector2(0, 12)
 		GameManager.spawnManager.spawn_object(newAS)
 		get_tree().call_group("MDM", "give_player", player, position)
-		
+
 		state = states.WIND_UP
 		windUpTimer.start()
-	
+
 	if !state in [ states.WIND_UP, states.DEFEND ]: rotation = lerp_angle(rotation, 0, 2*delta)
 	match state:
 		states.WANDER:
@@ -86,12 +86,12 @@ func _physics_process(delta:float) -> void:
 			attack_state(delta)
 		states.DEFEND:
 			defend_state(delta)
-	
+
 	hpBar.owner.global_rotation = 0
-	
+
 	# Soft collisions
 	vel += softCollision.get_push_vector()*(kbAmount*.05)
-	
+
 	vel = move_and_slide(vel)
 
 
@@ -102,7 +102,7 @@ func wander_state(delta:float) -> void:
 func attack_state(_delta:float) -> void:
 	look_at(global_position+vel)
 	rotation_degrees -= 90
-	
+
 	if attackTimer.is_stopped():
 		vel *= .333
 		state = states.DEFEND
@@ -118,7 +118,7 @@ func wind_up_state(delta: float) -> void:
 	vel = vel.move_toward(-global_position.direction_to(player.global_position)*130, accel*20*delta)
 	sprite.look_at(player.global_position - Vector2(0, 8))
 	sprite.rotation_degrees -= 90
-	
+
 	if windUpTimer.is_stopped():
 		state = states.ATTACK
 		vel = global_position.direction_to(player.global_position - Vector2(0, 8))*attackSpeed
@@ -152,10 +152,10 @@ func accel_to_point(point:Vector2, delta:float) -> void:
 		vel = vel.move_toward(position.direction_to(point)*speed, accel*delta)
 	else:
 		vel = vel.move_toward(Vector2.ZERO, friction*delta)
-	
+
 	sprite.rotation_degrees = vel.x*.7
 	sprite.scale.x = -1 if vel.x > 0 else 1
-	
+
 	# Bouncing off walls and moving through platforms
 	bounceRay.cast_to = vel.normalized()*sprite.texture.get_width()*.25
 	bounceRay.force_raycast_update()
@@ -183,4 +183,4 @@ func _on_wander_timer_timeout() -> void:
 func _on_hit_object(_area:Area2D) -> void:
 	state = states.DEFEND
 	defendTimer.start()
-	
+
