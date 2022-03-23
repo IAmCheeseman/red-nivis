@@ -25,7 +25,7 @@ func update_stats() -> void:
 		"COOL_PEOPLE_REVIEW_TT"
 	]
 	tips.shuffle()
-	tip.text = "[center]" + tr("TIP_GO") + " " + tr(tips.pop_front())
+	tip.bbcode_text = "[center]" + tr("TIP_GO") + " " + tr(tips.pop_front())
 
 	var playerData = preload("res://Entities/Player/Player.tres")
 
