@@ -2,6 +2,7 @@ extends Node2D
 
 onready var cooldown = $BulletCooldown
 onready var sprite = $Sprite
+onready var shootSFX = $ShootSFX
 onready var hank = owner
 
 export var totalShots := 30
@@ -33,6 +34,8 @@ func shoot() -> void:
 	hank.bullets.append(newBullet)
 	
 	sprite.scale = Vector2(1.5, .5)
+	
+	shootSFX.play()
 	
 	shots += 1
 	if shots > totalShots:

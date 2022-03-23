@@ -2,6 +2,7 @@ extends Node2D
 
 onready var charge = $ChargeTimer
 onready var sprite = $Sprite
+onready var shootSFX = $ShootSFX
 onready var hank = owner
 
 export var bullets := 8
@@ -43,4 +44,5 @@ func shoot() -> void:
 		GameManager.spawnManager.spawn_object(newBullet)
 		
 		hank.bullets.append(newBullet)
+		shootSFX.play()
 

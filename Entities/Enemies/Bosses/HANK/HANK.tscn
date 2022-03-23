@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/HANK/HANK.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/HANK/HANK.gd" type="Script" id=2]
@@ -15,6 +15,12 @@
 [ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=13]
 [ext_resource path="res://General/BossDropper.gd" type="Script" id=14]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=16]
+[ext_resource path="res://Entities/Enemies/Shoot.wav" type="AudioStream" id=17]
+[ext_resource path="res://Entities/Player/Assets/LandParticles.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Effects/RobotSparks/RobotSparks.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Entities/Enemies/Bosses/HANK/Stomp.wav" type="AudioStream" id=20]
+[ext_resource path="res://Items/Upgrades/Grenade/Explosion.wav" type="AudioStream" id=21]
 
 [sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
@@ -39,6 +45,23 @@ shader_param/isOn = 0.0
 [sub_resource type="ShaderMaterial" id=7]
 shader = SubResource( 6 )
 shader_param/isOn = 0.0
+
+[sub_resource type="Animation" id=10]
+resource_name = "Init"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 40.5, 49 )
@@ -128,6 +151,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -6, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/LandParticles1:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/LandParticles2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Walk"
@@ -169,6 +216,47 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/LandParticles1:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/LandParticles2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("StompSFX")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ null ],
+"method": "play"
+}, {
+"args": [ null ],
+"method": "play"
+} ]
+}
 
 [node name="HANK" type="KinematicBody2D" groups=["hook_resistent"]]
 z_index = 1
@@ -202,6 +290,14 @@ offset = Vector2( -8, 0 )
 [node name="BulletCooldown" type="Timer" parent="Sprite/Guns/MachineGun"]
 wait_time = 0.1
 
+[node name="ShootSFX" type="Node2D" parent="Sprite/Guns/MachineGun"]
+position = Vector2( 0, -12 )
+script = ExtResource( 16 )
+audio = ExtResource( 17 )
+volumeMod = -5.0
+pitchShiftRange = 4.0
+bus = "ReverbLow"
+
 [node name="Cannon" type="Node2D" parent="Sprite/Guns"]
 position = Vector2( 5, -99 )
 script = ExtResource( 11 )
@@ -222,6 +318,13 @@ texture = ExtResource( 12 )
 wait_time = 1.5
 one_shot = true
 
+[node name="ShootSFX" type="Node2D" parent="Sprite/Guns/Cannon"]
+position = Vector2( 0, -12 )
+script = ExtResource( 16 )
+audio = ExtResource( 17 )
+volumeMod = 5.0
+bus = "ReverbLow"
+
 [node name="Shotgun" type="Node2D" parent="Sprite/Guns"]
 position = Vector2( 24, -90 )
 script = ExtResource( 10 )
@@ -238,6 +341,29 @@ offset = Vector2( -6, 0 )
 wait_time = 1.25
 one_shot = true
 
+[node name="ShootSFX" type="Node2D" parent="Sprite/Guns/Shotgun"]
+position = Vector2( -24, 78 )
+script = ExtResource( 16 )
+audio = ExtResource( 17 )
+volumeMod = -7.0
+pitchShiftRange = 4.0
+bus = "ReverbLow"
+
+[node name="LandParticles1" parent="Sprite" instance=ExtResource( 18 )]
+position = Vector2( -40, 51 )
+local_coords = false
+
+[node name="AnimationPlayer" parent="Sprite/LandParticles1" index="0"]
+autoplay = ""
+
+[node name="LandParticles2" parent="Sprite" instance=ExtResource( 18 )]
+position = Vector2( 27, 51 )
+local_coords = false
+
+[node name="AnimationPlayer" parent="Sprite/LandParticles2" index="0"]
+autoplay = ""
+anims/Init = SubResource( 10 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -0.5, -49 )
@@ -248,6 +374,7 @@ script = ExtResource( 14 )
 spritePath = NodePath("../Sprite")
 
 [node name="Collisions" type="Node2D" parent="."]
+visible = false
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 8 )]
 collision_layer = 4
@@ -270,6 +397,15 @@ difficulty = 2
 isBoss = true
 freeOnDeath = false
 steamAchievement = "HANK"
+deathParticles = ExtResource( 19 )
+
+[node name="StompSFX" type="Node2D" parent="."]
+script = ExtResource( 16 )
+audio = ExtResource( 20 )
+
+[node name="ExplosionSFX" type="Node2D" parent="."]
+script = ExtResource( 16 )
+audio = ExtResource( 21 )
 
 [node name="Timers" type="Node" parent="."]
 
@@ -307,5 +443,7 @@ dmgManagerPth = NodePath("../../DamageManager")
 [connection signal="timeout" from="Timers/DeathExplodeTimer" to="." method="add_death_explosion"]
 [connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_changed"]
 
+[editable path="Sprite/LandParticles1"]
+[editable path="Sprite/LandParticles2"]
 [editable path="Collisions/Hurtbox"]
 [editable path="Collisions/PlayerDetection"]
