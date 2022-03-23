@@ -1,47 +1,53 @@
 extends Control
 
-onready var globalScores = $Lists/Global
-onready var friendScores = $Lists/Friends
-onready var label = $Lists/Friends/Label
+onready var globalScores = $Lists/GlobalLeaderboard/Margin/Scores
 
 var playerData = preload("res://Entities/Player/Player.tres")
 
 
 func _ready() -> void:
 	Steam.set_leaderboard_score("Score", playerData.highScore)
+	update_leaderboard()
 
+
+func get_username(raw_name: String) -> String:
+	var username = ""
+	username = raw_name.left(16)
+	if username != raw_name: username += "..."
+	return username
+
+func create_place(rank: int, name: String, score: int, par: Control) -> Control:
+	var newPlace = preload("res://UI/Leaderboard/Score.tscn").instance()
+	par.add_child(newPlace)
+	newPlace.setup(rank, name, score)
+
+	return newPlace
 
 func update_leaderboard() -> void:
+	if !Steam.is_init():
+		var newLabel = Label.new()
+		newLabel.show()
+		newLabel.text = "[color=red]Can't connect to Steam.[/color]"
+		globalScores.add_child(newLabel)
+		return
+
 	var playerScoreGlobal = yield(
 		Steam.get_leaderboard_scores(
-			"Score", -5, 5, Steam.LeaderboardDataRequest.GlobalAroundUser
+			"Score", -1, 5, Steam.LeaderboardDataRequest.GlobalAroundUser
 		),
 		"done"
 	)
 	for i in globalScores.get_children():
-		if i.name == "Title" or i == label: continue
+		if i.name == "Title": continue
 		i.queue_free()
-	for i in friendScores.get_children():
-		if i.name == "Title" or i == label: continue
-		i.queue_free()
-	
+
 	for i in playerScoreGlobal:
-		var newLabel = label.duplicate()
-		newLabel.show()
-		newLabel.bbcode_text = "[color=gray]#%s - [/color]%s  [color=gray]|[/color]  [color=yellow]%s[/color]" % [i.global_rank, i.persona_name, i.score]
-		globalScores.add_child(newLabel)
-	
-	var playerScoreFriends = yield(
-		Steam.get_leaderboard_scores(
-			"Score", -2, 2, Steam.LeaderboardDataRequest.Friends
-		),
-		"done"
-	)
-	for i in playerScoreFriends:
-		var newLabel = label.duplicate()
-		newLabel.show()
-		newLabel.bbcode_text = "[color=gray]#%s - [/color]%s  [color=gray]|[/color]  [color=yellow]%s[/color]" % [i.global_rank, i.persona_name, i.score]
-		friendScores.add_child(newLabel)
+		create_place(
+			i.global_rank,
+			get_username(i.persona_name),
+			i.score,
+			globalScores
+		)
 
 
 func _on_back_pressed() -> void:

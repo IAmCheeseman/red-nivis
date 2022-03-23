@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 func _on_lab_loading_zone_loadArea() -> void:
 	$ScreenTransition.out()
 	var timer = Timer.new()
-	
+
 
 	timer.connect("timeout", self, "load_world")
 	add_child(timer)

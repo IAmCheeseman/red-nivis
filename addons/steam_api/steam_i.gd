@@ -27,7 +27,7 @@ class Callback:
 
 class Proxy_:
 	signal keep_alive_hack_
-	
+
 	var object_to_proxy_
 
 	func _init(object_to_proxy) -> void:
@@ -36,9 +36,9 @@ class Proxy_:
 	func call_(func_name, args := []):
 		if not object_to_proxy_:
 			return
-		
+
 		return object_to_proxy_.callv(func_name, args)
-		
+
 	func callback_(func_name, args := []):
 		if not object_to_proxy_:
 			var result = Callback.new()
@@ -54,25 +54,25 @@ class UserStats extends Proxy_:
 
 	func set_achievement(achievement_api_name:String) -> bool:
 		return call_("set_achievement", [achievement_api_name])
-		
+
 	func clear_achievement(achievement_api_name:String) -> bool:
 		return call_("clear_achievement", [achievement_api_name])
 
 	func get_achievement(achievement_api_name:String) -> bool:
 		return call_("get_achievement", [achievement_api_name])
-	
+
 	func get_num_achievements() -> int:
 		return call_("get_num_achievements")
-	
+
 	func get_achievement_name(idx:int) -> String:
 		return call_("get_achievement_name", [idx])
-	
+
 	func request_current_stats() -> bool:
 		return call_("request_current_stats")
 
 	func store_stats() -> bool:
 		return call_("store_stats")
-		
+
 	func find_leaderboard(leaderboard_name:String):
 		return callback_("find_leaderboard", [leaderboard_name])
 
@@ -97,13 +97,13 @@ class Friends extends Proxy_:
 
 	func request_user_information(steam_user_id, require_name_only:bool) -> bool:
 		return call_("request_user_information", [steam_user_id, require_name_only])
-	
+
 	func get_friend_persona_name(steam_user_id) -> String:
 		return call_("get_friend_persona_name", [steam_user_id])
 
 	func activate_game_overlay_to_web_page(url:String) -> void:
 		call_("activate_game_overlay_to_web_page", [url])
-		
+
 	func activate_game_overlay_to_store(app_id:int, where:int) -> void:
 		call_("activate_game_overlay_to_store", [app_id, where])
 
@@ -119,7 +119,7 @@ func is_init() -> bool:
 func set_achievement(name:String) -> void:
 	user_stats.set_achievement(name)
 	user_stats.store_stats()
-	
+
 func get_achievement(name:String) -> bool:
 	return user_stats.get_achievement(name)
 
@@ -134,7 +134,7 @@ func set_leaderboard_score(leaderboard_name:String, score:int, method:int = Lead
 
 	if not find_leaderboard_result.get_leaderboard_found():
 		return
-		
+
 	var leaderboard = find_leaderboard_result.get_leaderboard()
 	if not leaderboard:
 		return
@@ -148,7 +148,7 @@ func get_leaderboard_scores(leaderboard_name:String, begin:int, end:int, method:
 
 func get_leaderboard_scores_(leaderboard_name:String, begin:int, end:int, method:int, callback:Callback) -> Callback:
 	var res := []
-	
+
 	var user_stats_ = user_stats.object_to_proxy_
 	var friends_ = friends.object_to_proxy_
 
@@ -161,7 +161,7 @@ func get_leaderboard_scores_(leaderboard_name:String, begin:int, end:int, method
 	var find_leaderboard_result = yield(user_stats_.find_leaderboard(leaderboard_name), "done")
 	if not find_leaderboard_result.get_leaderboard_found():
 		return callback.emit_signal("done", res)
-	
+
 	var leaderboard = find_leaderboard_result.get_leaderboard()
 	if not leaderboard:
 		return callback.emit_signal("done", res)
@@ -173,7 +173,7 @@ func get_leaderboard_scores_(leaderboard_name:String, begin:int, end:int, method
 	var entries = download.get_entries()
 	if not entries:
 		return callback.emit_signal("done", res)
-	
+
 	for i in download.get_entry_count():
 		var entry = user_stats_.get_downloaded_leaderboard_entry(entries, i)
 		if not entry:
@@ -187,9 +187,9 @@ func get_leaderboard_scores_(leaderboard_name:String, begin:int, end:int, method
 			score["persona_name"] = friends_.get_friend_persona_name(entry.get_steam_id_user())
 		else:
 			score["persona_name"] = "Frank"
-			
+
 		res.push_back(score)
-	
+
 	return callback.emit_signal("done", res)
 
 func activate_game_overlay_to_web_page(url:String) -> void:
