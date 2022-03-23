@@ -40,6 +40,7 @@ func add_explosion():
 	var newExplosion = explosion.instance()
 	newExplosion.position = position
 	newExplosion.damage = damage
+	newExplosion.set_size(47)
 	get_parent().add_child(newExplosion)
 
 
