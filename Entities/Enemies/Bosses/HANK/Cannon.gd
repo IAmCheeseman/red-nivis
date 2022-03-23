@@ -3,6 +3,7 @@ extends Node2D
 onready var charge = $ChargeTimer
 onready var sprite = $Sprite
 onready var chargeSprite = $Charge
+onready var shootSFX = $ShootSFX
 onready var hank = owner
 
 export var flashTime := .8
@@ -35,6 +36,7 @@ func attack() -> bool:
 
 
 func shoot() -> void:
+	shootSFX.play()
 	var dir = global_position.direction_to(GameManager.player.global_position)
 	var _discard = create_bullet(
 		dir,

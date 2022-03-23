@@ -15,6 +15,11 @@ onready var guns = $Sprite/Guns
 
 onready var dropper = $BossDropper
 
+onready var landParticles1 = $Sprite/LandParticles1
+onready var landParticles2 = $Sprite/LandParticles2
+
+onready var explosionSFX = $ExplosionSFX
+
 export var frict := 20
 export var attackTimeRange := Vector2(1, 2)
 export var speed := 90
@@ -112,6 +117,8 @@ func add_death_explosion(size:int=8, amt:int=1) -> void:
 	
 	var timer = get_tree().create_timer(.5)
 	timer.connect("timeout", newExplosion, "queue_free")
+	
+	explosionSFX.play()
 	
 	for i in bullets:
 		if is_instance_valid(i):

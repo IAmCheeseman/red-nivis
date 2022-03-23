@@ -140,7 +140,7 @@ moneyRange = Vector2( 2, 7 )
 valueRange = Vector2( 1, 4 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 10 )]
-position = Vector2( 0, -9 )
+position = Vector2( 6, -9 )
 maxHealth = 30
 kbAmount = 128.0
 upwardsKB = 51.0
