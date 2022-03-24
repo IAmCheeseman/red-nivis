@@ -446,6 +446,7 @@ useDeathParticles = false
 isBoss = true
 freeOnDeath = false
 steamAchievement = "BILLY"
+spritePath = NodePath("../Sprite")
 
 [node name="Timers" type="Node" parent="."]
 

@@ -16,8 +16,6 @@ onready var floorCheckerRC = $Collisions/FloorChecker
 onready var damageManager = $DamageManager
 onready var healthBar = $Healthbar
 
-onready var bulletPos = $Sprite/BulletPos
-
 
 export var speed := 75
 export var accel := 5.0
@@ -92,8 +90,6 @@ func _on_state_change_timeout() -> void:
 	select_new_target_pos()
 	if (Utils.coin_flip() or state == IDLE) and state != ATTACK:
 		state = [WALK, IDLE, ATTACK][rand_range(0, 3)]
-		
-		if state == ATTACK: attackTimer.start()
 		stateChangeTimer.start(rand_range(.5, 1))
 	else:
 		stateChangeTimer.start(rand_range(.2, .5))
@@ -104,14 +100,14 @@ func update_healthbar() -> void:
 
 
 func attack() -> void:
-	var bulletCount = 8
-	var spread = 360 / bulletCount
-	var offset = rand_range(0, 360)
+	if state != ATTACK: return
+	var bulletCount = rand_range(1, 2)
 	for i in bulletCount:
 		var newBullet = preload("res://Entities/Enemies/EnemyBullet/GnomeBullet/GnomeBullet.tscn").instance()
-		var direction = Vector2.RIGHT.rotated(deg2rad((i * spread) + offset))
+		var direction = [Vector2.RIGHT, Vector2.LEFT][round(rand_range(0, 1))]\
+			.rotated(deg2rad(rand_range(-25, 25)))
 		newBullet.direction = direction
-		newBullet.global_position = bulletPos.global_position
+		newBullet.global_position = global_position - Vector2(0, 16)
 		newBullet.speed = 50
 		GameManager.spawnManager.spawn_object(newBullet)
-	state = IDLE
+	if rand_range(0, 3) <= 1: state = IDLE

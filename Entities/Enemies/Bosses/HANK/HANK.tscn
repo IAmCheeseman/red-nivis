@@ -397,6 +397,7 @@ difficulty = 2
 isBoss = true
 freeOnDeath = false
 steamAchievement = "HANK"
+spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 19 )
 
 [node name="StompSFX" type="Node2D" parent="."]
