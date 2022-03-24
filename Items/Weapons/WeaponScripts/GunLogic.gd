@@ -47,6 +47,7 @@ func _on_cooldown_timeout() -> void:
 		pre_shoot()
 	cooldownTimer.set_meta("fromReload", false)
 
+
 func _physics_process(delta) -> void:
 	# Flipping the gun based on rotation
 	if GameManager.inGUI: return
@@ -60,13 +61,15 @@ func _physics_process(delta) -> void:
 	if !swinging:
 		var before = pivot.rotation
 		pivot.look_at(Utils.get_global_mouse_position())
-		pivot.rotation = lerp(before, pivot.rotation, 12*delta)
+		pivot.rotation = lerp(before, pivot.rotation, 20*delta)
 	else:
 		pivot.rotation += 12*delta*swingDir
 		if abs(pivot.rotation_degrees-swingStartDeg) > 65*2:
 			swinging = false
 	gun.visuals.rotation = lerp_angle(gun.visuals.rotation, 0, 4*delta)
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 6*delta)
+
+	gun.visuals.position = gun.visuals.position.move_toward(gun.gunPos, 30 * delta)
 
 	# Shooting
 	var hasEnoughAmmo := playerData.ammo > 0

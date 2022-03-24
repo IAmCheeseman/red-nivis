@@ -47,6 +47,7 @@ onready var noAmmoClick = $NoAmmoClickSFX
 onready var cooldownTimer = $Cooldown
 onready var meleeCooldown = $MeleeCooldown
 onready var visuals = $Pivot/GunSprite
+onready var gunPos = visuals.position
 
 # Properties
 var standingOver := false

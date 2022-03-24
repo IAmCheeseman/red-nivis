@@ -61,7 +61,9 @@ func shoot():
 	GameManager.emit_signal("screenshake",
 	0, gun.ssStrength,
 	gun.ssFreq, gun.ssFreq, direction)
-
+	
+	gun.visuals.position.x -= gun.ssStrength * 3
+	
 	# Playing a sound for feedback
 	gun.get_node("ShootSound").play()
 
