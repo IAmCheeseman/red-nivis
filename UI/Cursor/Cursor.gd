@@ -15,8 +15,7 @@ func _ready():
 
 func _process(delta):
 	scale = scale.move_toward(Vector2.ONE, scaleSpeed*delta)
-	if !GameManager.usingController or get_tree().paused or GameManager.inGUI:
-		global_position = get_global_mouse_position()
+	global_position = get_global_mouse_position()
 
 
 func rotate_cursor(time:float, amt:float=rotAmount):

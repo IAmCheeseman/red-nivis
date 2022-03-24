@@ -53,7 +53,6 @@ func shoot():
 	# Screenshake
 
 	# Getting the parameters
-
 	var direction = -global_position.direction_to(
 		Utils.get_global_mouse_position())
 
