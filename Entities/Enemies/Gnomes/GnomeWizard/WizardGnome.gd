@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-enum {IDLE, WALK} # States
+enum {IDLE, WALK, ATTACK} # States
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
 onready var stateChangeTimer = $Timers/StateChange
+onready var attackTimer = $Timers/Attack
 
 onready var hurtbox = $Collisions/Hurtbox
 onready var playerDetection = $Collisions/PlayerDetection
@@ -54,6 +55,10 @@ func _physics_process(delta: float) -> void:
 				
 				if abs(global_position.x-targetPosition) < 5:
 					_on_state_change_timeout()
+			ATTACK:
+				anim.play("Attack")
+				vel.x = lerp(vel.x, 0, frict*delta)
+				
 	if vel.y > 0 and !floorCheckerRC.is_colliding():
 		sprite.scale.x = clamp(
 			1-abs(vel.y/Globals.GRAVITY),
@@ -83,8 +88,10 @@ func select_new_target_pos() -> void:
 
 func _on_state_change_timeout() -> void:
 	select_new_target_pos()
-	if (Utils.coin_flip() or state == IDLE) and state != 3:
-		state = WALK if state == IDLE else IDLE
+	if (Utils.coin_flip() or state == IDLE) and state != ATTACK:
+		state = [WALK, IDLE, ATTACK][rand_range(0, 3)]
+		
+		if state == ATTACK: attackTimer.start()
 		stateChangeTimer.start(rand_range(.5, 1))
 	else:
 		stateChangeTimer.start(rand_range(.2, .5))
@@ -93,3 +100,16 @@ func _on_state_change_timeout() -> void:
 func update_healthbar() -> void:
 	healthBar.value = damageManager.health
 
+
+func attack() -> void:
+	var bulletCount = 8
+	var spread = 360 / bulletCount
+	var offset = rand_range(0, 360)
+	for i in bulletCount:
+		var newBullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn").instance()
+		var direction = Vector2.RIGHT.rotated(deg2rad((i * spread) + offset))
+		newBullet.direction = direction
+		newBullet.global_position = global_position - Vector2(0, 8)
+		newBullet.speed = 50
+		GameManager.spawnManager.spawn_object(newBullet)
+	state = IDLE

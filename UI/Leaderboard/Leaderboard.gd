@@ -16,12 +16,10 @@ func get_username(raw_name: String) -> String:
 	if username != raw_name: username += "..."
 	return username
 
-func create_place(rank: int, name: String, score: int, par: Control) -> Control:
+func create_place(rank: int, name: String, score: int, par: Control) -> void:
 	var newPlace = preload("res://UI/Leaderboard/Score.tscn").instance()
 	par.add_child(newPlace)
 	newPlace.setup(rank, name, score)
-
-	return newPlace
 
 func update_leaderboard() -> void:
 	if !Steam.is_init():

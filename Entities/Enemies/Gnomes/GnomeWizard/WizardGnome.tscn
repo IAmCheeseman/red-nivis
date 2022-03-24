@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=2]
@@ -15,6 +15,23 @@ extents = Vector2( 5.5, 5 )
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 103.078
+
+[sub_resource type="Animation" id=7]
+resource_name = "Attack"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -76,12 +93,15 @@ hframes = 3
 vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -5 )
 shape = SubResource( 6 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
+spritePath = NodePath("../Sprite")
 
 [node name="Collisions" type="Node2D" parent="."]
+visible = false
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 2 )]
 visible = false
@@ -110,7 +130,11 @@ cast_to = Vector2( 0, 2 )
 one_shot = true
 autostart = true
 
+[node name="Attack" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 7 )
 anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/Walk = SubResource( 3 )
@@ -126,6 +150,7 @@ texture_progress = ExtResource( 4 )
 
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/StateChange" to="." method="_on_state_change_timeout"]
+[connection signal="timeout" from="Timers/Attack" to="." method="attack"]
 
 [editable path="Collisions/Hurtbox"]
 [editable path="Collisions/PlayerDetection"]
