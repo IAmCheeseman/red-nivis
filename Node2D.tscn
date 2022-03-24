@@ -32,18 +32,18 @@ position = Vector2( 1983, -71 )
 [node name="CollisionShape2D" parent="CameraMoveZone" index="0"]
 shape = SubResource( 1 )
 
+[node name="WizardGnome" parent="CameraMoveZone/CollisionShape2D" index="0" instance=ExtResource( 7 )]
+position = Vector2( -1823, 65 )
+
+[node name="GunGnome" parent="CameraMoveZone/CollisionShape2D" index="1" instance=ExtResource( 8 )]
+position = Vector2( -1905, 64 )
+
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.537255, 0.537255, 0.537255, 1 )
 
 [node name="WizardGnome" parent="." instance=ExtResource( 3 )]
-position = Vector2( 68, -24 )
-
-[node name="WizardGnome2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 152, -8 )
-
-[node name="GunGnome" parent="WizardGnome2" instance=ExtResource( 8 )]
-position = Vector2( -44, 3 )
+position = Vector2( 110, -14 )
 
 [editable path="CameraMoveZone"]

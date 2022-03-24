@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Enemies/Gnomes/BuffGnome/BuffGnome.png" type="Texture" id=6]
 [ext_resource path="res://Entities/Enemies/Gnomes/BuffGnome/BuffGnome.gd" type="Script" id=7]
+[ext_resource path="res://Entities/Effects/Blood/Blood.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 5.5, 5 )
@@ -98,8 +99,10 @@ position = Vector2( 0, -5 )
 shape = SubResource( 6 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -11 )
 maxHealth = 110
 spritePath = NodePath("../Sprite")
+deathParticles = ExtResource( 8 )
 
 [node name="Collisions" type="Node2D" parent="."]
 visible = false

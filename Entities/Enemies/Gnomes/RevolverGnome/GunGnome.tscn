@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Entities/Enemies/Gnomes/RevolverGnome/RevolverGnome.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Gnomes/RevolverGnome/GunGnome.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=8]
 [ext_resource path="res://Entities/Enemies/Gnomes/RevolverGnome/Revolver.png" type="Texture" id=9]
 [ext_resource path="res://Entities/Enemies/Gnomes/RevolverGnome/Revolver.gd" type="Script" id=10]
+[ext_resource path="res://Entities/Effects/Blood/Blood.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -122,10 +123,12 @@ position = Vector2( 0, -3 )
 shape = SubResource( 3 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, -6 )
 maxHealth = 100
 kbAmount = 500.0
 upwardsKB = 64.0
 spritePath = NodePath("../Sprite")
+deathParticles = ExtResource( 11 )
 
 [node name="MoneyDropper" type="Node2D" parent="."]
 script = ExtResource( 8 )
