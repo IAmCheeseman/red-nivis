@@ -98,6 +98,7 @@ position = Vector2( 0, -5 )
 shape = SubResource( 6 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
+maxHealth = 110
 spritePath = NodePath("../Sprite")
 
 [node name="Collisions" type="Node2D" parent="."]

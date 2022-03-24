@@ -106,7 +106,7 @@ func attack() -> void:
 	var spread = 360 / bulletCount
 	var offset = rand_range(0, 360)
 	for i in bulletCount:
-		var newBullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn").instance()
+		var newBullet = preload("res://Entities/Enemies/EnemyBullet/GnomeBullet/GnomeBullet.tscn").instance()
 		var direction = Vector2.RIGHT.rotated(deg2rad((i * spread) + offset))
 		newBullet.direction = direction
 		newBullet.global_position = global_position - Vector2(0, 8)

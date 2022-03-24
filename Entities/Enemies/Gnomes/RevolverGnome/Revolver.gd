@@ -5,13 +5,13 @@ var player: Node2D
 onready var sprite = $Sprite
 onready var cooldownTimer= $Timer
 
-var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
+var bullet = preload("res://Entities/Enemies/EnemyBullet/GnomeBullet/GnomeBullet.tscn")
 var bulletRot: float
 
 
 func _process(delta: float) -> void:
 	if !player: return
-	look_at(player.global_position)
+	look_at(player.global_position - Vector2(0, 8))
 	sprite.scale.y = -1 if Vector2.RIGHT.rotated(rotation).x < 0 else 1
 	position.x = -1 if sprite.scale.y == -1 else 0
 

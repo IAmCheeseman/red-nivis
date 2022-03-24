@@ -122,7 +122,7 @@ position = Vector2( 0, -3 )
 shape = SubResource( 3 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
-maxHealth = 145
+maxHealth = 100
 kbAmount = 500.0
 upwardsKB = 64.0
 spritePath = NodePath("../Sprite")
