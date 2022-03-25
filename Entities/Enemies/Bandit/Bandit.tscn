@@ -62,6 +62,7 @@ shape = SubResource( 3 )
 maxHealth = 145
 kbAmount = 128.0
 upwardsKB = 64.0
+spritePath = NodePath("../Sprite")
 
 [node name="MoneyDropper" type="Node2D" parent="."]
 script = ExtResource( 8 )
