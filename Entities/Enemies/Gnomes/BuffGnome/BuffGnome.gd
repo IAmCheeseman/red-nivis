@@ -57,7 +57,13 @@ func _physics_process(delta: float) -> void:
 					_on_state_change_timeout()
 			ATTACK:
 				anim.play("Attack")
-				vel.x = lerp(vel.x, 0, frict*delta)
+				
+				var moveDir = -1 if global_position.x > targetPosition else 1
+				sprite.flip_h = global_position.x < player.global_position.x
+				vel.x = lerp(vel.x, moveDir*speed, accel*delta)
+				
+				if abs(global_position.x-targetPosition) < 5:
+					_on_state_change_timeout()
 				
 	if vel.y > 0 and !floorCheckerRC.is_colliding():
 		sprite.scale.x = clamp(
@@ -100,7 +106,7 @@ func update_healthbar() -> void:
 
 
 func attack() -> void:
-	if state != ATTACK: return
+	if state != ATTACK or !player: return
 	var bulletCount = rand_range(1, 2)
 	for i in bulletCount:
 		var newBullet = preload("res://Entities/Enemies/EnemyBullet/GnomeBullet/GnomeBullet.tscn").instance()
