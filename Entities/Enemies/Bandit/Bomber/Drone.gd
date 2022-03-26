@@ -94,9 +94,10 @@ func no_master_state(delta: float) -> void:
 
 
 func attack_state(delta:float) -> void:
-	hpBar.show()
-	accel_to_point(player.global_position - Vector2(0, 64), delta)
-	vel = move_and_slide(vel)
+	if player:
+		hpBar.show()
+		accel_to_point(player.global_position - Vector2(0, 64), delta)
+		vel = move_and_slide(vel)
 
 
 func select_position() -> Vector2:

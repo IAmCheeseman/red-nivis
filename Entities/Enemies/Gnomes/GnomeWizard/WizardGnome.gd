@@ -69,6 +69,7 @@ func _physics_process(delta: float) -> void:
 	elif floorCheckerRC.is_colliding():
 		if !prevFloorState: sprite.scale = Vector2(1.5, .5)
 		sprite.scale = sprite.scale.move_toward(Vector2.ONE, 3*delta)
+	sprite.rotation_degrees = vel.x / 25
 	vel.y = move_and_slide(vel).y
 	
 	prevFloorState = floorCheckerRC.is_colliding()

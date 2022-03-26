@@ -148,14 +148,19 @@ local_coords = false
 process_material = SubResource( 5 )
 texture = ExtResource( 6 )
 
+[node name="DroneChecker" type="RayCast2D" parent="Gun" index="2"]
+position = Vector2( 0, 28 )
+enabled = true
+cast_to = Vector2( 0, -32 )
+
 [node name="DamageManager" parent="." index="3"]
 maxHealth = 70
 corpseSprites = [ ExtResource( 4 ), ExtResource( 3 ) ]
 
-[node name="Collisions" parent="." index="5"]
+[node name="Collisions" parent="." index="4"]
 visible = false
 
-[node name="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" parent="." index="6"]
 anims/Fall = SubResource( 4 )
 anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
