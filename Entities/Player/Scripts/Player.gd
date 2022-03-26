@@ -151,7 +151,7 @@ func walk_state(delta):
 			0,
 			playerData.friction*delta
 		)
-		sprite.rotation_degrees = 0
+		sprite.rotation_degrees = vel.x / 25
 		animate(Vector2.ZERO)
 	vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 

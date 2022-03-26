@@ -53,6 +53,8 @@ func _physics_process(delta: float) -> void:
 				animate("Walk")
 				var moveDir = -1 if global_position.x > targetPosition else 1
 				sprite.flip_h = global_position.x < player.global_position.x
+				sprite.rotation_degrees = vel.x / 25
+				
 				vel.x = lerp(vel.x, moveDir*speed, accel*delta)
 				
 				if abs(global_position.x-targetPosition) < 5:
@@ -73,6 +75,7 @@ func _physics_process(delta: float) -> void:
 func idle_state(delta, playAnim) -> void:
 	animate(playAnim)
 	vel.x = lerp(vel.x, 0, frict*delta)
+	sprite.rotation_degrees = vel.x / 25
 	#sprite.flip_h = global_position.x < player.global_position.x
 
 

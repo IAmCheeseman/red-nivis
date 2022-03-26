@@ -9,7 +9,7 @@ var bullet = preload("res://Entities/Enemies/EnemyBullet/GnomeBullet/GnomeBullet
 var bulletRot: float
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !player: return
 	look_at(player.global_position - Vector2(0, 8))
 	sprite.scale.y = -1 if Vector2.RIGHT.rotated(rotation).x < 0 else 1

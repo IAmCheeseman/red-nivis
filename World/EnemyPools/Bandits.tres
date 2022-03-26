@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Entities/Enemies/Assets/EnemyTable.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bandit/Shotgun/ShotgunBandit.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/Enemies/Bandit/Pyro/PyroBandit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Enemies/Bandit/Bomber/Bomber.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/Enemies/Bandit/Laser/LaserBandit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDM.tscn" type="PackedScene" id=5]
 
 [resource]
 script = ExtResource( 1 )
-enemies = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
-chances = [ 1.0, 0.5, 1.0, 0.1 ]
+enemies = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ) ]
+chances = [ 1.0, 1.0, 0.1, 0.75 ]

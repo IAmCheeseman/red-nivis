@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Enemies/Explosion/Explosion.png" type="Texture" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1
@@ -17,7 +17,12 @@ colors = PoolColorArray( 0.728516, 0.0682983, 0.0682983, 1, 0.865234, 0.625756, 
 gradient = SubResource( 11 )
 width = 10
 
+[sub_resource type="Curve" id=16]
+max_value = 100.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
 [sub_resource type="CurveTexture" id=15]
+curve = SubResource( 16 )
 
 [sub_resource type="ParticlesMaterial" id=13]
 lifetime_randomness = 0.38
