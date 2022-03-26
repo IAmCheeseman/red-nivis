@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bandit/Bandit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemies/Bandit/Bomber/Bomber.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/Enemies/Bandit/Bomber/BomberCorpseBackpack.png" type="Texture" id=4]
 [ext_resource path="res://Entities/Enemies/Bandit/Bomber/Bomber.gd" type="Script" id=5]
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=6]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=6]
 particles_animation = true
@@ -106,10 +107,28 @@ tracks/0/keys = {
 targetRange = 320
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2( -4, 0 )
 texture = ExtResource( 2 )
+offset = Vector2( 4, -11 )
 hframes = 6
 vframes = 2
 frame = 0
+
+[node name="Eye1" type="Light2D" parent="Sprite" index="0"]
+position = Vector2( -7.15256e-07, -13 )
+scale = Vector2( 0.322917, 0.307292 )
+texture = ExtResource( 7 )
+offset = Vector2( -9.67739, -1.01693 )
+texture_scale = 0.03
+color = Color( 1, 0, 0, 1 )
+
+[node name="Eye2" type="Light2D" parent="Sprite" index="1"]
+position = Vector2( -7.15256e-07, -13 )
+scale = Vector2( 0.322917, 0.307292 )
+texture = ExtResource( 7 )
+offset = Vector2( 5.80647, -1.01693 )
+texture_scale = 0.03
+color = Color( 1, 0, 0, 1 )
 
 [node name="Gun" parent="." index="1"]
 position = Vector2( 0, -28 )

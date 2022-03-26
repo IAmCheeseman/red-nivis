@@ -45,8 +45,20 @@ position = Vector2( 65, 7 )
 
 [node name="ShotgunBandit" parent="Bandit" instance=ExtResource( 7 )]
 position = Vector2( -39, 1 )
+speed = 75
+accel = 5.0
+frict = 10.0
+jumpForce = 350
+targetRange = 64
+jumpRange = Vector2( 2, 4 )
 
 [node name="ShotgunBandit2" parent="Bandit" instance=ExtResource( 7 )]
 position = Vector2( 29, 10 )
+speed = 75
+accel = 5.0
+frict = 10.0
+jumpForce = 350
+targetRange = 64
+jumpRange = Vector2( 2, 4 )
 
 [editable path="CameraMoveZone"]
