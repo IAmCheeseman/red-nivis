@@ -125,3 +125,8 @@ func add_death_explosion(size:int=8, amt:int=1) -> void:
 			i.queue_free()
 	if amt-1 > 0:
 		add_death_explosion(size, amt-1)
+
+
+func dash() -> void:
+	var dir = -1 if Utils.coin_flip() else 1
+	vel.x = dir * 1000

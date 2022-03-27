@@ -422,6 +422,10 @@ autostart = true
 [node name="DeathExplodeTimer" type="Timer" parent="Timers"]
 wait_time = 0.1
 
+[node name="Dash" type="Timer" parent="Timers"]
+wait_time = 5.0
+autostart = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Idle = SubResource( 1 )
@@ -442,6 +446,7 @@ dmgManagerPth = NodePath("../../DamageManager")
 [connection signal="timeout" from="Timers/Walk" to="." method="choose_new_target"]
 [connection signal="timeout" from="Timers/AttackCooldown" to="." method="attack"]
 [connection signal="timeout" from="Timers/DeathExplodeTimer" to="." method="add_death_explosion"]
+[connection signal="timeout" from="Timers/Dash" to="." method="dash"]
 [connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_changed"]
 
 [editable path="Sprite/LandParticles1"]

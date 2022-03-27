@@ -8,6 +8,8 @@ var staminaEmpty = preload("res://UI/Assets/StaminaEmpty.tres")
 var targetA = 0.0
 var defaultY: int
 
+var healed := 0
+
 onready var regainTimer:Timer = $RegainTimer
 
 
@@ -39,7 +41,6 @@ func update_stamina() -> void:
 		targetA = 1
 	else:
 		targetA = 0
-
 	rect_position = -rect_size / 2 + Vector2(0, defaultY)
 
 
@@ -48,8 +49,8 @@ func _on_stamina_changed() -> void:
 		# Getting the point on a curve for stamina regain time
 		if !regainTimer.is_inside_tree(): yield(TempTimer.idle_frame(self), "timeout")
 		regainTimer.start(
-			playerData.staminaRecovery*playerData.stamRecovCurve.interpolate_baked(
-				1-(1/playerData.stamina)
+			playerData.staminaRecovery * playerData.stamRecovCurve.interpolate_baked(
+				(healed + .01) / 1
 			)
 		)
 	else:
@@ -59,7 +60,10 @@ func _on_stamina_changed() -> void:
 
 func _on_regain_timeout() -> void:
 	playerData.stamina += 1
+	healed += 1
 	playerData.stamina = clamp(playerData.stamina, 0, playerData.maxStamina)
+	if playerData.stamina == playerData.maxStamina:
+		healed = 0
 	update_stamina()
 	if playerData.stamina == playerData.maxStamina:
 		regainTimer.stop()

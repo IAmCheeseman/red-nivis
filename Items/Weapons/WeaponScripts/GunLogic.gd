@@ -116,9 +116,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee")\
 	and !swinging\
 	and gun.meleeCooldown.is_stopped()\
-	and !GameManager.inGUI:#\
-#	and playerData.stamina > 0:
-#		playerData.stamina -= 1
+	and !GameManager.inGUI\
+	and playerData.stamina > 0:
+		playerData.stamina -= 1
 		playerData.playerObject.vel += get_local_mouse_position().normalized()*gun.recoil
 
 		swinging = true
