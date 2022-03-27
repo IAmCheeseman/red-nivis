@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Managing/AchievementManager.gd"
 }, {
+"base": "Resource",
+"class": "Bestiary",
+"language": "GDScript",
+"path": "res://Entities/Enemies/Bestiary.gd"
+}, {
+"base": "Resource",
+"class": "BestiaryEntry",
+"language": "GDScript",
+"path": "res://Entities/Enemies/BestiaryEntry.gd"
+}, {
 "base": "Node2D",
 "class": "BossDropper",
 "language": "GDScript",
@@ -346,6 +356,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Achievement": "",
+"Bestiary": "",
+"BestiaryEntry": "",
 "BossDropper": "",
 "BossRoomPlacer": "",
 "ConnectionRoomPlacer": "",

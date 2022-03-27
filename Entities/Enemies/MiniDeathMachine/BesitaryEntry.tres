@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Enemies/BestiaryEntry.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDM.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+enemyName = "Spinner"
+description = "Fairly mindless. Not a threat."
+scene = ExtResource( 2 )
