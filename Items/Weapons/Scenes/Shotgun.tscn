@@ -9,7 +9,8 @@
 
 [node name="Shotgun" instance=ExtResource( 1 )]
 gunType = 1
-damage = 4.0
+damage = 3.0
+meleeDamageOverride = 20.0
 accuracy = 12.0
 cooldown = 0.5
 reloadSpeed = 0.9
