@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Enemies/BestiaryEntry.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+classification = 0
+enemyName = "Minigun Drone"
+description = "The third model in the DD series. Less prone to breaking lights, as the scientists added special code to prevent that, but still had to be locked up because of constant misfires."
+scene = ExtResource( 2 )

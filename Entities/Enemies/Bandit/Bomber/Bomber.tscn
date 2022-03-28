@@ -155,7 +155,7 @@ cast_to = Vector2( 0, -32 )
 
 [node name="DamageManager" parent="." index="3"]
 maxHealth = 70
-corpseSprites = [ ExtResource( 4 ), ExtResource( 3 ) ]
+corpseSprites = [ ExtResource( 3 ), ExtResource( 4 ) ]
 
 [node name="Collisions" parent="." index="4"]
 visible = false

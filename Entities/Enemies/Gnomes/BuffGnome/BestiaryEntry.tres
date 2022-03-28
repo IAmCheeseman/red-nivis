@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Enemies/BestiaryEntry.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Enemies/Gnomes/BuffGnome/BuffGnome.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+class_ = 2
+enemyName = "Buff Gnome"
+description = "Really likes to work out. They have a big ego and are the leaders of the Gnome Resistence."
+scene = ExtResource( 2 )

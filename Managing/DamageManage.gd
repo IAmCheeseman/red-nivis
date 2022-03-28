@@ -15,6 +15,7 @@ export var isBoss := false
 export var freeOnDeath := true
 export var steamAchievement := ""
 export var spritePath: NodePath
+export var bestiaryEntry: Resource
 
 var sprite: Sprite
 

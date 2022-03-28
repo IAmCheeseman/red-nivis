@@ -33,6 +33,14 @@ var ammo:int setget set_ammo
 var healMaterial := 0 setget set_heal_mat
 var dashesLeft := 1
 
+var unlockedEntries := [
+	"res://Entities/Enemies/MiniDeathMachine/BestiaryEntry.tres",
+	"res://Entities/Enemies/MiniHank/BestiaryEntry.tres",
+	"res://Entities/Enemies/Bandit/Bomber/BestiaryEntry.tres",
+	"res://Entities/Enemies/Gnomes/GnomeWizard/BestiaryEntry.tres",
+	"res://Entities/Enemies/MinigunMachine/BestiaryEntry.tres",
+]
+
 var score := 0
 var highScore := 0
 var time := 0.0

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Enemies/BestiaryEntry.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Enemies/Bandit/Shotgun/ShotgunBandit.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+class_ = 3
+enemyName = "Shotgunner"
+description = "Has a cool shotgun. Nothing else. (They're just so cool)"
+scene = ExtResource( 2 )

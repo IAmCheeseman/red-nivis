@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Enemies/BestiaryEntry.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+classification = 0
+enemyName = "Drill Drone"
+description = "The second model in the DD Series. Was never released to the public as it was too ugly to be marketable."
+scene = ExtResource( 2 )
