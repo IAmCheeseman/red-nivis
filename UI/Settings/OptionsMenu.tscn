@@ -22,16 +22,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 1018, -189 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BG" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 84, 0 )
 rect_pivot_offset = Vector2( -156, -14 )
-color = Color( 0, 0, 0, 0.0862745 )
+color = Color( 0, 0, 0, 0.290196 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

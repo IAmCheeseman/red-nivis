@@ -21,7 +21,7 @@ func _input(event):
 
 func pause(on: bool) -> void:
 	visible = on
-	$CenterContainer.visible = visible
+	$Margin.visible = visible
 	get_tree().paused = visible
 	VisualServer.set_shader_time_scale(int(!visible))
 
