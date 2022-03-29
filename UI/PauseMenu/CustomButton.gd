@@ -23,6 +23,7 @@ func _ready() -> void:
 		theme.set_color("font_color", "Button", Color("#c7cfcc"))
 		theme.set_color("font_color_hover", "Button", Color("#e8c170"))
 		theme.set_color("font_color_pressed", "Button", Color("#de9e41"))
+		theme.set_constant("")
 
 	_originalPosition = rect_position
 	focus_mode = Control.FOCUS_NONE

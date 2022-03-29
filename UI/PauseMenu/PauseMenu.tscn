@@ -47,13 +47,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 84, 0 )
 rect_pivot_offset = Vector2( -156, -14 )
-color = Color( 0, 0, 0, 0.0862745 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color( 0, 0, 0, 0.498039 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 232, 102 )
+scale = Vector2( 0.586364, 0.586364 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Sprite"]
+margin_left = 27.0
+margin_top = 113.0
+margin_right = 89.0
+margin_bottom = 123.0
+custom_colors/font_color = Color( 0.352941, 0.352941, 0.352941, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_fonts/font = ExtResource( 14 )
+text = "(But paused!)"
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( -78, 120 )
+amount = 600
+lifetime = 43.0
+preprocess = 50.0
+visibility_rect = Rect2( -100, -100, 360, 200 )
+process_material = SubResource( 4 )
+texture = ExtResource( 6 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+position = Vector2( 250, -74 )
 amount = 600
 lifetime = 43.0
 preprocess = 50.0
@@ -118,10 +140,6 @@ visible = false
 [node name="Back" parent="OptionsMenu/Center/NavMenu" index="6"]
 fromPth = NodePath("../../..")
 toPth = NodePath("../../../../Margin")
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 235, 109 )
-texture = ExtResource( 7 )
 
 [connection signal="pressed" from="Margin/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Margin/VBoxContainer/Hub" to="." method="_on_quittm_pressed"]

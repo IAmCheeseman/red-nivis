@@ -430,6 +430,7 @@ _global_script_class_icons={
 
 config/name="Red Nivis"
 run/main_scene="res://Managing/Init.tscn"
+boot_splash/image="res://UI/Assets/Title_RedNivis.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://UI/Assets/Icon.png"
 config/windows_native_icon="res://Icon.ico"
@@ -467,7 +468,7 @@ search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/discord_game_sdk/plugin.cfg", "res://addons/steam_api/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/discord_game_sdk/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg", "res://addons/steam_api/plugin.cfg" )
 
 [gdnative]
 
