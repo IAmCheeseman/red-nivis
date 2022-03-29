@@ -41,7 +41,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
-	
+
 	if vel.y > 0 and !floorCheckerRC.is_colliding():
 		sprite.scale.x = clamp(
 			1-abs(vel.y/Globals.GRAVITY),
@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	elif floorCheckerRC.is_colliding():
 		if !prevFloorState: sprite.scale = Vector2(1.5, .5)
 		sprite.scale = sprite.scale.abs().move_toward(Vector2.ONE, 3*delta)
-	
+
 	if !player:
 		player = playerDetection.get_player()
 		if gun.get_script(): gun.player = player
@@ -63,14 +63,14 @@ func _physics_process(delta: float) -> void:
 				animate("Walk")
 				var moveDir = -1 if global_position.x > targetPosition else 1
 				sprite.rotation_degrees = vel.x / 25
-				
+
 				vel.x = lerp(vel.x, moveDir*speed, accel*delta)
-				
+
 				if abs(global_position.x-targetPosition) < 5:
 					_on_state_change_timeout()
-	
+
 	vel.y = move_and_slide(vel).y
-	
+
 	prevFloorState = floorCheckerRC.is_colliding()
 
 

@@ -23,12 +23,12 @@ func generate_world(seed_:int=randi()) -> Array:
 	# Creating and filling out the 2D array
 	var template := select_template()
 	template.lock()
-	
+
 	var constantRooms = preload("res://World/ConstantRooms/Rooms.tres")
-	
+
 	for i in constantRooms.rooms:
 		constantRoomUseage.append(0)
-	
+
 	for x in template.get_width():
 			rooms.append([])
 			for y in template.get_height():
@@ -54,10 +54,10 @@ func generate_world(seed_:int=randi()) -> Array:
 					if room.isStartingRoom:
 						room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
 					rooms[x].append(room)
-	
+
 	flood_world()
 	grow_world()
-	
+
 	var br = preload("res://World/ConstantRooms/BossRooms.tres")
 	BossRoomPlacer.generate_rooms(
 		rooms, br.rooms, self
@@ -67,7 +67,7 @@ func generate_world(seed_:int=randi()) -> Array:
 		RoomPlacer.generate_rooms(
 			rooms, r, r.perBiome, r.minDistOfSameType, r.biomes, self)
 	ConnectionRoomPlacer.generate_rooms(rooms, self)
-	
+
 	return rooms
 
 
@@ -96,16 +96,16 @@ func grow_world() -> void:
 		var changes = []
 		for x in rooms.size():
 			for y in rooms[0].size():
-				
+
 				# Checking the cell
 				var room = rooms[x][y]
 				if room.biome: continue
-				
+
 				var neighbors := get_neighbors(Vector2(x, y), false, false)
 				var allBiomesSame := true
 				var goodBiome:Resource
-				
-				# Looping through the neighbors 
+
+				# Looping through the neighbors
 				for n in neighbors:
 					var nr = rooms[n.x][n.y]
 
@@ -121,7 +121,7 @@ func grow_world() -> void:
 						continue
 					if allBiomesSame:
 						break
-				
+
 				if !goodBiome: continue
 				if (allBiomesSame and rand_range(0, 1) < .2)\
 				and !room.blockGrowing:
@@ -167,7 +167,7 @@ func select_template() -> Image:
 func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array:
 	var neighbors := []
 	var pos := Vector2(-1, -1)
-	
+
 	for i in 9:
 		var v = Vector2(
 			clamp(vec.x+pos.x, 0, rooms.size()-1),

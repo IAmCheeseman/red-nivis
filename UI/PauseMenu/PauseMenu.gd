@@ -1,7 +1,6 @@
 extends Control
 
 onready var BG = $BG
-onready var BGgradient = $BG/Gradient
 
 export var useable = true
 
@@ -11,8 +10,8 @@ func _ready():
 	if !useable: queue_free()
 
 
-func _process(_delta: float) -> void:
-	BGgradient.rect_position.x = BG.rect_position.x + BG.rect_size.x
+#func _process(_delta: float) -> void:
+#	BGgradient.rect_position.x = BG.rect_position.x + BG.rect_size.x
 
 
 func _input(event):

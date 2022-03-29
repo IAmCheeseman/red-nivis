@@ -2,7 +2,7 @@ extends Resource
 class_name ConstantRoom
 
 export(PackedScene) var scene
-export(Array, PackedScene) var biomeSpecific 
+export(Array, PackedScene) var biomeSpecific
 export(Array, Resource) var biomes
 export var mustHave := false
 export var typeAlwaysVisible := false

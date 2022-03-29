@@ -3,11 +3,10 @@ extends Control
 var dataManager = DataManager.new()
 
 onready var menus = $Menus
-onready var navMenu = $NavMenu
+onready var navMenu = $Center/NavMenu
 onready var keybinds = $Menus/Keybinds/Scroll/VBox
-onready var BGgradient = find_node("Gradient")
 onready var BG = $BG
-onready var backButton = $NavMenu/Back
+onready var backButton = $Center/NavMenu/Back
 
 
 func _ready() -> void:
@@ -15,13 +14,13 @@ func _ready() -> void:
 	set_values()
 
 
-func _process(_delta: float) -> void:
-	BGgradient.rect_position.x = BG.rect_position.x + BG.rect_size.x
+#func _process(_delta: float) -> void:
+#	BGgradient.rect_position.x = BG.rect_position.x + BG.rect_size.x
 
 
 func _on_quit():
 	update_settings()
-	
+
 	var settings = {
 		"gfx"              : Settings.gfx,
 		"fullscreen"       : Settings.fullscreen,
@@ -38,7 +37,7 @@ func _on_quit():
 	}
 	# Saving the data
 	dataManager.save_data(settings, Globals.SETTINGS_FILE_NAME)
-	
+
 	for i in menus.get_children():
 		i.hide()
 	navMenu.show()
