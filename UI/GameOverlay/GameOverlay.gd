@@ -38,7 +38,7 @@ var ammoBarTexSize:Vector2
 
 func _ready() -> void:
 	healthBarTexSize = healthBar.texture.get_size()
-	
+
 	playerData.connect("healthChanged", self, "update_health")
 	playerData.connect("updateHealthUI", self, "update_health", [Vector2.ZERO])
 	playerData.connect("ammoChanged", self, "update_ammo")
@@ -47,13 +47,13 @@ func _ready() -> void:
 	playerData.connect("updateGrenade", self, "update_grenade")
 	playerData.connect("healMaterialChanged", self, "update_heals")
 	inventory.connect("itemAdded", self, "_on_item_picked_up")
-	
+
 	update_health(Vector2.ZERO)
 	update_ammo()
 	update_heals()
 	update_money()
 	update_abilities()
-	
+
 	yield(TempTimer.idle_frame(self, 2), "timeout")
 	if inventory.is_empty(): hide()
 
@@ -64,7 +64,7 @@ func _process(_delta: float) -> void:
 	if playerData.isReloading:
 		reloadNotif.show()
 		reloadNotif.text = "..."
-	
+
 	if Settings.speedrunTimer:
 		var seconds = str(int(playerData.time) % 60)
 		if seconds.length() == 1: seconds = "0"+seconds
@@ -79,7 +79,7 @@ func _process(_delta: float) -> void:
 func update_health(_kb:Vector2) -> void:
 	healthBar.rect_min_size.x = (playerData.health*healthBarTexSize.x)
 	healthBarEmpty.rect_size.x = playerData.maxHealth*healthBarTexSize.x
-	
+
 	hbAnim.play("Flash")
 	justLostTimer.start()
 	if playerData.health == 1:
@@ -93,7 +93,7 @@ func update_money() -> void:
 
 
 func update_grenade(val: float, enabled: bool) -> void:
-	grenade.visible = enabled 
+	grenade.visible = enabled
 	grenade.value = grenade.max_value - val
 	if grenade.value != grenade.max_value:
 		grenade.modulate = Color.darkgray

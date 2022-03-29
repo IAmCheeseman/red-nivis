@@ -41,4 +41,4 @@ func _ready():
 
 	Achievement.unlock("PARTICIPATE")
 
-	var _discard = get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")
+	var _discard = get_tree().change_scene("res://UI/MainMenu/LogoFlash.tscn")

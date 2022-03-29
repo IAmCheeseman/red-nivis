@@ -72,10 +72,11 @@ func _input(_event):
 func _on_node_added(node: Node) -> void:
 	if node is Light2D and Settings.gfx == Settings.GFX_BAD:
 		node.hide()
-	if node is Control and !node.material:
+	elif node is Control and !node.material:
 		node.material = controlMaterial
-	if node is Button:
+	elif node is Button:
 		node.focus_mode = Control.FOCUS_NONE
+
 
 
 func attacks_capped(cap: int=2) -> bool:

@@ -214,14 +214,14 @@ func is_grounded():
 
 func controller_aiming() -> void:
 	if !GameManager.usingController: return
-	
+
 	var joystickVector = Vector2(
 		Input.get_joy_axis(0, JOY_ANALOG_RX),
 		Input.get_joy_axis(0, JOY_ANALOG_RY)
 	).normalized() * 128
 	joystickVector = lastUpdatedAim if joystickVector == Vector2.ZERO else joystickVector
 	lastUpdatedAim = joystickVector
-	
+
 	joystickVector += Utils.get_relative_to_camera(itemHolder, GameManager.currentCamera)
 	Input.warp_mouse_position(joystickVector)
 	#Utils.set_mouse_position(joystickVector)
