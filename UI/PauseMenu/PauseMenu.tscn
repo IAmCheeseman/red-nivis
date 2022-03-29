@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=2]
@@ -6,19 +6,29 @@
 [ext_resource path="res://UI/Settings/OptionsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Assets/FFFForwaBig.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Entities/Effects/EnemySpawnGrow.png" type="Texture" id=6]
+[ext_resource path="res://UI/Assets/Title_RedNivis.png" type="Texture" id=7]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=14]
 
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.522667, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
 [sub_resource type="ParticlesMaterial" id=4]
+lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 75.29
 flag_disable_z = true
-direction = Vector3( 0, 1, 0 )
+direction = Vector3( 1, 0.5, 0 )
 spread = 12.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 12.0
+initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color = Color( 0.160784, 0.156863, 0.176471, 1 )
+scale_curve = SubResource( 6 )
+color = Color( 0.101961, 0.0980392, 0.117647, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
@@ -26,16 +36,11 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=3]
-
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BG" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -48,51 +53,48 @@ __meta__ = {
 }
 
 [node name="Particles2D" type="Particles2D" parent="."]
-position = Vector2( 181, -82 )
-amount = 500
-lifetime = 30.0
-preprocess = 30.0
+position = Vector2( -78, 120 )
+amount = 600
+lifetime = 43.0
+preprocess = 50.0
 visibility_rect = Rect2( -100, -100, 360, 200 )
 process_material = SubResource( 4 )
 texture = ExtResource( 6 )
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
+[node name="Margin" type="MarginContainer" parent="."]
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 104.0
+custom_constants/margin_left = 9
+custom_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 127.0
-margin_top = 68.0
-margin_right = 232.0
-margin_bottom = 151.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
+margin_left = 9.0
+margin_right = 113.0
+margin_bottom = 195.0
 custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+alignment = 2
 
-[node name="PausedText" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="PausedText" type="Label" parent="Margin/VBoxContainer"]
+visible = false
 margin_right = 105.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 custom_fonts/font = ExtResource( 5 )
 text = "PAUSE_TTL"
 
-[node name="Continue" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 32.0
-margin_right = 105.0
-margin_bottom = 51.0
+[node name="Continue" type="Button" parent="Margin/VBoxContainer"]
+margin_top = 144.0
+margin_right = 104.0
+margin_bottom = 163.0
 custom_fonts/font = SubResource( 2 )
 text = "CONTINUE_BTN"
 align = 0
 script = ExtResource( 3 )
 
-[node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 51.0
-margin_right = 105.0
-margin_bottom = 67.0
+[node name="Options" type="Button" parent="Margin/VBoxContainer"]
+margin_top = 163.0
+margin_right = 104.0
+margin_bottom = 179.0
 custom_fonts/font = ExtResource( 14 )
 text = "OPTIONS_M_BTN"
 align = 0
@@ -100,10 +102,10 @@ script = ExtResource( 3 )
 fromPth = NodePath("../..")
 toPth = NodePath("../../../OptionsMenu")
 
-[node name="Hub" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 67.0
-margin_right = 105.0
-margin_bottom = 83.0
+[node name="Hub" type="Button" parent="Margin/VBoxContainer"]
+margin_top = 179.0
+margin_right = 104.0
+margin_bottom = 195.0
 custom_fonts/font = ExtResource( 14 )
 text = "MAIN_MENU_BTN"
 align = 0
@@ -115,14 +117,13 @@ visible = false
 
 [node name="Back" parent="OptionsMenu/Center/NavMenu" index="6"]
 fromPth = NodePath("../../..")
-toPth = NodePath("../../../../CenterContainer")
+toPth = NodePath("../../../../Margin")
 
-[node name="Panel" type="Panel" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-custom_styles/panel = SubResource( 3 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 235, 109 )
+texture = ExtResource( 7 )
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Hub" to="." method="_on_quittm_pressed"]
+[connection signal="pressed" from="Margin/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Margin/VBoxContainer/Hub" to="." method="_on_quittm_pressed"]
 
 [editable path="OptionsMenu"]
