@@ -4,13 +4,15 @@
 code = "shader_type canvas_item;
 
 uniform float textureWidth = 16.0;
+uniform float textureHeight = 16.0;
 
 void fragment()
 {
-	vec2 uv = round(SCREEN_UV * textureWidth) / textureWidth;
+	vec2 uv = round(UV * textureWidth) / textureHeight;
 	COLOR = texture(TEXTURE, uv);
 }"
 
 [resource]
 shader = SubResource( 1 )
 shader_param/textureWidth = 180.0
+shader_param/textureHeight = 16.0
