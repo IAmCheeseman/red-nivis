@@ -125,7 +125,7 @@ shape = SubResource( 3 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, -6 )
-maxHealth = 40
+maxHealth = 400
 kbAmount = 500.0
 upwardsKB = 64.0
 corpseSprites = [ ExtResource( 12 ) ]

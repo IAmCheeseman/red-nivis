@@ -4,7 +4,7 @@
 [ext_resource path="res://Items/Weapons/Sprites/Pistol.png" type="Texture" id=2]
 
 [node name="Pistol" instance=ExtResource( 1 )]
-damage = 12.0
+damage = 120.0
 accuracy = 3.0
 reloadSpeed = 0.8
 cost = 30

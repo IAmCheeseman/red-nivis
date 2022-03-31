@@ -141,7 +141,7 @@ valueRange = Vector2( 1, 4 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 10 )]
 position = Vector2( 6, -9 )
-maxHealth = 30
+maxHealth = 300
 kbAmount = 128.0
 upwardsKB = 51.0
 hurtSFXPath = NodePath("../HitSFX")

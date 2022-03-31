@@ -7,7 +7,7 @@
 [ext_resource path="res://Items/Weapons/Sounds/Bloop.wav" type="AudioStream" id=5]
 
 [node name="GrenadeLauncher" instance=ExtResource( 1 )]
-damage = 40.0
+damage = 400.0
 meleeDamageOverride = 20.0
 reloadSpeed = 2.0
 projSpeed = 170

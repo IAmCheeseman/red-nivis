@@ -136,14 +136,14 @@ one_shot = true
 position = Vector2( 21, -2 )
 
 [node name="DamageManager" parent="." index="3"]
-maxHealth = 85
+maxHealth = 850
 difficulty = 2
 corpseSprites = [ ExtResource( 5 ) ]
 
-[node name="Collisions" parent="." index="5"]
+[node name="Collisions" parent="." index="4"]
 visible = false
 
-[node name="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" parent="." index="6"]
 autoplay = "Idle"
 anims/Fall = SubResource( 5 )
 anims/Idle = SubResource( 6 )

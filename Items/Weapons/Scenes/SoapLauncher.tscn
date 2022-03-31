@@ -6,6 +6,7 @@
 [ext_resource path="res://Items/Weapons/Bullet/AltBullets/Soap/Soap.tscn" type="PackedScene" id=4]
 
 [node name="SoapLauncher" instance=ExtResource( 1 )]
+damage = 60.0
 projLifetime = 1.0
 peircing = true
 magazineSize = 2

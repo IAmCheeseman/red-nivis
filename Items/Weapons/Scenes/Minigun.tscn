@@ -6,7 +6,7 @@
 
 [node name="Minugun" instance=ExtResource( 2 )]
 position = Vector2( 0, 9 )
-damage = 9.0
+damage = 90.0
 accuracy = 6.0
 cooldown = 0.4
 reloadSpeed = 2.0

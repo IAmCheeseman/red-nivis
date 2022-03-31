@@ -5,7 +5,7 @@
 [ext_resource path="res://Items/Weapons/Bullet/AltBullets/Robot/Robot.tscn" type="PackedScene" id=3]
 
 [node name="RobotGun" instance=ExtResource( 1 )]
-damage = 32.0
+damage = 320.0
 cooldown = 3.0
 reloadSpeed = 3.0
 multishot = 5.0

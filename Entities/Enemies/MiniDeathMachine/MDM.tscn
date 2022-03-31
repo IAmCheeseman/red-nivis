@@ -115,7 +115,7 @@ shape = SubResource( 5 )
 script = ExtResource( 10 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 11 )]
-maxHealth = 15
+maxHealth = 150
 hurtSFXPath = NodePath("../HitSFX")
 difficulty = 0
 corpseSprites = [ ExtResource( 14 ) ]

@@ -203,10 +203,10 @@ visible = true
 position = Vector2( 0, -3 )
 
 [node name="DamageManager" parent="." index="3"]
-maxHealth = 75
+maxHealth = 750
 corpseSprites = [ ExtResource( 6 ) ]
 
-[node name="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" parent="." index="6"]
 autoplay = "Idle"
 anims/Attack = SubResource( 1 )
 anims/Fall = SubResource( 2 )

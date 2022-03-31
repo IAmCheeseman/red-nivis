@@ -6,7 +6,7 @@
 [ext_resource path="res://Items/Weapons/Sounds/Melee.wav" type="AudioStream" id=4]
 
 [node name="MultishotBoomerang" instance=ExtResource( 2 )]
-damage = 17.0
+damage = 170.0
 accuracy = 5.0
 cooldown = 0.4
 multishot = 4.0
