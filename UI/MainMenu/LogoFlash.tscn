@@ -5,7 +5,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Flash"
-length = 1.8
+length = 1.2
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -13,7 +13,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1.8 ),
+"times": PoolRealArray( 1.2 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -27,10 +27,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "A Game by IAmCheeseman:", "Red Nivis.", "Enjoy." ]
+"values": [ "A Game by IAmCheeseman:", "Red Nivis." ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CenterContainer/Creator:modulate")
@@ -39,7 +39,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5, 1.8 ),
+"times": PoolRealArray( 0, 0.9, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
@@ -129,9 +129,9 @@ __meta__ = {
 }
 
 [node name="Creator" type="Label" parent="CenterContainer"]
-margin_left = 149.0
+margin_left = 132.0
 margin_top = 100.0
-margin_right = 211.0
+margin_right = 228.0
 margin_bottom = 120.0
 custom_fonts/font = SubResource( 2 )
 text = "A Game by IAmCheeseman:"

@@ -29,9 +29,8 @@ class EnemySorter:
 		if al.class_ == bl.class_:
 			var names = [al.enemyName, bl.enemyName]
 			names.sort()
-			return names[0] == al.enemyName
+			return names[1] == al.enemyName
 		return al.class_ < bl.class_
-
 
 func create_entries() -> void:
 	Utils.free_children(entries)
@@ -44,7 +43,6 @@ func create_entries() -> void:
 		button.set_meta(ENTRY_VAR, i)
 		button.align = Button.ALIGN_LEFT
 		button.connect("pressed", self, "load_entry", [button])
-		load_entry(button)
 		entries.add_child(button)
 
 
@@ -52,13 +50,13 @@ func load_entry(button: Button) -> void:
 	var entry = load(button.get_meta(ENTRY_VAR))
 	nameLabel.text = entry.enemyName
 	descLabel.text = entry.description
-	
+
 	var newEnemyInst = entry.scene.instance()
 	var damageManager = newEnemyInst.get_node("DamageManager")
 	add_child(newEnemyInst)
-	
+
 	healthLabel.text = "HP: %s" % damageManager.health
 	defenseLabel.text = ""
 	enemyIcon.texture = damageManager.corpseSprites[0]
-	
+
 	newEnemyInst.queue_free()
