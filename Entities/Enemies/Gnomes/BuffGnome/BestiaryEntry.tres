@@ -7,5 +7,5 @@
 script = ExtResource( 1 )
 class_ = 2
 enemyName = "Buff Gnome"
-description = "Really likes to work out. They have a big ego and are the leaders of the Gnome Resistence."
+description = "Really likes to work out. They have a big ego and are the leaders of the Gnome Resistence. They ALL really want to wear their unicorn underpants (Superstar Brand) in public but it's \"unprofessional\" and \"socially unacceptable.\""
 scene = ExtResource( 2 )

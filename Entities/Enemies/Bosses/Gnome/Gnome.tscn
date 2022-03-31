@@ -656,7 +656,7 @@ spritePath = NodePath("../Sprite")
 drops = [ ExtResource( 15 ), ExtResource( 16 ) ]
 
 [node name="DamageManager" parent="." instance=ExtResource( 6 )]
-maxHealth = 280
+maxHealth = 2800
 kbAmount = 320.0
 upwardsKB = 200.0
 difficulty = 2

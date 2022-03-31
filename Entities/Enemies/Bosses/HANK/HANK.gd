@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 		vel.y += Globals.GRAVITY * delta
 		var dir = 1 if global_position.x < target else -1
 		sprite.scale = sprite.scale.abs().move_toward(Vector2.ONE, 5 * delta)
-		
+
 		if abs(global_position.x - target) < 5:
 			vel.x = lerp(vel.x, 0, frict * delta)
 			anim.play("Idle")
@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 			vel.x = dir * speed
 			anim.play("Walk")
 			sprite.scale.x *= -dir
-		
+
 		vel.y = move_and_slide(vel).y
 
 
@@ -95,7 +95,7 @@ func _on_dead() -> void:
 	timer.connect("timeout", self, "add_death_explosion", [64, 3])
 	timer.connect("timeout", self, "emit_signal", ["dead"])
 	timer.connect("timeout", self, "queue_free")
-	
+
 	isDead = true
 	GameManager.worldData.store_room_data(self, true)
 	deathExplodeTimer.start()
@@ -108,18 +108,18 @@ func add_death_explosion(size:int=8, amt:int=1) -> void:
 	pos += Vector2(rand_range(0, spawnRange.x), rand_range(0, spawnRange.y))
 	pos -= spawnRange / 2
 	newExplosion.global_position = pos
-	
+
 	newExplosion.emitting = true
 	newExplosion.process_material = newExplosion.process_material.duplicate()
 	newExplosion.process_material.emission_sphere_radius = size
 	newExplosion.z_index = 2
 	GameManager.spawnManager.add_child(newExplosion)
-	
+
 	var timer = get_tree().create_timer(.5)
 	timer.connect("timeout", newExplosion, "queue_free")
-	
+
 	explosionSFX.play()
-	
+
 	for i in bullets:
 		if is_instance_valid(i):
 			i.queue_free()

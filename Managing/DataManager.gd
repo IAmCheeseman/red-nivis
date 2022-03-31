@@ -50,8 +50,10 @@ func clear_data(path) -> void:
 	emit_signal("data_cleared")
 
 
-func list_files_in_directory(path):
+func list_files_in_directory(path:String, recursive:bool=false, fullPaths: bool=false, only=""):
 	var files = []
+	if !path.ends_with("/"): path += "/"
+
 	var dir = Directory.new()
 	dir.open(path)
 	dir.list_dir_begin()
@@ -60,8 +62,16 @@ func list_files_in_directory(path):
 		var file = dir.get_next()
 		if file == "":
 			break
-		elif not file.begins_with("."):
-			files.append(file)
+		elif !file.begins_with("."):
+			if file.count(".") == 0 and recursive:
+				for i in list_files_in_directory(path+file+"/", recursive, fullPaths, only):
+					files.append(i)
+			if only != "" and file != only:
+				continue
+			if fullPaths:
+				files.append(path+file)
+			else:
+				files.append(file)
 
 	dir.list_dir_end()
 

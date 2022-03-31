@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 			firstTime = false
 			dialog.show()
 			dialog.start_dialog()
-		match state: 
+		match state:
 			TARGET:
 				target_state(delta)
 			BOUNCE:
@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 			DEAD:
 				vel = Vector2.ZERO
 				anim.play("Die")
-	
+
 	if vel.x > 300:
 		vel.x = 300
 	if abs(vel.y) > Globals.GRAVITY:
@@ -84,12 +84,12 @@ func target_state(delta: float) -> void:
 			anim.play("Walk")
 	else:
 		anim.play("Falling")
-	
+
 	var targetV = -speed if target < global_position.x else speed
 	sprite.scale.x = 1 if player.global_position.x < global_position.x else -1
-	
+
 	vel.x = lerp(vel.x, targetV, accel*delta)#*delta
-	
+
 	if global_position.distance_to(Vector2(target, global_position.y)) < 15:
 		get_target()
 
@@ -124,7 +124,7 @@ func get_target() -> void:
 
 
 func _on_jump_timer_timeout() -> void:
-	if state in [BOUNCE, ASCEND, DEAD]: return 
+	if state in [BOUNCE, ASCEND, DEAD]: return
 	vel.y = -jumpForce
 	jumpTimer.start(rand_range(1.5, 2))
 	instance_stick(vel)
@@ -132,7 +132,7 @@ func _on_jump_timer_timeout() -> void:
 
 func _on_attack_timer_timeout() -> void:
 	if state == DEAD: return
-	if state == TARGET and floorRC.is_colliding(): 
+	if state == TARGET and floorRC.is_colliding():
 		state = SWIPE
 	attacktimer.start(1)
 
@@ -180,7 +180,7 @@ func _on_hurt(_amount, _dir) -> void:
 	bounceTimer.start()
 	ascendTimer.start()
 	if anim.current_animation != "Falling": instance_stick(vel)
-	
+
 	if dialog.currentDialogID == "" and rand_range(0, 1) < .15:
 		dialog.show()
 		dialog.start_dialog("Hit%s" % round(rand_range(1, 3)))

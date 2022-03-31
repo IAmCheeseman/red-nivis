@@ -391,7 +391,8 @@ shape = SubResource( 9 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, -44 )
-maxHealth = 1280
+maxHealth = 12800
+defense = 4
 kbAmount = 0.0
 difficulty = 2
 isBoss = true

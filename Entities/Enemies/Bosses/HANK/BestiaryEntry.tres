@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Entities/Enemies/Bosses/HANK/HANK.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/BestiaryEntry.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+class_ = 0
+enemyName = "H.A.N.K."
+description = "Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Hank's least favorite food was lemons BTW."
+scene = ExtResource( 1 )

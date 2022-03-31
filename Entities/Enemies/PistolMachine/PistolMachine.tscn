@@ -146,7 +146,7 @@ kbAmount = 128.0
 upwardsKB = 51.0
 hurtSFXPath = NodePath("../HitSFX")
 difficulty = 0
-corpseSprites = [ ExtResource( 2 ), ExtResource( 13 ) ]
+corpseSprites = [ ExtResource( 13 ), ExtResource( 2 ) ]
 spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 14 )
 

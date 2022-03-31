@@ -5,6 +5,7 @@ onready var par:Node = get_parent()
 enum {EASY, NORMAL, HARD}
 
 export var maxHealth := 120
+export var defense := 0
 export var kbAmount := 32.0
 export var upwardsKB := 0.0
 export var hurtSFXPath: NodePath
@@ -50,7 +51,9 @@ func _on_player_took_damage(_kb: Vector2) -> void:
 
 func take_damage(amount:float, dir:Vector2) -> void:
 	#var dmg := int(amount+rand_range(-2, 1))
-	health -= int(amount)
+	var defenseReduction = 0
+	if defense > 0: defenseReduction = defense / 2
+	health -= clamp(int(amount) - defenseReduction, 1, INF)
 	if par.get("vel"): par.vel = dir*kbAmount-Vector2(0, upwardsKB)
 
 	var newDP = deathParticles.instance()

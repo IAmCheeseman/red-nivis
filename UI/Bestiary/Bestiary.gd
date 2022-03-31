@@ -32,9 +32,12 @@ class EnemySorter:
 			return names[1] == al.enemyName
 		return al.class_ < bl.class_
 
+
 func create_entries() -> void:
 	Utils.free_children(entries)
-	var arrEntries = playerData.unlockedEntries.duplicate()
+	var dm := DataManager.new()
+
+	var arrEntries = dm.list_files_in_directory("res://Entities/Enemies", true, true, "BestiaryEntry.tres")#playerData.unlockedEntries.duplicate()
 	arrEntries.sort_custom(EnemySorter, "sort")
 	for i in arrEntries:
 		var button = CustomButton.new()
@@ -52,11 +55,19 @@ func load_entry(button: Button) -> void:
 	descLabel.text = entry.description
 
 	var newEnemyInst = entry.scene.instance()
-	var damageManager = newEnemyInst.get_node("DamageManager")
+	var damageManager = newEnemyInst.find_node("DamageManager")
 	add_child(newEnemyInst)
 
-	healthLabel.text = "HP: %s" % damageManager.health
-	defenseLabel.text = ""
-	enemyIcon.texture = damageManager.corpseSprites[0]
+	healthLabel.text = "Health: %s" % damageManager.health
+	defenseLabel.text = "Defense: %s" % damageManager.defense
+
+	var sprite = newEnemyInst.find_node("Sprite")
+	var texture = AtlasTexture.new()
+	texture.atlas = sprite.texture
+	texture.region = Rect2(
+		sprite.frame_coords,
+		sprite.texture.get_size() / Vector2(sprite.hframes, sprite.vframes)
+	)
+	enemyIcon.texture = texture
 
 	newEnemyInst.queue_free()

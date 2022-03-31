@@ -7,5 +7,5 @@
 script = ExtResource( 1 )
 class_ = 3
 enemyName = "Laser Specialist"
-description = "These guys were the janitors of the laboratory. They were generally hated by the scientists for getting in their way, so they gave them a weapon that reqiured them to stand in place in hopes of them killing themselves."
+description = "These guys were the janitors of the laboratory. They were generally hated by the scientists for getting in their way, so they gave them a weapon that reqiured them to stand in place in hopes of them killing themselves. (The lab needed tons of janitors, I swear)"
 scene = ExtResource( 2 )
