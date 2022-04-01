@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 2 )
 class_ = 2
-enemyName = "Gunner Gnome"
-description = "The younger generation of the Gnomes. They don't have the strength to be buff, or the will to be wizards. So they use guns."
+enemyName = "GNOME_GUN_NM"
+description = "GNOME_GUN_DESC"
 scene = ExtResource( 1 )

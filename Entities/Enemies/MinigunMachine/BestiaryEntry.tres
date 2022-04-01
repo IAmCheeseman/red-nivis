@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-classification = 0
-enemyName = "Minigun Drone"
-description = "The third model in the DD series. Less prone to breaking lights, as the scientists added special code to prevent that, but still had to be locked up because of constant misfires."
+class_ = 1
+enemyName = "MCHN_MINIGN_NM"
+description = "MCHN_MINIGN_DESC"
 scene = ExtResource( 2 )

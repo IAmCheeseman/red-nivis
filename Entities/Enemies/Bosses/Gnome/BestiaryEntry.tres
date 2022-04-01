@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 1 )
 class_ = 0
-enemyName = "Mr. Stick"
-description = "NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone. Also, he's dyslexic. Totally irrelevant. (H/i/s/ /n/a/m/e/ /i/s-"
+enemyName = "GNOME_NM"
+description = "GNOME_DESC"
 scene = ExtResource( 2 )

@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 1 )
 class_ = 3
-enemyName = "Shotgunner"
-description = "Has a cool shotgun. Nothing else. (They're just so cool)"
+enemyName = "BANDIT_SHOTGUN_NM"
+description = "BANDIT_SHOTGUN_DESC"
 scene = ExtResource( 2 )

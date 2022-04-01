@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 1 )
 class_ = 1
-enemyName = "H.A.N.K. Mini"
-description = "Built by Hank as durable defenses against intruders. Originally there was only a single one made, but after The Shutdown they were duplicated. Was previously the H.A.N.K. model, but renamed to the H.A.N.K. Mini after the creation of H.A.N.K."
+enemyName = "MINIHANK_NM"
+description = "MINIHANK_DESC"
 scene = ExtResource( 2 )

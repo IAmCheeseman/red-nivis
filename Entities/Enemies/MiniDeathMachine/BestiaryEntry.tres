@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-classification = 0
-enemyName = "Spinner Drone"
-description = "Fairly mindless. Not a threat. First iteration of the DD series. Had to be locked in a cage as they sometimes broke lights."
+class_ = 1
+enemyName = "MCHN_SPINNER_NM"
+description = "MCHN_SPINNER_DESC"
 scene = ExtResource( 1 )

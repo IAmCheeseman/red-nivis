@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 1 )
 class_ = 3
-enemyName = "Bomber"
-description = "Before The Shutdown these scientists were creating robots to defend the laboratory from intruders. When the robots turned on them they had to use whatever they could get to make new robots."
+enemyName = "BANDIT_BOMBER_NM"
+description = "BANDIT_BOMBER_DESC"
 scene = ExtResource( 2 )

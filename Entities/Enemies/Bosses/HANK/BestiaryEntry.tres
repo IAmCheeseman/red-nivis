@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 2 )
 class_ = 0
-enemyName = "H.A.N.K."
-description = "Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Hank's least favorite food was lemons BTW."
+enemyName = "HANK_NM"
+description = "HANK_DESC"
 scene = ExtResource( 1 )

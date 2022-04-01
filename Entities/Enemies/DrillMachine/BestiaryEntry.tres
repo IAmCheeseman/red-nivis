@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-classification = 0
-enemyName = "Drill Drone"
-description = "The second model in the DD Series. Was never released to the public as it was too ugly to be marketable."
+class_ = 1
+enemyName = "MCHN_DRILL_NM"
+description = "MCHN_DRILL_DESC"
 scene = ExtResource( 2 )

@@ -20,13 +20,15 @@ SCORE_GO,Score:,Ya poynts:,Puntuación:,Punkte
 TIME_GO,Time:,Ya time:,Tiempo:,Zeit
 TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,Erneut versuchen
 EXIT_GO,Exit,I'll throw 'n da' towel,Salir,Verlassen
+LEADERBOARDS_GO,Leaderboards,eh bes' o' 'eh bes',Puntuaciones:,
 ,,,,
-TIP_GO,Tip:,,,
-GIT_GUD_TT,Git gud,,,
-DONT_GET_HIT_TT,Don't get hit.,,,
-TRY_NOT_DYING_TT,Try not dying.,,,
-ENEMIES_WILL_KILL_YOU_TT,Enemies will attempt to kill you.,,,
-DONT_STAND_STILL_TT,Don't stand still.,,,
+TIP_GO,Tip:,Sugges'ion:,Tip:,
+GIT_GUD_TT,Git gud.,Geat Gud.,Juega bien.,
+DONT_GET_HIT_TT,Don't get hit.,Don' ge' hi'.,No dejes que te hagan daño.,
+TRY_NOT_DYING_TT,Try not dying.,Trah no' dyan.,Trata de no morir.,
+ENEMIES_WILL_KILL_YOU_TT,Enemies will attempt to kill you.,Enemies will a'emp' 'ew keal 'ew.,Los enemigos te hacen daño.,
+DONT_STAND_STILL_TT,Don't stand still.,ont s'and s'ill.,No te quedes quieto.,
+COOL_PEOPLE_REVIEW_TT,You get +10 coolness when you leave a review.,Ew ge' +10 coolness 'en 'ew leave a re'ew.,Obtienes +10 de radicalidad si dejas una review.,
 ,,,,
 TIME_HUD,Time,Toime,Tiempo,
 ,,,,
@@ -122,11 +124,38 @@ BIRB_NO_TRADE_WRN,Can't trade that item.,"Cahnt tra' tah oitem, bruv.",No puedo 
 NEW_BIOME_WECLOME,Welcome to,elcome 'ew ,Bienvenido a,Wilkommen zu
 ,,,,
 LABS_TTL,The Labs,eh La-boreh-tory,Los Laboratorios,Die Labore
-BACKEND_TTL,The Maintenance Rooms,eh Maintaineenc Rewms,Salas de Mantenimiento,
+BACKEND_TTL,The Maintenance Rooms,eh Maintaineenc Rewms,Las Salas de Mantenimiento,
 DEEP_LABS_TTL,The Deep Labs,eh Deep La-boreh-torees,Los Laboratorios Subterráneos,Dem tiefen Labor
 FREEZERS_TTL,The Freezers,eh Fre'zahs,Los Laboratorios Helados,Die Gefrierschränke
 TOXIC_CAVERNS_TTL,The Toxic Caverns,eh Toixic Ca'erns,La Caverna Ponzoñosa,Die toxischen Kavernen
 TECH_LABS_TTL,The Tech Labs,eh Technoglical La-boreh-tory,Los laboratorios Avanzados,Die Techniklabore
+,,,,
+BANDIT_BOMBER_NM,Bomber,,,
+BANDIT_BOMBER_DESC,Before The Shutdown these scientists were creating robots to defend the laboratory from intruders. When the robots turned on them they had to use whatever they could get to make new robots.,,,
+BANDIT_LASER_NM,Janitor,,,
+BANDIT_LASER_DESC,"These guys were the janitors of the laboratory. They were generally hated by the scientists for getting in their way, so they gave them a weapon that reqiured them to stand in place in hopes of them killing themselves. (The lab needed tons of janitors, I swear)",,,
+BANDIT_SHOTGUN_NM,Shotgunner,,,
+BANDIT_SHOTGUN_DESC,Has a cool shotgun. Nothing else. (They're just so cool),,,
+GNOME_BUFF_NM,Buff Gnome,,,
+GNOME_BUFF_DESC,"Really likes to work out. They have a big ego and are the leaders of the Gnome Resistence. They ALL really want to wear their unicorn underpants (Superstar Brand) in public but it's ""unprofessional"" and ""socially unacceptable.""",,,
+GNOME_MGK_NM,Wizard Gnome,,,
+GNOME_MGK_DESC,These gnomes usually have their big noses stuck in books instead of the real world - they are generally disrespected. If you're not careful they'll turn you into a slug.,,,
+GNOME_GUN_NM,Gunner Gnome,,,
+GNOME_GUN_DESC,"The younger generation of the Gnomes. They don't have the strength to be buff, or the will to be wizards. So they use guns.",,,
+MCHN_SPINNER_NM,Spinner Drone,,,
+MCHN_SPINNER_DESC,First entry in the DM series. Had to be locked in a cage as they sometimes broke lights.,,,
+MCHN_MINIGN_NM,Mingun Drone,,,
+MCHN_MINIGN_DESC,"The third model in the DM series. Less prone to breaking lights, as the scientists added special code to prevent that, but still had to be locked up because of constant misfires.",,,
+MCHN_DRILL_NM,Drill Drone,,,
+MCHN_DRILL_DESC,The second model in the DM Series. Was never released to the public as it was too ugly to be marketable.,,,
+MCHN_PISTOL_NM,Walker,,,
+MCHN_PISTOL_DESC,"Created to explore dangerous planets, modified to be slightly less mobile in an indoors enviroment. They would climb up on desks and kock things off. ",,,
+MINIHANK_NM,H.A.N.K. Mini,,,
+MINIHANK_DESC,"Built by Hank as durable defenses against intruders. Originally there was only a single one made, but after The Shutdown they were duplicated. Was previously the H.A.N.K. model, but renamed to the H.A.N.K. Mini after the creation of H.A.N.K.",,,
+GNOME_NM,Mr. Stick,,,
+GNOME_DESC,"NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone. Also, he's dyslexic. Totally irrelevant. (H/i/s/ /n/a/m/e/ /i/s-",,,
+HANK_NM,H.A.N.K.,H.A.N.K.,H.A.N.K.,H.A.N.K.
+HANK_DESC,Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Hank's least favorite food was lemons BTW.,,,
 ,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47
@@ -141,6 +170,6 @@ MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun
 BULLET_CHAINSAW_ITM,Bullet Chainsaw,Bul'et Chaynshaw,Balasierra,Kugel Kettensäge
 GOUDA_GREASER_ITM,Gouda Greaser,Americahn Fewd,Cañón de Queso,
 CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,
-SOAP_SLAPPER_ITM,Bubble Gun,Bu'le Gun,,
+SOAP_SLAPPER_ITM,Bubble Gun,Bu'le Gun,Pistola de burbujas,
 J_LASER_ITM,J-Laser,J-LaZer,Láser J,J-Laser
-VAPORGAT_ITM,Vaporgat,Faht Cannon,Vaporgat,Vaporgat
+VAPORGAT_ITM,Vaporgat,Fart Cannon,Vaporgat,Vaporgat

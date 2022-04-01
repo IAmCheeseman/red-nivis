@@ -1,16 +1,32 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=2]
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=3]
 [ext_resource path="res://UI/Settings/OptionsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Assets/FFFForwaBig.tres" type="DynamicFont" id=5]
-[ext_resource path="res://Entities/Effects/EnemySpawnGrow.png" type="Texture" id=6]
 [ext_resource path="res://UI/Assets/Title_RedNivis.png" type="Texture" id=7]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=8]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=14]
 
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float lod : hint_range(0., 5.) = 5.0;
+
+void fragment()
+{
+	vec4 color = vec4(1., 1., 1., textureLod(TEXTURE, UV, lod).r);
+	color.a *= clamp(abs(sin(TIME)) - SCREEN_UV.x, 1.-color.a, 10000.);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/lod = 5.0
+
 [sub_resource type="Curve" id=5]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.522667, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.925333, 0.919318 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=6]
 curve = SubResource( 5 )
@@ -27,8 +43,8 @@ initial_velocity = 12.0
 initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+scale = 0.1
 scale_curve = SubResource( 6 )
-color = Color( 0.101961, 0.0980392, 0.117647, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
@@ -66,22 +82,26 @@ custom_fonts/font = ExtResource( 14 )
 text = "(But paused!)"
 
 [node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 0.101961, 0.0980392, 0.117647, 1 )
+material = SubResource( 8 )
 position = Vector2( -78, 120 )
 amount = 600
 lifetime = 43.0
 preprocess = 50.0
 visibility_rect = Rect2( -100, -100, 360, 200 )
 process_material = SubResource( 4 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Particles2D2" type="Particles2D" parent="."]
+modulate = Color( 0.101961, 0.0980392, 0.117647, 1 )
+material = SubResource( 8 )
 position = Vector2( 250, -74 )
 amount = 600
 lifetime = 43.0
 preprocess = 50.0
 visibility_rect = Rect2( -100, -100, 360, 200 )
 process_material = SubResource( 4 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Margin" type="MarginContainer" parent="."]
 anchor_bottom = 1.0

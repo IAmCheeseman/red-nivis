@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource( 1 )
 class_ = 1
-enemyName = "Walker"
-description = "Created to explore dangerous planets, modified to be slightly less mobile in an indoors enviroment, as they were known to climb up on desks and kock things off. "
+enemyName = "MCHN_PISTOL_NM"
+description = "MCHN_PISTOL_DESC"
 scene = ExtResource( 2 )
