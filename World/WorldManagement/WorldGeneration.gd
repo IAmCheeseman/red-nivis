@@ -50,6 +50,7 @@ func generate_world(seed_:int=randi()) -> Array:
 						"bossRoom" : color.is_equal_approx(BOSS_ROOM),
 						"isBiomeConnection" : color.is_equal_approx(CONNECTION_COLOR),
 						"nodeData" : {},
+						"secret" : false,
 					}
 					if room.isStartingRoom:
 						room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
@@ -127,10 +128,12 @@ func grow_world() -> void:
 				and !room.blockGrowing:
 					changes.append({
 						"pos" : Vector2(x, y),
-						"to" : goodBiome.biomeIndex
+						"to" : goodBiome.biomeIndex,
+						"secret" : i == 1 and rand_range(0,2) > 1
 					})
 		for c in changes:
 			rooms[c.pos.x][c.pos.y].biome = c.to
+			rooms[c.pos.x][c.pos.y].secret = c.secret
 
 
 func get_biome_by_color(color:Color, getSecondary:bool=false):

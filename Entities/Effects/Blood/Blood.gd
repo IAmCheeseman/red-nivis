@@ -28,6 +28,6 @@ func _ready() -> void:
 			sprite.centered = false
 			sprite.z_index = 2
 			sprite.modulate = Color("#f5f85959")
-			sprite.position = rc.get_collision_point().snapped(Vector2.ONE * 16)
+			sprite.position = rc.get_collision_point().round()#.snapped(Vector2.ONE * 16)
 			sprite.rotation = rc.get_collision_normal().angle() + (PI / 2)
 			GameManager.spawnManager.spawn_object(sprite)

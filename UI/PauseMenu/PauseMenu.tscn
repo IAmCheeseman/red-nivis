@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=2]
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=3]
 [ext_resource path="res://UI/Settings/OptionsMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/Assets/FFFForwaBig.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Entities/NPC/TheGuy/TheGuy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Assets/Title_RedNivis.png" type="Texture" id=7]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=8]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=14]
@@ -160,6 +161,17 @@ visible = false
 [node name="Back" parent="OptionsMenu/Center/NavMenu" index="6"]
 fromPth = NodePath("../../..")
 toPth = NodePath("../../../../Margin")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4096
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 0, 2 )
+polygon = PoolVector2Array( 0, -2, -5, -2, -6, 230, 369, 230, 368, -11, 0, -11, 0, -2, 360, -2, 360, 220, 0, 220 )
+
+[node name="TheGuy" parent="StaticBody2D" instance=ExtResource( 6 )]
+position = Vector2( 321, 14 )
 
 [connection signal="pressed" from="Margin/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Margin/VBoxContainer/Hub" to="." method="_on_quittm_pressed"]

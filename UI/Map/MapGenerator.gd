@@ -12,7 +12,7 @@ func generate_map() -> void:
 			var biome = mapData.get_biome_by_index(mapData.rooms[x][y].biome)
 			var roomIcon = mapData.rooms[x][y].roomIcon
 			if biome:
-				if mapData.rooms[x][y].nearDiscovered or GameManager.revealMap:
+				if (mapData.rooms[x][y].nearDiscovered or GameManager.revealMap) and !mapData.rooms[x][y].secret:
 					tiles.set_cell(x, y, 0)
 				if mapData.rooms[x][y].discovered or GameManager.revealMap:
 					tiles.set_cell(x, y, biome.biomeIndex+1)
