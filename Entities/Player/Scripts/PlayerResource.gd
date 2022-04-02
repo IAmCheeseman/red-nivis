@@ -12,6 +12,7 @@ export var maxAirSpeed:float = 180
 export var dashSpeed:float = 320
 export var accelaration:float = 5.0
 export var airAccel: float
+export var downGravMod := 1.4
 export var jumpForce:int = 180
 export var bunnyHopMult:float = 2.5
 export var friction:float = 3.0

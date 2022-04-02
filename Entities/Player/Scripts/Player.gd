@@ -87,7 +87,8 @@ func _physics_process(delta: float) -> void:
 					0,
 					playerData.accelaration*delta
 				)
-				vel.y += Globals.GRAVITY*delta
+				if vel.y < 0: vel.y += Globals.GRAVITY*delta
+				else: vel.y += (Globals.GRAVITY * playerData.downGravMod)*delta
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
 
@@ -135,7 +136,8 @@ func walk_state(delta):
 		)
 		sprite.rotation_degrees = vel.x / 25
 		# Do stuff in the air.
-		vel.y += Globals.GRAVITY*delta
+		if vel.y < 0: vel.y += Globals.GRAVITY * delta
+		else:         vel.y += (Globals.GRAVITY * playerData.downGravMod) * delta
 
 		var faceDir = Utils.get_local_mouse_position(self)
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
@@ -145,7 +147,8 @@ func walk_state(delta):
 		if just_landed():
 			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
 	else:
-		vel.y += Globals.GRAVITY*delta
+		if vel.y < 0: vel.y += Globals.GRAVITY * delta
+		else:         vel.y += (Globals.GRAVITY * 5) * delta
 		vel.x = lerp(
 			vel.x,
 			0,

@@ -29,14 +29,14 @@ func _process(delta: float) -> void:
 		rc.force_raycast_update()
 		if rc.is_colliding():
 			vel = vel.bounce(rc.get_collision_normal()) * .8
-			landSFX.play()
+			if get_tree().paused: landSFX.play()
 	rc.cast_to = Vector2(0,6)
 	rc.force_raycast_update()
 	
 	if rc.is_colliding() and !prevGrounded or\
 	(Input.is_action_just_pressed("use_item") and mouseClose):
 		sprite.scale = Vector2(1.2, .8)
-		landSFX.play()
+		if get_tree().paused: landSFX.play()
 		var newLove = preload("res://Entities/NPC/TheGuy/Love.tscn").instance()
 		newLove.emitting = true
 		add_child(newLove)
