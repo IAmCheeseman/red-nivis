@@ -35,9 +35,7 @@ class EnemySorter:
 
 func create_entries() -> void:
 	Utils.free_children(entries)
-	var dm := DataManager.new()
-
-	var arrEntries = dm.list_files_in_directory("res://Entities/Enemies", true, true, "BestiaryEntry.tres")#playerData.unlockedEntries.duplicate()
+	var arrEntries = playerData.unlockedEntries.duplicate()
 	arrEntries.sort_custom(EnemySorter, "sort")
 	for i in arrEntries:
 		var button = CustomButton.new()

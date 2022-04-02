@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Entities/Effects/Blood/Blood.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Effects/Blood/Blood.gd" type="Script" id=2]
 
 [sub_resource type="Gradient" id=14]
 offsets = PoolRealArray( 0, 0.0870968, 0.896774, 1 )
-colors = PoolColorArray( 0.298039, 0.105882, 0.105882, 0, 1, 0.360784, 0.360784, 1, 0.972715, 0.350876, 0.350876, 0.961131, 0.298039, 0.105882, 0.105882, 0 )
+colors = PoolColorArray( 0.298039, 0.105882, 0.105882, 0, 1, 0.360784, 0.360784, 1, 0.972549, 0.34902, 0.34902, 0.960784, 0.298039, 0.105882, 0.105882, 0 )
 
 [sub_resource type="GradientTexture" id=15]
 gradient = SubResource( 14 )
@@ -86,15 +87,18 @@ tracks/1/keys = {
 }
 
 [node name="RobotSparks" type="Particles2D"]
-z_index = 1
 amount = 75
-one_shot = true
 explosiveness = 1.0
 local_coords = false
 process_material = SubResource( 13 )
 texture = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "init"
 anims/RESET = SubResource( 9 )
 anims/init = SubResource( 10 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = 0.994838
+cast_to = Vector2( 150, 0 )
