@@ -129,7 +129,7 @@ func grow_world() -> void:
 					changes.append({
 						"pos" : Vector2(x, y),
 						"to" : goodBiome.biomeIndex,
-						"secret" : i == 1 and rand_range(0,2) > 1
+						"secret" : i == growLoops-1 and Utils.coin_flip()
 					})
 		for c in changes:
 			rooms[c.pos.x][c.pos.y].biome = c.to

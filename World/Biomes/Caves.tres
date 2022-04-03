@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=9 format=2]
+[gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Caves/StoneBG.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://World/EnviormentalArt/Caves/Stone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnemyPools/CavesDefault.tres" type="Resource" id=5]
 [ext_resource path="res://World/Templates/CaveTemplates.png" type="Texture" id=6]
+[ext_resource path="res://World/EnviormentalArt/Lab/LabSolidsBroken.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Decorators/CavesDecorator.tres" type="Resource" id=9]
 [ext_resource path="res://World/EnviormentalArt/Caves/CavesAtmosphere.tscn" type="PackedScene" id=10]
 
@@ -13,6 +14,7 @@
 script = ExtResource( 1 )
 name = "BACKEND_TTL"
 solids = ExtResource( 4 )
+brokenWall = ExtResource( 7 )
 background = ExtResource( 2 )
 platforms = ExtResource( 3 )
 bgColor = Color( 0.027451, 0.0352941, 0.054902, 1 )

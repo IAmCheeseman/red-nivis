@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=9 format=2]
+[gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabsAtmosphere.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/EnviormentalArt/Lab/LabSolidsBroken.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnemyPools/Robots.tres" type="Resource" id=7]
 [ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=8]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=12]
@@ -13,6 +14,7 @@
 script = ExtResource( 1 )
 name = "LABS_TTL"
 solids = ExtResource( 12 )
+brokenWall = ExtResource( 5 )
 background = ExtResource( 3 )
 platforms = ExtResource( 2 )
 bgColor = Color( 0.0235294, 0.0313726, 0.0509804, 1 )

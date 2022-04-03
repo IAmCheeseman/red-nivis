@@ -4,12 +4,13 @@ const PADDING := 20
 
 onready var world := get_parent()
 
+enum TILES { SURR=0, LEFT=1, UP=2, RIGHT=3, DOWN=4 }
 
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
 var biome:WorldArea
 var room:Node
 var roomI:Image
-
+var brokenTiles = {}
 
 func _ready() -> void:
 	var _discard = connect("tree_exiting", self, "_on_tree_exiting")
@@ -35,10 +36,23 @@ func create_room() -> void:
 	world.solids.light_mask = 0
 	world.tilesContainer.add_child(world.solids)
 
+	for i in worldData.get_connected_rooms(worldData.position):
+		var room = worldData.rooms[worldData.position.x + i.x][worldData.position.y + i.y]
+		if true:#room.secret:
+			var dir: Vector2 = i
+			var key: int
+			match dir:
+				Vector2.LEFT:  key = TILES.LEFT
+				Vector2.UP:    key = TILES.UP
+				Vector2.RIGHT: key = TILES.RIGHT
+				Vector2.DOWN:  key = TILES.DOWN
+			var tiles = biome.brokenWall.instance()
+			world.solids.add_child(tiles)
+			brokenTiles[key] = tiles
+
 	world.platforms = biome.platforms.instance()
 	world.platforms.z_index = 0
 	world.tilesContainer.add_child(world.platforms)
-
 
 	world.background = biome.background.instance()
 	world.background.z_index = -3
@@ -82,7 +96,7 @@ func create_room() -> void:
 	create_loading_zone(Vector2(roomSize.x+(32/16), roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.RIGHT) # Right
 	create_loading_zone(Vector2(roomSize.x*.5, -24/16)*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.UP) # Up
 	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y+(24/16))*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.DOWN) # Down
-
+	
 	# Setting camera limits
 	var camMoveShape = world.mainCamMove.collisionShape.shape.duplicate()
 	var limits = world.solids.get_used_rect()
@@ -118,6 +132,49 @@ func create_room() -> void:
 		var newBiomeTitle = preload("res://UI/BiomeTitle/BiomeTitle.tscn").instance()
 		world.canvasLayer.add_child(newBiomeTitle)
 		newBiomeTitle.get_node("Title/Name").text = tr(biome.name)
+	
+	for i in brokenTiles.keys():
+		var tileset = brokenTiles[i]
+		var startPos: Vector2
+		var endPos: Vector2
+		var incDir: Vector2
+		var wallDir: Vector2
+		var cell := 0
+		match i:
+			TILES.UP:
+				startPos = Vector2.ZERO
+				endPos = Vector2(roomSize.x, 0)
+				incDir = Vector2.RIGHT
+				wallDir = Vector2.UP
+				cell = TILES.DOWN
+			TILES.LEFT:
+				startPos = Vector2.ZERO
+				endPos = Vector2(0, roomSize.y)
+				incDir = Vector2.DOWN
+				wallDir = Vector2.LEFT
+				cell = TILES.RIGHT
+			TILES.RIGHT:
+				startPos = Vector2(roomSize.x-1, 0)
+				endPos = roomSize-Vector2.ONE
+				incDir = Vector2.DOWN
+				wallDir = Vector2.RIGHT
+				cell = TILES.LEFT
+			TILES.DOWN:
+				startPos = Vector2(0, roomSize.y-1)
+				endPos = roomSize-Vector2.ONE
+				incDir = Vector2.RIGHT
+				wallDir = Vector2.DOWN
+				cell = TILES.UP
+		var place = get_free_spot(startPos, endPos, incDir).start
+		var timesLeft = 3
+		while timesLeft != 0:
+			var realPlace = place - incDir
+			if world.solids.get_cellv(realPlace) == -1: tileset.set_cellv(realPlace, cell)
+			for j in 20:
+				tileset.set_cellv(realPlace + (wallDir * (j + 1)), 0)
+			place += incDir
+			if world.solids.get_cellv(place) != -1:
+				timesLeft -= 1
 
 
 

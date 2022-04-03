@@ -1,10 +1,11 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=2]
 [ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsBG.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsPlatforms.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnviormentalArt/DeepLabs/DeepLabsTiles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/EnviormentalArt/Lab/LabSolidsBroken.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/EnemyPools/Bandits.tres" type="Resource" id=12]
 [ext_resource path="res://World/Decorators/DeepLabsDecorator.tres" type="Resource" id=13]
 
@@ -12,6 +13,7 @@
 script = ExtResource( 1 )
 name = "DEEP_LABS_TTL"
 solids = ExtResource( 5 )
+brokenWall = ExtResource( 6 )
 background = ExtResource( 3 )
 platforms = ExtResource( 4 )
 bgColor = Color( 0.0666667, 0.0235294, 0.0666667, 1 )

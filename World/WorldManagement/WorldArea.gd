@@ -4,6 +4,7 @@ class_name WorldArea
 # Display Stuff
 export var name:String = "Unamed"
 export var solids:PackedScene
+export var brokenWall:PackedScene = preload("res://World/EnviormentalArt/Lab/LabSolidsBroken.tscn")
 export var background:PackedScene
 export var platforms:PackedScene
 export var bgColor:Color = Color("#10141f")
