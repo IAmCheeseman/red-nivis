@@ -624,9 +624,46 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 13 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ScaleHelper/Sprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ScaleHelper:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 5 ) ]
+}
 
 [sub_resource type="Animation" id=26]
-length = 0.8
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:material:shader_param/is_on")
 tracks/0/interp = 1
@@ -634,10 +671,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 1.0, 0.0, 1.0, 0.0, 1.0, 0.0 ]
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 13 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ScaleHelper:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 3, 6 ), Vector2( 0, 5 ) ]
 }
 
 [sub_resource type="Environment" id=37]
@@ -686,7 +747,7 @@ offset = Vector2( -5, 1 )
 flip_h = true
 hframes = 6
 vframes = 6
-frame = 2
+frame = 13
 
 [node name="Arm" type="Sprite" parent="ScaleHelper/Sprite"]
 use_parent_material = true
@@ -755,7 +816,7 @@ bus = "Reverb"
 visible = false
 collision_layer = 2
 collision_mask = 2147483648
-immTime = 1.0
+immTime = 0.2
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -4 )
@@ -927,6 +988,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Listener" type="Listener2D" parent="."]
+current = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Dead = SubResource( 15 )
@@ -950,9 +1014,6 @@ anims/flash = SubResource( 26 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 37 )
-
-[node name="Listener2D" type="Listener2D" parent="."]
-current = true
 
 [connection signal="timeout" from="APressWindow" to="." method="_on_a_press_window_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

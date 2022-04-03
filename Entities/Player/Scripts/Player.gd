@@ -162,6 +162,9 @@ func walk_state(delta):
 func animate(moveDir:Vector2):
 	if playerData.isDead:
 		return
+	if flashPlayer.is_playing():
+		animationPlayer.stop()
+		return
 	if animationPlayer.current_animation == "DoubleJump":
 		dontPlayJump = true
 
