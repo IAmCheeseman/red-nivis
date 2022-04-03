@@ -49,11 +49,11 @@ func _on_player_took_damage(_kb: Vector2) -> void:
 		playerTookDamage = true
 
 
-func take_damage(amount:float, dir:Vector2) -> void:
+func take_damage(amount:int, dir:Vector2) -> void:
 	#var dmg := int(amount+rand_range(-2, 1))
-	var defenseReduction = 0
-	if defense > 0: defenseReduction = defense / 2
-	health -= clamp(int(amount) - defenseReduction, 1, INF)
+	var defenseReduction := 0
+	if defense > 0: defenseReduction = int(float(defense) / 2.0)
+	health -= int(clamp(amount - defenseReduction, 1, INF))
 	if par.get("vel"): par.vel = dir*kbAmount-Vector2(0, upwardsKB)
 
 	var newDP = deathParticles.instance()

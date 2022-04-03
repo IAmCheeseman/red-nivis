@@ -8,7 +8,7 @@ var hitbox: Area2D
 
 func _ready() -> void:
 	hitbox = preload("res://Items/Upgrades/DoubleJump/BootHitbox.tscn").instance()
-	hitbox.connect("hit_object", self, "bounce")
+	var _discard = hitbox.connect("hit_object", self, "bounce")
 	hitbox.damage = 30
 	add_child(hitbox)
 

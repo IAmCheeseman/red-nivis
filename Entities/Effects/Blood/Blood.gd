@@ -9,7 +9,7 @@ func _ready() -> void:
 	var startDist := 120.0
 	var endDist := 150.0
 	
-	var splats:int = rand_range(3, 8)
+	var splats:int = int(rand_range(3, 8))
 	for i in splats:
 		var prcnt = float(i) / float(splats)
 		

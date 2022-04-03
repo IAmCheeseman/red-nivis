@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-
 onready var anim = $AnimationPlayer
-
+onready var trans = $ScreenTransition
 
 func _ready():
+	trans.material.set_shader_param("progress", 1.5)
 	anim.play("RESET")
 	_in()
 
