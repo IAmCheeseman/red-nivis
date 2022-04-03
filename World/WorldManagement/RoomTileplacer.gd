@@ -166,15 +166,31 @@ func create_room() -> void:
 				wallDir = Vector2.DOWN
 				cell = TILES.UP
 		var place = get_free_spot(startPos, endPos, incDir).start
-		var timesLeft = 3
+		var timesLeft = 2
 		while timesLeft != 0:
 			var realPlace = place - incDir
 			if world.solids.get_cellv(realPlace) == -1: tileset.set_cellv(realPlace, cell)
 			for j in 20:
-				tileset.set_cellv(realPlace + (wallDir * (j + 1)), 0)
+				var pos = realPlace + (wallDir * (j + 1))
+				tileset.set_cellv(pos, 0)
+				tileset.set_cellv(pos - incDir, 0)
+				tileset.set_cellv(pos + incDir, 0)
 			place += incDir
 			if world.solids.get_cellv(place) != -1:
 				timesLeft -= 1
+			
+			var pos = realPlace
+			
+			var isTiled1 = world.solids.get_cellv(pos) != -1
+			var isTiled2 = world.solids.get_cellv(pos + wallDir) != -1
+			
+			world.solids.set_cellv(pos, 0)
+			world.solids.set_cellv(pos + wallDir, 0)
+			
+			world.solids.update_bitmask_area(pos)
+			
+			if !isTiled1: world.solids.set_cellv(pos, -1)
+			if !isTiled2: world.solids.set_cellv(pos + wallDir, -1)
 
 
 
