@@ -38,7 +38,7 @@ func create_room() -> void:
 
 	for i in worldData.get_connected_rooms(worldData.position):
 		var room = worldData.rooms[worldData.position.x + i.x][worldData.position.y + i.y]
-		if true:#room.secret:
+		if room.secret:
 			var dir: Vector2 = i
 			var key: int
 			match dir:
@@ -96,7 +96,7 @@ func create_room() -> void:
 	create_loading_zone(Vector2(roomSize.x+(32/16), roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.RIGHT) # Right
 	create_loading_zone(Vector2(roomSize.x*.5, -24/16)*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.UP) # Up
 	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y+(24/16))*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.DOWN) # Down
-	
+
 	# Setting camera limits
 	var camMoveShape = world.mainCamMove.collisionShape.shape.duplicate()
 	var limits = world.solids.get_used_rect()
@@ -132,7 +132,7 @@ func create_room() -> void:
 		var newBiomeTitle = preload("res://UI/BiomeTitle/BiomeTitle.tscn").instance()
 		world.canvasLayer.add_child(newBiomeTitle)
 		newBiomeTitle.get_node("Title/Name").text = tr(biome.name)
-	
+
 	for i in brokenTiles.keys():
 		var tileset = brokenTiles[i]
 		var startPos: Vector2
@@ -178,17 +178,17 @@ func create_room() -> void:
 			place += incDir
 			if world.solids.get_cellv(place) != -1:
 				timesLeft -= 1
-			
+
 			var pos = realPlace
-			
+
 			var isTiled1 = world.solids.get_cellv(pos) != -1
 			var isTiled2 = world.solids.get_cellv(pos + wallDir) != -1
-			
+
 			world.solids.set_cellv(pos, 0)
 			world.solids.set_cellv(pos + wallDir, 0)
-			
+
 			world.solids.update_bitmask_area(pos)
-			
+
 			if !isTiled1: world.solids.set_cellv(pos, -1)
 			if !isTiled2: world.solids.set_cellv(pos + wallDir, -1)
 
