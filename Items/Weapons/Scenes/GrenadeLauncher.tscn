@@ -15,6 +15,7 @@ projLifetime = 1.3
 recoil = 60.0
 magazineSize = 1
 bulletSprite = ExtResource( 4 )
+shellSprite = null
 kickUp = 6.0
 isTwoHanded = true
 
