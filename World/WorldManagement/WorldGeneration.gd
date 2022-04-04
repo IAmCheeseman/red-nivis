@@ -129,11 +129,12 @@ func grow_world() -> void:
 					changes.append({
 						"pos" : Vector2(x, y),
 						"to" : goodBiome.biomeIndex,
-						"secret" : i == growLoops-1 and Utils.coin_flip()
+						"secret" : i == growLoops-1 and rand_range(0, 1) < .75
 					})
 		for c in changes:
 			rooms[c.pos.x][c.pos.y].biome = c.to
 			rooms[c.pos.x][c.pos.y].secret = c.secret
+			if c.secret: print(c.pos)
 
 
 func get_biome_by_color(color:Color, getSecondary:bool=false):

@@ -31,6 +31,7 @@ func create_room() -> void:
 
 	# Adding in the nodes
 
+
 	world.solids = biome.solids.instance()
 	world.solids.z_index = 1
 	world.solids.light_mask = 0
