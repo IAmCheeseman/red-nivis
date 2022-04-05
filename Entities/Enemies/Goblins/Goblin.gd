@@ -15,7 +15,10 @@ export var frict := 5.0
 export var accel := 7.0
 export var speed := 70.0
 export var bounceDist := 12.0
-export var lookAtSwim := true
+export var lookAtSwim := false
+export var lookAtTarget := true
+export var rotAdd := 90.0
+export var flipV := false
 
 var player: Node2D
 var state = states.IDLE
@@ -64,13 +67,16 @@ func move_state(delta: float) -> void:
 		accel * delta
 	)
 	
-	if lookAtSwim:
-		var currentRot = sprite.rotation - PI / 2
-		sprite.look_at(targetPos)
+	if lookAtSwim or lookAtTarget:
+		var currentRot = sprite.rotation - deg2rad(rotAdd)
+		if lookAtTarget: sprite.look_at(targetPos)
+		elif lookAtSwim: sprite.look_at(global_position + vel)
 		var targetLook = sprite.rotation
-		sprite.rotation = lerp(currentRot, targetLook, (accel / 5) * delta) + PI / 2
+		sprite.rotation = lerp(currentRot, targetLook, (accel / 5) * delta) + deg2rad(rotAdd)
+		
 	
-	sprite.flip_h = vel.x > 0
+	if !flipV: sprite.flip_h = vel.x > 0
+	else: sprite.flip_v = vel.x < 0
 	
 	anim.play("Swim")
 
