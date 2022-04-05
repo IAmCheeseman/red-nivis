@@ -52,6 +52,7 @@ func _process(delta: float) -> void:
 
 func idle_state(delta: float) -> void:
 	vel = vel.move_toward(Vector2.ZERO, frict * delta)
+	vel.y += Globals.WATER_GRAVITY * delta
 	
 	anim.play("Idle")
 

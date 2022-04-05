@@ -97,7 +97,10 @@ tracks/1/keys = {
 hframes = 2
 vframes = 2
 
-[node name="Attack" parent="." index="2"]
+[node name="DamageManager" parent="." index="2"]
+maxHealth = 800
+
+[node name="Attack" parent="." index="3"]
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Attack" index="0"]
@@ -113,7 +116,7 @@ autostart = true
 enabled = true
 exclude_parent = false
 
-[node name="Collisions" parent="." index="3"]
+[node name="Collisions" parent="." index="4"]
 visible = false
 
 [node name="PlayerDetection" parent="Collisions" index="0"]
@@ -122,7 +125,7 @@ visible = false
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
 shape = SubResource( 4 )
 
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="6"]
 anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 anims/Swim = SubResource( 3 )

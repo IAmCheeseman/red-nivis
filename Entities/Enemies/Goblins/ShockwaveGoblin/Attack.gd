@@ -58,3 +58,7 @@ func create_bullet(bullet=null, speed:int=0, dir:Vector2=Vector2.ZERO, timesLeft
 	)
 	
 	GameManager.spawnManager.spawn_object(newBullet)
+	
+	yield(TempTimer.idle_frame(self), "timeout")
+	
+	newBullet.hitbox.kbStrengh = 6
