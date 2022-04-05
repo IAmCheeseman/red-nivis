@@ -28,7 +28,7 @@ func toggle_revealed_map():
 
 
 func give(item: String) -> String:
-	if !ItemMap.ITEMS.has(item): 
+	if !ItemMap.ITEMS.has(item):
 		return " Invalid id: %s" % item
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
 	inventory.add_item(item)
@@ -60,7 +60,7 @@ func d(amt=1) -> String:
 func ability(n: String) -> String:
 	var a := ""
 	match n:
-		"teleport": 
+		"teleport":
 			a = "res://Items/Upgrades/Teleport/Teleport.tres"
 		"boots":
 			a = "res://Items/Upgrades/DoubleJump/DoubleJump.tres"
@@ -89,7 +89,7 @@ func time_scale(time_scale):
 
 
 func op():
-	
+
 	return toggle_godmode()+"\n"+toggle_revealed_map()
 
 
