@@ -788,7 +788,6 @@ texture_scale = 0.05
 color = Color( 1, 0, 0, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, -5 )
 shape = SubResource( 5 )
 

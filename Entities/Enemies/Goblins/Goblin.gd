@@ -14,6 +14,7 @@ export var targetRange := 150
 export var frict := 5.0
 export var accel := 7.0
 export var speed := 70.0
+export var bounceDist := 12.0
 export var lookAtSwim := true
 
 var player: Node2D
@@ -42,7 +43,7 @@ func _process(delta: float) -> void:
 				attack_state(delta)
 		
 		# Bouncing
-		wallDetection.cast_to = vel.normalized() * (sprite.texture.get_width() / 3)
+		wallDetection.cast_to = vel.normalized() * bounceDist
 		wallDetection.force_raycast_update()
 		if wallDetection.is_colliding():
 			vel = vel.bounce(wallDetection.get_collision_normal())

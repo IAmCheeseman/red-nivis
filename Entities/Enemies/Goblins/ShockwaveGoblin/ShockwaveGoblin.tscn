@@ -92,6 +92,7 @@ tracks/1/keys = {
 }
 
 [node name="ShockwaveGoblin" instance=ExtResource( 1 )]
+bounceDist = 6.0
 
 [node name="Sprite" parent="." index="0"]
 hframes = 2
