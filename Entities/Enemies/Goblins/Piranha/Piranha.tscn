@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Entities/Enemies/Goblins/Goblin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemies/Goblins/Piranha/Piranha.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Enemies/Goblins/Piranha/Attack.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 18.0278
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -83,11 +86,17 @@ lookAtTarget = false
 texture = ExtResource( 2 )
 hframes = 2
 
+[node name="DamageManager" parent="." index="2"]
+maxHealth = 1200
+
 [node name="Attack" parent="." index="3"]
 script = ExtResource( 3 )
 
-[node name="Collisions" parent="." index="4"]
+[node name="PlayerDetection" parent="Collisions" index="0"]
 visible = false
+
+[node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" parent="." index="6"]
 anims/Idle = SubResource( 1 )

@@ -1,12 +1,17 @@
 extends Node2D
 
 var children = []
+var childrenKilled = 0
+var totalChildren = 10
 
 
 func _ready() -> void:
-	for i in 10:
+	for i in totalChildren:
 		var newChild = preload("res://Entities/Enemies/Goblins/Piranha/PiranhaChild.tscn").instance()
-		newChild.global_position = global_position
+		newChild.global_position = global_position + Vector2(
+			rand_range(-16, 16),
+			rand_range(-16, 16)
+		)
 		newChild.z_index = owner.z_index + 1
 		GameManager.spawnManager.spawn_object(newChild)
 		
@@ -14,11 +19,18 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	for i in children:
-		if !is_instance_valid(i):
-			children.erase(i)
+	for i in children.size():
+		if i > children.size()-1: break
+		var p = children[i]
+		if !is_instance_valid(p):
+			childrenKilled += 1
+			children.erase(p)
 			continue
-		i.targetPos = global_position + Vector2(
-			rand_range(-16, 16),
-			rand_range(-16, 16)
-		)
+		
+		if i > childrenKilled:
+			p.targetPos = global_position + Vector2(
+				rand_range(-16, 16),
+				rand_range(-16, 16)
+			)
+		else:
+			p.state = p.states.ATTACK

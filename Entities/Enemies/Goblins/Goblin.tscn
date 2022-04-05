@@ -39,6 +39,7 @@ spritePath = NodePath("../Sprite")
 shape = SubResource( 2 )
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 4 )]
+collision_layer = 4
 
 [node name="Wall" type="RayCast2D" parent="Collisions"]
 enabled = true

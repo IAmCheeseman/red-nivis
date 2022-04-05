@@ -24,7 +24,7 @@ var player: Node2D
 var state = states.IDLE
 
 var vel := Vector2.ZERO
-var targetPos := global_position
+onready var targetPos := global_position
 
 
 func _ready() -> void:
@@ -78,12 +78,15 @@ func move_state(delta: float) -> void:
 	else: sprite.flip_v = vel.x < 0
 
 
-	if lookAtSwim:
+	if lookAtSwim or lookAtTarget:
 		var currentRot = sprite.rotation - PI / 2
-		sprite.look_at(targetPos)
+		if lookAtTarget:
+			sprite.look_at(targetPos)
+		elif lookAtSwim:
+			sprite.look_at(global_position + vel)
 		var targetLook = sprite.rotation
 		sprite.rotation = lerp(currentRot, targetLook, (accel / 5) * delta) + PI / 2
-
+	
 	sprite.flip_h = vel.x > 0
 
 	anim.play("Swim")
