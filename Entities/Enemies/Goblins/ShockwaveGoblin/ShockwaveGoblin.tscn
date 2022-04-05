@@ -98,7 +98,7 @@ hframes = 2
 vframes = 2
 
 [node name="DamageManager" parent="." index="2"]
-maxHealth = 800
+maxHealth = 850
 
 [node name="Attack" parent="." index="3"]
 script = ExtResource( 3 )
@@ -121,6 +121,9 @@ visible = false
 
 [node name="PlayerDetection" parent="Collisions" index="0"]
 visible = false
+
+[node name="Hurtbox" parent="Collisions" index="1"]
+collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
 shape = SubResource( 4 )

@@ -26,6 +26,8 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
+maxHealth = 900
+spritePath = NodePath("../Sprite")
 
 [node name="Attack" type="Node2D" parent="."]
 
