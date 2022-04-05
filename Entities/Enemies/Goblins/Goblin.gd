@@ -74,7 +74,7 @@ func move_state(delta: float) -> void:
 	anim.play("Swim")
 
 
-func attack_state(delta: float) -> void:
+func attack_state(_delta: float) -> void:
 	pass
 
 

@@ -10,7 +10,7 @@ export var recoil := 140.0 / 5
 
 var player: Node2D
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !player:
 		player = owner.player
 		return
@@ -30,7 +30,7 @@ func shoot() -> void:
 	for i in 8:
 		create_bullet(
 			null,
-			70 + rand_range(-30, 0),
+			70 + int(rand_range(-30, 0)),
 			pointDir.rotated(deg2rad(rand_range(-35, 35)))
 		)
 
