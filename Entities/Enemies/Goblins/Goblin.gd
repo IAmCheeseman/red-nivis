@@ -14,7 +14,11 @@ export var targetRange := 150
 export var frict := 5.0
 export var accel := 7.0
 export var speed := 70.0
-export var lookAtSwim := true
+export var bounceDist := 12.0
+export var lookAtSwim := false
+export var lookAtTarget := true
+export var rotAdd := 90.0
+export var flipV := false
 
 var player: Node2D
 var state = states.IDLE
@@ -42,7 +46,7 @@ func _process(delta: float) -> void:
 				attack_state(delta)
 
 		# Bouncing
-		wallDetection.cast_to = vel.normalized() * (sprite.texture.get_width() / 3)
+		wallDetection.cast_to = vel.normalized() * bounceDist
 		wallDetection.force_raycast_update()
 		if wallDetection.is_colliding():
 			vel = vel.bounce(wallDetection.get_collision_normal())
@@ -63,6 +67,17 @@ func move_state(delta: float) -> void:
 		accel * delta
 	)
 
+	if lookAtSwim or lookAtTarget:
+		var currentRot = sprite.rotation - deg2rad(rotAdd)
+		if lookAtTarget: sprite.look_at(targetPos)
+		elif lookAtSwim: sprite.look_at(global_position + vel)
+		var targetLook = sprite.rotation
+		sprite.rotation = lerp(currentRot, targetLook, (accel / 5) * delta) + deg2rad(rotAdd)
+
+	if !flipV: sprite.flip_h = vel.x > 0
+	else: sprite.flip_v = vel.x < 0
+
+
 	if lookAtSwim:
 		var currentRot = sprite.rotation - PI / 2
 		sprite.look_at(targetPos)
@@ -74,7 +89,7 @@ func move_state(delta: float) -> void:
 	anim.play("Swim")
 
 
-func attack_state(delta: float) -> void:
+func attack_state(_delta: float) -> void:
 	pass
 
 
