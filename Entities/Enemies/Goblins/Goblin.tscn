@@ -28,6 +28,7 @@ shape = SubResource( 1 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
 maxHealth = 900
+isUnderwater = true
 spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 6 )
 

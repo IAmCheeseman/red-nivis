@@ -11,6 +11,7 @@ export var upwardsKB := 0.0
 export var hurtSFXPath: NodePath
 export(int, "Easy", "Normal", "Hard") var difficulty = 1
 export(Array, StreamTexture) var corpseSprites: Array
+export var isUnderwater := false
 export var useDeathParticles := true
 export var isBoss := false
 export var freeOnDeath := true
@@ -97,10 +98,12 @@ func _die(dir: Vector2) -> void:
 
 	if par.has_signal("death"):
 		par.emit_signal("death")
-
+	
+	# Create corpses
 	if corpseSprites.size() > 0:
 		for i in corpseSprites:
 			var newCorpse = corpse.instance()
+			if isUnderwater: newCorpse.gravity_scale = 0.1
 			newCorpse.set_sprite(i)
 			newCorpse.global_position = global_position
 			newCorpse.rotation = rand_range(0, PI * 2)
