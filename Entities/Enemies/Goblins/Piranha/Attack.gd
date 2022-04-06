@@ -4,6 +4,7 @@ var children = []
 var childrenKilled = 0
 var totalChildren = 6
 
+var target: Vector2
 
 func _ready() -> void:
 	for i in totalChildren:
@@ -34,3 +35,8 @@ func _process(delta: float) -> void:
 			)
 		else:
 			p.state = p.states.ATTACK
+		
+		if children.size() == 0:
+			owner.state = owner.states.ATTACK
+	if children.size() == 0:
+		owner.state = owner.states.ATTACK
