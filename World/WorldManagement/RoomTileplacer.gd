@@ -398,6 +398,7 @@ func set_player_pos() -> void:
 			var ppos = Vector2(positions.start.x+x, size.y)
 			world.player.position = ppos*world.solids.cell_size
 			world.player.vel.y = -world.player.playerData.jumpForce
+			if GameManager.underwater: world.player.vel.y / 2
 		Vector2.DOWN:
 			var positions = get_free_spot(Vector2.ZERO, Vector2(size.x, 0), Vector2.RIGHT)
 			var x = (positions.end.x-positions.start.x)*.5

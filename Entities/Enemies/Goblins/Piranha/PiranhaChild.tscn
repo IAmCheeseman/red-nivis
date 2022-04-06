@@ -106,7 +106,6 @@ shape = SubResource( 4 )
 [node name="DamageManager" parent="." index="2"]
 maxHealth = 400
 corpseSprites = [ ExtResource( 5 ) ]
-isUnderwater = true
 
 [node name="PlayerDetection" parent="Collisions" index="0"]
 visible = false

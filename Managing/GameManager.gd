@@ -18,6 +18,8 @@ var frameFreezer:FrameFreezer = FrameFreezer.new()
 
 var currentlyAttackingEnemies := []
 
+var underwater = false
+
 var player: Node2D
 var mainTileset: TileMap
 

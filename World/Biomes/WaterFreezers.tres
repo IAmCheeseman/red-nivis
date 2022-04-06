@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
+[ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=2]
+[ext_resource path="res://World/EnemyPools/BasicEnemies.tres" type="Resource" id=3]
+[ext_resource path="res://World/EnviormentalArt/Freezers/FreezerSolids.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/EnviormentalArt/Freezers/OneWayPlatforms.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/EnviormentalArt/Freezers/FreezersBG.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/Decorators/FreezersDecorator.tres" type="Resource" id=7]
+[ext_resource path="res://World/EnviormentalArt/Freezers/WaterFreezersAtmosphere.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/EnviormentalArt/Lab/LabSolidsBroken.tscn" type="PackedScene" id=9]
+
+[resource]
+script = ExtResource( 1 )
+name = "FREEZERS_TTL"
+solids = ExtResource( 4 )
+brokenWall = ExtResource( 9 )
+background = ExtResource( 6 )
+platforms = ExtResource( 5 )
+bgColor = Color( 0.0117647, 0.0156863, 0.027451, 1 )
+atmosphere = ExtResource( 8 )
+brightness = 1.0
+startingArea = false
+biomeIndex = 3
+mapColor = Color( 0.45098, 0.745098, 0.827451, 1 )
+secondaryColor = Color( 0.309804, 0.560784, 0.729412, 1 )
+growChance = 0.25
+middleRemovalChance = 0.666
+connectionChance = 0.05
+decorator = ExtResource( 7 )
+roomTemplates = ExtResource( 2 )
+enemyPools = [ ExtResource( 3 ) ]

@@ -51,8 +51,10 @@ var playerData = preload("res://Entities/Player/Player.tres")
 var lockMovement = false
 var timeOnGround = 0.0
 
+var gravity := 0.0
 
 func _ready():
+	
 	GameManager.player = self
 	var date = OS.get_date()
 	if date.month == OS.MONTH_DECEMBER and date.day <= 25:
@@ -67,6 +69,8 @@ func _ready():
 
 	yield(TempTimer.idle_frame(self), "timeout")
 	playerData.ammo = playerData.maxAmmo
+	
+	gravity = Globals.GRAVITY if !GameManager.underwater else Globals.WATER_GRAVITY
 
 
 func _physics_process(delta: float) -> void:
@@ -87,8 +91,8 @@ func _physics_process(delta: float) -> void:
 					0,
 					playerData.accelaration*delta
 				)
-				if vel.y < 0: vel.y += Globals.GRAVITY*delta
-				else: vel.y += (Globals.GRAVITY * playerData.downGravMod)*delta
+				if vel.y < 0: vel.y += gravity*delta
+				else: vel.y += (gravity * playerData.downGravMod)*delta
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 			Engine.time_scale = lerp(Engine.time_scale, .2, 5*delta)
 
@@ -136,8 +140,8 @@ func walk_state(delta):
 		)
 		sprite.rotation_degrees = vel.x / 25
 		# Do stuff in the air.
-		if vel.y < 0: vel.y += Globals.GRAVITY * delta
-		else:         vel.y += (Globals.GRAVITY * playerData.downGravMod) * delta
+		if vel.y < 0: vel.y += gravity * delta
+		else:         vel.y += (gravity * playerData.downGravMod) * delta
 
 		var faceDir = Utils.get_local_mouse_position(self)
 		sprite.scale.x = 1 if faceDir.x > 0 else -1
@@ -147,8 +151,8 @@ func walk_state(delta):
 		if just_landed():
 			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
 	else:
-		if vel.y < 0: vel.y += Globals.GRAVITY * delta
-		else:         vel.y += (Globals.GRAVITY * 5) * delta
+		if vel.y < 0: vel.y += gravity * delta
+		else:         vel.y += (gravity * 5) * delta
 		vel.x = lerp(
 			vel.x,
 			0,
@@ -291,7 +295,10 @@ func jump():
 		vel.x *= 1.25
 	elif timeOnGround <= .2:
 		vel.x *= 1.1
-
+	
+	if GameManager.underwater:
+		vel.y /= 1.5
+	
 	triedJumpRecent = false
 
 
