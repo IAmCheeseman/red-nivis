@@ -4,6 +4,7 @@ onready var sprite = $Sprite
 onready var explosion = $Explosion
 onready var boostTimer = $DamageBoostTimer
 onready var pickupSFX = $PickUpSFX
+onready var collision = $CollisionShape2D
 
 export var friction := 100.0
 export var speed := 100.0
@@ -46,6 +47,7 @@ func _on_area_entered(area: Area2D) -> void:
 			.1
 		)
 		sprite.hide()
+		collision.disabled = true
 		explosion.emitting = true
 		if disabled: return
 		player.healMaterial += 9
