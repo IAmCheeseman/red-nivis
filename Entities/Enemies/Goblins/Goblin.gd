@@ -49,14 +49,14 @@ func _process(delta: float) -> void:
 		wallDetection.cast_to = vel.normalized() * bounceDist
 		wallDetection.force_raycast_update()
 		if wallDetection.is_colliding():
-			vel = vel.bounce(wallDetection.get_collision_normal())
+			vel = vel.bounce(wallDetection.get_collision_normal()) * 0.5
 
-		vel = move_and_slide(vel)
+		vel.y = move_and_slide(vel).y
 
 
 func idle_state(delta: float) -> void:
 	vel = vel.move_toward(Vector2.ZERO, frict * delta)
-	vel.y += Globals.WATER_GRAVITY * delta
+	vel.y += (Globals.WATER_GRAVITY / 20) * delta
 
 	anim.play("Idle")
 

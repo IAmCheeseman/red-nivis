@@ -27,7 +27,7 @@ func shoot() -> void:
 
 	owner.vel = -pointDir * recoil
 
-	for i in 8:
+	for i in 3:
 		create_bullet(
 			null,
 			70 + int(rand_range(-30, 0)),

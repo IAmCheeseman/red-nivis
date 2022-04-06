@@ -122,9 +122,6 @@ visible = false
 [node name="PlayerDetection" parent="Collisions" index="0"]
 visible = false
 
-[node name="Hurtbox" parent="Collisions" index="1"]
-collision_layer = 4
-
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
 shape = SubResource( 4 )
 

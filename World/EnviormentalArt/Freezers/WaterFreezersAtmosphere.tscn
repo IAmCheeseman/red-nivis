@@ -56,7 +56,8 @@ shader_param/wave_width = 0.3
 [node name="WaterFreezersAtmosphere" type="Node2D"]
 z_index = 1
 script = ExtResource( 1 )
-frict = 6
+accel = 4
+frict = 7
 underwater = true
 
 [node name="Mist" type="ColorRect" parent="."]
