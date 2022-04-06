@@ -6,7 +6,7 @@
 [node name="AssaultRifle" instance=ExtResource( 1 )]
 damage = 120.0
 cooldown = 0.05
-reloadSpeed = 0.5
+reloadSpeed = 0.35
 magazineSize = 3
 burst = true
 kickUp = 5.0

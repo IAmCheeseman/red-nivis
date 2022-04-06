@@ -83,7 +83,7 @@ func move_state(delta: float) -> void:
 		if lookAtTarget:
 			sprite.look_at(targetPos)
 		elif lookAtSwim:
-			sprite.look_at(global_position + vel)
+			sprite.look_at(sprite.global_position + vel)
 		var targetLook = sprite.rotation
 		sprite.rotation = lerp(currentRot, targetLook, (accel / 5) * delta) + PI / 2
 	
