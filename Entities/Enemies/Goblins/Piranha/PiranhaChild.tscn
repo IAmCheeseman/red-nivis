@@ -92,7 +92,7 @@ accel = 42.0
 bounceDist = 5.0
 lookAtSwim = true
 lookAtTarget = false
-rotAdd = 0.0
+rotAdd = -90.0
 flipV = true
 
 [node name="Sprite" parent="." index="0"]

@@ -19,6 +19,7 @@ var frameFreezer:FrameFreezer = FrameFreezer.new()
 var currentlyAttackingEnemies := []
 
 var player: Node2D
+var mainTileset: TileMap
 
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
 

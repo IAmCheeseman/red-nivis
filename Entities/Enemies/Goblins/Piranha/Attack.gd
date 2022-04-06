@@ -2,7 +2,7 @@ extends Node2D
 
 var children = []
 var childrenKilled = 0
-var totalChildren = 10
+var totalChildren = 6
 
 
 func _ready() -> void:

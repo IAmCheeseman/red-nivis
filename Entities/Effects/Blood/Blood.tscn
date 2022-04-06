@@ -100,5 +100,5 @@ anims/RESET = SubResource( 9 )
 anims/init = SubResource( 10 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-rotation = 0.994838
+enabled = true
 cast_to = Vector2( 150, 0 )
