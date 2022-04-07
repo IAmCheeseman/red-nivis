@@ -15,11 +15,11 @@ func _ready() -> void:
 		)
 		newChild.z_index = owner.z_index + 1
 		GameManager.spawnManager.spawn_object(newChild)
-		
+
 		children.append(newChild)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for i in children.size():
 		if i > children.size()-1: break
 		var p = children[i]
@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 			childrenKilled += 1
 			children.erase(p)
 			continue
-		
+
 		if i > childrenKilled:
 			p.targetPos = global_position + Vector2(
 				rand_range(-16, 16),
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 			)
 		else:
 			p.state = p.states.ATTACK
-		
+
 		if children.size() == 0:
 			owner.state = owner.states.ATTACK
 	if children.size() == 0:

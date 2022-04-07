@@ -47,7 +47,7 @@ func _on_area_entered(area: Area2D) -> void:
 			.1
 		)
 		sprite.hide()
-		collision.disabled = true
+		collision.set_deferred("disabled", true)
 		explosion.emitting = true
 		if disabled: return
 		player.healMaterial += 9
