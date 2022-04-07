@@ -54,7 +54,7 @@ var timeOnGround = 0.0
 var gravity := 0.0
 
 func _ready():
-	
+
 	GameManager.player = self
 	var date = OS.get_date()
 	if date.month == OS.MONTH_DECEMBER and date.day <= 25:
@@ -69,7 +69,7 @@ func _ready():
 
 	yield(TempTimer.idle_frame(self), "timeout")
 	playerData.ammo = playerData.maxAmmo
-	
+
 	gravity = Globals.GRAVITY if !GameManager.underwater else Globals.WATER_GRAVITY
 
 
@@ -295,10 +295,10 @@ func jump():
 		vel.x *= 1.25
 	elif timeOnGround <= .2:
 		vel.x *= 1.1
-	
+
 	if GameManager.underwater:
 		vel.y /= 1.5
-	
+
 	triedJumpRecent = false
 
 

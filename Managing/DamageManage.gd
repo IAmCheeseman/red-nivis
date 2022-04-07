@@ -98,7 +98,7 @@ func _die(dir: Vector2) -> void:
 
 	if par.has_signal("death"):
 		par.emit_signal("death")
-	
+
 	# Create corpses
 	if corpseSprites.size() > 0:
 		for i in corpseSprites:

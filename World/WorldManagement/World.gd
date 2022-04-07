@@ -41,9 +41,9 @@ func _ready() -> void:
 		worldData.playerPos = Vector2.ZERO
 
 	var biome = worldData.get_biome_by_index(worldData.get_current_room().biome)
-	
+
 	GameManager.mainTileset = solids
-	
+
 	GameManager.rpBiome = biome.name
 	GameManager.update_rp()
 

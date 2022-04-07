@@ -21,16 +21,16 @@ func _ready() -> void:
 		if rc.is_colliding():
 			var tilemap: TileMap = GameManager.mainTileset
 			var pos: Vector2 = tilemap.world_to_map(rc.get_collision_point())
-			
+
 			var add = Vector2.DOWN if rc.cast_to.y > 0 else Vector2.UP
 			if tilemap.get_cellv(pos + add) == -1: continue
-			
+
 			# Checking if there's already some blood here
 			if !tilemap.has_meta("BLOODS"): tilemap.set_meta("BLOODS", [])
 			if tilemap.get_meta("BLOODS").count(pos) >= 2: continue
-			
+
 			tilemap.get_meta("BLOODS").append(pos)
-			
+
 			var sprite = Sprite.new()
 			sprite.texture = preload("res://Entities/Effects/Blood/Splatter.png")
 			sprite.hframes = 4

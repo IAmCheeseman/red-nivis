@@ -13,9 +13,9 @@ func _ready() -> void:
 	defaultAccel = playerData.accelaration
 	playerData.friction = frict
 	playerData.accelaration = accel
-	
+
 	GameManager.underwater = underwater
-	
+
 	var mist = $Mist
 	if Settings.gfx == Settings.GFX_BAD:
 		mist.queue_free()
@@ -23,5 +23,5 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	playerData.friction = defaultFrict
 	playerData.accelaration = defaultAccel
-	
+
 	GameManager.underwater = false
