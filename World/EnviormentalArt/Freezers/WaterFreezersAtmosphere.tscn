@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Freezers/FreezersAtmosphere.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Player/Assets/player_sheet.png" type="Texture" id=2]
 
 [sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
@@ -80,7 +79,3 @@ __meta__ = {
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.337255, 0.380392, 0.607843, 1 )
-
-[node name="PlayerSheet" type="Sprite" parent="."]
-position = Vector2( 127, 110 )
-texture = ExtResource( 2 )

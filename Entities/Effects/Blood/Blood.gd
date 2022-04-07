@@ -39,7 +39,7 @@ func _ready() -> void:
 			sprite.offset.y = 1
 			sprite.z_index = 2
 			sprite.modulate = Color("#f5f85959")
-			sprite.position = tilemap.map_to_world(pos) + (Vector2.RIGHT * 8)
+			sprite.position = tilemap.map_to_world(pos)# + (Vector2.RIGHT * 8)
 			sprite.rotation = rc.get_collision_normal().angle() + (PI / 2)
 			GameManager.spawnManager.spawn_object(sprite)
 

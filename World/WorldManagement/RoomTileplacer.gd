@@ -31,8 +31,8 @@ func create_room() -> void:
 
 	# Adding in the nodes
 
-
 	world.solids = biome.solids.instance()
+	world.solids.position = Vector2.ZERO
 	world.solids.z_index = 1
 	world.solids.light_mask = 0
 	world.tilesContainer.add_child(world.solids)
@@ -52,10 +52,12 @@ func create_room() -> void:
 			brokenTiles[key] = tiles
 
 	world.platforms = biome.platforms.instance()
+	world.platforms.position = Vector2.ZERO
 	world.platforms.z_index = 0
 	world.tilesContainer.add_child(world.platforms)
 
 	world.background = biome.background.instance()
+	world.background.position = Vector2.ZERO
 	world.background.z_index = -3
 	world.tilesContainer.add_child(world.background)
 
