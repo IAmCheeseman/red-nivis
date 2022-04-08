@@ -15,6 +15,10 @@ func _ready() -> void:
 	playerData.accelaration = accel
 
 	GameManager.underwater = underwater
+	
+	if underwater:
+		AudioServer.set_bus_effect_enabled(4, 1, true)
+		AudioServer.set_bus_effect_enabled(5, 1, true)
 
 	var mist = $Mist
 	if Settings.gfx == Settings.GFX_BAD:
@@ -29,5 +33,8 @@ func _process(delta: float) -> void:
 func _exit_tree() -> void:
 	playerData.friction = defaultFrict
 	playerData.accelaration = defaultAccel
+	
+	AudioServer.set_bus_effect_enabled(4, 1, false)
+	AudioServer.set_bus_effect_enabled(5, 1, false)
 
 	GameManager.underwater = false
