@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Water.ogg-cff601f5dccd85799706879e75a2723d.oggstr"
+
+[deps]
+
+source_file="res://World/EnviormentalArt/Freezers/Water.ogg"
+dest_files=[ "res://.import/Water.ogg-cff601f5dccd85799706879e75a2723d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

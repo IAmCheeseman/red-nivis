@@ -42,6 +42,7 @@ one_shot = true
 [node name="ShootSound" parent="." instance=ExtResource( 2 )]
 audio = ExtResource( 3 )
 volumeMod = -10.0
+pitchShiftRange = 1.5
 bus = "Reverb"
 
 [node name="NoAmmoClickSFX" parent="." instance=ExtResource( 2 )]

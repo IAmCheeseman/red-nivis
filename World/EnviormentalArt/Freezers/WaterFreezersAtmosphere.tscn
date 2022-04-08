@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Freezers/FreezersAtmosphere.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Freezers/Bubble.png" type="Texture" id=2]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=3]
+[ext_resource path="res://World/EnviormentalArt/Freezers/Water.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
@@ -115,3 +117,11 @@ texture = ExtResource( 2 )
 material = SubResource( 19 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="SoundManager" type="Node2D" parent="."]
+script = ExtResource( 3 )
+audio = ExtResource( 4 )
+volumeMod = 2.0
+autoplay = true
+loop = true
+bus = "ReverbLow"
