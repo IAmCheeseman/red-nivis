@@ -48,7 +48,7 @@ bus = "Reverb"
 audio = ExtResource( 1 )
 volumeMod = -10.0
 pitchShiftRange = 1.1
-bus = "SFX"
+bus = "ReverbLow"
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
 [connection signal="timeout" from="MeleeCooldown" to="." method="_on_melee_timeout"]

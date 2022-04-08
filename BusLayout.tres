@@ -12,6 +12,8 @@ wet = 0.27
 [sub_resource type="AudioEffectLowPassFilter" id=7]
 resource_name = "LowPassFilter"
 cutoff_hz = 500.0
+resonance = 1.0
+db = 1
 
 [sub_resource type="AudioEffectReverb" id=6]
 resource_name = "Reverb"
@@ -22,6 +24,8 @@ wet = 0.12
 [sub_resource type="AudioEffectLowPassFilter" id=8]
 resource_name = "LowPassFilter"
 cutoff_hz = 500.0
+resonance = 1.0
+db = 1
 
 [resource]
 bus/0/volume_db = -15.7883

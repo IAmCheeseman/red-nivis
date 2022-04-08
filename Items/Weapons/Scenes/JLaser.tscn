@@ -34,4 +34,4 @@ position = Vector2( -10, 0 )
 audio = ExtResource( 4 )
 volumeMod = 2.0
 pitchShiftRange = 5.0
-bus = "SFX"
+bus = "ReverbLow"
