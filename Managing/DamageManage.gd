@@ -115,13 +115,13 @@ func _die(dir: Vector2) -> void:
 	match difficulty:
 		EASY:
 			scoreInc = Globals.EASY_ENEMY_POINTS
-			GameManager.player.playerData.healMaterial += Globals.EASY_MATERIAL_POINTS * (maxHealth / 50.0)
+			GameManager.player.playerData.healMaterial += Globals.EASY_MATERIAL_POINTS * (maxHealth / 500.0)
 		NORMAL:
 			scoreInc = Globals.MEDIUM_ENEMY_POINTS
-			GameManager.player.playerData.healMaterial += Globals.MEDIUM_MATERIAL_POINTS * (maxHealth / 60.0)
+			GameManager.player.playerData.healMaterial += Globals.MEDIUM_MATERIAL_POINTS * (maxHealth / 600.0)
 		HARD:
 			scoreInc = Globals.HARD_ENEMY_POINTS
-			GameManager.player.playerData.healMaterial += Globals.HARD_MATERIAL_POINTS * (maxHealth / 80.0)
+			GameManager.player.playerData.healMaterial += Globals.HARD_MATERIAL_POINTS * (maxHealth / 800.0)
 	if isBoss:
 		scoreInc += Globals.BOSS_KILL
 	else:

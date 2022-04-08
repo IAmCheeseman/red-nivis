@@ -22,9 +22,6 @@ onready var ammoBar = $VBox/Bottom/AmmoBar/TextureProgress
 onready var reloadNotif = $VBox/Bottom/AmmoBar/ReloadNotif
 onready var ammoTween = $VBox/Bottom/AmmoBar/Tween
 
-# Money Counter
-onready var moneyLabel = $VBox/Bottom/MoneyDisplay/Label
-
 onready var grenade = $VBox/Bottom/BombProgressBar
 
 onready var upgrades = $TopRight/Upgrades
@@ -51,7 +48,6 @@ func _ready() -> void:
 	update_health(Vector2.ZERO)
 	update_ammo()
 	update_heals()
-	update_money()
 	update_abilities()
 
 	yield(TempTimer.idle_frame(self, 2), "timeout")
@@ -87,9 +83,6 @@ func update_health(_kb:Vector2) -> void:
 	else:
 		hbShakeAnim.stop(true)
 
-
-func update_money() -> void:
-	moneyLabel.text = "%s" % playerData.money
 
 
 func update_grenade(val: float, enabled: bool) -> void:

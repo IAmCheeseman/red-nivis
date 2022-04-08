@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/HeartFull.png" type="Texture" id=2]
 [ext_resource path="res://UI/Assets/HeartEmpty.png" type="Texture" id=3]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Items/Money/Coin.png" type="Texture" id=5]
 [ext_resource path="res://UI/Assets/Bomb.png" type="Texture" id=6]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=7]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=9]
@@ -78,21 +77,12 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=9]
-size = 5
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 4 )
-
 [node name="GameOverlay" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
 margin_top = 3.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBox" type="VBoxContainer" parent="."]
 margin_left = 1.0
@@ -222,33 +212,6 @@ margin_right = 43.0
 margin_bottom = 8.0
 custom_fonts/font = SubResource( 8 )
 align = 1
-
-[node name="MoneyDisplay" type="HBoxContainer" parent="VBox/Bottom"]
-visible = false
-margin_top = 27.0
-margin_right = 59.0
-margin_bottom = 35.0
-custom_constants/separation = 2
-
-[node name="Icon" type="TextureRect" parent="VBox/Bottom/MoneyDisplay"]
-margin_right = 7.0
-margin_bottom = 8.0
-texture = ExtResource( 5 )
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="VBox/Bottom/MoneyDisplay"]
-margin_left = 9.0
-margin_right = 21.0
-margin_bottom = 8.0
-rect_min_size = Vector2( 0, 8 )
-size_flags_vertical = 0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 0
-custom_fonts/font = SubResource( 9 )
-text = "320"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BombProgressBar" type="TextureProgress" parent="VBox/Bottom"]
 visible = false

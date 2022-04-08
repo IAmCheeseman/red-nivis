@@ -3,7 +3,7 @@ extends Node
 var timer: Timer
 var tick: float = .4
 var lifetime: float = tick * 8
-var dmg: int = 4
+var dmg: int = 50
 
 var hurtbox: Area2D
 
