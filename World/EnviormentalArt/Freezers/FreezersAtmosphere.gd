@@ -20,6 +20,12 @@ func _ready() -> void:
 	if Settings.gfx == Settings.GFX_BAD:
 		mist.queue_free()
 
+
+func _process(delta: float) -> void:
+	if has_node("Bubbles"):
+		$Bubbles.global_position = playerData.playerObject.global_position
+
+
 func _exit_tree() -> void:
 	playerData.friction = defaultFrict
 	playerData.accelaration = defaultAccel

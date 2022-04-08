@@ -297,7 +297,7 @@ func jump():
 		vel.x *= 1.1
 
 	if GameManager.underwater:
-		vel.y /= 1.5
+		vel.y /= 1.75
 
 	triedJumpRecent = false
 

@@ -7,6 +7,7 @@
 damage = 120.0
 accuracy = 3.0
 reloadSpeed = 0.8
+recoil = 90.0
 cost = 30
 maxHoldShots = 1
 magazineSize = 3
