@@ -247,7 +247,7 @@ func _input(event: InputEvent) -> void:
 		if is_grounded() or state == states.WALLSLIDE:
 			jump()
 	# Adjustable jump height
-	if Input.is_action_just_released("jump") and vel.y < 0 and !is_grounded():
+	if Input.is_action_just_released("jump") and vel.y < 0:# and !is_grounded():
 		vel.y *= 0.5
 
 	if Input.is_action_just_pressed("down") and !lockMovement:
