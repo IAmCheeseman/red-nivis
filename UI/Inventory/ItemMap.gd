@@ -24,6 +24,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/ak47.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/ak47.png"
 	},
+	"laser-gun" : {
+		"key" : "laser-gun",
+		"name" : "LASER_GUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.LAB,
+		"scene" : "res://Items/Weapons/Scenes/LaserGun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/LaserGun.png"
+	},
 	"grenade-launcher" : {
 		"key" : "grenade-launcher",
 		"name" : "GRENADE_LAUNCHER_ITM",
