@@ -61,7 +61,7 @@ func shoot():
 	0, gun.ssStrength,
 	gun.ssFreq, gun.ssFreq, direction)
 	
-	gun.visuals.position.x = gun.gunPos.x - gun.ssStrength * 3
+	gun.visuals.position.x = clamp(gun.gunPos.x - gun.ssStrength * 3, 5, INF)
 	
 	# Playing a sound for feedback
 	gun.get_node("ShootSound").play()

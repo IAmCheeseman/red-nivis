@@ -6,16 +6,20 @@
 [ext_resource path="res://Items/Weapons/Sounds/LaserShoot.wav" type="AudioStream" id=4]
 
 [node name="LaserGun" instance=ExtResource( 1 )]
-damage = 120.0
-recoil = 300.0
+position = Vector2( 0, 1 )
+damage = 90.0
+recoil = 200.0
+maxHoldShots = 1
 shellSprite = null
-bulletSpawnDist = 19.0
+bulletSpawnDist = 12.0
+ssFreq = 0.035
+ssStrength = 5.0
 
 [node name="GunLogic" parent="." index="0"]
 bullet = ExtResource( 3 )
 
 [node name="Pivot" parent="." index="1"]
-position = Vector2( 0, 4 )
+position = Vector2( 0, 3 )
 
 [node name="BarrelEnd" parent="Pivot" index="0"]
 position = Vector2( 11, -1 )

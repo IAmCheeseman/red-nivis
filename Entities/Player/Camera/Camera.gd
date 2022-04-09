@@ -41,7 +41,7 @@ func _ready():
 	var _discard1 = GameManager.connect("zoom_in", self, "zoom_in")
 	
 	yield(TempTimer.idle_frame(self), "timeout")
-	smoothing_enabled = false
+	#smoothing_enabled = false
 
 
 func _process(_delta):
@@ -74,6 +74,7 @@ func _process(_delta):
 
 func set_limits(val) -> void:
 	limits = val
+	smoothing_enabled = true
 	smoothing_enabled = true
 	smoothingTimer.start()
 
