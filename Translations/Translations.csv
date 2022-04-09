@@ -15,7 +15,7 @@ MAIN_MENU_BTN,Main Menu,Main Men'ew,Volver al Menú,Hauptmenü
 INTERACT_RQST,Hit <interact> \n to,Heet <interact> \n tew,Presiona <interact> \n para,Benutze <interact> \n um
 ,,,,
 GAME_OVER,Game Over,"ya lost, bruv",Fin del Juego,Spiel Vorbei
-KILLS_GO,Kills:,Murdurs,Bajas:,Tötungen
+KILLS_GO,Kills:,Murdurs:,Bajas:,Tötungen
 SCORE_GO,Score:,Ya poynts:,Puntuación:,Punkte
 TIME_GO,Time:,Ya time:,Tiempo:,Zeit
 TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,Erneut versuchen
@@ -130,36 +130,39 @@ FREEZERS_TTL,The Freezers,eh Fre'zahs,Los Laboratorios Helados,Die Gefrierschrä
 TOXIC_CAVERNS_TTL,The Toxic Caverns,eh Toixic Ca'erns,La Caverna Ponzoñosa,Die toxischen Kavernen
 TECH_LABS_TTL,The Tech Labs,eh Technoglical La-boreh-tory,Los laboratorios Avanzados,Die Techniklabore
 ,,,,
-BANDIT_BOMBER_NM,Bomber,,,
-BANDIT_BOMBER_DESC,Before The Shutdown these scientists were creating robots to defend the laboratory from intruders. When the robots turned on them they had to use whatever they could get to make new robots.,,,
-BANDIT_LASER_NM,Janitor,,,
-BANDIT_LASER_DESC,"These guys were the janitors of the laboratory. They were generally hated by the scientists for getting in their way, so they gave them a weapon that reqiured them to stand in place in hopes of them killing themselves. (The lab needed tons of janitors, I swear)",,,
-BANDIT_SHOTGUN_NM,Shotgunner,,,
-BANDIT_SHOTGUN_DESC,Has a cool shotgun. Nothing else. (They're just so cool),,,
-GNOME_BUFF_NM,Buff Gnome,,,
-GNOME_BUFF_DESC,"Really likes to work out. They have a big ego and are the leaders of the Gnome Resistence. They ALL really want to wear their unicorn underpants (Superstar Brand) in public but it's ""unprofessional"" and ""socially unacceptable.""",,,
-GNOME_MGK_NM,Wizard Gnome,,,
-GNOME_MGK_DESC,These gnomes usually have their big noses stuck in books instead of the real world - they are generally disrespected. If you're not careful they'll turn you into a slug.,,,
-GNOME_GUN_NM,Gunner Gnome,,,
-GNOME_GUN_DESC,"The younger generation of the Gnomes. They don't have the strength to be buff, or the will to be wizards. So they use guns.",,,
-MCHN_SPINNER_NM,Spinner Drone,,,
-MCHN_SPINNER_DESC,First entry in the DM series. Had to be locked in a cage as they sometimes broke lights.,,,
-MCHN_MINIGN_NM,Mingun Drone,,,
-MCHN_MINIGN_DESC,"The third model in the DM series. Less prone to breaking lights, as the scientists added special code to prevent that, but still had to be locked up because of constant misfires.",,,
-MCHN_DRILL_NM,Drill Drone,,,
-MCHN_DRILL_DESC,The second model in the DM Series. Was never released to the public since it was too ugly to be marketable.,,,
-MCHN_PISTOL_NM,Walker,,,
-MCHN_PISTOL_DESC,"Created to explore dangerous planets, modified to be slightly less mobile in an indoors enviroment. They would climb up on desks and kock things off. ",,,
-MINIHANK_NM,H.A.N.K. Mini,,,
-MINIHANK_DESC,"Built by Hank as durable defenses against intruders. Originally there was only a single one made, but after The Shutdown they were duplicated. Was previously the H.A.N.K. model, but renamed to the H.A.N.K. Mini after the creation of H.A.N.K. Rumor has it that Hank was working on a H.A.N.K. Mini Pro before he died.",,,
-GNOME_NM,Mr. Stick,,,
-GNOME_DESC,"NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone. Also, he's dyslexic. Totally irrelevant. (/H/i/s/ /n/a/m/e/ /i/s/ /J/h/o/n/ /S/t/i/c/k/)",,,
+BANDIT_BOMBER_NM,Bomber,,Bombardero,
+BANDIT_BOMBER_DESC,Before The Shutdown these scientists were creating robots to defend the laboratory from intruders. When the robots turned on them they had to use whatever they could get to make new robots.,,"Antes del apagón, estos científicos estuvieron fabricando robots para defender el laboratorio de posibles intrusos. Cuando los robots se revelaron contra ellos tuvieron que usar todo lo que pudieron recolectar para hacer robots nuevos.",
+BANDIT_LASER_NM,Janitor,,Conserje,
+BANDIT_LASER_DESC,"These guys were the janitors of the laboratory. They were generally hated by the scientists for getting in their way, so they gave them a weapon that reqiured them to stand in place in hopes of them killing themselves. (The lab needed tons of janitors, I swear)",,"Ellos eran los conserjes del laboratorio. La mayoría de científicos los odiaban por entrometerse en su trabajo, así que les dieron armas que requerían de quedarse quieto para funcionar con la esperanza de que murieran. (el laboratorio necesitaba de un montón de conserjes, lo juro)",
+BANDIT_SHOTGUN_NM,Shotgunner,,Escopetero,
+BANDIT_SHOTGUN_DESC,Has a cool shotgun. Nothing else. (They're just so cool),,Tienen una bonita escopeta. Y ya. (son lo máximo),
+GNOME_BUFF_NM,Buff Gnome,,Fuerte-Gnomo,
+GNOME_BUFF_DESC,"Really likes to work out. They have a big ego and are the leaders of the Gnome Resistence. They ALL really want to wear their unicorn underpants (Superstar Brand) in public but it's ""unprofessional"" and ""socially unacceptable.""",,Les encanta hacer ejercicio. Tienen un gran ego y son los líderes de la Gnomo-Resistencia. De veras lo único que quieren es usar sus pantalones de unicornio (marca Superstar) en público pero es ''poco profesional'' y ''socialmente inaceptable.'',
+GNOME_MGK_NM,Wizard Gnome,,Mago-Gnomo,
+GNOME_MGK_DESC,These gnomes usually have their big noses stuck in books instead of the real world - they are generally disrespected. If you're not careful they'll turn you into a slug.,,Estos gnomos suelen mantener sus narices metidas en libros en lugar de la vida real - nadie les suele tratar con respeto. Si no tienes cuidado te pueden convertir en una babosa.,
+GNOME_GUN_NM,Gunner Gnome,,Arma-Gnomo,
+GNOME_GUN_DESC,"The younger generation of the Gnomes. They don't have the strength to be buff, or the will to be wizards. So they use guns.",,"La generación mas reciente de gnomos. No tienen la fuerza para ser Fuerte-Gnomos, o la inteligencia para ser Mago-Gnomos, así que solo usan armas.",
+MCHN_SPINNER_NM,Spinner Drone,,Drón Giratorio,
+MCHN_SPINNER_DESC,First model in the DM series. Had to be locked in a cage as they sometimes broke lights.,,Primer modelo de la serie DM. Se recomienda encerrarlos en jaulas por que pueden romper las luces.,
+MCHN_MINIGN_NM,Mingun Drone,,Drón Minigun,
+MCHN_MINIGN_DESC,"The third model in the DM series. Less prone to breaking lights, as the scientists added special code to prevent that, but still had to be locked up because of constant misfires.",,"Tercer modelo de la serie DM. Menos propenso a romper luces, gracias a un parche oficial, pero debe de ser encerrado debido a consantes disparos accidentales.",
+MCHN_DRILL_NM,Drill Drone,,Drón Taladro,
+MCHN_DRILL_DESC,The second model in the DM Series. Was never released to the public since it was too ugly to be marketable.,,Segundo modelo de la serie DM. Nunca fué revelado al público porque es muy feo para ser vendido.,
+MCHN_PISTOL_NM,Walker,,Caminante,
+MCHN_PISTOL_DESC,"Created to explore dangerous planets, modified to be slightly less mobile in an indoors enviroment. They would climb up on desks and kock things off. ",,"Creado para explorar planetas peligrosos, está modificado para ser menos ágil en ambientes cerrados. Solían subirse a los escritorios y tirar las cosas por todas partes.",
+MINIHANK_NM,H.A.N.K. Mini,,H.A.N.K mini,
+MINIHANK_DESC,"Built by Hank as durable defenses against intruders. Originally there was only a single one made, but after The Shutdown they were duplicated. Was previously the H.A.N.K. model, but renamed to the H.A.N.K. Mini after the creation of H.A.N.K. Rumor has it that Hank was working on a H.A.N.K. Mini Pro before he died.",,Creado por Hank como una defensa duradera ante los intrusos. Originalmente solo se creó uno. Pero después del apagón se crearon réplicas. Previamente considerado como H.A.N.K pero se le degradó a mini tras la creación de H.A.N.K. Cuentan los rumores que Hank estaba trabajando en una versión Pro del H.A.N.K mini antes de su muerte.,
+GNOME_NM,Mr. Stick,,Palo-Gnomo,
+GNOME_DESC,"NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone. Also, he's dyslexic. Totally irrelevant. (/H/i/s/ /n/a/m/e/ /i/s/ /J/h/o/n/ /S/t/i/c/k/)",,"NOTA: el Palo-Gnomo quiere mantener su anonimato, por lo cual su nombre no será revelado (jamás). El Palo-Gnomo fué el detonante de la Gnomo-Revolución contra Jerry, aprovechando que se le otorgó conciencia accidentalmente. La Gnomo-Revolución busca activamente la libertad y tranquilidad para los Gnomos. Y es disléxico. Completamente irrelevante... (S/U/ N/O/M/B/R/E/ E/S/ J/U/A/N/ P/A/L/O/",
 HANK_NM,H.A.N.K.,H.A.N.K.,H.A.N.K.,H.A.N.K.
-HANK_DESC,Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Hank's least favorite food was lemons BTW.,,,
+HANK_DESC,Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Hank's least favorite food was lemons BTW.,,Hank se dedicaba a la robótica. Su creación mas valiosa fué el modelo H.A.N.K. solo tendría sentido que Jerry llamara H.A.N.K. a H.A.N.K. la comida menos favorita de Hank son los limones.,
+SHOCKWAVE_GOBLIN_NM,Pusher Fish Goblin,,Pez Globo Duende,
+SHOCKWAVE_GOBLIN_DESC,"Members of Eateh (Is that how you spell it?) sent to free fish from our ""abusive"" scientists. We kept the fish well fed, anything beyond that is not our responsibility. They signed the contract. (We signed it for them, they have no hands, BUT, they agreed! (As far as we could tell...))",,"Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato. (Lo firmamos por ellos, no tienen brazos, PERO, ¡estaban de acuerdo!(posiblemente...))",
 ,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47
 REVOLVER_ITM,Revolver,Revalveh,Revólver,Revolver
+LASER_GUN_ITM,Laser Gun,Pew,,
 GRENADE_LAUNCHER_ITM,Grenade Launcher,Grenayde  Lewncha,Lanzagranadas,Granatenwerfer
 PUMP_SHOTGUN_ITM,Pump Shotgun,Pewmp Shewtgun,Escopeta de Bombeo,Schrotflinte
 FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Flammenwerfer
