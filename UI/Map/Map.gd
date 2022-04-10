@@ -40,7 +40,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	camera.position = player.position
+	if inMiniMode: camera.position = player.position
 
 
 func _input(event: InputEvent) -> void:

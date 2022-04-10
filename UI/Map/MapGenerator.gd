@@ -15,7 +15,7 @@ func generate_map() -> void:
 				if (mapData.rooms[x][y].nearDiscovered or GameManager.revealMap) and !mapData.rooms[x][y].secret:
 					tiles.set_cell(x, y, 0)
 				if mapData.rooms[x][y].discovered or GameManager.revealMap:
-					tiles.set_cell(x, y, biome.biomeIndex+1)
+					tiles.set_cell(x, y, biome.biomeTile+1)
 					_set_icon(roomIcon, x, y)
 
 

@@ -5,15 +5,15 @@
 [ext_resource path="res://World/EnviormentalArt/Lab/LabBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabsAtmosphere.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolidsBroken.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/EnviormentalArt/ChemLabs/ChemLabsTiles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/EnemyPools/Robots.tres" type="Resource" id=7]
 [ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=8]
-[ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=12]
 [ext_resource path="res://World/Decorators/LabsDecorator.tres" type="Resource" id=13]
 
 [resource]
 script = ExtResource( 1 )
-name = "LABS_TTL"
-solids = ExtResource( 12 )
+name = "Chem Labs"
+solids = ExtResource( 6 )
 brokenWall = ExtResource( 5 )
 background = ExtResource( 3 )
 platforms = ExtResource( 2 )
@@ -21,10 +21,10 @@ bgColor = Color( 0.0235294, 0.0313726, 0.0509804, 1 )
 atmosphere = ExtResource( 4 )
 brightness = 0.407843
 startingArea = true
-biomeIndex = 0
-biomeTile = 0
-mapColor = Color( 0.780392, 0.811765, 0.8, 1 )
-secondaryColor = Color( 0.658824, 0.709804, 0.698039, 1 )
+biomeIndex = 5
+biomeTile = 4
+mapColor = Color( 0.27451, 0.509804, 0.196078, 1 )
+secondaryColor = Color( 0.145098, 0.337255, 0.180392, 1 )
 growChance = 0.5
 middleRemovalChance = 0.666
 connectionChance = 0.05

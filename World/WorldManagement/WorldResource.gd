@@ -14,6 +14,7 @@ const BIOMES = [
 	"res://World/Biomes/DeepLabs.tres",
 	"res://World/Biomes/Freezers.tres",
 	"res://World/Biomes/WaterFreezers.tres",
+	"res://World/Biomes/ChemLabs.tres",
 ]
 
 

@@ -17,6 +17,7 @@ const BIOMES = [
 	"res://World/Biomes/DeepLabs.tres",
 	"res://World/Biomes/Freezers.tres",
 	"res://World/Biomes/WaterFreezers.tres",
+	"res://World/Biomes/ChemLabs.tres",
 ]
 
 func generate_world(seed_:int=randi()) -> Array:
@@ -125,7 +126,7 @@ func grow_world() -> void:
 						break
 
 				if !goodBiome: continue
-				if (allBiomesSame and rand_range(0, 1) < .2)\
+				if (allBiomesSame and rand_range(0, 1) < .333)\
 				and !room.blockGrowing:
 					changes.append({
 						"pos" : Vector2(x, y),

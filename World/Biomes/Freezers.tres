@@ -22,6 +22,7 @@ atmosphere = ExtResource( 8 )
 brightness = 0.7
 startingArea = false
 biomeIndex = 3
+biomeTile = 3
 mapColor = Color( 0.870588, 0.619608, 0.254902, 1 )
 secondaryColor = Color( 0.745098, 0.466667, 0.168627, 1 )
 growChance = 0.25

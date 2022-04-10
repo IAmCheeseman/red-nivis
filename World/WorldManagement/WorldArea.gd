@@ -14,6 +14,7 @@ export(float, 0, 1) var brightness:float = 104.0/255.0
 # World Gen
 export var startingArea:bool = false
 export var biomeIndex:int = 0
+export var biomeTile:int = 0
 export var mapColor:Color = Color.white
 export var secondaryColor:Color = Color.gray
 
