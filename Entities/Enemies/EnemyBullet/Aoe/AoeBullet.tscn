@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/EnemyBullet/Aoe/AoeBullet.gd" type="Script" id=2]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=3]
+[ext_resource path="res://Items/Weapons/Sounds/VaporgatBubblePop.wav" type="AudioStream" id=4]
+
+[node name="Bullet" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Hitbox" parent="." index="3"]
+tick = 1.0
+
+[node name="Lifetime" type="Timer" parent="." index="6"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="PopSFX" type="Node2D" parent="." index="7"]
+script = ExtResource( 3 )
+audio = ExtResource( 4 )
+volumeMod = -5.0
+pitchShiftRange = 2.0
+bus = "Reverb"
+
+[editable path="Hitbox"]

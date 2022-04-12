@@ -44,7 +44,7 @@ func _ready():
 	#smoothing_enabled = false
 
 
-func _process(_delta):
+func _process(delta: float) -> void:
 	if !zoomingIn:
 		global_position = trackNode.global_position
 		
@@ -70,7 +70,6 @@ func _process(_delta):
 #		global_position.y -= 16*3
 	else:
 		global_position = zoomTarget 
-
 
 func set_limits(val) -> void:
 	limits = val

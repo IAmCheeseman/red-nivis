@@ -5,7 +5,7 @@ onready var cooldown = $Cooldown
 onready var attackTimer = $AttackTimer
 onready var barrelEnd = $BarrelEnd
 
-var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
+var bullet = preload("res://Entities/Enemies/EnemyBullet/Aoe/AoeBullet.tscn")
 
 var player: Node2D
 
