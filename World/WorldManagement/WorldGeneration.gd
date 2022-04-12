@@ -136,7 +136,6 @@ func grow_world() -> void:
 		for c in changes:
 			rooms[c.pos.x][c.pos.y].biome = c.to
 			rooms[c.pos.x][c.pos.y].secret = c.secret
-			if c.secret: print(c.pos)
 
 
 func get_biome_by_color(color:Color, getSecondary:bool=false):
