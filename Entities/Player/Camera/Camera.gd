@@ -44,7 +44,7 @@ func _ready():
 	#smoothing_enabled = false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !zoomingIn:
 		global_position = trackNode.global_position
 		

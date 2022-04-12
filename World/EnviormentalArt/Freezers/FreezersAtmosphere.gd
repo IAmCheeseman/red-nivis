@@ -25,7 +25,7 @@ func _ready() -> void:
 		mist.queue_free()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if has_node("Bubbles"):
 		$Bubbles.global_position = playerData.playerObject.global_position
 
