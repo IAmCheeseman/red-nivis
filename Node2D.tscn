@@ -7,7 +7,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://World/EnviormentalArt/ChemLabs/ChemLabsTiles.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Slugs/AoeShooter/AoeShooter.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -38,7 +38,7 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="ChemLabsTiles" parent="." instance=ExtResource( 8 )]
-tile_data = PoolIntArray( -393204, 0, 0, -393203, 0, 1, -393202, 0, 2, -327677, 0, 0, -327676, 0, 2, -327668, 0, 65536, -327667, 0, 65537, -327666, 0, 65538, -262142, 0, 0, -262141, 0, 131078, -262140, 0, 131077, -262139, 0, 1, -262138, 0, 2, -262132, 0, 65536, -262131, 0, 65537, -262130, 0, 65538, -196606, 0, 65536, -196605, 0, 65537, -196604, 0, 65537, -196603, 0, 65537, -196602, 0, 131077, -196601, 0, 1, -196600, 0, 1, -196599, 0, 1, -196598, 0, 1, -196597, 0, 1, -196596, 0, 131078, -196595, 0, 65537, -196594, 0, 131077, -196593, 0, 2, -131071, 0, 0, -131070, 0, 131078, -131069, 0, 65537, -131068, 0, 65537, -131067, 0, 65537, -131066, 0, 65537, -131065, 0, 65537, -131064, 0, 65537, -131063, 0, 65537, -131062, 0, 65537, -131061, 0, 65537, -131060, 0, 65537, -131059, 0, 65537, -131058, 0, 65537, -131057, 0, 131077, -131056, 0, 2, -65535, 0, 65536, -65534, 0, 65537, -65533, 0, 65537, -65532, 0, 65537, -65531, 0, 65537, -65530, 0, 65537, -65529, 0, 65537, -65528, 0, 65537, -65527, 0, 65537, -65526, 0, 65537, -65525, 0, 65537, -65524, 0, 65537, -65523, 0, 65537, -65522, 0, 65537, -65521, 0, 65537, -65520, 0, 65538, 1, 0, 131072, 2, 0, 131073, 3, 0, 131073, 4, 0, 131073, 5, 0, 131073, 6, 0, 131073, 7, 0, 131073, 8, 0, 131073, 9, 0, 131073, 10, 0, 131073, 11, 0, 131073, 12, 0, 131073, 13, 0, 131073, 14, 0, 131073, 15, 0, 131073, 16, 0, 131074 )
+[node name="Bandit" parent="." instance=ExtResource( 8 )]
+position = Vector2( 159, -24 )
 
 [editable path="CameraMoveZone"]
