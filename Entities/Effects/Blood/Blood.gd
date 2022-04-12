@@ -2,6 +2,8 @@ extends Particles2D
 
 onready var rc = $RayCast2D
 
+export var bloodColor: Color = Color("#f5f85959")
+
 
 func _ready() -> void:
 	var startDegrees := -90.0
@@ -38,7 +40,7 @@ func _ready() -> void:
 			sprite.centered = false
 			sprite.offset.y = 1
 			sprite.z_index = 2
-			sprite.modulate = Color("#f5f85959")
+			sprite.modulate = bloodColor
 			sprite.position = tilemap.map_to_world(pos)# + (Vector2.RIGHT * 8)
 			sprite.rotation = rc.get_collision_normal().angle() + (PI / 2)
 			GameManager.spawnManager.spawn_object(sprite)

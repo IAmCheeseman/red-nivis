@@ -30,7 +30,7 @@ func shoot() -> void:
 	if global_position.distance_to(player.global_position) > 160:
 		return
 	
-	var spread = 12
+	var spread = 45
 	owner.vel = -Vector2.RIGHT.rotated(rotation)*250
 	for i in 3:
 		var angle = i-1
@@ -41,6 +41,7 @@ func shoot() -> void:
 		newBullet.direction = dir
 		newBullet.speed = 100
 		newBullet.damage = 1
+		newBullet.peircing = true
 		newBullet.global_position = barrelEnd.global_position
 		GameManager.spawnManager.spawn_object(newBullet)
 	
