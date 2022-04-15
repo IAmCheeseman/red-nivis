@@ -81,7 +81,6 @@ func _on_node_added(node: Node) -> void:
 		node.focus_mode = Control.FOCUS_NONE
 
 
-
 func attacks_capped(cap: int=2) -> bool:
 	return currentlyAttackingEnemies.size() > cap
 

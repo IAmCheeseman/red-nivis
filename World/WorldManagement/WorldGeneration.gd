@@ -20,7 +20,7 @@ const BIOMES = [
 	"res://World/Biomes/ChemLabs.tres",
 ]
 
-func generate_world(seed_:int=randi()) -> Array:
+func generate_world(worldData, seed_:int=randi()) -> Array:
 	seed(seed_)
 	# Creating and filling out the 2D array
 	var template := select_template()
@@ -32,31 +32,31 @@ func generate_world(seed_:int=randi()) -> Array:
 		constantRoomUseage.append(0)
 
 	for x in template.get_width():
-			rooms.append([])
-			for y in template.get_height():
-					var color = template.get_pixel(x, y)
-					var biome = get_biome_by_color(color)
-					var room = {
-						"color" : color,
-						"possibleBiome" : get_biome_by_color(color, true),
-						"biome" : biome,
-						"constantRoom" : null,
-						"roomIcon" : null,
-						"discovered" : false,
-						"nearDiscovered" : false,
-						"typeAlwaysVisible": false,
-						"connections" : [],
-						"cleared" : false,
-						"isStartingRoom" : color.is_equal_approx(STARTING_ROOM),
-						"blockGrowing" : color.is_equal_approx(BLOCKING_ROOM),
-						"bossRoom" : color.is_equal_approx(BOSS_ROOM),
-						"isBiomeConnection" : color.is_equal_approx(CONNECTION_COLOR),
-						"nodeData" : {},
-						"secret" : false,
-					}
-					if room.isStartingRoom:
-						room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
-					rooms[x].append(room)
+		rooms.append([])
+		for y in template.get_height():
+			var color = template.get_pixel(x, y)
+			var biome = get_biome_by_color(color)
+			var room = {
+				"color" : color,
+				"possibleBiome" : get_biome_by_color(color, true),
+				"biome" : biome,
+				"constantRoom" : null,
+				"roomIcon" : null,
+				"discovered" : false,
+				"nearDiscovered" : false,
+				"typeAlwaysVisible": false,
+				"connections" : [],
+				"cleared" : false,
+				"isStartingRoom" : color.is_equal_approx(STARTING_ROOM),
+				"blockGrowing" : color.is_equal_approx(BLOCKING_ROOM),
+				"bossRoom" : color.is_equal_approx(BOSS_ROOM),
+				"isBiomeConnection" : color.is_equal_approx(CONNECTION_COLOR),
+				"nodeData" : {},
+				"secret" : false,
+			}
+			if room.isStartingRoom:
+				room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
+			rooms[x].append(room)
 
 	flood_world()
 	grow_world()

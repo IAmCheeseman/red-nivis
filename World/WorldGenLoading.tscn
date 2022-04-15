@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://World/WorldGenLoading.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Load"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Generating World", "Generating World.", "Generating World..", "Generating World..." ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "Generating World" ]
+}
+
+[node name="Loading" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 80.0
+margin_top = 94.0
+margin_right = 280.0
+margin_bottom = 126.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBox"]
+margin_left = 44.0
+margin_right = 156.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+text = "Generating World"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBox/Label"]
+autoplay = "Load"
+anims/Load = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/VBox"]
+margin_top = 18.0
+margin_right = 200.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 200, 0 )

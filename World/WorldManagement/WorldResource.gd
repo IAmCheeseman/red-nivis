@@ -17,10 +17,11 @@ const BIOMES = [
 	"res://World/Biomes/ChemLabs.tres",
 ]
 
+signal update_percent(amt)
 
 func generate_world(seed_:int=randi()) -> void:
 	var worldGenerateor = WorldGenerator.new()
-	rooms = worldGenerateor.generate_world(seed_)
+	rooms = worldGenerateor.generate_world(self, seed_)
 	set_starting_position()
 
 

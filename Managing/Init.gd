@@ -39,5 +39,5 @@ func _ready():
 	print("Steam is working: %s" % Steam.is_init())
 
 	Achievement.unlock("PARTICIPATE")
-
+	
 	var _discard = get_tree().change_scene("res://UI/MainMenu/LogoFlash.tscn")
