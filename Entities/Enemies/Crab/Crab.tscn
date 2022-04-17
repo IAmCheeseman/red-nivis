@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Entities/Enemies/Crab/Crab.png" type="Texture" id=1]
+[ext_resource path="res://Entities/Enemies/Crab/Crab.gd" type="Script" id=2]
+[ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/Enemies/Crab/CrabBazooka.png" type="Texture" id=4]
+[ext_resource path="res://Entities/Enemies/Crab/Bazooka.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 5 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 171.105
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Jump"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Crab" type="KinematicBody2D"]
+collision_layer = 0
+script = ExtResource( 2 )
+moveStrength = 60
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -19 )
+hframes = 3
+vframes = 2
+
+[node name="Bazooka" type="Node2D" parent="Sprite"]
+position = Vector2( 6, -37 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Bazooka"]
+position = Vector2( -1, 0 )
+texture = ExtResource( 4 )
+
+[node name="Cooldown" type="Timer" parent="Sprite/Bazooka"]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -5 )
+shape = SubResource( 1 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="PlayerDetection" parent="Collisions" instance=ExtResource( 3 )]
+visible = false
+
+[node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
+shape = SubResource( 5 )
+
+[node name="FloorDetector" type="RayCast2D" parent="Collisions"]
+enabled = true
+cast_to = Vector2( 0, 2 )
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="TargetPos" type="Timer" parent="Timers"]
+autostart = true
+
+[node name="Jump" type="Timer" parent="Timers"]
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[connection signal="timeout" from="Sprite/Bazooka/Cooldown" to="Sprite/Bazooka" method="shoot"]
+[connection signal="timeout" from="Timers/TargetPos" to="." method="get_target_pos"]
+[connection signal="timeout" from="Timers/Jump" to="." method="jump"]
+
+[editable path="Collisions/PlayerDetection"]
