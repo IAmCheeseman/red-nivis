@@ -33,4 +33,4 @@ func shoot() -> void:
 	GameManager.spawnManager.spawn_object(newMissile)
 	
 	yield(TempTimer.idle_frame(self, 2), "timeout")
-	newMissile.set_texture(preload("res://Entities/Enemies/Crab/CrabMissile.png"))
+	if is_instance_valid(newMissile): newMissile.set_texture(preload("res://Entities/Enemies/Crab/CrabMissile.png"))

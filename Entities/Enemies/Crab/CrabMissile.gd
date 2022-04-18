@@ -41,7 +41,7 @@ func _physics_process(delta):
 func add_particles():
 	var newParticles = particleScene.instance()
 	newParticles.position = position
-	newParticles.set_size(48)
+	newParticles.set_size(32)
 	get_parent().call_deferred("add_child", newParticles)
 	queue_free()
 

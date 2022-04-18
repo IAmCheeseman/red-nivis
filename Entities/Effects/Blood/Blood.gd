@@ -1,17 +1,17 @@
-extends Particles2D
+extends Node2D
 
 onready var rc = $RayCast2D
 
 export var bloodColor: Color = Color("#f5f85959")
+export var startDegrees := -90.0
+export var endDegrees := 90.0
+export var startDist := 150.0
+export var endDist := 150.0
+export var splatRange := Vector2(3, 8)
 
 
 func _ready() -> void:
-	var startDegrees := -90.0
-	var endDegrees := 90.0
-	var startDist := 150.0
-	var endDist := 150.0
-
-	var splats:int = int(rand_range(3, 8))
+	var splats:int = int(rand_range(splatRange.x, splatRange.y))
 	for i in splats:
 		var prcnt = float(i) / float(splats)
 
@@ -41,7 +41,7 @@ func _ready() -> void:
 			sprite.offset.y = 1
 			sprite.z_index = 2
 			sprite.modulate = bloodColor
-			sprite.position = tilemap.map_to_world(pos)# + (Vector2.RIGHT * 8)
+			sprite.position = tilemap.map_to_world(pos)
 			sprite.rotation = rc.get_collision_normal().angle() + (PI / 2)
 			GameManager.spawnManager.spawn_object(sprite)
 
