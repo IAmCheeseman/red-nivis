@@ -11,6 +11,7 @@ onready var hitbox = $Hitbox
 onready var sprite = $Sprite
 onready var light = $Light
 onready var particles = $Particles
+onready var trail = $Trail
 
 signal hitCollision
 
@@ -45,12 +46,30 @@ func add_particles():
 	queue_free()
 
 
+func add_trail_to_parent():
+	if !has_node("Trail"): return
+	remove_child(trail)
+	trail.global_position = global_position
+	get_parent().add_child(trail)
+	trail.emitting = false
+	
+	var timer = Timer.new()
+	timer.wait_time = 2
+	get_parent().add_child(timer)
+	timer.start()
+	
+	timer.connect("timeout", trail, "queue_free")
+	timer.connect("timeout", timer, "queue_free")
+
+
 func _on_QueueArea_body_entered(body):
 	if !body.is_in_group("Platform"):
 		emit_signal("hitCollision", self)
 		add_particles()
+		add_trail_to_parent()
 
 
 func _on_Hitbox_hit_object(_object):
 	if !peircing:
 		add_particles()
+		add_trail_to_parent()

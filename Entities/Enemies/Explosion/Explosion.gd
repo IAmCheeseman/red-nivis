@@ -14,5 +14,5 @@ func set_size(size: int) -> void:
 	particles.process_material = particles.process_material.duplicate()
 	particles.process_material.emission_sphere_radius = size
 	eHB.shape.radius = size
-	pHB.shape.radius = size * 0.75
+	pHB.shape.radius = size * 0.90
 	particles.restart()
