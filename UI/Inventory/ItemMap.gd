@@ -93,9 +93,16 @@ const ITEMS = {
 	"soap-launcher" : {
 		"key" : "soap-launcher",
 		"name" : "SOAP_SLAPPER_ITM",
-		"tier" : ToolTipGenerator.TIERS.TECH_LABS,
+		"tier" : ToolTipGenerator.TIERS.FREEZERS,
 		"scene" : "res://Items/Weapons/Scenes/SoapLauncher.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/SoapSlapper.png"
+	},
+	"fingergun" : {
+		"key" : "fingergun",
+		"name" : "FINGERGUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.FREEZERS,
+		"scene" : "res://Items/Weapons/Scenes/FingerGun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/FingerGun.png"
 	},
 	# TOXIC CAVERNS ITEMS
 	"bullet-chainsaw" : {

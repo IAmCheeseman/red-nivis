@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Items/Weapons/Bullet/Shells/shellShotgun.png" type="Texture" id=1]
+[ext_resource path="res://Items/Weapons/Sprites/FingerGun.png" type="Texture" id=2]
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/Weapons/Bullet/Sprites/IceCube.png" type="Texture" id=4]
+
+[node name="Gun" instance=ExtResource( 3 )]
+position = Vector2( 0, 3 )
+damage = 20.0
+accuracy = 12.0
+multishot = 12.0
+spread = 6.0
+bulletSprite = ExtResource( 4 )
+shellSprite = ExtResource( 1 )
+isTwoHanded = true
+
+[node name="GunSprite" parent="Pivot" index="2"]
+position = Vector2( 10, 0 )
+texture = ExtResource( 2 )
+
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( 2, 2 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( -6, 2 )

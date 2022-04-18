@@ -189,7 +189,7 @@ one_shot = true
 [node name="ItemSpawn" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -20 )
 failChance = 0.0
-itemPool = [ "j-laser", "soap-slapper" ]
+itemPool = [ "j-laser", "soap-launcher" ]
 addForce = true
 appearOnready = false
 
