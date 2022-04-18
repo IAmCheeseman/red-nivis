@@ -81,6 +81,7 @@ position = Vector2( -1, 0 )
 texture = ExtResource( 4 )
 
 [node name="Cooldown" type="Timer" parent="Sprite/Bazooka"]
+one_shot = true
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
