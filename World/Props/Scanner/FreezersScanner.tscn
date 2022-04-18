@@ -1,0 +1,217 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://World/Props/Scanner/ScannerFreezerspng.png" type="Texture" id=1]
+[ext_resource path="res://Managing/Interaction/Iteraction.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Props/Scanner/Scanner.gd" type="Script" id=3]
+[ext_resource path="res://Items/ItemSpawn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=5]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=6]
+[ext_resource path="res://World/Props/Scanner/ScannerHum.wav" type="AudioStream" id=7]
+[ext_resource path="res://World/Props/Constructor/DoneDing.wav" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "BuildUp"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 6.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.8 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Shake"
+length = 0.225
+loop = true
+step = 0.075
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.075, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -6.0, 6.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1.2, 0.8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 41, 23.5 )
+
+[node name="Scanner" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0.5, -19 )
+hframes = 4
+vframes = 3
+
+[node name="Light" type="Light2D" parent="."]
+position = Vector2( 0, -22 )
+texture = ExtResource( 5 )
+texture_scale = 0.1
+color = Color( 0.133333, 0.415686, 0.396078, 1 )
+energy = 1.2
+
+[node name="Tween" type="Tween" parent="Light"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/BuildUp = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+anims/Shake = SubResource( 3 )
+
+[node name="ShakeTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="ItemSpawn" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -20 )
+failChance = 0.0
+itemPool = [ "j-laser", "soap-slapper" ]
+addForce = true
+appearOnready = false
+
+[node name="Iteraction" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -47 )
+spritePath = NodePath("../Sprite")
+action = "INTR_SCN_ITM"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
+position = Vector2( 0, 23.5 )
+shape = SubResource( 4 )
+
+[node name="HumSFX" type="Node2D" parent="."]
+script = ExtResource( 6 )
+audio = ExtResource( 7 )
+bus = "Reverb"
+
+[node name="DingSFX" type="Node2D" parent="."]
+script = ExtResource( 6 )
+audio = ExtResource( 8 )
+bus = "SFX"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="ShakeTimer" to="." method="_on_shake_timer_timeout"]
+[connection signal="interaction" from="Iteraction" to="." method="_on_interaction"]
