@@ -8,6 +8,7 @@ onready var keybinds = $Menus/Keybinds/Scroll/VBox
 onready var BG = $BG
 onready var backButton = $Center/NavMenu/Back
 
+var settingVals = true
 
 func _ready() -> void:
 	update_settings()
@@ -91,8 +92,8 @@ func set_values() -> void:
 	find_node("SpeedrunMode").pressed = Settings.speedrunTimer
 	find_node("DoubleDamage").pressed = Settings.doubleDamageMode
 	find_node("Screenshake").get_node("HSlider").value = Settings.screenshake * 100
-	find_node("Framerate").get_node("HSlider").value = Settings.maxfps
 	if Settings.maxfps == -1: find_node("Screenshake").get_node("HSlider").value = 145
+	else: find_node("Framerate").get_node("HSlider").value = Settings.maxfps
 	find_node("MSTRVolume").get_node("HSlider").value = Settings.masterVol * 100
 	find_node("SFXVolume").get_node("HSlider").value = Settings.sfx * 100
 	find_node("MSXVolume").get_node("HSlider").value = Settings.music * 100
