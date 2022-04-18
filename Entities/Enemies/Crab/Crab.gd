@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	
 	if vel.y > 0 and !floorRC.is_colliding():
 		sprite.scale.x = clamp(
-			1-abs(vel.y/Globals.GRAVITY),
+			1-abs(vel.y/Globals.WATER_GRAVITY),
 			.75, 1.5)
 		sprite.scale.y = 1+(1-sprite.scale.x)
 	elif vel.y < 0 and !floorRC.is_colliding():
