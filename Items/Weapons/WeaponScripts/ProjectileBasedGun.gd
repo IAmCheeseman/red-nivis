@@ -27,10 +27,13 @@ func shoot():
 		bullets.append(newBullet)
 		newBullet.connect("hit_wall", self, "_on_bullet_hit_wall")
 		newBullet.connect("hit_enemy", self, "_on_bullet_hit_enemy")
+		
 		# Adding it to the tree
 		GameManager.spawnManager.spawn_object(newBullet)
 
 		newBullet.damage = gun.damage
+		yield(TempTimer.idle_frame(self), "timeout")
+		newBullet.hitbox.effect = gun.perk
 
 		if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
 

@@ -25,7 +25,7 @@ export var cost: int = 1
 export var maxHoldShots: int = -1
 export var customBullet: PackedScene
 export var magazineSize: int = 5
-export(Array, Resource) var perks: Array = []
+export(Script) var perk
 export var burst: bool = false
 export var reloadAmount: int = -1
 
@@ -72,11 +72,6 @@ func _ready():
 		canShoot = true
 
 	meleeCooldown.wait_time = meleeSpeed
-	for perk in perks:
-		var perkNode = Node.new()
-		perkNode.set_script(perk)
-		perkNode.gun = gunLogic
-		add_child(perkNode)
 
 
 func _on_Cooldown_timeout():

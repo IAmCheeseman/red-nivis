@@ -1,18 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Items/Weapons/Bullet/Shells/shellShotgun.png" type="Texture" id=1]
 [ext_resource path="res://Items/Weapons/Sprites/FingerGun.png" type="Texture" id=2]
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/IceCube.png" type="Texture" id=4]
+[ext_resource path="res://Items/Weapons/Effects/Freeze.gd" type="Script" id=5]
 
 [node name="Gun" instance=ExtResource( 3 )]
 position = Vector2( 0, 3 )
-damage = 20.0
+damage = 30.0
 accuracy = 12.0
+cooldown = 0.5
 multishot = 12.0
-spread = 6.0
+spread = 1.0
+maxHoldShots = 1
+magazineSize = 3
+perk = ExtResource( 5 )
 bulletSprite = ExtResource( 4 )
 shellSprite = ExtResource( 1 )
+kickUp = 12.0
 isTwoHanded = true
 
 [node name="GunSprite" parent="Pivot" index="2"]

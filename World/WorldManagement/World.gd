@@ -61,6 +61,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	player.playerData.time += delta
+	background.position = GameManager.currentCamera.global_position * .1
 
 
 func _on_index_timer_timeout() -> void:

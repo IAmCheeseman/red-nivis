@@ -1,4 +1,5 @@
 extends Node
+class_name BurnEffect
 
 var timer: Timer
 var tick: float = .4
