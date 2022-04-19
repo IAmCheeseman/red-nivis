@@ -6,10 +6,10 @@
 [ext_resource path="res://Items/Weapons/Sounds/Shotgun.wav" type="AudioStream" id=4]
 
 [node name="BurstShotgun" instance=ExtResource( 1 )]
-damage = 35.0
+damage = 24.0
 accuracy = 12.0
 cooldown = 0.02
-reloadSpeed = 2.0
+reloadSpeed = 1.2
 multishot = 10.0
 maxHoldShots = 1
 magazineSize = 3
