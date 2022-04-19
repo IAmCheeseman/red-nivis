@@ -24,7 +24,7 @@ position = Vector2( 30, -12 )
 position = Vector2( 239, -17 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 128, -9 )
+position = Vector2( 127, -16 )
 
 [node name="LabBackground" parent="." instance=ExtResource( 3 )]
 z_index = -1
