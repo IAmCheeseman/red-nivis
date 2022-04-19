@@ -20,7 +20,7 @@ const BIOMES = [
 	"res://World/Biomes/ChemLabs.tres",
 ]
 
-func generate_world(worldData, seed_:int=randi()) -> Array:
+func generate_world(seed_:int=randi()) -> Array:
 	seed(seed_)
 	# Creating and filling out the 2D array
 	var template := select_template()
