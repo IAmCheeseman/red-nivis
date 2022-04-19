@@ -82,6 +82,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/MultishotBoomerang.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/MultishotBoomerang.png"
 	},
+	"burst-shotgun" : {
+		"key" : "burst-shotgun",
+		"name" : "BURST_SHOTUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/BurstShotgun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/BurstShotgun.png"
+	},
 	# FREEZERS ITEMS
 	"j-laser" : {
 		"key" : "j-laser",

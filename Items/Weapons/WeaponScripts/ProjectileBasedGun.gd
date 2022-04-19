@@ -33,9 +33,10 @@ func shoot():
 
 		newBullet.damage = gun.damage
 		yield(TempTimer.idle_frame(self), "timeout")
-		newBullet.hitbox.effect = gun.perk
+		if is_instance_valid(newBullet):
+			newBullet.hitbox.effect = gun.perk
 
-		if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
+			if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
 
 		# Rotating the gun for juice
 		gun.visuals.rotation_degrees = gun.kickUp*2.2 if gun.visuals.scale.y == -1 else -gun.kickUp*2.2

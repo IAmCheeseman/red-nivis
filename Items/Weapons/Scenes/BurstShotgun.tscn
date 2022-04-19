@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Weapons/Sprites/BurstShotgun.png" type="Texture" id=2]
+[ext_resource path="res://Items/Weapons/Bullet/Shells/shellShotgun.png" type="Texture" id=3]
+[ext_resource path="res://Items/Weapons/Sounds/Shotgun.wav" type="AudioStream" id=4]
+
+[node name="BurstShotgun" instance=ExtResource( 1 )]
+damage = 35.0
+accuracy = 12.0
+cooldown = 0.02
+reloadSpeed = 2.0
+multishot = 10.0
+maxHoldShots = 1
+magazineSize = 3
+burst = true
+shellSprite = ExtResource( 3 )
+bulletSpawnDist = 21.0
+isTwoHanded = true
+
+[node name="Pivot" parent="." index="1"]
+position = Vector2( 0, 4 )
+
+[node name="GunSprite" parent="Pivot" index="2"]
+position = Vector2( 8, 0 )
+texture = ExtResource( 2 )
+
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( -4, 2 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( 4, 2 )
+
+[node name="ShootSound" parent="." index="4"]
+audio = ExtResource( 4 )
