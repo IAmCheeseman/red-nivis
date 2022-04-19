@@ -21,7 +21,7 @@ onready var hpBar = $Healthbar
 onready var healthManager = $DamageManager
 
 const BOMB = preload("res://Entities/Enemies/Bosses/Billy/TinyGrenade.tscn")
-
+const EXPLOSION = preload("res://Entities/Enemies/Explosion/Explosion.tscn")
 
 var alertSignal = preload("res://Entities/Enemies/Assets/Alarm.tscn")
 
@@ -89,7 +89,13 @@ func no_master_state(delta: float) -> void:
 	if is_inside_tree():
 		accel_to_point(global_position + vel, delta)
 	vel = move_and_slide(vel * 5) / 5
-	if bounceRay.is_colliding():
+	
+	bounceRay.cast_to = vel.normalized()*sprite.texture.get_width()
+	bounceRay.force_raycast_update()
+	if test_move(transform, vel):
+		var newExplosion = EXPLOSION.instance()
+		newExplosion.global_position = global_position + vel
+		GameManager.spawnManager.spawn_object(newExplosion)
 		queue_free()
 
 
