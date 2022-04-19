@@ -17,14 +17,14 @@ extents = Vector2( 2049.75, 134.694 )
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )
 
+[node name="LaserBandit" parent="." instance=ExtResource( 10 )]
+position = Vector2( 30, -12 )
+
+[node name="Bomber" parent="." instance=ExtResource( 9 )]
+position = Vector2( 239, -17 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 128, -9 )
-
-[node name="LaserBandit" parent="Player" instance=ExtResource( 10 )]
-position = Vector2( -98, -3 )
-
-[node name="Bomber" parent="Player" instance=ExtResource( 9 )]
-position = Vector2( 111, -8 )
 
 [node name="LabBackground" parent="." instance=ExtResource( 3 )]
 z_index = -1
