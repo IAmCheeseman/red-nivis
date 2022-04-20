@@ -15,6 +15,7 @@ maxHoldShots = 1
 magazineSize = 3
 burst = true
 shellSprite = ExtResource( 3 )
+kickUp = 10.0
 bulletSpawnDist = 21.0
 isTwoHanded = true
 

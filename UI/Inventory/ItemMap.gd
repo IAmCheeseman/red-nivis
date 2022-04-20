@@ -39,9 +39,9 @@ const ITEMS = {
 		"slotTexture" : "res://Items/Weapons/Sprites/GrenadeLauncher.png"
 	},
 	# CAVE ITEMS
-	"pump-shotgun" : {
-		"key" : "pump-shotgun",
-		"name" : "PUMP_SHOTGUN_ITM",
+	"shotgun" : {
+		"key" : "shotgun",
+		"name" : "SHOTGUN_ITM",
 		"tier" : ToolTipGenerator.TIERS.CAVE,
 		"scene" : "res://Items/Weapons/Scenes/Shotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Shotgun.png"

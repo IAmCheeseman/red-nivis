@@ -38,16 +38,16 @@ func shoot():
 
 			if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
 
-		# Rotating the gun for juice
-		gun.visuals.rotation_degrees = gun.kickUp*2.2 if gun.visuals.scale.y == -1 else -gun.kickUp*2.2
-		pivot.scale = Vector2(rand_range(1.2, 1.4), rand_range(1.2, 1.4))
-
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
 		cooldownTimer.start(gun.cooldown*playerData.attackSpeed)
 		gun.isReloading = false
 
 		emit_signal("gun_shot", newBullet)
+
+	# Rotating the gun for juice
+	gun.visuals.rotation_degrees += gun.kickUp*2.2 if gun.visuals.scale.y == -1 else -gun.kickUp*2.2
+	pivot.scale = Vector2(rand_range(1.2, 1.4), rand_range(1.2, 1.4))
 
 	yield(TempTimer.idle_frame(self), "timeout")
 	if gun.bulletSprite:
