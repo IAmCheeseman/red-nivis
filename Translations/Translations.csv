@@ -127,8 +127,8 @@ LABS_TTL,The Labs,eh La-boreh-tory,Los Laboratorios,Die Labore
 BACKEND_TTL,The Maintenance Rooms,eh Maintaineenc Rewms,Las Salas de Mantenimiento,
 DEEP_LABS_TTL,The Deep Labs,eh Deep La-boreh-torees,Los Laboratorios Subterráneos,Dem tiefen Labor
 FREEZERS_TTL,The Freezers,eh Fre'zahs,Los Laboratorios Helados,Die Gefrierschränke
-TOXIC_CAVERNS_TTL,The Toxic Caverns,eh Toixic Ca'erns,La Caverna Ponzoñosa,Die toxischen Kavernen
-TECH_LABS_TTL,The Tech Labs,eh Technoglical La-boreh-tory,Los laboratorios Avanzados,Die Techniklabore
+TOXIC_CAVERNS_TTL,The Chem Sector,eh 'oxic Sec'or,,
+TECH_LABS_TTL,The Tech Sector,eh Technoglical Sec'or,,
 ,,,,
 BANDIT_BOMBER_NM,Bomber,,Bombardero,
 BANDIT_BOMBER_DESC,Before The Shutdown these scientists were creating robots to defend the laboratory from intruders. When the robots turned on them they had to use whatever they could get to make new robots.,,"Antes del apagón, estos científicos estuvieron fabricando robots para defender el laboratorio de posibles intrusos. Cuando los robots se revelaron contra ellos tuvieron que usar todo lo que pudieron recolectar para hacer robots nuevos.",
@@ -166,7 +166,7 @@ LASER_GUN_ITM,Laser Gun,Pew,,
 GRENADE_LAUNCHER_ITM,Grenade Launcher,Grenayde  Lewncha,Lanzagranadas,Granatenwerfer
 PUMP_SHOTGUN_ITM,Pump Shotgun,Pewmp Shewtgun,Escopeta de Bombeo,Schrotflinte
 FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Flammenwerfer
-ASSAULT_RIFLE_ITM,Assault Rifle,Illegal,Rifle de Asalto,Sturmgewehr
+ASSAULT_RIFLE_ITM,Assault Rifle,Illega',Rifle de Asalto,Sturmgewehr
 HOMING_BOOMERANG_ITM,Homing Boomerang,Abodin' Bewmerang,Boomerang Seguidor,Aufsteigender Bumerang
 MULTISHOT_BOOMERANG_ITM,Multishot Boomerang,Se'eral Bewmerang,Boomerang Múltiple,Mehrschuss-Bumerang
 MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun
@@ -176,3 +176,8 @@ CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,
 SOAP_SLAPPER_ITM,Bubble Gun,Bu'le Gun,Pistola de burbujas,
 J_LASER_ITM,J-Laser,J-LaZer,Láser J,J-Laser
 VAPORGAT_ITM,Vaporgat,Fart Cannon,Vaporgat,Vaporgat
+FINGERGUN_ITM,Fingergun,Finga' Gewn,,
+BURST_SHOTUN_ITM,Burst Shotgun,Ahlso illega',,
+FIRE_SHOTGUN_ITM,Fire Shotgun,,,
+TRIPLE_BARREL_PISTOL_ITM,Triple Barrel Pistol,,,
+BOUNCER_ITM,Bouncer,,,
