@@ -125,6 +125,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/FingerGun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/FingerGun.png"
 	},
+	"bouncer" : {
+		"key" : "bouncer",
+		"name" : "BOUNCER_ITM",
+		"tier" : ToolTipGenerator.TIERS.FREEZERS,
+		"scene" : "res://Items/Weapons/Scenes/Bouncer.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Bouncer.png"
+	},
 	# TOXIC CAVERNS ITEMS
 	"bullet-chainsaw" : {
 		"key" : "bullet-chainsaw",

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Items/Weapons/Sprites/Chainsaw.png" type="Texture" id=1]
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/Bullet1.png" type="Texture" id=3]
-[ext_resource path="res://Items/Weapons/Perks/BulletBounce.gd" type="Script" id=4]
 
 [node name="Gun" instance=ExtResource( 2 )]
 position = Vector2( 0, 7 )
@@ -16,7 +15,6 @@ spread = 12.0
 projLifetime = 0.25
 recoil = 20.0
 magazineSize = 125
-perks = [ ExtResource( 4 ) ]
 bulletSprite = ExtResource( 3 )
 kickUp = 0.0
 bulletSpawnDist = 15.0
