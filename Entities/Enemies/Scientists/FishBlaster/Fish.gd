@@ -44,6 +44,7 @@ func _physics_process(delta):
 	floorRC.cast_to = vel.normalized().rotated(PI / 2) * rcWidth
 	floorRC.force_raycast_update()
 	if floorRC.is_colliding():
+		if floorRC.get_collision_normal().length() == 0: return
 		vel = vel.bounce(floorRC.get_collision_normal()) * 0.95
 		if vel.y > -20: vel.y = -100 
 		sprite.frame = rand_range(0, 2)

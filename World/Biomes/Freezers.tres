@@ -2,7 +2,7 @@
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=2]
-[ext_resource path="res://World/EnemyPools/BasicEnemies.tres" type="Resource" id=3]
+[ext_resource path="res://World/EnemyPools/FreezerScientists.tres" type="Resource" id=3]
 [ext_resource path="res://World/EnviormentalArt/Freezers/FreezerSolids.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnviormentalArt/Freezers/OneWayPlatforms.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Freezers/FreezersBG.tscn" type="PackedScene" id=6]
