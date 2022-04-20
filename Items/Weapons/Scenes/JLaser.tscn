@@ -8,9 +8,10 @@
 [node name="JLaser" instance=ExtResource( 1 )]
 position = Vector2( 0, 6 )
 gunType = 2
-damage = 260.0
+damage = 30.0
 accuracy = 4.0
 cooldown = 0.1
+recoil = 30.0
 magazineSize = 25
 shellSprite = null
 kickUp = 1.0

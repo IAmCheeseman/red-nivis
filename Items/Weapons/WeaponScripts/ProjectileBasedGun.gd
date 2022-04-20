@@ -34,7 +34,7 @@ func shoot():
 		newBullet.damage = gun.damage
 		yield(TempTimer.idle_frame(self), "timeout")
 		if is_instance_valid(newBullet):
-			newBullet.hitbox.effect = gun.perk
+			if newBullet.get("hitbox"): newBullet.hitbox.effect = gun.perk
 
 			if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
 
