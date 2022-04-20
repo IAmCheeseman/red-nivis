@@ -74,9 +74,7 @@ func move_state(delta: float) -> void:
 		var targetLook = sprite.rotation
 		sprite.rotation = lerp(currentRot, targetLook, (accel / 5) * delta) + deg2rad(rotAdd)
 
-	if !flipV: sprite.flip_h = vel.x > 0
-	else: sprite.flip_v = vel.x < 0
-
+	flip()
 
 	if lookAtSwim or lookAtTarget:
 		var currentRot = sprite.rotation - PI / 2
@@ -92,6 +90,11 @@ func move_state(delta: float) -> void:
 
 func attack_state(_delta: float) -> void:
 	pass
+
+
+func flip() -> void:
+	if !flipV: sprite.flip_h = vel.x > 0
+	else: sprite.flip_v = vel.x < 0
 
 
 func get_target() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/Enemies/Goblins/Goblin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemies/Goblins/Piranha/Piranha.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Entities/Enemies/Goblins/Piranha/Piranha.gd" type="Script" id=4]
 [ext_resource path="res://Entities/Enemies/Goblins/Piranha/PiranhaCorpse.png" type="Texture" id=5]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 18.0278
@@ -95,12 +96,22 @@ lookAtTarget = false
 texture = ExtResource( 2 )
 hframes = 3
 
+[node name="Eye" type="Light2D" parent="Sprite" index="0"]
+position = Vector2( 1.5, -0.5 )
+scale = Vector2( 1.125, 1.125 )
+texture = ExtResource( 7 )
+texture_scale = 0.01
+color = Color( 1, 0, 0, 1 )
+
 [node name="DamageManager" parent="." index="2"]
 maxHealth = 1200
 corpseSprites = [ ExtResource( 5 ) ]
 
 [node name="Attack" parent="." index="3"]
 script = ExtResource( 3 )
+
+[node name="Collisions" parent="." index="4"]
+visible = false
 
 [node name="PlayerDetection" parent="Collisions" index="0"]
 visible = false
