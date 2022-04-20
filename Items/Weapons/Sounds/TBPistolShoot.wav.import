@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TBPistolShoot.wav-101ef24ee45a9acf899fc4ec0e3f5d98.sample"
+
+[deps]
+
+source_file="res://Items/Weapons/Sounds/TBPistolShoot.wav"
+dest_files=[ "res://.import/TBPistolShoot.wav-101ef24ee45a9acf899fc4ec0e3f5d98.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

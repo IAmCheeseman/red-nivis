@@ -67,6 +67,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/FlameThrower.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Flamethrower.png"
 	},
+	"tbpistol" : {
+		"key" : "tbpistol",
+		"name" : "TRIPLE_BARREL_PISTOL_ITM",
+		"tier" : ToolTipGenerator.TIERS.CAVE,
+		"scene" : "res://Items/Weapons/Scenes/TripleBarrelPistol.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/TripleBarrelPistol.png"
+	},
 	# DEEP LABS ITEMS
 	"assault-rifle" : {
 		"key" : "assault-rifle",
