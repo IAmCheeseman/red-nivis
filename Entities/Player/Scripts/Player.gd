@@ -52,6 +52,7 @@ var lockMovement = false
 var timeOnGround = 0.0
 
 var gravity := 0.0
+var controllerPressed = 0.0
 
 func _ready():
 
@@ -78,6 +79,20 @@ func _physics_process(delta: float) -> void:
 	healVignette.modulate.a = lerp(healVignette.modulate.a, 0, 1.25*delta)
 
 	dmgBuffOrb.visible = playerData.damageMod != 1.0
+	
+	# Controller stuff
+	if !GameManager.usingController: for i in 16:
+		if Input.is_joy_button_pressed(0, i):
+			controllerPressed += delta
+			if controllerPressed >= 1:
+				GameManager.usingController = true
+				controllerPressed = 0
+	else: for i in 16:
+		if Input.is_action_pressed("use_item"):
+			controllerPressed += delta
+			if controllerPressed >= 1:
+				GameManager.usingController = false
+				controllerPressed = 0
 
 	match state:
 		states.WALK:
@@ -118,7 +133,7 @@ func walk_state(delta):
 		# INPUT
 		# ------------------------------------------------
 		var moveDir := Vector2.ZERO
-
+	
 		moveDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left"))
 		moveDir = moveDir.normalized()
 		var speed
@@ -234,7 +249,6 @@ func controller_aiming() -> void:
 
 	joystickVector += Utils.get_relative_to_camera(itemHolder, GameManager.currentCamera)
 	Input.warp_mouse_position(joystickVector)
-	#Utils.set_mouse_position(joystickVector)
 
 
 func _input(event: InputEvent) -> void:
@@ -253,11 +267,6 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("down") and !lockMovement:
 		set_collision_mask_bit(4, false)
 		dropDownTimer.start(.1)
-	# Controller Controls
-	if event is InputEventJoypadMotion:
-		GameManager.usingController = event.axis_value < .5
-	elif event is InputEventMouseMotion:
-		GameManager.usingController = false
 
 # warning-ignore:return_value_discarded
 	if Input.is_key_pressed(KEY_K):
