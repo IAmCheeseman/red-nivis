@@ -133,8 +133,10 @@ func walk_state(delta):
 		# INPUT
 		# ------------------------------------------------
 		var moveDir := Vector2.ZERO
-	
-		moveDir.x = (Input.get_action_strength("move_right")-Input.get_action_strength("move_left"))
+		
+		var postfix = "_c" if GameManager.usingController else ""
+		moveDir.x = (Input.get_action_strength("move_right"+postfix)-\
+					Input.get_action_strength("move_left"+postfix))
 		moveDir = moveDir.normalized()
 		var speed
 		var accel
