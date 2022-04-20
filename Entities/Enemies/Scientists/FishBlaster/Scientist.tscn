@@ -120,6 +120,9 @@ one_shot = true
 [node name="BarrelEnd" type="Position2D" parent="Gun" index="3"]
 position = Vector2( 8, 0 )
 
+[node name="DamageManager" parent="." index="3"]
+maxHealth = 1000
+
 [node name="Hurtbox" parent="Collisions" index="0"]
 visible = false
 
