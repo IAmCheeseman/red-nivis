@@ -16,7 +16,7 @@ extents = Vector2( 2049.75, 134.694 )
 script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 114, -16 )
+position = Vector2( 106, -19 )
 
 [node name="LabBackground" parent="." instance=ExtResource( 3 )]
 z_index = -1
