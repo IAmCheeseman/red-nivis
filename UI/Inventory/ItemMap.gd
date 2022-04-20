@@ -38,13 +38,20 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/GrenadeLauncher.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/GrenadeLauncher.png"
 	},
-	# CAVE ITEMS
 	"shotgun" : {
 		"key" : "shotgun",
 		"name" : "SHOTGUN_ITM",
-		"tier" : ToolTipGenerator.TIERS.CAVE,
+		"tier" : ToolTipGenerator.TIERS.LAB,
 		"scene" : "res://Items/Weapons/Scenes/Shotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Shotgun.png"
+	},
+	# CAVE ITEMS
+	"fire-shotgun" : {
+		"key" : "fire-shotgun",
+		"name" : "FIRE_SHOTGUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.CAVE,
+		"scene" : "res://Items/Weapons/Scenes/FireShotgun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/FireShotgun.png"
 	},
 	"homing-boomerang" : {
 		"key" : "homing-boomerang",
