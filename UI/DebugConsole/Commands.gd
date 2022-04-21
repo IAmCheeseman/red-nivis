@@ -79,8 +79,7 @@ func ability(n: String) -> String:
 
 func clear_inven() -> String:
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
-	for i in inventory.items:
-		i = null
+	inventory.clear()
 	return " Inventory cleared"
 
 
