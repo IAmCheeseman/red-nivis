@@ -90,7 +90,7 @@ tracks/0/keys = {
 "values": [ 3, 4, 5 ]
 }
 
-[node name="Bandit" instance=ExtResource( 1 )]
+[node name="HomingScientist" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, 0 )

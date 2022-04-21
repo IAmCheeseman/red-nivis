@@ -39,7 +39,7 @@ func _physics_process(delta):
 	if is_instance_valid(homingTarget):
 		direction = direction.move_toward(
 			global_position.direction_to(homingTarget.global_position),
-			2 * delta
+			1.5 * delta
 		)
 
 

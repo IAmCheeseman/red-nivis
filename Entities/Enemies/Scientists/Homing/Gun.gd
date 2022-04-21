@@ -33,7 +33,7 @@ func shoot() -> void:
 	var dir = Vector2.RIGHT.rotated(rotation)
 	var newBullet = bullet.instance()
 	newBullet.direction = dir
-	newBullet.speed = 300 * randf()
+	newBullet.speed = 100
 	newBullet.damage = 1
 	newBullet.global_position = barrelEnd.global_position
 	GameManager.spawnManager.spawn_object(newBullet)
