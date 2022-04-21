@@ -19,6 +19,7 @@ static func is_even(number:int) -> bool: return !(number % 2)
 
 
 static func coin_flip() -> bool: return is_even(randi())
+static func rand_dir() -> float: return float(1 if coin_flip() else -1)
 
 
 static func free_children(node:Node): for i in node.get_children(): i.queue_free()

@@ -111,14 +111,11 @@ texture = ExtResource( 3 )
 offset = Vector2( 9, 0 )
 
 [node name="PewPewTiemr" type="Timer" parent="Gun" index="1"]
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="AttackTimer" type="Timer" parent="Gun" index="2"]
-one_shot = true
-
-[node name="BarrelEnd" type="Position2D" parent="Gun" index="3"]
+[node name="BarrelEnd" type="Position2D" parent="Gun" index="2"]
 position = Vector2( 8, 0 )
 
 [node name="DamageManager" parent="." index="3"]
@@ -134,7 +131,6 @@ anims/RESET = SubResource( 3 )
 anims/Walk = SubResource( 4 )
 
 [connection signal="timeout" from="Gun/PewPewTiemr" to="Gun" method="shoot"]
-[connection signal="timeout" from="Gun/AttackTimer" to="." method="_on_attack_timer_timeout"]
 
 [editable path="Collisions/Hurtbox"]
 [editable path="Collisions/PlayerDetection"]

@@ -115,7 +115,3 @@ func _on_state_change_timeout() -> void:
 func update_healthbar() -> void:
 	healthBar.value = damageManager.health
 
-
-
-func _on_attack_timer_timeout() -> void:
-	pass # Replace with function body.
