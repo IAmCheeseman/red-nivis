@@ -25,14 +25,14 @@ position = Vector2( 0, 3 )
 position = Vector2( 11, -1 )
 
 [node name="GunSprite" parent="Pivot" index="2"]
-position = Vector2( 13, -1 )
+position = Vector2( 12, -1 )
 texture = ExtResource( 2 )
 
 [node name="Hand1" parent="Pivot/GunSprite" index="0"]
-position = Vector2( -5, 2 )
+position = Vector2( -4, 2 )
 
 [node name="Hand2" parent="Pivot/GunSprite" index="1"]
-position = Vector2( -5, 2 )
+position = Vector2( -4, 2 )
 
 [node name="ShootSound" parent="." index="4"]
 audio = ExtResource( 4 )

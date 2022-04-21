@@ -9,7 +9,7 @@ damage = 50.0
 accuracy = 6.0
 reloadSpeed = 0.8
 multishot = 3.0
-recoil = 1.0
+recoil = 60.0
 cost = 30
 maxHoldShots = 1
 magazineSize = 3
@@ -30,7 +30,7 @@ texture = ExtResource( 2 )
 position = Vector2( -4, 1 )
 
 [node name="Hand2" parent="Pivot/GunSprite" index="1"]
-position = Vector2( -4, 1 )
+position = Vector2( -4, 2 )
 
 [node name="ShootSound" parent="." index="4"]
 audio = ExtResource( 3 )
