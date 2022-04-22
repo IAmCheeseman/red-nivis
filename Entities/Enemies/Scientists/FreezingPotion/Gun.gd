@@ -30,3 +30,7 @@ func shoot() -> void:
 	GameManager.add_attacking_enemy(self)
 	randomize()
 
+
+
+func _on_cooldown_timeout() -> void:
+	$"../AnimationPlayer".play("Attack")

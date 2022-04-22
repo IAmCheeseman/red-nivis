@@ -45,6 +45,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Shotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Shotgun.png"
 	},
+	"crossbow" : {
+		"key" : "crossbow",
+		"name" : "CROSSBOW_ITM",
+		"tier" : ToolTipGenerator.TIERS.LAB,
+		"scene" : "res://Items/Weapons/Scenes/Crossbow.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Crossbow.png"
+	},
 	# CAVE ITEMS
 	"fire-shotgun" : {
 		"key" : "fire-shotgun",
