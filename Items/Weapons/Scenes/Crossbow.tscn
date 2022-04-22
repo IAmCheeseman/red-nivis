@@ -15,6 +15,7 @@ recoil = 240.0
 magazineSize = 1
 reloadSprite = ExtResource( 6 )
 bulletSprite = ExtResource( 4 )
+shellSprite = null
 kickUp = 90.0
 isTwoHanded = true
 
