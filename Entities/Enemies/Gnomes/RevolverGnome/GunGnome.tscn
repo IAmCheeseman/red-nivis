@@ -1,12 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Entities/Enemies/Gnomes/RevolverGnome/RevolverGnome.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Gnomes/RevolverGnome/GunGnome.gd" type="Script" id=2]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=6]
-[ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=7]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=8]
 [ext_resource path="res://Entities/Enemies/Gnomes/RevolverGnome/Revolver.png" type="Texture" id=9]
 [ext_resource path="res://Entities/Enemies/Gnomes/RevolverGnome/Revolver.gd" type="Script" id=10]
@@ -178,15 +176,6 @@ autostart = true
 anims/Idle = SubResource( 6 )
 anims/RESET = SubResource( 7 )
 anims/Walk = SubResource( 8 )
-
-[node name="Healthbar" type="TextureProgress" parent="."]
-margin_left = -9.0
-margin_top = -30.0
-margin_right = 9.0
-margin_bottom = -25.0
-max_value = 50.0
-texture_under = ExtResource( 7 )
-texture_progress = ExtResource( 6 )
 
 [connection signal="timeout" from="Gun/Timer" to="Gun" method="shoot"]
 [connection signal="dead" from="DamageManager" to="MoneyDropper" method="drop_money"]

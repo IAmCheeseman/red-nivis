@@ -100,7 +100,7 @@ onready var bounceRaycast = $BounceRC
 
 func _on_bullet_hit_wall(bullet: Node2D) -> void:
 	if bullet.has_meta(TIMES_BOUNCED):
-		if bullet.get_meta(TIMES_BOUNCED) == maxBounces:
+		if bullet.get_meta(TIMES_BOUNCED) >= maxBounces:
 			return
 		bullet.set_meta(TIMES_BOUNCED, bullet.get_meta(TIMES_BOUNCED)+1)
 	else:
