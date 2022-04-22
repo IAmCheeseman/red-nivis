@@ -1,7 +1,7 @@
 extends Node2D
 
-export var accel = 1
-export var frict = 2
+export var accel = 1.0
+export var frict = 2.0
 export var underwater := false
 
 var playerData = preload("res://Entities/Player/Player.tres")

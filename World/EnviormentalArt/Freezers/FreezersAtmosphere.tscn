@@ -54,6 +54,7 @@ scale_curve = SubResource( 13 )
 [node name="FreezersAtmosphere" type="Node2D"]
 z_index = 1
 script = ExtResource( 1 )
+accel = 1.5
 
 [node name="Mist" type="ColorRect" parent="."]
 material = SubResource( 18 )
