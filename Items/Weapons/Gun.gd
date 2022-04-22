@@ -30,6 +30,7 @@ export var burst: bool = false
 export var reloadAmount: int = -1
 
 # Visual
+export var reloadSprite:StreamTexture
 export var bulletSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")
 export var shellSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Shells/shellPistol.png")
 export var kickUp:float = 25
@@ -48,6 +49,7 @@ onready var cooldownTimer = $Cooldown
 onready var meleeCooldown = $MeleeCooldown
 onready var visuals = $Pivot/GunSprite
 onready var gunPos = visuals.position
+onready var ogSprite = visuals.texture
 
 # Properties
 var standingOver := false
@@ -72,6 +74,15 @@ func _ready():
 		canShoot = true
 
 	meleeCooldown.wait_time = meleeSpeed
+
+
+func _process(delta: float) -> void:
+	visuals.texture = ogSprite
+	if isReloading and reloadSprite:
+		visuals.texture = reloadSprite
+	
+	if !reloadSprite:
+		set_process(false)
 
 
 func _on_Cooldown_timeout():
