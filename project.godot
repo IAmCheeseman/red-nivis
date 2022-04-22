@@ -239,6 +239,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Player/Scripts/PlayerResource.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "PotionBottle",
+"language": "GDScript",
+"path": "res://Entities/Enemies/Scientists/FreezingPotion/PoisonBottle.gd"
+}, {
 "base": "Reference",
 "class": "Resetter",
 "language": "GDScript",
@@ -426,6 +431,7 @@ _global_script_class_icons={
 "LootTable": "",
 "MoneyDropper": "",
 "Player": "",
+"PotionBottle": "",
 "Resetter": "",
 "RoomGenerator": "",
 "RoomPlacer": "",

@@ -27,11 +27,12 @@ minCooldown = 0.01
 position = Vector2( 0, -3 )
 
 [node name="GunSprite" parent="Pivot" index="2"]
-position = Vector2( 4, 2 )
+position = Vector2( 4, 0 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, 1 )
 
 [node name="Hand1" parent="Pivot/GunSprite" index="0"]
-position = Vector2( -10, -6 )
+position = Vector2( -10, -5 )
 
 [node name="Hand2" parent="Pivot/GunSprite" index="1"]
-position = Vector2( -6, -6 )
+position = Vector2( -6, -5 )

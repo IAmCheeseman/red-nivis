@@ -8,6 +8,7 @@ export var damage = 15
 export var kbStrengh = 3.0
 export var setDirection:Vector2
 export var tick := -1.0
+export var tickRightAway := false
 export var giveSelf := false
 
 var canHit = false
@@ -16,6 +17,8 @@ signal hit_object
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("hurtbox") and !area.is_in_group(maskedHurtbox):
+		if tickRightAway:
+			do_damage(area)
 		if tick != -1.0:
 			do_tick(area)
 			return
