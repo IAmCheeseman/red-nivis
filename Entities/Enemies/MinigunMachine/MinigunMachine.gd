@@ -15,7 +15,6 @@ onready var bounceRay = $Collisions/BounceRay
 onready var sprite = $Sprite
 onready var minigunSprite = $Sprite/Minigun/Sprite
 onready var wanderTimer = $Timers/WanderTimer
-onready var hpBar = $Healthbar
 onready var healthManager = $DamageManager
 
 
@@ -32,7 +31,6 @@ signal death
 
 func _ready() -> void:
 	startingPosition = position
-	update_healthbar()
 
 
 func _process(delta: float) -> void:
@@ -41,14 +39,12 @@ func _process(delta: float) -> void:
 
 	if !player:
 		player = playerDetection.get_player()
-		hpBar.hide()
 		minigun.isOn = false
 	else:
 		minigun.start()
 		minigunSprite.look_at(player.global_position)
 		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
 		minigunSprite.flip_v = false if angleVec.x > 0 else true
-		hpBar.show()
 
 	accel_to_point(targetPosition, delta)
 	vel += softCollision.get_push_vector()*(kbAmount*.05)
@@ -77,11 +73,6 @@ func select_position() -> Vector2:
 	var distance = rand_range(10, wanderRange)
 	var addVec = startingPosition if !player else player.global_position
 	return addVec+(Vector2.RIGHT.rotated(rand_range(0, 360))*distance)
-
-
-func update_healthbar():
-	hpBar.max_value = healthManager.maxHealth
-	hpBar.value = healthManager.health
 
 
 func _on_wander_timer_timeout() -> void:

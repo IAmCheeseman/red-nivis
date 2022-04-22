@@ -19,7 +19,6 @@ onready var wanderTimer = $Timers/WanderTimer
 onready var defendTimer = $Timers/DefendTimer
 onready var sprite = $Sprite
 onready var bounceRay = $Collisions/BounceRay
-onready var hpBar = $Healthbar
 onready var healthManager = $DamageManager
 
 
@@ -51,7 +50,6 @@ DEFEND STATE:
 func _ready():
 	wanderTimer.start(rand_range(.5, 4.5))
 	startingPosition = position
-	update_healthbar()
 
 
 
@@ -87,12 +85,10 @@ func _physics_process(delta:float) -> void:
 
 
 func wander_state(delta:float) -> void:
-	hpBar.hide()
 	accel_to_point(targetPosition, delta)
 
 
 func attack_state(delta:float) -> void:
-	hpBar.show()
 	accel_to_point(player.global_position+(get_random_vector())*6-Vector2(0, 8), delta)
 
 
@@ -133,40 +129,12 @@ func accel_to_point(point:Vector2, delta:float) -> void:
 		var normal = bounceRay.get_collision_normal()
 		if vel.is_normalized(): vel = vel.bounce(normal)*.8
 
-
-func update_healthbar():
-	hpBar.max_value = healthManager.maxHealth
-	hpBar.value = healthManager.health
-
-
 # Signals
 
 func _on_wander_timer_timeout() -> void:
 	if state == states.WANDER:
 		targetPosition = select_position()
 	wanderTimer.start(rand_range(.5, 4.5))
-
-
-#func _on_hurt(amount:float, dir:Vector2) -> void:
-## warning-ignore:narrowing_conversion
-#	health -= amount
-#	vel = dir*kbAmount
-#	if health <= 0:
-#		var newDP = deathParticles.instance()
-#		newDP.position = position
-#		newDP.rotation = dir.angle()
-#		GameManager.spawnManager.spawn_object(newDP)
-#		GameManager.frameFreezer.freeze_frames(.07)
-#
-#		if rand_range(0, 1) < Globals.HEART_CHANCE:
-#			var newHealth = healthPickup.instance()
-#			newHealth.position = position
-#			GameManager.spawnManager.spawn_object(newHealth)
-#		emit_signal("death")
-#
-#		queue_free()
-#
-	update_healthbar()
 
 
 func _on_hit_object(_area:Area2D) -> void:

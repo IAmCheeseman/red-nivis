@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Enemies/MiniHank/MiniHankCorpse.png" type="Texture" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=4]
 [ext_resource path="res://Entities/Enemies/MiniHank/MiniHank.gd" type="Script" id=5]
 [ext_resource path="res://Entities/Enemies/MiniHank/MiniHank.png" type="Texture" id=6]
-[ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=7]
-[ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=8]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=9]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=11]
@@ -196,18 +194,6 @@ autostart = true
 anims/Idle = SubResource( 4 )
 anims/RESET = SubResource( 6 )
 anims/Walk = SubResource( 5 )
-
-[node name="Healthbar" type="TextureProgress" parent="."]
-margin_left = -9.0
-margin_top = -43.0
-margin_right = 9.0
-margin_bottom = -38.0
-max_value = 50.0
-texture_under = ExtResource( 7 )
-texture_progress = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="dead" from="." to="MoneyDropper" method="drop_money"]
 [connection signal="hurt" from="Sprite/Hurtbox" to="DamageManager" method="take_damage"]

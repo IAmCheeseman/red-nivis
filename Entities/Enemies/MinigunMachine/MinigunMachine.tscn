@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/MinigunMachine/MiniMachine.png" type="Texture" id=2]
@@ -9,8 +9,6 @@
 [ext_resource path="res://Entities/Enemies/MinigunMachine/Minigun.gd" type="Script" id=7]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=8]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=9]
-[ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=10]
-[ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=11]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=13]
 [ext_resource path="res://Entities/Enemies/MachineHurt.wav" type="AudioStream" id=14]
@@ -289,18 +287,6 @@ script = ExtResource( 13 )
 audio = ExtResource( 14 )
 volumeMod = 5.0
 bus = "SFX"
-
-[node name="Healthbar" type="TextureProgress" parent="."]
-margin_left = -9.0
-margin_top = -21.0
-margin_right = 9.0
-margin_bottom = -16.0
-max_value = 50.0
-texture_under = ExtResource( 10 )
-texture_progress = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Timers" type="Node" parent="."]
 

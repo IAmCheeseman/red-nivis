@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/DrillMachine/DrillMachine.png" type="Texture" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Entities/Enemies/Assets/HealthBarFull.png" type="Texture" id=7]
-[ext_resource path="res://Entities/Enemies/Assets/HealthBarEmpty.png" type="Texture" id=8]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=9]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=10]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=11]
@@ -195,21 +193,6 @@ one_shot = true
 [node name="WindUpTimer" type="Timer" parent="Timers"]
 wait_time = 0.4
 one_shot = true
-
-[node name="HPBar" type="Node2D" parent="."]
-
-[node name="Healthbar" type="TextureProgress" parent="HPBar"]
-margin_left = -9.0
-margin_top = -15.0
-margin_right = 9.0
-margin_bottom = -10.0
-rect_pivot_offset = Vector2( 9, 15 )
-value = 50.0
-texture_under = ExtResource( 8 )
-texture_progress = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"

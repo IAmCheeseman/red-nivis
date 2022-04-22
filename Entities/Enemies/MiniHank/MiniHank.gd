@@ -13,8 +13,6 @@ onready var aimTimer = $Timers/Aim
 
 onready var shootStateTimer = $Timers/Shoot
 
-onready var hpBar = $Healthbar
-
 onready var healthManager = $DamageManager
 
 onready var shootSFX = $ShootSFX
@@ -40,10 +38,6 @@ signal dead
 
 func _ready() -> void:
 	targetPosition = global_position.x
-
-	#healthManager.maxHealth = Utils.dmg_to_hp(15, .2, 1.5)
-	#healthManager.health = healthManager.maxHealth
-	update_healthbar()
 
 
 func _process(delta: float) -> void:
@@ -112,16 +106,9 @@ func flip_sprite(fv:Vector2) -> void:
 	if fv.x > 0:
 		sprite.scale.x = -1
 		gun.position.x = -5
-		hpBar.rect_position.x = -2
 	else:
 		sprite.scale.x = 1
 		gun.position.x = 5
-		hpBar.rect_position.x = -6
-
-
-func update_healthbar():
-	hpBar.max_value = healthManager.maxHealth
-	hpBar.value = healthManager.health
 
 
 func new_target_position() -> void:
