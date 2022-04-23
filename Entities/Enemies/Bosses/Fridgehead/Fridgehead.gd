@@ -3,7 +3,6 @@ extends KinematicBody2D
 enum { IDLE, WALK, PUNCH_SIDE, UPPERCUT, LASER }
 
 onready var playerDetection = $Collisions/PlayerDetection
-onready var uppercutRay = $Collisions/UppercutRay
 onready var floorRay = $Collisions/FloorRay
 
 onready var sprite = $Sprite
@@ -21,6 +20,7 @@ onready var targetX := global_position.x
 
 var player: Node2D
 var state := WALK
+var headless := false
 
 
 func _process(delta: float) -> void:
@@ -70,10 +70,14 @@ func dodge(area: Area2D) -> void:
 
 
 func _on_damaged() -> void:
-	if damageManager.health < damageManager.maxHealth / 2:
+	if damageManager.health <= damageManager.maxHealth / 2 and !headless:
 		sprite.texture = preload("res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Hole.png")
-		speed *= 1.25
-		frict *= .75
+		headless = true
+		
+		var fridge = preload("res://Entities/Enemies/Bosses/Fridgehead/Fridge.tscn").instance()
+		fridge.global_position = global_position - Vector2(0, 45)
+		fridge.player = player
+		GameManager.spawnManager.spawn_object(fridge)
 
 
 func idle_state(delta: float) -> void:
