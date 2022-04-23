@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Head.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Entities/Effects/Blood/Blood.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/LaserAttack.gd" type="Script" id=9]
+[ext_resource path="res://Items/Weapons/Bullet/Sprites/Laser.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 4 )
@@ -29,6 +31,154 @@ extents = Vector2( 19, 27.5 )
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 10.5, 14.5 )
+
+[sub_resource type="CanvasItemMaterial" id=16]
+blend_mode = 1
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Laser:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 9, 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Laser:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LaserHitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LaserHitbox/CollisionShape2D:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 188, 5.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LaserHitbox/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -16.5 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Shoot"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Laser:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 7 ), Vector2( 376, 11 ), Vector2( 376, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Laser:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ), Vector2( 0, -22 ), Vector2( 0, -20 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LaserHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("LaserHitbox/CollisionShape2D:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 188, 5.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("LaserHitbox/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -16.5 ), Vector2( 188, -16.5 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 188, 5.5 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -80,6 +230,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 36, 37, 38, 39, 40 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.375 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Laser", -1, 1.0, false ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -217,6 +381,7 @@ position = Vector2( 0, -4 )
 shape = SubResource( 9 )
 
 [node name="Collisions" type="Node2D" parent="."]
+visible = false
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 5 )]
 visible = false
@@ -283,11 +448,45 @@ disabled = true
 enabled = true
 cast_to = Vector2( 0, 5 )
 
+[node name="SpecialAttacks" type="Node2D" parent="."]
+
+[node name="Laser" type="Node2D" parent="SpecialAttacks"]
+script = ExtResource( 9 )
+
+[node name="Laser" type="TextureRect" parent="SpecialAttacks/Laser"]
+material = SubResource( 16 )
+margin_top = -20.0
+margin_right = 9.0
+margin_bottom = -13.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpecialAttacks/Laser"]
+anims/RESET = SubResource( 18 )
+anims/Shoot = SubResource( 17 )
+
+[node name="LaserHitbox" parent="SpecialAttacks/Laser" instance=ExtResource( 8 )]
+position = Vector2( 0, 6 )
+collision_mask = 2
+damage = 2
+
+[node name="CollisionShape2D" parent="SpecialAttacks/Laser/LaserHitbox" index="0"]
+position = Vector2( 0, -16.5 )
+shape = SubResource( 19 )
+disabled = true
+
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
 maxHealth = 600
 spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 6 )
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="Timers"]
+wait_time = 4.0
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 1 )
@@ -310,10 +509,13 @@ dmgManagerPth = NodePath("../../DamageManager")
 [connection signal="area_entered" from="Collisions/UppercutArea" to="." method="uppercut"]
 [connection signal="area_entered" from="Collisions/DodgeArea" to="." method="dodge"]
 [connection signal="damaged" from="DamageManager" to="." method="_on_damaged"]
+[connection signal="timeout" from="Timers/AttackTimer" to="." method="attack"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="SpecialAttacks/Laser" method="_on_animation_finished"]
 
 [editable path="Collisions/Hurtbox"]
 [editable path="Collisions/FridgeHurtbox"]
 [editable path="Collisions/PlayerDetection"]
 [editable path="Collisions/PunchSideHitbox"]
 [editable path="Collisions/UppercutHitbox"]
+[editable path="SpecialAttacks/Laser/LaserHitbox"]

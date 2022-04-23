@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum { IDLE, WALK, PUNCH_SIDE, UPPERCUT, LASER }
+enum { IDLE, WALK, PUNCH_SIDE, UPPERCUT, ATTACK }
 
 onready var playerDetection = $Collisions/PlayerDetection
 onready var floorRay = $Collisions/FloorRay
@@ -9,6 +9,8 @@ onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
 onready var damageManager = $DamageManager
+
+onready var attacks = $SpecialAttacks
 
 export var speed := 240.0
 export var accel := 2.5
@@ -21,6 +23,8 @@ onready var targetX := global_position.x
 var player: Node2D
 var state := WALK
 var headless := false
+
+var currentAttack := Node2D
 
 
 func _process(delta: float) -> void:
@@ -39,8 +43,8 @@ func _process(delta: float) -> void:
 			punch_side_state(delta)
 		UPPERCUT:
 			uppercut_state(delta)
-		LASER:
-			pass
+		ATTACK:
+			currentAttack.attack(delta)
 	
 	vel.y = move_and_slide(vel).y
 
@@ -67,6 +71,15 @@ func uppercut(area: Area2D) -> void:
 func dodge(area: Area2D) -> void:
 	if area.is_in_group("PlayerBullet"):
 		jump(1.5)
+
+
+func attack() -> void:
+	var amt = attacks.get_child_count()
+	for i in amt:
+		var c = attacks.get_child(rand_range(0, amt))
+		if c.test():
+			state = ATTACK
+			currentAttack = c
 
 
 func _on_damaged() -> void:
@@ -123,6 +136,9 @@ func _on_animation_finished(anim_name: String) -> void:
 		UPPERCUT:
 			if anim_name == "PunchUP":
 				state = WALK
+
+
+
 
 
 
