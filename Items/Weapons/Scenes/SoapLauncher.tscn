@@ -11,7 +11,6 @@ projLifetime = 1.0
 peircing = true
 magazineSize = 2
 bulletSprite = ExtResource( 3 )
-shellSprite = null
 kickUp = 6.0
 bulletSpawnDist = 26.0
 isTwoHanded = true

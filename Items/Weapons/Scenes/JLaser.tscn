@@ -13,7 +13,6 @@ accuracy = 4.0
 cooldown = 0.1
 recoil = 15.0
 magazineSize = 25
-shellSprite = null
 kickUp = 1.0
 bulletSpawnDist = 24.0
 ssStrength = 1.0

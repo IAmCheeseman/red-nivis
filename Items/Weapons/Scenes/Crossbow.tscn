@@ -9,7 +9,6 @@
 
 [node name="Crossbow" instance=ExtResource( 1 )]
 damage = 120.0
-projSpeed = 680
 peircing = true
 recoil = 240.0
 magazineSize = 1

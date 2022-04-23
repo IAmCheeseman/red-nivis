@@ -15,7 +15,6 @@ projLifetime = 5.0
 recoil = 40.0
 magazineSize = 20
 bulletSprite = ExtResource( 5 )
-shellSprite = null
 kickUp = 5.0
 bulletSpawnDist = 24.0
 ssFreq = 0.04
