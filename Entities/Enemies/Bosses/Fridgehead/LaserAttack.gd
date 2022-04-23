@@ -14,6 +14,7 @@ func test() -> bool:
 	start = false
 	anim.stop()
 	anim.play("LaserPrep")
+	sprite.flip_h = parent.player.global_position.x < parent.global_position.x
 	return true
 
 
