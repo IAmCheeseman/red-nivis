@@ -9,6 +9,8 @@ onready var floorRay = $Collisions/FloorRay
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
+onready var damageManager = $DamageManager
+
 export var speed := 240.0
 export var accel := 2.5
 export var frict := 5.0
@@ -23,12 +25,6 @@ var state := WALK
 
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY * delta
-	
-#	if vel.y > 0 and !floorRay.is_colliding():
-#		sprite.scale.x = clamp(
-#			1-abs(vel.y/Globals.GRAVITY),
-#			.75, 1.5)
-#		sprite.scale.y = 1+(1-sprite.scale.x)
 	
 	if !player:
 		player = playerDetection.get_player()
@@ -73,6 +69,13 @@ func dodge(area: Area2D) -> void:
 		jump(1.5)
 
 
+func _on_damaged() -> void:
+	if damageManager.health < damageManager.maxHealth / 2:
+		sprite.texture = preload("res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Hole.png")
+		speed *= 1.25
+		frict *= .75
+
+
 func idle_state(delta: float) -> void:
 	vel.x = lerp(vel.x, 0, frict * delta)
 	
@@ -90,7 +93,7 @@ func walk_state(delta: float) -> void:
 	
 	anim.play("Run", -1, vel.x / speed)
 	
-	if global_position.distance_to(vectorTarget) < 32:
+	if global_position.distance_to(player.global_position) < 32:
 		state = PUNCH_SIDE
 
 
@@ -116,6 +119,9 @@ func _on_animation_finished(anim_name: String) -> void:
 		UPPERCUT:
 			if anim_name == "PunchUP":
 				state = WALK
+
+
+
 
 
 

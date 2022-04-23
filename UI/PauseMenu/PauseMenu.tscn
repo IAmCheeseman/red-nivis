@@ -171,7 +171,7 @@ position = Vector2( 0, 2 )
 polygon = PoolVector2Array( 0, -2, -5, -2, -6, 230, 369, 230, 368, -11, 0, -11, 0, -2, 360, -2, 360, 220, 0, 220 )
 
 [node name="TheGuy" parent="StaticBody2D" instance=ExtResource( 6 )]
-position = Vector2( 321, 14 )
+position = Vector2( 313, 217 )
 
 [connection signal="pressed" from="Margin/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Margin/VBoxContainer/Hub" to="." method="_on_quittm_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Head.png" type="Texture" id=2]
@@ -19,13 +19,16 @@ radius = 16.0312
 radius = 181.003
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 10, 32.5 )
+extents = Vector2( 10, 48.75 )
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 86, 35.25 )
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 25.5, 14.5 )
+extents = Vector2( 19, 27.5 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 10.5, 14.5 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -140,6 +143,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 27, 28, 29, 30, 31, 0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collisions/PunchSideHitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -226,12 +241,12 @@ visible = false
 shape = SubResource( 11 )
 
 [node name="UppercutArea" type="Area2D" parent="Collisions"]
-visible = false
 position = Vector2( 0, -71 )
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/UppercutArea"]
+position = Vector2( 0, 16.25 )
 shape = SubResource( 12 )
 
 [node name="DodgeArea" type="Area2D" parent="Collisions"]
@@ -245,12 +260,23 @@ position = Vector2( 0, 2.75 )
 shape = SubResource( 13 )
 
 [node name="PunchSideHitbox" parent="Collisions" instance=ExtResource( 8 )]
+visible = false
 collision_mask = 2
 damage = 2
 
 [node name="CollisionShape2D" parent="Collisions/PunchSideHitbox" index="0"]
-position = Vector2( 7.5, -14.5 )
+position = Vector2( 1, -27.5 )
 shape = SubResource( 14 )
+disabled = true
+
+[node name="UppercutHitbox" parent="Collisions" instance=ExtResource( 8 )]
+visible = false
+collision_mask = 2
+damage = 1
+
+[node name="CollisionShape2D" parent="Collisions/UppercutHitbox" index="0"]
+position = Vector2( -0.5, -14.5 )
+shape = SubResource( 15 )
 disabled = true
 
 [node name="FloorRay" type="RayCast2D" parent="Collisions"]
@@ -259,7 +285,7 @@ cast_to = Vector2( 0, 5 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
-maxHealth = 10000
+maxHealth = 600
 spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 6 )
 
@@ -283,9 +309,11 @@ dmgManagerPth = NodePath("../../DamageManager")
 [connection signal="hurt" from="Collisions/FridgeHurtbox" to="DamageManager" method="take_damage"]
 [connection signal="area_entered" from="Collisions/UppercutArea" to="." method="uppercut"]
 [connection signal="area_entered" from="Collisions/DodgeArea" to="." method="dodge"]
+[connection signal="damaged" from="DamageManager" to="." method="_on_damaged"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 
 [editable path="Collisions/Hurtbox"]
 [editable path="Collisions/FridgeHurtbox"]
 [editable path="Collisions/PlayerDetection"]
 [editable path="Collisions/PunchSideHitbox"]
+[editable path="Collisions/UppercutHitbox"]
