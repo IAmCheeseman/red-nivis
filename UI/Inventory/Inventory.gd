@@ -25,7 +25,7 @@ func _init():
 func setup():
 	clear()
 	randomize()
-	add_item('crossbow')
+	add_item('pistol')
 
 
 func has_space() -> bool:

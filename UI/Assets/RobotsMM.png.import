@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fridge.png-ce16565b48f9c1551df958b3aa8ab237.stex"
+path="res://.import/RobotsMM.png-d9863a548d3091e7cf8694b893bcc09d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Bosses/JackedUpGuy/Fridge.png"
-dest_files=[ "res://.import/Fridge.png-ce16565b48f9c1551df958b3aa8ab237.stex" ]
+source_file="res://UI/Assets/RobotsMM.png"
+dest_files=[ "res://.import/RobotsMM.png-d9863a548d3091e7cf8694b893bcc09d.stex" ]
 
 [params]
 

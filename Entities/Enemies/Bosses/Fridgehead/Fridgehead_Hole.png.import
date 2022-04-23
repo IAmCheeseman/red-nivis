@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Man.png-adfa4d3d7ffe1ce4ed311c7948aab01c.stex"
+path="res://.import/Fridgehead_Hole.png-8cb8aa9a52cafc914668f144117ddf1d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Bosses/JackedUpGuy/Man.png"
-dest_files=[ "res://.import/Man.png-adfa4d3d7ffe1ce4ed311c7948aab01c.stex" ]
+source_file="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Hole.png"
+dest_files=[ "res://.import/Fridgehead_Hole.png-8cb8aa9a52cafc914668f144117ddf1d.stex" ]
 
 [params]
 

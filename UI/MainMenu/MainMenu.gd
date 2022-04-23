@@ -13,14 +13,7 @@ var camStart: Vector2
 
 
 func _process(_delta: float) -> void:
-	if !startButton.disabled: camStart = camera.position
-
-	var viewportSize = get_viewport_rect().end
-	titleMenu.rect_size = viewportSize
-	titleMenu.rect_position = camStart
-
-	title.position.x = titleControl.rect_size.x / 2
-	title.position.y = titleControl.rect_size.y / 2
+	camera.position = get_local_mouse_position() * .1
 
 
 func start() -> void:
