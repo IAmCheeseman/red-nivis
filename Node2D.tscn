@@ -16,7 +16,7 @@ extents = Vector2( 2049.75, 134.694 )
 script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 109, -25 )
+position = Vector2( -14, -8 )
 
 [node name="LabBackground" parent="." instance=ExtResource( 3 )]
 z_index = -1
@@ -41,6 +41,6 @@ shape = SubResource( 1 )
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
 [node name="Fridgehead" parent="." instance=ExtResource( 8 )]
-position = Vector2( 178, -7 )
+position = Vector2( 270, -62 )
 
 [editable path="CameraMoveZone"]
