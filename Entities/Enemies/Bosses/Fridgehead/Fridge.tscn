@@ -1,11 +1,97 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridge.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridge.gd" type="Script" id=2]
+[ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/Effects/RobotSparks/RobotSparks.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 18 )
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 18.0278
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 8.5 )
 
 [node name="Fridge" type="KinematicBody2D"]
-z_index = 2
+collision_layer = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+offset = Vector2( 5, -9 )
+vframes = 2
+
+[node name="DamageManager" parent="." instance=ExtResource( 4 )]
+maxHealth = 10000
+kbAmount = 0.0
+spritePath = NodePath("../Sprite")
+deathParticles = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -1, 1 )
+shape = SubResource( 2 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="Hurtbox" parent="Collisions" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 0, -13 )
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
+position = Vector2( -1, 15 )
+shape = SubResource( 1 )
+
+[node name="SlamHitbox" parent="Collisions" instance=ExtResource( 7 )]
+position = Vector2( 0, -22 )
+collision_mask = 2
+damage = 2
+
+[node name="CollisionShape2D" parent="Collisions/SlamHitbox" index="0"]
+position = Vector2( -1, -0.5 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="PlayerRay" type="RayCast2D" parent="Collisions"]
+enabled = true
+cast_to = Vector2( 0, 100 )
+collision_mask = 2
+
+[node name="FloorRay" type="RayCast2D" parent="Collisions"]
+enabled = true
+cast_to = Vector2( 0, 20 )
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+autostart = true
+
+[node name="FoodShootCooldown" type="Timer" parent="Timers"]
+wait_time = 0.1
+autostart = true
+
+[node name="Target" type="Timer" parent="Timers"]
+wait_time = 7.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 3 )]
+bossName = "The Fridge"
+dmgManagerPth = NodePath("../../DamageManager")
+
+[connection signal="damaged" from="DamageManager" to="." method="_on_damaged"]
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
+[connection signal="timeout" from="Timers/AttackTimer" to="." method="attack"]
+[connection signal="timeout" from="Timers/FoodShootCooldown" to="." method="shoot_food"]
+[connection signal="timeout" from="Timers/Target" to="." method="get_target_pos"]
+
+[editable path="Collisions/Hurtbox"]
+[editable path="Collisions/SlamHitbox"]

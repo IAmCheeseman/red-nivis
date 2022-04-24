@@ -47,7 +47,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 9, 7 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Laser:rect_position")
@@ -456,8 +456,7 @@ script = ExtResource( 9 )
 [node name="Laser" type="TextureRect" parent="SpecialAttacks/Laser"]
 material = SubResource( 16 )
 margin_top = -20.0
-margin_right = 9.0
-margin_bottom = -13.0
+margin_bottom = -20.0
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 1
@@ -478,7 +477,7 @@ disabled = true
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
-maxHealth = 600
+maxHealth = 100
 spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 6 )
 
