@@ -138,10 +138,6 @@ func uppercut_state(delta: float) -> void:
 		state = WALK
 
 
-func laser_state(delta: float) -> void:
-	pass
-
-
 func _on_animation_finished(anim_name: String) -> void:
 	match state:
 		PUNCH_SIDE:
