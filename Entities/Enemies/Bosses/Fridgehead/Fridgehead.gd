@@ -58,10 +58,11 @@ func get_target_pos() -> void:
 func jump(mod:=1.0) -> void:
 	if floorRay.is_colliding():
 		vel.y = -uppercutForce * mod
+		position.y -= abs(floorRay.cast_to.y)
 
 
 func uppercut(area: Area2D) -> void:
-	if area.is_in_group("Player"):
+	if area.is_in_group("player"):
 		state = UPPERCUT
 		jump()
 		anim.stop()
@@ -120,6 +121,7 @@ func punch_side_state(delta: float) -> void:
 
 
 func uppercut_state(delta: float) -> void:
+	vel.x = lerp(vel.x, 0, frict * delta)
 	if floorRay.is_colliding():
 		state = WALK
 

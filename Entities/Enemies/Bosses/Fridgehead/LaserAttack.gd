@@ -11,6 +11,8 @@ var start := false
 
 
 func test() -> bool:
+	if !parent.headless: return false
+	
 	start = false
 	anim.stop()
 	anim.play("LaserPrep")

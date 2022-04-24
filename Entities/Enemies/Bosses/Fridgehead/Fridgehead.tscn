@@ -21,7 +21,7 @@ radius = 16.0312
 radius = 181.003
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 10, 48.75 )
+extents = Vector2( 48, 32.75 )
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 86, 35.25 )
@@ -381,7 +381,6 @@ position = Vector2( 0, -4 )
 shape = SubResource( 9 )
 
 [node name="Collisions" type="Node2D" parent="."]
-visible = false
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 5 )]
 visible = false
@@ -411,7 +410,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/UppercutArea"]
-position = Vector2( 0, 16.25 )
+position = Vector2( 0, 0.25 )
 shape = SubResource( 12 )
 
 [node name="DodgeArea" type="Area2D" parent="Collisions"]
@@ -445,6 +444,7 @@ shape = SubResource( 15 )
 disabled = true
 
 [node name="FloorRay" type="RayCast2D" parent="Collisions"]
+visible = false
 enabled = true
 cast_to = Vector2( 0, 5 )
 
@@ -466,6 +466,7 @@ anims/RESET = SubResource( 18 )
 anims/Shoot = SubResource( 17 )
 
 [node name="LaserHitbox" parent="SpecialAttacks/Laser" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, 6 )
 collision_mask = 2
 damage = 1
@@ -477,7 +478,7 @@ disabled = true
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
-maxHealth = 100
+maxHealth = 1000
 spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 6 )
 
