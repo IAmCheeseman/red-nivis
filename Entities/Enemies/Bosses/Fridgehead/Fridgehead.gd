@@ -4,6 +4,8 @@ enum { IDLE, WALK, PUNCH_SIDE, UPPERCUT, ATTACK }
 
 onready var playerDetection = $Collisions/PlayerDetection
 onready var floorRay = $Collisions/FloorRay
+onready var uppercutHitbox = $Collisions/UppercutHitbox
+onready var sidePunchHitbox = $Collisions/PunchSideHitbox
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
@@ -88,10 +90,19 @@ func _on_damaged() -> void:
 		sprite.texture = preload("res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Hole.png")
 		headless = true
 		
-		var fridge = preload("res://Entities/Enemies/Bosses/Fridgehead/Fridge.tscn").instance()
+		var fridge = preload("res://Entities/Enemies/Bosses/Fridgehead/FridgeFly.tscn").instance()
 		fridge.global_position = global_position - Vector2(0, 45)
-		fridge.player = player
+#		fridge.player = player
 		GameManager.spawnManager.spawn_object(fridge)
+	
+	if state == UPPERCUT: state = WALK
+
+
+func _on_dead() -> void:
+	var fridge = preload("res://Entities/Enemies/Bosses/Fridgehead/Fridge.tscn").instance()
+	fridge.global_position = global_position - Vector2(0, 100)
+	fridge.player = player
+	GameManager.spawnManager.spawn_object(fridge)
 
 
 func idle_state(delta: float) -> void:
@@ -123,6 +134,7 @@ func punch_side_state(delta: float) -> void:
 func uppercut_state(delta: float) -> void:
 	vel.x = lerp(vel.x, 0, frict * delta)
 	if floorRay.is_colliding():
+		uppercutHitbox.get_child(0).disabled = true
 		state = WALK
 
 
@@ -138,6 +150,9 @@ func _on_animation_finished(anim_name: String) -> void:
 		UPPERCUT:
 			if anim_name == "PunchUP":
 				state = WALK
+
+
+
 
 
 

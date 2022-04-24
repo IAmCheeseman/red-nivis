@@ -30,7 +30,7 @@ extents = Vector2( 86, 35.25 )
 extents = Vector2( 19, 27.5 )
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 10.5, 14.5 )
+extents = Vector2( 10.5, 6 )
 
 [sub_resource type="CanvasItemMaterial" id=16]
 blend_mode = 1
@@ -434,12 +434,11 @@ shape = SubResource( 14 )
 disabled = true
 
 [node name="UppercutHitbox" parent="Collisions" instance=ExtResource( 8 )]
-visible = false
 collision_mask = 2
 damage = 1
 
 [node name="CollisionShape2D" parent="Collisions/UppercutHitbox" index="0"]
-position = Vector2( -0.5, -14.5 )
+position = Vector2( -0.5, -14 )
 shape = SubResource( 15 )
 disabled = true
 
@@ -509,6 +508,7 @@ dmgManagerPth = NodePath("../../DamageManager")
 [connection signal="area_entered" from="Collisions/UppercutArea" to="." method="uppercut"]
 [connection signal="area_entered" from="Collisions/DodgeArea" to="." method="dodge"]
 [connection signal="damaged" from="DamageManager" to="." method="_on_damaged"]
+[connection signal="dead" from="DamageManager" to="." method="_on_dead"]
 [connection signal="timeout" from="Timers/AttackTimer" to="." method="attack"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="SpecialAttacks/Laser" method="_on_animation_finished"]
