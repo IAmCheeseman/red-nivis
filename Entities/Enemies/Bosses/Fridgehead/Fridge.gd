@@ -138,4 +138,4 @@ func shoot_food() -> void:
 
 func _on_damaged() -> void:
 	if state == SLAM:
-		attack(SLAM)
+		state = FOOD_SHOOTER
