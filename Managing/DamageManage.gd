@@ -6,6 +6,7 @@ enum {EASY, NORMAL, HARD}
 
 export var maxHealth := 120
 export var defense := 0
+export var kbEnabled := true
 export var kbAmount := 32.0
 export var upwardsKB := 0.0
 export var hurtSFXPath: NodePath
@@ -55,7 +56,7 @@ func take_damage(amount:int, dir:Vector2) -> void:
 	var defenseReduction := 0
 	if defense > 0: defenseReduction = int(float(defense) / 2.0)
 	health -= int(clamp(amount - defenseReduction, 1, INF))
-	if par.get("vel"): par.vel = dir*kbAmount-Vector2(0, upwardsKB)
+	if par.get("vel") and kbEnabled: par.vel = dir*kbAmount-Vector2(0, upwardsKB)
 
 	var newDP = deathParticles.instance()
 	newDP.position = global_position

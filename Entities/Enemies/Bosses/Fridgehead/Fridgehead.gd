@@ -18,6 +18,7 @@ export var speed := 240.0
 export var accel := 2.5
 export var frict := 5.0
 export var uppercutForce := 270.0
+export(NodePath) onready var fridgePos = get_node(fridgePos)  
 
 var vel: Vector2
 onready var targetX := global_position.x
@@ -29,24 +30,31 @@ var headless := false
 var currentAttack := Node2D
 
 
+func _ready() -> void:
+	var jumpState = $SpecialAttacks/Jump
+	jumpState.endPos = fridgePos.global_position
+
+
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY * delta
 	
 	if !player:
 		player = playerDetection.get_player()
-		return
+		anim.play("Idle")
+	else:
+		match state:
+			IDLE:
+				idle_state(delta)
+			WALK:
+				walk_state(delta)
+			PUNCH_SIDE:
+				punch_side_state(delta)
+			UPPERCUT:
+				uppercut_state(delta)
+			ATTACK:
+				currentAttack.attack(delta)
 	
-	match state:
-		IDLE:
-			idle_state(delta)
-		WALK:
-			walk_state(delta)
-		PUNCH_SIDE:
-			punch_side_state(delta)
-		UPPERCUT:
-			uppercut_state(delta)
-		ATTACK:
-			currentAttack.attack(delta)
+	sprite.rotation_degrees = vel.x / 25
 	
 	vel.y = move_and_slide(vel).y
 
@@ -91,8 +99,8 @@ func _on_damaged() -> void:
 		headless = true
 		
 		var fridge = preload("res://Entities/Enemies/Bosses/Fridgehead/FridgeFly.tscn").instance()
+		fridge.targetPos = fridgePos.global_position
 		fridge.global_position = global_position - Vector2(0, 45)
-#		fridge.player = player
 		GameManager.spawnManager.spawn_object(fridge)
 	
 	if state == UPPERCUT: state = WALK
@@ -116,7 +124,8 @@ func walk_state(delta: float) -> void:
 	var vectorTarget = Vector2(targetX, global_position.y)
 	var dir := global_position.direction_to(vectorTarget).x
 	
-	vel.x = lerp(vel.x, dir * speed, accel * delta)
+	var actualAccel = accel if floorRay.is_colliding() else 0
+	vel.x = lerp(vel.x, dir * speed, actualAccel * delta)
 	
 	sprite.flip_h = vel.x < 0
 	

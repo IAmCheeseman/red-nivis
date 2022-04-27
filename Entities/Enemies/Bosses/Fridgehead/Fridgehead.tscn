@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Head.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/LaserAttack.gd" type="Script" id=9]
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/Laser.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Spin.gd" type="Script" id=11]
+[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Jump.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 4 )
@@ -387,7 +388,7 @@ tracks/0/keys = {
 "values": [ 50, 51, 52, 53 ]
 }
 
-[node name="Fridgehead" type="KinematicBody2D"]
+[node name="Fridgehead" type="KinematicBody2D" groups=["Fridgehead"]]
 collision_layer = 0
 script = ExtResource( 1 )
 
@@ -518,9 +519,14 @@ one_shot = true
 wait_time = 0.075
 autostart = true
 
+[node name="Jump" type="Node2D" parent="SpecialAttacks"]
+script = ExtResource( 12 )
+
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
-maxHealth = 1000
+maxHealth = 15000
+kbEnabled = false
+kbAmount = 0.0
 spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 6 )
 
