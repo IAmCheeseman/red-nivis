@@ -66,7 +66,7 @@ func get_target_pos() -> void:
 
 
 func jump(mod:=1.0) -> void:
-	if floorRay.is_colliding():
+	if floorRay.is_colliding() or state == ATTACK:
 		vel.y = -uppercutForce * mod
 		position.y -= abs(floorRay.cast_to.y)
 
