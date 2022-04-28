@@ -3,6 +3,9 @@ extends Node
 enum {GFX_BAD=0, GFX_GOOD=1}
 
 func _init() -> void:
+	load_settings()
+
+func load_settings() -> void:
 	var dm := DataManager.new()
 	var settings := dm.load_data(Globals.SETTINGS_FILE_NAME)
 	
@@ -36,6 +39,26 @@ func _init() -> void:
 		InputMap.action_add_event(i, newKey)
 	yield(TempTimer.idle_frame(self), "timeout")
 	change_lang(settings.lang)
+
+
+func save_settings() -> void:
+	var dataManager = DataManager.new()
+	var settings = {
+		"gfx"              : gfx,
+		"fullscreen"       : fullscreen,
+		"maxfps"           : maxfps,
+		"screenshake"      : screenshake,
+		"brightness"       : brightness,
+		"keybinds"         : keybinds,
+		"masterVol"        : masterVol,
+		"sfx"              : sfx,
+		"music"            : music,
+		"speedrunTimer"    : speedrunTimer,
+		"doubleDamageMode" : doubleDamageMode,
+		"lang"             : lang
+	}
+	# Saving the data
+	dataManager.save_data(settings, Globals.SETTINGS_FILE_NAME)
 
 
 func save_defaults(dm: DataManager) -> void:
@@ -84,7 +107,6 @@ var brightness := 1.0
 
 var speedrunTimer      := false
 var doubleDamageMode   := false
-var tutorialEnabled    := false
 
 var keybinds           := {}
 var defaultKeybinds    := {}

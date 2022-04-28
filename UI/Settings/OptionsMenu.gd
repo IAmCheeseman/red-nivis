@@ -1,7 +1,5 @@
 extends Control
 
-var dataManager = DataManager.new()
-
 onready var menus = $Menus
 onready var navMenu = $Center/NavMenu
 onready var keybinds = $Menus/Keybinds/Scroll/VBox
@@ -21,24 +19,8 @@ func _ready() -> void:
 
 func _on_quit():
 	update_settings()
-
-	var settings = {
-		"gfx"              : Settings.gfx,
-		"fullscreen"       : Settings.fullscreen,
-		"maxfps"           : Settings.maxfps,
-		"screenshake"      : Settings.screenshake,
-		"brightness"       : Settings.brightness,
-		"keybinds"         : Settings.keybinds,
-		"masterVol"        : Settings.masterVol,
-		"sfx"              : Settings.sfx,
-		"music"            : Settings.music,
-		"speedrunTimer"    : Settings.speedrunTimer,
-		"doubleDamageMode" : Settings.doubleDamageMode,
-		"lang"             : Settings.lang
-	}
-	# Saving the data
-	dataManager.save_data(settings, Globals.SETTINGS_FILE_NAME)
-
+	Settings.save_settings()
+	
 	for i in menus.get_children():
 		i.hide()
 	navMenu.show()

@@ -10,7 +10,6 @@ static func unlock(ach: String) -> void:
 	# Saving the achievement so if the player didn't get it this time, they
 	# will next time they boot.
 	var playerData = preload("res://Entities/Player/Player.tres")
-	playerData.unlockedAchievements.append(ach)
 
 # Achievement.lock()
 
@@ -20,7 +19,6 @@ static func lock(ach: String) -> void:
 	
 	# Clearing save.
 	var playerData = preload("res://Entities/Player/Player.tres")
-	playerData.unlockedAchievements.erase(ach)
 
 # Achievement.is_unlocked()
 

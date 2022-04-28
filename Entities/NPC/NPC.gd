@@ -8,6 +8,8 @@ onready var interactionZone = $Iteraction
 
 var vel:Vector2 = Vector2.ZERO
 
+export var defaultDialog = "Introduction"
+
 signal dialog_finished
 
 
@@ -21,7 +23,7 @@ func _process(delta):
 
 
 func _on_interaction() -> void:
-	start_dialog("Introduction")
+	start_dialog(defaultDialog)
 
 
 func start_dialog(lines:String) -> void:

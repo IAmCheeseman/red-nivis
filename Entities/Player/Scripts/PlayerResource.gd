@@ -56,7 +56,8 @@ var upgradeSlots = 2
 var upgrades := []
 var unlockedUpgrades := []
 
-var unlockedAchievements := []
+
+var tutorialEnabled := true
 
 var playerObject:KinematicBody2D
 

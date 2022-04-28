@@ -171,8 +171,8 @@ func save_game() -> void:
 	var saveData := {
 		"highScore"            : playerData.highScore,
 		"unlockedUpgrades"     : playerData.unlockedUpgrades,
-		"unlockedAchievements" : playerData.unlockedAchievements,
 		"deaths"               : playerData.deaths,
+		"tutorialEnabled"      : playerData.tutorialEnabled,
 	}
 
 	var _ok = dm.save_data(saveData, Globals.GAME_FILE_NAME)

@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "LMAO_MAN_INTRO_LN1", "LMAO_MAN_INTRO_LN2" ] ]
+dialog = [ [ "Introduction", "LMAO_MAN_INTRO_LN1", "LMAO_MAN_INTRO_LN2" ], [ "RedNivis", "Good morning!", "If you go over there, you'll find the Red Nivis Lab", "Don't fall off cliffs or whatever." ] ]
