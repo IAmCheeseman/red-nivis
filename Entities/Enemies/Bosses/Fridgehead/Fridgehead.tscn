@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Hole.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Head.png" type="Texture" id=2]
 [ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=5]
