@@ -42,6 +42,7 @@ func shoot() -> void:
 
 
 func stop() -> void:
+	if parent.state == parent.DEAD: return
 	parent.state = parent.WALK
 	hitbox.disabled = true
 	shooting = false

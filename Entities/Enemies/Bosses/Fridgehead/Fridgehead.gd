@@ -8,6 +8,7 @@ onready var wallRay = $Collisions/WallRay
 onready var uppercutHitbox = $Collisions/UppercutHitbox
 onready var sidePunchHitbox = $Collisions/PunchSideHitbox
 onready var blockHitbox = $Collisions/BlockHitbox/CollisionShape2D
+onready var fridgeCrashSFX = $FridgeCrashSFX 
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
@@ -73,6 +74,11 @@ func _process(delta: float) -> void:
 						newDP.rotation = dir.angle()
 						GameManager.spawnManager.spawn_object(newDP)
 						dir = dir.rotated((PI * 2) / (i + 1))
+						
+					remove_child(fridgeCrashSFX)
+					GameManager.spawnManager.spawn_object(fridgeCrashSFX)
+					fridgeCrashSFX.play()
+					
 					queue_free()
 	
 	sprite.rotation_degrees = vel.x / 25

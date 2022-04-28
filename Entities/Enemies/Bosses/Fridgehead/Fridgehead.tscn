@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Head.png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Spin.gd" type="Script" id=11]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Jump.gd" type="Script" id=12]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=13]
+[ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/FridgeCrash.mp3" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 4 )
@@ -649,7 +651,7 @@ script = ExtResource( 12 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
-maxHealth = 12500
+maxHealth = 1
 kbEnabled = false
 kbAmount = 0.0
 isBoss = true
@@ -681,6 +683,11 @@ anims/StartBlock = SubResource( 22 )
 [node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 3 )]
 bossName = "Fridgehead"
 dmgManagerPth = NodePath("../../DamageManager")
+
+[node name="FridgeCrashSFX" parent="." instance=ExtResource( 14 )]
+audio = ExtResource( 15 )
+volumeMod = 10.0
+freeOnFinish = true
 
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="hurt" from="Collisions/FridgeHurtbox" to="DamageManager" method="take_damage"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/FridgeCrash.mp3-bdbf4b3caf3370bf92e1bca3e487df78.mp3str"
+
+[deps]
+
+source_file="res://Entities/Enemies/Bosses/Fridgehead/FridgeCrash.mp3"
+dest_files=[ "res://.import/FridgeCrash.mp3-bdbf4b3caf3370bf92e1bca3e487df78.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

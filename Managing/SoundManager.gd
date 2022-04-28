@@ -9,6 +9,7 @@ export var autoplay := false
 export var loop := false
 export var attenuation := 5.0
 export var maxDist := 2000.0
+export var freeOnFinish := false
 export(String, "Master", "Ambient", "Music", "SFX", "Reverb", "ReverbLow") var bus = 0
 
 signal finished
@@ -49,6 +50,9 @@ func stop() -> void: Utils.free_children(self)
 
 func _on_audio_finished(player):
 	emit_signal("finished")
+	if freeOnFinish:
+		queue_free()
+		return
 	if loop:
 		player.play()
 		return
