@@ -76,7 +76,7 @@ func _ready():
 	meleeCooldown.wait_time = meleeSpeed
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	visuals.texture = ogSprite
 	if isReloading and reloadSprite:
 		visuals.texture = reloadSprite

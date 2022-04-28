@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -46,10 +46,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 7.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 7.5 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, true ]
+"values": [ true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:visible")
@@ -74,6 +74,81 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Blocking2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Blocking2:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Blocking2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Blocking2:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:collision_layer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
 }
 
 [sub_resource type="CanvasItemMaterial" id=9]
@@ -208,10 +283,17 @@ visible = false
 z_index = 1
 collision_layer = 0
 collision_mask = 0
-tile_data = PoolIntArray( -524185, 0, 524288, -524184, 0, 6, -524183, 0, 1, -524182, 0, 327681, -524181, 0, 327681, -524180, 0, 1, -524179, 0, 1, -524178, 0, 327681, -524177, 0, 327682, -524175, 0, 0, -524174, 0, 327682, -458648, 0, 65536, -458647, 0, 65537, -458646, 0, 65537, -458645, 0, 65537, -458644, 0, 65537, -458643, 0, 393217, -458642, 0, 65537, -458641, 0, 458757, -458640, 0, 327681, -458639, 0, 458758, -458638, 0, 393218, -393113, 0, 524288, -393112, 0, 196614, -393111, 0, 458753, -393110, 0, 131073, -393109, 0, 131073, -393108, 0, 458753, -393107, 0, 458753, -393106, 0, 458753, -393105, 0, 458753, -393104, 0, 131073, -393103, 0, 458753, -393102, 0, 458754, -327565, 0, 3, -262042, 0, 3, -262029, 0, 65539, -196506, 0, 65539, -196493, 0, 65539, -130970, 0, 65539, -130957, 0, 65539, -65434, 0, 65539, -65421, 0, 131075, 102, 0, 131075, 65639, 0, 327680, 65640, 0, 1, 65641, 0, 327681, 65642, 0, 327681, 65643, 0, 327681, 65644, 0, 327681, 65645, 0, 1, 65646, 0, 327681, 65647, 0, 327681, 65648, 0, 327681, 65649, 0, 327681, 65650, 0, 2, 131175, 0, 65536, 131176, 0, 65537, 131177, 0, 65537, 131178, 0, 65537, 131179, 0, 393217, 131180, 0, 65537, 131181, 0, 65537, 131182, 0, 393221, 131183, 0, 131073, 131184, 0, 65544, 131185, 0, 458753, 131186, 0, 131074, 196711, 0, 393216, 196712, 0, 65541, 196713, 0, 131073, 196714, 0, 131073, 196715, 0, 393222, 196716, 0, 393221, 196717, 0, 458753, 196718, 0, 131074, 196720, 0, 65539, 262247, 0, 131072, 262248, 0, 131074, 262251, 0, 131072, 262252, 0, 458754, 262256, 0, 458755 )
+tile_data = PoolIntArray( -524185, 0, 524288, -524184, 0, 6, -524183, 0, 1, -524182, 0, 327681, -524181, 0, 327681, -524180, 0, 1, -524179, 0, 1, -524178, 0, 327681, -524177, 0, 327682, -524175, 0, 0, -524174, 0, 327682, -458648, 0, 65536, -458647, 0, 65537, -458646, 0, 65537, -458645, 0, 65537, -458644, 0, 65537, -458643, 0, 393217, -458642, 0, 65537, -458641, 0, 458757, -458640, 0, 327681, -458639, 0, 458758, -458638, 0, 393218, -393113, 0, 524288, -393112, 0, 196614, -393111, 0, 458753, -393110, 0, 131073, -393109, 0, 131073, -393108, 0, 458753, -393107, 0, 458753, -393106, 0, 458753, -393105, 0, 458753, -393104, 0, 131073, -393103, 0, 458753, -393102, 0, 131074, -327565, 0, 3, -262042, 0, 3, -262029, 0, 393219, -196506, 0, 65539, -196493, 0, 393219, -130970, 0, 65539, -130957, 0, 393219, -65434, 0, 65539, -65421, 0, 458755, 102, 0, 131075, 65639, 0, 327680, 65640, 0, 1, 65641, 0, 327681, 65642, 0, 327681, 65643, 0, 327681, 65644, 0, 327681, 65645, 0, 1, 65646, 0, 327681, 65647, 0, 327681, 65648, 0, 327681, 65649, 0, 327681, 65650, 0, 2, 131175, 0, 65536, 131176, 0, 65537, 131177, 0, 65537, 131178, 0, 65537, 131179, 0, 393217, 131180, 0, 65537, 131181, 0, 65537, 131182, 0, 393221, 131183, 0, 131073, 131184, 0, 65544, 131185, 0, 458753, 131186, 0, 131074, 196711, 0, 393216, 196712, 0, 65541, 196713, 0, 131073, 196714, 0, 131073, 196715, 0, 393222, 196716, 0, 393221, 196717, 0, 458753, 196718, 0, 131074, 196720, 0, 65539, 262247, 0, 131072, 262248, 0, 131074, 262251, 0, 131072, 262252, 0, 458754, 262256, 0, 458755 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tiles/Blocking"]
+autoplay = "RESET"
 anims/Block = SubResource( 7 )
+anims/RESET = SubResource( 12 )
+
+[node name="Blocking2" parent="Tiles" instance=ExtResource( 1 )]
+z_index = 1
+collision_mask = 0
+tile_data = PoolIntArray( -524185, 0, 524288, -524184, 0, 6, -524183, 0, 1, -524182, 0, 327681, -524181, 0, 327681, -524180, 0, 1, -524179, 0, 1, -524178, 0, 327681, -524177, 0, 327682, -524175, 0, 0, -524174, 0, 327682, -458648, 0, 65536, -458647, 0, 65537, -458646, 0, 65537, -458645, 0, 65537, -458644, 0, 65537, -458643, 0, 393217, -458642, 0, 65537, -458641, 0, 458757, -458640, 0, 327681, -458639, 0, 458758, -458638, 0, 393218, -393113, 0, 524288, -393112, 0, 196614, -393111, 0, 458753, -393110, 0, 131073, -393109, 0, 131073, -393108, 0, 458753, -393107, 0, 458753, -393106, 0, 458753, -393105, 0, 458753, -393104, 0, 131073, -393103, 0, 458753, -393102, 0, 458754, -327565, 0, 3, -262029, 0, 65539, -196493, 0, 65539, -130957, 0, 65539, -65421, 0, 131075, 65639, 0, 327680, 65640, 0, 1, 65641, 0, 327681, 65642, 0, 327681, 65643, 0, 327681, 65644, 0, 327681, 65645, 0, 1, 65646, 0, 327681, 65647, 0, 327681, 65648, 0, 327681, 65649, 0, 327681, 65650, 0, 2, 131175, 0, 65536, 131176, 0, 65537, 131177, 0, 65537, 131178, 0, 65537, 131179, 0, 393217, 131180, 0, 65537, 131181, 0, 65537, 131182, 0, 393221, 131183, 0, 131073, 131184, 0, 65544, 131185, 0, 458753, 131186, 0, 131074, 196711, 0, 393216, 196712, 0, 65541, 196713, 0, 131073, 196714, 0, 131073, 196715, 0, 393222, 196716, 0, 393221, 196717, 0, 458753, 196718, 0, 131074, 196720, 0, 65539, 262247, 0, 131072, 262248, 0, 131074, 262251, 0, 131072, 262252, 0, 458754, 262256, 0, 458755 )
 
 [node name="Show1" type="Particles2D" parent="Tiles"]
 material = SubResource( 9 )
@@ -421,10 +503,10 @@ enemyPool = ExtResource( 12 )
 [node name="GameOver" parent="Player/CanvasLayer" index="8"]
 continueScene = "res://World/Tutorial/Tutorial.tscn"
 
-[node name="Stats" parent="Player/CanvasLayer/GameOver" index="1"]
+[node name="Stats" parent="Player/CanvasLayer/GameOver" index="2"]
 visible = false
 
-[node name="HighScore" parent="Player/CanvasLayer/GameOver" index="2"]
+[node name="HighScore" parent="Player/CanvasLayer/GameOver" index="3"]
 visible = false
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
