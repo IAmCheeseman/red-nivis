@@ -29,6 +29,8 @@ var headless := false
 
 var currentAttack := Node2D
 
+var fridge: Node2D
+
 
 func _ready() -> void:
 	var jumpState = $SpecialAttacks/Jump
@@ -53,6 +55,11 @@ func _process(delta: float) -> void:
 				uppercut_state(delta)
 			ATTACK:
 				currentAttack.attack(delta)
+			-1:
+				vel = Vector2.DOWN * 1000
+				anim.play("Idle")
+				if global_position.distance_to(fridge.global_position) < 32:
+					queue_free()
 	
 	sprite.rotation_degrees = vel.x / 25
 	
@@ -85,6 +92,8 @@ func dodge(area: Area2D) -> void:
 
 
 func attack() -> void:
+	if state == -1: return
+	
 	var amt = attacks.get_child_count()
 	for i in amt:
 		var c = attacks.get_child(rand_range(0, amt))
@@ -98,7 +107,7 @@ func _on_damaged() -> void:
 		sprite.texture = preload("res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Hole.png")
 		headless = true
 		
-		var fridge = preload("res://Entities/Enemies/Bosses/Fridgehead/FridgeFly.tscn").instance()
+		fridge = preload("res://Entities/Enemies/Bosses/Fridgehead/FridgeFly.tscn").instance()
 		fridge.targetPos = fridgePos.global_position
 		fridge.global_position = global_position - Vector2(0, 45)
 		GameManager.spawnManager.spawn_object(fridge)
@@ -107,7 +116,15 @@ func _on_damaged() -> void:
 
 
 func _on_dead() -> void:
-	var fridge = preload("res://Entities/Enemies/Bosses/Fridgehead/Fridge.tscn").instance()
+	floorRay.cast_to.y == 5000
+	floorRay.force_raycast_update()
+	GameManager.emit_signal("zoom_in", .75, 3, .1, floorRay.get_collision_point())
+	state = -1
+	
+	yield(TempTimer.timer(self, 2), "timeout")
+	fridge.queue_free()
+	
+	fridge = preload("res://Entities/Enemies/Bosses/Fridgehead/Fridge.tscn").instance()
 	fridge.global_position = global_position - Vector2(0, 100)
 	fridge.player = player
 	GameManager.spawnManager.spawn_object(fridge)

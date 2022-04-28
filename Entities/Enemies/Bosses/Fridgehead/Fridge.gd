@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum { WANDER, FOOD_SHOOTER, SLAM }
+enum { WANDER, FOOD_SHOOTER, SLAM, INTRO }
 
 onready var sprite = $Sprite
 onready var floorRay = $Collisions/FloorRay
@@ -14,7 +14,7 @@ var player: Node2D
 var targetPos: Vector2
 var vel: Vector2
 
-var state := WANDER
+var state := INTRO
 
 var offsets = [-80, -96]
 var currentOffset = 0
@@ -35,6 +35,9 @@ func _process(delta: float) -> void:
 			food_shoot(delta)
 		SLAM:
 			slam_state(delta)
+		INTRO:
+			vel = Vector2(0, 700)
+			if floorRay.is_colliding(): state = WANDER
 	
 	vel = move_and_slide(vel)
 

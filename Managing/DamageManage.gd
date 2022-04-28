@@ -24,6 +24,7 @@ var sprite: Sprite
 
 var hurtSFX:Node2D
 
+var alreadyDied := false
 var health:int
 
 export var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
@@ -73,7 +74,7 @@ func take_damage(amount:int, dir:Vector2) -> void:
 		par.update_healthbar()
 
 	# Killing thingy
-	if health <= 0:
+	if health <= 0 and !alreadyDied:
 		_die(dir)
 	emit_signal("damaged")
 
@@ -83,6 +84,7 @@ func take_damage(amount:int, dir:Vector2) -> void:
 
 
 func _die(dir: Vector2) -> void:
+	alreadyDied = true
 	emit_signal("dead")
 	# Instancing death particles
 	if useDeathParticles:
