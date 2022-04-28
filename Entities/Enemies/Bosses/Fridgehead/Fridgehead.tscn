@@ -1,7 +1,7 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.gd" type="Script" id=1]
-[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Head.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Hole.png" type="Texture" id=2]
 [ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=5]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/Laser.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Spin.gd" type="Script" id=11]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Jump.gd" type="Script" id=12]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 4 )
@@ -243,7 +244,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "LaserPrep"
-length = 0.375
+length = 0.9
 step = 0.075
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -264,12 +265,24 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.375 ),
+"times": PoolRealArray( 0.9 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "Laser", -1, 1.0, false ],
 "method": "play"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpecialAttacks/Laser/Light2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825, 0.9 ),
+"transitions": PoolRealArray( 1, 1.93187, 1.7411, 1.93187, 1.7411, 1.93187, 1.7411, 1.93187, 1.7411, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.5, 1.0, 1.5, 1.0, 1.5, 1.0, 1.5, 0.0 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -383,6 +396,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpecialAttacks/Laser/Light2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -522,6 +547,7 @@ shape = SubResource( 14 )
 disabled = true
 
 [node name="BlockHitbox" parent="Collisions" instance=ExtResource( 8 )]
+visible = false
 collision_mask = 2
 damage = 2
 
@@ -545,6 +571,7 @@ enabled = true
 cast_to = Vector2( 0, 5 )
 
 [node name="WallRay" type="RayCast2D" parent="Collisions"]
+visible = false
 position = Vector2( 0, -21 )
 enabled = true
 cast_to = Vector2( 1, 0 )
@@ -577,6 +604,12 @@ position = Vector2( 0, -16.5 )
 shape = SubResource( 19 )
 disabled = true
 
+[node name="Light2D" type="Light2D" parent="SpecialAttacks/Laser"]
+position = Vector2( 3, -17 )
+texture = ExtResource( 13 )
+texture_scale = 0.04
+energy = 0.0
+
 [node name="Spin" type="Node2D" parent="SpecialAttacks"]
 script = ExtResource( 11 )
 
@@ -607,6 +640,7 @@ position = Vector2( 0, -13 )
 maxHealth = 15000
 kbEnabled = false
 kbAmount = 0.0
+isBoss = true
 freeOnDeath = false
 spritePath = NodePath("../Sprite")
 deathParticles = ExtResource( 6 )

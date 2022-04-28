@@ -84,7 +84,7 @@ func jump(mod:=1.0) -> void:
 
 
 func uppercut(area: Area2D) -> void:
-	if area.is_in_group("player") and !state in [BLOCK]:
+	if area.is_in_group("player") and !state in [BLOCK, ATTACK]:
 		state = UPPERCUT
 		jump()
 		anim.stop()
@@ -132,8 +132,6 @@ func _on_damaged() -> void:
 
 
 func _on_dead() -> void:
-	floorRay.cast_to.y == 5000
-	floorRay.force_raycast_update()
 	GameManager.emit_signal("zoom_in", .75, 3, .1, floorRay.get_collision_point())
 	state = -1
 	
@@ -167,7 +165,7 @@ func walk_state(delta: float) -> void:
 	
 	anim.play("Run", -1, vel.x / speed)
 	
-	if global_position.distance_to(player.global_position) < 32:
+	if global_position.distance_to(player.global_position) < 32 and floorRay.is_colliding():
 		state = PUNCH_SIDE
 
 
