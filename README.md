@@ -1,3 +1,0 @@
-# AstronautGame
-### sadsa
-My game

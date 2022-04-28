@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
-enum { IDLE, WALK, PUNCH_SIDE, UPPERCUT, ATTACK }
+enum { IDLE, WALK, PUNCH_SIDE, UPPERCUT, BLOCK, ATTACK }
 
 onready var playerDetection = $Collisions/PlayerDetection
 onready var floorRay = $Collisions/FloorRay
+onready var wallRay = $Collisions/WallRay
 onready var uppercutHitbox = $Collisions/UppercutHitbox
 onready var sidePunchHitbox = $Collisions/PunchSideHitbox
+onready var blockHitbox = $Collisions/BlockHitbox/CollisionShape2D
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
@@ -44,6 +46,7 @@ func _process(delta: float) -> void:
 		player = playerDetection.get_player()
 		anim.play("Idle")
 	else:
+		blockHitbox.disabled = true
 		match state:
 			IDLE:
 				idle_state(delta)
@@ -53,6 +56,8 @@ func _process(delta: float) -> void:
 				punch_side_state(delta)
 			UPPERCUT:
 				uppercut_state(delta)
+			BLOCK:
+				block_state(delta)
 			ATTACK:
 				currentAttack.attack(delta)
 			-1:
@@ -79,7 +84,7 @@ func jump(mod:=1.0) -> void:
 
 
 func uppercut(area: Area2D) -> void:
-	if area.is_in_group("player"):
+	if area.is_in_group("player") and !state in [BLOCK]:
 		state = UPPERCUT
 		jump()
 		anim.stop()
@@ -88,13 +93,24 @@ func uppercut(area: Area2D) -> void:
 
 func dodge(area: Area2D) -> void:
 	if area.is_in_group("PlayerBullet"):
-		jump(1.5)
+		if !state in [UPPERCUT, ATTACK, BLOCK] and Utils.coin_flip():
+			state = PUNCH_SIDE
+			yield(TempTimer.timer(self, .05), "timeout")
+			if is_instance_valid(area): area.get_parent().queue_free()
+		else:
+			state = WALK
+			jump()
 
 
 func attack() -> void:
-	if state == -1: return
+	if state == -1 or !player: return
 	
 	var amt = attacks.get_child_count()
+	if rand_range(0, amt + 1) > 1:
+		state = BLOCK
+		targetX = to_local(player.global_position).x * 1000
+		return
+	
 	for i in amt:
 		var c = attacks.get_child(rand_range(0, amt))
 		if c.test():
@@ -128,6 +144,9 @@ func _on_dead() -> void:
 	fridge.global_position = global_position - Vector2(0, 100)
 	fridge.player = player
 	GameManager.spawnManager.spawn_object(fridge)
+	
+	yield(TempTimer.timer(self, 1), "timeout")
+	queue_free()
 
 
 func idle_state(delta: float) -> void:
@@ -150,6 +169,26 @@ func walk_state(delta: float) -> void:
 	
 	if global_position.distance_to(player.global_position) < 32:
 		state = PUNCH_SIDE
+
+
+func block_state(delta: float) -> void:
+	var vectorTarget = Vector2(targetX, global_position.y)
+	var dir := global_position.direction_to(vectorTarget).x
+	
+	var actualAccel = accel if floorRay.is_colliding() else 0
+	vel.x = lerp(vel.x, dir * (speed * 2), actualAccel * delta)
+	
+	wallRay.cast_to.x = dir * 16
+	
+	blockHitbox.disabled = false
+	if wallRay.is_colliding():
+		vel = Vector2(-vel.x / 2, -250)
+		GameManager.emit_signal("screenshake", 3, 4, .05, .1)
+		state = WALK
+	
+	sprite.flip_h = vel.x < 0
+	
+	anim.play("Block")
 
 
 func punch_side_state(delta: float) -> void:

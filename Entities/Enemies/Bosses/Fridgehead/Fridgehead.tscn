@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Head.png" type="Texture" id=2]
@@ -26,10 +26,13 @@ radius = 181.003
 extents = Vector2( 48, 32.75 )
 
 [sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 86, 35.25 )
+extents = Vector2( 60.5, 35.25 )
 
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 19, 27.5 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 19, 14 )
 
 [sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 10.5, 6 )
@@ -184,6 +187,24 @@ extents = Vector2( 188, 5.5 )
 
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 11.5, 26.5 )
+
+[sub_resource type="Animation" id=23]
+resource_name = "Block"
+length = 0.45
+loop = true
+step = 0.075
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15, 0.225, 0.3, 0.375 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 70, 71, 72, 73, 74, 72 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -351,6 +372,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Collisions/BlockHitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Run"
@@ -388,6 +421,37 @@ tracks/0/keys = {
 "values": [ 50, 51, 52, 53 ]
 }
 
+[sub_resource type="Animation" id=22]
+resource_name = "StartBlock"
+length = 0.15
+step = 0.075
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.075 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 60, 70 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Block", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+
 [node name="Fridgehead" type="KinematicBody2D" groups=["Fridgehead"]]
 collision_layer = 0
 script = ExtResource( 1 )
@@ -396,7 +460,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -38 )
 hframes = 10
-vframes = 6
+vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -428,6 +492,7 @@ visible = false
 shape = SubResource( 11 )
 
 [node name="UppercutArea" type="Area2D" parent="Collisions"]
+visible = false
 position = Vector2( 0, -71 )
 collision_layer = 0
 collision_mask = 2
@@ -443,7 +508,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/DodgeArea"]
-position = Vector2( 0, 2.75 )
+position = Vector2( 0, 3 )
 shape = SubResource( 13 )
 
 [node name="PunchSideHitbox" parent="Collisions" instance=ExtResource( 8 )]
@@ -456,7 +521,16 @@ position = Vector2( 1, -27.5 )
 shape = SubResource( 14 )
 disabled = true
 
+[node name="BlockHitbox" parent="Collisions" instance=ExtResource( 8 )]
+collision_mask = 2
+damage = 2
+
+[node name="CollisionShape2D" parent="Collisions/BlockHitbox" index="0"]
+position = Vector2( 1, -14 )
+shape = SubResource( 24 )
+
 [node name="UppercutHitbox" parent="Collisions" instance=ExtResource( 8 )]
+visible = false
 collision_mask = 2
 damage = 1
 
@@ -469,6 +543,11 @@ disabled = true
 visible = false
 enabled = true
 cast_to = Vector2( 0, 5 )
+
+[node name="WallRay" type="RayCast2D" parent="Collisions"]
+position = Vector2( 0, -21 )
+enabled = true
+cast_to = Vector2( 1, 0 )
 
 [node name="SpecialAttacks" type="Node2D" parent="."]
 
@@ -502,6 +581,7 @@ disabled = true
 script = ExtResource( 11 )
 
 [node name="SpinHitbox" parent="SpecialAttacks/Spin" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, 6 )
 collision_mask = 2
 damage = 1
@@ -524,7 +604,7 @@ script = ExtResource( 12 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
-maxHealth = 700
+maxHealth = 15000
 kbEnabled = false
 kbAmount = 0.0
 freeOnDeath = false
@@ -538,6 +618,7 @@ wait_time = 4.0
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Block = SubResource( 23 )
 anims/Idle = SubResource( 1 )
 anims/Laser = SubResource( 7 )
 anims/LaserPrep = SubResource( 6 )
@@ -547,17 +628,13 @@ anims/PunchUp = SubResource( 5 )
 anims/RESET = SubResource( 2 )
 anims/Run = SubResource( 3 )
 anims/Spin = SubResource( 20 )
+anims/StartBlock = SubResource( 22 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 3 )]
 bossName = "Fridgehead"
 dmgManagerPth = NodePath("../../DamageManager")
-
-[node name="FridgeheadHead" type="Sprite" parent="."]
-visible = false
-position = Vector2( 445, -95 )
-texture = ExtResource( 2 )
 
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="hurt" from="Collisions/FridgeHurtbox" to="DamageManager" method="take_damage"]
@@ -575,6 +652,7 @@ texture = ExtResource( 2 )
 [editable path="Collisions/FridgeHurtbox"]
 [editable path="Collisions/PlayerDetection"]
 [editable path="Collisions/PunchSideHitbox"]
+[editable path="Collisions/BlockHitbox"]
 [editable path="Collisions/UppercutHitbox"]
 [editable path="SpecialAttacks/Laser/LaserHitbox"]
 [editable path="SpecialAttacks/Spin/SpinHitbox"]
