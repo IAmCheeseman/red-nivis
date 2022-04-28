@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum { IDLE, WALK, PUNCH_SIDE, UPPERCUT, BLOCK, ATTACK }
+enum { DEAD=-1, IDLE, WALK, PUNCH_SIDE, UPPERCUT, BLOCK, ATTACK }
 
 onready var playerDetection = $Collisions/PlayerDetection
 onready var floorRay = $Collisions/FloorRay
@@ -60,11 +60,19 @@ func _process(delta: float) -> void:
 				block_state(delta)
 			ATTACK:
 				currentAttack.attack(delta)
-			-1:
+			DEAD:
 				vel = Vector2.DOWN * 1000
 				anim.play("Idle")
 				if global_position.distance_to(fridge.global_position) < 32:
 					GameManager.emit_signal("screenshake", 10, 8, .05, .1)
+					
+					var dir = Vector2.RIGHT
+					for i in 10:
+						var newDP = preload("res://Entities/Effects/Blood/Blood.tscn").instance()
+						newDP.position = global_position
+						newDP.rotation = dir.angle()
+						GameManager.spawnManager.spawn_object(newDP)
+						dir = dir.rotated((PI * 2) / (i + 1))
 					queue_free()
 	
 	sprite.rotation_degrees = vel.x / 25
@@ -79,13 +87,13 @@ func get_target_pos() -> void:
 
 
 func jump(mod:=1.0) -> void:
-	if floorRay.is_colliding() or state == ATTACK and !state in [BLOCK, ATTACK]:
+	if floorRay.is_colliding() or state == ATTACK and !state in [BLOCK, ATTACK, DEAD]:
 		vel.y = -uppercutForce * mod
 		position.y -= abs(floorRay.cast_to.y)
 
 
 func uppercut(area: Area2D) -> void:
-	if area.is_in_group("player") and !state in [BLOCK, ATTACK]:
+	if area.is_in_group("player") and !state in [BLOCK, ATTACK, DEAD]:
 		state = UPPERCUT
 		jump()
 		anim.stop()
@@ -93,9 +101,9 @@ func uppercut(area: Area2D) -> void:
 
 
 func dodge(area: Area2D) -> void:
-	if state == BLOCK: return
+	if state in [BLOCK, UPPERCUT, ATTACK, DEAD]: return
 	if area.is_in_group("PlayerBullet"):
-		if !state in [UPPERCUT, ATTACK] and Utils.coin_flip():
+		if Utils.coin_flip():
 			state = PUNCH_SIDE
 			yield(TempTimer.timer(self, .05), "timeout")
 			if is_instance_valid(area): area.get_parent().queue_free()
@@ -105,7 +113,7 @@ func dodge(area: Area2D) -> void:
 
 
 func attack() -> void:
-	if state == -1 or !player: return
+	if state == DEAD or !player: return
 	
 	var amt = attacks.get_child_count()
 	if rand_range(0, amt + 1) > 1 and !headless:
@@ -130,13 +138,13 @@ func _on_damaged() -> void:
 		fridge.targetPos = fridgePos.global_position
 		fridge.global_position = global_position - Vector2(0, 45)
 		GameManager.spawnManager.spawn_object(fridge)
-	
+	if state in [DEAD]: return
 	if state == UPPERCUT: state = WALK
 
 
 func _on_dead() -> void:
 	GameManager.emit_signal("zoom_in", .75, 3, .1, floorRay.get_collision_point())
-	state = -1
+	state = DEAD
 	
 	yield(TempTimer.timer(self, 2), "timeout")
 	fridge.queue_free()
@@ -169,7 +177,7 @@ func walk_state(delta: float) -> void:
 	anim.play("Run", -1, vel.x / speed)
 	
 	if global_position.distance_to(player.global_position) < 32 and floorRay.is_colliding():
-		state = PUNCH_SIDE
+		state = PUNCH_SIDE if state != DEAD else DEAD
 
 
 func block_state(delta: float) -> void:
@@ -205,6 +213,7 @@ func uppercut_state(delta: float) -> void:
 
 
 func _on_animation_finished(anim_name: String) -> void:
+	if state in [DEAD]: return
 	match state:
 		PUNCH_SIDE:
 			if anim_name == "PunchSide":
