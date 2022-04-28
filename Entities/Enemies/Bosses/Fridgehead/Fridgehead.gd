@@ -64,6 +64,7 @@ func _process(delta: float) -> void:
 				vel = Vector2.DOWN * 1000
 				anim.play("Idle")
 				if global_position.distance_to(fridge.global_position) < 32:
+					GameManager.emit_signal("screenshake", 10, 8, .05, .1)
 					queue_free()
 	
 	sprite.rotation_degrees = vel.x / 25
@@ -78,7 +79,7 @@ func get_target_pos() -> void:
 
 
 func jump(mod:=1.0) -> void:
-	if floorRay.is_colliding() or state == ATTACK:
+	if floorRay.is_colliding() or state == ATTACK and !state in [BLOCK, ATTACK]:
 		vel.y = -uppercutForce * mod
 		position.y -= abs(floorRay.cast_to.y)
 
@@ -92,8 +93,9 @@ func uppercut(area: Area2D) -> void:
 
 
 func dodge(area: Area2D) -> void:
+	if state == BLOCK: return
 	if area.is_in_group("PlayerBullet"):
-		if !state in [UPPERCUT, ATTACK, BLOCK] and Utils.coin_flip():
+		if !state in [UPPERCUT, ATTACK] and Utils.coin_flip():
 			state = PUNCH_SIDE
 			yield(TempTimer.timer(self, .05), "timeout")
 			if is_instance_valid(area): area.get_parent().queue_free()
@@ -106,7 +108,7 @@ func attack() -> void:
 	if state == -1 or !player: return
 	
 	var amt = attacks.get_child_count()
-	if rand_range(0, amt + 1) > 1:
+	if rand_range(0, amt + 1) > 1 and !headless:
 		state = BLOCK
 		targetX = to_local(player.global_position).x * 1000
 		return
@@ -116,6 +118,7 @@ func attack() -> void:
 		if c.test():
 			state = ATTACK
 			currentAttack = c
+			return
 
 
 func _on_damaged() -> void:
