@@ -26,6 +26,8 @@ func _on_interaction():
 	tween.interpolate_property(Engine, "time_scale", 1, 0, .2)
 	tween.start()
 	GameManager.inGUI = true
+	
+	give_schematic()
 
 
 func finish() -> void:
@@ -33,3 +35,8 @@ func finish() -> void:
 	Engine.time_scale = 1
 	GameManager.inGUI = false
 	queue_free()
+
+func give_schematic() -> void:
+	var pth = upgrade.resource_path
+	if pth in player.unlockedUpgrades: return
+	player.unlockedUpgrades.append(pth)
