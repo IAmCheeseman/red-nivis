@@ -7,7 +7,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/Props/AbilitySelector/AbilitySelector.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/EnviormentalArt/Freezers/FreezersAtmosphere.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -41,13 +41,12 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="Fridgehead" parent="." instance=ExtResource( 8 )]
-position = Vector2( 264, -54 )
-fridgePos = NodePath("../FridgePos")
-
 [node name="FridgePos" type="Position2D" parent="."]
 position = Vector2( 134, -122 )
 
 [node name="FreezersAtmosphere" parent="." instance=ExtResource( 9 )]
+
+[node name="AbilitySelector" parent="." instance=ExtResource( 8 )]
+position = Vector2( 32, -4 )
 
 [editable path="CameraMoveZone"]

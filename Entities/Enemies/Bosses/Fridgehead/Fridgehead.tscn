@@ -651,7 +651,7 @@ script = ExtResource( 12 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, -13 )
-maxHealth = 1
+maxHealth = 12500
 kbEnabled = false
 kbAmount = 0.0
 isBoss = true

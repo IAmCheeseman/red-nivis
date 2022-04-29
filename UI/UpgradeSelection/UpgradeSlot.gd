@@ -1,4 +1,3 @@
-tool
 extends Control
 
 onready var textureRect = $BG/TextureRect
@@ -14,13 +13,8 @@ signal clicked
 func _ready() -> void:
 	textureRect.texture = upgrade.icon
 	nameLabel.text = upgrade.name
-
-
-func _process(_delta: float) -> void:
-	nameLabel.hide()
-	if get_global_rect().has_point(get_global_mouse_position()):
-		nameLabel.rect_position.x = (-nameLabel.rect_size.x*.5)+bg.texture.get_width()*.5
-		nameLabel.show()
+	
+	nameLabel.modulate = Color("#c7cfcc")
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -28,9 +22,20 @@ func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("use_item"):
 		emit_signal("clicked")
 		bg.self_modulate = Color(0, 0, 0, .75)
+		nameLabel.modulate = Color("#c7cfcc")
 
 func update_upgrade(_upgrade:Upgrade) -> void:
 	upgrade = _upgrade
 	if is_inside_tree():
 		textureRect.texture = upgrade.icon
 		nameLabel.text = upgrade.name
+
+func _on_mouse_entered() -> void:
+	rect_position.y -= 1
+	rect_size.y += 1
+	nameLabel.modulate = Color("#e8c170")
+
+func _on_mouse_exited() -> void:
+	rect_position.y += 1
+	rect_size.y -= 1
+	nameLabel.modulate = Color("#c7cfcc")

@@ -10,7 +10,7 @@
 [ext_resource path="res://RadialGradient.png" type="Texture" id=8]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=14]
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
 
 uniform float lod : hint_range(0., 5.) = 5.0;
@@ -23,13 +23,13 @@ void fragment()
 }"
 
 [sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
+shader = SubResource( 9 )
 shader_param/lod = 5.0
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.925333, 0.919318 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
+[sub_resource type="CurveTexture" id=10]
 curve = SubResource( 5 )
 
 [sub_resource type="ParticlesMaterial" id=4]
@@ -45,7 +45,7 @@ initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.1
-scale_curve = SubResource( 6 )
+scale_curve = SubResource( 10 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
