@@ -10,6 +10,8 @@ onready var sidePunchHitbox = $Collisions/PunchSideHitbox
 onready var blockHitbox = $Collisions/BlockHitbox/CollisionShape2D
 onready var fridgeCrashSFX = $FridgeCrashSFX 
 
+onready var blockWindUp = $Timers/BlockWindUp
+
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
@@ -22,6 +24,8 @@ export var accel := 2.5
 export var frict := 5.0
 export var uppercutForce := 270.0
 export(NodePath) onready var fridgePos = get_node(fridgePos)  
+
+var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
 
 var vel: Vector2
 onready var targetX := global_position.x
@@ -125,6 +129,7 @@ func attack() -> void:
 	if rand_range(0, amt + 1) > 1 and !headless:
 		state = BLOCK
 		targetX = to_local(player.global_position).x * 1000
+		blockWindUp.start()
 		return
 	
 	for i in amt:
@@ -187,21 +192,25 @@ func walk_state(delta: float) -> void:
 
 
 func block_state(delta: float) -> void:
-	var vectorTarget = Vector2(targetX, global_position.y)
-	var dir := global_position.direction_to(vectorTarget).x
+	if blockWindUp.is_stopped():
+		var vectorTarget = Vector2(targetX, global_position.y)
+		var dir := global_position.direction_to(vectorTarget).x
+		
+		var actualAccel = accel if floorRay.is_colliding() else 0.0
+		vel.x = lerp(vel.x, dir * (speed * 2), actualAccel * delta)
+		
+		wallRay.cast_to.x = dir * 16
+		
+		blockHitbox.disabled = false
+		if wallRay.is_colliding():
+			vel = Vector2(-vel.x / 2, -250)
+			GameManager.emit_signal("screenshake", 3, 4, .05, .1)
+			state = WALK
+	else:
+		targetX = to_local(player.global_position).x * 1000
+		vel.x = 0
 	
-	var actualAccel = accel if floorRay.is_colliding() else 0.0
-	vel.x = lerp(vel.x, dir * (speed * 2), actualAccel * delta)
-	
-	wallRay.cast_to.x = dir * 16
-	
-	blockHitbox.disabled = false
-	if wallRay.is_colliding():
-		vel = Vector2(-vel.x / 2, -250)
-		GameManager.emit_signal("screenshake", 3, 4, .05, .1)
-		state = WALK
-	
-	sprite.flip_h = vel.x < 0
+	sprite.flip_h = targetX < 0
 	
 	anim.play("Block")
 
@@ -229,6 +238,16 @@ func _on_animation_finished(anim_name: String) -> void:
 				state = WALK
 
 
+func add_walk_particles(spawnPos:Vector2):
+	var newDust = walkParticles.instance()
+	newDust.position = spawnPos
+
+	# Making it look right
+	var normalizedVelX = vel.normalized().x
+	if normalizedVelX != 0: newDust.scale.x = -normalizedVelX
+	newDust.emitting = true
+
+	add_child(newDust)
 
 
 

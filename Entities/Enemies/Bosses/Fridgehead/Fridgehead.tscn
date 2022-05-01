@@ -247,6 +247,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 70, 71, 72, 73, 74, 72 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15, 0.375 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ Vector2( 0, 0 ) ],
+"method": "add_walk_particles"
+}, {
+"args": [ Vector2( 0, 0 ) ],
+"method": "add_walk_particles"
+} ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -492,6 +509,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 10, 11, 12, 13, 14, 12 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15, 0.375 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ Vector2( 0, 0 ) ],
+"method": "add_walk_particles"
+}, {
+"args": [ Vector2( 0, 0 ) ],
+"method": "add_walk_particles"
+} ]
+}
 
 [sub_resource type="Animation" id=20]
 resource_name = "Spin"
@@ -724,6 +758,9 @@ deathParticles = ExtResource( 6 )
 [node name="AttackTimer" type="Timer" parent="Timers"]
 wait_time = 4.0
 autostart = true
+
+[node name="BlockWindUp" type="Timer" parent="Timers"]
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
