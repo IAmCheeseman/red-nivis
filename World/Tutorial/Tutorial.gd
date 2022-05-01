@@ -3,6 +3,7 @@ extends Node2D
 onready var parrySign = $Props/ParrySign
 onready var parrySignAnim = $Props/ParrySign/AnimationPlayer2
 onready var suicideSign = $Props/DeathSign
+onready var shooters = $Props/Shooters
 
 
 func _ready() -> void:
@@ -36,5 +37,8 @@ func load_world():
 	var _discard = get_tree().change_scene("res://World/StartingArea/StartingArea.tscn")
 
 
-func lock_player() -> void:
-	$Tiles/Blocking/AnimationPlayer.play("Block")
+func lock_player(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		$Tiles/Blocking/AnimationPlayer.play("Block")
+		for i in shooters.get_children():
+			i.start()

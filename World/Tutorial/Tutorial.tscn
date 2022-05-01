@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -24,6 +24,13 @@
 [ext_resource path="res://World/Tutorial/SuicideEncouragement.tres" type="Resource" id=22]
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=23]
 [ext_resource path="res://Entities/NPC/LmaoMan/LmaoMan.tscn" type="PackedScene" id=24]
+[ext_resource path="res://UI/Assets/Prompts/S_KB.png" type="Texture" id=25]
+[ext_resource path="res://UI/Assets/Prompts/A_KB.png" type="Texture" id=26]
+[ext_resource path="res://UI/Assets/Prompts/D_KB.png" type="Texture" id=27]
+[ext_resource path="res://World/Tutorial/Prompts.gd" type="Script" id=28]
+[ext_resource path="res://UI/Assets/Prompts/Space_KB.png" type="Texture" id=29]
+[ext_resource path="res://UI/Assets/Prompts/Mouse_Left_KB.png" type="Texture" id=30]
+[ext_resource path="res://UI/Assets/Prompts/Mouse_Right_KB.png" type="Texture" id=31]
 
 [sub_resource type="Animation" id=7]
 resource_name = "Block"
@@ -193,6 +200,9 @@ extents = Vector2( 10, 84 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 464, 10 )
 
+[sub_resource type="CanvasItemMaterial" id=13]
+light_mode = 1
+
 [sub_resource type="Animation" id=5]
 length = 0.5
 tracks/0/type = "value"
@@ -237,6 +247,9 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 10, 44 )
+
 [node name="StartingArea" type="Node2D"]
 script = ExtResource( 9 )
 
@@ -269,9 +282,6 @@ rect_min_size = Vector2( 0.609, 0 )
 texture = ExtResource( 14 )
 expand = true
 stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -408,6 +418,48 @@ z_index = -2
 
 [node name="Decoration" type="Node2D" parent="Props"]
 
+[node name="Prompts" type="Node2D" parent="Props"]
+material = SubResource( 13 )
+z_index = 4096
+script = ExtResource( 28 )
+player = NodePath("../../Player")
+
+[node name="AKb" type="Sprite" parent="Props/Prompts"]
+use_parent_material = true
+position = Vector2( -20.5, -96.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="SKb" type="Sprite" parent="Props/Prompts"]
+use_parent_material = true
+position = Vector2( -0.5, -96.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 25 )
+
+[node name="DKb" type="Sprite" parent="Props/Prompts"]
+use_parent_material = true
+position = Vector2( 19.5, -96.5 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 27 )
+
+[node name="SpaceKb" type="Sprite" parent="Props/Prompts"]
+use_parent_material = true
+position = Vector2( 360, 28 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 29 )
+
+[node name="LMBKb" type="Sprite" parent="Props/Prompts"]
+use_parent_material = true
+position = Vector2( 1238, -81 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 30 )
+
+[node name="RMBKb" type="Sprite" parent="Props/Prompts"]
+use_parent_material = true
+position = Vector2( 1743, -51 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 31 )
+
 [node name="Scanner" parent="Props" instance=ExtResource( 5 )]
 position = Vector2( 1238, -15 )
 
@@ -415,6 +467,7 @@ position = Vector2( 1238, -15 )
 itemPool = [ "pistol" ]
 
 [node name="ParrySign" parent="Props" instance=ExtResource( 17 )]
+visible = false
 position = Vector2( 1736, 16 )
 z_index = 1
 
@@ -506,7 +559,24 @@ scale = Vector2( -1, 1 )
 [node name="CollisionShape2D" parent="Props/LmaoMan/Iteraction" index="1"]
 position = Vector2( 1, 29 )
 
+[node name="MeleeTutorial" type="Area2D" parent="Props"]
+position = Vector2( 1659, -26 )
+z_index = 1
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/MeleeTutorial"]
+shape = SubResource( 14 )
+
 [node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="Flashlight" parent="Player" index="0"]
+position = Vector2( 0, -6 )
+
+[node name="Inventory" parent="Player/CanvasLayer" index="5"]
+margin_top = 2.0
+margin_bottom = 2.0
 
 [node name="GameOver" parent="Player/CanvasLayer" index="8"]
 continueScene = "res://World/Tutorial/Tutorial.tscn"
@@ -525,6 +595,7 @@ visible = false
 [connection signal="done" from="Props/Scanner" to="Props/TutorialFight/EnemySpawn3" method="start"]
 [connection signal="dialog_finished" from="Props/ParrySign" to="." method="lock_player"]
 [connection signal="dialog_finished" from="Props/ParrySign" to="Props/Shooters" method="enable_shooters"]
+[connection signal="area_entered" from="Props/MeleeTutorial" to="." method="lock_player"]
 
 [editable path="Managing/CameraZones/CameraMoveZone1"]
 [editable path="Managing/CameraZones/CameraMoveZone2"]
