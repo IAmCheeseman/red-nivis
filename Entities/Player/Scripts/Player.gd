@@ -253,7 +253,7 @@ func controller_aiming() -> void:
 	Input.warp_mouse_position(joystickVector)
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if playerData.isDead:
 		return
 	# Jumping

@@ -175,7 +175,7 @@ func walk_state(delta: float) -> void:
 	var vectorTarget = Vector2(targetX, global_position.y)
 	var dir := global_position.direction_to(vectorTarget).x
 	
-	var actualAccel = accel if floorRay.is_colliding() else 0
+	var actualAccel = accel if floorRay.is_colliding() else 0.0
 	vel.x = lerp(vel.x, dir * speed, actualAccel * delta)
 	
 	sprite.flip_h = vel.x < 0
@@ -190,7 +190,7 @@ func block_state(delta: float) -> void:
 	var vectorTarget = Vector2(targetX, global_position.y)
 	var dir := global_position.direction_to(vectorTarget).x
 	
-	var actualAccel = accel if floorRay.is_colliding() else 0
+	var actualAccel = accel if floorRay.is_colliding() else 0.0
 	vel.x = lerp(vel.x, dir * (speed * 2), actualAccel * delta)
 	
 	wallRay.cast_to.x = dir * 16
