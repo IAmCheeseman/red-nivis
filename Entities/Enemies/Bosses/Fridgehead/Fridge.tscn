@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridge.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridge.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Effects/RobotSparks/RobotSparks.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://General/BossDropper.gd" type="Script" id=8]
+[ext_resource path="res://Items/HeartContiner/HeartContainer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Items/Upgrades/Hookshot/DroppedHookshot.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 12, 18 )
@@ -86,6 +89,11 @@ autostart = true
 [node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 3 )]
 bossName = "The Fridge"
 dmgManagerPth = NodePath("../../DamageManager")
+
+[node name="BossDropper" type="Node2D" parent="."]
+script = ExtResource( 8 )
+spritePath = NodePath("../Sprite")
+drops = [ ExtResource( 9 ), ExtResource( 10 ) ]
 
 [connection signal="damaged" from="DamageManager" to="." method="_on_damaged"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
