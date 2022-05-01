@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
+[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/EnviormentalArt/Freezers/FreezersAtmosphere.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -39,6 +40,11 @@ position = Vector2( 1983, -71 )
 shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
+
+[node name="Fridgehead" parent="." instance=ExtResource( 8 )]
+position = Vector2( 305, -12 )
+speed = 190.0
+fridgePos = NodePath("../FridgePos")
 
 [node name="FridgePos" type="Position2D" parent="."]
 position = Vector2( 134, -122 )

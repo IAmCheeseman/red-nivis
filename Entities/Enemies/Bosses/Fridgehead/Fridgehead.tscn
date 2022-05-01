@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridgehead_Head.png" type="Texture" id=2]
@@ -38,7 +38,7 @@ extents = Vector2( 19, 27.5 )
 extents = Vector2( 19, 14 )
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 10.5, 6 )
+extents = Vector2( 7, 3.5 )
 
 [sub_resource type="CanvasItemMaterial" id=16]
 blend_mode = 1
@@ -116,6 +116,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Telegraph:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -196,9 +208,24 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector2( 0, -16.5 ), Vector2( 188, -16.5 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Telegraph:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 188, 5.5 )
+
+[sub_resource type="CanvasItemMaterial" id=25]
+blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 11.5, 26.5 )
@@ -297,6 +324,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1.93187, 1.7411, 1.93187, 1.7411, 1.93187, 1.7411, 1.93187, 1.7411, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0, 1.5, 1.0, 1.5, 1.0, 1.5, 1.0, 1.5, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpecialAttacks/Laser/Telegraph:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.075 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -423,6 +462,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpecialAttacks/Laser/Telegraph:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Run"
@@ -494,6 +545,7 @@ tracks/1/keys = {
 [node name="Fridgehead" type="KinematicBody2D" groups=["Fridgehead"]]
 collision_layer = 0
 script = ExtResource( 1 )
+speed = 130.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -553,7 +605,7 @@ shape = SubResource( 13 )
 [node name="PunchSideHitbox" parent="Collisions" instance=ExtResource( 8 )]
 visible = false
 collision_mask = 2
-damage = 2
+damage = 1
 
 [node name="CollisionShape2D" parent="Collisions/PunchSideHitbox" index="0"]
 position = Vector2( 1, -27.5 )
@@ -563,19 +615,19 @@ disabled = true
 [node name="BlockHitbox" parent="Collisions" instance=ExtResource( 8 )]
 visible = false
 collision_mask = 2
-damage = 2
+damage = 1
 
 [node name="CollisionShape2D" parent="Collisions/BlockHitbox" index="0"]
 position = Vector2( 1, -14 )
 shape = SubResource( 24 )
 
 [node name="UppercutHitbox" parent="Collisions" instance=ExtResource( 8 )]
-visible = false
+position = Vector2( 0, -21 )
 collision_mask = 2
 damage = 1
 
 [node name="CollisionShape2D" parent="Collisions/UppercutHitbox" index="0"]
-position = Vector2( -0.5, -14 )
+position = Vector2( 0, -11.5 )
 shape = SubResource( 15 )
 disabled = true
 
@@ -604,11 +656,11 @@ expand = true
 stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpecialAttacks/Laser"]
+autoplay = "RESET"
 anims/RESET = SubResource( 18 )
 anims/Shoot = SubResource( 17 )
 
 [node name="LaserHitbox" parent="SpecialAttacks/Laser" instance=ExtResource( 8 )]
-visible = false
 position = Vector2( 0, 6 )
 collision_mask = 2
 damage = 1
@@ -623,6 +675,13 @@ position = Vector2( 3, -17 )
 texture = ExtResource( 13 )
 texture_scale = 0.04
 energy = 0.0
+
+[node name="Telegraph" type="Line2D" parent="SpecialAttacks/Laser"]
+visible = false
+material = SubResource( 25 )
+points = PoolVector2Array( 8, -17, 376, -17 )
+width = 2.0
+default_color = Color( 1, 0.4, 0.4, 1 )
 
 [node name="Spin" type="Node2D" parent="SpecialAttacks"]
 script = ExtResource( 11 )
@@ -666,6 +725,7 @@ wait_time = 4.0
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
 anims/Block = SubResource( 23 )
 anims/Idle = SubResource( 1 )
 anims/Laser = SubResource( 7 )
