@@ -179,7 +179,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0.1, 0.35 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -661,6 +661,7 @@ anims/RESET = SubResource( 18 )
 anims/Shoot = SubResource( 17 )
 
 [node name="LaserHitbox" parent="SpecialAttacks/Laser" instance=ExtResource( 8 )]
+visible = false
 position = Vector2( 0, 6 )
 collision_mask = 2
 damage = 1
