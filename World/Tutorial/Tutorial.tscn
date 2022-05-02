@@ -554,6 +554,8 @@ enemyPool = ExtResource( 12 )
 
 [node name="LmaoMan" parent="Props" instance=ExtResource( 24 )]
 position = Vector2( 715, 137 )
+
+[node name="ScaleHelper" parent="Props/LmaoMan" index="0"]
 scale = Vector2( -1, 1 )
 
 [node name="CollisionShape2D" parent="Props/LmaoMan/Iteraction" index="1"]

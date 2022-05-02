@@ -24,7 +24,7 @@ func init_slots() -> void:
 		if u in player.upgrades: _on_upgrade_slot_clicked(i)
 
 
-func _on_upgrade_slot_clicked(node:Node) -> void:
+func _on_upgrade_slot_clicked(node: Node) -> void:
 	if node.get_parent() == upgrades:
 		if selections.get_child_count() == player.upgradeSlots:
 			return
