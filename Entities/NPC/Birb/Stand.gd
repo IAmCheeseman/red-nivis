@@ -123,7 +123,10 @@ func find_same_tier_items(tier: int) -> Array:
 
 
 func _input(event: InputEvent) -> void:
+	if !GameManager.inGUI or !$CanvasLayer/Prompts.visible: return
+	
 	# Close the shop
-	if event.is_action_pressed("ui_cancel"):
-		open_shop(false)
-		Utils.free_children(shopInven)
+	for i in ["ui_cancel", "interact"]:
+		if event.is_action_pressed(i):
+			open_shop(false)
+			Utils.free_children(shopInven)

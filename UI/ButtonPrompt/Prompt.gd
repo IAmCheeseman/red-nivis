@@ -1,13 +1,12 @@
-tool
 extends MarginContainer
 
 export var promptText := "[Action]" setget _on_prompt_text_changed
-export var promptAction := "interact" setget _on_prompt_action_changed
+export var promptAction := "interact"
 
 var doneAction := false
 
-func _ready() -> void:
-	_on_prompt_action_changed(promptAction)
+func _enter_tree() -> void:
+	_on_prompt_action_changed()
 
 
 func _on_prompt_text_changed(val: String) -> void:
@@ -15,14 +14,14 @@ func _on_prompt_text_changed(val: String) -> void:
 	yield(TempTimer.idle_frame(self), "timeout")
 	$Content/Label.text = promptText
 
-func _on_prompt_action_changed(val: String) -> void:
+func _on_prompt_action_changed() -> void:
 	if doneAction: return
 	doneAction = true
 	
 	for i in $Content.get_children():
 		if !i.name in ["TextureRect", "Label"]: i.queue_free()
 	
-	promptAction = val
+	promptAction
 	var actions = promptAction.split(",")
 	print(name, actions)
 	for i in actions:
