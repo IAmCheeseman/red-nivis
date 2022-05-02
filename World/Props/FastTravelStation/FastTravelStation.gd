@@ -5,6 +5,7 @@ onready var teleportEffect = $Teleport/AnimationPlayer
 
 onready var playerData = preload("res://Entities/Player/Player.tres")
 
+var disableQuit = false
 
 func _ready() -> void:
 	# Adding the station to a list of stations if 
@@ -35,6 +36,7 @@ func _ready() -> void:
 func _on_interaction() -> void:
 	fastTravelMenu.show()
 	GameManager.inGUI = true
+	disableQuit = true
 
 # Gets called when the teleportation animation is done
 func teleport() -> void:
@@ -59,7 +61,12 @@ func _on_room_selected() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		fastTravelMenu.hide()
-		yield(TempTimer.idle_frame(self),"timeout")
-		GameManager.inGUI = false
+	if !GameManager.inGUI: return
+	if disableQuit:
+		disableQuit = false
+		return
+	for i in ["ui_cancel", "map", "interact"]:
+		if event.is_action_pressed(i):
+			fastTravelMenu.hide()
+			yield(TempTimer.idle_frame(self),"timeout")
+			GameManager.inGUI = false

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Esc_KB.png-06668efbd0c8eddaae028de4f6030eb8.stex"
+path="res://.import/Escape_KB.png-a59991c6db81d2be3d7ccc3776768579.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Assets/Prompts/Esc_KB.png"
-dest_files=[ "res://.import/Esc_KB.png-06668efbd0c8eddaae028de4f6030eb8.stex" ]
+source_file="res://UI/Assets/Prompts/Escape_KB.png"
+dest_files=[ "res://.import/Escape_KB.png-a59991c6db81d2be3d7ccc3776768579.stex" ]
 
 [params]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Map/MapGenerator.gd" type="Script" id=1]
 [ext_resource path="res://UI/Map/MapTiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Map/TeleportMenu.gd" type="Script" id=3]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=4]
+[ext_resource path="res://UI/ButtonPrompt/Prompt.tscn" type="PackedScene" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -12,6 +13,7 @@ region = Rect2( 136, 65, 14, 13 )
 [node name="TeleportMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -317, -34 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -33,3 +35,17 @@ __meta__ = {
 
 [node name="Selection" type="Sprite" parent="MapTiles"]
 texture = SubResource( 1 )
+
+[node name="Prompts" type="VBoxContainer" parent="."]
+anchor_bottom = 1.0
+margin_right = 71.0
+alignment = 2
+
+[node name="Prompt" parent="Prompts" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 213.0
+margin_right = 71.0
+margin_bottom = 220.0
+promptText = "Close Map"
+promptAction = "pause,map,interact"

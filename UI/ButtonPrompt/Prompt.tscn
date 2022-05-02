@@ -22,6 +22,7 @@ margin_right = 360.0
 margin_bottom = 220.0
 
 [node name="TextureRect" type="TextureRect" parent="Content"]
+visible = false
 margin_right = 18.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 18, 18 )
@@ -30,8 +31,7 @@ expand = true
 stretch_mode = 7
 
 [node name="Label" type="Label" parent="Content"]
-margin_left = 22.0
-margin_right = 46.0
+margin_right = 24.0
 margin_bottom = 220.0
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
