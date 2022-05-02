@@ -8,8 +8,6 @@ export var useable = true
 func _ready():
 	hide()
 	if !useable: queue_free()
-#func _process(_delta: float) -> void:
-#	BGgradient.rect_position.x = BG.rect_position.x + BG.rect_size.x
 
 
 func _input(event):

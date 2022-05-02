@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Entities/NPC/TheGuy/TheGuy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Assets/Title_RedNivis.png" type="Texture" id=7]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=8]
+[ext_resource path="res://UI/ButtonPrompt/Prompt.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=14]
 
 [sub_resource type="Shader" id=9]
@@ -162,16 +163,34 @@ visible = false
 fromPth = NodePath("../../..")
 toPth = NodePath("../../../../Margin")
 
+[node name="Prompts" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+rect_min_size = Vector2( 0, 24 )
+alignment = 2
+
+[node name="Prompt" parent="Prompts" instance=ExtResource( 9 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 330.0
+margin_right = 360.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 0, 24 )
+promptText = "Exit"
+promptAction = "pause"
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4096
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2( 0, 2 )
-polygon = PoolVector2Array( 0, -2, -5, -2, -6, 230, 369, 230, 368, -11, 0, -11, 0, -2, 360, -2, 360, 220, 0, 220 )
+polygon = PoolVector2Array( 0, -2, -5, -2, -6, 230, 369, 230, 368, -11, 0, -11, 0, -2, 360, -2, 360, 218, 0, 218 )
 
 [node name="TheGuy" parent="StaticBody2D" instance=ExtResource( 6 )]
-position = Vector2( 313, 217 )
+position = Vector2( 312, 215 )
 
 [connection signal="pressed" from="Margin/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Margin/VBoxContainer/Hub" to="." method="_on_quittm_pressed"]

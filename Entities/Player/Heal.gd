@@ -1,11 +1,11 @@
 extends TextureProgress
 
-var playerData = preload("res://Entities/Player/Player.tres")
+var playerData := preload("res://Entities/Player/Player.tres")
 
-var finished = false
+var finished := false
 
 func _ready() -> void:
-	playerData.connect("healthChanged", self, "_on_health_changed")
+	var _discard := playerData.connect("healthChanged", self, "_on_health_changed")
 	max_value = playerData.healTime
 	hide()
 

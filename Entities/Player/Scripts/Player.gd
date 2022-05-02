@@ -7,49 +7,49 @@ const SNAP_DIRECTION = Vector2.DOWN
 const SNAP_LENGTH = 5
 
 # Nodes
-onready var sprite = $ScaleHelper/Sprite
-onready var hand = $ScaleHelper/Sprite/Arm
-onready var rightHand = $ScaleHelper/Sprite/Arm/Hand
-onready var collision = $CollisionShape2D
-onready var scaleHelper = $ScaleHelper
-onready var hurtbox = $Hurtbox
-onready var vignette = $CanvasLayer/Vignette
-onready var grayscale = $CanvasLayer/GrayScaleDeath
-onready var animationPlayer = $AnimationPlayer
-onready var SaS = $SquashAndStretch
-onready var flashPlayer = $Flash
-onready var deathScreen = $CanvasLayer/GameOver
-onready var itemHolder = $ItemHolder
-onready var inventory = $CanvasLayer/Inventory
-onready var hurtSFX = $Sounds/HurtSFX
-onready var jumpSFX = $Sounds/JumpSFX
-onready var walkSFX = $Sounds/WalkSFX
-onready var dropDownTimer = $DropDownTimer
-onready var jumpWindow = $APressWindow
-onready var dashCooldown = $DashCooldown
-onready var healthVig = $CanvasLayer/HealthVig
-onready var healVignette = $CanvasLayer/HealVig
-onready var gameOverlay = $CanvasLayer/GameOverlay
-onready var tileChecker = $TileCheckers/BottomTileChecker
-onready var djParticles = $DoubleJumpParticles
-onready var dmgBuffOrb = $ScaleHelper/SpinningOrb
+onready var sprite := $ScaleHelper/Sprite
+onready var hand := $ScaleHelper/Sprite/Arm
+onready var rightHand := $ScaleHelper/Sprite/Arm/Hand
+onready var collision := $CollisionShape2D
+onready var scaleHelper := $ScaleHelper
+onready var hurtbox := $Hurtbox
+onready var vignette := $CanvasLayer/Vignette
+onready var grayscale := $CanvasLayer/GrayScaleDeath
+onready var animationPlayer := $AnimationPlayer
+onready var SaS := $SquashAndStretch
+onready var flashPlayer := $Flash
+onready var deathScreen := $CanvasLayer/GameOver
+onready var itemHolder := $ItemHolder
+onready var inventory := $CanvasLayer/Inventory
+onready var hurtSFX := $Sounds/HurtSFX
+onready var jumpSFX := $Sounds/JumpSFX
+onready var walkSFX := $Sounds/WalkSFX
+onready var dropDownTimer := $DropDownTimer
+onready var jumpWindow := $APressWindow
+onready var dashCooldown := $DashCooldown
+onready var healthVig := $CanvasLayer/HealthVig
+onready var healVignette := $CanvasLayer/HealVig
+onready var gameOverlay := $CanvasLayer/GameOverlay
+onready var tileChecker := $TileCheckers/BottomTileChecker
+onready var djParticles := $DoubleJumpParticles
+onready var dmgBuffOrb := $ScaleHelper/SpinningOrb
 
 var vel := Vector2.ZERO
-var snapVector = SNAP_DIRECTION*SNAP_LENGTH
-var lastFrameGroundState = false
-var triedJumpRecent = false
-var mouseTarget = Vector2.ZERO
-var lastUsedMouse = true
+var snapVector := SNAP_DIRECTION*SNAP_LENGTH
+var lastFrameGroundState := false
+var triedJumpRecent := false
+var mouseTarget := Vector2.ZERO
+var lastUsedMouse := true
 var state = states.WALK
-var dontPlayJump = false
+var dontPlayJump := false
 
 var lastUpdatedAim := Vector2.RIGHT*64
 
-var walkParticles = preload("res://Entities/Player//WalkParticles.tscn")
-var landParticles = preload("res://Entities/Player/Assets/LandParticles.tscn")
-var playerData = preload("res://Entities/Player/Player.tres")
-var lockMovement = false
-var timeOnGround = 0.0
+var walkParticles := preload("res://Entities/Player//WalkParticles.tscn")
+var landParticles := preload("res://Entities/Player/Assets/LandParticles.tscn")
+var playerData := preload("res://Entities/Player/Player.tres")
+var lockMovement := false
+var timeOnGround := 0.0
 
 var gravity := 0.0
 var controllerPressed = 0.0
@@ -65,8 +65,8 @@ func _ready():
 		die()
 	playerData.playerObject = self
 	grayscale.material.set_shader_param("strength", 1)
-	playerData.connect("healthChanged", self, "_on_health_changed")
-	hurtbox.connect("hurt", playerData, "_on_damage_taken")
+	var _discard1 = playerData.connect("healthChanged", self, "_on_health_changed")
+	var _discard2 = hurtbox.connect("hurt", playerData, "_on_damage_taken")
 
 	yield(TempTimer.idle_frame(self), "timeout")
 	playerData.ammo = playerData.maxAmmo

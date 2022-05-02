@@ -21,7 +21,6 @@ func _on_prompt_action_changed() -> void:
 	for i in $Content.get_children():
 		if !i.name in ["TextureRect", "Label"]: i.queue_free()
 	
-	promptAction
 	var actions = promptAction.split(",")
 	print(name, actions)
 	for i in actions:

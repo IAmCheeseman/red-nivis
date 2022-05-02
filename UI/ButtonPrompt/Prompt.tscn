@@ -13,12 +13,13 @@ font_data = ExtResource( 2 )
 [node name="Prompt" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 3
 custom_constants/margin_left = 3
 script = ExtResource( 3 )
 
 [node name="Content" type="HBoxContainer" parent="."]
 margin_left = 3.0
-margin_right = 360.0
+margin_right = 357.0
 margin_bottom = 220.0
 
 [node name="TextureRect" type="TextureRect" parent="Content"]
