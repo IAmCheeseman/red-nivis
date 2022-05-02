@@ -8,6 +8,7 @@ onready var viewport:Viewport = $Viewport
 onready var blur = $Node2D/Blur
 onready var selection = $Selection#Viewport/Selection
 onready var mapGenerator = $MapGenerator
+onready var prompts = $"../../Prompts"
 
 var mapData = preload("res://World/WorldManagement/WorldData.tres")
 
@@ -40,7 +41,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if inMiniMode: camera.position = player.position
+	if inMiniMode:
+		camera.position = player.position
+	prompts.visible = !inMiniMode
 
 
 func _input(event: InputEvent) -> void:
