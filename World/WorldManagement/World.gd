@@ -43,6 +43,7 @@ func _ready() -> void:
 	var biome = worldData.get_biome_by_index(worldData.get_current_room().biome)
 
 	GameManager.mainTileset = solids
+	GameManager.inGUI = false
 
 	GameManager.rpBiome = biome.name
 	GameManager.update_rp()
