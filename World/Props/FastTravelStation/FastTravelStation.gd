@@ -61,7 +61,8 @@ func _on_room_selected() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if !GameManager.inGUI: return
+	if !GameManager.inGUI or !fastTravelMenu.visible: return
+	
 	if disableQuit:
 		disableQuit = false
 		return

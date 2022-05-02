@@ -4,7 +4,6 @@ extends MarginContainer
 export var promptText := "[Action]" setget _on_prompt_text_changed
 export var promptAction := "interact" setget _on_prompt_action_changed
 
-var doneText := false
 var doneAction := false
 
 func _ready() -> void:
@@ -12,9 +11,6 @@ func _ready() -> void:
 
 
 func _on_prompt_text_changed(val: String) -> void:
-	if doneText: return
-	doneText = true
-	
 	promptText = val
 	yield(TempTimer.idle_frame(self), "timeout")
 	$Content/Label.text = promptText
