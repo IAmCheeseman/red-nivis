@@ -80,7 +80,7 @@ func _process(_delta: float) -> void:
 	visuals.texture = ogSprite
 	if isReloading and reloadSprite:
 		visuals.texture = reloadSprite
-	
+
 	if !reloadSprite:
 		set_process(false)
 

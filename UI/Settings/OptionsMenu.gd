@@ -20,7 +20,7 @@ func _ready() -> void:
 func _on_quit():
 	update_settings()
 	Settings.save_settings()
-	
+
 	for i in menus.get_children():
 		i.hide()
 	navMenu.show()

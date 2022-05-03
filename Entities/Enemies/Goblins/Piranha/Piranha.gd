@@ -17,7 +17,7 @@ func flip() -> void:
 	if eyes.size() == 0:
 		for i in sprite.get_children():
 			eyes.append(i.position)
-	
+
 	if !flipV:
 		sprite.flip_h = vel.x > 0
 		for i in sprite.get_children().size():

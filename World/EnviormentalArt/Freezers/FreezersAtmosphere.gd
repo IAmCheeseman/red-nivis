@@ -15,7 +15,7 @@ func _ready() -> void:
 	playerData.accelaration = accel
 
 	GameManager.underwater = underwater
-	
+
 	if underwater:
 		AudioServer.set_bus_effect_enabled(4, 1, true)
 		AudioServer.set_bus_effect_enabled(5, 1, true)
@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 func _exit_tree() -> void:
 	playerData.friction = defaultFrict
 	playerData.accelaration = defaultAccel
-	
+
 	AudioServer.set_bus_effect_enabled(4, 1, false)
 	AudioServer.set_bus_effect_enabled(5, 1, false)
 

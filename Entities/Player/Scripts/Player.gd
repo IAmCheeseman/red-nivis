@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	healVignette.modulate.a = lerp(healVignette.modulate.a, 0, 1.25*delta)
 
 	dmgBuffOrb.visible = playerData.damageMod != 1.0
-	
+
 	# Controller stuff
 	if !GameManager.usingController: for i in 16:
 		if Input.is_joy_button_pressed(0, i):
@@ -133,7 +133,7 @@ func walk_state(delta):
 		# INPUT
 		# ------------------------------------------------
 		var moveDir := Vector2.ZERO
-		
+
 		var postfix = "_c" if GameManager.usingController else ""
 		moveDir.x = (Input.get_action_strength("move_right"+postfix)-\
 					Input.get_action_strength("move_left"+postfix))

@@ -6,7 +6,6 @@ render_mode blend_add;
 
 uniform float speed = 10.0;
 uniform float scale = 1.75;
-uniform float enabled : hint_range(0, 1) = 1.0;
 
 
 void fragment()
@@ -18,8 +17,7 @@ void fragment()
 	);
 	trns = abs(trns);
 	trns = sin(trns * trns);
-	
-	trns = mix(1.0, trns, enabled);
+//	trns = round(trns * scale);
 	
 	clr.a = mix(clr.a * .25, clr.a, trns);
 	
@@ -30,4 +28,3 @@ void fragment()
 shader = SubResource( 1 )
 shader_param/speed = 10.0
 shader_param/scale = 1.75
-shader_param/enabled = 1.0

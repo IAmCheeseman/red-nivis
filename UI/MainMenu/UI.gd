@@ -23,12 +23,12 @@ func play() -> void:
 		if GameManager.worldData.rooms.size() == 0:
 			target = STARTING_AREA
 			GameManager.clear_run()
-	
+
 	var player = preload("res://Entities/Player/Player.tres")
-	
+
 	if player.tutorialEnabled:
 		target = TUTORIAL
-		
+
 		player.tutorialEnabled = false
 		GameManager.save_game()
 	var _discard = get_tree().change_scene(target)

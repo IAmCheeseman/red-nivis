@@ -21,23 +21,23 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 		size = Vector2(rand_range(1, 3), rand_range(1, 3)).round()
 	var image:Image = Image.new()
 	image.create(
-		int(size.x*TEMPLATE_SIZE), 
-		int(size.y*TEMPLATE_SIZE), 
+		int(size.x*TEMPLATE_SIZE),
+		int(size.y*TEMPLATE_SIZE),
 		true, Image.FORMAT_RGBA8)
-	
+
 	var blockOuts = []
 	var blockOutCount = floor((size.x*size.y)*.5)
-	
+
 	blockOutCount = 1 if size.x > 1 and size.y > 1 else 0
-	
+
 	for i in blockOutCount:
 		blockOuts.append(Vector2(
 			rand_range(0, size.x),
 			rand_range(0, size.y)
 		).round())
-	
+
 	var templates:Image = _templates.get_data()
-	
+
 	var upExitI = round(rand_range(0, size.x-1))
 	while Vector2(upExitI, 0) in blockOuts: upExitI = round(rand_range(0, size.x-1))
 	var downExitI = round(rand_range(0, size.x-1))
@@ -46,7 +46,7 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 	while Vector2(size.x-1, rightExitI) in blockOuts: rightExitI = round(rand_range(0, size.y-1))
 	var leftExitI = round(rand_range(0, size.y-1))
 	while Vector2(0, leftExitI) in blockOuts: leftExitI = round(rand_range(0, size.y-1))
-	
+
 	image.lock()
 	for x in size.x:
 		for y in size.y:
@@ -58,14 +58,14 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 			var platforms = templates.get_rect(template.platforms)
 			room.lock()
 			platforms.lock()
-			
+
 			# Adding the template
 			for xx in room.get_width():
 				for yy in room.get_height():
 					var color:Color = room.get_pixel(xx, yy)
 					var pColor:Color = platforms.get_pixel(xx, yy)
 					var pixelDir := get_tile_dir(color)
-					
+
 					# Determining the color
 					if (pixelDir == IS_UP and y != 0)\
 					or (pixelDir == IS_UP and x == upExitI and y == 0 and Vector2.UP in exits):
@@ -83,12 +83,12 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 						color = EMPTY
 					else:
 						color = TILE
-					
-					
+
+
 					if (pColor.is_equal_approx(UP) or pColor.is_equal_approx(DOWN) or pColor.is_equal_approx(TILE))\
 					and !color.is_equal_approx(TILE):
 						color = PLATFORM
-					
+
 #					if (pixelDir == IS_UP and Vector2(x, y-1) in blockOuts):
 #						color = TILE
 #					elif (pixelDir == IS_DOWN and Vector2(x, y+1) in blockOuts):
@@ -97,7 +97,7 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 #						color = TILE
 #					elif (pixelDir == IS_LEFT and Vector2(x-1, y) in blockOuts):
 #						color = TILE
-					
+
 					image.set_pixel(
 						xx+(x*TEMPLATE_SIZE),
 						yy+(y*TEMPLATE_SIZE),
@@ -105,9 +105,9 @@ static func generate(seed_:int, _templates:StreamTexture, templateAmount:int, ex
 					)
 			room.unlock()
 			platforms.unlock()
-	
+
 	image.unlock()
-	
+
 	return image
 
 
@@ -116,7 +116,7 @@ static func get_random_template(template:Image, templateAmount:int) -> Dictionar
 	var templatex := int(rand_range(0, (template.get_width()/(templateAmount))))*TEMPLATE_SIZE
 # warning-ignore:narrowing_conversion
 	templatex = clamp(int(templatex), 0, template.get_width()-TEMPLATE_SIZE)
-	
+
 	return {
 		"solids" : Rect2(
 			Vector2(templatex, 0),
