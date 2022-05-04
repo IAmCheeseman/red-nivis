@@ -240,6 +240,11 @@ _global_script_classes=[ {
 "path": "res://Managing/MoneyDropper.gd"
 }, {
 "base": "Resource",
+"class": "PassiveItem",
+"language": "GDScript",
+"path": "res://Items/Passives/PassiveItem.gd"
+}, {
+"base": "Resource",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Entities/Player/Scripts/PlayerResource.gd"
@@ -436,6 +441,7 @@ _global_script_class_icons={
 "ItemMap": "",
 "LootTable": "",
 "MoneyDropper": "",
+"PassiveItem": "",
 "Player": "",
 "PotionBottle": "",
 "Resetter": "",
