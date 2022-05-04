@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Entities/NPC/Dialog/DialogInteraction.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+dialog = [ [ "Introduction", "Beep boop.", "It is...", "6am." ] ]

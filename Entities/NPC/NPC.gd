@@ -28,11 +28,12 @@ func _ready() -> void:
 
 
 func _process(delta):
-	var dir := global_position.direction_to(Vector2(targetX, global_position.y)).x
+	var targetPos = Vector2(targetX, global_position.y)
+	var dir := global_position.direction_to(targetPos).x
 	
 	vel.x = lerp(vel.x, dir * speed, accel * delta)
 	
-	if is_zero_approx(vel.x):
+	if global_position.distance_to(targetPos) < 5:
 		anim.play("Default")
 	elif anim.has_animation("Walk"):
 		anim.play("Walk")
