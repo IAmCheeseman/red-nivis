@@ -9,9 +9,7 @@ signal open
 
 var opened := false
 
-export(Array, Resource) onready var items = [
-	preload("res://Items/Passives/HPUp/HPUp.tres")
-].duplicate()
+export(Array, Resource) var items = []
 
 func _on_interaction() -> void:
 	emit_signal("open")
@@ -22,6 +20,7 @@ func open() -> void:
 	if opened: return
 	opened = true
 	
+	items = items.duplicate()
 	items.shuffle()
 	
 	var newPassive = preload("res://Items/Passives/DroppedPassive.tscn").instance()

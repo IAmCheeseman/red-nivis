@@ -7,6 +7,8 @@ onready var itemHolder = get_node(itemHolderPath)
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 var playerData = preload("res://Entities/Player/Player.tres")
 
+signal itemsChanged
+
 
 func _ready():
 	inventory.connect("selectedSlotChanged", self, "add_item")
@@ -34,3 +36,4 @@ func add_item():
 		playerData.ammo = playerData.maxAmmo
 
 		itemHolder.add_child(newItem)
+	emit_signal("itemsChanged")

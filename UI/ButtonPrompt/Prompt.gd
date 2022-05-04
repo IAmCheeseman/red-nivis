@@ -22,7 +22,6 @@ func _on_prompt_action_changed() -> void:
 		if !i.name in ["TextureRect", "Label"]: i.queue_free()
 	
 	var actions = promptAction.split(",")
-	print(name, actions)
 	for i in actions:
 		if !InputMap.has_action(i): continue
 		var newButton = $Content/TextureRect.duplicate()
