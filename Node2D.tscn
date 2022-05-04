@@ -42,7 +42,5 @@ shape = SubResource( 1 )
 
 [node name="6AM" parent="." instance=ExtResource( 8 )]
 position = Vector2( 158, -21 )
-accel = 5.0
-speed = 75.0
 
 [editable path="CameraMoveZone"]

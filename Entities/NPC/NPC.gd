@@ -21,31 +21,52 @@ export var wanderTime := Vector2(5.0, 15.0)
 
 signal dialog_finished
 
+const WALK = 0
+const TALK = 1
+
+var state = WALK
+
+const STATES = [
+	"walk_state",
+	"talk_state"
+]
+
 
 func _ready() -> void:
 	dialog.hide()
-	get_target_pos()
+	targetX = global_position.x
 
 
 func _process(delta):
+	call(STATES[state], delta)
+	
+	vel.y += Globals.GRAVITY * delta
+	vel.y = move_and_slide(vel).y
+
+
+func walk_state(delta: float) -> void:
 	var targetPos = Vector2(targetX, global_position.y)
 	var dir := global_position.direction_to(targetPos).x
 	
 	vel.x = lerp(vel.x, dir * speed, accel * delta)
 	
-	if global_position.distance_to(targetPos) < 5:
-		anim.play("Default")
-	elif anim.has_animation("Walk"):
-		anim.play("Walk")
-	
 	sprite.rotation_degrees = vel.x / 25
 	sprite.scale.x = -1 if vel.x < 0 else 1
 	
-	if global_position.distance_to(Vector2(targetX, global_position.y)) < 5:
+	if global_position.distance_to(targetPos) < 5:
+		anim.play("Default")
+		sprite.rotation = 0
 		vel.x = 0
+	elif anim.has_animation("Walk"):
+		anim.play("Walk")
+
+
+func talk_state(delta: float) -> void:
+	vel.x = lerp(vel.x, 0, accel * delta)
 	
-	vel.y += Globals.GRAVITY * delta
-	vel.y = move_and_slide(vel).y
+	sprite.rotation_degrees = vel.x / 25
+	
+	anim.play("Default")
 
 
 func _on_interaction() -> void:
@@ -56,10 +77,13 @@ func start_dialog(lines:String) -> void:
 	dialog.show()
 	dialog.start_dialog(lines)
 	interactionZone.disabled = true
+	
+	state = TALK
 
 
 func _on_dialog_finished() -> void:
 	interactionZone.disabled = false
+	state = WALK
 	emit_signal("dialog_finished")
 
 
