@@ -22,7 +22,7 @@ func _add_states() -> void:
 	chest.connect("open", self, "open_chest")
 
 
-func jump_to_chest_state(delta: float) -> void:
+func jump_to_chest_state(_delta: float) -> void:
 	var diff := startPos - endPos
 	
 	var timeLeft = openChestJumpTimer.time_left
