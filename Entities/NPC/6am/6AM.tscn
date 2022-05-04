@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/NPC/6am/6am.png" type="Texture" id=2]
@@ -50,6 +50,23 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Jump"
+length = 0.001
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -135,6 +152,7 @@ tracks/2/keys = {
 
 [node name="6AM" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
+wanderRange = 64
 
 [node name="Sprite" parent="ScaleHelper" index="0"]
 position = Vector2( 0, -10 )
@@ -158,6 +176,7 @@ shape = SubResource( 5 )
 
 [node name="AnimationPlayer" parent="." index="3"]
 anims/Default = SubResource( 3 )
+anims/Jump = SubResource( 6 )
 anims/RESET = SubResource( 2 )
 anims/Walk = SubResource( 1 )
 
@@ -168,4 +187,10 @@ position = Vector2( 0, -34 )
 dialog = ExtResource( 3 )
 
 [node name="OpenChestJump" type="Timer" parent="." index="6"]
+wait_time = 0.75
 one_shot = true
+
+[node name="OpenChest" type="Timer" parent="." index="7"]
+one_shot = true
+
+[connection signal="timeout" from="OpenChest" to="." method="_on_open_chest_timeout"]

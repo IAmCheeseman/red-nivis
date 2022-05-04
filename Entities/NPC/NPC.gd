@@ -93,6 +93,7 @@ func _on_dialog_finished() -> void:
 
 
 func get_target_pos() -> void:
+	randomize()
 	targetX = startingPos + rand_range(
 		-wanderRange,
 		 wanderRange

@@ -1,26 +1,28 @@
 extends "res://Entities/NPC/NPC.gd"
 
 onready var openChestJumpTimer = $OpenChestJump
+onready var openChestTimer = $OpenChest
 
 export(NodePath) onready var chest = get_node(chest)
 export var jumpHeight := 48.0
 
-const OPEN_CHEST = 2
-#
-#var jumpPath = []
-#var currentPoint = 0
+const JUMP_CHEST = 2
+const OPEN_CHEST = 3
+
+
 var startPos : Vector2
 var endPos : Vector2
 
 
 func _add_states() -> void:
+	states.append("jump_to_chest_state")
 	states.append("open_chest_state")
 	
 	yield(TempTimer.idle_frame(self), "timeout")
 	chest.connect("open", self, "open_chest")
 
 
-func open_chest_state(delta: float) -> void:
+func jump_to_chest_state(delta: float) -> void:
 	var diff := startPos - endPos
 	
 	var timeLeft = openChestJumpTimer.time_left
@@ -32,13 +34,38 @@ func open_chest_state(delta: float) -> void:
 	
 	global_position = endPos + diff
 	
+	anim.play("Jump")
+	
+	if percentage < 0.5:
+		sprite.scale.x = 1 - abs(percentage - .5)
+		sprite.scale.y = 1 + (1 - sprite.scale.x)
+	
 	if global_position.distance_to(endPos) < 1:
-		state = WALK
+		vel.y = 0
+		state = OPEN_CHEST
+		openChestTimer.start()
+		sprite.scale = Vector2.ONE
+
+
+func open_chest_state(delta: float) -> void:
+	vel = Vector2(0, -Globals.GRAVITY * delta)
+	global_position = chest.standPos.global_position
+	
+	chest.anim.play("Drill")
 
 
 func open_chest() -> void:
+	if state == JUMP_CHEST: return
+	
 	startPos = global_position
 	endPos = chest.global_position - Vector2(0, 29)
 	
 	openChestJumpTimer.start()
-	state = OPEN_CHEST
+	state = JUMP_CHEST
+
+
+func _on_open_chest_timeout() -> void:
+	state = WALK
+	get_target_pos()
+	
+	chest.anim.play("Open")
