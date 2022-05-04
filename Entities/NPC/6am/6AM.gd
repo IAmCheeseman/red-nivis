@@ -60,6 +60,9 @@ func open_chest() -> void:
 	startPos = global_position
 	endPos = chest.standPos.global_position
 	
+	#z:=.5, t:=2, zt:=.2, zoomPos:=global_position
+	GameManager.emit_signal("zoom_in", .6, 3, .2, endPos)
+	
 	openChestJumpTimer.start()
 	state = JUMP_CHEST
 
