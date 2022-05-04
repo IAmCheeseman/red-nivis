@@ -37,6 +37,7 @@ INTR_PCK_UP,pick up,raise tew 'ew,Tomar,Aufheben
 INTR_SLCT_ABILITY,select abilities,gain loife skills,Seleccionar Habilidades,Fähigkeiten auswählen
 INTR_SCN_ITM,scan in item,scahn en i'ems,Activar,einen Gegenstand scannen
 INTR_TELEPORT,teleport,ma'eriali'e in an'o'fer place,Usar el viaje Rápido,Teleportieren
+INTR_OPEN,open,,,
 ,,,,
 PAUSE_TTL,Paused," Hol' on, m8",Pausado,Pausiert
 NEW_GAME_BTN,New Game,Noo Gahm,Nueva Run,Neues Spiel
@@ -91,6 +92,7 @@ CREDITS_SPECIAL_THX,Special Thanks,Cool Peo'le,Gracias Especiales,Besondere Beda
 HANK_TTL,H.A.N.K.,Big robo',H.A.N.K.,H.A.N.K.
 GNOME_TTL,Gnome (With a Stick),Noom (Wi' eai steek),Palo-Gnomo,Zwerg (Mit einem Stock)
 BILLY_TTL,Billy,Billeh,Billy,Billy
+FRIDGEHEAD_TTL,Fridgehead,Jacked Oop Guy Wi' A Fridge,,
 ,,,,
 GNOME_INTRO,I'M GONNA KILL YOU!,OIM GONNA KEAL 'EW!,TE VAS A MORIR!,ICH WERDE DICH TÖTEN!
 GNOME_HIT1,I HATE YOU!,AI HATE 'EW!,TE ODIO!,ICH HASSE DICH!
@@ -111,6 +113,20 @@ LMAO_MAN_INTRO_LN2,It's been shut down for years...,I's bean shut dewn fo' 'ears
 ,,,,
 SLUG_CULTIST_INTRO_LN1,Hey.,Oi.,Oye.,Hallo.
 SLUG_CULTIST_INTRO_LN2,Do things for me.,ew 'ings fo' 'e.,Házme un favor.,Tu etwas für mich.
+,,,,
+6AM_INTRO_LN_1,I have a monopoly on chest opening services.,,,
+6AM_INTRO_LN_2,Don't open the chest yourself or I'll sue you.,,,
+6AM_INTRO_LN_3,AND take all the other chests away with me.,,,
+,,,,
+6AM_OPEN_LN_1,Ho ho ho,,,
+6AM_OPEN_LN_2,This could be great...,,,
+,,,,
+6AM_PATENT_INF_LN_1,HEY! YOU'RE INFRINGING MY PATENT!,,,
+6AM_PATENT_INF_LN_2,MY LAWYERS WILL MAKE QUICK WORK OF YOU!!,,,
+6AM_PATENT_INF_LN_3,I HAVE THE BEST LAWYERS IN GERMANY!!!,,,
+6AM_PATENT_INF_LN_4,THEY DON'T HOLD BACK!!!,,,
+,,,,
+6AM_AFTER_OPEN_LN_1,Thank you for respecting my patent.,,,
 ,,,,
 BIRB_INTRO_LN1,Hey!,Oi!,Hey!,Hallo!
 BIRB_INTRO_LN2,Welcome to my trading post!,Wel'ome tew moi tra'in' pewst!,Bienvenido a mi negocio!,Wilkommen zu meinen Handelsposten!
@@ -153,11 +169,11 @@ MCHN_PISTOL_DESC,"Created to explore dangerous planets, modified to be slightly 
 MINIHANK_NM,H.A.N.K. Mini,,H.A.N.K mini,
 MINIHANK_DESC,"Built by Hank as durable defenses against intruders. Originally there was only a single one made, but after The Shutdown they were duplicated. Was previously the H.A.N.K. model, but renamed to the H.A.N.K. Mini after the creation of H.A.N.K. Rumor has it that Hank was working on a H.A.N.K. Mini Pro before he died.",,Creado por Hank como una defensa duradera ante los intrusos. Originalmente solo se creó uno. Pero después del apagón se crearon réplicas. Previamente considerado como H.A.N.K pero se le degradó a mini tras la creación de H.A.N.K. Cuentan los rumores que Hank estaba trabajando en una versión Pro del H.A.N.K mini antes de su muerte.,
 GNOME_NM,Mr. Stick,,Palo-Gnomo,
-GNOME_DESC,"NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone. Also, he's dyslexic. Totally irrelevant. (/H/i/s/ /n/a/m/e/ /i/s/ /J/h/o/n/ /S/t/i/c/k/)",,"NOTA: el Palo-Gnomo quiere mantener su anonimato, por lo cual su nombre no será revelado (jamás). El Palo-Gnomo fué el detonante de la Gnomo-Revolución contra Jerry, aprovechando que se le otorgó conciencia accidentalmente. La Gnomo-Revolución busca activamente la libertad y tranquilidad para los Gnomos. Y es disléxico. Completamente irrelevante... (S/U/ N/O/M/B/R/E/ E/S/ J/U/A/N/ P/A/L/O/",
+GNOME_DESC,"NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone.",,"NOTA: el Palo-Gnomo quiere mantener su anonimato, por lo cual su nombre no será revelado (jamás). El Palo-Gnomo fué el detonante de la Gnomo-Revolución contra Jerry, aprovechando que se le otorgó conciencia accidentalmente. La Gnomo-Revolución busca activamente la libertad y tranquilidad para los Gnomos.",
 HANK_NM,H.A.N.K.,H.A.N.K.,H.A.N.K.,H.A.N.K.
 HANK_DESC,Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Hank's least favorite food was lemons BTW.,,Hank se dedicaba a la robótica. Su creación mas valiosa fué el modelo H.A.N.K. solo tendría sentido que Jerry llamara H.A.N.K. a H.A.N.K. la comida menos favorita de Hank son los limones.,
 SHOCKWAVE_GOBLIN_NM,Pusher Fish Goblin,,Pez Globo Duende,
-SHOCKWAVE_GOBLIN_DESC,"Members of Eateh (Is that how you spell it?) sent to free fish from our ""abusive"" scientists. We kept the fish well fed, anything beyond that is not our responsibility. They signed the contract. (We signed it for them, they have no hands, BUT, they agreed! (As far as we could tell...))",,"Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato. (Lo firmamos por ellos, no tienen brazos, PERO, ¡estaban de acuerdo!(posiblemente...))",
+SHOCKWAVE_GOBLIN_DESC,"Members of Eateh (Is that how you spell it?) sent to free fish from our ""abusive"" scientists. We kept the fish well fed, anything beyond that is not our responsibility. They signed the contract. ",,Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato.,
 ,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47
@@ -178,6 +194,6 @@ J_LASER_ITM,J-Laser,J-LaZer,Láser J,J-Laser
 VAPORGAT_ITM,Vaporgat,Fart Cannon,Vaporgat,Vaporgat
 FINGERGUN_ITM,Fingergun,Finga' Gewn,,
 BURST_SHOTUN_ITM,Burst Shotgun,Ahlso illega',,
-FIRE_SHOTGUN_ITM,Fire Shotgun,,,
-TRIPLE_BARREL_PISTOL_ITM,Triple Barrel Pistol,,,
-BOUNCER_ITM,Bouncer,,,
+FIRE_SHOTGUN_ITM,Fire Shotgun,Burnin' Shew'gun,,
+TRIPLE_BARREL_PISTOL_ITM,Triple Barrel Pistol,riple bahral pistool,,
+BOUNCER_ITM,Bouncer,Bahnchah,,

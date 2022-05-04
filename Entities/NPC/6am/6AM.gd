@@ -60,7 +60,9 @@ func open_chest() -> void:
 	startPos = global_position
 	endPos = chest.standPos.global_position
 	
-	#z:=.5, t:=2, zt:=.2, zoomPos:=global_position
+	start_dialog("ChestOpen")
+	yield(self, "dialog_finished")
+	
 	GameManager.emit_signal("zoom_in", .6, 3, .2, endPos)
 	
 	openChestJumpTimer.start()
@@ -72,3 +74,5 @@ func _on_open_chest_timeout() -> void:
 	targetX = startingPos
 	
 	chest.anim.play("Open")
+	
+	defaultDialog = "AfterOpen"
