@@ -378,4 +378,4 @@ func update_passives() -> void:
 	for i in playerData.passives:
 		var newPassive: Node = i.scene.instance()
 		passives.add_child(newPassive)
-	print(passives.get_children())
+	gameOverlay.update_health(Vector2.ZERO)
