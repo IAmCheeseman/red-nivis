@@ -191,6 +191,7 @@ wait_time = 0.75
 one_shot = true
 
 [node name="OpenChest" type="Timer" parent="." index="7"]
+wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="OpenChest" to="." method="_on_open_chest_timeout"]

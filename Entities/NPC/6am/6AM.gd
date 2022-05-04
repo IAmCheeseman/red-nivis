@@ -36,9 +36,9 @@ func jump_to_chest_state(delta: float) -> void:
 	
 	anim.play("Jump")
 	
-	if percentage < 0.5:
-		sprite.scale.x = 1 - abs(percentage - .5)
-		sprite.scale.y = 1 + (1 - sprite.scale.x)
+#	if percentage < 0.5:
+#		sprite.scale.x = 1 - abs(percentage - .5)
+#		sprite.scale.y = 1 + (1 - sprite.scale.x)
 	
 	if global_position.distance_to(endPos) < 1:
 		vel.y = 0
@@ -58,7 +58,7 @@ func open_chest() -> void:
 	if state == JUMP_CHEST: return
 	
 	startPos = global_position
-	endPos = chest.global_position - Vector2(0, 29)
+	endPos = chest.standPos.global_position
 	
 	openChestJumpTimer.start()
 	state = JUMP_CHEST
@@ -66,6 +66,6 @@ func open_chest() -> void:
 
 func _on_open_chest_timeout() -> void:
 	state = WALK
-	get_target_pos()
+	targetX = startingPos
 	
 	chest.anim.play("Open")
