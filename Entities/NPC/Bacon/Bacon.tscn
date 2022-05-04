@@ -16,21 +16,20 @@ radius = 21.095
 position = Vector2( 0, -12 )
 texture = ExtResource( 2 )
 flip_h = false
-frame = 3
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false
 position = Vector2( 0, -10 )
 shape = SubResource( 1 )
 
-[node name="Iteraction" parent="." index="2"]
+[node name="Iteraction" parent="." index="3"]
 position = Vector2( 0, -31 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction" index="1"]
 position = Vector2( 0, 19 )
 shape = SubResource( 2 )
 
-[node name="Dialog" parent="." index="4"]
+[node name="Dialog" parent="." index="5"]
 position = Vector2( 0, -58 )
 
 [node name="Dialog" parent="Dialog" index="0"]

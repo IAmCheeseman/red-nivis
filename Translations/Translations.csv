@@ -20,24 +20,24 @@ SCORE_GO,Score:,Ya poynts:,Puntuación:,Punkte
 TIME_GO,Time:,Ya time:,Tiempo:,Zeit
 TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,Erneut versuchen
 EXIT_GO,Exit,I'll throw 'n da' towel,Salir,Verlassen
-LEADERBOARDS_GO,Leaderboards,eh bes' o' 'eh bes',Puntuaciones:,
+LEADERBOARDS_GO,Leaderboards,eh bes' o' 'eh bes',Puntuaciones:,Bestenliste
 ,,,,
-TIP_GO,Tip:,Sugges'ion:,Tip:,
-GIT_GUD_TT,Git gud.,Geat Gud.,Juega bien.,
-DONT_GET_HIT_TT,Don't get hit.,Don' ge' hi'.,No dejes que te hagan daño.,
-TRY_NOT_DYING_TT,Try not dying.,Trah no' dyan.,Trata de no morir.,
-ENEMIES_WILL_KILL_YOU_TT,Enemies will attempt to kill you.,Enemies will a'emp' 'ew keal 'ew.,Los enemigos te hacen daño.,
-DONT_STAND_STILL_TT,Don't stand still.,ont s'and s'ill.,No te quedes quieto.,
-COOL_PEOPLE_REVIEW_TT,You get +10 coolness when you leave a review.,Ew ge' +10 coolness 'en 'ew leave a re'ew.,Obtienes +10 de radicalidad si dejas una review.,
+TIP_GO,Tip:,Sugges'ion:,Tip:,Tipp:
+GIT_GUD_TT,Git gud.,Geat Gud.,Juega bien.,Werd' besser.
+DONT_GET_HIT_TT,Don't get hit.,Don' ge' hi'.,No dejes que te hagan daño.,Lass dich nicht treffen.
+TRY_NOT_DYING_TT,Try not dying.,Trah no' dyan.,Trata de no morir.,Versuch nicht zu sterben.
+ENEMIES_WILL_KILL_YOU_TT,Enemies will attempt to kill you.,Enemies will a'emp' 'ew keal 'ew.,Los enemigos te hacen daño.,Gegner werden versuchen dich zu töten.
+DONT_STAND_STILL_TT,Don't stand still.,ont s'and s'ill.,No te quedes quieto.,Steh nicht still.
+COOL_PEOPLE_REVIEW_TT,You get +10 coolness when you leave a review.,Ew ge' +10 coolness 'en 'ew leave a re'ew.,Obtienes +10 de radicalidad si dejas una review.,Du bekommst +10 Coolness wenn du eine Bewertung hinterlässt.
 ,,,,
-TIME_HUD,Time,Toime,Tiempo,
+TIME_HUD,Time,Toime,Tiempo,Zeit
 ,,,,
 INTR_TALK,talk,speak wi' tongue,Hablar,Sprechen
 INTR_PCK_UP,pick up,raise tew 'ew,Tomar,Aufheben
 INTR_SLCT_ABILITY,select abilities,gain loife skills,Seleccionar Habilidades,Fähigkeiten auswählen
 INTR_SCN_ITM,scan in item,scahn en i'ems,Activar,einen Gegenstand scannen
 INTR_TELEPORT,teleport,ma'eriali'e in an'o'fer place,Usar el viaje Rápido,Teleportieren
-INTR_OPEN,open,,,
+INTR_OPEN,open,,,öffnen
 ,,,,
 PAUSE_TTL,Paused," Hol' on, m8",Pausado,Pausiert
 NEW_GAME_BTN,New Game,Noo Gahm,Nueva Run,Neues Spiel
@@ -92,7 +92,7 @@ CREDITS_SPECIAL_THX,Special Thanks,Cool Peo'le,Gracias Especiales,Besondere Beda
 HANK_TTL,H.A.N.K.,Big robo',H.A.N.K.,H.A.N.K.
 GNOME_TTL,Gnome (With a Stick),Noom (Wi' eai steek),Palo-Gnomo,Zwerg (Mit einem Stock)
 BILLY_TTL,Billy,Billeh,Billy,Billy
-FRIDGEHEAD_TTL,Fridgehead,Jacked Oop Guy Wi' A Fridge,,
+FRIDGEHEAD_TTL,Fridgehead,Jacked Oop Guy Wi' A Fridge,,Kühlschrankkopf
 ,,,,
 GNOME_INTRO,I'M GONNA KILL YOU!,OIM GONNA KEAL 'EW!,TE VAS A MORIR!,ICH WERDE DICH TÖTEN!
 GNOME_HIT1,I HATE YOU!,AI HATE 'EW!,TE ODIO!,ICH HASSE DICH!
@@ -111,22 +111,26 @@ GNOME_CROWD_BOO3,"DON'T WORRY, MR. STICK, YOU GOT THIS!!!!","DON' WOREH MISTAH S
 LMAO_MAN_INTRO_LN1,This is the Red Nivis Laboratory.,Thi'  is tha Red Ni'is Labahtoreh,Este es el laboratorio Red Nivis.,Das ist das Red Nivis Labor.
 LMAO_MAN_INTRO_LN2,It's been shut down for years...,I's bean shut dewn fo' 'ears...,Ha estado cerrado por años...,Es war Jahre lang geschlossen...
 ,,,,
+LMAO_MAN_RN_LN1,Good morning!,,,Guten Morgen!
+LMAO_MAN_RN_LN2,"If you go over there, you'll find the Red Nivis Lab",,,"Wenn du dort hingehst, wirs du das Red Nivis Labor finden."
+LMAO_MAN_RN_LN3,Be careful to not fall off cliffs or whatever.,,,"Pass auf, dass du nicht von Klippen oder ähnlichem herunterfallen."
+,,,,
 SLUG_CULTIST_INTRO_LN1,Hey.,Oi.,Oye.,Hallo.
 SLUG_CULTIST_INTRO_LN2,Do things for me.,ew 'ings fo' 'e.,Házme un favor.,Tu etwas für mich.
 ,,,,
-6AM_INTRO_LN_1,I have a monopoly on chest opening services.,,,
-6AM_INTRO_LN_2,Don't open the chest yourself or I'll sue you.,,,
-6AM_INTRO_LN_3,AND take all the other chests away with me.,,,
+6AM_INTRO_LN_1,I have a monopoly on chest opening services.,,,Ich habe ein Monopol auf das Öffnen von Truhen.
+6AM_INTRO_LN_2,Don't open the chest yourself or I'll sue you.,,,"Öffne keine Kist selber, oder ich werde dich verklagen."
+6AM_INTRO_LN_3,AND take all the other chests away with me.,,,UND alle anderen Truhen mitnehmen.
 ,,,,
-6AM_OPEN_LN_1,Ho ho ho,,,
-6AM_OPEN_LN_2,This could be great...,,,
+6AM_OPEN_LN_1,Ho ho ho,,,Ho Ho Ho
+6AM_OPEN_LN_2,This could be great...,,,Das könnte großrtig sein...
 ,,,,
-6AM_PATENT_INF_LN_1,HEY! YOU'RE INFRINGING MY PATENT!,,,
-6AM_PATENT_INF_LN_2,MY LAWYERS WILL MAKE QUICK WORK OF YOU!!,,,
-6AM_PATENT_INF_LN_3,I HAVE THE BEST LAWYERS IN GERMANY!!!,,,
-6AM_PATENT_INF_LN_4,THEY DON'T HOLD BACK!!!,,,
+6AM_PATENT_INF_LN_1,HEY! YOU'RE INFRINGING MY PATENT!,,,HEY! DU VERLETZT MEIN PATENT!
+6AM_PATENT_INF_LN_2,MY LAWYERS WILL MAKE QUICK WORK OF YOU!!,,,MEINE ANWÄLTE WERDEN DICH FERTIG MACHEN!!!
+6AM_PATENT_INF_LN_3,I HAVE THE BEST LAWYERS IN GERMANY!!!,,,ICH HABE DIE BESTEN ANWÄLTE IN GANZ DEUTSCHLAND!!!
+6AM_PATENT_INF_LN_4,THEY DON'T HOLD BACK!!!,,,SIE HALTEN SICH NICHT ZURÜCK!!!
 ,,,,
-6AM_AFTER_OPEN_LN_1,Thank you for respecting my patent.,,,
+6AM_AFTER_OPEN_LN_1,Thank you for respecting my patent.,,,"Danke, dass du mein Patent respektierst."
 ,,,,
 BIRB_INTRO_LN1,Hey!,Oi!,Hey!,Hallo!
 BIRB_INTRO_LN2,Welcome to my trading post!,Wel'ome tew moi tra'in' pewst!,Bienvenido a mi negocio!,Wilkommen zu meinen Handelsposten!
@@ -140,45 +144,45 @@ BIRB_NO_TRADE_WRN,Can't trade that item.,"Cahnt tra' tah oitem, bruv.",No puedo 
 NEW_BIOME_WECLOME,Welcome to,elcome 'ew ,Bienvenido a,Wilkommen zu
 ,,,,
 LABS_TTL,The Labs,eh La-boreh-tory,Los Laboratorios,Die Labore
-BACKEND_TTL,The Maintenance Rooms,eh Maintaineenc Rewms,Las Salas de Mantenimiento,
+BACKEND_TTL,The Maintenance Rooms,eh Maintaineenc Rewms,Las Salas de Mantenimiento,Die Wartungsräume
 DEEP_LABS_TTL,The Deep Labs,eh Deep La-boreh-torees,Los Laboratorios Subterráneos,Dem tiefen Labor
 FREEZERS_TTL,The Freezers,eh Fre'zahs,Los Laboratorios Helados,Die Gefrierschränke
-TOXIC_CAVERNS_TTL,The Chem Sector,eh 'oxic Sec'or,,
-TECH_LABS_TTL,The Tech Sector,eh Technoglical Sec'or,,
+TOXIC_CAVERNS_TTL,The Chem Sector,eh 'oxic Sec'or,,Der Chemie Sektor
+TECH_LABS_TTL,The Tech Sector,eh Technoglical Sec'or,,Die Technologie Labore
 ,,,,
-BANDIT_BOMBER_NM,Bomber,,Bombardero,
-BANDIT_BOMBER_DESC,Before The Shutdown these scientists were creating robots to defend the laboratory from intruders. When the robots turned on them they had to use whatever they could get to make new robots.,,"Antes del apagón, estos científicos estuvieron fabricando robots para defender el laboratorio de posibles intrusos. Cuando los robots se revelaron contra ellos tuvieron que usar todo lo que pudieron recolectar para hacer robots nuevos.",
-BANDIT_LASER_NM,Janitor,,Conserje,
-BANDIT_LASER_DESC,"These guys were the janitors of the laboratory. They were generally hated by the scientists for getting in their way, so they gave them a weapon that reqiured them to stand in place in hopes of them killing themselves. (The lab needed tons of janitors, I swear)",,"Ellos eran los conserjes del laboratorio. La mayoría de científicos los odiaban por entrometerse en su trabajo, así que les dieron armas que requerían de quedarse quieto para funcionar con la esperanza de que murieran. (el laboratorio necesitaba de un montón de conserjes, lo juro)",
-BANDIT_SHOTGUN_NM,Shotgunner,,Escopetero,
-BANDIT_SHOTGUN_DESC,Has a cool shotgun. Nothing else. (They're just so cool),,Tienen una bonita escopeta. Y ya. (son lo máximo),
-GNOME_BUFF_NM,Buff Gnome,,Fuerte-Gnomo,
-GNOME_BUFF_DESC,"Really likes to work out. They have a big ego and are the leaders of the Gnome Resistence. They ALL really want to wear their unicorn underpants (Superstar Brand) in public but it's ""unprofessional"" and ""socially unacceptable.""",,Les encanta hacer ejercicio. Tienen un gran ego y son los líderes de la Gnomo-Resistencia. De veras lo único que quieren es usar sus pantalones de unicornio (marca Superstar) en público pero es ''poco profesional'' y ''socialmente inaceptable.'',
-GNOME_MGK_NM,Wizard Gnome,,Mago-Gnomo,
-GNOME_MGK_DESC,These gnomes usually have their big noses stuck in books instead of the real world - they are generally disrespected. If you're not careful they'll turn you into a slug.,,Estos gnomos suelen mantener sus narices metidas en libros en lugar de la vida real - nadie les suele tratar con respeto. Si no tienes cuidado te pueden convertir en una babosa.,
-GNOME_GUN_NM,Gunner Gnome,,Arma-Gnomo,
-GNOME_GUN_DESC,"The younger generation of the Gnomes. They don't have the strength to be buff, or the will to be wizards. So they use guns.",,"La generación mas reciente de gnomos. No tienen la fuerza para ser Fuerte-Gnomos, o la inteligencia para ser Mago-Gnomos, así que solo usan armas.",
-MCHN_SPINNER_NM,Spinner Drone,,Drón Giratorio,
-MCHN_SPINNER_DESC,First model in the DM series. Had to be locked in a cage as they sometimes broke lights.,,Primer modelo de la serie DM. Se recomienda encerrarlos en jaulas por que pueden romper las luces.,
-MCHN_MINIGN_NM,Mingun Drone,,Drón Minigun,
-MCHN_MINIGN_DESC,"The third model in the DM series. Less prone to breaking lights, as the scientists added special code to prevent that, but still had to be locked up because of constant misfires.",,"Tercer modelo de la serie DM. Menos propenso a romper luces, gracias a un parche oficial, pero debe de ser encerrado debido a consantes disparos accidentales.",
-MCHN_DRILL_NM,Drill Drone,,Drón Taladro,
-MCHN_DRILL_DESC,The second model in the DM Series. Was never released to the public since it was too ugly to be marketable.,,Segundo modelo de la serie DM. Nunca fué revelado al público porque es muy feo para ser vendido.,
-MCHN_PISTOL_NM,Walker,,Caminante,
-MCHN_PISTOL_DESC,"Created to explore dangerous planets, modified to be slightly less mobile in an indoors enviroment. They would climb up on desks and kock things off. ",,"Creado para explorar planetas peligrosos, está modificado para ser menos ágil en ambientes cerrados. Solían subirse a los escritorios y tirar las cosas por todas partes.",
-MINIHANK_NM,H.A.N.K. Mini,,H.A.N.K mini,
-MINIHANK_DESC,"Built by Hank as durable defenses against intruders. Originally there was only a single one made, but after The Shutdown they were duplicated. Was previously the H.A.N.K. model, but renamed to the H.A.N.K. Mini after the creation of H.A.N.K. Rumor has it that Hank was working on a H.A.N.K. Mini Pro before he died.",,Creado por Hank como una defensa duradera ante los intrusos. Originalmente solo se creó uno. Pero después del apagón se crearon réplicas. Previamente considerado como H.A.N.K pero se le degradó a mini tras la creación de H.A.N.K. Cuentan los rumores que Hank estaba trabajando en una versión Pro del H.A.N.K mini antes de su muerte.,
-GNOME_NM,Mr. Stick,,Palo-Gnomo,
-GNOME_DESC,"NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone.",,"NOTA: el Palo-Gnomo quiere mantener su anonimato, por lo cual su nombre no será revelado (jamás). El Palo-Gnomo fué el detonante de la Gnomo-Revolución contra Jerry, aprovechando que se le otorgó conciencia accidentalmente. La Gnomo-Revolución busca activamente la libertad y tranquilidad para los Gnomos.",
+BANDIT_BOMBER_NM,Bomber,,Bombardero,Bomber
+BANDIT_BOMBER_DESC,Before The Shutdown these scientists were creating robots to defend the laboratory from intruders. When the robots turned on them they had to use whatever they could get to make new robots.,,"Antes del apagón, estos científicos estuvieron fabricando robots para defender el laboratorio de posibles intrusos. Cuando los robots se revelaron contra ellos tuvieron que usar todo lo que pudieron recolectar para hacer robots nuevos.","Vor dem großen Herunterfahren bauten diese Wissenschaftler Roboter, um das Labor vor Eindringlingen zu schützen. Als die Roboter sich gegen sie wandten, mussten sie alles, was sie bekommen konnten, verwenden, um neue Roboter zu bauen."
+BANDIT_LASER_NM,Janitor,,Conserje,Hausmeister
+BANDIT_LASER_DESC,"These guys were the janitors of the laboratory. They were generally hated by the scientists for getting in their way, so they gave them a weapon that required them to stand in place in hopes of them killing themselves. (The lab needed tons of janitors, I swear)",,"Ellos eran los conserjes del laboratorio. La mayoría de científicos los odiaban por entrometerse en su trabajo, así que les dieron armas que requerían de quedarse quieto para funcionar con la esperanza de que murieran. (el laboratorio necesitaba de un montón de conserjes, lo juro)","Diese Typen waren die Hausmeister des Labors. Sie wurden im Allgemeinen von den Wissenschaftlern gehasst, weil sie ihnen in die Quere kamen, also gaben sie ihnen eine Waffe, mit der sie an Ort und Stelle bleiben mussten, in der Hoffnung, dass sie sich selbst umbrachten. (Das Labor brauchte tonnenweise Hausmeister, ich schwöre es)"
+BANDIT_SHOTGUN_NM,Shotgunner,,Escopetero,Revolverheld
+BANDIT_SHOTGUN_DESC,Has a cool shotgun. Nothing else. (They're just so cool),,,Er hat eine Schrotflinte. Nichts anderes. (Sie sind einfach nur cool)
+GNOME_BUFF_NM,Buff Gnome,,Fuerte-Gnomo,Verbessert den Zwerg!
+GNOME_BUFF_DESC,"Really likes to work out. They have a big ego and are the leaders of the Gnome Resistance. They ALL really want to wear their unicorn underpants (Superstar Brand) in public but it's ""unprofessional"" and ""socially unacceptable.""",,Les encanta hacer ejercicio. Tienen un gran ego y son los líderes de la Gnomo-Resistencia. De veras lo único que quieren es usar sus pantalones de unicornio (marca Superstar) en público pero es ''poco profesional'' y ''socialmente inaceptable.'',"Trainiert gerne. Sie haben ein großes Ego und sind die Anführer des Gnom-Widerstands. Sie alle würden gerne ihre Einhorn-Unterhosen (Marke Superstar) in der Öffentlichkeit tragen, aber das ist ""unprofessionell"" und ""gesellschaftlich inakzeptabel""."
+GNOME_MGK_NM,Wizard Gnome,,Mago-Gnomo,Magier Gnom
+GNOME_MGK_DESC,These gnomes usually have their big noses stuck in books instead of the real world - they are generally disrespected. If you're not careful they'll turn you into a slug.,,Estos gnomos suelen mantener sus narices metidas en libros en lugar de la vida real - nadie les suele tratar con respeto. Si no tienes cuidado te pueden convertir en una babosa.,"Diese Zwerge stecken mit ihren großen Nasen meist in Büchern und nicht in der realen Welt - sie werden im Allgemeinen nicht respektiert. Wenn du nicht aufpasst, verwandeln sie dich in eine Schnecke."
+GNOME_GUN_NM,Gunner Gnome,,Arma-Gnomo,Schuss-Gnom
+GNOME_GUN_DESC,"The younger generation of the Gnomes. They don't have the strength to be buff, nor the will to be wizards. So they use guns.",,"La generación mas reciente de gnomos. No tienen la fuerza para ser Fuerte-Gnomos, o la inteligencia para ser Mago-Gnomos, así que solo usan armas.",
+MCHN_SPINNER_NM,Spinner Drone,,Drón Giratorio,Drehende Drohne
+MCHN_SPINNER_DESC,First model in the DM series. Had to be locked in a cage as they sometimes broke lights.,,Primer modelo de la serie DM. Se recomienda encerrarlos en jaulas por que pueden romper las luces.,"Das erste Modell der DM-Serie. Musste in einen Käfig gesperrt werden, da sie manchmal Lichter zerbrachen."
+MCHN_MINIGN_NM,Mingun Drone,,Drón Minigun,Minigun Drohne
+MCHN_MINIGN_DESC,"The third model in the DM series. Less prone to breaking lights, as the scientists added special code to prevent that, but still had to be locked up because of constant misfires.",,"Tercer modelo de la serie DM. Menos propenso a romper luces, gracias a un parche oficial, pero debe de ser encerrado debido a consantes disparos accidentales.","Das dritte Modell der DM-Serie. Weniger anfällig für kaputte Lichter, da die Wissenschaftler einen speziellen Code einfügten, um dies zu verhindern, aber dennoch musste sie wegen ständiger Fehlzündungen gesperrt werden."
+MCHN_DRILL_NM,Drill Drone,,Drón Taladro,Bohrer Drohne
+MCHN_DRILL_DESC,The second model in the DM Series. Was never released to the public since it was too ugly to be marketable.,,Segundo modelo de la serie DM. Nunca fué revelado al público porque es muy feo para ser vendido.,"Das zweite Modell der DM-Serie. Wurde nie der Öffentlichkeit vorgestellt, da es zu hässlich war, um vermarktet zu werden."
+MCHN_PISTOL_NM,Walker,,Caminante,Wanderer
+MCHN_PISTOL_DESC,"Created to explore dangerous planets, modified to be slightly less mobile in an indoors enviroment. They would climb up on desks and knock things off. ",,"Creado para explorar planetas peligrosos, está modificado para ser menos ágil en ambientes cerrados. Solían subirse a los escritorios y tirar las cosas por todas partes.","Sie wurden geschaffen, um gefährliche Planeten zu erforschen, und so modifiziert, dass sie in einer Innenraumumgebung etwas weniger mobil sind. Sie kletterten auf Tische und stießen Dinge herunter. "
+MINIHANK_NM,H.A.N.K. Mini,,H.A.N.K mini,H.A.N.K. Mini
+MINIHANK_DESC,"Built by Hank as durable defenses against intruders. Originally there was only a single one made, but after The Shutdown they were duplicated. Was previously the H.A.N.K. model, but renamed to the H.A.N.K. Mini after the creation of H.A.N.K. Rumor has it that Hank was working on a H.A.N.K. Mini Pro before he died.",,Creado por Hank como una defensa duradera ante los intrusos. Originalmente solo se creó uno. Pero después del apagón se crearon réplicas. Previamente considerado como H.A.N.K pero se le degradó a mini tras la creación de H.A.N.K. Cuentan los rumores que Hank estaba trabajando en una versión Pro del H.A.N.K mini antes de su muerte.,"Sie wurden von Hank als dauerhafte Verteidigungsanlagen gegen Eindringlinge gebaut. Ursprünglich wurde nur ein einziges Exemplar hergestellt, aber nach dem großen Herunterfahren wurden sie vervielfältigt. War zuvor das H.A.N.K.-Modell, wurde aber nach der Gründung von H.A.N.K. in H.A.N.K. Mini umbenannt. Gerüchten zufolge arbeitete Hank vor seinem Tod an einem H.A.N.K. Mini Pro."
+GNOME_NM,Mr. Stick,,Palo-Gnomo,Herr Stock
+GNOME_DESC,"NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone.",,"NOTA: el Palo-Gnomo quiere mantener su anonimato, por lo cual su nombre no será revelado (jamás). El Palo-Gnomo fué el detonante de la Gnomo-Revolución contra Jerry, aprovechando que se le otorgó conciencia accidentalmente. La Gnomo-Revolución busca activamente la libertad y tranquilidad para los Gnomos.","HINWEIS: Herr Stock möchte anonym bleiben, daher wird sein richtiger Name nicht genannt (niemals). Herr Stock war derjenige, der die Gnom-Revolution gegen Jerry startete, da ihm bei seiner Erschaffung fälschlicherweise ein freier Wille gegeben wurde. Die Gnom-Revolution steht für die Freiheit der Gnome und dafür, dass jeder sie in Ruhe lässt."
 HANK_NM,H.A.N.K.,H.A.N.K.,H.A.N.K.,H.A.N.K.
-HANK_DESC,Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Hank's least favorite food was lemons BTW.,,Hank se dedicaba a la robótica. Su creación mas valiosa fué el modelo H.A.N.K. solo tendría sentido que Jerry llamara H.A.N.K. a H.A.N.K. la comida menos favorita de Hank son los limones.,
-SHOCKWAVE_GOBLIN_NM,Pusher Fish Goblin,,Pez Globo Duende,
-SHOCKWAVE_GOBLIN_DESC,"Members of Eateh (Is that how you spell it?) sent to free fish from our ""abusive"" scientists. We kept the fish well fed, anything beyond that is not our responsibility. They signed the contract. ",,Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato.,
+HANK_DESC,Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Also Hank's least favorite food was lemons BTW.,,Hank se dedicaba a la robótica. Su creación mas valiosa fué el modelo H.A.N.K. solo tendría sentido que Jerry llamara H.A.N.K. a H.A.N.K. la comida menos favorita de Hank son los limones.,"Hank interessierte sich für Robotik. Seine wertvollste Kreation war das H.A.N.K.-Modell. Es würde nur Sinn machen, dass Jerry H.A.N.K. nach H.A.N.K. benennt. Außerdem war Hanks unbeliebtestes Essen übrigens Zitronen."
+SHOCKWAVE_GOBLIN_NM,Fish Goblin,,,Fischkobolt
+SHOCKWAVE_GOBLIN_DESC,"Members of Eateh (Is that how you spell it?) sent to free fish from our ""abusive"" scientists. We kept the fish well fed, anything beyond that is not our responsibility. They signed the contract. ",,Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato.,"Mitglieder von Eateh (schreibt man das so?) haben Fische von unseren ""missbrauchenden"" Wissenschaftlern befreit. Wir sorgten dafür, dass die Fische gut gefüttert wurden, für alles andere sind wir nicht verantwortlich. Sie haben den Vertrag unterschrieben. "
 ,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47
 REVOLVER_ITM,Revolver,Revalveh,Revólver,Revolver
-LASER_GUN_ITM,Laser Gun,Pew,,
+LASER_GUN_ITM,Laser Gun,Pew,,Laserkanone
 GRENADE_LAUNCHER_ITM,Grenade Launcher,Grenayde  Lewncha,Lanzagranadas,Granatenwerfer
 PUMP_SHOTGUN_ITM,Pump Shotgun,Pewmp Shewtgun,Escopeta de Bombeo,Schrotflinte
 FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Flammenwerfer
@@ -187,13 +191,13 @@ HOMING_BOOMERANG_ITM,Homing Boomerang,Abodin' Bewmerang,Boomerang Seguidor,Aufst
 MULTISHOT_BOOMERANG_ITM,Multishot Boomerang,Se'eral Bewmerang,Boomerang Múltiple,Mehrschuss-Bumerang
 MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun
 BULLET_CHAINSAW_ITM,Bullet Chainsaw,Bul'et Chaynshaw,Balasierra,Kugel Kettensäge
-GOUDA_GREASER_ITM,Gouda Greaser,Americahn Fewd,Cañón de Queso,
-CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,
-SOAP_SLAPPER_ITM,Bubble Gun,Bu'le Gun,Pistola de burbujas,
+GOUDA_GREASER_ITM,Gouda Greaser,Americahn Fewd,Cañón de Queso,Gouda-Schmierer
+CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,Wolkenstab
+SOAP_SLAPPER_ITM,Bubble Gun,Bu'le Gun,Pistola de burbujas,Seifenblasenkanone
 J_LASER_ITM,J-Laser,J-LaZer,Láser J,J-Laser
 VAPORGAT_ITM,Vaporgat,Fart Cannon,Vaporgat,Vaporgat
-FINGERGUN_ITM,Fingergun,Finga' Gewn,,
-BURST_SHOTUN_ITM,Burst Shotgun,Ahlso illega',,
-FIRE_SHOTGUN_ITM,Fire Shotgun,Burnin' Shew'gun,,
-TRIPLE_BARREL_PISTOL_ITM,Triple Barrel Pistol,riple bahral pistool,,
-BOUNCER_ITM,Bouncer,Bahnchah,,
+FINGERGUN_ITM,Fingergun,Finga' Gewn,,Fingerpistole
+BURST_SHOTUN_ITM,Burst Shotgun,Ahlso illega',,Berstschrotflinte
+FIRE_SHOTGUN_ITM,Fire Shotgun,Burnin' Shew'gun,,Feuerschrotflinte
+TRIPLE_BARREL_PISTOL_ITM,Triple Barrel Pistol,riple bahral pistool,,Dreiläufige Schrotflinte
+BOUNCER_ITM,Bouncer,Bahnchah,,Hüpfkanone

@@ -62,7 +62,7 @@ func walk_state(delta: float) -> void:
 	sprite.scale.x = -1 if vel.x < 0 else 1
 	
 	if global_position.distance_to(targetPos) < 5:
-		anim.play("Default")
+		if anim.has_animation("Default"): anim.play("Default")
 		sprite.rotation = 0
 		vel.x = 0
 	elif anim.has_animation("Walk"):
@@ -74,7 +74,7 @@ func talk_state(delta: float) -> void:
 	
 	sprite.rotation_degrees = vel.x / 25
 	
-	anim.play("Default")
+	if anim.has_animation("Default"): anim.play("Default")
 
 
 func _on_interaction() -> void:
