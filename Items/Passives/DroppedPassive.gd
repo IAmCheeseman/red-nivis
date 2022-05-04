@@ -10,4 +10,8 @@ func _ready() -> void:
 
 
 func _on_interaction() -> void:
+	var player = preload("res://Entities/Player/Player.tres")
+	player.passives.append(item)
+	player.playerObject.update_passives()
+	
 	queue_free()

@@ -33,6 +33,7 @@ onready var gameOverlay := $CanvasLayer/GameOverlay
 onready var tileChecker := $TileCheckers/BottomTileChecker
 onready var djParticles := $DoubleJumpParticles
 onready var dmgBuffOrb := $ScaleHelper/SpinningOrb
+onready var passives := $Passives
 
 var vel := Vector2.ZERO
 var snapVector := SNAP_DIRECTION*SNAP_LENGTH
@@ -55,14 +56,17 @@ var gravity := 0.0
 var controllerPressed = 0.0
 
 func _ready():
-
 	GameManager.player = self
+	
+	update_passives()
+	
 	var date = OS.get_date()
 	if date.month == OS.MONTH_DECEMBER and date.day <= 25:
 		sprite.texture = load("res://Entities/Player/Assets/player_sheet_xmas.png")
 	# Making sure players cannot come back to life by leaving an area
 	if playerData.isDead:
 		die()
+	
 	playerData.playerObject = self
 	grayscale.material.set_shader_param("strength", 1)
 	var _discard1 = playerData.connect("healthChanged", self, "_on_health_changed")
@@ -369,3 +373,9 @@ func _on_health_changed(dir: Vector2) -> void:
 	vel = dir
 
 
+func update_passives() -> void:
+	Utils.free_children(passives)
+	for i in playerData.passives:
+		var newPassive: Node = i.scene.instance()
+		passives.add_child(newPassive)
+	print(passives.get_children())

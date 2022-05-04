@@ -56,6 +56,7 @@ var upgradeSlots = 2
 var upgrades := []
 var unlockedUpgrades := []
 
+var passives := []
 
 var tutorialEnabled := true
 

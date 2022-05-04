@@ -880,6 +880,8 @@ texture = ExtResource( 7 )
 [node name="Abilities" type="Node" parent="."]
 script = ExtResource( 11 )
 
+[node name="Passives" type="Node" parent="."]
+
 [node name="ItemManagement" type="Node" parent="."]
 script = ExtResource( 9 )
 itemHolderPath = NodePath("../ItemHolder")
