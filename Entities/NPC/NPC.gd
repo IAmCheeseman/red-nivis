@@ -6,6 +6,8 @@ onready var sprite = $ScaleHelper/Sprite
 onready var dialog = $Dialog/Dialog
 onready var interactionZone = $Iteraction
 
+onready var floorRay = $FloorRay
+
 onready var startingPos = global_position.x
 
 onready var wanderTimer = $WanderTimer
@@ -50,6 +52,7 @@ func _process(delta):
 
 
 func walk_state(delta: float) -> void:
+	if !floorRay.is_colliding(): return
 	var targetPos = Vector2(targetX, global_position.y)
 	var dir := global_position.direction_to(targetPos).x
 	
