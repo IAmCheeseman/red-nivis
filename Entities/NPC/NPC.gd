@@ -26,7 +26,7 @@ const TALK = 1
 
 var state = WALK
 
-const STATES = [
+const states = [
 	"walk_state",
 	"talk_state"
 ]
@@ -35,10 +35,15 @@ const STATES = [
 func _ready() -> void:
 	dialog.hide()
 	targetX = global_position.x
+	_add_states()
+
+
+func _add_states() -> void:
+	pass
 
 
 func _process(delta):
-	call(STATES[state], delta)
+	call(states[state], delta)
 	
 	vel.y += Globals.GRAVITY * delta
 	vel.y = move_and_slide(vel).y

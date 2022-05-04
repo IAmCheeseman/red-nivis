@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "Beep boop.", "I am 6am Mk7!", "[Activating patented chest opening services]" ], [ "ChestOpen", "BEEEEP.", "BOOOP.", "Beep beep beep beep beep beep.", "BOOOOOOP." ] ]
+dialog = [ [ "Introduction", "I have a monopoly on chest opening services.", "Don't open the chest yourself or I'll sue you.", "AND take all the other chests away with me." ], [ "ChestOpen", "Ho ho ho", "This *might* be great..." ], [ "PatentInfringementAfter", "HEY! YOU'RE INFRINGING MY PATENT!", "MY LAWYERS WILL MAKE QUICK WORK OF YOU!!", "I HAVE THE BEST LAWYERS IN GERMANY!!!", "THEY DON'T HOLD BACK!!!" ] ]

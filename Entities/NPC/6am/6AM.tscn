@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/NPC/6am/6am.png" type="Texture" id=2]
 [ext_resource path="res://Entities/NPC/6am/6amDialog.tres" type="Resource" id=3]
+[ext_resource path="res://Entities/NPC/6am/6AM.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 6, 4.5 )
@@ -133,7 +134,7 @@ tracks/2/keys = {
 }
 
 [node name="6AM" instance=ExtResource( 1 )]
-wanderRange = 64
+script = ExtResource( 4 )
 
 [node name="Sprite" parent="ScaleHelper" index="0"]
 position = Vector2( 0, -10 )
@@ -165,3 +166,6 @@ position = Vector2( 0, -34 )
 
 [node name="Dialog" parent="Dialog" index="0"]
 dialog = ExtResource( 3 )
+
+[node name="OpenChestJump" type="Timer" parent="." index="6"]
+one_shot = true

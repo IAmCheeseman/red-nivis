@@ -495,6 +495,10 @@ Steam="*res://addons/steam_api/steam.gd"
 
 settings/gdscript/max_call_stack=2048
 
+[dialogue_editor]
+
+dialogues_selected_dialogue="ade89692-0b62-47dd-bacf-2b835ca69902"
+
 [display]
 
 window/size/width=360
@@ -511,7 +515,7 @@ search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/discord_game_sdk/plugin.cfg", "res://addons/steam_api/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/discord_game_sdk/plugin.cfg", "res://addons/steam_api/plugin.cfg", "res://addons/textalog/plugin.cfg" )
 
 [gdnative]
 
