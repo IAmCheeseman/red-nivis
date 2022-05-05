@@ -318,6 +318,14 @@ text = "LMB"
 action = "interact"
 actionDisplay = "CTRL_INTERACT"
 
+[node name="SkipDialog" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
+margin_top = 200.0
+margin_right = 31.0
+margin_bottom = 216.0
+text = "LMB"
+action = "skip_dialog"
+actionDisplay = "CTRL_SKIP_DIALOG"
+
 [node name="Reset" type="Button" parent="Menus/Keybinds"]
 margin_top = 184.0
 margin_right = 141.0

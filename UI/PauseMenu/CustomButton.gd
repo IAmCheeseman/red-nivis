@@ -38,7 +38,6 @@ func set_focused(val: bool) -> void:
 	elif !val and focused:
 		_on_mouse_exited()
 		focused = val
-	
 
 
 func _on_mouse_entered() -> void:

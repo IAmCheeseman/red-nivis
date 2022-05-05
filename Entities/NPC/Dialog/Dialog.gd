@@ -104,6 +104,7 @@ func increment_text() -> void:
 	currentDialog += 1
 	
 	# Finishing
+	if currentInteraction == null: return
 	if currentDialog >= currentInteraction.size():
 		hide()
 		emit_signal("done")
@@ -115,3 +116,6 @@ func increment_text() -> void:
 	charIncTimer.start(talkingSpeed)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skip_dialog"):
+		increment_text()
