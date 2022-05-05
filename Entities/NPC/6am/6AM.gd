@@ -69,7 +69,7 @@ func open_chest() -> void:
 	state = JUMP_CHEST
 	
 	yield(TempTimer.timer(self, .75), "timeout")
-	GameManager.emit_signal("screenshake", 5, 1, .015, 2.8 - 0.75)
+	GameManager.emit_signal("screenshake", 5, 1, .015, 2.05)
 
 
 func _on_open_chest_timeout() -> void:
