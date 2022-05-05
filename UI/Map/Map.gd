@@ -6,7 +6,7 @@ onready var camera:Camera2D = $Viewport/Camera
 onready var player:Sprite = $Viewport/Player
 onready var viewport:Viewport = $Viewport
 onready var blur = $Node2D/Blur
-onready var selection = $Selection#Viewport/Selection
+onready var selection = $Selection
 onready var mapGenerator = $MapGenerator
 onready var prompts = $"../../Prompts"
 

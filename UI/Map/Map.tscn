@@ -46,6 +46,7 @@ rect_pivot_offset = Vector2( -121, 63 )
 mouse_filter = 2
 
 [node name="Prompts" type="VBoxContainer" parent="."]
+visible = false
 anchor_bottom = 1.0
 margin_right = 71.0
 alignment = 2

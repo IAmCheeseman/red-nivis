@@ -374,11 +374,12 @@ func update_passives() -> void:
 	Utils.free_children(passives)
 	
 	for i in playerData.passives:
-		if i.item.applyOnce and i.used:
+		var item = load(i.item)
+		if item.applyOnce and i.used:
 			continue
 		i.used = true
 		
-		var newPassive = i.item.scene.instance()
+		var newPassive = item.scene.instance()
 		passives.add_child(newPassive)
 	
 	gameOverlay.update_ammo()

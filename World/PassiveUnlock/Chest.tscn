@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://World/PassiveUnlock/Chest.png" type="Texture" id=1]
 [ext_resource path="res://Managing/Interaction/Iteraction.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Items/Passives/HPUp/HPUp.tres" type="Resource" id=4]
 [ext_resource path="res://Items/Passives/AmmoUp/AmmoUp.tres" type="Resource" id=5]
 [ext_resource path="res://Items/Passives/SpeedUp/SpeedUp.tres" type="Resource" id=6]
+[ext_resource path="res://Items/Passives/ExtraTrigger/ExtraTrigger.tres" type="Resource" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Drill"
@@ -171,7 +172,7 @@ radius = 40.0
 
 [node name="Chest" type="Node2D"]
 script = ExtResource( 3 )
-items = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ]
+items = [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ) ]
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -13 )
