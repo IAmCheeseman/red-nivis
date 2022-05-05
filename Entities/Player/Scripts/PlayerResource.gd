@@ -7,6 +7,7 @@ export var maxAmmo:int = 255
 export var attackSpeed: float = 1.0
 
 # Movement
+export var speedMod: float = 1.0
 export var maxSpeed:float = 90
 export var maxAirSpeed:float = 180
 export var dashSpeed:float = 320

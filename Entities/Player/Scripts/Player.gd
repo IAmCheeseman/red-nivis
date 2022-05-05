@@ -56,6 +56,7 @@ var gravity := 0.0
 var controllerPressed = 0.0
 
 func _ready():
+	update_passives()
 	GameManager.player = self
 	var date = OS.get_date()
 	if date.month == OS.MONTH_DECEMBER and date.day <= 25:
@@ -152,7 +153,7 @@ func walk_state(delta):
 			accel = playerData.friction
 		vel.x = lerp(
 			vel.x,
-			moveDir.x*speed,
+			moveDir.x*(speed * playerData.speedMod),
 			accel*delta
 		)
 		sprite.rotation_degrees = vel.x / 25
@@ -373,7 +374,11 @@ func update_passives() -> void:
 	Utils.free_children(passives)
 	
 	for i in playerData.passives:
-		var newPassive = i.scene.instance()
+		if i.item.applyOnce and i.used:
+			continue
+		i.used = true
+		
+		var newPassive = i.item.scene.instance()
 		passives.add_child(newPassive)
 	
 	gameOverlay.update_ammo()

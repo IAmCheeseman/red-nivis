@@ -10,3 +10,4 @@ scene = ExtResource( 2 )
 sprite = ExtResource( 3 )
 name = "Stack of Ammo"
 desc = "Increases ammo by 20%."
+applyOnce = false

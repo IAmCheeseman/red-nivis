@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://UI/Inventory/Inventory.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Entities/Player/Camera/Camera.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Entities/Enemies/DamageBoostPickup/Pickup.png" type="Texture" id=29]
+[ext_resource path="res://Items/Passives/SpeedUp/SpeedUp.tscn" type="PackedScene" id=30]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;"
@@ -881,6 +882,8 @@ texture = ExtResource( 7 )
 script = ExtResource( 11 )
 
 [node name="Passives" type="Node" parent="."]
+
+[node name="SpeedUp" parent="Passives" instance=ExtResource( 30 )]
 
 [node name="ItemManagement" type="Node" parent="."]
 script = ExtResource( 9 )

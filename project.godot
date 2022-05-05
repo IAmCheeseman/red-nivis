@@ -279,6 +279,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Managing/SoundManager.gd"
 }, {
+"base": "Node2D",
+"class": "SpeedUp",
+"language": "GDScript",
+"path": "res://Items/Passives/SpeedUp/SpeedUp.gd"
+}, {
 "base": "Reference",
 "class": "SteamAPI",
 "language": "NativeScript",
@@ -449,6 +454,7 @@ _global_script_class_icons={
 "RoomPlacer": "",
 "Rooms": "",
 "SoundManager": "",
+"SpeedUp": "",
 "SteamAPI": "",
 "SteamCallback": "",
 "SteamFriends": "",

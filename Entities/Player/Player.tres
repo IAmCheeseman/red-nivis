@@ -10,6 +10,7 @@ script = ExtResource( 1 )
 maxHealth = 3
 maxAmmo = 255
 attackSpeed = 1.0
+speedMod = 1.0
 maxSpeed = 130.0
 maxAirSpeed = 145.0
 dashSpeed = 640.0

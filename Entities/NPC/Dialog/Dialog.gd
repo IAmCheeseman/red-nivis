@@ -57,7 +57,7 @@ func reposition_bg(resizeText: String=text.text) -> void:
 	
 	# 16 just makes sure that it can completely fit the thing
 	background.rect_size.x = min(size.x + 16, MAX_SIZE)
-	background.rect_size.y = text.rect_size.y + 4
+	background.rect_size.y = text.rect_size.y + 5
 	background.rect_position = -background.rect_size*.5
 	background.rect_position.y = -background.rect_size.y
 	
@@ -66,7 +66,7 @@ func reposition_bg(resizeText: String=text.text) -> void:
 	
 	# Label
 	text.rect_size.x = background.rect_size.x
-	text.rect_position = background.rect_position + Vector2(0, (size.y/2)-2)
+	text.rect_position = background.rect_position + Vector2(1, (size.y/2)-2)
 
 
 func add_center_tags(string:String) -> String:
