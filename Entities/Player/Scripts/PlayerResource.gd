@@ -57,7 +57,12 @@ var upgradeSlots = 2
 var upgrades := []
 var unlockedUpgrades := []
 
-var passives := []
+var passives := [
+	{
+		"item": "res://Items/Passives/FloatingRock/FloatingRock.tres",
+		"used": false
+	}
+]
 
 var tutorialEnabled := true
 

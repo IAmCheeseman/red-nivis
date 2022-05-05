@@ -12,7 +12,7 @@ static func reset() -> void:
 	playerData.maxHealth = 3
 	playerData.health = playerData.maxHealth
 	playerData.maxStamina = 3
-	playerData.speedMod = 0
+	playerData.speedMod = 1
 	playerData.score = 0
 	playerData.time = 0
 	playerData.kills = 0
