@@ -56,7 +56,7 @@ anchor_bottom = 0.0
 margin_top = 213.0
 margin_right = 71.0
 margin_bottom = 220.0
-promptText = "Close Map"
+promptText = "CLOSE_MAP_PRMPT"
 promptAction = "map"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
