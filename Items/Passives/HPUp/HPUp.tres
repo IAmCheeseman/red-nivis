@@ -8,6 +8,6 @@
 script = ExtResource( 1 )
 scene = ExtResource( 2 )
 sprite = ExtResource( 3 )
-name = "Health Up"
-desc = "Increases your health by 1."
+name = "PASS_HEALTH_UP"
+desc = "PASS_HEALTH_UP_DESC"
 applyOnce = true

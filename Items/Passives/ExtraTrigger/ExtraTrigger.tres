@@ -8,6 +8,6 @@
 script = ExtResource( 1 )
 scene = ExtResource( 2 )
 sprite = ExtResource( 3 )
-name = "Extra Trigger"
-desc = "Decreases cooldown by %20."
+name = "PASS_EXTRA_TRIGGER"
+desc = "PASS_EXTRA_TRIGGER_DESC"
 applyOnce = false

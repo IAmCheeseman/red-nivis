@@ -8,6 +8,6 @@
 script = ExtResource( 1 )
 scene = ExtResource( 3 )
 sprite = ExtResource( 2 )
-name = "Magic Rock"
-desc = "Orbits around you. It's actually a scientific rock."
+name = "PASS_MAGIC_ROCK"
+desc = "PASS_MAGIC_ROCK_DESC"
 applyOnce = false

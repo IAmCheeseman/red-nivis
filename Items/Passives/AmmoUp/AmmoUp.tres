@@ -8,6 +8,6 @@
 script = ExtResource( 1 )
 scene = ExtResource( 2 )
 sprite = ExtResource( 3 )
-name = "Stack of Ammo"
-desc = "Increases ammo by 20%."
+name = "PASS_AMMO_STACK"
+desc = "PASS_AMMO_STACK_DESC"
 applyOnce = false

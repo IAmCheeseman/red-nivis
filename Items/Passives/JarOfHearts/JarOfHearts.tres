@@ -9,5 +9,5 @@ script = ExtResource( 1 )
 scene = ExtResource( 3 )
 sprite = ExtResource( 2 )
 name = "PASS_JAR_OF_HEARTS"
-desc = "30% Chance you don't take damage."
+desc = "PASS_JAR_OF_HEARTS_DESC"
 applyOnce = false

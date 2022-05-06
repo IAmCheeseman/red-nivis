@@ -58,10 +58,10 @@ var upgrades := []
 var unlockedUpgrades := []
 
 var passives := [
-#	{
-#		"item": "res://Items/Passives/JarOfHearts/JarOfHearts.tres",
-#		"used": false
-#	}
+	{
+		"item": "res://Items/Passives/Drone/Drone.tres",
+		"used": false
+	}
 ]
 
 var immune := false
