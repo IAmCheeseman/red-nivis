@@ -60,10 +60,10 @@ var upgrades := []
 var unlockedUpgrades := []
 
 var passives := [
-	{
-		"item": "res://Items/Passives/Pizza/Pizza.tres",
-		"used": false
-	}
+#	{
+#		"item": "res://Items/Passives/Pizza/Pizza.tres",
+#		"used": false
+#	}
 ]
 
 var immune := false
