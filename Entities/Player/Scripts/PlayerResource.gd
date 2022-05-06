@@ -58,11 +58,13 @@ var upgrades := []
 var unlockedUpgrades := []
 
 var passives := [
-	{
-		"item": "res://Items/Passives/FloatingRock/FloatingRock.tres",
-		"used": false
-	}
+#	{
+#		"item": "res://Items/Passives/JarOfHearts/JarOfHearts.tres",
+#		"used": false
+#	}
 ]
+
+var immune := false
 
 var tutorialEnabled := true
 
@@ -90,7 +92,7 @@ func _init() -> void:
 
 
 func _on_damage_taken(damage: int, kbDir: Vector2) -> void:
-	if playerObject.state == playerObject.states.DASH:
+	if playerObject.state == playerObject.states.DASH or immune:
 		return
 	health -= int(damage)
 	if Settings.doubleDamageMode: health -= int(damage)
