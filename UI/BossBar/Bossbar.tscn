@@ -18,14 +18,12 @@ anchor_bottom = 1.0
 margin_top = 2.0
 custom_constants/separation = 2
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
 margin_left = 100.0
 margin_right = 260.0
 margin_bottom = 11.0
+rect_scale = Vector2( 1e-05, 1 )
 size_flags_horizontal = 4
 value = 50.0
 texture_progress = SubResource( 2 )
@@ -39,9 +37,6 @@ value = 100.0
 texture_under = SubResource( 1 )
 texture_progress = SubResource( 2 )
 tint_progress = Color( 100, 100, 100, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tween" type="Tween" parent="TextureProgress"]
 
