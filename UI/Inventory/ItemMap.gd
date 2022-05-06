@@ -81,6 +81,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/TripleBarrelPistol.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/TripleBarrelPistol.png"
 	},
+	"laser-shotgun" : {
+		"key" : "laser-shotgun",
+		"name" : "LASER_SHOTGUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.CAVE,
+		"scene" : "res://Items/Weapons/Scenes/LaserShotgun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/LaserShotgun.png"
+	},
 	# DEEP LABS ITEMS
 	"assault-rifle" : {
 		"key" : "assault-rifle",
