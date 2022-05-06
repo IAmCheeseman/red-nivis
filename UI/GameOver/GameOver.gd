@@ -5,17 +5,17 @@ onready var highScore = find_node("HighScore")
 onready var kills = find_node("Kills")
 onready var time = find_node("Time")
 onready var tip = $Tip
-onready var leaderboard = $CanvasLayer/Leaderboard
 
 export var continueScene := "res://World/StartingArea/StartingArea.tscn"
 
 
 func _ready() -> void:
 	update_stats()
-	hide()
+	#hide()
 
 
 func update_stats() -> void:
+	TranslationServer.set_locale("en")
 	var tips = [
 		"GIT_GUD_TT",
 		"DONT_GET_HIT_TT",
@@ -51,8 +51,3 @@ func _on_continue_button_up():
 
 func _on_quit_pressed():
 	get_tree().quit()
-
-
-func _on_leaderboards_pressed() -> void:
-	leaderboard.show()
-	leaderboard.update_leaderboard()
