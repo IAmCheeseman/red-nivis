@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	and playerData.health < playerData.maxHealth:
 		show()
 		playerData.playerObject.lockMovement = true
-		value += delta
+		value += (delta * playerData.healMod)
 		if !GameManager.currentCamera.zoomingIn: 
 			GameManager.currentCamera.zoom = lerp(
 				GameManager.currentCamera.zoom, Vector2(.9, .9), delta)

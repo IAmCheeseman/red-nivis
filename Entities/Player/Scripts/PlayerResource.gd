@@ -25,9 +25,11 @@ export var staminaRecovery := 2.4
 export var stamRecovCurve: Curve
 export var tiltStrength:float = 5.0
 export var healTime := 2.0
+export var healMod := 1.0
 
 var damageMod := 1.0
 var currentMod: Node2D
+var healModMin := .5
 
 var health:int
 var money := 0 setget set_money
@@ -59,7 +61,7 @@ var unlockedUpgrades := []
 
 var passives := [
 	{
-		"item": "res://Items/Passives/Drone/Drone.tres",
+		"item": "res://Items/Passives/Pizza/Pizza.tres",
 		"used": false
 	}
 ]
