@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Weapons/Sprites/LaserGun.png" type="Texture" id=2]
 [ext_resource path="res://Items/Weapons/Bullet/AltBullets/LaserShot/Laser.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Items/Weapons/Sounds/LaserShoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://Items/Weapons/Bullet/Shells/AABattery.png" type="Texture" id=5]
 
 [node name="LaserGun" instance=ExtResource( 1 )]
 position = Vector2( 0, 1 )
 damage = 90.0
 recoil = 200.0
 maxHoldShots = 1
-shellSprite = null
+shellSprite = ExtResource( 5 )
 bulletSpawnDist = 12.0
 ssFreq = 0.035
 ssStrength = 5.0
