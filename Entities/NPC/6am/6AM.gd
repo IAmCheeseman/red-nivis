@@ -36,10 +36,6 @@ func jump_to_chest_state(_delta: float) -> void:
 	
 	anim.play("Jump")
 	
-#	if percentage < 0.5:
-#		sprite.scale.x = 1 - abs(percentage - .5)
-#		sprite.scale.y = 1 + (1 - sprite.scale.x)
-	
 	if global_position.distance_to(endPos) < 1:
 		vel.y = 0
 		state = OPEN_CHEST
@@ -60,8 +56,11 @@ func open_chest() -> void:
 	startPos = global_position
 	endPos = chest.standPos.global_position
 	
+	removeBarsOnDialogEnd = false
 	start_dialog("ChestOpen")
+	
 	yield(self, "dialog_finished")
+	removeBarsOnDialogEnd = true
 	
 	GameManager.emit_signal("zoom_in", .6, 3, .2, endPos)
 	

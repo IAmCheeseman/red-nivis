@@ -22,6 +22,7 @@ export var wanderRange := 0
 export var accel := 24.0
 export var speed := 120.0
 export var wanderTime := Vector2(5.0, 15.0)
+export var removeBarsOnDialogEnd := true
 
 signal dialog_finished
 
@@ -91,6 +92,7 @@ func start_dialog(lines:String) -> void:
 	PLAYER.playerObject.lockMovement = true
 	
 	GameManager.emit_signal("zoom_in", .9, -1, .2, global_position)
+	GameManager.currentCamera.removeBars = removeBarsOnDialogEnd
 	
 	state = TALK
 

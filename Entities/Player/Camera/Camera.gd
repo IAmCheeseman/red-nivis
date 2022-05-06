@@ -33,6 +33,7 @@ var zoomingIn := false
 var zoomTarget := Vector2.ZERO
 var zoomTime := .2
 var zoomStayTime := 2
+var removeBars := true
 
 var playerData = preload("res://Entities/Player/Player.tres")
 
@@ -113,7 +114,8 @@ func zoom_in(z:=.5, t:=2, zt:=.2, zoomPos:=global_position):
 		Tween.EASE_OUT
 	)
 	
-	barAnim.play("BarsIn")
+	if removeBars: barAnim.play("BarsIn")
+	removeBars = true
 	
 	posTween.start()
 	zoomTween.start()
@@ -203,7 +205,7 @@ func reset_zoom() -> void:
 		Tween.EASE_OUT
 	)
 	
-	barAnim.play_backwards("BarsIn")
+	if removeBars: barAnim.play_backwards("BarsIn")
 	
 	posTween.start()
 	zoomTween.start()
