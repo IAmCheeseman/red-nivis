@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var barrel = $Barrel
+onready var shootSFX = $ShootSound
 
 var canShoot = false
 var shots = 0
@@ -71,6 +72,8 @@ func shoot() -> void:
 	newBullet.global_position = global_position + (dir * 15)
 	newBullet.damage = damage
 	GameManager.spawnManager.spawn_object(newBullet)
+	
+	shootSFX.play()
 	
 	shots += 1
 	if shots == 3:

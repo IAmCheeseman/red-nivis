@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Items/Passives/Drone/Drone.gd" type="Script" id=1]
 [ext_resource path="res://Items/Passives/Drone/Drone.png" type="Texture" id=2]
 [ext_resource path="res://Items/Passives/Drone/DroneBarrel.png" type="Texture" id=3]
 [ext_resource path="res://Items/Passives/Drone/DroneLight.png" type="Texture" id=4]
+[ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Items/Weapons/Sounds/DefaultShoot.wav" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 11.0
@@ -51,6 +53,12 @@ autostart = true
 
 [node name="TargetChangeTimer" type="Timer" parent="Timers"]
 autostart = true
+
+[node name="ShootSound" parent="." instance=ExtResource( 5 )]
+audio = ExtResource( 6 )
+volumeMod = -5.0
+pitchShiftRange = 1.5
+bus = "Reverb"
 
 [connection signal="area_entered" from="EnemyFinder" to="." method="_on_found_enemy"]
 [connection signal="timeout" from="Timers/AttackTimer" to="." method="start_attack"]

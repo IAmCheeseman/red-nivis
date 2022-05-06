@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
 [ext_resource path="res://World/PassiveUnlock/Chest.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/NPC/6am/6AM.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Items/Passives/Drone/Drone.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Entities/Enemies/Gnomes/BuffGnome/BuffGnome.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entities/Enemies/Gnomes/GnomeWizard/WizardGnome.tscn" type="PackedScene" id=12]
 
@@ -53,9 +52,6 @@ position = Vector2( 1983, -71 )
 shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
-
-[node name="Drone" parent="." instance=ExtResource( 10 )]
-position = Vector2( 115, -48 )
 
 [node name="BuffGnome" parent="." instance=ExtResource( 11 )]
 position = Vector2( 148, -5 )
