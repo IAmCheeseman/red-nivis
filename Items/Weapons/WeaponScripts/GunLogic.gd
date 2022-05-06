@@ -59,9 +59,10 @@ func _physics_process(delta) -> void:
 
 	# Settling the rotation of the gun down after it's been kicked up
 	if !swinging:
-		var before = pivot.rotation
-		pivot.look_at(Utils.get_global_mouse_position())
-		pivot.rotation = lerp(before, pivot.rotation, 20*delta)
+		if !playerData.playerObject.lockMovement:
+			var before = pivot.rotation
+			pivot.look_at(Utils.get_global_mouse_position())
+			pivot.rotation = lerp(before, pivot.rotation, 20*delta)
 	else:
 		pivot.rotation += 12*delta*swingDir
 		if abs(pivot.rotation_degrees-swingStartDeg) > 65*2:
