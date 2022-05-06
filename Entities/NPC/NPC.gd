@@ -12,6 +12,8 @@ onready var startingPos = global_position.x
 
 onready var wanderTimer = $WanderTimer
 
+const PLAYER = preload("res://Entities/Player/Player.tres")
+
 var vel:Vector2 = Vector2.ZERO
 var targetX: float
 
@@ -86,12 +88,20 @@ func start_dialog(lines:String) -> void:
 	dialog.start_dialog(lines)
 	interactionZone.disabled = true
 	
+	PLAYER.playerObject.lockMovement = true
+	
+	GameManager.emit_signal("zoom_in", .9, -1, .2, global_position)
+	
 	state = TALK
 
 
 func _on_dialog_finished() -> void:
 	interactionZone.disabled = false
 	state = WALK
+	
+	GameManager.emit_signal("zoom_in", .9, -1, .2, global_position)
+	PLAYER.playerObject.lockMovement = false
+	
 	emit_signal("dialog_finished")
 
 

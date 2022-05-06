@@ -1,6 +1,85 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Entities/Player/Camera/Camera.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "BarsIn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/BarTop:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10000, 0 ), Vector2( 10000, 32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/BarBottom:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10000, 0 ), Vector2( 10000, 32 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/BarBottom:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 220 ), Vector2( 0, 188 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/BarTop:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10000, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/BarBottom:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10000, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/BarBottom:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 220 ) ]
+}
 
 [node name="Camera" type="Camera2D"]
 process_priority = 3
@@ -30,6 +109,27 @@ one_shot = true
 [node name="SmoothingTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="BarAnim" type="AnimationPlayer" parent="."]
+anims/BarsIn = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="BarTop" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_right = 10000.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="BarBottom" type="ColorRect" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 220.0
+margin_right = 10000.0
+margin_bottom = 220.0
+color = Color( 0, 0, 0, 1 )
 
 [connection signal="tree_exiting" from="." to="." method="_on_Camera_tree_exiting"]
 [connection signal="tween_all_completed" from="OffsetTween" to="." method="_on_Tween_tween_all_completed"]

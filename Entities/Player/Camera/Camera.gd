@@ -6,6 +6,7 @@ onready var zoomTween = $ZoomTween
 onready var posTween = $PosTween
 onready var zoomTimer = $ZoomTimer
 onready var smoothingTimer = $SmoothingTimer
+onready var barAnim = $BarAnim
 
 export var mouseWeight = true
 export var yOffset = 0
@@ -31,6 +32,7 @@ var shakeDir = Vector2.ZERO
 var zoomingIn := false
 var zoomTarget := Vector2.ZERO
 var zoomTime := .2
+var zoomStayTime := 2
 
 var playerData = preload("res://Entities/Player/Player.tres")
 
@@ -83,15 +85,19 @@ func set_cam_look(value:bool):
 
 
 func zoom_in(z:=.5, t:=2, zt:=.2, zoomPos:=global_position):
+	if t == -1 and zoomStayTime == -1:
+		reset_zoom()
+		return
 	if zoomingIn: return
 	smoothing_enabled = true
 	zoomTime = zt
+	zoomStayTime = t
 	
 	zoomTween.interpolate_property(
 		self,
 		"zoom",
 		zoom,
-		Vector2.ONE*z,
+		Vector2.ONE * z,
 		zt,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_OUT
@@ -107,10 +113,12 @@ func zoom_in(z:=.5, t:=2, zt:=.2, zoomPos:=global_position):
 		Tween.EASE_OUT
 	)
 	
+	barAnim.play("BarsIn")
+	
 	posTween.start()
 	zoomTween.start()
 	
-	zoomTimer.start(t)
+	if t != -1: zoomTimer.start(t)
 	
 	zoomTarget = zoomPos
 	zoomingIn = true
@@ -168,7 +176,10 @@ func _on_Camera_tree_exiting():
 
 
 func _on_zoom_timer_timeout() -> void:
-	
+	reset_zoom()
+
+
+func reset_zoom() -> void:
 	smoothing_enabled = true
 	smoothingTimer.start(.45)
 	
@@ -192,7 +203,12 @@ func _on_zoom_timer_timeout() -> void:
 		Tween.EASE_OUT
 	)
 	
+	barAnim.play_backwards("BarsIn")
+	
 	posTween.start()
 	zoomTween.start()
 	
 	zoomingIn = false
+	
+	zoomTime = .2
+	zoomStayTime = 2
