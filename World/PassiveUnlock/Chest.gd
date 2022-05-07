@@ -13,6 +13,7 @@ export(Array, Resource) var items = []
 
 
 func _ready() -> void:
+	yield(TempTimer.idle_frame(self), "timeout")
 	var isOpened = GameManager.worldData.get_room_data(self, false)
 	if isOpened:
 		opened = true
