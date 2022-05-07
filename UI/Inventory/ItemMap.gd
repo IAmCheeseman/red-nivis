@@ -161,6 +161,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Vaporgat.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Vaporgat.png"
 	},
+	"minishotgun" : {
+		"key" : "minishotgun",
+		"name" : "MINISHOTGUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
+		"scene" : "res://Items/Weapons/Scenes/Minishotgun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Minishotgun.png"
+	},
 	# TECH LABS ITEMS
 	
 }
