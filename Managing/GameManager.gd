@@ -110,6 +110,7 @@ func save_run() -> void:
 		"playerData:maxStamina"         : playerData.maxStamina,
 		"playerData:money"              : playerData.money,
 		"playerData:upgrades"           : playerData.upgrades,
+		"playerData:passives"           : playerData.passives,
 		"inventory:items"               : inventory.items,
 		"worldData:rooms"               : worldData.rooms,
 		"worldData:position"            : worldData.savePosition,
