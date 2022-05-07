@@ -11,8 +11,18 @@ var opened := false
 
 export(Array, Resource) var items = []
 
+
+func _ready() -> void:
+	var isOpened = GameManager.worldData.get_room_data(self, false)
+	if isOpened:
+		opened = true
+		interactionZone.disabled = true
+		anim.play("Open")
+
+
 func _on_interaction() -> void:
 	emit_signal("open")
+	GameManager.worldData.store_room_data(self, true)
 	interactionZone.disabled = true
 
 
