@@ -22,7 +22,7 @@ TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,Reintentar,Erneut versuche
 EXIT_GO,Exit,I'll throw 'n da' towel,Salir,Salir,Verlassen
 LEADERBOARDS_GO,Leaderboards,eh bes' o' 'eh bes',Puntuaciones:,Puntuaciones:,Bestenliste
 ,,,,,
-CLOSE_MAP_PRMPT,Close Map,,,,
+CLOSE_MAP_PRMPT,Close Map,,Cerrar Mapa,,
 ,,,,,
 TIP_GO,Tip:,Sugges'ion:,Consejo:,Tip:,Tipp:
 GIT_GUD_TT,Git gud.,Geat Gud.,Tienes qué mejorar ,Juega bien.,Werd' besser.
@@ -39,7 +39,7 @@ INTR_PCK_UP,pick up,raise tew 'ew,Coger,Tomar,aufheben
 INTR_SLCT_ABILITY,select abilities,gain loife skills,Seleccionar Habilidades,Seleccionar Habilidades,fähigkeiten auswählen
 INTR_SCN_ITM,scan in item,scahn en i'ems,Activar,Activar,einen Gegenstand scannen
 INTR_TELEPORT,teleport,ma'eriali'e in an'o'fer place,Teletransportación ,Usar el viaje Rápido,Teleportieren
-INTR_OPEN,open,ewpen,,,öffnen
+INTR_OPEN,open,ewpen,Abrir,,öffnen
 ,,,,,
 PAUSE_TTL,Paused," Hol' on, m8",Pausado,Pausado,Pausiert
 NEW_GAME_BTN,New Game,Noo Gahm,Nueva Run,Nueva Run,Neues Spiel
@@ -56,7 +56,7 @@ AUDIO_OPT_M,Audio,Au'io,Sonido,Sonido,Ton
 ,,,,,
 GAME_TTL,Game,Veh Experia'ce,Gameplay,Gameplay,Gameplay
 GAME_SPD_RN_OPT,Speedrun Timer,Go Fast Bruv,Contador Speedrun,Contador Speedrun,Speedrun Zeitschaltuhr
-GAME_DBL_DMG_MODE_OPT,Unfair Mode,,,,
+GAME_DBL_DMG_MODE_OPT,Unfair Mode,,Modo Duro,,
 ,,,,,
 CONTROLS_TTL,\n Controls,\n Cantrolls,\n Controles,\n Controles,\n Steuerung
 CTRL_RESET_BTN,Reset,Reset,Reiniciar Ajustes,Reiniciar Ajustes,Zurücksetzen
@@ -114,8 +114,8 @@ GNOME_CROWD_BOO3,"DON'T WORRY, MR. STICK, YOU GOT THIS!!!!","DON' WOREH MISTAH S
 LMAO_MAN_INTRO_LN1,This is the Red Nivis Laboratory.,Thi'  is tha Red Ni'is Labahtoreh,Este es el laboratorio Red Nivis.,Este es el laboratorio Red Nivis.,Das ist das Red Nivis Labor.
 LMAO_MAN_INTRO_LN2,It's been shut down for years...,I's bean shut dewn fo' 'ears...,Ha estado cerrado por años...,Ha estado cerrado por años...,Es war Jahre lang geschlossen...
 ,,,,,
-LMAO_MAN_RN_LN1,Good morning!,,,,Guten Morgen!
-LMAO_MAN_RN_LN2,"If you go over there, you'll find the Red Nivis Lab",,,,"Wenn du dort hingehst, wirs du das Red Nivis Labor finden."
+LMAO_MAN_RN_LN1,Good morning!,,Hola!,,Guten Morgen!
+LMAO_MAN_RN_LN2,"If you go over there, you'll find the Red Nivis Lab",,"Si vas por ahí, te toparás con el laboratorio Red Nivis",,"Wenn du dort hingehst, wirs du das Red Nivis Labor finden."
 LMAO_MAN_RN_LN3,Be careful to not fall off cliffs or whatever.,,,,"Pass auf, dass du nicht von Klippen oder ähnlichem herunterfallen."
 ,,,,,
 SLUG_CULTIST_INTRO_LN1,Hey.,Oi.,Oye.,Oye.,Hallo.
@@ -182,12 +182,25 @@ HANK_DESC,Hank was into robotics. His most valued creation was the H.A.N.K. mode
 SHOCKWAVE_GOBLIN_NM,Fish Goblin,,,,Fischkobolt
 SHOCKWAVE_GOBLIN_DESC,"Members of Eateh (Is that how you spell it?) sent to free fish from our ""abusive"" scientists. We kept the fish well fed, anything beyond that is not our responsibility. They signed the contract. ",,Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato.,Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato.,"Mitglieder von Eateh (schreibt man das so?) haben Fische von unseren ""missbrauchenden"" Wissenschaftlern befreit. Wir sorgten dafür, dass die Fische gut gefüttert wurden, für alles andere sind wir nicht verantwortlich. Sie haben den Vertrag unterschrieben. "
 ,,,,,
+PASS_HEALTH_UP,Health Up,Ealthy Die',,,
+PASS_HEALTH_UP_DESC,Increases your health by 1.,MOER LOIFE ,,,
+PASS_AMMO_STACK,Stack of Ammo,Illegal,,,
+PASS_AMMO_STACK_DESC,Increases ammo by 20%.,Ew get 20% moer illegal.,,,
+PASS_MAGIC_ROCK,Magic Rock,Moigik Rock,,,
+PASS_MAGIC_ROCK_DESC,A rock that orbits around you.,A rock tha' orbi's ew.,,,
+PASS_EXTRA_TRIGGER,Extra Trigger,Ex'ra triggar,,,
+PASS_EXTRA_TRIGGER_DESC,Decreases cooldown by 20%.,Remewves 20% o' cewldown,,,
+PASS_JAR_OF_HEARTS,Jar of Hearts,Jah o' Hahts,,,
+PASS_JAR_OF_HEARTS_DESC,30% Chance you don't take damage.,30% choince 'ew don' ta'e damage.,,,
+PASS_SPEED_FEATHER,Speed Feather,Speed fea'er,,,
+PASS_SPEED_FEATHER_DESC,Increases your speed by 20%.,In'eases your spee' boi 20%,,,
+,,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47,AK-47
 REVOLVER_ITM,Revolver,Revalveh,Revólver,Revólver,Revolver
 LASER_GUN_ITM,Laser Gun,Pew,,,Laserkanone
 GRENADE_LAUNCHER_ITM,Grenade Launcher,Grenayde  Lewncha,Lanzagranadas,Lanzagranadas,Granatenwerfer
-PUMP_SHOTGUN_ITM,Pump Shotgun,Pewmp Shewtgun,Escopeta de Bombeo,Escopeta de Bombeo,Schrotflinte
+SHOTGUN_ITM,Shotgun,Shewtgun,,,
 FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Lanzallamas,Flammenwerfer
 ASSAULT_RIFLE_ITM,Assault Rifle,Illega',Rifle de Asalto,Rifle de Asalto,Sturmgewehr
 HOMING_BOOMERANG_ITM,Homing Boomerang,Abodin' Bewmerang,Boomerang Seguidor,Boomerang Seguidor,Aufsteigender Bumerang
@@ -204,3 +217,6 @@ BURST_SHOTUN_ITM,Burst Shotgun,Ahlso illega',,,Berstschrotflinte
 FIRE_SHOTGUN_ITM,Fire Shotgun,Burnin' Shew'gun,,,Feuerschrotflinte
 TRIPLE_BARREL_PISTOL_ITM,Triple Barrel Pistol,riple bahral pistool,,,Dreiläufige Schrotflinte
 BOUNCER_ITM,Bouncer,Bahnchah,,,Hüpfkanone
+CROSSBOW_ITM,Crossbow,,,,
+LASER_SHOTGUN_ITM,Laser Shotgun,,,,
+MINISHOTGUN_ITM,Minishotgun,Minishotgun,Minishotgun,Minishotgun,Minishotgun
