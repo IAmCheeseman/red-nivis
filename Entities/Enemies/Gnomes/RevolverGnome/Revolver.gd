@@ -16,9 +16,9 @@ func _process(_delta: float) -> void:
 	position.x = -1 if sprite.scale.y == -1 else 0
 
 
-func shoot(times: int=6) -> void:
+func shoot(times: int=4) -> void:
 	if times <= 0: return
-	elif times == 6:
+	elif times == 5:
 		bulletRot = sprite.global_rotation
 	
 	var newBullet = bullet.instance()
