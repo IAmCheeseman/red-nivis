@@ -1,20 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Weapons/Sprites/Bouncer.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Enemies/Shoot.wav" type="AudioStream" id=3]
 [ext_resource path="res://Items/Weapons/WeaponScripts/BouncingBullets.gd" type="Script" id=4]
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/BouncingBullet.png" type="Texture" id=5]
+[ext_resource path="res://Items/Weapons/Bullet/Shells/SuperShell.png" type="Texture" id=6]
 
 [node name="Bouncer" instance=ExtResource( 1 )]
 gunType = 2
 damage = 200.0
 meleeDamageOverride = 200.0
-accuracy = 6.0
+accuracy = 15.0
 projLifetime = 5.0
 recoil = 40.0
 magazineSize = 20
 bulletSprite = ExtResource( 5 )
+shellSprite = ExtResource( 6 )
 kickUp = 5.0
 bulletSpawnDist = 24.0
 ssFreq = 0.04
