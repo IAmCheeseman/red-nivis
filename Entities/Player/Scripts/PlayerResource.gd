@@ -61,7 +61,7 @@ var unlockedUpgrades := []
 
 var passives := [
 #	{
-#		"item": "res://Items/Passives/Pizza/Pizza.tres",
+#		"item": "res://Items/Passives/BounceGoo/BounceGoo.tres",
 #		"used": false
 #	}
 ]

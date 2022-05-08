@@ -814,7 +814,7 @@ bus = "Reverb"
 [node name="Hurtbox" parent="." groups=["player"] instance=ExtResource( 1 )]
 visible = false
 collision_layer = 2
-collision_mask = 2147483648
+collision_mask = 2147483652
 immTime = 0.6
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
