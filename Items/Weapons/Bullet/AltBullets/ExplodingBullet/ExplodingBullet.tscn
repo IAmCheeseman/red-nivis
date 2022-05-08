@@ -5,9 +5,9 @@
 [ext_resource path="res://Items/Weapons/Bullet/AltBullets/ExplodingBullet/ExplodingBullet.gd" type="Script" id=3]
 
 [sub_resource type="PhysicsMaterial" id=5]
-friction = 60.0
+friction = 120.0
 rough = true
-bounce = 0.5
+bounce = 0.3
 
 [sub_resource type="CanvasItemMaterial" id=6]
 light_mode = 1
@@ -74,6 +74,7 @@ texture = ExtResource( 1 )
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, -0.5 )
 shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
