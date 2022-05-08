@@ -26,10 +26,16 @@ func set_texture(texture:StreamTexture):
 
 
 func _ready():
+	set_vars()
+	
 	look_at(global_position+direction)
 	apply_central_impulse(direction * speed)
 	
 	liftimeTimer.start(lifetime)
+
+
+func set_vars() -> void:
+	pass
 
 
 func _on_QueueArea_body_entered(_body):

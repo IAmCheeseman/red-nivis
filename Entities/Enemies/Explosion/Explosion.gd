@@ -5,10 +5,12 @@ onready var eHB = $EnemyHitbox/CollisionShape2D
 onready var particles = $ExplosionParticles
 onready var charAdder = $Char
 
-var damage: int
+export var damage: int
+export var startSize: int = -1
 
 func _ready() -> void:
 	eHB.owner.damage = damage
+	if startSize != -1: set_size(startSize)
 
 func set_size(size: int) -> void:
 	yield(TempTimer.idle_frame(self), "timeout")

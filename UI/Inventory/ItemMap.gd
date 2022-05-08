@@ -168,6 +168,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Minishotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Minishotgun.png"
 	},
+	"toxic-grenade-launcher" : {
+		"key" : "toxic-grenade-launcher",
+		"name" : "TOXIC_GRENADE_LAUNCHER_ITM",
+		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
+		"scene" : "res://Items/Weapons/Scenes/ToxicGrenadeLauncher.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/ToxicGrenadeLauncher.png"
+	},
 	# TECH LABS ITEMS
 	
 }
