@@ -119,40 +119,46 @@ func _input(event: InputEvent) -> void:
 	and gun.meleeCooldown.is_stopped()\
 	and !GameManager.inGUI\
 	and playerData.stamina > 0:
-		playerData.stamina -= 1
-		playerData.playerObject.vel += get_local_mouse_position().normalized()*gun.recoil
-
-		swinging = true
-		swingDir = -swingDir
-		pivot.rotation_degrees -= 65*swingDir
-		swingStartDeg = pivot.rotation_degrees
-		pivot.scale = Vector2.ONE*1.5
-
-
-		var angle = Utils.get_local_mouse_position(self).angle()
-
-		var newSwing = swing.instance()
-		newSwing.rotation = angle
-		newSwing.reflectDir = Utils.get_local_mouse_position(self).normalized()
-		owner.add_child(newSwing)
-
-		var hb = newSwing.get_node("Hitbox")
-		hb.damage = gun.damage*1.25 if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride
-
-		newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle)*8
-
-		GameManager.emit_signal(
-			"screenshake",
-			1, 3, .05, .05,
-			Utils.get_local_mouse_position(self).normalized()
-		)
-
-		gun.meleeCooldown.start()
-		gun.canSwing = false
-
+		melee()
 	if event.is_action_pressed("reload"):
 		cooldownTimer.start(gun.reloadSpeed)
 		gun.isReloading = true
+
+
+func melee() -> void:
+	playerData.stamina -= 1
+	
+	var recoil = get_local_mouse_position().normalized()*gun.recoil
+	recoil.y /= 5
+	playerData.playerObject.vel += recoil
+
+	swinging = true
+	swingDir = -swingDir
+	pivot.rotation_degrees -= 65*swingDir
+	swingStartDeg = pivot.rotation_degrees
+	pivot.scale = Vector2.ONE*1.5
+
+
+	var angle = Utils.get_local_mouse_position(self).angle()
+
+	var newSwing = swing.instance()
+	newSwing.rotation = angle
+	newSwing.reflectDir = Utils.get_local_mouse_position(self).normalized()
+	owner.add_child(newSwing)
+
+	var hb = newSwing.get_node("Hitbox")
+	hb.damage = gun.damage*1.25 if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride
+
+	newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle)*8
+
+	GameManager.emit_signal(
+		"screenshake",
+		1, 3, .05, .05,
+		Utils.get_local_mouse_position(self).normalized()
+	)
+
+	gun.meleeCooldown.start()
+	gun.canSwing = false
 
 
 # warning-ignore:shadowed_variable

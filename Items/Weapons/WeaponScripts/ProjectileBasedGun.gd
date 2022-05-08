@@ -85,7 +85,6 @@ func shoot():
 		cooldownTimer.set_meta("fromReload", false)
 
 
-
 func _input(_event):
 	if Input.is_action_just_released("use_item"):
 		holdShots = 0
