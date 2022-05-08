@@ -9,7 +9,7 @@
 [node name="GrenadeLauncher" instance=ExtResource( 1 )]
 damage = 400.0
 meleeDamageOverride = 20.0
-reloadSpeed = 2.0
+reloadSpeed = 2.5
 projSpeed = 170
 projLifetime = 1.3
 recoil = 60.0
