@@ -117,6 +117,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/BurstShotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/BurstShotgun.png"
 	},
+	"shield-launcher" : {
+		"key" : "shield-launcher",
+		"name" : "SHIELD_LAUNCHER_ITM",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/ShieldLauncher.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/ShieldLauncher.png"
+	},
 	# FREEZERS ITEMS
 	"j-laser" : {
 		"key" : "j-laser",

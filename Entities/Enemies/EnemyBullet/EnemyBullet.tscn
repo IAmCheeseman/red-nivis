@@ -128,7 +128,7 @@ shape = SubResource( 3 )
 [node name="QueueArea" type="Area2D" parent="." groups=["EnemyBullet"]]
 visible = false
 collision_layer = 4
-collision_mask = 129
+collision_mask = 65665
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QueueArea"]
 shape = SubResource( 4 )
