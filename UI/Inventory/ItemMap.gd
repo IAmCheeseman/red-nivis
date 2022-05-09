@@ -153,6 +153,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Bouncer.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Bouncer.png"
 	},
+	"urchin-launcher" : {
+		"key" : "urchin-launcher",
+		"name" : "URCHIN_LAUNCHER_ITM",
+		"tier" : ToolTipGenerator.TIERS.FREEZERS,
+		"scene" : "res://Items/Weapons/Scenes/UrchinLauncher.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/UrchinLauncher.png"
+	},
 	# TOXIC CAVERNS ITEMS
 	"bullet-chainsaw" : {
 		"key" : "bullet-chainsaw",
