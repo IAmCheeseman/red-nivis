@@ -60,10 +60,10 @@ var upgrades := []
 var unlockedUpgrades := []
 
 var passives := [
-#	{
-#		"item": "res://Items/Passives/BounceGoo/BounceGoo.tres",
-#		"used": false
-#	}
+	{
+		"item": "res://Items/Passives/BlockGame/BlockGame.tres",
+		"used": false
+	}
 ]
 
 var immune := false

@@ -55,6 +55,11 @@ var timeOnGround := 0.0
 var gravity := 0.0
 var controllerPressed = 0.0
 
+
+signal just_landed
+signal jumped
+
+
 func _ready():
 	update_passives()
 	GameManager.player = self
@@ -125,6 +130,9 @@ func _physics_process(delta: float) -> void:
 				vel.y = 0
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 			scaleHelper.scale = scaleHelper.scale.move_toward(Vector2.ONE, 5*delta)
+	
+	if just_landed(): emit_signal("just_landed")
+	
 	controller_aiming()
 	lastFrameGroundState = is_grounded()
 
@@ -312,6 +320,8 @@ func jump():
 		vel.y /= 1.75
 
 	triedJumpRecent = false
+	
+	emit_signal("jumped")
 
 
 func _on_a_press_window_timeout(): triedJumpRecent = false

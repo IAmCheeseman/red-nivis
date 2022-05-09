@@ -31,7 +31,7 @@ func shoot():
 		# Adding it to the tree
 		GameManager.spawnManager.spawn_object(newBullet)
 
-		newBullet.damage = gun.damage
+		newBullet.damage = gun.damage * playerData.damageMod
 		yield(TempTimer.idle_frame(self), "timeout")
 		if is_instance_valid(newBullet):
 			if newBullet.get("hitbox"): newBullet.hitbox.effect = gun.perk
