@@ -67,7 +67,7 @@ func _physics_process(delta:float) -> void:
 
 		state = states.ATTACK
 
-	sprite.rotation_degrees = vel.x*.7
+	sprite.rotation_degrees = vel.x / 6
 	sprite.scale.x = -1 if vel.x > 0 else 1
 
 	match state:
@@ -120,7 +120,7 @@ func accel_to_point(point:Vector2, delta:float) -> void:
 		vel = vel.move_toward(Vector2.ZERO, friction*delta)
 
 	# Bouncing off walls and moving through platforms
-	bounceRay.cast_to = vel.normalized()*sprite.texture.get_width()*.25
+	bounceRay.cast_to = vel.normalized()*sprite.texture.get_width()
 	bounceRay.force_raycast_update()
 	collision.disabled = false
 	if bounceRay.is_colliding():
