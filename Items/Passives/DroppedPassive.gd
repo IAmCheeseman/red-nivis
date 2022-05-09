@@ -15,6 +15,7 @@ func _on_interaction() -> void:
 		"item" : item.resource_path,
 		"used" : false
 	})
+	player.damageMod += 0.02
 	player.playerObject.update_passives()
 	
 	queue_free()
