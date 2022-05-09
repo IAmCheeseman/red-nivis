@@ -8,6 +8,8 @@ var inventory = preload("res://UI/Inventory/Inventory.tres")
 var playerData = preload("res://Entities/Player/Player.tres")
 var slotSelectorTarget = 0
 
+var justPressedNum = false
+
 func _ready():
 	inventory.maxSlots = slots.get_child_count()
 	inventory.connect("itemsChanged", self, "refresh_items")
@@ -67,10 +69,14 @@ func _input(event):
 									0, slots.get_child_count())
 			updated = true
 		# Selecting the slot with numbers
+		var allKeysLetGo = true
 		for key in range(KEY_1, KEY_1+slots.get_child_count()):
-			if Input.is_key_pressed(key):
+			if Input.is_key_pressed(key) and !justPressedNum:
 				inventory.selectedSlot = key-KEY_1
 				updated = true
+				justPressedNum = true
+				allKeysLetGo = false
+		justPressedNum = !allKeysLetGo
 		
 		if !updated: return
 		update_rp_gun()
