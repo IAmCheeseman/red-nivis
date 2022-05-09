@@ -185,3 +185,14 @@ const ITEMS = {
 	# TECH LABS ITEMS
 	
 }
+
+
+const PASSIVES = {
+	"LABS_TTL" : [
+		"res://Items/Passives/AmmoUp/AmmoUp.tres",
+		"res://Items/Passives/SpeedUp/SpeedUp.tres",
+		"res://Items/Passives/HPUp/HPUp.tres",
+	],
+}
+
+
