@@ -9,8 +9,6 @@ signal open
 
 var opened := false
 
-export(Array, Resource) var items = []
-
 
 func _ready() -> void:
 	yield(TempTimer.idle_frame(self), "timeout")
@@ -31,11 +29,13 @@ func open() -> void:
 	if opened: return
 	opened = true
 	
-	items = items.duplicate()
-	items.shuffle()
+	var worldData = GameManager.worldData
+	var biome = worldData.get_biome_by_index(worldData.rooms\
+		[worldData.position.x][worldData.position.y].biome)
+	var items = ItemMap.get_passive_list(biome.name)
 	
 	var newPassive = preload("res://Items/Passives/DroppedPassive.tscn").instance()
-	newPassive.item = items.pop_front()
+	newPassive.item = load(items[rand_range(0, items.size())])
 	newPassive.global_position = global_position - Vector2(0, 12)
 	newPassive.apply_central_impulse(Vector2(rand_range(-24, 24), -75))
 	GameManager.spawnManager.spawn_object(newPassive)

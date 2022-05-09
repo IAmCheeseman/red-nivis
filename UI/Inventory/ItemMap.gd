@@ -192,7 +192,34 @@ const PASSIVES = {
 		"res://Items/Passives/AmmoUp/AmmoUp.tres",
 		"res://Items/Passives/SpeedUp/SpeedUp.tres",
 		"res://Items/Passives/HPUp/HPUp.tres",
+		"res://Items/Passives/ExtraTrigger/ExtraTrigger.tres",
 	],
+	"BACKEND_TTL" : [
+		"LABS_TTL",
+		"res://Items/Passives/BlockGame/BlockGame.tres",
+		"res://Items/Passives/BounceGoo/BounceGoo.tres",
+		"res://Items/Passives/FloatingRock/FloatingRock.tres",
+	],
+	"DEEP_LABS_TTL" : [
+		"LABS_TTL",
+		"BACKEND_TTL",
+		"res://Items/Passives/Pizza/Pizza.tres",
+		"res://Items/Passives/Drone/Drone.tres",
+	],
+	"FREEZERS_TTL" : [
+		"BACKEND_TTL",
+		"DEEP_LABS_TTL",
+		"res://Items/Passives/JarOfHearts/JarOfHearts.tres",
+	]
 }
 
+
+static func get_passive_list(biome: String) -> PoolStringArray:
+	var list: PoolStringArray = PASSIVES[biome]
+	var keys := PASSIVES.keys()
+	for i in list.size():
+		if list[i] in keys:
+			list += get_passive_list(list[i])
+			list.remove(i)
+	return list
 
