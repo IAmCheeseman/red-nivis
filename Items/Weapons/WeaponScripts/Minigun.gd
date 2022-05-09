@@ -35,7 +35,7 @@ func shoot():
 		# Adding it to the tree
 		GameManager.spawnManager.spawn_object(newBullet)
 
-		newBullet.damage = gun.damage
+		newBullet.damage = gun.damage * playerData.damageMod
 
 		if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
 
