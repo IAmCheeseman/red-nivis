@@ -34,6 +34,11 @@ func open() -> void:
 		[worldData.position.x][worldData.position.y].biome)
 	var items = ItemMap.get_passive_list(biome.name)
 	
+	var passive = items[rand_range(0, items.size())]
+	while passive in worldData.acquiredPassives:
+		passive = items[rand_range(0, items.size())]
+	worldData.acquiredPassives.append(passive)
+	
 	var newPassive = preload("res://Items/Passives/DroppedPassive.tscn").instance()
 	newPassive.item = load(items[rand_range(0, items.size())])
 	newPassive.global_position = global_position - Vector2(0, 12)

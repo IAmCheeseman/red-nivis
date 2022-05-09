@@ -2,6 +2,7 @@ extends Resource
 class_name WorldData
 
 var rooms := []
+var acquiredPassives := []
 var position := Vector2.ZERO
 var savePosition := Vector2.ZERO
 var moveDir := Vector2.ZERO
