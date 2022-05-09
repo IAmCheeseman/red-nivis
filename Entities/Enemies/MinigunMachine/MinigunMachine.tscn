@@ -272,6 +272,7 @@ enabled = true
 
 [node name="FloorRay" type="RayCast2D" parent="Collisions"]
 enabled = true
+cast_to = Vector2( 0, 40 )
 
 [node name="MoneyDropper" type="Node2D" parent="."]
 script = ExtResource( 9 )

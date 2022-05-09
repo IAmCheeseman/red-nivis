@@ -43,7 +43,12 @@ func _process(delta: float) -> void:
 		minigun.isOn = false
 	else:
 		minigun.start()
+		
+		var startRot = minigunSprite.rotation
 		minigunSprite.look_at(player.global_position)
+		var targetRot = minigunSprite.rotation
+		minigunSprite.rotation = lerp_angle(startRot, targetRot, 5 * delta)
+		
 		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
 		minigunSprite.flip_v = false if angleVec.x > 0 else true
 
