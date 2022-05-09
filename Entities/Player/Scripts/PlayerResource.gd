@@ -30,6 +30,7 @@ export var healMod := 1.0
 var damageMod := 1.0
 var currentMod: Node2D
 var healModMin := .5
+var kbMod := 1.0
 
 var health:int
 var money := 0 setget set_money
@@ -61,7 +62,7 @@ var unlockedUpgrades := []
 
 var passives := [
 	{
-		"item": "res://Items/Passives/BlockGame/BlockGame.tres",
+		"item": "res://Items/Passives/SpringLoadedBullets/SpringLoadedBullets.tres",
 		"used": false
 	}
 ]

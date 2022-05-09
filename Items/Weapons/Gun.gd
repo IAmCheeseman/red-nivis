@@ -18,6 +18,7 @@ export var projSpeed: int = 340 * 2
 export var projSpeedRange := Vector2(-50, 60)
 export var projScale: Vector2 = Vector2(1, 1)
 export var projLifetime: float = .5
+export var projKB: float = 3
 export var peircing: bool = false
 export var recoil: float = 120
 export var look: int

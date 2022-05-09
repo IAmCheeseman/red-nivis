@@ -34,7 +34,9 @@ func shoot():
 		newBullet.damage = gun.damage * playerData.damageMod
 		yield(TempTimer.idle_frame(self), "timeout")
 		if is_instance_valid(newBullet):
-			if newBullet.get("hitbox"): newBullet.hitbox.effect = gun.perk
+			if newBullet.get("hitbox"):
+				newBullet.hitbox.effect = gun.perk
+				newBullet.hitbox.kbStrengh = gun.projKB * playerData.kbMod
 
 			if newBullet.has_meta("set_texture"): newBullet.set_texture(gun.bulletSprite)
 
