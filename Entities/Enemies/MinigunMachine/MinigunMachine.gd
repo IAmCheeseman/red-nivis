@@ -16,6 +16,7 @@ onready var sprite = $Sprite
 onready var minigunSprite = $Sprite/Minigun/Sprite
 onready var wanderTimer = $Timers/WanderTimer
 onready var healthManager = $DamageManager
+onready var floorRay = $Collisions/FloorRay
 
 
 var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
@@ -34,7 +35,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	sprite.rotation_degrees = vel.x*.7
+	sprite.rotation_degrees = vel.x / 4
 	sprite.scale.x = 1 if vel.x < 0 else -1
 
 	if !player:
@@ -57,6 +58,7 @@ func accel_to_point(point:Vector2, delta:float) -> void:
 		vel = vel.move_toward(position.direction_to(point)*speed, accel*delta)
 	else:
 		vel = vel.move_toward(Vector2.ZERO, friction*delta)
+	if floorRay.is_colliding(): vel.y -= 100 * delta
 
 	# Bouncing off walls and moving through platforms
 	bounceRay.cast_to = vel.normalized()*sprite.texture.get_height()*.25
