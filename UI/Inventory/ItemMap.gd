@@ -206,6 +206,7 @@ const PASSIVES = {
 		"res://Items/Passives/BlockGame/BlockGame.tres",
 		"res://Items/Passives/BounceGoo/BounceGoo.tres",
 		"res://Items/Passives/FloatingRock/FloatingRock.tres",
+		"res://Items/Passives/ToiletPaper/ToiletPaper.tres",
 	],
 	"DEEP_LABS_TTL" : [
 		"LABS_TTL",

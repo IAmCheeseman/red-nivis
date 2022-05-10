@@ -52,13 +52,8 @@ func _on_area_entered(area: Area2D) -> void:
 		if disabled: return
 		player.healMaterial += 9
 		if !player.currentMod:
-			print(player.damageMod)
-			
 			player.damageMod += incdec
 			player.attackSpeed -= incdec
-			
-			print(player.damageMod)
-			
 			player.orbOn = true
 			
 			boostTimer.start()

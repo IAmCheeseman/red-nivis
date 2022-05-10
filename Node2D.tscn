@@ -7,7 +7,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDM.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/NPC/6am/6AM.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/PassiveUnlock/Chest.tscn" type="PackedScene" id=10]
 
@@ -42,24 +42,6 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="MDM" parent="SpawningManagment" instance=ExtResource( 8 )]
-position = Vector2( 131, -65 )
-
-[node name="MDM2" parent="SpawningManagment" instance=ExtResource( 8 )]
-position = Vector2( 166, -63 )
-
-[node name="MDM3" parent="SpawningManagment" instance=ExtResource( 8 )]
-position = Vector2( 166, -63 )
-
-[node name="MDM4" parent="SpawningManagment" instance=ExtResource( 8 )]
-position = Vector2( 131, -65 )
-
-[node name="MDM5" parent="SpawningManagment" instance=ExtResource( 8 )]
-position = Vector2( 166, -63 )
-
-[node name="MDM6" parent="SpawningManagment" instance=ExtResource( 8 )]
-position = Vector2( 166, -63 )
-
 [node name="6AM" parent="." instance=ExtResource( 9 )]
 position = Vector2( 184, -28 )
 chest = NodePath("../Chest")
@@ -67,5 +49,8 @@ chest = NodePath("../Chest")
 [node name="Chest" parent="." instance=ExtResource( 10 )]
 position = Vector2( 122, 0 )
 z_index = -1
+
+[node name="MinigunMachine" parent="." instance=ExtResource( 8 )]
+position = Vector2( 104, -74 )
 
 [editable path="CameraMoveZone"]

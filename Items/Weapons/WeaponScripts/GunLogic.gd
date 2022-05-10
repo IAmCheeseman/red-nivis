@@ -29,6 +29,8 @@ signal bullet_hit_wall(bullet)
 signal bullet_hit_enemy(bullet)
 signal bullet_hit(bullet)
 
+signal melee()
+
 
 func _ready() -> void:
 	if gun.burst:
@@ -159,6 +161,8 @@ func melee() -> void:
 
 	gun.meleeCooldown.start()
 	gun.canSwing = false
+	
+	emit_signal("melee")
 
 
 # warning-ignore:shadowed_variable
