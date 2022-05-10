@@ -152,13 +152,15 @@ func walk_state(delta):
 		if is_grounded():
 			timeOnGround += delta
 			speed = playerData.maxSpeed
-			accel = playerData.accelaration if abs(moveDir.x * speed) > vel.x else playerData.friction
+			accel = playerData.accelaration * playerData.accelMod\
+				if abs(moveDir.x * speed) > vel.x\
+				else playerData.friction * playerData.frictMod
 		else:
 			speed = playerData.maxAirSpeed
-			accel = playerData.airAccel
+			accel = playerData.airAccel * playerData.accelMod
 
 		if moveDir.x == 0:
-			accel = playerData.friction
+			accel = playerData.friction * playerData.frictMod
 		vel.x = lerp(
 			vel.x,
 			moveDir.x*(speed * playerData.speedMod),
