@@ -69,7 +69,7 @@ var unlockedUpgrades := []
 
 var passives := [
 	{
-		"item": "res://Items/Passives/ToiletPaper/ToiletPaper.tres",
+		"item": "res://Items/Passives/JoeAmoeba/JoeAmoeba.tres",
 		"used": false
 	}
 ]

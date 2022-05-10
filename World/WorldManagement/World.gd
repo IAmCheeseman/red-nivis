@@ -24,6 +24,7 @@ var lockedIn:bool
 var viableEnemySpawns := []
 var exitBlockers := []
 
+signal added_enemies
 
 func _ready() -> void:
 	AudioServer.set_bus_effect_enabled(4, 0, true)
@@ -39,15 +40,15 @@ func _ready() -> void:
 	if worldData.playerPos != Vector2.ZERO:
 		player.global_position = worldData.playerPos
 		worldData.playerPos = Vector2.ZERO
-
+	
 	var biome = worldData.get_biome_by_index(worldData.get_current_room().biome)
-
+	
 	GameManager.mainTileset = solids
 	GameManager.inGUI = false
-
+	
 	GameManager.rpBiome = biome.name
 	GameManager.update_rp()
-
+	
 	var timer = Timer.new()
 	timer.wait_time = 2.9
 	timer.autostart = true
@@ -65,6 +66,8 @@ func _process(delta: float) -> void:
 
 
 func _on_index_timer_timeout() -> void:
+	emit_signal("added_enemies", enemies)
+	
 	roomClearer.isChecking = true
 	roomClearer.add_enemies()
 
@@ -100,6 +103,7 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 func _on_enemies_cleared() -> void:
 	if rand_range(0, 1) < .5 and waves < 1 and lockedIn:
 		generator.spawn_enemies()
+		
 		waves += 1
 
 		var timer = get_tree().create_timer(2.9)
