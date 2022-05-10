@@ -43,6 +43,8 @@ var ammo:int setget set_ammo
 var healMaterial := 0 setget set_heal_mat
 var dashesLeft := 1
 
+var orbOn = false
+
 var unlockedEntries := [
 	"res://Entities/Enemies/MiniDeathMachine/BestiaryEntry.tres",
 	"res://Entities/Enemies/MiniHank/BestiaryEntry.tres",
@@ -66,17 +68,17 @@ var upgrades := []
 var unlockedUpgrades := []
 
 var passives := [
-	{
-		"item": "res://Items/Passives/Butter/Butter.tres",
-		"used": false
-	}
+#	{
+#		"item": "res://Items/Passives/Butter/Butter.tres",
+#		"used": false
+#	}
 ]
 
 var immune := false
 
 var tutorialEnabled := true
 
-var playerObject:KinematicBody2D
+var playerObject: KinematicBody2D
 
 var isDead := false
 var isDashing := false

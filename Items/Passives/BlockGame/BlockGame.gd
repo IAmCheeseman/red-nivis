@@ -18,8 +18,11 @@ func _process(delta: float) -> void:
 	if player.vel.y > 0 and !player.is_grounded() and !addedBoost:
 		PLAYER.damageMod += BOOST
 		addedBoost = true
+	if player.just_landed():
+		PLAYER.damageMod -= BOOST
+		addedBoost = false
 
 
-func _on_landed() -> void:
-	PLAYER.damageMod -= BOOST
-	addedBoost = false
+#func _on_landed() -> void:
+#	PLAYER.damageMod -= BOOST
+#	addedBoost = false

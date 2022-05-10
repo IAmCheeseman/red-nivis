@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
 	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
 	healVignette.modulate.a = lerp(healVignette.modulate.a, 0, 1.25*delta)
 
-	dmgBuffOrb.visible = playerData.damageMod != 1.0
+	dmgBuffOrb.visible = playerData.orbOn
 
 	# Controller stuff
 	if !GameManager.usingController: for i in 16:

@@ -212,6 +212,7 @@ const PASSIVES = {
 		"BACKEND_TTL",
 		"res://Items/Passives/Pizza/Pizza.tres",
 		"res://Items/Passives/Drone/Drone.tres",
+		"res://Items/Passives/Butter/Butter.tres",
 	],
 	"FREEZERS_TTL" : [
 		"BACKEND_TTL",
@@ -221,7 +222,7 @@ const PASSIVES = {
 }
 
 
-static func get_passive_list(biome: String) -> PoolStringArray:
+static func get_passive_list(biome: String=PASSIVES.keys().back()) -> PoolStringArray:
 	var list: PoolStringArray = PASSIVES[biome]
 	var keys := PASSIVES.keys()
 	for i in list.size():

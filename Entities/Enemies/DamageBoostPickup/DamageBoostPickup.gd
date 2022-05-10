@@ -52,24 +52,36 @@ func _on_area_entered(area: Area2D) -> void:
 		if disabled: return
 		player.healMaterial += 9
 		if !player.currentMod:
-			player.damageMod = 1 + incdec
-			player.attackSpeed = 1 - incdec
+			print(player.damageMod)
+			
+			player.damageMod += incdec
+			player.attackSpeed -= incdec
+			
+			print(player.damageMod)
+			
+			player.orbOn = true
+			
 			boostTimer.start()
 			player.currentMod = self
 		pickupSFX.play()
+
 
 func _on_damage_boost_timeout() -> void:
 	if disabled:
 		queue_free()
 		return
-	player.damageMod = 1
-	player.attackSpeed = 1
+	player.damageMod -= incdec
+	player.attackSpeed += incdec
+	
+	player.orbOn = false
+	
 	player.currentMod = null
 	queue_free()
 
 
 func _exit_tree() -> void:
 	if disabled: return
-	player.damageMod = 1
-	player.attackSpeed = 1
+	
+	player.damageMod -= incdec
+	player.attackSpeed -= incdec
 	player.currentMod = null

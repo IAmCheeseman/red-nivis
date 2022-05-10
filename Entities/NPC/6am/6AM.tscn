@@ -221,7 +221,7 @@ visible = false
 position = Vector2( 0, -4.5 )
 shape = SubResource( 4 )
 
-[node name="Iteraction" parent="." index="2"]
+[node name="Iteraction" parent="." index="3"]
 visible = false
 position = Vector2( 0, -34 )
 
@@ -229,13 +229,13 @@ position = Vector2( 0, -34 )
 position = Vector2( 0, 28 )
 shape = SubResource( 5 )
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 anims/Default = SubResource( 3 )
 anims/Jump = SubResource( 6 )
 anims/RESET = SubResource( 2 )
 anims/Walk = SubResource( 1 )
 
-[node name="Dialog" parent="." index="4"]
+[node name="Dialog" parent="." index="5"]
 position = Vector2( 0, -34 )
 
 [node name="Dialog" parent="Dialog" index="0"]
@@ -246,7 +246,6 @@ wait_time = 0.75
 one_shot = true
 
 [node name="OpenChest" type="Timer" parent="." index="7"]
-wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="OpenChest" to="." method="_on_open_chest_timeout"]

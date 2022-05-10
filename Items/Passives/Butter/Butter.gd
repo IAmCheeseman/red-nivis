@@ -12,8 +12,8 @@ func _ready() -> void:
 		)
 
 
-func _process(delta: float) -> void:
-	var player = PLAYER.playerObject
+func _process(_delta: float) -> void:
+	var player := PLAYER.playerObject
 	
 	var minVel := 10.0
 	
