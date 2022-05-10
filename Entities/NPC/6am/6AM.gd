@@ -68,13 +68,16 @@ func open_chest() -> void:
 	state = JUMP_CHEST
 	
 	yield(TempTimer.timer(self, .75), "timeout")
-	GameManager.emit_signal("screenshake", 5, 1, .015, 2.05)
-
+	GameManager.emit_signal("screenshake", 5, 1, .015, openChestTimer.wait_time)
 
 func _on_open_chest_timeout() -> void:
 	state = WALK
 	targetX = startingPos
 	
 	chest.anim.play("Open")
+	
+	GameManager.emit_signal("screenshake", 6, 5, .015, 0.2)
+	yield(TempTimer.timer(self, .1), "timeout")
+	GameManager.frameFreezer.freeze_frames(.3)
 	
 	defaultDialog = "AfterOpen"
