@@ -160,6 +160,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/UrchinLauncher.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/UrchinLauncher.png"
 	},
+	"freezer" : {
+		"key" : "freezer",
+		"name" : "FREEZER_ITM",
+		"tier" : ToolTipGenerator.TIERS.FREEZERS,
+		"scene" : "res://Items/Weapons/Scenes/Freezer.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Freezer.png"
+	},
 	# TOXIC CAVERNS ITEMS
 	"bullet-chainsaw" : {
 		"key" : "bullet-chainsaw",
