@@ -235,6 +235,16 @@ _global_script_classes=[ {
 "path": "res://UI/Inventory/ItemMap.gd"
 }, {
 "base": "Resource",
+"class": "Log",
+"language": "GDScript",
+"path": "res://World/LogMachines/Log.gd"
+}, {
+"base": "Resource",
+"class": "LogList",
+"language": "GDScript",
+"path": "res://World/LogMachines/LogList.gd"
+}, {
+"base": "Resource",
 "class": "LootTable",
 "language": "GDScript",
 "path": "res://Items/LootTable.gd"
@@ -450,6 +460,8 @@ _global_script_class_icons={
 "Inventory": "",
 "ItemManagement": "",
 "ItemMap": "",
+"Log": "",
+"LogList": "",
 "LootTable": "",
 "MoneyDropper": "",
 "PassiveItem": "",
@@ -759,6 +771,11 @@ hookshot={
 skip_dialog={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+close_terminal={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

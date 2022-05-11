@@ -1,222 +1,250 @@
-keys,en,en_GB,es_ES,es_VE,de
-NO_TRANS,Unavailable translation,Unavailable translation,La traducción no está disponible ,Texto sin traducir,Keine Übersetzung verfügbar
-,,,,,
-BACK_BTN,Back,"go back, m8",Atrás,Atrás,Zurück
-EXIT_BTN,Exit,Gew back tew teh action,Continuar,Continuar,Verlassen
-QUIT_BTN,Quit,Col'oni's O'fer Gahms,Salir,Quitar,Verlassen
-CLEAR_CONFIRM,Do you really want to clear your current game?,Do 'ew reel'eh wa'a cle'ah 'er curen' gahm?,¿Desea borrar su partida?,¿En serio quieres borrar tu partida?,Möchtest du wirklich deinen derzeitigen Spielstand leeren?
-QUIT_CONFIRM,Do you really want to quit?,Do 'ew reel'eh wa'a quit?,¿En serio quieres abandonar?,¿En serio quieres abandonar?,Möchtest du wirklich verlassen?
-YES,Yes,Yea' I'm foine wi' tha' m8,Si,Si,Ja
-NO,No,Naw man',No,No,Nein
-START_BTN,Start,Stah't,Empezar,Empezar,Start
-PLAY_BTN,Play,Plah,Jugar,Jugar,Spielen
-CONTINUE_BTN,Continue,keep goin' bruv,Continuar,Continuar,Weiter
-MAIN_MENU_BTN,Main Menu,Main Men'ew,Volver al Menú,Volver al Menú,Hauptmenü
-INTERACT_RQST,Hit <interact> \n to,Heet <interact> \n tew,Pulse <interact> \n para,Presiona <interact> \n para,Benutze <interact> \n um
-,,,,,
-GAME_OVER,Game Over,"ya lost, bruv",Has perdido ,Fin del Juego,Spiel Vorbei
-KILLS_GO,Kills:,Murdurs:,Assesinatos:,Bajas:,Tötungen
-SCORE_GO,Score:,Ya poynts:,Puntuación:,Puntuación:,Punkte
-TIME_GO,Time:,Ya time:,Tiempo:,Tiempo:,Zeit
-TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,Reintentar,Erneut versuchen
-EXIT_GO,Exit,I'll throw 'n da' towel,Salir,Salir,Verlassen
-LEADERBOARDS_GO,Leaderboards,eh bes' o' 'eh bes',Puntuaciones:,Puntuaciones:,Bestenliste
-,,,,,
-CLOSE_MAP_PRMPT,Close Map,,Cerrar Mapa,,
-,,,,,
-TIP_GO,Tip:,Sugges'ion:,Consejo:,Tip:,Tipp:
-GIT_GUD_TT,Git gud.,Geat Gud.,Tienes qué mejorar ,Juega bien.,Werd' besser.
-DONT_GET_HIT_TT,Don't get hit.,Don' ge' hi'.,No dejes que te toquen.,No dejes que te hagan daño.,Lass dich nicht treffen.
-TRY_NOT_DYING_TT,Try not dying.,Trah no' dyan.,Intenta no morir.,Trata de no morir.,Versuch nicht zu sterben.
-ENEMIES_WILL_KILL_YOU_TT,Enemies will attempt to kill you.,Enemies will a'emp' 'ew keal 'ew.,Los enemigos te intentarán matar.,Los enemigos te hacen daño.,Gegner werden versuchen dich zu töten.
-DONT_STAND_STILL_TT,Don't stand still.,ont s'and s'ill.,Mantente en movimiento.,No te quedes quieto.,Steh nicht still.
-COOL_PEOPLE_REVIEW_TT,You get +10 coolness when you leave a review.,Ew ge' +10 coolness 'en 'ew leave a re'ew.,Consigue 10 puntos guays por dejar una evaluación.,Obtienes +10 de radicalidad si dejas una review.,Du bekommst +10 Coolness wenn du eine Bewertung hinterlässt.
-,,,,,
-TIME_HUD,Time,Toime,Tiempo,Tiempo,Zeit
-,,,,,
-INTR_TALK,talk,speak wi' tongue,Hablar,Hablar,sprechen
-INTR_PCK_UP,pick up,raise tew 'ew,Coger,Tomar,aufheben
-INTR_SLCT_ABILITY,select abilities,gain loife skills,Seleccionar Habilidades,Seleccionar Habilidades,fähigkeiten auswählen
-INTR_SCN_ITM,scan in item,scahn en i'ems,Activar,Activar,einen Gegenstand scannen
-INTR_TELEPORT,teleport,ma'eriali'e in an'o'fer place,Teletransportación ,Usar el viaje Rápido,Teleportieren
-INTR_OPEN,open,ewpen,Abrir,,öffnen
-,,,,,
-PAUSE_TTL,Paused," Hol' on, m8",Pausado,Pausado,Pausiert
-NEW_GAME_BTN,New Game,Noo Gahm,Nueva Run,Nueva Run,Neues Spiel
-OPTIONS_M_BTN,Options,Opchuns,Ajustes,Ajustes,Einstellungen
-CREDITS_M_BTN,Credits,Cre'its,Creditos,Creditos,Credits
-COMMUNITY_BTN,Community,Communitah,Comunidad,Comunidad,Gemeinde
-,,,,,
-OPTIONS_TTL,Options,Set'ihns,Ajustes,Ajustes,Einstellungen
-GAME_OPT_M,Game,Gahmplah,Gameplay,Gameplay,Gameplay
-CONTROLS_OPT_M,Controls,Cantrolls,Controles,Controles,Steuerung
-VISUALS_OPT_M,Visual,Lewk,Gráficos,Gráficos,Grafik
-LANG_OPT_M,Language,Tongue Mewvmen's,Idioma,Idioma,Sprache
-AUDIO_OPT_M,Audio,Au'io,Sonido,Sonido,Ton
-,,,,,
-GAME_TTL,Game,Veh Experia'ce,Gameplay,Gameplay,Gameplay
-GAME_SPD_RN_OPT,Speedrun Timer,Go Fast Bruv,Contador Speedrun,Contador Speedrun,Speedrun Zeitschaltuhr
-GAME_DBL_DMG_MODE_OPT,Unfair Mode,,Modo Duro,,
-,,,,,
-CONTROLS_TTL,\n Controls,\n Cantrolls,\n Controles,\n Controles,\n Steuerung
-CTRL_RESET_BTN,Reset,Reset,Reiniciar Ajustes,Reiniciar Ajustes,Zurücksetzen
-CTRL_MV_LEFT,Move Left,Mewv Lahft,Caminar Izq.,Caminar Izq.,Nach links bewegen
-CTRL_MV_RIGHT,Move Right,Mewv Raht,Caminar Der.,Caminar Der.,Nach rechts bewegen
-CTRL_DOWN,Down,Dawn,Abajo,Abajo,Nach unten
-CTRL_JUMP,Jump,Joimp,Saltar,Saltar,Springen
-CTRL_SHOOT,Shoot,Shewt,Disparar,Disparar,Schießen
-CTRL_MELEE,Melee,Shmackin',Golpe de Arma,Golpe de Arma,Nahkampf
-CTRL_GRENADE,Grenade,Gra'nad,Lanzar Granada,Lanzar Granada,Granate
-CTRL_HOOKSHOT,Hookshot,HewkShewt,Usar Gancho,Usar Gancho,Hookshoot
-CTRL_HEAL,Heal,eal,Curación,Curación,Heilen
-CTRL_DASH,Dash,Dah'sh,Esquivar,Esquivar,Shwung
-CTRL_INTERACT,Interact,In'er'a',Usar,Usar,Interagieren
-CTRL_SKIP_DIALOG,Skip Dialog,,,,
-,,,,,
-VISUALS_TTL,Visuals,Lewk,Gráficos,Gráficos,Grafik
-VSL_FULLSCREEN,Fullscreen,Falscrea',Pantalla Completa,Pantalla Completa,Vollbild
-VSL_LOW_QUALITY,Low Quality,Lew Qual'ity,Modo Baja Calidad,Modo Baja Calidad,Niedrige Qualität
-VSL_SCREENSHAKE,Screenshake,Screa'sha'e,Temblor de Pantalla,Temblor de Pantalla,Bildschirmschütteln
-VSL_FRM_RT,Max FPS,Maximum Frames 'er Shew'ond,FPS Máximos,FPS Máximos,Maximale FPS
-,,,,,
-LANG_TTL,Language,Tongue Mewvmen's,Idioma,Idioma,Sprache
-,,,,,
-AUDIO_TTL,Audio,Au'io,Sonido,Sonido,Ton
-AUDIO_MASTER,Master,Mahstah,General,General,General
-AUDIO_SFX,SFX,SFX,SFX,SFX,SFX
-AUDIO_MUSIC,Music,Mew'sik,Música,Música,Musik
-,,,,,
-CREDITS_TTL,Credits,Mah m8s,Créditos,Créditos,Credits
-CREDITS_DEV,Created By,Crea'or,Hecho por,Hecho por,Erstellt von
-CREDITS_TRANSLATOR,Translators,Tongue Mewvmentors,Traducciones,Traducciones,Übersetzer
-CREDITS_PLAYTESTER,Playtesters,Plah Tes'ahs,Playtesters,Playtesters,Spieltester
-CREDITS_SPECIAL_THX,Special Thanks,Cool Peo'le,Gracias Especiales,Gracias Especiales,Besondere Bedankungen
-,,,,,
-HANK_TTL,H.A.N.K.,Big robo',H.A.N.K.,H.A.N.K.,H.A.N.K.
-GNOME_TTL,Gnome (With a Stick),Noom (Wi' eai steek),Palo-Gnomo,Palo-Gnomo,Zwerg (Mit einem Stock)
-BILLY_TTL,Billy,Billeh,Billy,Billy,Billy
-FRIDGEHEAD_TTL,Fridgehead,Jacked Oop Guy Wi' A Fridge,,,Kühlschrankkopf
-,,,,,
-GNOME_INTRO,I'M GONNA KILL YOU!,OIM GONNA KEAL 'EW!,TE VAS A MORIR!,TE VAS A MORIR!,ICH WERDE DICH TÖTEN!
-GNOME_HIT1,I HATE YOU!,AI HATE 'EW!,TE ODIO!,TE ODIO!,ICH HASSE DICH!
-GNOME_HIT2,AAUUUAGH,*painful bri'ish noises*,AAUUUAGH,AAUUUAGH,AAAAAUUUUHHHH
-GNOME_HIT3,OUCH!,"OI M8, THAT HURT!",OUCH!,OUCH!,AUA!
-GNOME_ASCEND1,STICKS!,STE'KS!,VARITAS!,VARITAS!,STÖCKE!
-GNOME_ASCEND2,JUST DIE!,"JOIST DAIH, M8!",MUERE YA!,MUERE YA!,STIRB EINFACH!
-,,,,,
-GNOME_CROWD_CHEER1,"YEAH, GET'EM!","YEA' MATE, 'EW GET'EM!","ASÍ ES, ACÁBALO","ASÍ ES, ACÁBALO","JAA, HOLE SIE"
-GNOME_CROWD_CHEER2,"I LOVE YOU, MR. STICK!!",I LEWV 'EW MISTAH STE'K!!,TE AMO PALO-GNOMO!!,TE AMO PALO-GNOMO!!,"ICH LIEBE DICH, HERR STOCK!!"
-GNOME_CROWD_CHEER3,"YEAAAH, I BELIEVE IN YOU!!","YEA', OUI BELIEA' EN 'EW!!",YO CREO EN TI!!,YO CREO EN TI!!,"JAA, ICH GLAUBE AN DICH!!"
-GNOME_CROWD_BOO1,YOU SUCK!,EW SUCK!,APESTAS!,APESTAS!,DU BIST SCHEIßE!
-GNOME_CROWD_BOO2,UNWORTHY OF MR. STICK!!!!,UNWOR'Y EWF MISTAH STE'K,NO ERES DIGNO DEL PALO-GNOMO!!!!,NO ERES DIGNO DEL PALO-GNOMO!!!!,UNWÜRDIG FÜR HERR STOCK
-GNOME_CROWD_BOO3,"DON'T WORRY, MR. STICK, YOU GOT THIS!!!!","DON' WOREH MISTAH STE'K, 'EW GO' THI'!!!","NO TE PREOCUPES, PALO-GNOMO, TU PUEDES HACERLO!!!!","NO TE PREOCUPES, PALO-GNOMO, TU PUEDES HACERLO!!!!","KEINE SORGE, HERR STOCK, DU HAST DAS!!!!"
-,,,,,
-LMAO_MAN_INTRO_LN1,This is the Red Nivis Laboratory.,Thi'  is tha Red Ni'is Labahtoreh,Este es el laboratorio Red Nivis.,Este es el laboratorio Red Nivis.,Das ist das Red Nivis Labor.
-LMAO_MAN_INTRO_LN2,It's been shut down for years...,I's bean shut dewn fo' 'ears...,Ha estado cerrado por años...,Ha estado cerrado por años...,Es war Jahre lang geschlossen...
-,,,,,
-LMAO_MAN_RN_LN1,Good morning!,,Hola!,,Guten Morgen!
-LMAO_MAN_RN_LN2,"If you go over there, you'll find the Red Nivis Lab",,"Si vas por ahí, te toparás con el laboratorio Red Nivis",,"Wenn du dort hingehst, wirs du das Red Nivis Labor finden."
-LMAO_MAN_RN_LN3,Be careful to not fall off cliffs or whatever.,,,,"Pass auf, dass du nicht von Klippen oder ähnlichem herunterfallen."
-,,,,,
-SLUG_CULTIST_INTRO_LN1,Hey.,Oi.,Oye.,Oye.,Hallo.
-SLUG_CULTIST_INTRO_LN2,Do things for me.,ew 'ings fo' 'e.,Házme un favor.,Házme un favor.,Tu etwas für mich.
-,,,,,
-6AM_INTRO_LN_1,I have a monopoly on chest opening services.,Oi got a monopoly on chast ewpening sahvices.,,,Ich habe ein Monopol auf das Öffnen von Truhen.
-6AM_INTRO_LN_2,Don't open the chest yourself or I'll sue you.,Don' ewpen 'eh chast ewsalf or alse I got tew sew ya.,,,"Öffne keine Kist selber, oder ich werde dich verklagen."
-6AM_INTRO_LN_3,AND take all the other chests away with me.,AND Oi'll take all 'eh oither chasts awoy wi' me.,,,UND alle anderen Truhen mitnehmen.
-,,,,,
-6AM_OPEN_LN_1,Ho ho ho,Oi mate.,,,Ho Ho Ho
-6AM_OPEN_LN_2,This'll be great...,is coul' be grea'...,,,Das könnte großrtig sein...
-,,,,,
-6AM_PATENT_INF_LN_1,HEY! YOU'RE INFRINGING MY PATENT!,OI! EW'RE INFRINGIN' MOI PA'EN'!,,,HEY! DU VERLETZT MEIN PATENT!
-6AM_PATENT_INF_LN_2,MY LAWYERS WILL MAKE QUICK WORK OF YOU!!,MOI LOYAHS WEAL MOIKE QACK WORK OF EW!!,,,MEINE ANWÄLTE WERDEN DICH FERTIG MACHEN!!!
-6AM_PATENT_INF_LN_3,I HAVE THE BEST LAWYERS IN GERMANY!!!,OI HA' 'EH BAST LOYAHS IN GERMANY!!!,,,ICH HABE DIE BESTEN ANWÄLTE IN GANZ DEUTSCHLAND!!!
-6AM_PATENT_INF_LN_4,THEY DON'T HOLD BACK!!!,EY DON' HOL' BACK!!!,,,SIE HALTEN SICH NICHT ZURÜCK!!!
-,,,,,
-6AM_AFTER_OPEN_LN_1,Thank you for respecting my patent.,than' ew fo' respec'ing mah pa'en'.,,,"Danke, dass du mein Patent respektierst."
-,,,,,
-BIRB_INTRO_LN1,Hey!,Oi!,Hey!,Hey!,Hallo!
-BIRB_INTRO_LN2,Welcome to my trading post!,Wel'ome tew moi tra'in' pewst!,Bienvenido a mi negocio!,Bienvenido a mi negocio!,Wilkommen zu meinen Handelsposten!
-,,,,,
-BIRB_POST_ITEMS,Post items:,Pewst i'ems:,Objetos del Comerciante:,Objetos del Comerciante:,Biete Gegenstände:
-BIRB_YOUR_ITEMS,Your items:,Yo' i'ems:,Tus Objetos:,Tus Objetos:,Deine Gegenstände:
-,,,,,
-BIRB_SLCT_WRN,Choose an item.,Chews aih i'em.,Selecciona un objeto.,Selecciona un objeto.,Wähle ein Gegenstand aus.
-BIRB_NO_TRADE_WRN,Can't trade that item.,"Cahnt tra' tah oitem, bruv.",No puedo intercambiar eso.,No puedo intercambiar eso.,Ich kann diesen Gegenstand nicht tauschen.
-,,,,,
-NEW_BIOME_WECLOME,Welcome to,elcome 'ew ,Bienvenido a,Bienvenido a,Wilkommen zu
-,,,,,
-LABS_TTL,The Labs,eh La-boreh-tory,Los Laboratorios,Los Laboratorios,Die Labore
-BACKEND_TTL,The Maintenance Rooms,eh Maintaineenc Rewms,Las Salas de Mantenimiento,Las Salas de Mantenimiento,Die Wartungsräume
-DEEP_LABS_TTL,The Deep Labs,eh Deep La-boreh-torees,Los Laboratorios Subterráneos,Los Laboratorios Subterráneos,Dem tiefen Labor
-FREEZERS_TTL,The Freezers,eh Fre'zahs,Los Laboratorios Helados,Los Laboratorios Helados,Die Gefrierschränke
-TOXIC_CAVERNS_TTL,The Chem Sector,eh 'oxic Sec'or,,,Der Chemie Sektor
-TECH_LABS_TTL,The Tech Sector,eh Technoglical Sec'or,,,Die Technologie Labore
-,,,,,
-BANDIT_BOMBER_NM,Bomber,,Bombardero,Bombardero,Bomber
-BANDIT_BOMBER_DESC,Before The Shutdown these scientists were creating robots to defend the laboratory from intruders. When the robots turned on them they had to use whatever they could get to make new robots.,,"Antes del apagón, estos científicos estuvieron fabricando robots para defender el laboratorio de posibles intrusos. Cuando los robots se revelaron contra ellos tuvieron que usar todo lo que pudieron recolectar para hacer robots nuevos.","Antes del apagón, estos científicos estuvieron fabricando robots para defender el laboratorio de posibles intrusos. Cuando los robots se revelaron contra ellos tuvieron que usar todo lo que pudieron recolectar para hacer robots nuevos.","Vor dem großen Herunterfahren bauten diese Wissenschaftler Roboter, um das Labor vor Eindringlingen zu schützen. Als die Roboter sich gegen sie wandten, mussten sie alles, was sie bekommen konnten, verwenden, um neue Roboter zu bauen."
-BANDIT_LASER_NM,Janitor,,Conserje,Conserje,Hausmeister
-BANDIT_LASER_DESC,"These guys were the janitors of the laboratory. They were generally hated by the scientists for getting in their way, so they gave them a weapon that required them to stand in place in hopes of them killing themselves. (The lab needed tons of janitors, I swear)",,"Ellos eran los conserjes del laboratorio. La mayoría de científicos los odiaban por entrometerse en su trabajo, así que les dieron armas que requerían de quedarse quieto para funcionar con la esperanza de que murieran. (el laboratorio necesitaba de un montón de conserjes, lo juro)","Ellos eran los conserjes del laboratorio. La mayoría de científicos los odiaban por entrometerse en su trabajo, así que les dieron armas que requerían de quedarse quieto para funcionar con la esperanza de que murieran. (el laboratorio necesitaba de un montón de conserjes, lo juro)","Diese Typen waren die Hausmeister des Labors. Sie wurden im Allgemeinen von den Wissenschaftlern gehasst, weil sie ihnen in die Quere kamen, also gaben sie ihnen eine Waffe, mit der sie an Ort und Stelle bleiben mussten, in der Hoffnung, dass sie sich selbst umbrachten. (Das Labor brauchte tonnenweise Hausmeister, ich schwöre es)"
-BANDIT_SHOTGUN_NM,Shotgunner,,Escopetero,Escopetero,Revolverheld
-BANDIT_SHOTGUN_DESC,Has a cool shotgun. Nothing else. (They're just so cool),,,,Er hat eine Schrotflinte. Nichts anderes. (Sie sind einfach nur cool)
-GNOME_BUFF_NM,Buff Gnome,,Fuerte-Gnomo,Fuerte-Gnomo,Verbessert den Zwerg!
-GNOME_BUFF_DESC,"Really likes to work out. They have a big ego and are the leaders of the Gnome Resistance. They ALL really want to wear their unicorn underpants (Superstar Brand) in public but it's ""unprofessional"" and ""socially unacceptable.""",,Les encanta hacer ejercicio. Tienen un gran ego y son los líderes de la Gnomo-Resistencia. De veras lo único que quieren es usar sus pantalones de unicornio (marca Superstar) en público pero es ''poco profesional'' y ''socialmente inaceptable.'',Les encanta hacer ejercicio. Tienen un gran ego y son los líderes de la Gnomo-Resistencia. De veras lo único que quieren es usar sus pantalones de unicornio (marca Superstar) en público pero es ''poco profesional'' y ''socialmente inaceptable.'',"Trainiert gerne. Sie haben ein großes Ego und sind die Anführer des Gnom-Widerstands. Sie alle würden gerne ihre Einhorn-Unterhosen (Marke Superstar) in der Öffentlichkeit tragen, aber das ist ""unprofessionell"" und ""gesellschaftlich inakzeptabel""."
-GNOME_MGK_NM,Wizard Gnome,,Mago-Gnomo,Mago-Gnomo,Magier Gnom
-GNOME_MGK_DESC,These gnomes usually have their big noses stuck in books instead of the real world - they are generally disrespected. If you're not careful they'll turn you into a slug.,,Estos gnomos suelen mantener sus narices metidas en libros en lugar de la vida real - nadie les suele tratar con respeto. Si no tienes cuidado te pueden convertir en una babosa.,Estos gnomos suelen mantener sus narices metidas en libros en lugar de la vida real - nadie les suele tratar con respeto. Si no tienes cuidado te pueden convertir en una babosa.,"Diese Zwerge stecken mit ihren großen Nasen meist in Büchern und nicht in der realen Welt - sie werden im Allgemeinen nicht respektiert. Wenn du nicht aufpasst, verwandeln sie dich in eine Schnecke."
-GNOME_GUN_NM,Gunner Gnome,,Arma-Gnomo,Arma-Gnomo,Schuss-Gnom
-GNOME_GUN_DESC,"The younger generation of the Gnomes. They don't have the strength to be buff, nor the will to be wizards. So they use guns.",,"La generación mas reciente de gnomos. No tienen la fuerza para ser Fuerte-Gnomos, o la inteligencia para ser Mago-Gnomos, así que solo usan armas.","La generación mas reciente de gnomos. No tienen la fuerza para ser Fuerte-Gnomos, o la inteligencia para ser Mago-Gnomos, así que solo usan armas.",
-MCHN_SPINNER_NM,Spinner Drone,,Drón Giratorio,Drón Giratorio,Drehende Drohne
-MCHN_SPINNER_DESC,First model in the DM series. Had to be locked in a cage as they sometimes broke lights.,,Primer modelo de la serie DM. Se recomienda encerrarlos en jaulas por que pueden romper las luces.,Primer modelo de la serie DM. Se recomienda encerrarlos en jaulas por que pueden romper las luces.,"Das erste Modell der DM-Serie. Musste in einen Käfig gesperrt werden, da sie manchmal Lichter zerbrachen."
-MCHN_MINIGN_NM,Mingun Drone,,Drón Minigun,Drón Minigun,Minigun Drohne
-MCHN_MINIGN_DESC,"The third model in the DM series. Less prone to breaking lights, as the scientists added special code to prevent that, but still had to be locked up because of constant misfires.",,"Tercer modelo de la serie DM. Menos propenso a romper luces, gracias a un parche oficial, pero debe de ser encerrado debido a consantes disparos accidentales.","Tercer modelo de la serie DM. Menos propenso a romper luces, gracias a un parche oficial, pero debe de ser encerrado debido a consantes disparos accidentales.","Das dritte Modell der DM-Serie. Weniger anfällig für kaputte Lichter, da die Wissenschaftler einen speziellen Code einfügten, um dies zu verhindern, aber dennoch musste sie wegen ständiger Fehlzündungen gesperrt werden."
-MCHN_DRILL_NM,Drill Drone,,Drón Taladro,Drón Taladro,Bohrer Drohne
-MCHN_DRILL_DESC,The second model in the DM Series. Was never released to the public since it was too ugly to be marketable.,,Segundo modelo de la serie DM. Nunca fué revelado al público porque es muy feo para ser vendido.,Segundo modelo de la serie DM. Nunca fué revelado al público porque es muy feo para ser vendido.,"Das zweite Modell der DM-Serie. Wurde nie der Öffentlichkeit vorgestellt, da es zu hässlich war, um vermarktet zu werden."
-MCHN_PISTOL_NM,Walker,,Caminante,Caminante,Wanderer
-MCHN_PISTOL_DESC,"Created to explore dangerous planets, modified to be slightly less mobile in an indoors enviroment. They would climb up on desks and knock things off. ",,"Creado para explorar planetas peligrosos, está modificado para ser menos ágil en ambientes cerrados. Solían subirse a los escritorios y tirar las cosas por todas partes.","Creado para explorar planetas peligrosos, está modificado para ser menos ágil en ambientes cerrados. Solían subirse a los escritorios y tirar las cosas por todas partes.","Sie wurden geschaffen, um gefährliche Planeten zu erforschen, und so modifiziert, dass sie in einer Innenraumumgebung etwas weniger mobil sind. Sie kletterten auf Tische und stießen Dinge herunter. "
-MINIHANK_NM,H.A.N.K. Mini,,H.A.N.K mini,H.A.N.K mini,H.A.N.K. Mini
-MINIHANK_DESC,"Built by Hank as durable defenses against intruders. Originally there was only a single one made, but after The Shutdown they were duplicated. Was previously the H.A.N.K. model, but renamed to the H.A.N.K. Mini after the creation of H.A.N.K. Rumor has it that Hank was working on a H.A.N.K. Mini Pro before he died.",,Creado por Hank como una defensa duradera ante los intrusos. Originalmente solo se creó uno. Pero después del apagón se crearon réplicas. Previamente considerado como H.A.N.K pero se le degradó a mini tras la creación de H.A.N.K. Cuentan los rumores que Hank estaba trabajando en una versión Pro del H.A.N.K mini antes de su muerte.,Creado por Hank como una defensa duradera ante los intrusos. Originalmente solo se creó uno. Pero después del apagón se crearon réplicas. Previamente considerado como H.A.N.K pero se le degradó a mini tras la creación de H.A.N.K. Cuentan los rumores que Hank estaba trabajando en una versión Pro del H.A.N.K mini antes de su muerte.,"Sie wurden von Hank als dauerhafte Verteidigungsanlagen gegen Eindringlinge gebaut. Ursprünglich wurde nur ein einziges Exemplar hergestellt, aber nach dem großen Herunterfahren wurden sie vervielfältigt. War zuvor das H.A.N.K.-Modell, wurde aber nach der Gründung von H.A.N.K. in H.A.N.K. Mini umbenannt. Gerüchten zufolge arbeitete Hank vor seinem Tod an einem H.A.N.K. Mini Pro."
-GNOME_NM,Mr. Stick,,Palo-Gnomo,Palo-Gnomo,Herr Stock
-GNOME_DESC,"NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone.",,"NOTA: el Palo-Gnomo quiere mantener su anonimato, por lo cual su nombre no será revelado (jamás). El Palo-Gnomo fué el detonante de la Gnomo-Revolución contra Jerry, aprovechando que se le otorgó conciencia accidentalmente. La Gnomo-Revolución busca activamente la libertad y tranquilidad para los Gnomos.","NOTA: el Palo-Gnomo quiere mantener su anonimato, por lo cual su nombre no será revelado (jamás). El Palo-Gnomo fué el detonante de la Gnomo-Revolución contra Jerry, aprovechando que se le otorgó conciencia accidentalmente. La Gnomo-Revolución busca activamente la libertad y tranquilidad para los Gnomos.","HINWEIS: Herr Stock möchte anonym bleiben, daher wird sein richtiger Name nicht genannt (niemals). Herr Stock war derjenige, der die Gnom-Revolution gegen Jerry startete, da ihm bei seiner Erschaffung fälschlicherweise ein freier Wille gegeben wurde. Die Gnom-Revolution steht für die Freiheit der Gnome und dafür, dass jeder sie in Ruhe lässt."
-HANK_NM,H.A.N.K.,H.A.N.K.,H.A.N.K.,H.A.N.K.,H.A.N.K.
-HANK_DESC,Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Also Hank's least favorite food was lemons BTW.,,Hank se dedicaba a la robótica. Su creación mas valiosa fué el modelo H.A.N.K. solo tendría sentido que Jerry llamara H.A.N.K. a H.A.N.K. la comida menos favorita de Hank son los limones.,Hank se dedicaba a la robótica. Su creación mas valiosa fué el modelo H.A.N.K. solo tendría sentido que Jerry llamara H.A.N.K. a H.A.N.K. la comida menos favorita de Hank son los limones.,"Hank interessierte sich für Robotik. Seine wertvollste Kreation war das H.A.N.K.-Modell. Es würde nur Sinn machen, dass Jerry H.A.N.K. nach H.A.N.K. benennt. Außerdem war Hanks unbeliebtestes Essen übrigens Zitronen."
-SHOCKWAVE_GOBLIN_NM,Fish Goblin,,,,Fischkobolt
-SHOCKWAVE_GOBLIN_DESC,"Members of Eateh (Is that how you spell it?) sent to free fish from our ""abusive"" scientists. We kept the fish well fed, anything beyond that is not our responsibility. They signed the contract. ",,Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato.,Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato.,"Mitglieder von Eateh (schreibt man das so?) haben Fische von unseren ""missbrauchenden"" Wissenschaftlern befreit. Wir sorgten dafür, dass die Fische gut gefüttert wurden, für alles andere sind wir nicht verantwortlich. Sie haben den Vertrag unterschrieben. "
-,,,,,
-PASS_HEALTH_UP,Health Up,Ealthy Die',,,
-PASS_HEALTH_UP_DESC,Increases your health by 1.,MOER LOIFE ,,,
-PASS_AMMO_STACK,Stack of Ammo,Illegal,,,
-PASS_AMMO_STACK_DESC,Increases ammo by 20%.,Ew get 20% moer illegal.,,,
-PASS_MAGIC_ROCK,Magic Rock,Moigik Rock,,,
-PASS_MAGIC_ROCK_DESC,A rock that orbits around you.,A rock tha' orbi's ew.,,,
-PASS_EXTRA_TRIGGER,Extra Trigger,Ex'ra triggar,,,
-PASS_EXTRA_TRIGGER_DESC,Decreases cooldown by 20%.,Remewves 20% o' cewldown,,,
-PASS_JAR_OF_HEARTS,Jar of Hearts,Jah o' Hahts,,,
-PASS_JAR_OF_HEARTS_DESC,30% Chance you don't take damage.,30% choince 'ew don' ta'e damage.,,,
-PASS_SPEED_FEATHER,Speed Feather,Speed fea'er,,,
-PASS_SPEED_FEATHER_DESC,Increases your speed by 20%.,In'eases your spee' boi 20%,,,
-,,,,,
-PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistola,Pistole
-AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47,AK-47
-REVOLVER_ITM,Revolver,Revalveh,Revólver,Revólver,Revolver
-LASER_GUN_ITM,Laser Gun,Pew,,,Laserkanone
-GRENADE_LAUNCHER_ITM,Grenade Launcher,Grenayde  Lewncha,Lanzagranadas,Lanzagranadas,Granatenwerfer
-SHOTGUN_ITM,Shotgun,Shewtgun,,,
-FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Lanzallamas,Flammenwerfer
-ASSAULT_RIFLE_ITM,Assault Rifle,Illega',Rifle de Asalto,Rifle de Asalto,Sturmgewehr
-HOMING_BOOMERANG_ITM,Homing Boomerang,Abodin' Bewmerang,Boomerang Seguidor,Boomerang Seguidor,Aufsteigender Bumerang
-MULTISHOT_BOOMERANG_ITM,Multishot Boomerang,Se'eral Bewmerang,Boomerang Múltiple,Boomerang Múltiple,Mehrschuss-Bumerang
-MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun,Minigun
-BULLET_CHAINSAW_ITM,Bullet Chainsaw,Bul'et Chaynshaw,Balasierra,Balasierra,Kugel Kettensäge
-GOUDA_GREASER_ITM,Gouda Greaser,Americahn Fewd,Cañón de Queso,Cañón de Queso,Gouda-Schmierer
-CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,Varita Nubosa,Wolkenstab
-SOAP_SLAPPER_ITM,Bubble Gun,Bu'le Gun,Pistola de burbujas,Pistola de burbujas,Seifenblasenkanone
-J_LASER_ITM,J-Laser,J-LaZer,Láser J,Láser J,J-Laser
-VAPORGAT_ITM,Vaporgat,Fart Cannon,Vaporgat,Vaporgat,Vaporgat
-FINGERGUN_ITM,Fingergun,Finga' Gewn,,,Fingerpistole
-BURST_SHOTUN_ITM,Burst Shotgun,Ahlso illega',,,Berstschrotflinte
-FIRE_SHOTGUN_ITM,Fire Shotgun,Burnin' Shew'gun,,,Feuerschrotflinte
-TRIPLE_BARREL_PISTOL_ITM,Triple Barrel Pistol,riple bahral pistool,,,Dreiläufige Schrotflinte
-BOUNCER_ITM,Bouncer,Bahnchah,,,Hüpfkanone
-CROSSBOW_ITM,Crossbow,,,,
-LASER_SHOTGUN_ITM,Laser Shotgun,,,,
-MINISHOTGUN_ITM,Minishotgun,Minishotgun,Minishotgun,Minishotgun,Minishotgun
+keys,en,en_GB,es_VE,de
+NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir,Keine Übersetzung verfügbar
+,,,,
+BACK_BTN,Back,"go back, m8",Atrás,Zurück
+EXIT_BTN,Exit,Gew back tew teh action,Continuar,Verlassen
+QUIT_BTN,Quit,Col'oni's O'fer Gahms,Quitar,Verlassen
+CLEAR_CONFIRM,Do you really want to clear your current game?,Do 'ew reel'eh wa'a cle'ah 'er curen' gahm?,¿En serio quieres borrar tu partida?,Möchtest du wirklich deinen derzeitigen Spielstand leeren?
+QUIT_CONFIRM,Do you really want to quit?,Do 'ew reel'eh wa'a quit?,¿En serio quieres abandonar?,Möchtest du wirklich verlassen?
+YES,Yes,Yea' I'm foine wi' tha' m8,Si,Ja
+NO,No,Naw man',No,Nein
+START_BTN,Start,Stah't,Empezar,Start
+PLAY_BTN,Play,Plah,Jugar,Spielen
+CONTINUE_BTN,Continue,keep goin' bruv,Continuar,Weiter
+MAIN_MENU_BTN,Main Menu,Main Men'ew,Volver al Menú,Hauptmenü
+INTERACT_RQST,Hit <interact> \n to,Heet <interact> \n tew,Presiona <interact> \n para,Benutze <interact> \n um
+,,,,
+GAME_OVER,Game Over,"ya lost, bruv",Fin del Juego,Spiel Vorbei
+KILLS_GO,Kills:,Murdurs:,Bajas:,Tötungen
+SCORE_GO,Score:,Ya poynts:,Puntuación:,Punkte
+TIME_GO,Time:,Ya time:,Tiempo:,Zeit
+TRY_AGAIN_GO,Try Again,I'll 'ave ano'er go,Reintentar,Erneut versuchen
+EXIT_GO,Exit,I'll throw 'n da' towel,Salir,Verlassen
+LEADERBOARDS_GO,Leaderboards,eh bes' o' 'eh bes',Puntuaciones:,Bestenliste
+,,,,
+CLOSE_MAP_PRMPT,Close Map,,,Karte schließen
+,,,,
+TIP_GO,Tip:,Sugges'ion:,Tip:,Tipp:
+GIT_GUD_TT,Git gud.,Geat Gud.,Juega bien.,Werd' besser.
+DONT_GET_HIT_TT,Don't get hit.,Don' ge' hi'.,No dejes que te hagan daño.,Lass dich nicht treffen.
+TRY_NOT_DYING_TT,Try not dying.,Trah no' dyan.,Trata de no morir.,Versuch nicht zu sterben.
+ENEMIES_WILL_KILL_YOU_TT,Enemies will attempt to kill you.,Enemies will a'emp' 'ew keal 'ew.,Los enemigos te hacen daño.,Gegner werden versuchen dich zu töten.
+DONT_STAND_STILL_TT,Don't stand still.,ont s'and s'ill.,No te quedes quieto.,Steh nicht still.
+COOL_PEOPLE_REVIEW_TT,You get +10 coolness when you leave a review.,Ew ge' +10 coolness 'en 'ew leave a re'ew.,Obtienes +10 de radicalidad si dejas una review.,Du bekommst +10 Coolness wenn du eine Bewertung hinterlässt.
+,,,,
+TIME_HUD,Time,Toime,Tiempo,Zeit
+,,,,
+INTR_TALK,talk,speak wi' tongue,Hablar,sprechen
+INTR_PCK_UP,pick up,raise tew 'ew,Tomar,aufheben
+INTR_SLCT_ABILITY,select abilities,gain loife skills,Seleccionar Habilidades,fähigkeiten auswählen
+INTR_SCN_ITM,scan in item,scahn en i'ems,Activar,einen Gegenstand scannen
+INTR_TELEPORT,teleport,ma'eriali'e in an'o'fer place,Usar el viaje Rápido,Teleportieren
+INTR_OPEN,open,ewpen,,öffnen
+INTR_READ,read,oiball eet,,
+,,,,
+PAUSE_TTL,Paused," Hol' on, m8",Pausado,Pausiert
+NEW_GAME_BTN,New Game,Noo Gahm,Nueva Run,Neues Spiel
+OPTIONS_M_BTN,Options,Opchuns,Ajustes,Einstellungen
+CREDITS_M_BTN,Credits,Cre'its,Creditos,Credits
+COMMUNITY_BTN,Community,Communitah,Comunidad,Gemeinde
+,,,,
+OPTIONS_TTL,Options,Set'ihns,Ajustes,Einstellungen
+GAME_OPT_M,Game,Gahmplah,Gameplay,Gameplay
+CONTROLS_OPT_M,Controls,Cantrolls,Controles,Steuerung
+VISUALS_OPT_M,Visual,Lewk,Gráficos,Grafik
+LANG_OPT_M,Language,Tongue Mewvmen's,Idioma,Sprache
+AUDIO_OPT_M,Audio,Au'io,Sonido,Ton
+,,,,
+GAME_TTL,Game,Veh Experia'ce,Gameplay,Gameplay
+GAME_SPD_RN_OPT,Speedrun Timer,Go Fast Bruv,Contador Speedrun,Speedrun Zeitschaltuhr
+GAME_DBL_DMG_MODE_OPT,Unfair Mode,,,Ungerechter Spielmodus
+,,,,
+CONTROLS_TTL,\n Controls,\n Cantrolls,\n Controles,\n Steuerung
+CTRL_RESET_BTN,Reset,Reset,Reiniciar Ajustes,Zurücksetzen
+CTRL_MV_LEFT,Move Left,Mewv Lahft,Caminar Izq.,Nach links bewegen
+CTRL_MV_RIGHT,Move Right,Mewv Raht,Caminar Der.,Nach rechts bewegen
+CTRL_DOWN,Down,Dawn,Abajo,Nach unten
+CTRL_JUMP,Jump,Joimp,Saltar,Springen
+CTRL_SHOOT,Shoot,Shewt,Disparar,Schießen
+CTRL_MELEE,Melee,Shmackin',Golpe de Arma,Nahkampf
+CTRL_GRENADE,Grenade,Gra'nad,Lanzar Granada,Granate
+CTRL_HOOKSHOT,Hookshot,HewkShewt,Usar Gancho,Hookshoot
+CTRL_HEAL,Heal,eal,Curación,Heilen
+CTRL_DASH,Dash,Dah'sh,Esquivar,Shwung
+CTRL_INTERACT,Interact,In'er'a',Usar,Interagieren
+CTRL_SKIP_DIALOG,Skip Dialog,,,Überspringen
+,,,,
+VISUALS_TTL,Visuals,Lewk,Gráficos,Grafik
+VSL_FULLSCREEN,Fullscreen,Falscrea',Pantalla Completa,Vollbild
+VSL_LOW_QUALITY,Low Quality,Lew Qual'ity,Modo Baja Calidad,Niedrige Qualität
+VSL_SCREENSHAKE,Screenshake,Screa'sha'e,Temblor de Pantalla,Bildschirmschütteln
+VSL_FRM_RT,Max FPS,Maximum Frames 'er Shew'ond,FPS Máximos,Maximale FPS
+,,,,
+LANG_TTL,Language,Tongue Mewvmen's,Idioma,Sprache
+,,,,
+AUDIO_TTL,Audio,Au'io,Sonido,Ton
+AUDIO_MASTER,Master,Mahstah,General,General
+AUDIO_SFX,SFX,SFX,SFX,SFX
+AUDIO_MUSIC,Music,Mew'sik,Música,Musik
+,,,,
+CREDITS_TTL,Credits,Mah m8s,Créditos,Credits
+CREDITS_DEV,Created By,Crea'or,Hecho por,Erstellt von
+CREDITS_TRANSLATOR,Translators,Tongue Mewvmentors,Traducciones,Übersetzer
+CREDITS_PLAYTESTER,Playtesters,Plah Tes'ahs,Playtesters,Spieltester
+CREDITS_SPECIAL_THX,Special Thanks,Cool Peo'le,Gracias Especiales,Besondere Bedankungen
+,,,,
+HANK_TTL,H.A.N.K.,Big robo',H.A.N.K.,H.A.N.K.
+GNOME_TTL,Gnome (With a Stick),Noom (Wi' eai steek),Palo-Gnomo,Zwerg (Mit einem Stock)
+BILLY_TTL,Billy,Billeh,Billy,Billy
+FRIDGEHEAD_TTL,Fridgehead,Jacked Oop Guy Wi' A Fridge,,Kühlschrankkopf
+,,,,
+GNOME_INTRO,I'M GONNA KILL YOU!,OIM GONNA KEAL 'EW!,TE VAS A MORIR!,ICH WERDE DICH TÖTEN!
+GNOME_HIT1,I HATE YOU!,AI HATE 'EW!,TE ODIO!,ICH HASSE DICH!
+GNOME_HIT2,AAUUUAGH,*painful bri'ish noises*,AAUUUAGH,AAAAAUUUUHHHH
+GNOME_HIT3,OUCH!,"OI M8, THAT HURT!",OUCH!,AUA!
+GNOME_ASCEND1,STICKS!,STE'KS!,VARITAS!,STÖCKE!
+GNOME_ASCEND2,JUST DIE!,"JOIST DAIH, M8!",MUERE YA!,STIRB EINFACH!
+,,,,
+GNOME_CROWD_CHEER1,"YEAH, GET'EM!","YEA' MATE, 'EW GET'EM!","ASÍ ES, ACÁBALO","JAA, HOLE SIE"
+GNOME_CROWD_CHEER2,"I LOVE YOU, MR. STICK!!",I LEWV 'EW MISTAH STE'K!!,TE AMO PALO-GNOMO!!,"ICH LIEBE DICH, HERR STOCK!!"
+GNOME_CROWD_CHEER3,"YEAAAH, I BELIEVE IN YOU!!","YEA', OUI BELIEA' EN 'EW!!",YO CREO EN TI!!,"JAA, ICH GLAUBE AN DICH!!"
+GNOME_CROWD_BOO1,YOU SUCK!,EW SUCK!,APESTAS!,DU BIST SCHEIßE!
+GNOME_CROWD_BOO2,UNWORTHY OF MR. STICK!!!!,UNWOR'Y EWF MISTAH STE'K,NO ERES DIGNO DEL PALO-GNOMO!!!!,UNWÜRDIG FÜR HERR STOCK
+GNOME_CROWD_BOO3,"DON'T WORRY, MR. STICK, YOU GOT THIS!!!!","DON' WOREH MISTAH STE'K, 'EW GO' THI'!!!","NO TE PREOCUPES, PALO-GNOMO, TU PUEDES HACERLO!!!!","KEINE SORGE, HERR STOCK, DU HAST DAS!!!!"
+,,,,
+LMAO_MAN_INTRO_LN1,This is the Red Nivis Laboratory.,Thi'  is tha Red Ni'is Labahtoreh,Este es el laboratorio Red Nivis.,Das ist das Red Nivis Labor.
+LMAO_MAN_INTRO_LN2,It's been shut down for years...,I's bean shut dewn fo' 'ears...,Ha estado cerrado por años...,Es war Jahre lang geschlossen...
+,,,,
+LMAO_MAN_RN_LN1,Good morning!,,,Guten Morgen!
+LMAO_MAN_RN_LN2,"If you go over there, you'll find the Red Nivis Lab",,,"Wenn du dort hingehst, wirs du das Red Nivis Labor finden."
+LMAO_MAN_RN_LN3,Be careful to not fall off cliffs or whatever.,,,"Pass auf, dass du nicht von Klippen oder ähnlichem herunterfallen."
+,,,,
+SLUG_CULTIST_INTRO_LN1,Hey.,Oi.,Oye.,Hallo.
+SLUG_CULTIST_INTRO_LN2,Do things for me.,ew 'ings fo' 'e.,Házme un favor.,Tu etwas für mich.
+,,,,
+6AM_INTRO_LN_1,I have a monopoly on chest opening services.,Oi got a monopoly on chast ewpening sahvices.,,Ich habe ein Monopol auf das Öffnen von Truhen.
+6AM_INTRO_LN_2,Don't open the chest yourself or I'll sue you.,Don' ewpen 'eh chast ewsalf or alse I got tew sew ya.,,"Öffne keine Kist selber, oder ich werde dich verklagen."
+6AM_INTRO_LN_3,AND take all the other chests away with me.,AND Oi'll take all 'eh oither chasts awoy wi' me.,,UND alle anderen Truhen mitnehmen.
+,,,,
+6AM_OPEN_LN_1,Ho ho ho,Oi mate.,,Ho Ho Ho
+6AM_OPEN_LN_2,This'll be great...,is coul' be grea'...,,Das könnte großrtig sein...
+,,,,
+6AM_PATENT_INF_LN_1,HEY! YOU'RE INFRINGING MY PATENT!,OI! EW'RE INFRINGIN' MOI PA'EN'!,,HEY! DU VERLETZT MEIN PATENT!
+6AM_PATENT_INF_LN_2,MY LAWYERS WILL MAKE QUICK WORK OF YOU!!,MOI LOYAHS WEAL MOIKE QACK WORK OF EW!!,,MEINE ANWÄLTE WERDEN DICH FERTIG MACHEN!!!
+6AM_PATENT_INF_LN_3,I HAVE THE BEST LAWYERS IN GERMANY!!!,OI HA' 'EH BAST LOYAHS IN GERMANY!!!,,ICH HABE DIE BESTEN ANWÄLTE IN GANZ DEUTSCHLAND!!!
+6AM_PATENT_INF_LN_4,THEY DON'T HOLD BACK!!!,EY DON' HOL' BACK!!!,,SIE HALTEN SICH NICHT ZURÜCK!!!
+,,,,
+6AM_AFTER_OPEN_LN_1,Thank you for respecting my patent.,than' ew fo' respec'ing mah pa'en'.,,"Danke, dass du mein Patent respektierst."
+,,,,
+BIRB_INTRO_LN1,Hey!,Oi!,Hey!,Hallo!
+BIRB_INTRO_LN2,Welcome to my trading post!,Wel'ome tew moi tra'in' pewst!,Bienvenido a mi negocio!,Wilkommen zu meinen Handelsposten!
+,,,,
+BIRB_POST_ITEMS,Post items:,Pewst i'ems:,Objetos del Comerciante:,Biete Gegenstände:
+BIRB_YOUR_ITEMS,Your items:,Yo' i'ems:,Tus Objetos:,Deine Gegenstände:
+,,,,
+BIRB_SLCT_WRN,Choose an item.,Chews aih i'em.,Selecciona un objeto.,Wähle ein Gegenstand aus.
+BIRB_NO_TRADE_WRN,Can't trade that item.,"Cahnt tra' tah oitem, bruv.",No puedo intercambiar eso.,Ich kann diesen Gegenstand nicht tauschen.
+,,,,
+NEW_BIOME_WECLOME,Welcome to,elcome 'ew ,Bienvenido a,Wilkommen zu
+,,,,
+LABS_TTL,The Labs,eh La-boreh-tory,Los Laboratorios,Die Labore
+BACKEND_TTL,The Maintenance Rooms,eh Maintaineenc Rewms,Las Salas de Mantenimiento,Die Wartungsräume
+DEEP_LABS_TTL,The Deep Labs,eh Deep La-boreh-torees,Los Laboratorios Subterráneos,Dem tiefen Labor
+FREEZERS_TTL,The Freezers,eh Fre'zahs,Los Laboratorios Helados,Die Gefrierschränke
+TOXIC_CAVERNS_TTL,The Chem Sector,eh 'oxic Sec'or,,Der Chemie Sektor
+TECH_LABS_TTL,The Tech Sector,eh Technoglical Sec'or,,Die Technologie Labore
+,,,,
+BANDIT_BOMBER_NM,Bomber,,Bombardero,Bomber
+BANDIT_BOMBER_DESC,Before The Shutdown these scientists were creating robots to defend the laboratory from intruders. When the robots turned on them they had to use whatever they could get to make new robots.,,"Antes del apagón, estos científicos estuvieron fabricando robots para defender el laboratorio de posibles intrusos. Cuando los robots se revelaron contra ellos tuvieron que usar todo lo que pudieron recolectar para hacer robots nuevos.","Vor dem großen Herunterfahren bauten diese Wissenschaftler Roboter, um das Labor vor Eindringlingen zu schützen. Als die Roboter sich gegen sie wandten, mussten sie alles, was sie bekommen konnten, verwenden, um neue Roboter zu bauen."
+BANDIT_LASER_NM,Janitor,,Conserje,Hausmeister
+BANDIT_LASER_DESC,"These guys were the janitors of the laboratory. They were generally hated by the scientists for getting in their way, so they gave them a weapon that required them to stand in place in hopes of them killing themselves. (The lab needed tons of janitors, I swear)",,"Ellos eran los conserjes del laboratorio. La mayoría de científicos los odiaban por entrometerse en su trabajo, así que les dieron armas que requerían de quedarse quieto para funcionar con la esperanza de que murieran. (el laboratorio necesitaba de un montón de conserjes, lo juro)","Diese Typen waren die Hausmeister des Labors. Sie wurden im Allgemeinen von den Wissenschaftlern gehasst, weil sie ihnen in die Quere kamen, also gaben sie ihnen eine Waffe, mit der sie an Ort und Stelle bleiben mussten, in der Hoffnung, dass sie sich selbst umbrachten. (Das Labor brauchte tonnenweise Hausmeister, ich schwöre es)"
+BANDIT_SHOTGUN_NM,Shotgunner,,Escopetero,Revolverheld
+BANDIT_SHOTGUN_DESC,Has a cool shotgun. Nothing else. (They're just so cool),,,Er hat eine Schrotflinte. Nichts anderes. (Sie sind einfach nur cool)
+GNOME_BUFF_NM,Buff Gnome,,Fuerte-Gnomo,Verbessert den Zwerg!
+GNOME_BUFF_DESC,"Really likes to work out. They have a big ego and are the leaders of the Gnome Resistance. They ALL really want to wear their unicorn underpants (Superstar Brand) in public but it's ""unprofessional"" and ""socially unacceptable.""",,Les encanta hacer ejercicio. Tienen un gran ego y son los líderes de la Gnomo-Resistencia. De veras lo único que quieren es usar sus pantalones de unicornio (marca Superstar) en público pero es ''poco profesional'' y ''socialmente inaceptable.'',"Trainiert gerne. Sie haben ein großes Ego und sind die Anführer des Gnom-Widerstands. Sie alle würden gerne ihre Einhorn-Unterhosen (Marke Superstar) in der Öffentlichkeit tragen, aber das ist ""unprofessionell"" und ""gesellschaftlich inakzeptabel""."
+GNOME_MGK_NM,Wizard Gnome,,Mago-Gnomo,Magier Gnom
+GNOME_MGK_DESC,These gnomes usually have their big noses stuck in books instead of the real world - they are generally disrespected. If you're not careful they'll turn you into a slug.,,Estos gnomos suelen mantener sus narices metidas en libros en lugar de la vida real - nadie les suele tratar con respeto. Si no tienes cuidado te pueden convertir en una babosa.,"Diese Zwerge stecken mit ihren großen Nasen meist in Büchern und nicht in der realen Welt - sie werden im Allgemeinen nicht respektiert. Wenn du nicht aufpasst, verwandeln sie dich in eine Schnecke."
+GNOME_GUN_NM,Gunner Gnome,,Arma-Gnomo,Schuss-Gnom
+GNOME_GUN_DESC,"The younger generation of the Gnomes. They don't have the strength to be buff, nor the will to be wizards. So they use guns.",,"La generación mas reciente de gnomos. No tienen la fuerza para ser Fuerte-Gnomos, o la inteligencia para ser Mago-Gnomos, así que solo usan armas.",
+MCHN_SPINNER_NM,Spinner Drone,,Drón Giratorio,Drehende Drohne
+MCHN_SPINNER_DESC,First model in the DM series. Had to be locked in a cage as they sometimes broke lights.,,Primer modelo de la serie DM. Se recomienda encerrarlos en jaulas por que pueden romper las luces.,"Das erste Modell der DM-Serie. Musste in einen Käfig gesperrt werden, da sie manchmal Lichter zerbrachen."
+MCHN_MINIGN_NM,Mingun Drone,,Drón Minigun,Minigun Drohne
+MCHN_MINIGN_DESC,"The third model in the DM series. Less prone to breaking lights, as the scientists added special code to prevent that, but still had to be locked up because of constant misfires.",,"Tercer modelo de la serie DM. Menos propenso a romper luces, gracias a un parche oficial, pero debe de ser encerrado debido a consantes disparos accidentales.","Das dritte Modell der DM-Serie. Weniger anfällig für kaputte Lichter, da die Wissenschaftler einen speziellen Code einfügten, um dies zu verhindern, aber dennoch musste sie wegen ständiger Fehlzündungen gesperrt werden."
+MCHN_DRILL_NM,Drill Drone,,Drón Taladro,Bohrer Drohne
+MCHN_DRILL_DESC,The second model in the DM Series. Was never released to the public since it was too ugly to be marketable.,,Segundo modelo de la serie DM. Nunca fué revelado al público porque es muy feo para ser vendido.,"Das zweite Modell der DM-Serie. Wurde nie der Öffentlichkeit vorgestellt, da es zu hässlich war, um vermarktet zu werden."
+MCHN_PISTOL_NM,Walker,,Caminante,Wanderer
+MCHN_PISTOL_DESC,"Created to explore dangerous planets, modified to be slightly less mobile in an indoors enviroment. They would climb up on desks and knock things off. ",,"Creado para explorar planetas peligrosos, está modificado para ser menos ágil en ambientes cerrados. Solían subirse a los escritorios y tirar las cosas por todas partes.","Sie wurden geschaffen, um gefährliche Planeten zu erforschen, und so modifiziert, dass sie in einer Innenraumumgebung etwas weniger mobil sind. Sie kletterten auf Tische und stießen Dinge herunter. "
+MINIHANK_NM,H.A.N.K. Mini,,H.A.N.K mini,H.A.N.K. Mini
+MINIHANK_DESC,"Built by Hank as durable defenses against intruders. Originally there was only a single one made, but after The Shutdown they were duplicated. Was previously the H.A.N.K. model, but renamed to the H.A.N.K. Mini after the creation of H.A.N.K. Rumor has it that Hank was working on a H.A.N.K. Mini Pro before he died.",,Creado por Hank como una defensa duradera ante los intrusos. Originalmente solo se creó uno. Pero después del apagón se crearon réplicas. Previamente considerado como H.A.N.K pero se le degradó a mini tras la creación de H.A.N.K. Cuentan los rumores que Hank estaba trabajando en una versión Pro del H.A.N.K mini antes de su muerte.,"Sie wurden von Hank als dauerhafte Verteidigungsanlagen gegen Eindringlinge gebaut. Ursprünglich wurde nur ein einziges Exemplar hergestellt, aber nach dem großen Herunterfahren wurden sie vervielfältigt. War zuvor das H.A.N.K.-Modell, wurde aber nach der Gründung von H.A.N.K. in H.A.N.K. Mini umbenannt. Gerüchten zufolge arbeitete Hank vor seinem Tod an einem H.A.N.K. Mini Pro."
+GNOME_NM,Mr. Stick,,Palo-Gnomo,Herr Stock
+GNOME_DESC,"NOTE: Mr. Stick wishes to remain anonymous, so his real name will not be given (Ever). Mr. Stick was the one who started the Gnome Revolution against Jerry, as he was mistakenly given free will when he was created. The Gnome Revolution stands for liberty amongst Gnomes, and that everyone leaves them alone.",,"NOTA: el Palo-Gnomo quiere mantener su anonimato, por lo cual su nombre no será revelado (jamás). El Palo-Gnomo fué el detonante de la Gnomo-Revolución contra Jerry, aprovechando que se le otorgó conciencia accidentalmente. La Gnomo-Revolución busca activamente la libertad y tranquilidad para los Gnomos.","HINWEIS: Herr Stock möchte anonym bleiben, daher wird sein richtiger Name nicht genannt (niemals). Herr Stock war derjenige, der die Gnom-Revolution gegen Jerry startete, da ihm bei seiner Erschaffung fälschlicherweise ein freier Wille gegeben wurde. Die Gnom-Revolution steht für die Freiheit der Gnome und dafür, dass jeder sie in Ruhe lässt."
+HANK_NM,H.A.N.K.,H.A.N.K.,H.A.N.K.,H.A.N.K.
+HANK_DESC,Hank was into robotics. His most valued creation was the H.A.N.K. model. It would only make sense that Jerry name H.A.N.K. after H.A.N.K. Also Hank's least favorite food was lemons BTW.,,Hank se dedicaba a la robótica. Su creación mas valiosa fué el modelo H.A.N.K. solo tendría sentido que Jerry llamara H.A.N.K. a H.A.N.K. la comida menos favorita de Hank son los limones.,"Hank interessierte sich für Robotik. Seine wertvollste Kreation war das H.A.N.K.-Modell. Es würde nur Sinn machen, dass Jerry H.A.N.K. nach H.A.N.K. benennt. Außerdem war Hanks unbeliebtestes Essen übrigens Zitronen."
+SHOCKWAVE_GOBLIN_NM,Fish Goblin,,,Fischkobolt
+SHOCKWAVE_GOBLIN_DESC,"Members of Eateh (Is that how you spell it?) sent to free fish from our ""abusive"" scientists. We kept the fish well fed, anything beyond that is not our responsibility. They signed the contract. ",,Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato.,"Mitglieder von Eateh (schreibt man das so?) haben Fische von unseren ""missbrauchenden"" Wissenschaftlern befreit. Wir sorgten dafür, dass die Fische gut gefüttert wurden, für alles andere sind wir nicht verantwortlich. Sie haben den Vertrag unterschrieben. "
+,,,,
+PASS_HEALTH_UP,Health Up,Ealthy Die',,Gesundheitserhöhung
+PASS_HEALTH_UP_DESC,Increases your health.,MOER LOIFE ,,Erhöht deine Gesundheit um 1.
+PASS_AMMO_STACK,Stack of Ammo,Illegal,,Munitionsstapel
+PASS_AMMO_STACK_DESC,Increases ammo.,Moiks 'ew moer ille'al,,Erhöht Munition um 20%.
+PASS_MAGIC_ROCK,Magic Rock,Moigik Rock,,Magischer Felsen
+PASS_MAGIC_ROCK_DESC,A rock that orbits around you.,A rock tha' orbi's ew.,,"Ein Felsen, der dich umkreist."
+PASS_EXTRA_TRIGGER,Extra Trigger,Ex'ra triggar,,Extra Auslöser
+PASS_EXTRA_TRIGGER_DESC,Decreases cooldown.,Remewves 20% o' cewldown,,Verringert die Abklingzeit um 20%.
+PASS_JAR_OF_HEARTS,Jar of Hearts,Jah o' Hahts,,Gefäß von Herzen
+PASS_JAR_OF_HEARTS_DESC,Chance that you don't take damage.,30% choince 'ew don' ta'e damage.,,"30% Chance, dass du keinen Schaden nimmst."
+PASS_SPEED_FEATHER,Speed Feather,Speed fea'er,,Geschwindigkeitsfeder 
+PASS_SPEED_FEATHER_DESC,Increases your speed.,In'eases your spee' boi 20%,,Erhöht deine Geschwindigkeit um 20%.
+PASS_BOUNCE_GOO,Bounce Goo,Reflec'ive Su's'ance,,Abprallende Kacka
+PASS_BOUNCE_GOO_DESC,Rebounds bullets that hit you.,eboun's bulle's tha' 'it 'ew.,,"Lässt Geschosse, die dich treffen, abprallen."
+PASS_SPRING_LOADED_BULLETS,Spring Loaded Bullets,,,
+PASS_SPRING_LOADED_BULLETS_DESC,Increased enemy knockback.,,,
+PASS_BLOCK_GAME,Block Game,,,
+PASS_BLOCK_GAME_DESC,Increases damage when you're falling down.,,,
+PASS_BUTTER,Butter,,,
+PASS_BUTTER_DESC,"Increases damage when you're moving, and reduces friction.",,,
+PASS_TOIET_PAPER,Toilet Paper,,,
+PASS_TOIET_PAPER_DESC,Shoots a projectile that blocks bullets when you use melee.,,,
+PASS_JOE_AMOEBA,Joe Amoeba,,,
+PASS_JOE_AMOEBA_DESC,Truth hurts - decreases enemy health.,,,
+,,,,
+PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
+AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47
+REVOLVER_ITM,Revolver,Revalveh,Revólver,Revolver
+LASER_GUN_ITM,Laser Gun,Pew,,Laserkanone
+GRENADE_LAUNCHER_ITM,Grenade Launcher,Grenayde  Lewncha,Lanzagranadas,Granatenwerfer
+SHOTGUN_ITM,Shotgun,Shewtgun,,Schrotflinte
+FLAMETHROWER_ITM,Flamethrower,Por'able Firebreefin' Dragin ,Lanzallamas,Flammenwerfer
+ASSAULT_RIFLE_ITM,Assault Rifle,Illega',Rifle de Asalto,Sturmgewehr
+HOMING_BOOMERANG_ITM,Homing Boomerang,Abodin' Bewmerang,Boomerang Seguidor,Aufsteigender Bumerang
+MULTISHOT_BOOMERANG_ITM,Multishot Boomerang,Se'eral Bewmerang,Boomerang Múltiple,Mehrschuss-Bumerang
+MINIGUN_ITM,Minigun,Miniature Gewn,Minigun,Minigun
+BULLET_CHAINSAW_ITM,Bullet Chainsaw,Bul'et Chaynshaw,Balasierra,Kugel Kettensäge
+GOUDA_GREASER_ITM,Gouda Greaser,Americahn Fewd,Cañón de Queso,Gouda-Schmierer
+CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,Wolkenstab
+SOAP_SLAPPER_ITM,Bubble Gun,Bu'le Gun,Pistola de burbujas,Seifenblasenkanone
+J_LASER_ITM,J-Laser,J-LaZer,Láser J,J-Laser
+VAPORGAT_ITM,Vaporgat,Fart Cannon,Vaporgat,Vaporgat
+FINGERGUN_ITM,Fingergun,Finga' Gewn,,Fingerpistole
+BURST_SHOTUN_ITM,Burst Shotgun,Ahlso illega',Escopeta de ráfagas,Berstschrotflinte
+FIRE_SHOTGUN_ITM,Fire Shotgun,Burnin' Shew'gun,Escopeta de fuego,Feuerschrotflinte
+TRIPLE_BARREL_PISTOL_ITM,Triple Barrel Pistol,riple bahral pistool,Pistola triple,Dreiläufige Schrotflinte
+BOUNCER_ITM,Bouncer,Bahnchah,Rebotador,Hüpfkanone
+CROSSBOW_ITM,Crossbow,Crossbow,Ballesta,Armbrust
+LASER_SHOTGUN_ITM,Laser Shotgun,,Escopeta láser,Laser Schrotflinte
+MINISHOTGUN_ITM,Minishotgun,Minishotgun,Minishotgun,Minishotgun
+TOXIC_GRENADE_LAUNCHER_ITM,Toxic Grenade Launcher,,,Giftiger Granatenwerfer
+SHIELD_LAUNCHER_ITM,Shield Launcher,,,Schutzschild-Werfer
+,,,,
+LOGGER_SYSTEM,System,,,
+LOGGER_HANK,Hank,,Hank,Hank
+LOGGER_GNOME,[Anonymous],,[Anonymous],[Anonymous]
+LOGGER_BILL,Bill,,Bill,Bill
+LOGGER_BRUCE,Bruce,,Bruce,Bruce
+LOGGER_ADRIAN,Adrian,,Adrian,Adrian
+LOGGER_JERRY,Jerry,,Jerry,Jerry
+LOGGER_YOU,Me,,,
+,,,,
+LOG_FAILURE,Complete system failure. Locking down RNL.,,,
+LOG_CONSTRUCTOR,"We've discovered how to split atoms into their different components without causing fission. We need to find out how to reconstruct them, maybe we can make something completely different than what we put in?",,,
+LOG_REGRETS,I don't think I really want what I've done.,,,

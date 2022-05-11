@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://World/LogMachines/LogMachine.png" type="Texture" id=1]
+[ext_resource path="res://World/LogMachines/LogMachine.gd" type="Script" id=2]
+[ext_resource path="res://Managing/Interaction/Iteraction.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=4]
+[ext_resource path="res://UI/ButtonPrompt/Prompt.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 22.0
+
+[node name="LogMachine" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -12 )
+
+[node name="Iteraction" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -32 )
+spritePath = NodePath("../Sprite")
+action = "INTR_READ"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
+position = Vector2( 0, 32 )
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Screen" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/Screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+
+[node name="BG" type="ColorRect" parent="CanvasLayer/Screen/Margin"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 328.0
+margin_bottom = 188.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/Screen/Margin"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 328.0
+margin_bottom = 188.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Screen/Margin/Margin"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 291.0
+margin_bottom = 151.0
+
+[node name="Content" type="Label" parent="CanvasLayer/Screen/Margin/Margin/VBoxContainer"]
+margin_right = 286.0
+margin_bottom = 10.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.658824, 0.792157, 0.345098, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "[Content] test"
+autowrap = true
+percent_visible = -0.0769231
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Screen/Margin/Margin/VBoxContainer"]
+margin_top = 14.0
+margin_right = 286.0
+margin_bottom = 24.0
+custom_constants/separation = 0
+
+[node name="ClosePrompt" type="Label" parent="CanvasLayer/Screen/Margin/Margin/VBoxContainer/HBoxContainer"]
+margin_right = 103.0
+margin_bottom = 10.0
+size_flags_vertical = 2
+custom_colors/font_color = Color( 0.658824, 0.792157, 0.345098, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "> Press Enter to exit."
+
+[node name="Prompts" type="VBoxContainer" parent="CanvasLayer/Screen"]
+anchor_bottom = 1.0
+margin_right = 30.0
+alignment = 2
+
+[node name="Prompt" parent="CanvasLayer/Screen/Prompts" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 213.0
+margin_right = 30.0
+margin_bottom = 220.0
+promptText = "Close Terminal"
+promptAction = "close_terminal,interact,pause"
+
+[node name="TextIncTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[connection signal="interaction" from="Iteraction" to="." method="_on_interaction"]
+[connection signal="timeout" from="TextIncTimer" to="." method="inc_text"]

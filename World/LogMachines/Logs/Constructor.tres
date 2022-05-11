@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://World/LogMachines/Log.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+day = 5
+month = 2
+year = 9208
+logger = "LOGGER_JERRY"
+text = "LOG_CONSTRUCTOR"
