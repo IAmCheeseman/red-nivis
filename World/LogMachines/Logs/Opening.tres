@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource( 1 )
-day = 16
-month = 12
-year = 9213
-logger = "LOGGER_JERRY"
-text = "LOG_REGRETS"
+day = 18
+month = 11
+year = 9216
+logger = "LOGGER_SYSTEM"
+text = "LOG_ONLINE"

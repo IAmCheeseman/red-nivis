@@ -8,7 +8,7 @@
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
 [ext_resource path="res://World/LogMachines/LogMachine.tscn" type="PackedScene" id=8]
-[ext_resource path="res://World/LogMachines/Logs/Constructor.tres" type="Resource" id=9]
+[ext_resource path="res://World/LogMachines/Logs/Opening.tres" type="Resource" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
