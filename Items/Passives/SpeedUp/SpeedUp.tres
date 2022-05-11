@@ -10,5 +10,4 @@ scene = ExtResource( 2 )
 sprite = ExtResource( 3 )
 name = "PASS_SPEED_FEATHER"
 desc = "PASS_SPEED_FEATHER_DESC"
-isCurse = false
 applyOnce = true

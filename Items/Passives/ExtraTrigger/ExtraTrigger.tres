@@ -10,5 +10,4 @@ scene = ExtResource( 2 )
 sprite = ExtResource( 3 )
 name = "PASS_EXTRA_TRIGGER"
 desc = "PASS_EXTRA_TRIGGER_DESC"
-isCurse = false
 applyOnce = false

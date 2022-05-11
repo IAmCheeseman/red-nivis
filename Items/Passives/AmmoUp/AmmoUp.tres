@@ -10,5 +10,4 @@ scene = ExtResource( 2 )
 sprite = ExtResource( 3 )
 name = "PASS_AMMO_STACK"
 desc = "PASS_AMMO_STACK_DESC"
-isCurse = false
 applyOnce = false

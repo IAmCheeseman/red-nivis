@@ -5,8 +5,9 @@ onready var content = find_node("Content")
 onready var closePrompt = find_node("ClosePrompt")
 onready var textIncTimer = $TextIncTimer
 
-var selectedLog: Resource
+export var manualLog: Resource
 
+var selectedLog: Resource
 var started := false
 
 var disableQuit := false
@@ -14,7 +15,11 @@ var disableQuit := false
 
 func _ready() -> void:
 	ui.hide()
+	var worldData = GameManager.worldData
+	seed((worldData.position.x - worldData.position.y) + worldData.worldSeed)
+	
 	selectedLog = load(LogList.LOGS[ceil(rand_range(-1, LogList.LOGS.size()-1))])
+	if manualLog: selectedLog = manualLog
 
 
 func start() -> void:

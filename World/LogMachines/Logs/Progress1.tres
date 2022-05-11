@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://World/LogMachines/Log.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+day = 5
+month = 7
+year = 9209
+logger = "LOGGER_JERRY"
+text = "Progress on the Atomic Constructor is going well. We've found that atoms can be constructed by force, but this makes them unstable. Anything made with this won't be viable for use."

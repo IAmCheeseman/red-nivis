@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://World/LogMachines/Log.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+day = 3
+month = 5
+year = 9213
+logger = "LOGGER_HANK"
+text = "I think we've done it! We've figured out how to recreate atoms! We can also create custom atoms! Most of which are unstable. The possibilities are endless. We'll have to start working on a more user friendly design soon so we can start selling this to governments. Lets hope we can finish before christmas."

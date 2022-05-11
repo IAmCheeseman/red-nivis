@@ -103,14 +103,17 @@ func remove_attacking_enemy(enemy: Node) -> void:
 func save_run() -> void:
 	var playerData = preload("res://Entities/Player/Player.tres")
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
-
+	var savedPassives = playerData.passives
+	
+	for i in savedPassives: i.used = false
+	
 	var runData = {
 		"playerData:maxHealth"          : playerData.maxHealth,
 		"playerData:health"             : playerData.health,
 		"playerData:maxStamina"         : playerData.maxStamina,
 		"playerData:money"              : playerData.money,
 		"playerData:upgrades"           : playerData.upgrades,
-		"playerData:passives"           : playerData.passives,
+		"playerData:passives"           : savedPassives,
 		"inventory:items"               : inventory.items,
 		"worldData:rooms"               : worldData.rooms,
 		"worldData:position"            : worldData.savePosition,
@@ -118,6 +121,7 @@ func save_run() -> void:
 		"worldData:playerPos"           : worldData.savePlayerPos,
 		"worldData:savePlayerPos"       : worldData.savePlayerPos,
 		"worldData:moveDir"             : worldData.moveDir,
+		"worldData:worldSeed"           : worldData.worldSeed,
 		"fastTravel:discoveredStations" : FastTravel.discoveredStations
 	}
 
