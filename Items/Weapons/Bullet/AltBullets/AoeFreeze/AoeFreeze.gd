@@ -5,8 +5,8 @@ var currentAreas = []
 
 
 func _ready() -> void:
-	connect("area_entered", self, "_on_area_entered")
-	connect("area_exited", self, "_on_area_exited")
+	var _discard0 = connect("area_entered", self, "_on_area_entered")
+	var _discard1 = connect("area_exited", self, "_on_area_exited")
 
 
 
