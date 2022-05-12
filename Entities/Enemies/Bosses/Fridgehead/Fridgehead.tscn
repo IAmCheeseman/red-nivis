@@ -578,6 +578,7 @@ tracks/1/keys = {
 
 [node name="Fridgehead" type="KinematicBody2D" groups=["Fridgehead"]]
 collision_layer = 0
+collision_mask = 17
 script = ExtResource( 1 )
 speed = 130.0
 
