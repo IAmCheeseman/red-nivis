@@ -4,6 +4,8 @@ const PLAYER = preload("res://Entities/Player/Player.tres")
 
 
 onready var label:RichTextLabel = $Label
+onready var anim := $AnimationPlayer
+onready var pointer := $Pointer
 
 
 export var ignoreDistance := false
@@ -16,6 +18,7 @@ var sprite:Sprite
 
 var playerNear = false
 var emittedClose = false
+var isVisible := false
 
 signal interaction
 signal player_close
@@ -26,6 +29,8 @@ func _ready() -> void:
 	update_label()
 	set_process(false)
 	# Adding an outline shader to a sprite
+	pointer.modulate.a = 0
+	
 	if !has_node(spritePath): return
 	sprite = get_node(spritePath)
 	if !sprite.material:
@@ -42,15 +47,25 @@ func _input(event: InputEvent) -> void:
 			emit_signal("interaction")
 
 
+func _physics_process(delta: float) -> void:
+	var font = label.get_font("normal_font")
+	label.rect_size = font.get_string_size(label.text) + (Vector2.ONE * 16)
+	
+	label.rect_position.x = -label.rect_size.x / 2
+	label.rect_position.y = pointer.rect_position.y - (label.rect_size.y / 2)
+	
+	label.modulate = pointer.modulate
+
+
 func _process(_delta: float) -> void:
 	if !disabled and is_closest() and playerNear:
-		label.show()
+		set_visibility(true)
 		if !emittedClose:
 			emit_signal("player_close")
 			emittedClose = true
 		if sprite: sprite.material.set_shader_param("line_thickness", 1)
 	else:
-		label.hide()
+		set_visibility(false)
 		if sprite: sprite.material.set_shader_param("line_thickness", 0)
 		emittedClose = false
 	set_process(playerNear)
@@ -75,7 +90,7 @@ func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		playerNear = false
 		if !disabled:
-			label.hide()
+			set_visibility(false)
 			emit_signal("player_left")
 		if sprite: sprite.material.set_shader_param("line_thickness", 0)
 
@@ -94,26 +109,34 @@ func is_closest() -> bool:
 	return true
 
 # Sets `disabled` to `val`
-func set_disabled(val:bool):
+func set_disabled(val: bool):
+	if disabled == val: return
+	
 	disabled = val 
 	if !label or !sprite: return
 	if disabled:
-		label.hide()
+		set_visibility(false)
 		sprite.material.set_shader_param("line_thickness", 0)
 	elif get_overlapping_areas().size() > 0 and is_closest():
-		label.show()
+		set_visibility(true)
 		sprite.material.set_shader_param("line_thickness", 1)
+
+
+func set_visibility(vis: bool) -> void:
+	if isVisible == vis or disabled: return
+	isVisible = vis
+	if vis:
+		anim.play("PointerIn")
+	else:
+		anim.play_backwards("PointerIn")
+	
+
 
 # Updates the label, and centers it
 func update_label() -> void:
-	label.bbcode_text = "[center]%s %s[/center]" % [tr("INTERACT_RQST"), tr(action)]
-	label.bbcode_text = label.bbcode_text.replace(
-		"<interact>",
-		"<%s>" % OS.get_scancode_string(InputMap.get_action_list("interact")[0].scancode)
-	)
+	label.bbcode_text = "[center]%s[/center]" % [tr(action)]
+#	label.bbcode_text = label.bbcode_text.replace(
+#		"<interact>",
+#		"<%s>" % OS.get_scancode_string(InputMap.get_action_list("interact")[0].scancode)
+#	)
 	#OS.get_scancode_string(InputMap.get_action_list("interact")[0].scancode), action
-	var font = label.get_font("normal_font")
-	label.rect_size = font.get_string_size(label.text) + (Vector2.ONE * 16)
-	
-	label.rect_position.x = -label.rect_size.x / 2
-	label.rect_position.y = -label.rect_size.y

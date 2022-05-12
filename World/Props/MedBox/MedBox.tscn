@@ -144,11 +144,10 @@ shadow_filter = 3
 shadow_filter_smooth = 23.0
 
 [node name="Iteraction" parent="." instance=ExtResource( 2 )]
-visible = false
 position = Vector2( 0, -36 )
 disabled = true
 spritePath = NodePath("../Sprite")
-action = "heal"
+action = "INTR_HEAL"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Iteraction"]
 position = Vector2( 0, 21 )

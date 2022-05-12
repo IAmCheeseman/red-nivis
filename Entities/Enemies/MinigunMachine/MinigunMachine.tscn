@@ -118,8 +118,9 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=11]
 radius = 5.0
+height = 10.0
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 8.0
@@ -244,10 +245,11 @@ color = Color( 1, 0, 0, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( 0, 6 )
-shape = SubResource( 5 )
+position = Vector2( 0, 1 )
+shape = SubResource( 11 )
 
 [node name="Collisions" type="Node2D" parent="."]
+visible = false
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 4 )]
 collision_layer = 4

@@ -9,7 +9,6 @@ var playerData = preload("res://Entities/Player/Player.tres")
 
 func _process(_delta: float) -> void:
 	interaction.disabled = playerData.maxHealth <= playerData.health
-#	if !interaction.disabled: interaction.disabled = anim.is_playing()
 
 
 func _on_interaction() -> void:

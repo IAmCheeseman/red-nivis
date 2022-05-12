@@ -36,13 +36,14 @@ COOL_PEOPLE_REVIEW_TT,You get +10 coolness when you leave a review.,Ew ge' +10 c
 ,,,,
 TIME_HUD,Time,Toime,Tiempo,Zeit
 ,,,,
-INTR_TALK,talk,speak wi' tongue,Hablar,sprechen
-INTR_PCK_UP,pick up,raise tew 'ew,Tomar,aufheben
-INTR_SLCT_ABILITY,select abilities,gain loife skills,Seleccionar Habilidades,fähigkeiten auswählen
-INTR_SCN_ITM,scan in item,scahn en i'ems,Activar,einen Gegenstand scannen
-INTR_TELEPORT,teleport,ma'eriali'e in an'o'fer place,Usar el viaje Rápido,Teleportieren
-INTR_OPEN,open,ewpen,,öffnen
-INTR_READ,read,oiball eet,,
+INTR_TALK,Talk,speak wi' tongue,Hablar,Sprechen
+INTR_PCK_UP,Pick Up,raise tew 'ew,Tomar,Aufheben
+INTR_SLCT_ABILITY,Select Abilities,gain loife skills,Seleccionar Habilidades,Fähigkeiten Auswählen
+INTR_SCN_ITM,Get Item,scahn en i'ems,Activar,Einen Gegenstand Scannen
+INTR_TELEPORT,Teleport,ma'eriali'e in an'o'fer place,Usar el viaje Rápido,Teleportieren
+INTR_OPEN,Open,ewpen,,öffnen
+INTR_READ,Read,oiball eet,,
+INTR_HEAL,Heal,,,
 ,,,,
 PAUSE_TTL,Paused," Hol' on, m8",Pausado,Pausiert
 NEW_GAME_BTN,New Game,Noo Gahm,Nueva Run,Neues Spiel

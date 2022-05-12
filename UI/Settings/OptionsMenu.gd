@@ -29,8 +29,8 @@ func _on_quit():
 func update_settings() -> void:
 	OS.window_fullscreen = Settings.fullscreen
 	Engine.target_fps = Settings.maxfps
-	AudioServer.set_bus_volume_db(0, linear2db(Settings.masterVol))
-	AudioServer.set_bus_volume_db(3, linear2db(Settings.sfx))
+	AudioServer.set_bus_volume_db(0, linear2db(Settings.masterVol) * .4)
+	AudioServer.set_bus_volume_db(3, linear2db(Settings.sfx) * .4)
 
 
 func _input(event: InputEvent) -> void:

@@ -102,6 +102,7 @@ anims/RESET = SubResource( 2 )
 script = ExtResource( 3 )
 audio = ExtResource( 4 )
 directional = true
+volumeMod = -9.0
 pitchShiftRange = 2.0
 attenuation = 2.0
 maxDist = 220.72
