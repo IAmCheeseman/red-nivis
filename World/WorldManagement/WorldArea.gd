@@ -10,6 +10,7 @@ export var platforms:PackedScene
 export var bgColor:Color = Color("#10141f")
 export var atmosphere:PackedScene
 export(float, 0, 1) var brightness:float = 104.0/255.0
+export var music: AudioStreamOGGVorbis = preload("res://World/EnviormentalArt/Lab/LabAmbience.ogg")
 
 # World Gen
 export var startingArea:bool = false

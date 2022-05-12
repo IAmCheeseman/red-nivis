@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=10 format=2]
+[gd_resource type="Resource" load_steps=11 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://World/Decorators/FreezersDecorator.tres" type="Resource" id=7]
 [ext_resource path="res://World/EnviormentalArt/Freezers/WaterFreezersAtmosphere.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolidsBroken.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/EnviormentalArt/Lab/LabAmbience.ogg" type="AudioStream" id=10]
 
 [resource]
 script = ExtResource( 1 )
@@ -20,6 +21,7 @@ platforms = ExtResource( 5 )
 bgColor = Color( 0.0117647, 0.0156863, 0.027451, 1 )
 atmosphere = ExtResource( 8 )
 brightness = 1.0
+music = ExtResource( 10 )
 startingArea = false
 biomeIndex = 4
 biomeTile = 5

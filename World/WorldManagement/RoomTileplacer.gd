@@ -19,15 +19,18 @@ func _on_tree_exiting() -> void:
 
 func create_room() -> void:
 	AudioServer.set_bus_effect_enabled(4, 0, true)
+	
 	if !worldData.get_current_room().has("seed"):
 		randomize()
 		worldData.get_current_room()["seed"] = randi()
 	seed(worldData.get_current_room().seed)
-
+	
 	for t in world.tilesContainer.get_children():
 		t.queue_free()
 	biome = worldData.get_biome_by_index(worldData.rooms\
 		[worldData.position.x][worldData.position.y].biome)
+
+	MusicManager.set_music(biome.music)
 
 	# Adding in the nodes
 
