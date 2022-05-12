@@ -26,6 +26,7 @@ position = Vector2( 0, 32 )
 shape = SubResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 7
 
 [node name="Screen" type="Control" parent="CanvasLayer"]
 visible = false
