@@ -9,6 +9,7 @@ var moveDir := Vector2.ZERO
 var playerPos := Vector2(160, 32)
 var savePlayerPos := Vector2.ZERO
 var worldSeed: int
+var lastUsedTemplate: String
 
 const BIOMES = [
 	"res://World/Biomes/Lab.tres",
@@ -25,7 +26,9 @@ signal update_percent(amt)
 func generate_world(seed_:int=randi()) -> void:
 	worldSeed = seed_
 	var worldGenerateor = WorldGenerator.new()
-	rooms = worldGenerateor.generate_world(seed_)
+	var data = worldGenerateor.generate_world(seed_, lastUsedTemplate)
+	rooms = data.rooms
+	lastUsedTemplate = data.template
 	set_starting_position()
 
 

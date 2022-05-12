@@ -20,10 +20,11 @@ const BIOMES = [
 	"res://World/Biomes/ChemLabs.tres",
 ]
 
-func generate_world(seed_:int=randi()) -> Array:
+func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 	seed(seed_)
 	# Creating and filling out the 2D array
-	var template := select_template()
+	var data := select_template(dontPick)
+	var template: Image = data.template
 	template.lock()
 
 	var constantRooms = preload("res://World/ConstantRooms/Rooms.tres")
@@ -71,7 +72,7 @@ func generate_world(seed_:int=randi()) -> Array:
 			rooms, r, r.perBiome, r.minDistOfSameType, r.biomes, self)
 	ConnectionRoomPlacer.generate_rooms(rooms, self)
 
-	return rooms
+	return { "rooms": rooms, "template": data.path }
 
 
 func flood_rooms(position:Vector2, what, searchfor) -> void:
@@ -163,10 +164,17 @@ func get_used_rooms() -> Array:
 	return usedRooms
 
 
-func select_template() -> Image:
-	return load(
-		"res://World/Templates/WorldTemplates/Template%s.png"\
-		 % ceil(rand_range(0, 3)) ).get_data()
+func select_template(dontPick: String) -> Dictionary:
+	var template
+	var path
+	while true:
+		path = "res://World/Templates/WorldTemplates/Template%s.png"\
+					% ceil(rand_range(0, 3))
+		if path != dontPick:
+			template = load(path).get_data()
+			break
+	
+	return {"template":template, "path":path}
 
 
 func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array:
