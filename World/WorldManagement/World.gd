@@ -29,6 +29,9 @@ signal added_enemies
 func _ready() -> void:
 	AudioServer.set_bus_effect_enabled(4, 0, true)
 	AudioServer.set_bus_effect_enabled(5, 0, true)
+	
+	MusicManager.set_music(preload("res://World/EnviormentalArt/Lab/LabAmbience.ogg"))
+	
 	if !worldData.get_current_room().discovered:
 		player.playerData.score += Globals.ROOM_POINTS
 	generator.create_room()
