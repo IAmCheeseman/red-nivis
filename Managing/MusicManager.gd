@@ -10,7 +10,7 @@ func _ready() -> void:
 	var _discard = tween.connect("tween_all_completed", self, "set_new_track")
 	
 	audio = AudioStreamPlayer.new()
-	audio.bus = "SFX"
+	audio.bus = "Music"
 	add_child(audio)
 
 
