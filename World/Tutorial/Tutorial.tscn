@@ -431,7 +431,7 @@ texture = ExtResource( 27 )
 
 [node name="SpaceKb" type="Sprite" parent="Props/Prompts"]
 use_parent_material = true
-position = Vector2( 0, -79 )
+position = Vector2( 0, -64 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 29 )
 
@@ -564,6 +564,9 @@ shape = SubResource( 14 )
 
 [node name="Flashlight" parent="Player" index="0"]
 position = Vector2( 0, -6 )
+
+[node name="Camera" parent="Player" index="8"]
+current = false
 
 [node name="Inventory" parent="Player/CanvasLayer" index="5"]
 margin_top = 2.0
