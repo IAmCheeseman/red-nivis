@@ -1,6 +1,8 @@
 keys,en,en_GB,es_VE,de
 NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir,Keine Übersetzung verfügbar
 ,,,,
+INTRO,A game by IAmCheeseman,,,
+,,,,
 BACK_BTN,Back,"go back, m8",Atrás,Zurück
 EXIT_BTN,Exit,Gew back tew teh action,Continuar,Verlassen
 QUIT_BTN,Quit,Col'oni's O'fer Gahms,Quitar,Verlassen
@@ -236,14 +238,14 @@ MINISHOTGUN_ITM,Minishotgun,Minishotgun,Minishotgun,Minishotgun
 TOXIC_GRENADE_LAUNCHER_ITM,Toxic Grenade Launcher,,,Giftiger Granatenwerfer
 SHIELD_LAUNCHER_ITM,Shield Launcher,,,Schutzschild-Werfer
 ,,,,
-LOGGER_SYSTEM,System,,,
-LOGGER_HANK,Hank,,Hank,Hank
-LOGGER_GNOME,[Anonymous],,[Anonymous],[Anonymous]
-LOGGER_BILL,Bill,,Bill,Bill
-LOGGER_BRUCE,Bruce,,Bruce,Bruce
-LOGGER_ADRIAN,Adrian,,Adrian,Adrian
-LOGGER_JERRY,Jerry,,Jerry,Jerry
-LOGGER_YOU,Me,,,
+LOGGER_SYSTEM,System,puter,,
+LOGGER_HANK,Hank,ank,Hank,Hank
+LOGGER_GNOME,[Anonymous],[Gno'],[Anonymous],[Anonymous]
+LOGGER_BILL,Bill,Billy,Bill,Bill
+LOGGER_BRUCE,Bruce,Polish Fridge,Bruce,Bruce
+LOGGER_ADRIAN,Adrian,A'rian,Adrian,Adrian
+LOGGER_JERRY,Jerry,Alexander XXXIV,Jerry,Jerry
+LOGGER_YOU,Me,I,,
 ,,,,
 LOG_FAILURE,Complete system failure. Locking down RNL.,,,
 LOG_CONSTRUCTOR,"We've discovered how to safely split atoms into their individual components. We need to find out how to reconstruct them, so maybe we can make something completely different than what we put in?",,,
