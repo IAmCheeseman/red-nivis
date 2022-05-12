@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Zap0.wav-76bc13ec0622e5bee7dbdebe8084b1f3.sample"
+
+[deps]
+
+source_file="res://World/EnviormentalArt/Lab/Zap0.wav"
+dest_files=[ "res://.import/Zap0.wav-76bc13ec0622e5bee7dbdebe8084b1f3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -10,4 +10,5 @@ func _ready() -> void:
 
 func _on_enemies_added(enemies: Node2D) -> void:
 	for i in enemies.get_children():
-		i.find_node("DamageManager").maxHealth *= 0.8
+		var node = i.find_node("DamageManager")
+		if node: node.maxHealth *= 0.8
