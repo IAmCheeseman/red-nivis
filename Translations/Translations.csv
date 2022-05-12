@@ -2,6 +2,9 @@ keys,en,en_GB,es_VE,de
 NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir,Keine Übersetzung verfügbar
 ,,,,
 INTRO,A game by IAmCheeseman,,,
+INTRO_LN1,Wake up.,,,
+INTRO_LN2,WAKE UP.,,,
+INTRO_LN3,WAAAAKE UUUP!!,,,
 ,,,,
 BACK_BTN,Back,"go back, m8",Atrás,Zurück
 EXIT_BTN,Exit,Gew back tew teh action,Continuar,Verlassen
@@ -44,6 +47,7 @@ INTR_TELEPORT,Teleport,ma'eriali'e in an'o'fer place,Usar el viaje Rápido,Telep
 INTR_OPEN,Open,ewpen,,öffnen
 INTR_READ,Read,oiball eet,,
 INTR_HEAL,Heal,,,
+INTR_OPEN_SHOP,Open Shop,,,
 ,,,,
 PAUSE_TTL,Paused," Hol' on, m8",Pausado,Pausiert
 NEW_GAME_BTN,New Game,Noo Gahm,Nueva Run,Neues Spiel
