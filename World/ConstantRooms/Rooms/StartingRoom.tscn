@@ -17,7 +17,7 @@ shape = SubResource( 1 )
 
 [node name="WelcomeTilt" type="Sprite" parent="Props" index="1"]
 position = Vector2( 160, 105 )
-z_index = -1
+z_index = -2
 texture = ExtResource( 2 )
 
 [node name="Solids" parent="." index="1"]

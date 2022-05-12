@@ -13,13 +13,13 @@
 [ext_resource path="res://Managing/Colliders/LoadingZone.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/StartingArea/StartingArea.gd" type="Script" id=12]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=13]
-[ext_resource path="res://World/EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=14]
 [ext_resource path="res://World/EnviormentalArt/SurfaceBG.tscn" type="PackedScene" id=15]
 [ext_resource path="res://World/EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=16]
 [ext_resource path="res://World/Props/Constructor/Constructor.tscn" type="PackedScene" id=17]
 [ext_resource path="res://World/Props/AbilitySelector/AbilitySelector.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/NPC/LmaoMan/LmaoMan.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Entities/NPC/Bacon/Bacon.tscn" type="PackedScene" id=20]
+[ext_resource path="res://World/StartingArea/StartingAreaAmbience.ogg" type="AudioStream" id=21]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -77,7 +77,7 @@ extents = Vector2( 49, 10 )
 extents = Vector2( 25, 1.5 )
 
 [sub_resource type="Curve" id=12]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.0769231, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.877622, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.491891, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.0177454, 0.961499 ), 0.0, 0.0, 0, 0, Vector2( 0.877622, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.491891, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=13]
 curve = SubResource( 12 )
@@ -86,9 +86,10 @@ curve = SubResource( 12 )
 emission_shape = 2
 emission_box_extents = Vector3( 500, 500, 1 )
 flag_disable_z = true
-direction = Vector3( 0, 1.1, 0 )
+direction = Vector3( -1, 1.1, 0 )
+spread = 25.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 35.0
+initial_velocity = 368.98
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 4.0
@@ -104,27 +105,10 @@ layer = -5
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Backgrounds"]
 
 [node name="Sky" type="TextureRect" parent="Backgrounds/ParallaxBackground"]
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 16 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Backgrounds/ParallaxBackground"]
-motion_scale = Vector2( 0.1, 0.3 )
-
-[node name="Far" type="TextureRect" parent="Backgrounds/ParallaxBackground/ParallaxLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -597.0
-margin_top = -152.0
-margin_right = 909.0
-margin_bottom = 145.0
-rect_min_size = Vector2( 0.609, 0 )
-texture = ExtResource( 14 )
 expand = true
 stretch_mode = 2
 
@@ -250,7 +234,7 @@ scale = Vector2( -1, 1 )
 
 [node name="Snow" type="Particles2D" parent="."]
 light_mask = 2
-amount = 1000
+amount = 3000
 lifetime = 25.0
 preprocess = 15.0
 local_coords = false
@@ -264,6 +248,16 @@ position = Vector2( 112, 8 )
 remote_path = NodePath("../../Snow")
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.262745, 0.262745, 0.262745, 1 )
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = 5.0
+pitch_scale = 1.34
+autoplay = true
+bus = "SFX"
 
 [connection signal="loadArea" from="Managing/LoadingZone" to="." method="_on_lab_loading_zone_loadArea"]
 [connection signal="area_entered" from="Managing/MovementLock" to="." method="_on_movement_lock_area_entered"]

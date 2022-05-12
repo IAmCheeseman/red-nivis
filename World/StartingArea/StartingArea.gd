@@ -7,14 +7,16 @@ var worldData = preload("res://World/WorldManagement/WorldData.tres")
 onready var player = $Player
 onready var movementLock = $Managing/MovementLock
 
+var busVolume: float
 
 func _ready():
 	Engine.time_scale = 1
 	GameManager.rpBiome = "Aboveground"
 	GameManager.update_rp()
 	set_process(false)
-	AudioServer.set_bus_effect_enabled(4, 0, false)
-	AudioServer.set_bus_effect_enabled(5, 0, false)
+	busVolume = AudioServer.get_bus_volume_db(4)
+	AudioServer.set_bus_volume_db(4, .01)
+	AudioServer.set_bus_volume_db(5, .01)
 
 
 func _process(delta: float) -> void:
@@ -35,8 +37,8 @@ func _on_lab_loading_zone_loadArea() -> void:
 func load_world():
 	randomize()
 	worldData.generate_world()
-	AudioServer.set_bus_effect_enabled(4, 0, true)
-	AudioServer.set_bus_effect_enabled(5, 0, true)
+	AudioServer.set_bus_volume_db(4, busVolume)
+	AudioServer.set_bus_volume_db(5, busVolume)
 	var _discard = get_tree().change_scene("res://World/WorldManagement/World.tscn")
 
 
