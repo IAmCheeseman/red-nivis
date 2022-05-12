@@ -9,7 +9,7 @@
 [ext_resource path="res://World/Decorators/FreezersDecorator.tres" type="Resource" id=7]
 [ext_resource path="res://World/EnviormentalArt/Freezers/WaterFreezersAtmosphere.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolidsBroken.tscn" type="PackedScene" id=9]
-[ext_resource path="res://World/EnviormentalArt/Lab/LabAmbience.ogg" type="AudioStream" id=10]
+[ext_resource path="res://World/EnviormentalArt/Freezers/FreezersUnderwaterAmbience.ogg" type="AudioStream" id=10]
 
 [resource]
 script = ExtResource( 1 )

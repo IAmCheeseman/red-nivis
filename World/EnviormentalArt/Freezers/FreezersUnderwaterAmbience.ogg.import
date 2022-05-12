@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/FreezersUnderwaterAmbience.ogg-3119f150dc675b14c794044e6962dc0a.oggstr"
+
+[deps]
+
+source_file="res://World/EnviormentalArt/Freezers/FreezersUnderwaterAmbience.ogg"
+dest_files=[ "res://.import/FreezersUnderwaterAmbience.ogg-3119f150dc675b14c794044e6962dc0a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
