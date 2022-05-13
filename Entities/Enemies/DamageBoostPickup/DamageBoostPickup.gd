@@ -62,19 +62,14 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_damage_boost_timeout() -> void:
-	if disabled:
-		queue_free()
-		return
-	player.damageMod -= incdec
-	player.attackSpeed += incdec
-	
-	player.orbOn = false
-	
-	player.currentMod = null
 	queue_free()
 
 
 func _exit_tree() -> void:
 	if disabled: return
+	
+	player.damageMod -= incdec
+	player.attackSpeed += incdec
+	
 	player.orbOn = false
 	player.currentMod = null
