@@ -91,6 +91,7 @@ bbcode_enabled = true
 scroll_active = false
 
 [node name="Pointer" type="TextureRect" parent="."]
+material = SubResource( 1 )
 margin_left = -7.0
 margin_top = -9.0
 margin_right = 6.0

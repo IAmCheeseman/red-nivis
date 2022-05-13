@@ -123,7 +123,11 @@ func set_disabled(val: bool):
 
 
 func set_visibility(vis: bool) -> void:
-	if isVisible == vis or disabled: return
+	if isVisible == vis: return
+	if disabled:
+		anim.play_backwards("PointerIn")
+		isVisible = false
+		return
 	isVisible = vis
 	if vis:
 		anim.play("PointerIn")

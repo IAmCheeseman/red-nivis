@@ -12,7 +12,6 @@ biomeSpecific = [  ]
 biomes = [ ExtResource( 3 ) ]
 mustHave = true
 typeAlwaysVisible = true
-hidden = false
 roomIcon = ExtResource( 4 )
 perBiome = 1
 minDistOfSameType = 2.8
