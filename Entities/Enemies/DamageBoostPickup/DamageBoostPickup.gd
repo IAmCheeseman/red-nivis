@@ -66,7 +66,7 @@ func _on_damage_boost_timeout() -> void:
 
 
 func _exit_tree() -> void:
-	if disabled: return
+	if disabled or player.currentMod != self: return
 	
 	player.damageMod -= incdec
 	player.attackSpeed += incdec

@@ -201,8 +201,8 @@ frame = 2
 [node name="Minigun" type="Node2D" parent="Sprite"]
 position = Vector2( 0, 12 )
 script = ExtResource( 7 )
-startCooldown = 0.2
-minCooldown = 0.1
+startCooldown = 0.1
+minCooldown = 0.05
 overheatShotCount = 3
 damage = 1
 
