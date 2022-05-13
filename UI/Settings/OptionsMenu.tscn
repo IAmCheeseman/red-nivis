@@ -134,11 +134,10 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Game" type="VBoxContainer" parent="Menus"]
-visible = false
 margin_left = 99.0
-margin_top = 56.0
+margin_top = 42.0
 margin_right = 261.0
-margin_bottom = 164.0
+margin_bottom = 178.0
 rect_min_size = Vector2( 84, 0 )
 alignment = 1
 __meta__ = {
@@ -153,38 +152,36 @@ custom_fonts/font = ExtResource( 8 )
 text = "GAME_TTL"
 
 [node name="Tutorial" type="CheckBox" parent="Menus/Game"]
-visible = false
-margin_left = 126.0
-margin_top = 60.0
-margin_right = 194.0
-margin_bottom = 84.0
-custom_fonts/font = ExtResource( 1 )
-custom_icons/checked = SubResource( 2 )
-custom_icons/unchecked = SubResource( 13 )
-text = "Tutorial"
-
-[node name="SpeedrunMode" type="CheckBox" parent="Menus/Game"]
 margin_top = 36.0
 margin_right = 162.0
 margin_bottom = 60.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 13 )
-text = "GAME_SPD_RN_OPT"
+text = "Tutorial"
 
-[node name="DoubleDamage" type="CheckBox" parent="Menus/Game"]
+[node name="SpeedrunMode" type="CheckBox" parent="Menus/Game"]
 margin_top = 64.0
 margin_right = 162.0
 margin_bottom = 88.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 13 )
+text = "GAME_SPD_RN_OPT"
+
+[node name="DoubleDamage" type="CheckBox" parent="Menus/Game"]
+margin_top = 92.0
+margin_right = 162.0
+margin_bottom = 116.0
+custom_fonts/font = ExtResource( 1 )
+custom_icons/checked = SubResource( 2 )
+custom_icons/unchecked = SubResource( 13 )
 text = "GAME_DBL_DMG_MODE_OPT"
 
 [node name="Back" type="Button" parent="Menus/Game"]
-margin_top = 92.0
+margin_top = 120.0
 margin_right = 162.0
-margin_bottom = 108.0
+margin_bottom = 136.0
 custom_fonts/font = ExtResource( 1 )
 text = "BACK_BTN"
 align = 0
@@ -224,7 +221,7 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="Menus/Keybinds/Scroll"]
 margin_right = 31.0
-margin_bottom = 216.0
+margin_bottom = 236.0
 rect_min_size = Vector2( 0, 200 )
 alignment = 1
 __meta__ = {
@@ -556,7 +553,7 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../Center/NavMenu")
 
 [connection signal="pressed" from="Center/NavMenu/Back" to="." method="_on_quit"]
-[connection signal="toggled" from="Menus/Game/Tutorial" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="Menus/Game/Tutorial" to="." method="_on_tutorial_toggled"]
 [connection signal="toggled" from="Menus/Game/SpeedrunMode" to="." method="_on_speedrun_mode_toggled"]
 [connection signal="toggled" from="Menus/Game/DoubleDamage" to="." method="_on_double_damage_toggled"]
 [connection signal="pressed" from="Menus/Keybinds/Reset" to="." method="_on_reset_kb_bindings_pressed"]

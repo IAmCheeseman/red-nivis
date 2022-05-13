@@ -58,6 +58,8 @@ func _on_speedrun_mode_toggled(button_pressed: bool) -> void:
 	Settings.speedrunTimer = button_pressed
 func _on_double_damage_toggled(button_pressed: bool) -> void:
 	Settings.doubleDamageMode = button_pressed
+func _on_tutorial_toggled(button_pressed: bool) -> void:
+	load("res://Entities/Player/Player.tres").tutorialEnabled = button_pressed
 func _on_english_pressed() -> void:
 	Settings.change_lang("en")
 func _on_spanish_pressed() -> void:
@@ -84,6 +86,9 @@ func set_values() -> void:
 func _on_reset_kb_bindings_pressed() -> void:
 	for i in keybinds.get_children():
 		if i.has_method("reset"): i.reset()
+
+
+
 
 
 

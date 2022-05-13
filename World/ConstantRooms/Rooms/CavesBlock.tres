@@ -11,6 +11,7 @@ biomeSpecific = [  ]
 biomes = [  ]
 mustHave = false
 typeAlwaysVisible = false
+hidden = false
 perBiome = 0
 minDistOfSameType = 2.8
 constBiome = ExtResource( 2 )
