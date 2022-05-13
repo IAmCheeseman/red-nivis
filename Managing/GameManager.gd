@@ -103,7 +103,7 @@ func remove_attacking_enemy(enemy: Node) -> void:
 func save_run() -> void:
 	var playerData = preload("res://Entities/Player/Player.tres")
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
-	var savedPassives = playerData.passives
+	var savedPassives = playerData.passives.duplicate(true)
 	
 	for i in savedPassives: i.used = false
 	

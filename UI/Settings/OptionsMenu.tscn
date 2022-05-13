@@ -400,11 +400,8 @@ margin_right = 84.0
 margin_bottom = 175.0
 size_flags_horizontal = 0
 optionName = "VSL_FRM_RT"
-maxedMsg = "None"
 displayAsPercentage = false
-maxValue = 145
-minValue = 20
-step = 2
+maxValue = 144
 
 [node name="Back" type="Button" parent="Menus/Visuals"]
 margin_top = 179.0

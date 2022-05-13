@@ -389,11 +389,11 @@ func update_passives() -> void:
 		var item = load(i.item)
 		if item.applyOnce and i.used:
 			continue
-		var firstUse = i.used
+		var used = i.used
 		i.used = true
 		
 		var newPassive = item.scene.instance()
-		newPassive.set_meta("used", firstUse)
+		newPassive.set_meta("used", used)
 		passives.add_child(newPassive)
 	
 	gameOverlay.update_ammo()
