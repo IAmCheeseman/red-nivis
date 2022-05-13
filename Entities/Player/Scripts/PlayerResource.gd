@@ -69,7 +69,7 @@ var unlockedUpgrades := []
 
 var passives := [
 #	{
-#		"item": "res://Items/Passives/JoeAmoeba/JoeAmoeba.tres",
+#		"item": "res://Items/Passives/Box/Box.tres",
 #		"used": false
 #	}
 ]

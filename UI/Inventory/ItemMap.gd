@@ -207,6 +207,7 @@ const PASSIVES = {
 		"res://Items/Passives/SpeedUp/SpeedUp.tres",
 		"res://Items/Passives/HPUp/HPUp.tres",
 		"res://Items/Passives/ExtraTrigger/ExtraTrigger.tres",
+		"res://Items/Passives/Box/Box.tres",
 	],
 	"BACKEND_TTL" : [
 		"LABS_TTL",
