@@ -519,8 +519,8 @@ Cursor="*res://UI/Cursor/Cursor.tscn"
 FastTravel="*res://World/Props/FastTravelStation/FastTravel.gd"
 ToolTip="*res://UI/ToolTip/ToolTip.tscn"
 Discord="*res://addons/discord_game_sdk/discord.gd"
-Steam="*res://addons/steam_api/steam.gd"
 MusicManager="*res://Managing/MusicManager.gd"
+Steam="*res://addons/steam_api/steam.gd"
 
 [debug]
 

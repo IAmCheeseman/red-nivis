@@ -1,5 +1,8 @@
 extends TextureProgress
 
+
+onready var healSfx = $HealSFX
+
 var playerData := preload("res://Entities/Player/Player.tres")
 
 var finished := false
@@ -26,6 +29,7 @@ func _process(delta: float) -> void:
 			playerData.heal(1)
 			finished = true
 			playerData.healMaterial = 0
+			healSfx.play()
 			finish()
 			if Input.is_action_pressed("heal"):
 				finished = false
