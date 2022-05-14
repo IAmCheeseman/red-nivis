@@ -4,6 +4,7 @@ onready var ui = find_node("Screen")
 onready var content = find_node("Content")
 onready var closePrompt = find_node("ClosePrompt")
 onready var textIncTimer = $TextIncTimer
+onready var printSFX = $PrintSFX
 
 export var manualLog: Resource
 
@@ -66,9 +67,12 @@ func inc_text() -> void:
 			textIncTimer.start(.5)
 		else:
 			textIncTimer.start(.05)
+		
+		if ui.visible and rand_range(0,1) < .5: printSFX.play()
 	else:
 		closePrompt.visible_characters += 1
 		textIncTimer.start(.05)
+		
 
 
 func _on_interaction() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,7 +7,8 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.tscn" type="PackedScene" id=10]
+[ext_resource path="res://World/LogMachines/LogMachine.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/LogMachines/Logs/Constructor.tres" type="Resource" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -40,7 +41,8 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="MinigunMachine" parent="." instance=ExtResource( 10 )]
-position = Vector2( 192, -56 )
+[node name="LogMachine" parent="." instance=ExtResource( 8 )]
+position = Vector2( 141, 1 )
+manualLog = ExtResource( 9 )
 
 [editable path="CameraMoveZone"]

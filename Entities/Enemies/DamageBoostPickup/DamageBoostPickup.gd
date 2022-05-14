@@ -31,8 +31,8 @@ func _process(delta: float) -> void:
 			) * speed,
 			friction * delta
 		)
-		friction += 200 * delta
-		speed += 100 * delta
+		friction += 300 * delta
+		speed += 50 * delta
 
 	vel = move_and_slide(vel)
 
