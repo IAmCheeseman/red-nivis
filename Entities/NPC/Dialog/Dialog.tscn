@@ -73,7 +73,6 @@ use_parent_material = true
 position = Vector2( 0, 4 )
 texture = ExtResource( 3 )
 hframes = 4
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pointer"]
 autoplay = "Spin"
