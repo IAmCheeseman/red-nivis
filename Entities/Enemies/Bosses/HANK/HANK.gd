@@ -95,13 +95,16 @@ func _on_dead() -> void:
 	timer.connect("timeout", self, "add_death_explosion", [64, 3])
 	timer.connect("timeout", self, "emit_signal", ["dead"])
 	timer.connect("timeout", self, "queue_free")
-
+	
+	remove_child(explosionSFX)
+	GameManager.spawnManager.spawn_object(explosionSFX)
+	
 	isDead = true
 	GameManager.worldData.store_room_data(self, true)
 	deathExplodeTimer.start()
 
 
-func add_death_explosion(size:int=8, amt:int=1) -> void:
+func add_death_explosion(size:int=32, amt:int=1) -> void:
 	var newExplosion = preload("res://Entities/Enemies/Explosion/ExplosionParticles.tscn").instance()
 	var pos = sprite.global_position
 	var spawnRange = sprite.texture.get_size() / Vector2(sprite.hframes, sprite.vframes)
@@ -123,7 +126,7 @@ func add_death_explosion(size:int=8, amt:int=1) -> void:
 	for i in bullets:
 		if is_instance_valid(i):
 			i.queue_free()
-	if amt-1 > 0:
+	if amt - 1 > 0:
 		add_death_explosion(size, amt-1)
 
 
