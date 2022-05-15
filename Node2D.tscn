@@ -9,7 +9,7 @@
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
 [ext_resource path="res://World/LogMachines/LogMachine.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/LogMachines/Logs/Constructor.tres" type="Resource" id=9]
-[ext_resource path="res://Entities/Enemies/Slugs/Gasser/Gasser.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemies/Slugs/Fumeslug/Gasser.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )

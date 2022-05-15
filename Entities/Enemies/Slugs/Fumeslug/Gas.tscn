@@ -1,9 +1,15 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Items/Weapons/Bullet/BulletParticles.tres" type="Material" id=1]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=4]
 [ext_resource path="res://Entities/Enemies/Slugs/Fumeslug/Gas.gd" type="Script" id=6]
+
+[sub_resource type="CanvasItemMaterial" id=6]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="Animation" id=1]
 resource_name = "Kill"
@@ -34,8 +40,38 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 4.0
+[sub_resource type="CanvasItemMaterial" id=7]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.216216, 0.675676, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+lifetime_randomness = 0.5
+emission_shape = 5
+emission_ring_radius = 12.0
+emission_ring_inner_radius = 0.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+color_ramp = SubResource( 11 )
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 12.0416
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 4.0
@@ -63,6 +99,7 @@ script = ExtResource( 6 )
 
 [node name="Particles" type="Particles2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )
+material = SubResource( 6 )
 emitting = false
 amount = 25
 lifetime = 0.5
@@ -76,6 +113,15 @@ texture = ExtResource( 4 )
 autoplay = "Kill"
 anims/Kill = SubResource( 1 )
 
+[node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 0.72549, 1, 0.054902, 1 )
+material = SubResource( 7 )
+amount = 50
+lifetime = 0.4
+local_coords = false
+process_material = SubResource( 8 )
+texture = ExtResource( 4 )
+
 [node name="Hitbox" parent="." groups=["EnemyBullet"] instance=ExtResource( 3 )]
 visible = false
 collision_layer = 4
@@ -84,7 +130,7 @@ damage = 1
 giveSelf = true
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 9 )
 
 [node name="QueueArea" type="Area2D" parent="." groups=["EnemyBullet"]]
 visible = false

@@ -29,7 +29,7 @@ func add_particles():
 	var newParticles = particleScene.instance()
 	newParticles.position = position
 	get_parent().call_deferred("add_child", newParticles)
-	queue_free()
+	do_free()
 
 
 func _on_QueueArea_body_entered(body):
@@ -41,3 +41,11 @@ func _on_QueueArea_body_entered(body):
 func _on_Hitbox_hit_object(_object):
 	if !peircing:
 		add_particles()
+
+
+func do_free() -> void:
+	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+	$Particles2D.emitting = false
+	yield(TempTimer.timer(self, 1), "timeout")
+	
+	queue_free()

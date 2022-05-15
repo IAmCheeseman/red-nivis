@@ -1,10 +1,12 @@
 extends Node2D
 
-const BULLET = preload("res://Entities/Enemies/Slugs/Gasser/Gas.tscn")
+const BULLET = preload("res://Entities/Enemies/Slugs/Fumeslug/Gas.tscn")
 
 onready var attackTimer = $AttackTimer
 
 var bullets := []
+
+var useableBullets = 10
 
 var player
 var on := false
@@ -19,11 +21,12 @@ func _process(delta: float) -> void:
 		i.time += delta
 		if i.time > 3:
 			var node = i.node
-			node.direction = node.global_position.direction_to(global_position)
+			node.direction = node.global_position.direction_to(global_position - Vector2(0, 8))
 			node.speed = 100
 			
 			if node.global_position.distance_to(global_position) < 5:
-				node.queue_free()
+				node.do_free()
+				useableBullets += 1
 				bullets.erase(i)
 	
 	if on:
@@ -35,7 +38,7 @@ func attack() -> void:
 	on = true
 	yield(TempTimer.timer(self, 1), "timeout")
 	
-	for i in 3:
+	for i in ceil(useableBullets / 2):
 		yield(TempTimer.timer(self, 0.1), "timeout")
 		
 		var newBullet = BULLET.instance()
@@ -46,6 +49,8 @@ func attack() -> void:
 		GameManager.spawnManager.spawn_object(newBullet)
 		
 		bullets.append({ "node" : newBullet, "time" : 0.0 })
+		
+		useableBullets -= 1
 		
 		get_parent().sprite.scale = Vector2(1.1, 0.9)
 	
