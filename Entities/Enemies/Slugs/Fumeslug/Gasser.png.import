@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Gasser.png-a07f51a0f80675ee328e6590cbffd2c6.stex"
+path="res://.import/Gasser.png-b1bd3d099e0088b754b52c3da4dc0b88.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/Slugs/Gasser/Gasser.png"
-dest_files=[ "res://.import/Gasser.png-a07f51a0f80675ee328e6590cbffd2c6.stex" ]
+source_file="res://Entities/Enemies/Slugs/Fumeslug/Gasser.png"
+dest_files=[ "res://.import/Gasser.png-b1bd3d099e0088b754b52c3da4dc0b88.stex" ]
 
 [params]
 

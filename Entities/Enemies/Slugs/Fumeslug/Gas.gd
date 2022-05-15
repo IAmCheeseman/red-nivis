@@ -8,8 +8,6 @@ var peircing = false
 var damage:float = 0
 
 onready var hitbox = $Hitbox
-onready var sprite = $Sprite
-onready var light = $Light
 onready var particles = $Particles
 
 signal hitCollision
@@ -18,18 +16,8 @@ signal hitCollision
 var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
 
 
-func set_texture(texture:StreamTexture):
-	sprite.texture = texture
-	particles.process_material.emission_box_extents = Vector3(float(texture.get_width())/2, float(texture.get_height())/2, 1)
-	remove_child(particles)
-	particles.global_position = global_position
-	particles.scale = scale
-	get_parent().add_child(particles)
-
-
 func _ready():
 	if damage != 0: hitbox.damage = damage
-	look_at(global_position+direction)
 
 
 func _physics_process(delta):

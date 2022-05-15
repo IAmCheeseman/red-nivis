@@ -162,7 +162,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "EnemyBullet",
 "language": "GDScript",
-"path": "res://Entities/Enemies/Slugs/Gasser/Gas.gd"
+"path": "res://Entities/Enemies/Slugs/Fumeslug/Gas.gd"
 }, {
 "base": "Node2D",
 "class": "EnemySpawner",
