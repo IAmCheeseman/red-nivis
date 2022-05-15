@@ -1,5 +1,5 @@
 extends KinematicBody2D
-class_name GasserBullet
+class_name EnemyBullet
 
 
 var direction : Vector2
@@ -33,7 +33,8 @@ func _ready():
 
 
 func _physics_process(delta):
-	position += (direction*speed)*delta
+	position += (direction * speed) * delta
+	speed = lerp(speed, 0, delta * 5)
 
 
 func add_particles():

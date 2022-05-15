@@ -9,7 +9,7 @@
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
 [ext_resource path="res://World/LogMachines/LogMachine.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/LogMachines/Logs/Constructor.tres" type="Resource" id=9]
-[ext_resource path="res://Entities/Enemies/Bosses/HANK/HANK.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemies/Slugs/Gasser/Gasser.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -42,20 +42,12 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="HANK" parent="." instance=ExtResource( 10 )]
-position = Vector2( 210, -10 )
-
-[node name="DamageManager" parent="HANK" index="4"]
-maxHealth = 2
-
 [node name="LogMachine" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 141, 1 )
 manualLog = ExtResource( 9 )
 
+[node name="Gasser" parent="." instance=ExtResource( 10 )]
+position = Vector2( 239, -8 )
+
 [editable path="CameraMoveZone"]
-[editable path="HANK"]
-[editable path="HANK/Sprite/LandParticles1"]
-[editable path="HANK/Sprite/LandParticles2"]
-[editable path="HANK/Collisions/Hurtbox"]
-[editable path="HANK/Collisions/PlayerDetection"]
