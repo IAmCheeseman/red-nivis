@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Weapons/Sprites/LaserShotgun.png" type="Texture" id=2]
 [ext_resource path="res://Items/Weapons/Bullet/AltBullets/LaserShot/Laser.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Items/Weapons/Sounds/LaserShoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://Items/Weapons/Bullet/Shells/AAABattery.png" type="Texture" id=5]
+[ext_resource path="res://UI/Cursor/CursorShotgun.tres" type="Texture" id=6]
 
 [node name="LaserGun" instance=ExtResource( 1 )]
 position = Vector2( 0, 1 )
@@ -17,6 +18,7 @@ maxHoldShots = 1
 magazineSize = 4
 reloadAmount = 2
 shellSprite = ExtResource( 5 )
+cursor = ExtResource( 6 )
 kickUp = 12.0
 ssFreq = 0.035
 ssStrength = 5.0

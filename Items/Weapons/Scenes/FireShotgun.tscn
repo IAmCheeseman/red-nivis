@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Items/Weapons/Sprites/FireShotgun.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Items/Weapons/Effects/Burn.gd" type="Script" id=5]
 [ext_resource path="res://Items/Weapons/Sounds/Shotgun.wav" type="AudioStream" id=6]
 [ext_resource path="res://Items/Weapons/Bullet/AltBullets/Fire/FireBullet.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Cursor/CursorShotgun.tres" type="Texture" id=8]
 
 [node name="Shotgun" instance=ExtResource( 1 )]
 gunType = 1
@@ -26,6 +27,7 @@ perk = ExtResource( 5 )
 reloadAmount = 1
 bulletSprite = ExtResource( 3 )
 shellSprite = ExtResource( 4 )
+cursor = ExtResource( 8 )
 ssFreq = 0.035
 ssStrength = 4.0
 isTwoHanded = true
