@@ -8,7 +8,7 @@
 
 [node name="SniperRifle" instance=ExtResource( 1 )]
 gunType = 2
-damage = 40.0
+damage = 200.0
 meleeDamageOverride = 200.0
 accuracy = 6.0
 cooldown = 0.1
