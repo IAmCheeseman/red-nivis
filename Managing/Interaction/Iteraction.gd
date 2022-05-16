@@ -47,7 +47,7 @@ func _input(event: InputEvent) -> void:
 			emit_signal("interaction")
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var font = label.get_font("normal_font")
 	label.rect_size = font.get_string_size(label.text) + (Vector2.ONE * 16)
 	

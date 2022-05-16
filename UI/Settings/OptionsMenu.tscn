@@ -43,6 +43,7 @@ __meta__ = {
 }
 
 [node name="NavMenu" type="VBoxContainer" parent="Center"]
+visible = false
 margin_left = 118.0
 margin_top = 34.0
 margin_right = 241.0
@@ -355,7 +356,6 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../Center/NavMenu")
 
 [node name="Visuals" type="VBoxContainer" parent="Menus"]
-visible = false
 margin_left = 119.0
 margin_top = 30.0
 margin_right = 241.0

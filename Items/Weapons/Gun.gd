@@ -34,6 +34,7 @@ export var reloadAmount: int = -1
 export var reloadSprite:StreamTexture
 export var bulletSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Sprites/Bullet2.png")
 export var shellSprite:StreamTexture = preload("res://Items/Weapons/Bullet/Shells/shellPistol.png")
+export var cursor: AtlasTexture = preload("res://UI/Cursor/CursorNormal.tres")
 export var kickUp:float = 25
 export var bulletSpawnDist:float = 16
 
@@ -73,6 +74,8 @@ func _ready():
 		canShoot = true
 	else:
 		canShoot = true
+	
+	Cursor.get_node("Sprite").texture = cursor
 
 	meleeCooldown.wait_time = meleeSpeed
 
