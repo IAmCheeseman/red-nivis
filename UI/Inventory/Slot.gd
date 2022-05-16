@@ -18,8 +18,8 @@ func setup(texture, itemID:String):
 	item = itemID
 	var i = ItemMap.ITEMS[item]
 
-	slotTexture.material.set_shader_param(
-		"line_color", Color(ToolTipGenerator.TIER_COLORS[i.tier]))
+#	slotTexture.material.set_shader_param(
+#		"line_color", Color(ToolTipGenerator.TIER_COLORS[i.tier]))
 
 
 func clear():
