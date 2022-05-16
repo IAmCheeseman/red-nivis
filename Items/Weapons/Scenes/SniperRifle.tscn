@@ -8,14 +8,14 @@
 
 [node name="SniperRifle" instance=ExtResource( 1 )]
 gunType = 2
-damage = 200.0
-meleeDamageOverride = 200.0
+damage = 250.0
+meleeDamageOverride = 150.0
 accuracy = 6.0
-cooldown = 0.1
+cooldown = 1.0
 reloadSpeed = 2.0
 peircing = true
 recoil = 40.0
-magazineSize = 1
+magazineSize = 0
 shellSprite = ExtResource( 4 )
 cursor = ExtResource( 5 )
 kickUp = 5.0
@@ -37,8 +37,7 @@ position = Vector2( -6, 3 )
 position = Vector2( 3, 2 )
 
 [node name="Laser" type="Line2D" parent="Pivot/GunSprite" index="2"]
-position = Vector2( 2, -3 )
-z_index = -1
+position = Vector2( 3, -3 )
 width = 1.0
 default_color = Color( 1, 0.0117647, 0.0117647, 1 )
 script = ExtResource( 3 )
