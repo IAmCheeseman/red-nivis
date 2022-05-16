@@ -82,7 +82,7 @@ tracks/2/keys = {
 }
 
 [node name="Camera" type="Camera2D"]
-process_priority = 3
+process_priority = -1
 rotating = true
 current = true
 smoothing_enabled = true
@@ -100,8 +100,10 @@ script = ExtResource( 1 )
 one_shot = true
 
 [node name="ZoomTween" type="Tween" parent="."]
+process_priority = 1
 
 [node name="PosTween" type="Tween" parent="."]
+process_priority = 1
 
 [node name="ZoomTimer" type="Timer" parent="."]
 one_shot = true

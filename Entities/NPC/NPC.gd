@@ -23,6 +23,7 @@ export var accel := 24.0
 export var speed := 120.0
 export var wanderTime := Vector2(5.0, 15.0)
 export var removeBarsOnDialogEnd := true
+export var shove := -24
 
 signal dialog_finished
 
@@ -35,6 +36,9 @@ const states = [
 	"walk_state",
 	"talk_state"
 ]
+
+var playerStartPos: Vector2
+var playerEndPos: Vector2
 
 
 func _ready() -> void:
@@ -95,6 +99,8 @@ func start_dialog(lines:String) -> void:
 	GameManager.currentCamera.removeBars = removeBarsOnDialogEnd
 	
 	state = TALK
+	
+	PLAYER.playerObject.global_position = global_position + Vector2(shove, -2)
 
 
 func _on_dialog_finished() -> void:

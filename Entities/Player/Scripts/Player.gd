@@ -139,6 +139,7 @@ func _physics_process(delta: float) -> void:
 
 func walk_state(delta):
 	if !lockMovement and !GameManager.inGUI:
+		itemHolder.show()
 		# INPUT
 		# ------------------------------------------------
 		var moveDir := Vector2.ZERO
@@ -179,6 +180,8 @@ func walk_state(delta):
 		if just_landed():
 			if dashCooldown.is_stopped(): playerData.dashesLeft = playerData.maxDashes
 	else:
+		itemHolder.hide()
+		
 		if vel.y < 0: vel.y += gravity * delta
 		else:         vel.y += (gravity * 5) * delta
 		vel.x = lerp(
@@ -188,6 +191,9 @@ func walk_state(delta):
 		)
 		sprite.rotation_degrees = vel.x / 25
 		animate(Vector2.ZERO)
+		
+		hand.show()
+		rightHand.show()
 	vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 
 
@@ -221,7 +227,7 @@ func animate(moveDir:Vector2):
 
 func just_landed():
 	if is_grounded() != lastFrameGroundState and lastFrameGroundState == false:
-		if vel.y > 0:
+		if vel.y > 0 and !lockMovement:
 			var newParticles = landParticles.instance()
 			newParticles.position = global_position
 			newParticles.emitting = true
