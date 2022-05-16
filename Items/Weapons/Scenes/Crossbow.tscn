@@ -6,7 +6,7 @@
 [ext_resource path="res://Items/Weapons/Bullet/Sprites/Arrow.png" type="Texture" id=4]
 [ext_resource path="res://Items/Weapons/Sounds/BowEmpty.wav" type="AudioStream" id=5]
 [ext_resource path="res://Items/Weapons/Sprites/CrossbowEmpty.png" type="Texture" id=6]
-[ext_resource path="res://UI/Cursor/CursorPinpoint.tres" type="Texture" id=7]
+[ext_resource path="res://UI/Cursor/CursorBow.tres" type="Texture" id=7]
 
 [node name="Crossbow" instance=ExtResource( 1 )]
 damage = 120.0
