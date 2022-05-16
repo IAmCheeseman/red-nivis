@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=2]
@@ -15,6 +15,8 @@ region = Rect2( 95, 79, 12, 12 )
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 5 )
 region = Rect2( 82, 79, 12, 12 )
+
+[sub_resource type="StyleBoxEmpty" id=14]
 
 [node name="OptionsMenu" type="Control"]
 pause_mode = 2
@@ -34,7 +36,6 @@ __meta__ = {
 }
 
 [node name="Center" type="CenterContainer" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -160,7 +161,8 @@ margin_bottom = 60.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 13 )
-text = "Tutorial"
+custom_styles/focus = SubResource( 14 )
+text = "GAME_TUT_OPT"
 
 [node name="SpeedrunMode" type="CheckBox" parent="Menus/Game"]
 margin_top = 64.0
@@ -169,6 +171,7 @@ margin_bottom = 88.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
 text = "GAME_SPD_RN_OPT"
 
 [node name="DoubleDamage" type="CheckBox" parent="Menus/Game"]
@@ -178,6 +181,7 @@ margin_bottom = 116.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
 text = "GAME_DBL_DMG_MODE_OPT"
 
 [node name="Back" type="Button" parent="Menus/Game"]
@@ -195,9 +199,9 @@ toPth = NodePath("../../../Center/NavMenu")
 [node name="Keybinds" type="VBoxContainer" parent="Menus"]
 visible = false
 margin_left = 109.0
-margin_top = 7.0
+margin_top = 14.0
 margin_right = 250.0
-margin_bottom = 213.0
+margin_bottom = 206.0
 rect_min_size = Vector2( 84, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -210,125 +214,128 @@ rect_min_size = Vector2( 0, 32 )
 custom_fonts/font = ExtResource( 8 )
 text = "CONTROLS_TTL"
 
-[node name="Scroll" type="ScrollContainer" parent="Menus/Keybinds"]
+[node name="VBox" type="GridContainer" parent="Menus/Keybinds"]
 margin_top = 36.0
 margin_right = 141.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 0, 130 )
-size_flags_vertical = 3
-scroll_horizontal_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 152.0
+columns = 2
 
-[node name="VBox" type="VBoxContainer" parent="Menus/Keybinds/Scroll"]
-margin_right = 31.0
-margin_bottom = 236.0
-rect_min_size = Vector2( 0, 200 )
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MoveLeft" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_right = 31.0
+[node name="MoveLeft" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_right = 68.0
 margin_bottom = 16.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "move_left"
 actionDisplay = "CTRL_MV_LEFT"
 
-[node name="MoveRight" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 20.0
-margin_right = 31.0
-margin_bottom = 36.0
+[node name="MoveRight" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_left = 72.0
+margin_right = 140.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "move_right"
 actionDisplay = "CTRL_MV_RIGHT"
 
-[node name="Down" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 40.0
-margin_right = 31.0
-margin_bottom = 56.0
+[node name="Down" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_top = 20.0
+margin_right = 68.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "down"
 actionDisplay = "CTRL_DOWN"
 
-[node name="Jump" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 60.0
-margin_right = 31.0
-margin_bottom = 76.0
+[node name="Jump" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_left = 72.0
+margin_top = 20.0
+margin_right = 140.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "jump"
 actionDisplay = "CTRL_JUMP"
 
-[node name="Shoot" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 80.0
-margin_right = 31.0
-margin_bottom = 96.0
+[node name="Shoot" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_top = 40.0
+margin_right = 68.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "use_item"
 actionDisplay = "CTRL_SHOOT"
 
-[node name="Melee" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 100.0
-margin_right = 31.0
-margin_bottom = 116.0
+[node name="Melee" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_left = 72.0
+margin_top = 40.0
+margin_right = 140.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "melee"
 actionDisplay = "CTRL_MELEE"
 
-[node name="Grenade" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 120.0
-margin_right = 31.0
-margin_bottom = 136.0
+[node name="Grenade" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_top = 60.0
+margin_right = 68.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "grenade"
 actionDisplay = "CTRL_GRENADE"
 
-[node name="Hookshot" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 140.0
-margin_right = 31.0
-margin_bottom = 156.0
+[node name="Hookshot" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_left = 72.0
+margin_top = 60.0
+margin_right = 140.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "hookshot"
 actionDisplay = "CTRL_HOOKSHOT"
 
-[node name="Heal" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 160.0
-margin_right = 31.0
-margin_bottom = 176.0
+[node name="Heal" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_top = 80.0
+margin_right = 68.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "heal"
 actionDisplay = "CTRL_HEAL"
 
-[node name="Dash" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 180.0
-margin_right = 31.0
-margin_bottom = 196.0
+[node name="Dash" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_left = 72.0
+margin_top = 80.0
+margin_right = 140.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "dash"
 actionDisplay = "CTRL_DASH"
 
-[node name="Interact" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 200.0
-margin_right = 31.0
-margin_bottom = 216.0
+[node name="Interact" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_top = 100.0
+margin_right = 68.0
+margin_bottom = 116.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "interact"
 actionDisplay = "CTRL_INTERACT"
 
-[node name="SkipDialog" parent="Menus/Keybinds/Scroll/VBox" instance=ExtResource( 6 )]
-margin_top = 200.0
-margin_right = 31.0
-margin_bottom = 216.0
+[node name="SkipDialog" parent="Menus/Keybinds/VBox" instance=ExtResource( 6 )]
+margin_left = 72.0
+margin_top = 100.0
+margin_right = 140.0
+margin_bottom = 116.0
+size_flags_horizontal = 3
 text = "LMB"
 action = "skip_dialog"
 actionDisplay = "CTRL_SKIP_DIALOG"
 
 [node name="Reset" type="Button" parent="Menus/Keybinds"]
-margin_top = 184.0
+margin_top = 156.0
 margin_right = 141.0
-margin_bottom = 200.0
+margin_bottom = 172.0
 custom_fonts/font = ExtResource( 1 )
 text = "CTRL_RESET_BTN"
 align = 0
@@ -336,9 +343,9 @@ script = ExtResource( 2 )
 isNegative = true
 
 [node name="Back" type="Button" parent="Menus/Keybinds"]
-margin_top = 204.0
+margin_top = 176.0
 margin_right = 141.0
-margin_bottom = 220.0
+margin_bottom = 192.0
 custom_fonts/font = ExtResource( 1 )
 text = "BACK_BTN"
 align = 0
@@ -359,55 +366,56 @@ __meta__ = {
 }
 
 [node name="VisualsText" type="Label" parent="Menus/Visuals"]
-margin_top = 24.0
-margin_right = 129.0
-margin_bottom = 67.0
+margin_right = 122.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 custom_fonts/font = ExtResource( 8 )
 text = "VISUALS_TTL"
 
 [node name="Fullscreen" type="CheckBox" parent="Menus/Visuals"]
-margin_top = 71.0
-margin_right = 129.0
-margin_bottom = 95.0
+margin_top = 36.0
+margin_right = 122.0
+margin_bottom = 60.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
 text = "VSL_FULLSCREEN"
 
 [node name="GFX" type="CheckBox" parent="Menus/Visuals"]
-margin_top = 99.0
-margin_right = 129.0
-margin_bottom = 123.0
+margin_top = 64.0
+margin_right = 122.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
 text = "VSL_LOW_QUALITY"
 
 [node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 127.0
+margin_top = 92.0
 margin_right = 84.0
-margin_bottom = 149.0
+margin_bottom = 114.0
 size_flags_horizontal = 0
 optionName = "VSL_SCREENSHAKE"
 
 [node name="Framerate" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 153.0
+margin_top = 118.0
 margin_right = 84.0
-margin_bottom = 175.0
+margin_bottom = 140.0
 size_flags_horizontal = 0
 optionName = "VSL_FRM_RT"
 displayAsPercentage = false
 maxValue = 144
 
 [node name="Back" type="Button" parent="Menus/Visuals"]
-margin_top = 179.0
-margin_right = 129.0
-margin_bottom = 195.0
+margin_top = 144.0
+margin_right = 122.0
+margin_bottom = 160.0
 custom_fonts/font = ExtResource( 1 )
 text = "BACK_BTN"
 align = 0
@@ -490,6 +498,7 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../Center/NavMenu")
 
 [node name="Audio" type="VBoxContainer" parent="Menus"]
+visible = false
 margin_left = 130.0
 margin_top = 45.0
 margin_right = 229.0

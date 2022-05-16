@@ -2,7 +2,7 @@ extends Control
 
 onready var menus = $Menus
 onready var navMenu = $Center/NavMenu
-onready var keybinds = $Menus/Keybinds/Scroll/VBox
+onready var keybinds = $Menus/Keybinds/VBox
 onready var BG = $BG
 onready var backButton = $Center/NavMenu/Back
 
