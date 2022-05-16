@@ -102,6 +102,7 @@ func _on_Cooldown_timeout():
 			player.ammo += reloadAmount
 			isReloading = true
 			cooldownTimer.start(reloadSpeed)
+
 	inventory.items[invenIdx].ammoLeft = player.ammo
 
 
