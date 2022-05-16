@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/Inventory/Slot.gd" type="Script" id=1]
-[ext_resource path="res://General/Outline.shader" type="Shader" id=3]
 [ext_resource path="res://Items/Weapons/Sprites/Pistol.png" type="Texture" id=4]
 
 [sub_resource type="StreamTexture" id=1]
@@ -9,11 +8,6 @@
 [sub_resource type="StreamTexture" id=2]
 
 [sub_resource type="StreamTexture" id=3]
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 3 )
-shader_param/line_color = Color( 1, 1, 1, 1 )
-shader_param/line_thickness = 1.0
 
 [node name="Slot" type="TextureButton"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -28,12 +22,9 @@ texture_hover = SubResource( 3 )
 texture_disabled = SubResource( 2 )
 stretch_mode = 2
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource( 6 )
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 2.0
 margin_top = 3.0
 margin_right = 16.0
@@ -41,9 +32,6 @@ margin_bottom = 17.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="WeaponHolder" type="Node2D" parent="."]
 position = Vector2( 9, 10 )
