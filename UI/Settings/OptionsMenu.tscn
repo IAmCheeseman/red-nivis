@@ -34,6 +34,7 @@ __meta__ = {
 }
 
 [node name="Center" type="CenterContainer" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -489,20 +490,18 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../Center/NavMenu")
 
 [node name="Audio" type="VBoxContainer" parent="Menus"]
-visible = false
 margin_left = 130.0
-margin_top = 58.0
+margin_top = 45.0
 margin_right = 229.0
-margin_bottom = 162.0
+margin_bottom = 175.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AudioText" type="Label" parent="Menus/Audio"]
-margin_top = 58.0
 margin_right = 99.0
-margin_bottom = 90.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 0, 32 )
 custom_fonts/font = ExtResource( 8 )
 text = "AUDIO_TTL"
@@ -511,9 +510,9 @@ text = "AUDIO_TTL"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
-margin_top = 94.0
+margin_top = 36.0
 margin_right = 91.0
-margin_bottom = 116.0
+margin_bottom = 58.0
 size_flags_horizontal = 4
 optionName = "AUDIO_MASTER"
 
@@ -521,27 +520,26 @@ optionName = "AUDIO_MASTER"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
-margin_top = 120.0
+margin_top = 62.0
 margin_right = 91.0
-margin_bottom = 142.0
+margin_bottom = 84.0
 size_flags_horizontal = 4
 optionName = "AUDIO_SFX"
 
 [node name="MSXVolume" parent="Menus/Audio" instance=ExtResource( 4 )]
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 94.0
-margin_top = 102.0
-margin_right = 226.0
-margin_bottom = 112.0
+margin_left = 7.0
+margin_top = 88.0
+margin_right = 91.0
+margin_bottom = 110.0
 size_flags_horizontal = 4
 optionName = "AUDIO_MUSIC"
 
 [node name="Back" type="Button" parent="Menus/Audio"]
-margin_top = 146.0
+margin_top = 114.0
 margin_right = 99.0
-margin_bottom = 162.0
+margin_bottom = 130.0
 custom_fonts/font = ExtResource( 1 )
 text = "BACK_BTN"
 align = 0

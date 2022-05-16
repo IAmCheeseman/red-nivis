@@ -30,6 +30,7 @@ func update_settings() -> void:
 	OS.window_fullscreen = Settings.fullscreen
 	Engine.target_fps = Settings.maxfps
 	AudioServer.set_bus_volume_db(0, linear2db(Settings.masterVol))
+	AudioServer.set_bus_volume_db(2, linear2db(Settings.music))
 	AudioServer.set_bus_volume_db(3, linear2db(Settings.sfx))
 
 
