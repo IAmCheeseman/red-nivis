@@ -163,9 +163,6 @@ visible = false
 fromPth = NodePath("../../..")
 toPth = NodePath("../../../../Margin")
 
-[node name="VBox" parent="OptionsMenu/Menus/Keybinds/Scroll" index="0"]
-margin_bottom = 236.0
-
 [node name="Prompts" type="HBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
