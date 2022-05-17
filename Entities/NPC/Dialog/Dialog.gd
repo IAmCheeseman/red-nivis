@@ -101,6 +101,7 @@ func increment_char() -> void:
 		return
 	
 	charsShown += 1
+	
 	reposition_bg()
 	
 	charIncTimer.start(talkingSpeed)
