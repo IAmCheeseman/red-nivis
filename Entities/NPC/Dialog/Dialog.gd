@@ -25,9 +25,16 @@ var finished = false
 
 signal done
 
+var time := 0.0
+
 
 func _ready() -> void:
 	if fontOverride: text.add_font_override("normal_font", fontOverride)
+
+
+func _process(delta: float) -> void:
+	get_parent().position.y += sin(time) * delta
+	time += delta
 
 
 func start_dialog(interaction:String="Introduction") -> void:
