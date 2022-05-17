@@ -9,7 +9,6 @@ export var fontOverride: Font = null
 
 onready var text = $Text
 onready var background = $Background
-onready var pointer = $Pointer
 onready var advanceTimer = $AdvanceTimer
 onready var charIncTimer = $CharIncTimer
 onready var speakSound = $Bleep
@@ -92,7 +91,6 @@ func increment_char() -> void:
 		finished = true
 		
 		dialogPrompt.show()
-		#advanceTimer.start(advanceTime)
 		return
 	
 	charsShown += 1
@@ -125,4 +123,5 @@ func increment_text() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("interact") or Input.is_key_pressed(KEY_SPACE):
 		if charsShown == text.text.length():
+			yield(TempTimer.idle_frame(self), "timeout")
 			increment_text()
