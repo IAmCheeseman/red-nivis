@@ -86,7 +86,7 @@ func increment_char() -> void:
 	if text.bbcode_text.length() == testText.length():
 		text.bbcode_text = add_center_tags(targetText)
 		finished = true
-		advanceTimer.start(advanceTime)
+		#advanceTimer.start(advanceTime)
 		return
 	
 	charsShown += 1
@@ -117,5 +117,6 @@ func increment_text() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("skip_dialog"):
-		increment_text()
+	if event.is_action_released("interact"):
+		if charsShown == text.text.length():
+			increment_text()

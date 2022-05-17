@@ -101,6 +101,7 @@ func start_dialog(lines:String) -> void:
 	state = TALK
 	
 	PLAYER.playerObject.global_position = global_position + Vector2(shove, -2)
+	PLAYER.playerObject.sprite.scale.x = shove / shove
 
 
 func _on_dialog_finished() -> void:
@@ -120,3 +121,5 @@ func get_target_pos() -> void:
 		 wanderRange
 	)
 	wanderTimer.start(rand_range(wanderTime.x, wanderTime.y))
+
+
