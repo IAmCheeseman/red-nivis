@@ -1,7 +1,7 @@
-extends CenterContainer
+extends Control
 
-onready var _textLabel = $VBoxContainer/Label
-onready var _buttons = $VBoxContainer/HBoxContainer
+onready var _textLabel = $Panel/Center/VBoxContainer/Label
+onready var _buttons = $Panel/Center/VBoxContainer/HBoxContainer
 
 
 export var text := "Empty prompt"

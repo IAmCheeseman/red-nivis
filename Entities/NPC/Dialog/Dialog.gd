@@ -13,6 +13,7 @@ onready var pointer = $Pointer
 onready var advanceTimer = $AdvanceTimer
 onready var charIncTimer = $CharIncTimer
 onready var speakSound = $Bleep
+onready var dialogPrompt = $AdvanceDialogPrompt
 
 const MAX_SIZE = 120
 
@@ -61,8 +62,10 @@ func reposition_bg(resizeText: String=text.text) -> void:
 	background.rect_position = -background.rect_size*.5
 	background.rect_position.y = -background.rect_size.y
 	
+	dialogPrompt.rect_position = (background.rect_position + background.rect_size) - (dialogPrompt.texture.get_size() + Vector2(3, -1))
+	
 	# Pointer
-	pointer.position.x = 0
+#	pointer.position.x = 0
 	
 	# Label
 	text.rect_size.x = background.rect_size.x
@@ -83,9 +86,12 @@ func increment_char() -> void:
 	var testText = add_center_tags(text.text)
 	text.bbcode_text = add_center_tags(text.text.left(charsShown))
 	
+	dialogPrompt.hide()
 	if text.bbcode_text.length() == testText.length():
 		text.bbcode_text = add_center_tags(targetText)
 		finished = true
+		
+		dialogPrompt.show()
 		#advanceTimer.start(advanceTime)
 		return
 	
@@ -117,6 +123,6 @@ func increment_text() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_released("interact"):
+	if event.is_action_released("interact") or Input.is_key_pressed(KEY_SPACE):
 		if charsShown == text.text.length():
 			increment_text()
