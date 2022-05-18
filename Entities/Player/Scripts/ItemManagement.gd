@@ -17,11 +17,9 @@ func _ready():
 
 
 func add_item():
-	if itemHolder == null:
-		return
+	if itemHolder == null: return
 	
-	for i in itemHolder.get_children():
-		i.queue_free()
+	Utils.free_children(itemHolder)
 	var item = inventory.items[inventory.selectedSlot]
 	if item == null: return
 
@@ -30,10 +28,8 @@ func add_item():
 		newItem.invenIdx = inventory.selectedSlot
 		newItem.player = playerData
 
-		yield(TempTimer.idle_frame(self), "timeout")
-
+		itemHolder.add_child(newItem)
+		
 		playerData.maxAmmo = newItem.magazineSize
 		playerData.ammo = playerData.maxAmmo
-
-		itemHolder.add_child(newItem)
 	emit_signal("itemsChanged")

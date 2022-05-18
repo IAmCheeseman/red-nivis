@@ -13,6 +13,7 @@ func _ready() -> void:
 	GameManager.rpBiome = "Main Menu"
 	GameManager.rpGun   = "No Gun"
 	GameManager.update_rp()
+	print("===============")
 
 
 func play() -> void:

@@ -108,3 +108,4 @@ func _on_Cooldown_timeout():
 
 func _on_melee_timeout() -> void:
 	canSwing = true
+
