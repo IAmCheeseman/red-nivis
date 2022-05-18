@@ -1,9 +1,6 @@
 extends Node2D
 
-onready var title := $Menu/TitleControl/Title
-onready var titleControl := $Menu/TitleControl
-onready var titleMenu := $Menu
-onready var anim := $AnimationPlayer
+
 onready var menu := find_node("UI")
 onready var startButton := find_node("StartButton")
 onready var camera := $Camera2D
@@ -17,7 +14,6 @@ func _process(_delta: float) -> void:
 
 
 func start() -> void:
-	anim.play("Start")
 	startButton.disabled = true
 	yield(TempTimer.timer(self, .8), "timeout")
 
@@ -30,7 +26,6 @@ func start() -> void:
 		1.1
 	)
 	tween.start()
-
 
 
 func quit() -> void:

@@ -30,6 +30,7 @@ func play() -> void:
 		target = TUTORIAL
 
 		player.tutorialEnabled = false
+		GameManager.clear_run()
 		GameManager.save_game()
 	var _discard = get_tree().change_scene(target)
 

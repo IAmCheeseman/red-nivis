@@ -37,9 +37,3 @@ func _on_quittm_pressed():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")
 
-
-func _on_quittd_pressed():
-	GameManager.save_game()
-	GameManager.save_run()
-	get_tree().quit()
-

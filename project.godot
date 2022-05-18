@@ -229,7 +229,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Inventory/Inventory.gd"
 }, {
-"base": "Node",
+"base": "Resource",
 "class": "ItemManagement",
 "language": "GDScript",
 "path": "res://Managing/ItemManagement.gd"

@@ -71,7 +71,6 @@ func reposition_bg(resizeText: String=text.text) -> void:
 	dialogPrompt.rect_position = (background.rect_position + background.rect_size) - (dialogPrompt.texture.get_size() + Vector2(3, -1))
 	
 	# Pointer
-#	pointer.position.x = 0
 	
 	# Label
 	text.rect_size.x = background.rect_size.x
