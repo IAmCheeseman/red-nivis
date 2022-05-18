@@ -39,15 +39,14 @@ z_index = -1
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -7 )
 texture = ExtResource( 2 )
-offset = Vector2( -7, 0 )
+offset = Vector2( -7, -7 )
 flip_h = true
 
 [node name="Fire" type="Particles2D" parent="Sprite"]
 show_behind_parent = true
 material = SubResource( 2 )
-position = Vector2( -7, 7 )
+position = Vector2( -7, 0 )
 amount = 512
 lifetime = 2.0
 local_coords = false

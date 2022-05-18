@@ -66,6 +66,7 @@ anchor_bottom = 1.0
 script = ExtResource( 2 )
 dialog = ExtResource( 5 )
 advanceTime = 1.0
+talkingSpeed = 0.003
 
 [node name="Background" type="NinePatchRect" parent="."]
 use_parent_material = true
