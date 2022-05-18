@@ -37,6 +37,7 @@ signal dead
 
 
 func _ready() -> void:
+	MusicManager.set_music(preload("res://Entities/Enemies/Bosses/FunkyAcid.mp3"), 25)
 	if GameManager.worldData.rooms.size() > 0:
 		yield(TempTimer.idle_frame(self), "timeout")
 		isDead = GameManager.worldData.get_room_data(self, false)

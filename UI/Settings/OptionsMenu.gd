@@ -64,7 +64,7 @@ func _on_tutorial_toggled(button_pressed: bool) -> void:
 func _on_english_pressed() -> void:
 	Settings.change_lang("en")
 func _on_spanish_pressed() -> void:
-	Settings.change_lang("es")
+	Settings.change_lang("es_VE")
 func _on_british_pressed() -> void:
 	Settings.change_lang("en_GB")
 func _on_german_pressed() -> void:
