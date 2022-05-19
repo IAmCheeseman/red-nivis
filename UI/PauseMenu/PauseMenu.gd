@@ -34,7 +34,6 @@ func _on_quittm_pressed():
 	GameManager.save_run()
 	get_tree().paused = false
 	VisualServer.set_shader_time_scale(1)
-	print_stray_nodes()
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://UI/MainMenu/MainMenu.tscn")
 

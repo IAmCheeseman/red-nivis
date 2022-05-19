@@ -13,6 +13,9 @@ func _ready() -> void:
 	GameManager.rpBiome = "Main Menu"
 	GameManager.rpGun   = "No Gun"
 	GameManager.update_rp()
+	
+	yield(TempTimer.idle_frame(self), "timeout")
+	print_stray_nodes()
 	print("===============")
 
 
