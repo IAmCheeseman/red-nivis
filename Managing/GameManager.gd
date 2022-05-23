@@ -30,7 +30,6 @@ signal screenshake
 # warning-ignore:unused_signal
 signal zoom_in(zoom,time,zoomPos)
 
-
 var controlMaterial = CanvasItemMaterial.new()
 
 var rpBiome = "None"

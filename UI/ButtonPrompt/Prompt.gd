@@ -28,7 +28,7 @@ func _on_prompt_action_changed() -> void:
 		
 		var inputEvent: InputEvent = InputMap.get_action_list(i)[0]
 		var text = "%s_KB.png" % inputEvent.as_text()
-		yield(TempTimer.idle_frame(self), "timeout")
+		#yield(TempTimer.idle_frame(self), "timeout")
 		
 		newButton.texture = load("res://UI/Assets/Prompts/%s" % text)
 		newButton.show()

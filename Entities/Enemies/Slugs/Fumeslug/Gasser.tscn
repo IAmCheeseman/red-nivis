@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/Enemies/Slugs/Fumeslug/Gasser.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bandit/Bandit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/Enemies/Slugs/Fumeslug/Attack.gd" type="Script" id=3]
+[ext_resource path="res://Entities/Effects/Blood/SlugGoo/SlugGoo.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Fall"
@@ -86,6 +87,10 @@ script = ExtResource( 3 )
 wait_time = 4.0
 one_shot = true
 autostart = true
+
+[node name="DamageManager" parent="." index="3"]
+maxHealth = 1450
+deathParticles = ExtResource( 4 )
 
 [node name="Hurtbox" parent="Collisions" index="0"]
 visible = false
