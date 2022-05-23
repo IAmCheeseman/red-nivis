@@ -17,6 +17,9 @@ func _process(delta: float) -> void:
 		if !is_instance_valid(i.node):
 			bullets.erase(i)
 			continue
+		if i.node.burnt:
+			bullets.erase(i)
+			continue
 		
 		i.time += delta
 		if i.time > 3:
@@ -24,7 +27,7 @@ func _process(delta: float) -> void:
 			node.direction = node.global_position.direction_to(global_position - Vector2(0, 8))
 			node.speed = 100
 			
-			if node.global_position.distance_to(global_position) < 5:
+			if node.global_position.distance_to(global_position) < 16:
 				node.do_free()
 				useableBullets += 1
 				bullets.erase(i)
@@ -45,6 +48,7 @@ func attack() -> void:
 		newBullet.global_position = global_position - Vector2(0, 8)
 		newBullet.speed = 350 * randf()
 		newBullet.direction = Vector2.UP.rotated(rand_range(-PI/2, PI/2))
+		newBullet.peircing = true
 		
 		GameManager.spawnManager.spawn_object(newBullet)
 		

@@ -68,10 +68,10 @@ var upgrades := []
 var unlockedUpgrades := []
 
 var passives := [
-	{
-		"item": "res://Items/Passives/LawnFlamingo/LawnFlamingo.tres",
-		"used": false
-	}
+#	{
+#		"item": "res://Items/Passives/LawnFlamingo/LawnFlamingo.tres",
+#		"used": false
+#	}
 ]
 
 var immune := false

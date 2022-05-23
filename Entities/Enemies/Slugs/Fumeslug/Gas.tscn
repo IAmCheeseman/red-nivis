@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Items/Weapons/Bullet/BulletParticles.tres" type="Material" id=1]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=3]
@@ -70,31 +70,153 @@ color_ramp = SubResource( 11 )
 anim_offset = 1.0
 anim_offset_random = 1.0
 
+[sub_resource type="CanvasItemMaterial" id=13]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0, 0.148649, 0.45045, 0.68018, 0.851351, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 0.833204, 0, 1, 0.594922, 0.412031, 0, 1, 0.462109, 0.191248, 0.00198558, 1, 0.581641, 0.581641, 0.581641, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+lifetime_randomness = 0.5
+emission_shape = 5
+emission_ring_radius = 16.0
+emission_ring_inner_radius = 4.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+color_ramp = SubResource( 15 )
+anim_offset = 1.0
+anim_offset_random = 1.0
+
 [sub_resource type="CircleShape2D" id=9]
 radius = 12.0416
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 4.0
 
-[sub_resource type="Animation" id=5]
-tracks/0/type = "method"
-tracks/0/path = NodePath("AnimationPlayer")
+[sub_resource type="Animation" id=16]
+resource_name = "Burn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fire:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("EnemyHitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fire:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("EnemyHitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Fire:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [node name="Bullet" type="KinematicBody2D" groups=["EnemyBullet", "GasserBullet"]]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 0
 script = ExtResource( 6 )
 
 [node name="Particles" type="Particles2D" parent="."]
@@ -122,14 +244,36 @@ local_coords = false
 process_material = SubResource( 8 )
 texture = ExtResource( 4 )
 
+[node name="Fire" type="Particles2D" parent="."]
+material = SubResource( 13 )
+emitting = false
+amount = 100
+local_coords = false
+process_material = SubResource( 12 )
+texture = ExtResource( 4 )
+
 [node name="Hitbox" parent="." groups=["EnemyBullet"] instance=ExtResource( 3 )]
 visible = false
 collision_layer = 4
 collision_mask = 2
 damage = 1
+tick = 0.5
+tickRightAway = true
 giveSelf = true
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 9 )
+
+[node name="EnemyHitbox" parent="." groups=["EnemyBullet"] instance=ExtResource( 3 )]
+visible = false
+collision_layer = 4
+collision_mask = 4
+damage = 20
+tick = 0.1
+tickRightAway = true
+giveSelf = true
+
+[node name="CollisionShape2D" parent="EnemyHitbox" index="0"]
 shape = SubResource( 9 )
 
 [node name="QueueArea" type="Area2D" parent="." groups=["EnemyBullet"]]
@@ -142,9 +286,15 @@ shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Init"
+anims/Burn = SubResource( 16 )
 anims/Init = SubResource( 5 )
+anims/RESET = SubResource( 17 )
 
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="hit_object" from="Hitbox" to="." method="_on_Hitbox_hit_object"]
+[connection signal="area_entered" from="EnemyHitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="hit_object" from="EnemyHitbox" to="." method="_on_Hitbox_hit_object"]
 [connection signal="body_entered" from="QueueArea" to="." method="_on_QueueArea_body_entered"]
 
 [editable path="Hitbox"]
+[editable path="EnemyHitbox"]

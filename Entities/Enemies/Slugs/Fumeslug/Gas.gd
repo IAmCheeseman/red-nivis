@@ -1,5 +1,5 @@
 extends KinematicBody2D
-class_name EnemyBullet
+class_name GasBullet
 
 
 var direction : Vector2
@@ -9,12 +9,13 @@ var damage:float = 0
 
 onready var hitbox = $Hitbox
 onready var particles = $Particles
+onready var anim = $AnimationPlayer
 
 signal hitCollision
 
 
 var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
-
+var burnt = false
 
 func _ready():
 	if damage != 0: hitbox.damage = damage
@@ -38,7 +39,7 @@ func _on_QueueArea_body_entered(body):
 		add_particles()
 
 
-func _on_Hitbox_hit_object(_object):
+func _on_Hitbox_hit_object(object):
 	if !peircing:
 		add_particles()
 
@@ -46,6 +47,16 @@ func _on_Hitbox_hit_object(_object):
 func do_free() -> void:
 	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
 	$Particles2D.emitting = false
+	$Fire.emitting = false
 	yield(TempTimer.timer(self, 1), "timeout")
 	
 	queue_free()
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("playerBullet"):
+		anim.play("Burn")
+		burnt = true
+		
+		yield(TempTimer.timer(self, 3), "timeout")
+		do_free()

@@ -98,3 +98,6 @@ func _on_lifetime_timeout():
 	dieTween.start()
 	anim.play("Free", -1, 2)
 
+
+
+
