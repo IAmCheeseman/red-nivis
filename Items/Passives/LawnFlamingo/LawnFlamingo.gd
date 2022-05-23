@@ -12,6 +12,7 @@ func _ready() -> void:
 
 
 func init_gun() -> void:
+	yield(TempTimer.idle_frame(self), "timeout")
 	PLAYER.playerObject.itemHolder.get_child(0).get_node("GunLogic")\
 		.connect("bullet_hit_enemy", self, "_on_bullet_hit_enemy")
 
