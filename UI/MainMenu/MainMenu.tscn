@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Assets/Title_RedNivis.png" type="Texture" id=1]
+[ext_resource path="res://RadialGradient.png" type="Texture" id=2]
 [ext_resource path="res://UI/MainMenu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://UI/MainMenu/UI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Assets/RobotsMM.png" type="Texture" id=14]
 [ext_resource path="res://UI/Assets/AstroGuyMM.png" type="Texture" id=15]
+
+[sub_resource type="CanvasItemMaterial" id=10]
+blend_mode = 1
 
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
@@ -57,12 +61,36 @@ texture = ExtResource( 14 )
 expand = true
 stretch_mode = 6
 
+[node name="Light" type="Sprite" parent="BG/Backgrounds2/ParallaxBackground/Robots/Robots"]
+modulate = Color( 1, 0, 0, 1 )
+material = SubResource( 10 )
+position = Vector2( 127, 103 )
+rotation = 0.102037
+scale = Vector2( 0.0654434, 0.112993 )
+texture = ExtResource( 2 )
+
+[node name="Light2" type="Sprite" parent="BG/Backgrounds2/ParallaxBackground/Robots/Robots"]
+modulate = Color( 1, 0, 0, 1 )
+material = SubResource( 10 )
+position = Vector2( 272, 100 )
+rotation = 0.102037
+scale = Vector2( 0.10038, 0.10038 )
+texture = ExtResource( 2 )
+
+[node name="Light3" type="Sprite" parent="BG/Backgrounds2/ParallaxBackground/Robots/Robots"]
+modulate = Color( 1, 0, 0, 1 )
+material = SubResource( 10 )
+position = Vector2( 235, 212 )
+rotation = -0.667201
+scale = Vector2( 0.121381, 0.0939334 )
+texture = ExtResource( 2 )
+
 [node name="BG" type="ColorRect" parent="BG/Backgrounds2/ParallaxBackground/Robots"]
 show_behind_parent = true
-margin_left = -555.0
-margin_top = -366.0
-margin_right = 5326.0
-margin_bottom = 492.0
+margin_left = -354.0
+margin_top = -175.0
+margin_right = 5527.0
+margin_bottom = 683.0
 color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
 
 [node name="Player" type="ParallaxLayer" parent="BG/Backgrounds2/ParallaxBackground"]
