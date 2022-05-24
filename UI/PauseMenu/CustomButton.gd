@@ -19,10 +19,12 @@ func _ready() -> void:
 	theme = Theme.new()
 	if isNegative:
 		theme.set_color("font_color", "Button", Color("#a53030"))
+		theme.set_color("font_color_focus", "Button", Color("#a53030"))
 		theme.set_color("font_color_hover", "Button", Color("#cf573c"))
 		theme.set_color("font_color_pressed", "Button", Color("#752438"))
 	else:
 		theme.set_color("font_color", "Button", Color("#c7cfcc"))
+		theme.set_color("font_color_focus", "Button", Color("#c7cfcc"))
 		theme.set_color("font_color_hover", "Button", Color("#e8c170"))
 		theme.set_color("font_color_pressed", "Button", Color("#de9e41"))
 	theme.set_stylebox("focus", "Button", StyleBoxEmpty.new())
