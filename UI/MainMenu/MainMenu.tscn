@@ -47,10 +47,10 @@ layer = -5
 [node name="ParallaxBackground" type="ParallaxBackground" parent="BG/Backgrounds2"]
 
 [node name="Robots" type="ParallaxLayer" parent="BG/Backgrounds2/ParallaxBackground"]
-modulate = Color( 0.686275, 0.686275, 0.686275, 1 )
 motion_scale = Vector2( 0.1, 0.1 )
 
 [node name="Robots" type="TextureRect" parent="BG/Backgrounds2/ParallaxBackground/Robots"]
+modulate = Color( 0.686275, 0.686275, 0.686275, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -157.0
@@ -62,11 +62,10 @@ expand = true
 stretch_mode = 6
 
 [node name="Light" type="Sprite" parent="BG/Backgrounds2/ParallaxBackground/Robots/Robots"]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 1, 0.427451, 0.964706, 1 )
 material = SubResource( 10 )
-position = Vector2( 127, 103 )
-rotation = 0.102037
-scale = Vector2( 0.0654434, 0.112993 )
+position = Vector2( 180.617, 130.323 )
+scale = Vector2( 0.205958, 0.457274 )
 texture = ExtResource( 2 )
 
 [node name="Light2" type="Sprite" parent="BG/Backgrounds2/ParallaxBackground/Robots/Robots"]
@@ -94,7 +93,6 @@ margin_bottom = 683.0
 color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
 
 [node name="Player" type="ParallaxLayer" parent="BG/Backgrounds2/ParallaxBackground"]
-modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
 motion_scale = Vector2( 0.15, 0.15 )
 
 [node name="Player" type="TextureRect" parent="BG/Backgrounds2/ParallaxBackground/Player"]
@@ -107,6 +105,14 @@ margin_bottom = 308.0
 texture = ExtResource( 15 )
 expand = true
 stretch_mode = 6
+
+[node name="Light" type="Sprite" parent="BG/Backgrounds2/ParallaxBackground/Player"]
+modulate = Color( 0, 0.54902, 0.658824, 1 )
+material = SubResource( 10 )
+position = Vector2( 407, 137 )
+rotation = 0.295699
+scale = Vector2( 0.205958, 0.457274 )
+texture = ExtResource( 2 )
 
 [node name="LogoShadow" type="ParallaxLayer" parent="BG/Backgrounds2/ParallaxBackground"]
 motion_scale = Vector2( 0.2, 0.2 )
