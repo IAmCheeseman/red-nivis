@@ -6,6 +6,7 @@ export var pointerOffset := 15
 export var advanceTime := 3.0
 export var talkingSpeed := 0.05
 export var fontOverride: Font = null
+export var autoAdvance := false
 
 onready var text = $Text
 onready var background = $Background
@@ -97,6 +98,9 @@ func increment_char() -> void:
 		finished = true
 		
 		dialogPrompt.show()
+		if autoAdvance:
+			advanceTimer.start()
+			dialogPrompt.hide()
 		return
 	
 	charsShown += 1

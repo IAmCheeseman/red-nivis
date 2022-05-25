@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Items/HeartContiner/HeartContainer.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Items/Upgrades/DoubleJumpDropped.tscn" type="PackedScene" id=16]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=17]
+[ext_resource path="res://Entities/Effects/Blood/Blood.tscn" type="PackedScene" id=18]
 
 [sub_resource type="CanvasItemMaterial" id=12]
 blend_mode = 1
@@ -665,6 +666,7 @@ isBoss = true
 freeOnDeath = false
 steamAchievement = "GNOME"
 spritePath = NodePath("../Sprite")
+deathParticles = ExtResource( 18 )
 
 [node name="Collisions" type="Node2D" parent="."]
 
@@ -732,11 +734,12 @@ autostart = true
 
 [node name="Dialog" parent="." instance=ExtResource( 7 )]
 visible = false
-margin_left = 6.0
-margin_top = -44.0
-margin_right = 6.0
-margin_bottom = -44.0
+margin_left = 7.0
+margin_top = -24.0
+margin_right = 7.0
+margin_bottom = -24.0
 dialog = ExtResource( 8 )
+autoAdvance = true
 
 [node name="AudioStreamPlayer" type="Node2D" parent="."]
 script = ExtResource( 12 )
