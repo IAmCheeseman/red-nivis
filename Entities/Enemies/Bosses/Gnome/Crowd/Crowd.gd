@@ -20,7 +20,7 @@ var gnomes = []
 func _ready() -> void:
 	var playerData = preload("res://Entities/Player/Player.tres")
 	playerData.connect("healthChanged", self, "play_woo")
-	playerData.connect("healsChanged", self, "_on_player_heal")
+	#playerData.connect("healsChanged", self, "_on_player_heal")
 	
 	stands.hide()
 	var cells = stands.get_used_cells()
