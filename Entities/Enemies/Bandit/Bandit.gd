@@ -34,16 +34,21 @@ var prevFloorState = false
 
 func _ready() -> void:
 	select_new_target_pos()
+	
+	assert(anim.has_animation("Idle"))
+	assert(anim.has_animation("Walk"))
+	assert(anim.has_animation("Fall"))
 
 
 func _physics_process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
 
 	if vel.y > 0 and !floorCheckerRC.is_colliding():
-		sprite.scale.x = clamp(
+		sprite.scale.x = abs(clamp(
 			1-abs(vel.y/Globals.GRAVITY),
-			.75, 1.5)
+			.75, 1.5))
 		sprite.scale.y = 1+(1-sprite.scale.x)
+		sprite.scale = sprite.scale.abs()
 	elif floorCheckerRC.is_colliding():
 		if !prevFloorState: sprite.scale = Vector2(1.5, .5)
 		sprite.scale = sprite.scale.abs().move_toward(Vector2.ONE, 3*delta)
@@ -107,4 +112,3 @@ func _on_state_change_timeout() -> void:
 		stateChangeTimer.start(rand_range(.5, 1))
 	else:
 		stateChangeTimer.start(rand_range(.2, .5))
-
