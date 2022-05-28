@@ -56,6 +56,7 @@ func _process(delta: float) -> void:
 		sprite.scale = sprite.scale.abs().move_toward(Vector2.ONE, 5 * delta)
 
 		if abs(global_position.x - target) < 5:
+			choose_new_target()
 			vel.x = lerp(vel.x, 0, frict * delta)
 			anim.play("Idle")
 			sprite.scale.x *= 1 if player.global_position.x < global_position.x else -1
@@ -65,6 +66,8 @@ func _process(delta: float) -> void:
 			sprite.scale.x *= -dir
 
 		vel.y = move_and_slide(vel).y
+	else:
+		anim.play("Idle")
 
 
 func choose_new_target() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Entities/NPC/Dialog/Dialog.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/GnomeDialog.tres" type="Resource" id=8]
 [ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Entities/Enemies/Bosses/Gnome/Die.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/DieCircle.png" type="Texture" id=11]
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=12]
 [ext_resource path="res://Items/Upgrades/Grenade/Explosion.wav" type="AudioStream" id=13]
@@ -97,132 +96,24 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -9 ), Vector2( 0, -50 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite/Lights:rotation_degrees")
+tracks/1/path = NodePath("Sprite/Lights/Sprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 7.7 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 120.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite/Lights/Light1:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.3, 5.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite/Lights/Light2:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1.9, 5.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite/Lights/Light3:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 2.2, 5.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite/Lights/Light4:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 2.4, 5.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite/Lights/Light5:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 2.7, 5.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Sprite/Lights/Light6:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 2.9, 5.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Sprite/Lights/Light7:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 3.4, 5.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Sprite/Lights/Light8:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0, 3.4, 5.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Sprite/Lights/Sprite:scale")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
 "times": PoolRealArray( 0, 2.7, 4.2, 4.4, 4.6, 5.2 ),
 "transitions": PoolRealArray( 1, 3.605, 0.406126, 2.54912, 2.21914, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ), Vector2( 5, 5 ) ]
 }
-tracks/11/type = "method"
-tracks/11/path = NodePath(".")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 7.7 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -230,84 +121,49 @@ tracks/11/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/12/type = "value"
-tracks/12/path = NodePath("Sprite:frame")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 22 ]
 }
-tracks/13/type = "method"
-tracks/13/path = NodePath("AudioStreamPlayer")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 1.1, 1.7, 2, 2.2, 2.5, 2.7, 3.4, 4.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ {
-"args": [ null ],
-"method": "play"
-}, {
-"args": [ null ],
-"method": "play"
-}, {
-"args": [ null ],
-"method": "play"
-}, {
-"args": [ null ],
-"method": "play"
-}, {
-"args": [ null ],
-"method": "play"
-}, {
-"args": [ null ],
-"method": "play"
-}, {
-"args": [ null ],
-"method": "play"
-}, {
-"args": [ null ],
-"method": "play"
-} ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("Sprite/Lights/Sprite:modulate")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/Lights/Sprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0, 5.2, 7.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/15/type = "value"
-tracks/15/path = NodePath("Sprite:self_modulate")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0, 5.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/16/type = "method"
-tracks/16/path = NodePath("BossDropper")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
+tracks/6/type = "method"
+tracks/6/path = NodePath("BossDropper")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 5.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -315,13 +171,13 @@ tracks/16/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/17/type = "value"
-tracks/17/path = NodePath("Collisions/BounceHitbox/CollisionShape2D:disabled")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
+tracks/7/type = "value"
+tracks/7/path = NodePath("Collisions/BounceHitbox/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
 "times": PoolRealArray( 5.2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -398,7 +254,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite/Lights/Light1:visible")
+tracks/3/path = NodePath("Sprite/Lights/Sprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -407,10 +263,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ Vector2( 1e-05, 1e-05 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite/Lights/Light2:visible")
+tracks/4/path = NodePath("Sprite/Lights/Sprite:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -419,10 +275,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite/Lights/Light3:visible")
+tracks/5/path = NodePath("Sprite:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -431,10 +287,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite/Lights/Light4:visible")
+tracks/6/path = NodePath("Sprite:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -443,111 +299,15 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Sprite/Lights/Light5:visible")
+tracks/7/path = NodePath("Collisions/BounceHitbox/CollisionShape2D:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Sprite/Lights/Light6:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Sprite/Lights/Light7:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Sprite/Lights/Light8:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("Sprite/Lights/Sprite:scale")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ) ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("Sprite/Lights/Sprite:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("Sprite:visible")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("Sprite:self_modulate")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("Collisions/BounceHitbox/CollisionShape2D:disabled")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -585,61 +345,6 @@ frame = 27
 [node name="Lights" type="Node2D" parent="Sprite"]
 material = SubResource( 12 )
 position = Vector2( 6, 1 )
-
-[node name="Light1" type="Sprite" parent="Sprite/Lights"]
-visible = false
-use_parent_material = true
-texture = ExtResource( 10 )
-offset = Vector2( 69, -57 )
-
-[node name="Light2" type="Sprite" parent="Sprite/Lights"]
-visible = false
-use_parent_material = true
-rotation = 1.57079
-texture = ExtResource( 10 )
-offset = Vector2( 69, -57 )
-
-[node name="Light3" type="Sprite" parent="Sprite/Lights"]
-visible = false
-use_parent_material = true
-rotation = 2.87979
-texture = ExtResource( 10 )
-offset = Vector2( 69, -57 )
-
-[node name="Light4" type="Sprite" parent="Sprite/Lights"]
-visible = false
-use_parent_material = true
-rotation = -1.8326
-texture = ExtResource( 10 )
-offset = Vector2( 69, -57 )
-
-[node name="Light5" type="Sprite" parent="Sprite/Lights"]
-visible = false
-use_parent_material = true
-rotation = -2.618
-texture = ExtResource( 10 )
-offset = Vector2( 69, -57 )
-
-[node name="Light6" type="Sprite" parent="Sprite/Lights"]
-visible = false
-use_parent_material = true
-rotation = 0.785397
-texture = ExtResource( 10 )
-offset = Vector2( 69, -57 )
-
-[node name="Light7" type="Sprite" parent="Sprite/Lights"]
-visible = false
-use_parent_material = true
-rotation = -0.785397
-texture = ExtResource( 10 )
-offset = Vector2( 69, -57 )
-
-[node name="Light8" type="Sprite" parent="Sprite/Lights"]
-visible = false
-use_parent_material = true
-rotation = 2.09439
-texture = ExtResource( 10 )
-offset = Vector2( 69, -57 )
 
 [node name="Sprite" type="Sprite" parent="Sprite/Lights"]
 use_parent_material = true
@@ -715,23 +420,6 @@ autostart = true
 wait_time = 4.0
 autostart = true
 
-[node name="AttackTimer" type="Timer" parent="Timers"]
-wait_time = 2.0
-one_shot = true
-autostart = true
-
-[node name="BounceTimer" type="Timer" parent="Timers"]
-wait_time = 0.2
-one_shot = true
-
-[node name="AscendTimer" type="Timer" parent="Timers"]
-wait_time = 1.2
-one_shot = true
-
-[node name="AscendStick" type="Timer" parent="Timers"]
-wait_time = 0.23
-autostart = true
-
 [node name="Dialog" parent="." instance=ExtResource( 7 )]
 visible = false
 margin_left = 7.0
@@ -739,6 +427,7 @@ margin_top = -24.0
 margin_right = 7.0
 margin_bottom = -24.0
 dialog = ExtResource( 8 )
+talkingSpeed = 0.02
 autoAdvance = true
 
 [node name="AudioStreamPlayer" type="Node2D" parent="."]
@@ -772,11 +461,7 @@ energy = 0.6
 [connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/JumpTimer" to="." method="_on_jump_timer_timeout"]
-[connection signal="timeout" from="Timers/TargetChangeTimer" to="." method="_on_target_change_timer_timeout"]
-[connection signal="timeout" from="Timers/AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="Timers/AscendTimer" to="." method="toggle_ascend"]
-[connection signal="timeout" from="Timers/AscendStick" to="." method="_add_ascend_stick"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="Timers/TargetChangeTimer" to="." method="get_target"]
 
 [editable path="Collisions/BounceHitbox"]
 [editable path="Collisions/PlayerDetection"]
