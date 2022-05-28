@@ -18,7 +18,7 @@ extents = Vector2( 2049.75, 134.694 )
 script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 89, -18 )
+position = Vector2( 5, -16 )
 
 [node name="LabBackground" parent="." instance=ExtResource( 3 )]
 z_index = -1
@@ -43,12 +43,12 @@ shape = SubResource( 1 )
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
 [node name="Slug" parent="." instance=ExtResource( 8 )]
-position = Vector2( 180, -12 )
+position = Vector2( 231, -9 )
 
-[node name="Gasser" parent="Slug" instance=ExtResource( 10 )]
-position = Vector2( 35, 6 )
+[node name="Gasser" parent="." instance=ExtResource( 10 )]
+position = Vector2( 191, -9 )
 
 [node name="AoeShooter" parent="." instance=ExtResource( 9 )]
-position = Vector2( 157, -12 )
+position = Vector2( 259, -17 )
 
 [editable path="CameraMoveZone"]

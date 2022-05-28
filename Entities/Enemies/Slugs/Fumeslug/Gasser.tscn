@@ -72,6 +72,8 @@ tracks/0/keys = {
 }
 
 [node name="Gasser" instance=ExtResource( 2 )]
+targetRange = 128
+jumpRange = Vector2( 1000, 1000 )
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, 0 )
@@ -96,6 +98,9 @@ deathParticles = ExtResource( 4 )
 
 [node name="Hurtbox" parent="Collisions" index="0"]
 visible = false
+
+[node name="Jump" parent="Timers" index="1"]
+autostart = false
 
 [node name="AnimationPlayer" parent="." index="6"]
 anims/Fall = SubResource( 4 )

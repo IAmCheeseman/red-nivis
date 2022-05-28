@@ -36,7 +36,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	vel.y += Globals.GRAVITY * delta
+	vel.y += Globals.GRAVITY * delta * .5
 	vel.y = move_and_slide(vel).y
 
 

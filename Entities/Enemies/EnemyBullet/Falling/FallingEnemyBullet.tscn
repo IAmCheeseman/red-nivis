@@ -113,7 +113,6 @@ autoplay = "Kill"
 anims/Kill = SubResource( 1 )
 
 [node name="Light" type="Sprite" parent="."]
-visible = false
 modulate = Color( 2.89, 0, 0, 1 )
 show_behind_parent = true
 material = SubResource( 2 )

@@ -12,6 +12,7 @@ onready var particles = $Particles
 onready var anim = $AnimationPlayer
 
 signal hitCollision
+var vel = Vector2.ZERO
 
 
 var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
@@ -19,11 +20,14 @@ var burnt = false
 
 func _ready():
 	if damage != 0: hitbox.damage = damage
+	vel = direction * speed
 
 
 func _physics_process(delta):
-	position += (direction * speed) * delta
-	speed = lerp(speed, 0, delta * 5)
+	vel.y += Globals.WATER_GRAVITY * delta * .4
+	vel.x = lerp(vel.x, 0, 5 * delta)
+	
+	vel.y = move_and_slide(vel).y
 
 
 func add_particles():

@@ -4,62 +4,33 @@ const BULLET = preload("res://Entities/Enemies/Slugs/Fumeslug/Gas.tscn")
 
 onready var attackTimer = $AttackTimer
 
-var bullets := []
-
-var useableBullets = 10
 
 var player
 var on := false
 
 
 func _process(delta: float) -> void:
-	for i in bullets:
-		if !is_instance_valid(i.node):
-			bullets.erase(i)
-			continue
-		if i.node.burnt:
-			bullets.erase(i)
-			continue
-		
-		i.time += delta
-		if i.time > 3:
-			var node = i.node
-			node.direction = node.global_position.direction_to(global_position - Vector2(0, 8))
-			node.speed = 100
-			
-			if node.global_position.distance_to(global_position) < 16:
-				node.do_free()
-				useableBullets += 1
-				bullets.erase(i)
-	
 	if on:
 		get_parent().vel.x = 0
 		get_parent().vel.y = Globals.GRAVITY
 
 
 func attack() -> void:
+	if abs(player.global_position.x - global_position.x) < 32: return
 	on = true
 	yield(TempTimer.timer(self, 1), "timeout")
 	
-	for i in ceil(useableBullets / 2):
-		yield(TempTimer.timer(self, 0.1), "timeout")
-		
+	for i in 5:
 		var newBullet = BULLET.instance()
 		newBullet.global_position = global_position - Vector2(0, 8)
-		newBullet.speed = 350 * randf()
+		newBullet.speed = 100
+		newBullet.damage = 1
 		newBullet.direction = Vector2.UP.rotated(rand_range(-PI/2, PI/2))
 		newBullet.peircing = true
 		
 		GameManager.spawnManager.spawn_object(newBullet)
-		
-		bullets.append({ "node" : newBullet, "time" : 0.0 })
-		
-		useableBullets -= 1
-		
-		get_parent().sprite.scale = Vector2(1.1, 0.9)
 	
 	on = false
 	
 	attackTimer.start(rand_range(3, 4))
-
 

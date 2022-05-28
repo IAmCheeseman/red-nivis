@@ -27,6 +27,7 @@ hframes = 4
 [node name="Hitbox" parent="." index="3"]
 visible = true
 kbStrengh = 0.0
+tick = 0.2
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 10 )
