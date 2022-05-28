@@ -32,6 +32,7 @@ func do_tick(area) -> void:
 
 func do_damage(area) -> void:
 	if area is String or damage == 0: return
+	if !area in get_overlapping_areas(): return
 	if tick != -1.0 and area in get_overlapping_areas(): do_tick(area)
 	emit_signal("hit_object", area)
 	if !is_instance_valid(area): return

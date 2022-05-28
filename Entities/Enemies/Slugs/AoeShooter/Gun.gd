@@ -41,7 +41,7 @@ func shoot() -> void:
 		newBullet.direction = dir
 		newBullet.speed = 100
 		newBullet.damage = 1
-		newBullet.peircing = true
+#		newBullet.peircing = true
 		newBullet.global_position = barrelEnd.global_position
 		GameManager.spawnManager.spawn_object(newBullet)
 	

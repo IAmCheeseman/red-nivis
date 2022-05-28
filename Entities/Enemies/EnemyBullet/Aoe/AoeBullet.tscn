@@ -11,7 +11,7 @@
 shader = ExtResource( 5 )
 
 [sub_resource type="CircleShape2D" id=10]
-radius = 13.0384
+radius = 8.0
 
 [node name="Bullet" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -26,7 +26,7 @@ hframes = 4
 
 [node name="Hitbox" parent="." index="3"]
 visible = true
-tick = 0.2
+kbStrengh = 0.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 10 )
