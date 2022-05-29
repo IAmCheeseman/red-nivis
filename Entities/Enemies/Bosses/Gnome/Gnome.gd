@@ -14,6 +14,8 @@ onready var bounceRC = $Collisions/Bounce
 
 onready var dialog = $Dialog
 
+onready var attacks = $Sprite/Attacks
+
 export var jumpForce := 400
 export var speed := 80
 export var accel := 4
@@ -35,11 +37,15 @@ var state := TARGET
 signal hurt
 
 
+
 func _physics_process(delta: float) -> void:
 	vel.y += Globals.GRAVITY*delta
 	position_dialog()
 	if !player:
 		player = playerDetection.get_player()
+		for i in attacks.get_children():
+			i.player = player
+		
 		anim.play("Idle")
 		get_target()
 		# Animating
@@ -120,3 +126,13 @@ func position_dialog() -> void:
 		dialog.rect_position = Vector2(6, -44)
 	else:
 		dialog.rect_position = Vector2(-6, -44)
+
+
+func attack() -> void:
+	if !player: return
+	
+	var children: Array = attacks.get_children()
+	children.shuffle()
+	
+	for i in children:
+		if i.test(): return

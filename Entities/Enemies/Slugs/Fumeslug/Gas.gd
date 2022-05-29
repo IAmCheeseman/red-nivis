@@ -43,7 +43,7 @@ func _on_QueueArea_body_entered(body):
 		add_particles()
 
 
-func _on_Hitbox_hit_object(object):
+func _on_Hitbox_hit_object(_object):
 	if !peircing:
 		add_particles()
 

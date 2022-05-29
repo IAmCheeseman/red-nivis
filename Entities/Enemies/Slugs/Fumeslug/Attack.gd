@@ -9,7 +9,7 @@ var player
 var on := false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if on:
 		get_parent().vel.x = 0
 		get_parent().vel.y = Globals.GRAVITY

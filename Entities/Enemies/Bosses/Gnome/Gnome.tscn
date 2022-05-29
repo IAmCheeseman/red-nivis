@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Entities/NPC/Dialog/Dialog.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/GnomeDialog.tres" type="Resource" id=8]
 [ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemies/Bosses/Gnome/StickGun.png" type="Texture" id=10]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/DieCircle.png" type="Texture" id=11]
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=12]
 [ext_resource path="res://Items/Upgrades/Grenade/Explosion.wav" type="AudioStream" id=13]
@@ -17,10 +18,140 @@
 [ext_resource path="res://Items/Upgrades/DoubleJumpDropped.tscn" type="PackedScene" id=16]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=17]
 [ext_resource path="res://Entities/Effects/Blood/Blood.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Entities/Enemies/Bosses/Gnome/StickGun.gd" type="Script" id=19]
 
 [sub_resource type="CanvasItemMaterial" id=12]
 blend_mode = 1
 light_mode = 2
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "WhipOut"
+length = 1.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.7, 0.75, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 4.75683, 1, 0.189465, 2.73208, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 1.5 ), Vector2( 1.5, 0.5 ), Vector2( 1, 1 ), Vector2( 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.2 ),
+"transitions": PoolRealArray( 0.25, 3.36359, 1 ),
+"update": 0,
+"values": [ 90.0, -16.1099, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.75 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 1 )
@@ -352,6 +483,21 @@ scale = Vector2( 1e-05, 1e-05 )
 z_index = 4096
 texture = ExtResource( 11 )
 
+[node name="Attacks" type="Node2D" parent="Sprite"]
+
+[node name="StickGun" type="Node2D" parent="Sprite/Attacks"]
+visible = false
+script = ExtResource( 19 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Attacks/StickGun"]
+texture = ExtResource( 10 )
+offset = Vector2( 2, -7 )
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Attacks/StickGun"]
+anims/RESET = SubResource( 14 )
+anims/WhipOut = SubResource( 13 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 3, -2 )
 shape = SubResource( 1 )
@@ -420,12 +566,14 @@ autostart = true
 wait_time = 4.0
 autostart = true
 
+[node name="AttackTimer" type="Timer" parent="Timers"]
+wait_time = 1.5
+autostart = true
+
 [node name="Dialog" parent="." instance=ExtResource( 7 )]
 visible = false
-margin_left = 7.0
-margin_top = -24.0
-margin_right = 7.0
-margin_bottom = -24.0
+margin_top = -23.0
+margin_bottom = -23.0
 dialog = ExtResource( 8 )
 talkingSpeed = 0.02
 autoAdvance = true
@@ -462,6 +610,7 @@ energy = 0.6
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="Timers/TargetChangeTimer" to="." method="get_target"]
+[connection signal="timeout" from="Timers/AttackTimer" to="." method="attack"]
 
 [editable path="Collisions/BounceHitbox"]
 [editable path="Collisions/PlayerDetection"]
