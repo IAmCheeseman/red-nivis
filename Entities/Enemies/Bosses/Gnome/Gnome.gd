@@ -37,8 +37,14 @@ var player: Node2D
 var state := TARGET
 
 
+var sticks := []
+
+
 signal hurt
 
+
+func _ready() -> void:
+	magicPortals.gnome = self
 
 
 func _physics_process(delta: float) -> void:
@@ -130,13 +136,16 @@ func _on_dead() -> void:
 	if state == DEAD: return
 	state = DEAD
 	GameManager.emit_signal("zoom_in", .75, 7, .2, sprite.global_position - Vector2(0, 50))
+	for i in sticks:
+		if is_instance_valid(i):
+			i.queue_free()
 
 
 func position_dialog() -> void:
 	if sprite.scale.x == 1:
-		dialog.rect_position = Vector2(6, -44)
+		dialog.rect_position = Vector2(6, -22)
 	else:
-		dialog.rect_position = Vector2(-6, -44)
+		dialog.rect_position = Vector2(-6, -22)
 
 
 func attack() -> void:

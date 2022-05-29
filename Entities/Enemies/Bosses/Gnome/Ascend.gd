@@ -31,6 +31,7 @@ func stop() -> void:
 			var newStick = preload("res://Entities/Enemies/Bosses/Gnome/Stick.tscn").instance()
 			newStick.global_position = global_position
 			newStick.direction = dir
-			newStick.speed = 175
+			newStick.speed = 150
 			
 			GameManager.spawnManager.spawn_object(newStick)
+			gnome.sticks.append(newStick)

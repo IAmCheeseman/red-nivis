@@ -4,6 +4,7 @@ onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 
 var player: Node2D
+var gnome: Node2D
 
 
 func _process(_delta: float) -> void:
@@ -21,9 +22,12 @@ func shoot() -> void:
 	newStick.speed = 240
 	
 	GameManager.spawnManager.spawn_object(newStick)
+	
+	gnome.sticks.append(newStick)
 
 
-func test(gnome: Node2D) -> bool:
+func test(g: Node2D) -> bool:
+	gnome = g
 	if gnome.state in [gnome.ASCEND]: return false
 	anim.play("WhipOut")
 	return true

@@ -4,7 +4,7 @@ class_name BurnEffect
 var timer: Timer
 var tick: float = .4
 var lifetime: float = tick * 8
-var dmg: int = 50
+var dmg: int = 60
 
 var hurtbox: Area2D
 
@@ -38,4 +38,4 @@ func _finish() -> void:
 	queue_free()
 
 func _do_dmg() -> void:
-	hurtbox.take_damage(dmg, Vector2.ZERO)
+	hurtbox.take_damage(dmg, Vector2.DOWN)
