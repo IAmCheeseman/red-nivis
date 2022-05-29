@@ -23,7 +23,7 @@ func shoot() -> void:
 	GameManager.spawnManager.spawn_object(newStick)
 
 
-func test() -> bool:
+func test(_gnome: Node2D) -> bool:
 	anim.play("WhipOut")
 	
 	return true

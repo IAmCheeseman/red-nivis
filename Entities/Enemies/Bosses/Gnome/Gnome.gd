@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum { TARGET, DEAD }
+enum { TARGET, DEAD, ASCEND }
 
 onready var anim = $AnimationPlayer
 onready var sprite = $Sprite
@@ -64,6 +64,11 @@ func _physics_process(delta: float) -> void:
 			DEAD:
 				vel = Vector2.ZERO
 				anim.play("Die")
+			ASCEND:
+				vel.y = 0
+				position.y = lerp(position.y, -75, 5 * delta)
+				
+				target_state(delta, "Acsend")
 
 	if vel.x > 300:
 		vel.x = 300
@@ -72,7 +77,7 @@ func _physics_process(delta: float) -> void:
 	vel.y = move_and_slide(vel).y
 
 
-func target_state(delta: float) -> void:
+func target_state(delta: float, fallAnim:="Falling") -> void:
 	# Animation
 	if floorRC.is_colliding():
 		if is_equal_approx(vel.x, 0):
@@ -80,7 +85,7 @@ func target_state(delta: float) -> void:
 		else:
 			anim.play("Walk")
 	else:
-		anim.play("Falling")
+		anim.play(fallAnim)
 
 	var targetV = -speed if target < global_position.x else speed
 	sprite.scale.x = 1 if player.global_position.x < global_position.x else -1
@@ -129,10 +134,10 @@ func position_dialog() -> void:
 
 
 func attack() -> void:
-	if !player: return
+	if !player or state in [DEAD]: return
 	
 	var children: Array = attacks.get_children()
 	children.shuffle()
 	
 	for i in children:
-		if i.test(): return
+		if i.test(self): return

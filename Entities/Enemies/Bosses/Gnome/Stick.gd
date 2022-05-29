@@ -9,7 +9,6 @@ var damage:float = 0
 
 onready var hitbox = $Hitbox
 onready var sprite = $Sprite
-onready var light = $Light
 onready var particles = $Particles
 
 signal hitCollision

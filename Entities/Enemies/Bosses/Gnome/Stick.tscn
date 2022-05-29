@@ -71,6 +71,7 @@ autoplay = "Kill"
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 2 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 3 )
 
 [node name="Hitbox" parent="." groups=["EnemyBullet"] instance=ExtResource( 1 )]
