@@ -369,6 +369,11 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_user_stats.gdns"
 }, {
+"base": "KinematicBody2D",
+"class": "StickBullet",
+"language": "GDScript",
+"path": "res://Entities/Enemies/Bosses/Gnome/Stick.gd"
+}, {
 "base": "Reference",
 "class": "TempTimer",
 "language": "GDScript",
@@ -497,6 +502,7 @@ _global_script_class_icons={
 "SteamLeaderboardScoreUploaded": "",
 "SteamLeaderboardScoresDownloaded": "",
 "SteamUserStats": "",
+"StickBullet": "",
 "TempTimer": "",
 "ToolTipGenerator": "",
 "Tooltip": "",
