@@ -1,15 +1,6 @@
 extends Node2D
 
-onready var sprite = $Sprite
-onready var anim = $AnimationPlayer
-
 var player: Node2D
-
-
-func _process(_delta: float) -> void:
-	if !player: return
-	
-	look_at(player.global_position - Vector2(0, 8))
 
 
 func shoot() -> void:
@@ -21,9 +12,3 @@ func shoot() -> void:
 	newStick.speed = 240
 	
 	GameManager.spawnManager.spawn_object(newStick)
-
-
-func test(gnome: Node2D) -> bool:
-	if gnome.state in [gnome.ASCEND]: return false
-	anim.play("WhipOut")
-	return true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Entities/Effects/Blood/Blood.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/StickGun.gd" type="Script" id=19]
 [ext_resource path="res://Entities/Enemies/Bosses/Gnome/Ascend.gd" type="Script" id=20]
+[ext_resource path="res://Entities/Enemies/Bosses/Gnome/MagicPortals.gd" type="Script" id=21]
 
 [sub_resource type="CanvasItemMaterial" id=12]
 blend_mode = 1
@@ -453,6 +454,14 @@ collision_layer = 0
 collision_mask = 17
 script = ExtResource( 2 )
 
+[node name="MagicPortals" type="Node2D" parent="."]
+position = Vector2( 0, -9 )
+script = ExtResource( 21 )
+
+[node name="Timer" type="Timer" parent="MagicPortals"]
+wait_time = 1.5
+autostart = true
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -9 )
 texture = ExtResource( 1 )
@@ -476,7 +485,7 @@ texture = ExtResource( 11 )
 script = ExtResource( 20 )
 
 [node name="Timer" type="Timer" parent="Sprite/Attacks/Ascend"]
-wait_time = 3.0
+wait_time = 1.5
 one_shot = true
 autostart = true
 
@@ -600,6 +609,7 @@ texture = ExtResource( 17 )
 texture_scale = 0.25
 energy = 0.6
 
+[connection signal="timeout" from="MagicPortals/Timer" to="MagicPortals" method="attack"]
 [connection signal="timeout" from="Sprite/Attacks/Ascend/Timer" to="Sprite/Attacks/Ascend" method="stop"]
 [connection signal="dead" from="DamageManager" to="." method="_on_dead"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]

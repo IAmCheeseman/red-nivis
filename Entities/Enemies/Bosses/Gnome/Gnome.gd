@@ -15,6 +15,9 @@ onready var bounceRC = $Collisions/Bounce
 onready var dialog = $Dialog
 
 onready var attacks = $Sprite/Attacks
+onready var magicPortals = $MagicPortals
+
+onready var damageManager = $DamageManager
 
 export var jumpForce := 400
 export var speed := 80
@@ -43,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	position_dialog()
 	if !player:
 		player = playerDetection.get_player()
-		for i in attacks.get_children():
+		for i in attacks.get_children() + [magicPortals]:
 			i.player = player
 		
 		anim.play("Idle")
@@ -118,6 +121,9 @@ func _on_hurt(_amount, _dir) -> void:
 	if dialog.currentDialogID == "" and rand_range(0, 1) < .15:
 		dialog.show()
 		dialog.start_dialog("Hit%s" % round(rand_range(1, 3)))
+	
+	if damageManager.health <= damageManager.maxHealth / 2:
+		magicPortals.enabled = true
 
 
 func _on_dead() -> void:
