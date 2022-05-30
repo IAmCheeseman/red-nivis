@@ -131,6 +131,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/ShieldLauncher.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/ShieldLauncher.png"
 	},
+	"splinter-gun" : {
+		"key" : "splinter-gun",
+		"name" : "SPLINTER_GUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/SplinterGun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/SplinterGun.png"
+	},
 	# FREEZERS ITEMS
 	"j-laser" : {
 		"key" : "j-laser",

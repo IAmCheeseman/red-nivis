@@ -32,6 +32,7 @@ func set_texture(texture:StreamTexture):
 	hitbox.damage = damage
 	get_parent().add_child(particles)
 
+func start() -> void: pass
 
 func _ready():
 	sprite.look_at(global_position+direction)
@@ -40,6 +41,8 @@ func _ready():
 	hitbox.setDirection = direction
 	hitbox.damage = damage
 	lifetimeTimer.start(clamp(lifetime-0.2, .001, INF))
+	
+	start()
 
 
 func _physics_process(delta):

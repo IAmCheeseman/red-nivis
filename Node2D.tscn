@@ -7,7 +7,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://Entities/Enemies/Bosses/Gnome/Gnome.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Bandit/Shotgun/ShotgunBandit.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -40,7 +40,7 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="Gnome" parent="." instance=ExtResource( 8 )]
-position = Vector2( 193, -2 )
+[node name="ShotgunBandit" parent="." instance=ExtResource( 8 )]
+position = Vector2( 221, -29 )
 
 [editable path="CameraMoveZone"]
