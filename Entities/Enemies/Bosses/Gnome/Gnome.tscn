@@ -459,7 +459,7 @@ position = Vector2( 0, -9 )
 script = ExtResource( 21 )
 
 [node name="Timer" type="Timer" parent="MagicPortals"]
-wait_time = 1.5
+wait_time = 1.75
 autostart = true
 
 [node name="Sprite" type="Sprite" parent="."]
