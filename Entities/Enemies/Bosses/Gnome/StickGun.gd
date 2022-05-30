@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 
 func shoot() -> void:
 	if gnome.state == gnome.DEAD: return
-	 
+	
 	var newStick = preload("res://Entities/Enemies/Bosses/Gnome/Stick.tscn").instance()
 	var dir = global_position.direction_to(player.global_position - Vector2(0, 8))
 	
