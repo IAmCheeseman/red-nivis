@@ -20,8 +20,11 @@ isTwoHanded = true
 [node name="GunLogic" parent="." index="0"]
 bullet = ExtResource( 6 )
 
+[node name="Pivot" parent="." index="1"]
+position = Vector2( 0, 5 )
+
 [node name="GunSprite" parent="Pivot" index="2"]
-position = Vector2( 10, 5 )
+position = Vector2( 10, 0 )
 texture = ExtResource( 2 )
 
 [node name="Hand1" parent="Pivot/GunSprite" index="0"]
