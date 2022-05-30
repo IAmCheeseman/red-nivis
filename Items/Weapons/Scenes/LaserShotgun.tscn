@@ -9,7 +9,7 @@
 
 [node name="LaserGun" instance=ExtResource( 1 )]
 position = Vector2( 0, 1 )
-damage = 70.0
+damage = 300.0
 cooldown = 0.4
 multishot = 4.0
 spread = 4.0
