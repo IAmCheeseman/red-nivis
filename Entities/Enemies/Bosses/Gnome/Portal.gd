@@ -12,7 +12,7 @@ func shoot() -> void:
 	
 	newStick.global_position = global_position + (dir * 16)
 	newStick.direction = dir
-	newStick.speed = 150
+	newStick.speed = 100
 	
 	GameManager.spawnManager.spawn_object(newStick)
 	
