@@ -9,4 +9,4 @@
 texture = ExtResource( 2 )
 
 [node name="ItemSpawn" parent="." index="4"]
-itemPool = [ "assault-rifle", "minigun", "j-laser", "burst-shotgun", "shield-launcher" ]
+itemPool = [ "assault-rifle", "minigun", "j-laser", "burst-shotgun", "shield-launcher", "splinter-gun" ]
