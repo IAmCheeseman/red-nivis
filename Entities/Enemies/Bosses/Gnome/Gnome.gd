@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 				anim.play("Die")
 			ASCEND:
 				vel.y = 0
-				position.y = lerp(position.y, -75, 5 * delta)
+				position.y = lerp(position.y, 150, 5 * delta)
 				
 				target_state(delta, "Acsend")
 

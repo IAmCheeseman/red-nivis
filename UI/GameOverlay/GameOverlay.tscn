@@ -237,18 +237,10 @@ mouse_filter = 2
 margin_right = 356.0
 alignment = 2
 
-[node name="FPS" type="Label" parent="TopRight"]
-margin_left = 307.0
+[node name="Time" type="Label" parent="TopRight"]
 margin_top = 4.0
 margin_right = 356.0
-margin_bottom = 18.0
-size_flags_horizontal = 8
-text = "FPS: %s"
-
-[node name="Time" type="Label" parent="TopRight"]
-margin_top = 22.0
-margin_right = 356.0
-margin_bottom = 45.0
+margin_bottom = 27.0
 custom_fonts/font = ExtResource( 9 )
 text = "Time
 0:00"

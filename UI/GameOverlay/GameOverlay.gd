@@ -28,8 +28,6 @@ onready var upgrades = $TopRight/Upgrades
 
 onready var time = $TopRight/Time
 
-onready var fps = $TopRight/FPS
-
 var JLTarget:Vector2
 var healthBarTexSize:Vector2
 var ammoBarTexSize:Vector2
@@ -58,7 +56,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	fps.text = "FPS: %s" % str(Engine.get_frames_per_second())
 	
 	reloadNotif.hide()
 	if playerData.isReloading:
