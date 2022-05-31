@@ -30,6 +30,7 @@ func create_room() -> void:
 	biome = worldData.get_biome_by_index(worldData.rooms\
 		[worldData.position.x][worldData.position.y].biome)
 
+
 	MusicManager.set_music(biome.music)
 
 	# Adding in the nodes
