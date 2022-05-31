@@ -53,7 +53,7 @@ anim_offset_random = 1.0
 
 [node name="Burn" type="Particles2D"]
 material = SubResource( 2 )
-amount = 16
+amount = 4
 local_coords = false
 process_material = SubResource( 1 )
 texture = ExtResource( 1 )
