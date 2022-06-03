@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Entities/NPC/Dialog/DialogInteraction.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+dialog = [ [ "Introduction", "Hello, it's me, Adrian.", "Your favorite neighborhood terrorist!", "I sell anything from sketchy chemicals for powering up, to any weapon you need!" ], [ "OpenShop", "Welcome to my shop, what are you looking for?" ], [ "CloseShop", "See you later!" ], [ "Purchase", "Don't let it get to your head like icarus." ] ]
