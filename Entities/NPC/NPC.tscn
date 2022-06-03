@@ -19,6 +19,7 @@ frame = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="FloorRay" type="RayCast2D" parent="."]
+visible = false
 enabled = true
 cast_to = Vector2( 0, 5 )
 
