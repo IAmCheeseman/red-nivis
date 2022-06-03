@@ -1,15 +1,17 @@
 extends KinematicBody2D
 
-enum { WANDER, FOOD_SHOOTER, SLAM, INTRO }
+enum { WANDER, FOOD_SHOOTER, INTRO }
 
 onready var sprite = $Sprite
 onready var floorRay = $Collisions/FloorRay
 onready var slamHitbox = $Collisions/SlamHitbox/CollisionShape2D
+onready var attacks = $Attacks
+onready var collision = $CollisionShape2D
 
 export var accel := 50.0
 export var speed := 120.0
 
-var player: Node2D
+export(NodePath) onready var player = get_node(player) as KinematicBody2D
 
 var targetPos: Vector2
 var vel: Vector2
@@ -21,23 +23,28 @@ var currentOffset = 0
 
 var foodShots = 0
 
+var isAttacking := false
+
 
 func _ready() -> void:
 	yield(TempTimer.idle_frame(self), "timeout")
 	get_target_pos()
+	
+	for i in attacks.get_children():
+		i.fridge = self
 
 
 func _process(delta: float) -> void:
-	match state:
-		WANDER:
-			wander_state(delta)
-		FOOD_SHOOTER:
-			food_shoot(delta)
-		SLAM:
-			slam_state(delta)
-		INTRO:
-			vel = Vector2(0, 700)
-			if floorRay.is_colliding(): state = WANDER
+	if !isAttacking:
+		match state:
+			WANDER:
+				wander_state(delta)
+			INTRO:
+				vel = Vector2(0, 700)
+				if floorRay.is_colliding():
+					collision.disabled = true
+					vel.y = 0
+					state = WANDER
 	
 	vel = move_and_slide(vel)
 
@@ -53,12 +60,13 @@ func get_target_pos() -> void:
 	currentOffset = wrapi(currentOffset+1, 0, offsets.size())
 
 
-func attack(exclude=-1) -> void:
-	if state != WANDER: return
-	var attackStates = [SLAM, FOOD_SHOOTER]
-	attackStates.shuffle()
-	state = attackStates.pop_front()
-	if state != exclude: state = attackStates.pop_front()
+func attack() -> void:
+	var attackNodes = attacks.get_children()
+	attackNodes.shuffle()
+	
+	for i in attackNodes:
+		if i.test():
+			isAttacking = true
 
 
 func wander_state(delta: float) -> void:
@@ -73,28 +81,6 @@ func wander_state(delta: float) -> void:
 		get_target_pos()
 	
 	sprite.frame = 0
-
-
-func slam_state(delta) -> void:
-	targetPos = player.global_position - Vector2(0, 64)
-	vel = vel.move_toward(
-		global_position.direction_to(targetPos) * speed,
-		(accel * 10) * delta
-	)
-	look_at(player.global_position)
-	rotation += PI / 2
-	
-	if global_position.distance_to(targetPos) < 16:
-		vel = Vector2(200, 0).rotated(
-			global_position.direction_to(player.global_position).angle()
-		)
-		rotation = 0
-		slamHitbox.disabled = false
-	if floorRay.is_colliding():
-		vel.y = -200
-		state = WANDER
-		slamHitbox.disabled = true
-		sprite.scale.y = 1
 
 
 func food_shoot(delta: float) -> void:
@@ -137,8 +123,3 @@ func shoot_food() -> void:
 	var offset = Vector2(1, rand_range(-10, 10)).rotated(sprite.rotation)
 	bullet.global_position = global_position + Vector2(8, 16) + offset
 	GameManager.spawnManager.spawn_object(bullet)
-
-
-func _on_damaged() -> void:
-	if state == SLAM:
-		state = FOOD_SHOOTER

@@ -2,6 +2,13 @@ extends Reference
 class_name ItemMap
 
 const ITEMS = {
+	"tw" : {
+		"key" : "tw",
+		"name" : "Testing Weapon",
+		"tier" : ToolTipGenerator.TIERS.LAB,
+		"scene" : "res://Items/Weapons/Scenes/TestingWeapon.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Pistol.png"
+	},
 	# LABS ITEMS
 	"pistol" : {
 		"key" : "pistol",

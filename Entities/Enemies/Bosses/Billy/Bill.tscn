@@ -238,6 +238,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Idle"
@@ -299,6 +311,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Billy" type="KinematicBody2D" groups=["hook_resistent"]]
@@ -439,7 +463,7 @@ anims/RESET = SubResource( 14 )
 one_shot = true
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
-maxHealth = 1920
+maxHealth = 19200
 kbAmount = 0.0
 difficulty = 2
 useDeathParticles = false

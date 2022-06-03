@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridge.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Fridge.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://General/BossDropper.gd" type="Script" id=8]
 [ext_resource path="res://Items/HeartContiner/HeartContainer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Items/Upgrades/Hookshot/DroppedHookshot.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemies/Bosses/Fridgehead/Chase.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 12, 18 )
@@ -25,9 +26,15 @@ collision_layer = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+z_index = 1
 texture = ExtResource( 1 )
 offset = Vector2( 5, -9 )
 vframes = 2
+
+[node name="Attacks" type="Node2D" parent="."]
+
+[node name="Chase" type="Node2D" parent="Attacks"]
+script = ExtResource( 11 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 4 )]
 maxHealth = 10000
@@ -95,7 +102,6 @@ script = ExtResource( 8 )
 spritePath = NodePath("../Sprite")
 drops = [ ExtResource( 9 ), ExtResource( 10 ) ]
 
-[connection signal="damaged" from="DamageManager" to="." method="_on_damaged"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timers/AttackTimer" to="." method="attack"]
 [connection signal="timeout" from="Timers/FoodShootCooldown" to="." method="shoot_food"]
