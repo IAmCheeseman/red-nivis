@@ -8,7 +8,7 @@
 
 [node name="LaserGun" instance=ExtResource( 1 )]
 position = Vector2( 0, 1 )
-damage = 90.0
+damage = 100.0
 recoil = 200.0
 maxHoldShots = 1
 shellSprite = ExtResource( 5 )

@@ -17,10 +17,11 @@ signal hit_wall
 signal hit_enemy
 
 func _ready():
-	damage()
+	yield(TempTimer.idle_frame(self), "timeout")
+	do_damage()
 
 
-func damage() -> void:
+func do_damage() -> void:
 	raycast.cast_to = direction*1000
 	raycast.force_raycast_update()
 
@@ -32,7 +33,7 @@ func damage() -> void:
 	
 		if collider.is_in_group("EnemyBullet"):
 			raycast.add_exception(collider)
-			damage()
+			do_damage()
 			return
 		if collider.is_in_group("hurtbox"):
 			collider.take_damage(damage, raycast.cast_to.normalized())
