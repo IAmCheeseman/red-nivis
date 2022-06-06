@@ -21,6 +21,7 @@ shellSprite = null
 cursor = ExtResource( 8 )
 kickUp = 90.0
 isTwoHanded = true
+reloadAngle = 0
 
 [node name="GunLogic" parent="." index="0"]
 bullet = ExtResource( 7 )

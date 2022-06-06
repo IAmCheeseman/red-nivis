@@ -42,6 +42,8 @@ export var ssFreq:float = .025
 export var ssStrength:float = 2
 export var isTwoHanded:bool = false
 
+export var reloadAngle = -1
+
 # Nodes
 onready var gunLogic = $GunLogic
 onready var pivot = $Pivot
@@ -80,13 +82,17 @@ func _ready():
 	meleeCooldown.wait_time = meleeSpeed
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	visuals.texture = ogSprite
+	
+	if isReloading:
+		if reloadAngle == -1:
+			visuals.rotation -= (20 * (1 + randf() )) * delta
+		elif reloadAngle != 0:
+			visuals.rotation = reloadAngle
+	
 	if isReloading and reloadSprite:
 		visuals.texture = reloadSprite
-
-	if !reloadSprite:
-		set_process(false)
 
 
 func _on_Cooldown_timeout():
@@ -102,7 +108,6 @@ func _on_Cooldown_timeout():
 			player.ammo += reloadAmount
 			isReloading = true
 			cooldownTimer.start(reloadSpeed)
-
 	inventory.items[invenIdx].ammoLeft = player.ammo
 
 

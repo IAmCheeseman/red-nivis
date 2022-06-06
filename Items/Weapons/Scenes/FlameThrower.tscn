@@ -62,6 +62,7 @@ bulletSpawnDist = 28.0
 ssFreq = 0.0
 ssStrength = 0.0
 isTwoHanded = true
+reloadAngle = 0
 
 [node name="GunLogic" parent="." index="0"]
 script = ExtResource( 4 )

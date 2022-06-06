@@ -18,6 +18,7 @@ bulletSprite = ExtResource( 4 )
 cursor = ExtResource( 7 )
 kickUp = 90.0
 isTwoHanded = true
+reloadAngle = 0
 
 [node name="Pivot" parent="." index="1"]
 position = Vector2( 0, 5 )

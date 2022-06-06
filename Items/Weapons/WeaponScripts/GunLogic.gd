@@ -69,7 +69,7 @@ func _physics_process(delta) -> void:
 		pivot.rotation += 12*delta*swingDir
 		if abs(pivot.rotation_degrees-swingStartDeg) > 65*2:
 			swinging = false
-	gun.visuals.rotation = lerp_angle(gun.visuals.rotation, 0, 4*delta)
+	if !gun.isReloading or gun.reloadAngle == 0: gun.visuals.rotation = lerp_angle(gun.visuals.rotation, 0, 4*delta)
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 6*delta)
 
 	gun.visuals.position = gun.visuals.position.move_toward(gun.gunPos, 30 * delta)
