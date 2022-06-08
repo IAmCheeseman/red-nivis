@@ -7,6 +7,7 @@ onready var sprite = $Sprite
 export var xTime: Curve
 export var maxX := 3
 export var time := 5.0
+export var maxScaleUp := 0.5
 
 var startY: int
 var targetY: int
@@ -36,6 +37,9 @@ func _process(delta: float) -> void:
 	sprite.position.y = startY + diffY + (targetY * 2)
 	sprite.position.x = -xTime.interpolate(percentageOver) * maxX
 	sprite.rotation = startRot + (diffRot + PI)
+	
+	var currentScale = sin(PI * percentageOver)
+	sprite.scale = Vector2.ONE * (1 + (currentScale * maxScaleUp))
 	
 	if Input.is_action_just_pressed("melee"):
 		sprite.position.y = startY
