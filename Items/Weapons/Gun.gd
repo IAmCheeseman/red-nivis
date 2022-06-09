@@ -85,11 +85,14 @@ func _ready():
 func _process(delta: float) -> void:
 	visuals.texture = ogSprite
 	
+	var setAmt := 1.0
 	if isReloading:
 		if reloadAngle == -1:
 			visuals.rotation -= (20 * (1 + randf() )) * delta
 		elif reloadAngle != 0:
 			visuals.rotation = reloadAngle
+		setAmt = 1.0 - (cooldownTimer.time_left / cooldownTimer.wait_time)
+	Cursor.get_node("Sprite").set_reload_bar(setAmt)
 	
 	if isReloading and reloadSprite:
 		visuals.texture = reloadSprite
