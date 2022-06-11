@@ -1,0 +1,223 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Entities/Enemies/Bosses/Juice_Baby/JuiceBaby.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Enemies/Bosses/Juice_Baby/Juicebaby.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Enemies/Bosses/Juice_Baby/JuicebabysStupidGun.png" type="Texture" id=3]
+[ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 197.0
+
+[sub_resource type="CircleShape2D" id=6]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 2.5 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collisions/Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Gun:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Teleport"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 10, 5, 4, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collisions/Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "teleport"
+}, {
+"args": [  ],
+"method": "finish_teleport"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Gun:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Walk"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[node name="JuiceBaby" type="KinematicBody2D"]
+collision_layer = 0
+script = ExtResource( 1 )
+maxSpeed = 100
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+hframes = 3
+vframes = 5
+
+[node name="Gun" type="Node2D" parent="Sprite"]
+position = Vector2( -5, 5 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Gun"]
+position = Vector2( 5, 0 )
+texture = ExtResource( 3 )
+
+[node name="GunShootPositions" type="Node2D" parent="Sprite"]
+
+[node name="GunTarget1" type="Position2D" parent="Sprite/GunShootPositions"]
+position = Vector2( -5, 5 )
+
+[node name="GunTarget2" type="Position2D" parent="Sprite/GunShootPositions"]
+position = Vector2( -2, 0 )
+
+[node name="GunTarget3" type="Position2D" parent="Sprite/GunShootPositions"]
+position = Vector2( -8, -4 )
+
+[node name="GunTarget4" type="Position2D" parent="Sprite/GunShootPositions"]
+position = Vector2( 4, 1 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="PlayerDetection" parent="Collisions" instance=ExtResource( 4 )]
+visible = false
+mustBeInSight = false
+
+[node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
+shape = SubResource( 1 )
+
+[node name="Hurtbox" parent="Collisions" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 0, -7 )
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
+shape = SubResource( 6 )
+
+[node name="WallRay" type="RayCast2D" parent="Collisions"]
+position = Vector2( 0, -10 )
+enabled = true
+
+[node name="DamageManager" parent="." instance=ExtResource( 5 )]
+maxHealth = 10000
+isBoss = true
+spritePath = NodePath("../Sprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -2.5 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/RESET = SubResource( 4 )
+anims/Teleport = SubResource( 5 )
+anims/Walk = SubResource( 3 )
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="Timer"]
+wait_time = 5.0
+autostart = true
+
+[node name="ShootTimer" type="Timer" parent="Timer"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bossbar" parent="CanvasLayer" instance=ExtResource( 7 )]
+bossName = "Juice Baby"
+dmgManagerPth = NodePath("../../DamageManager")
+
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
+[connection signal="timeout" from="Timer/AttackTimer" to="." method="attack"]
+[connection signal="timeout" from="Timer/ShootTimer" to="." method="shoot"]
+
+[editable path="Collisions/PlayerDetection"]
+[editable path="Collisions/Hurtbox"]

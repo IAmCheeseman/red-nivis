@@ -243,11 +243,13 @@ const PASSIVES = {
 		"res://Items/Passives/Pizza/Pizza.tres",
 		"res://Items/Passives/Drone/Drone.tres",
 		"res://Items/Passives/Butter/Butter.tres",
+		"res://Items/Passives/Wings/Wings.tres",
 	],
 	"FREEZERS_TTL" : [
 		"BACKEND_TTL",
 		"DEEP_LABS_TTL",
 		"res://Items/Passives/JarOfHearts/JarOfHearts.tres",
+		"res://Items/Passives/LawnFlamingo/LawnFlamingo.tres",
 	]
 }
 
