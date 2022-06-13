@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Weapons/Bullet/Sprites/Punch.png" type="Texture" id=2]
+[ext_resource path="res://Items/Weapons/Sounds/Melee.wav" type="AudioStream" id=3]
+
+[node name="Fist" instance=ExtResource( 1 )]
+damage = 1000.0
+cooldown = 0.1
+projSpeed = 340
+projSpeedRange = Vector2( 0, 0 )
+projLifetime = 0.0
+recoil = -400.0
+maxHoldShots = 1
+magazineSize = 15
+bulletSprite = ExtResource( 2 )
+shellSprite = null
+kickUp = 0.0
+ssStrength = -2.0
+
+[node name="Pivot" parent="." index="1"]
+position = Vector2( 0, 5 )
+
+[node name="GunSprite" parent="Pivot" index="2"]
+position = Vector2( 9, 0 )
+
+[node name="ShootSound" parent="." index="4"]
+audio = ExtResource( 3 )
+
+[node name="NoAmmoClickSFX" parent="." index="5"]
+audio = null

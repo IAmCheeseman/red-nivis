@@ -232,6 +232,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Orblaster.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Orblaster.png"
 	},
+	"fist" : {
+		"key" : "fist",
+		"name" : "FIST_ITM",
+		"tier" : ToolTipGenerator.TIERS.TECH_LABS,
+		"scene" : "res://Items/Weapons/Scenes/Fist.tscn",
+		"slotTexture" : "res://Entities/Player/Assets/Hand.png"
+	},
 }
 
 
