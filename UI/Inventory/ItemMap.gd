@@ -232,6 +232,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Orblaster.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Orblaster.png"
 	},
+	"charged-boomerang" : {
+		"key" : "charged-boomerang",
+		"name" : "CHARGED_BOOMERANG_ITM",
+		"tier" : ToolTipGenerator.TIERS.TECH_LABS,
+		"scene" : "res://Items/Weapons/Scenes/ChargedBoomerang.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/ChargedBoomerang.png"
+	},
 	"fist" : {
 		"key" : "fist",
 		"name" : "FIST_ITM",

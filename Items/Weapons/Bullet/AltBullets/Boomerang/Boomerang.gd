@@ -94,3 +94,4 @@ func _on_lifetime_timeout():
 
 func _on_homing_area_area_entered(area: Area2D) -> void:
 	if !area.is_in_group("EnemyBullet"): homingTarget = area
+
