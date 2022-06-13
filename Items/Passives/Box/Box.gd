@@ -9,6 +9,6 @@ func _ready() -> void:
 	PLAYER.playerObject.sprite.texture = preload("res://Entities/Player/Assets/BoxPlayer.png")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for i in PLAYER.playerObject.sprite.get_children():
 		i.hide()

@@ -11,7 +11,7 @@ onready var collision = $CollisionShape2D
 export var accel := 50.0
 export var speed := 120.0
 
-export(NodePath) onready var player = get_node(player) as KinematicBody2D
+export(NodePath) onready var player = get_node(player) as KinematicBody2D if player is NodePath else player
 
 var targetPos: Vector2
 var vel: Vector2

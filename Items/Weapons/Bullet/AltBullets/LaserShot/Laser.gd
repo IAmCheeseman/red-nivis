@@ -3,6 +3,7 @@ extends Node2D
 onready var laserLine = $LaserLine
 onready var raycast = $RayCast
 onready var end = $End
+onready var sparks = $End/Sparks
 
 var damage:int
 var direction:Vector2
@@ -44,3 +45,7 @@ func do_damage() -> void:
 	laserLine.add_point(Vector2.ZERO)
 	laserLine.add_point(collisionPoint)
 	end.position = collisionPoint
+	
+	sparks.look_at(global_position)
+	sparks.rotation += PI
+	sparks.restart()

@@ -136,6 +136,7 @@ texture = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
+hframes = 4
 
 [node name="Hitbox" parent="." groups=["playerBullet"] instance=ExtResource( 1 )]
 visible = false
