@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Items/Weapons/Gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/Weapons/Sprites/Orblaster.png" type="Texture" id=2]
+[ext_resource path="res://Items/Weapons/Bullet/AltBullets/Orblaster.png/Orblaster.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/Weapons/Sounds/LaserShoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://Items/Weapons/Bullet/Shells/AAABattery.png" type="Texture" id=5]
+[ext_resource path="res://Items/Weapons/Bullet/AltBullets/Orblaster.png/Orblaster.png" type="Texture" id=6]
+
+[node name="LaserGun" instance=ExtResource( 1 )]
+position = Vector2( 0, 3 )
+damage = 100.0
+accuracy = 22.0
+projSpeed = 226
+projLifetime = 2.0
+recoil = 200.0
+maxHoldShots = 1
+bulletSprite = ExtResource( 6 )
+shellSprite = ExtResource( 5 )
+bulletSpawnDist = 12.0
+ssFreq = 0.035
+ssStrength = 5.0
+isTwoHanded = true
+
+[node name="GunLogic" parent="." index="0"]
+bullet = ExtResource( 3 )
+
+[node name="Pivot" parent="." index="1"]
+position = Vector2( 0, 3 )
+
+[node name="BarrelEnd" parent="Pivot" index="0"]
+position = Vector2( 11, -1 )
+
+[node name="GunSprite" parent="Pivot" index="2"]
+position = Vector2( 8, -1 )
+texture = ExtResource( 2 )
+
+[node name="Hand1" parent="Pivot/GunSprite" index="0"]
+position = Vector2( -5, 1 )
+
+[node name="Hand2" parent="Pivot/GunSprite" index="1"]
+position = Vector2( 1, 1 )
+
+[node name="ShootSound" parent="." index="4"]
+audio = ExtResource( 4 )
