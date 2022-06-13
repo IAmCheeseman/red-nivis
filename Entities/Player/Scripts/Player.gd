@@ -77,7 +77,7 @@ func _ready():
 	yield(TempTimer.idle_frame(self), "timeout")
 	playerData.ammo = playerData.maxAmmo
 
-	gravity = Globals.GRAVITY if !GameManager.underwater else Globals.WATER_GRAVITY
+	gravity = Globals.GRAVITY * scale.x if !GameManager.underwater else Globals.WATER_GRAVITY
 
 
 func _physics_process(delta: float) -> void:
@@ -147,7 +147,7 @@ func walk_state(delta):
 		var postfix = "_c" if GameManager.usingController else ""
 		moveDir.x = (Input.get_action_strength("move_right"+postfix)-\
 					Input.get_action_strength("move_left"+postfix))
-		moveDir = moveDir.normalized()
+		moveDir = moveDir.normalized() * scale.x
 		var speed
 		var accel
 		if is_grounded():
@@ -316,7 +316,7 @@ func jump():
 	# Setting values
 	jumpSFX.play()
 	#snapVector = Vector2.ZERO
-	vel.y = -playerData.jumpForce
+	vel.y = -playerData.jumpForce * scale.x
 	if timeOnGround <= 0.05:
 		vel.x *= 1.8
 	elif timeOnGround <= 0.1:

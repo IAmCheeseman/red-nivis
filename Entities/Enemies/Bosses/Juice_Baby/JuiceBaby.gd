@@ -13,6 +13,9 @@ onready var gun = $Sprite/Gun
 onready var gunSprite = $Sprite/Gun/Sprite
 
 onready var shootTimer = $Timer/ShootTimer
+onready var attackTimer = $Timer/AttackTimer
+
+onready var damageManager = $DamageManager
 
 var player: Area2D
 
@@ -79,6 +82,7 @@ func teleport() -> void:
 	var diff = (global_position.x - player.global_position.x)
 	var dir = -1 if diff > 0 else 1
 	
+	wallRay.global_position = player.global_position
 	wallRay.cast_to = Vector2(dir, 0) * 200
 	wallRay.force_raycast_update()
 	
@@ -86,7 +90,7 @@ func teleport() -> void:
 	if wallRay.is_colliding():
 		sub = wallRay.get_collision_point().x
 	
-	global_position = Vector2(global_position.x + (dir * rand_range(100, (200 - sub))), global_position.y)
+	global_position = Vector2(player.global_position.x + (dir * rand_range(100, (200 - sub))), global_position.y)
 
 
 func shoot() -> void:
@@ -94,19 +98,20 @@ func shoot() -> void:
 	
 	yield(TempTimer.timer(self, .1), "timeout")
 	
-	var bullets = 3
-	var spread = 12
+	var bullets = rand_range(4,4)
+	var spread = 12# * 2
 	for i in bullets:
 		var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn").instance()
 		var pos = gun.global_position - Vector2(0, 8)
 		var dir = pos.direction_to(player.global_position - Vector2(0, 8))
-		var angle = -((bullets * spread) / 2) + (spread * i)
+		var angle = -((bullets * spread) / 2) + (spread * i)#rand_range(-spread, spread)
 		dir = dir.rotated(deg2rad(angle))
 		
 		bullet.global_position = pos + (dir * 8)
 		bullet.direction = dir
 		bullet.damage = 1
-		bullet.speed = 175
+		bullet.speed = 175 * (.5 if i % 2 == 0 else 1)#rand_range(.75, 1)
+		
 		GameManager.spawnManager.spawn_object(bullet)
 	
 	
@@ -129,10 +134,15 @@ func finish_teleport() -> void:
 
 
 func attack() -> void:
-	if state == TELEPORT: return
+	if state == TELEPORT or !player:
+		attackTimer.start(1)
+		return
 	
-	var attackStates = [SHOOT]
-	state = attackStates[randi() % attackStates.size()]
+	var attackStates = [[SHOOT, 2], [TELEPORT, 1.4]]
+	var selected = attackStates[randi() % attackStates.size()]
+	
+	state = selected[0]
+	attackTimer.start(selected[1])
 	
 	match state:
 		SHOOT:

@@ -12,7 +12,7 @@ onready var sprite = $Sprite
 onready var particles = $Particles
 
 signal hitCollision
-
+signal hitPlayer
 
 var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
 
@@ -50,4 +50,5 @@ func _on_QueueArea_body_entered(body):
 
 func _on_Hitbox_hit_object(_object):
 	if !peircing:
+		emit_signal("hitPlayer")
 		add_particles()

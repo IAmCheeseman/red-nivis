@@ -218,7 +218,13 @@ const ITEMS = {
 		"slotTexture" : "res://Items/Weapons/Sprites/ToxicGrenadeLauncher.png"
 	},
 	# TECH LABS ITEMS
-	
+	"electroneer" : {
+		"key" : "electroneer",
+		"name" : "ELECTRONEER_ITM",
+		"tier" : ToolTipGenerator.TIERS.TECH_LABS,
+		"scene" : "res://Items/Weapons/Scenes/Electroneer.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Electroneer.png"
+	},
 }
 
 
