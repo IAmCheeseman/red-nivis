@@ -11,7 +11,7 @@ var speed := 450.0
 var kicked = false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !kicked:
 		global_position = PLAYER.playerObject.global_position - Vector2(0, 8)
 		look_at(get_global_mouse_position())
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	sprite.position = Vector2.ZERO
 	sprite.scale.y = 1 if dir.x > 0 else -1
 	
-	move_and_slide(dir * speed)
+	var _discard = move_and_slide(dir * speed)
 
 
 func _input(event: InputEvent) -> void:
