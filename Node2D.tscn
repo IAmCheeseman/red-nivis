@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,16 +7,14 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://Entities/Enemies/Slugs/AoeShooter/AoeShooter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/NPC/6am/6AM.tscn" type="PackedScene" id=8]
+[ext_resource path="res://World/PassiveUnlock/Chest.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )
-
-[node name="AoeShooter" parent="." instance=ExtResource( 8 )]
-position = Vector2( 362, 278 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 121, 262 )
@@ -42,5 +40,14 @@ position = Vector2( 2087, 189 )
 shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
+
+[node name="6AM" parent="." instance=ExtResource( 8 )]
+position = Vector2( 266, 267 )
+z_index = -1
+chest = NodePath("../Chest")
+
+[node name="Chest" parent="." instance=ExtResource( 9 )]
+position = Vector2( 232, 288 )
+z_index = -1
 
 [editable path="CameraMoveZone"]

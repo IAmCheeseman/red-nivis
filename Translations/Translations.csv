@@ -208,8 +208,8 @@ PASS_BLOCK_GAME,Block Game,,,Block Spiel
 PASS_BLOCK_GAME_DESC,Increases damage when you're falling down.,,,Erhöht Schaden beim Runterfallen
 PASS_BUTTER,Butter,,,Butter
 PASS_BUTTER_DESC,"Increases damage when you're moving, and reduces friction.",,,"Erhöht Schaden beim Bewegen, und reduziert Reibung "
-PASS_TOIET_PAPER,Toilet Paper,,,Toilettenpapier
-PASS_TOIET_PAPER_DESC,Shoots a projectile that blocks bullets when you use melee.,,,"Schießt ein Projektil ab, das Kugeln blockiert, wenn du Nahkampf benutzt."
+PASS_TOILET_PAPER,Toilet Paper,,,Toilettenpapier
+PASS_TOILET_PAPER_DESC,Shoots a projectile that blocks bullets when you use melee.,,,"Schießt ein Projektil ab, das Kugeln blockiert, wenn du Nahkampf benutzt."
 PASS_JOE_AMOEBA,Joe Amoeba,,,Joe Amoeba
 PASS_JOE_AMOEBA_DESC,Truth hurts - decreases enemy health.,,,Die Wahrheit tut weh - verringert die Gesundheit des Gegners
 PASS_JETPACK,Jetpack,,,Jetpack
@@ -218,6 +218,10 @@ PASS_COIN,Coin,,,
 PASS_COIN_DESC,Damage goes up until you miss a shot.,,,
 PASS_TURTLE_SHELL,Turtle Shell,,,
 PASS_TURTLE_SHELL_DESC,A shell that bounces around when you hit it.,,,
+PASS_FLAMINGO,Lawn Flamingo,,,
+PASS_FLAMINGO_DESC,Bullets explode when they hit enemies.,,,
+PASS_BOX,Box,,,
+PASS_BOX_DESC,TODO: Nerf box.,,,
 ,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47

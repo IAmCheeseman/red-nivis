@@ -219,7 +219,7 @@ const ITEMS = {
 	},
 	"fatnose-shotgun" : {
 		"key" : "fatnose-shotgun",
-		"name" : "FATNOSE_SHOTGUN",
+		"name" : "FATNOSE_SHOTGUN_ITM",
 		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
 		"scene" : "res://Items/Weapons/Scenes/FatnoseShotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/FatnoseShotgun.png"
