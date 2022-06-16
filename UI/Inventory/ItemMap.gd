@@ -217,6 +217,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/ToxicGrenadeLauncher.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/ToxicGrenadeLauncher.png"
 	},
+	"fatnose-shotgun" : {
+		"key" : "fatnose-shotgun",
+		"name" : "FATNOSE_SHOTGUN",
+		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
+		"scene" : "res://Items/Weapons/Scenes/FatnoseShotgun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/FatnoseShotgun.png"
+	},
 	# TECH LABS ITEMS
 	"electroneer" : {
 		"key" : "electroneer",
