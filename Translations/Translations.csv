@@ -1,10 +1,7 @@
 keys,en,en_GB,es_VE,de
 NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir,Keine Übersetzung verfügbar
 ,,,,
-INTRO,A game by IAmCheeseman,,,
-INTRO_LN1,Wake up.,,,
-INTRO_LN2,WAKE UP.,,,
-INTRO_LN3,WAAAAKE UUUP!!,,,
+INTRO,A game by IAmCheeseman,,,Ein Spiel von IAmCheeseman
 ,,,,
 BACK_BTN,Back,"go back, m8",Atrás,Zurück
 EXIT_BTN,Exit,Gew back tew teh action,Continuar,Verlassen
@@ -19,7 +16,7 @@ CONTINUE_BTN,Continue,keep goin' bruv,Continuar,Weiter
 MAIN_MENU_BTN,Main Menu,Main Men'ew,Volver al Menú,Hauptmenü
 INTERACT_RQST,Hit <interact> \n to,Heet <interact> \n tew,Presiona <interact> \n para,Benutze <interact> \n um
 ,,,,
-GAME_OVER,Game Over,"ya lost, bruv",Fin del Juego,Spiel Vorbei
+GAME_OVER,You Died.,"ya lost, bruv",Fin del Juego,Spiel Vorbei
 KILLS_GO,Kills:,Murdurs:,Bajas:,Tötungen
 SCORE_GO,Score:,Ya poynts:,Puntuación:,Punkte
 TIME_GO,Time:,Ya time:,Tiempo:,Zeit
@@ -65,6 +62,7 @@ AUDIO_OPT_M,Audio,Au'io,Sonido,Ton
 GAME_TTL,Game,Veh Experia'ce,Gameplay,Gameplay
 GAME_SPD_RN_OPT,Speedrun Timer,Go Fast Bruv,Contador Speedrun,Speedrun Zeitschaltuhr
 GAME_DBL_DMG_MODE_OPT,Unfair Mode,,,Ungerechter Spielmodus
+GAME_TUT_OPT,Play Tutorial,,,
 ,,,,
 CONTROLS_TTL,\n Controls,\n Cantrolls,\n Controles,\n Steuerung
 CTRL_RESET_BTN,Reset,Reset,Reiniciar Ajustes,Zurücksetzen
@@ -191,29 +189,35 @@ SHOCKWAVE_GOBLIN_NM,Fish Goblin,,,Fischkobolt
 SHOCKWAVE_GOBLIN_DESC,"Members of Eateh (Is that how you spell it?) sent to free fish from our ""abusive"" scientists. We kept the fish well fed, anything beyond that is not our responsibility. They signed the contract. ",,Miembros de Eateh (¿así se pronuncia?) enviados a rescatar a los peces de nuestros ''abusivos' científicos. Mantuvimos a los peces bien alimentados. Cualquier cosa mas allá no es nuestra responsabilidad. Por algo firmaron un contrato.,"Mitglieder von Eateh (schreibt man das so?) haben Fische von unseren ""missbrauchenden"" Wissenschaftlern befreit. Wir sorgten dafür, dass die Fische gut gefüttert wurden, für alles andere sind wir nicht verantwortlich. Sie haben den Vertrag unterschrieben. "
 ,,,,
 PASS_HEALTH_UP,Health Up,Ealthy Die',,Gesundheitserhöhung
-PASS_HEALTH_UP_DESC,Increases your health.,MOER LOIFE ,,Erhöht deine Gesundheit um 1.
+PASS_HEALTH_UP_DESC,Increases your health.,MOER LOIFE ,,Erhöht deine Gesundheit.
 PASS_AMMO_STACK,Stack of Ammo,Illegal,,Munitionsstapel
-PASS_AMMO_STACK_DESC,Increases ammo.,Moiks 'ew moer ille'al,,Erhöht Munition um 20%.
+PASS_AMMO_STACK_DESC,Increases ammo.,Moiks 'ew moer ille'al,,Erhöht Munition.
 PASS_MAGIC_ROCK,Magic Rock,Moigik Rock,,Magischer Felsen
 PASS_MAGIC_ROCK_DESC,A rock that orbits around you.,A rock tha' orbi's ew.,,"Ein Felsen, der dich umkreist."
 PASS_EXTRA_TRIGGER,Extra Trigger,Ex'ra triggar,,Extra Auslöser
-PASS_EXTRA_TRIGGER_DESC,Decreases cooldown.,Remewves 20% o' cewldown,,Verringert die Abklingzeit um 20%.
+PASS_EXTRA_TRIGGER_DESC,Decreases cooldown.,Remewves 20% o' cewldown,,Verringert die Abklingzeit.
 PASS_JAR_OF_HEARTS,Jar of Hearts,Jah o' Hahts,,Gefäß von Herzen
-PASS_JAR_OF_HEARTS_DESC,Chance that you don't take damage.,30% choince 'ew don' ta'e damage.,,"30% Chance, dass du keinen Schaden nimmst."
+PASS_JAR_OF_HEARTS_DESC,Chance that you don't take damage.,30% choince 'ew don' ta'e damage.,,"Chance, dass du keinen Schaden nimmst."
 PASS_SPEED_FEATHER,Speed Feather,Speed fea'er,,Geschwindigkeitsfeder 
-PASS_SPEED_FEATHER_DESC,Increases your speed.,In'eases your spee' boi 20%,,Erhöht deine Geschwindigkeit um 20%.
+PASS_SPEED_FEATHER_DESC,Increases your speed.,In'eases your spee' boi 20%,,Erhöht deine Geschwindigkeit.
 PASS_BOUNCE_GOO,Bounce Goo,Reflec'ive Su's'ance,,Abprallende Kacka
 PASS_BOUNCE_GOO_DESC,Rebounds bullets that hit you.,eboun's bulle's tha' 'it 'ew.,,"Lässt Geschosse, die dich treffen, abprallen."
-PASS_SPRING_LOADED_BULLETS,Spring Loaded Bullets,,,
-PASS_SPRING_LOADED_BULLETS_DESC,Increased enemy knockback.,,,
-PASS_BLOCK_GAME,Block Game,,,
-PASS_BLOCK_GAME_DESC,Increases damage when you're falling down.,,,
-PASS_BUTTER,Butter,,,
-PASS_BUTTER_DESC,"Increases damage when you're moving, and reduces friction.",,,
-PASS_TOIET_PAPER,Toilet Paper,,,
-PASS_TOIET_PAPER_DESC,Shoots a projectile that blocks bullets when you use melee.,,,
-PASS_JOE_AMOEBA,Joe Amoeba,,,
-PASS_JOE_AMOEBA_DESC,Truth hurts - decreases enemy health.,,,
+PASS_SPRING_LOADED_BULLETS,Spring Loaded Bullets,,,Federgeladene Geschosse
+PASS_SPRING_LOADED_BULLETS_DESC,Increased enemy knockback.,,,Erhöht Gegner Rückstoß
+PASS_BLOCK_GAME,Block Game,,,Block Spiel
+PASS_BLOCK_GAME_DESC,Increases damage when you're falling down.,,,Erhöht Schaden beim Runterfallen
+PASS_BUTTER,Butter,,,Butter
+PASS_BUTTER_DESC,"Increases damage when you're moving, and reduces friction.",,,"Erhöht Schaden beim Bewegen, und reduziert Reibung "
+PASS_TOIET_PAPER,Toilet Paper,,,Toilettenpapier
+PASS_TOIET_PAPER_DESC,Shoots a projectile that blocks bullets when you use melee.,,,"Schießt ein Projektil ab, das Kugeln blockiert, wenn du Nahkampf benutzt."
+PASS_JOE_AMOEBA,Joe Amoeba,,,Joe Amoeba
+PASS_JOE_AMOEBA_DESC,Truth hurts - decreases enemy health.,,,Die Wahrheit tut weh - verringert die Gesundheit des Gegners
+PASS_JETPACK,Jetpack,,,Jetpack
+PASS_JETPACK_DESC,Allows you to fall much slower.,,,Erlaubt dir viel langsamer zu fallen.
+PASS_COIN,Coin,,,
+PASS_COIN_DESC,Damage goes up until you miss a shot.,,,
+PASS_TURTLE_SHELL,Turtle Shell,,,
+PASS_TURTLE_SHELL_DESC,A shell that bounces around when you hit it.,,,
 ,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47
@@ -232,6 +236,7 @@ CLOUD_WAND_ITM,Cloud Wand,"Stormy Day, Innt?",Varita Nubosa,Wolkenstab
 SOAP_SLAPPER_ITM,Bubble Gun,Bu'le Gun,Pistola de burbujas,Seifenblasenkanone
 J_LASER_ITM,J-Laser,J-LaZer,Láser J,J-Laser
 VAPORGAT_ITM,Vaporgat,Fart Cannon,Vaporgat,Vaporgat
+FREEZER_ITM,Freezer,,,
 FINGERGUN_ITM,Fingergun,Finga' Gewn,,Fingerpistole
 BURST_SHOTUN_ITM,Burst Shotgun,Ahlso illega',Escopeta de ráfagas,Berstschrotflinte
 FIRE_SHOTGUN_ITM,Fire Shotgun,Burnin' Shew'gun,Escopeta de fuego,Feuerschrotflinte
@@ -242,15 +247,23 @@ LASER_SHOTGUN_ITM,Laser Shotgun,,Escopeta láser,Laser Schrotflinte
 MINISHOTGUN_ITM,Minishotgun,Minishotgun,Minishotgun,Minishotgun
 TOXIC_GRENADE_LAUNCHER_ITM,Toxic Grenade Launcher,,,Giftiger Granatenwerfer
 SHIELD_LAUNCHER_ITM,Shield Launcher,,,Schutzschild-Werfer
+SNIPER_RIFLE_ITM,Sniper Rifle,,,Scharfschützengewehr
+SPLINTER_GUN_ITM,Splinter Gun,,,
+FATNOSE_SHOTGUN_ITM,Fatnose Shotgun,,,
+URCHIN_LAUNCHER_ITM,Urchin Launcher,,,
+ELECTRONEER_ITM,Electroneer,,,
+ORBLASTER_ITM,Orblaster,,,
+CHARGED_BOOMERANG_ITM,Charged Boomerang,,,
+FIST_ITM,Fist,,,
 ,,,,
-LOGGER_SYSTEM,System,puter,,
+LOGGER_SYSTEM,System,puter,,System
 LOGGER_HANK,Hank,ank,Hank,Hank
 LOGGER_GNOME,[Anonymous],[Gno'],[Anonymous],[Anonymous]
 LOGGER_BILL,Bill,Billy,Bill,Bill
 LOGGER_BRUCE,Bruce,Polish Fridge,Bruce,Bruce
 LOGGER_ADRIAN,Adrian,A'rian,Adrian,Adrian
 LOGGER_JERRY,Jerry,Alexander XXXIV,Jerry,Jerry
-LOGGER_YOU,Me,I,,
+LOGGER_YOU,Me,I,,Ich
 ,,,,
 LOG_FAILURE,Complete system failure. Locking down RNL.,,,
 LOG_CONSTRUCTOR,"We've discovered how to safely split atoms into their individual components. We need to find out how to reconstruct them, so maybe we can make something completely different than what we put in?",,,
