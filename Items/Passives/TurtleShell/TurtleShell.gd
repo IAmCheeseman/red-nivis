@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 		if i.is_colliding():
 			dir = dir.bounce(i.get_collision_normal())
 			rotation = dir.angle()
-			global_position += dir * 4
+			global_position += dir
 			break
 	
 	sprite.position = Vector2.ZERO
