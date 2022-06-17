@@ -40,6 +40,7 @@ func open() -> void:
 		items = ItemMap.get_passive_list(biome.name)
 	else:
 		items = ItemMap.get_passive_list()
+		print(items)
 	
 	var passive = items[rand_range(0, items.size())]
 	while passive in worldData.acquiredPassives:

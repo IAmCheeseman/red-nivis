@@ -288,22 +288,22 @@ const PASSIVES = {
 		"res://Items/Passives/TurtleShell/TurtleShell.tres",
 	],
 	"TOXIC_CAVERNS_TTL" : [
-		"BACKEND_TTL",
 		"DEEP_LABS_TTL",
 		"FREEZERS_TTL",
 		"res://Items/Passives/JoeAmoeba/JoeAmoeba.tres",
 		"res://Items/Passives/Coin/Coin.tres",
-		"res://Items/Passives/Butter/Butter.tres",
 	]
 }
 
 
-static func get_passive_list(biome: String=PASSIVES.keys().back()) -> PoolStringArray:
-	var list: PoolStringArray = PASSIVES[biome]
+static func get_passive_list(biome: String=PASSIVES.keys().back(), recurse:=true) -> Array:
+	var list: Array = PASSIVES[biome]
 	var keys := PASSIVES.keys()
-	for i in list.size():
-		if list[i] in keys:
-			list += get_passive_list(list[i])
-			list.remove(i)
+	if recurse:
+		for i in list.size():
+			if list[i] in keys:
+				list += get_passive_list(list[i], false)
+	for i in keys:
+		list.erase(i)
 	return list
 
