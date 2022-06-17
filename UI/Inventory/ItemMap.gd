@@ -284,6 +284,16 @@ const PASSIVES = {
 		"DEEP_LABS_TTL",
 		"res://Items/Passives/JarOfHearts/JarOfHearts.tres",
 		"res://Items/Passives/LawnFlamingo/LawnFlamingo.tres",
+		"res://Items/Passives/RemoteStapler/RemoteStapler.tres",
+		"res://Items/Passives/TurtleShell/TurtleShell.tres",
+	],
+	"TOXIC_CAVERNS_TTL" : [
+		"BACKEND_TTL",
+		"DEEP_LABS_TTL",
+		"FREEZERS_TTL",
+		"res://Items/Passives/JoeAmoeba/JoeAmoeba.tres",
+		"res://Items/Passives/Coin/Coin.tres",
+		"res://Items/Passives/Butter/Butter.tres",
 	]
 }
 
