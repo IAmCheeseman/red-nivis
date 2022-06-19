@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/Passives/PassiveItem.gd" type="Script" id=1]
+[ext_resource path="res://Items/Passives/TrafficCone/TrafficCone.png" type="Texture" id=2]
+[ext_resource path="res://Items/Passives/TrafficCone/TrafficCone.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+scene = ExtResource( 3 )
+sprite = ExtResource( 2 )
+name = "NO_TRANS"
+desc = "NO_TRANS"
+isCurse = false
+applyOnce = false

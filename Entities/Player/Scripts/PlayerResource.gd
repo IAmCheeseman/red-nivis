@@ -69,7 +69,7 @@ var unlockedUpgrades := []
 
 var passives := [
 	{
-		"item": "res://Items/Passives/RemoteStapler/RemoteStapler.tres",
+		"item": "res://Items/Passives/TrafficCone/TrafficCone.tres",
 		"used": false
 	}
 ]
