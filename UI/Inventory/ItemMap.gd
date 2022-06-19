@@ -253,6 +253,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Fist.tscn",
 		"slotTexture" : "res://Entities/Player/Assets/Hand.png"
 	},
+	"broccoli" : {
+		"key" : "broccoli",
+		"name" : "BROCCOLI_ITM",
+		"tier" : ToolTipGenerator.TIERS.TECH_LABS,
+		"scene" : "res://Items/Weapons/Scenes/Broccoli.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Broccoli.png"
+	},
 }
 
 
