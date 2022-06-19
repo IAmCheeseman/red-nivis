@@ -8,7 +8,7 @@
 script = ExtResource( 1 )
 scene = ExtResource( 3 )
 sprite = ExtResource( 2 )
-name = "NO_TRANS"
-desc = "NO_TRANS"
+name = "PASS_TRAFFIC_CONE"
+desc = "PASS_TRAFFIC_CONE_DESC"
 isCurse = false
 applyOnce = false

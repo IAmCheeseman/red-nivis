@@ -12,6 +12,7 @@ burst = true
 kickUp = 5.0
 bulletSpawnDist = 27.0
 isTwoHanded = true
+reloadAngle = 0
 
 [node name="Pivot" parent="." index="1"]
 position = Vector2( 0, 3 )
