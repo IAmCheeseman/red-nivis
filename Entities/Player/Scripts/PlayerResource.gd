@@ -69,7 +69,7 @@ var unlockedUpgrades := []
 
 var passives := [
 	{
-		"item": "res://Items/Passives/TrafficCone/TrafficCone.tres",
+		"item": "res://Items/Passives/DiscoBall/DiscoBall.tres",
 		"used": false
 	}
 ]

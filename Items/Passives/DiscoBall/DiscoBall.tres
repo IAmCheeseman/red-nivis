@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/Passives/PassiveItem.gd" type="Script" id=1]
+[ext_resource path="res://Items/Passives/DiscoBall/DiscoBall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Passives/DiscoBall/DicsoBall.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+scene = ExtResource( 2 )
+sprite = ExtResource( 3 )
+name = "PASS_DISCO_BALL"
+desc = "PASS_DISCO_BALL_DESC"
+isCurse = false
+applyOnce = false

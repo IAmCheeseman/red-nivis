@@ -77,6 +77,7 @@ func _ready():
 	yield(TempTimer.idle_frame(self), "timeout")
 	playerData.ammo = playerData.maxAmmo
 
+# warning-ignore:incompatible_ternary
 	gravity = Globals.GRAVITY * scale.x if !GameManager.underwater else Globals.WATER_GRAVITY
 
 
