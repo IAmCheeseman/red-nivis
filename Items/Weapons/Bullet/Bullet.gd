@@ -14,7 +14,8 @@ onready var anim = $AnimationPlayer
 onready var dieTween = $DieTween
 onready var trail = $Trail
 
-#var particleScene = preload("res://Items/Weapons/Bullet/BulletParticles.tscn")
+var enemyHit: Node2D
+
 var particleScene = preload("res://Entities/Effects/ShockwaveEffect.tscn")
 
 signal hit_wall(bullet)
@@ -82,6 +83,7 @@ func add_trail_to_parent():
 
 
 func _on_Hitbox_hit_object(object):
+	enemyHit = object
 	emit_signal("hit_enemy", self)
 	if !peircing:
 		add_trail_to_parent()

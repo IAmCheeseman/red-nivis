@@ -68,10 +68,10 @@ var upgrades := []
 var unlockedUpgrades := []
 
 var passives := [
-	{
-		"item": "res://Items/Passives/DiscoBall/DiscoBall.tres",
-		"used": false
-	}
+#	{
+#		"item": "res://Items/Passives/Bayonette/Bayonette.tres",
+#		"used": false
+#	}
 ]
 
 var immune := false
