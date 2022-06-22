@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-enum { MOVE, TELEPORT, SHOOT }
+enum { MOVE, TELEPORT, SHOOT, SPIT }
 
 onready var playerDetection = $Collisions/PlayerDetection
 onready var wallRay = $Collisions/WallRay
@@ -13,14 +13,15 @@ onready var gun = $Sprite/Gun
 onready var gunSprite = $Sprite/Gun/Sprite
 
 onready var shootTimer = $Timer/ShootTimer
+onready var spitTimer = $Timer/SpitTimer
 onready var attackTimer = $Timer/AttackTimer
 
 onready var damageManager = $DamageManager
 
 var player: Area2D
 
-export var accel := 1.0
-export var frict := 200.0
+export var accel := 10.0
+export var frict := 10.0
 export var maxSpeed := 50
 
 var vel: Vector2
@@ -48,7 +49,8 @@ func _process(delta: float) -> void:
 		if player.global_position.x > global_position.x:
 			sprite.scale.x = -1
 		gunSprite.scale.y = -1
-		
+		gun.scale = gun.scale.move_toward(Vector2.ONE, 5 * delta)
+		scale = scale.move_toward(Vector2.ONE, 2 * delta)
 		match state:
 			MOVE:
 				var diff = (global_position.x - player.global_position.x)
@@ -102,7 +104,7 @@ func shoot() -> void:
 	var spread = 12# * 2
 	for i in bullets:
 		var bullet = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn").instance()
-		var pos = gun.global_position - Vector2(0, 8)
+		var pos = global_position - Vector2(0, 8)
 		var dir = pos.direction_to(player.global_position - Vector2(0, 8))
 		var angle = -((bullets * spread) / 2) + (spread * i)#rand_range(-spread, spread)
 		dir = dir.rotated(deg2rad(angle))
@@ -114,11 +116,14 @@ func shoot() -> void:
 		
 		GameManager.spawnManager.spawn_object(bullet)
 	
+	vel.x -= global_position.direction_to(player.global_position).x * 100
 	
 	prevGunPos = gunTarget
 	var oldGunTarget = gunTarget
 	while gunTarget == oldGunTarget:
 		gunTarget = gunPositions.get_child(randi() % gunPositions.get_child_count()).position
+	
+	gun.scale = Vector2(1.5, 0.5)
 	
 	shots += 1
 	if shots >= 3:
@@ -127,6 +132,42 @@ func shoot() -> void:
 		state = MOVE
 	
 	shootTimer.start()
+
+#res://Items/Weapons/Bullet/AltBullets/GravityBullet/GravityBullet.tscn
+func spit() -> void:
+	if state != SPIT: return
+	
+	yield(TempTimer.timer(self, .1), "timeout")
+	
+	var bullets = rand_range(4,4)
+	var spread = 12# * 2
+	for i in bullets:
+		var bullet = preload("res://Entities/Enemies/EnemyBullet/Falling/FallingEnemyBullet.tscn").instance()
+		var pos = gun.global_position - Vector2(0, 8)
+		var dir = pos.direction_to(player.global_position - Vector2(0, 48))
+		var angle = -((bullets * spread) / 2) + (spread * i)#rand_range(-spread, spread)
+		dir = dir.rotated(deg2rad(angle))
+		
+		bullet.global_position = pos + (dir * 8)
+		bullet.direction = dir
+		bullet.damage = 1
+		bullet.speed = 250 * randf()
+		
+		GameManager.spawnManager.spawn_object(bullet)
+	
+	
+	prevGunPos = gunTarget
+	var oldGunTarget = gunTarget
+	while gunTarget == oldGunTarget:
+		gunTarget = gunPositions.get_child(randi() % gunPositions.get_child_count()).position
+	
+	scale = Vector2(1.5, 0.5)
+	
+	shots += 1
+	if shots >= 3:
+		shots = 0
+		gun.position = gunPositions.get_child(0).position
+		state = MOVE
 
 
 func finish_teleport() -> void:
@@ -138,13 +179,17 @@ func attack() -> void:
 		attackTimer.start(1)
 		return
 	
-	var attackStates = [[SHOOT, 2], [TELEPORT, 1.4]]
+	var attackStates = [[SHOOT, 2], [TELEPORT, 1.4], [SPIT, 2]]
 	var selected = attackStates[randi() % attackStates.size()]
 	
 	state = selected[0]
 	attackTimer.start(selected[1])
 	
+	gun.scale = Vector2.ONE
+	
 	match state:
 		SHOOT:
 			shootTimer.start()
 			prevGunPos = gun.position
+		SPIT:
+			spitTimer.start()

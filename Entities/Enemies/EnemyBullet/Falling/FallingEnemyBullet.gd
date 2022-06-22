@@ -2,8 +2,8 @@ extends KinematicBody2D
 class_name EFallingBullet
 
 
-var direction : Vector2
-var speed : float
+var direction : Vector2 = Vector2(0, -1)
+var speed : float = 200
 var peircing = false
 var damage:float = 0
 

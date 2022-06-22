@@ -69,7 +69,7 @@ var unlockedUpgrades := []
 
 var passives := [
 #	{
-#		"item": "res://Items/Passives/Bayonette/Bayonette.tres",
+#		"item": "res://Items/Passives/BackGun/BackGun.tres",
 #		"used": false
 #	}
 ]

@@ -43,7 +43,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite/Gun:scale")
+tracks/2/path = NodePath("Sprite/Gun:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -52,7 +52,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -100,16 +100,16 @@ tracks/2/keys = {
 } ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite/Gun:scale")
+tracks/3/path = NodePath("Sprite/Gun:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 1.2, 1.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+"times": PoolRealArray( 0, 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -205,6 +205,11 @@ one_shot = true
 autostart = true
 
 [node name="ShootTimer" type="Timer" parent="Timer"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="SpitTimer" type="Timer" parent="Timer"]
 wait_time = 0.1
 one_shot = true
 autostart = true
@@ -218,6 +223,7 @@ dmgManagerPth = NodePath("../../DamageManager")
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="timeout" from="Timer/AttackTimer" to="." method="attack"]
 [connection signal="timeout" from="Timer/ShootTimer" to="." method="shoot"]
+[connection signal="timeout" from="Timer/SpitTimer" to="." method="spit"]
 
 [editable path="Collisions/PlayerDetection"]
 [editable path="Collisions/Hurtbox"]
