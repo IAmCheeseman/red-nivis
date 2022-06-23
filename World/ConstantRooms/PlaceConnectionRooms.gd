@@ -5,6 +5,10 @@ const CONNECTION_ROOMS = {
 	"labs_ttl-backend_ttl"     : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"),
 	"labs_ttl-deep_labs_ttl"  : preload("res://World/ConstantRooms/Rooms/DeepLabsBlock.tres"),
 	"backend_ttl-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/MainDLBlock.tres"),
+	"freezers_ttl-backend_ttl" : preload("res://World/ConstantRooms/Rooms/FreezersCavesBlock.tres"),
+	"chemlabs-freezers_ttl" : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"), # Make unique
+	"freezers_ttl-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"), # Make unique
+	"chemlabs-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"), # Make unique
 }
 
 static func generate_rooms(rooms:Array, wg):

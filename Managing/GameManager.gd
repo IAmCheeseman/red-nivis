@@ -55,8 +55,6 @@ func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
 	assets.set_large_text("Red Nivis")
 
 	var _result = yield(Discord.activity_manager.update_activity(activity), "result").result
-#	if result != Discord.Result.Ok:
-#		push_error(result)
 
 
 func _ready() -> void:
