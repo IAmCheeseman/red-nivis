@@ -1,0 +1,137 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Enemies/HookshotTarget/HookshotTargetBody.png" type="Texture" id=2]
+[ext_resource path="res://Entities/Enemies/HookshotTarget/HookshotTarget.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.0
+
+[sub_resource type="Animation" id=6]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Bob"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0, -3 ), Vector2( 0, 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collisions/Hurtbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 8 ), Vector2( 0, 13 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/HookshotTargetBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( -2.2974, -2 ),
+"update": 0,
+"values": [ Vector2( 0, 11 ), Vector2( 0, 9 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collisions/Hurtbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/HookshotTargetBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 11 ) ]
+}
+
+[node name="HookshotTarget" type="KinematicBody2D" groups=["hook_resistent"]]
+collision_layer = 0
+collision_mask = 33
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -7 )
+texture = ExtResource( 3 )
+hframes = 2
+frame = 1
+
+[node name="HookshotTargetBody" type="Sprite" parent="Sprite"]
+position = Vector2( 0, 11 )
+texture = ExtResource( 2 )
+
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="Hurtbox" parent="Collisions" instance=ExtResource( 1 )]
+visible = false
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Default"
+anims/Default = SubResource( 6 )
+
+[node name="Bob" type="AnimationPlayer" parent="."]
+autoplay = "Bob"
+anims/Bob = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[editable path="Collisions/Hurtbox"]

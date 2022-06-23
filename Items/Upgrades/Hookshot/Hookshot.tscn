@@ -41,9 +41,10 @@ shape = SubResource( 1 )
 [node name="Collision" type="RayCast2D" parent="."]
 enabled = true
 collision_mask = 37
+collide_with_areas = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.4
 autostart = true
 
 [node name="RenableCollisions" type="Timer" parent="."]
