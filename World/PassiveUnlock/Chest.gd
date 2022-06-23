@@ -4,6 +4,7 @@ onready var anim = $AnimationPlayer
 onready var interactionZone = $Iteraction
 onready var sprite = $Sprite
 onready var standPos = $"6amPos"
+onready var particles = $Particles2D
 
 signal open
 
@@ -17,6 +18,7 @@ func _ready() -> void:
 	if isOpened:
 		opened = true
 		interactionZone.disabled = true
+		particles.hide()
 		anim.play("Open")
 
 

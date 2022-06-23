@@ -12,6 +12,7 @@ var room:Node
 var roomI:Image
 var brokenTiles = {}
 
+
 func _ready() -> void:
 	var _discard = connect("tree_exiting", self, "_on_tree_exiting")
 func _on_tree_exiting() -> void:
@@ -454,13 +455,14 @@ func spawn_enemies() -> void:
 	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
 # warning-ignore:integer_division
 # warning-ignore:integer_division
-	var enemyCount = ceil((roomI.get_width()/Globals.TEMPLATE_SIZE)*(roomI.get_height()/Globals.TEMPLATE_SIZE)) * 1.5
+	var enemyCount = ceil(
+		(roomI.get_width() / Globals.TEMPLATE_SIZE) \
+		* (roomI.get_height() / Globals.TEMPLATE_SIZE))
 	for i in enemyCount:
 		if world.viableEnemySpawns.size() == 0:
 			break
 		var spawnPos:Vector2 = world.viableEnemySpawns.pop_front()
-		var spawner = preload(\
-			"res://Entities/Effects/EnemySpawn.tscn").instance()
+		var spawner = preload("res://Entities/Effects/EnemySpawn.tscn").instance()
 		spawner.position = spawnPos*world.solids.cell_size
 		spawner.position.x += world.solids.cell_size.x*.5
 		spawner.position.y = clamp(

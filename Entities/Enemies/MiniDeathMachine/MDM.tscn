@@ -72,13 +72,13 @@ color = Color( 1, 0, 0, 1 )
 [node name="Collisions" type="Node2D" parent="."]
 
 [node name="Hurtbox" parent="Collisions" instance=ExtResource( 1 )]
+visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" parent="Collisions/Hurtbox" index="0"]
 shape = SubResource( 1 )
 
 [node name="Hitbox" parent="Collisions" instance=ExtResource( 4 )]
-visible = false
 position = Vector2( 0, 3 )
 collision_layer = 4
 collision_mask = 2
