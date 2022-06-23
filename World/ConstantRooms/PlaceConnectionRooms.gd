@@ -7,7 +7,7 @@ const CONNECTION_ROOMS = {
 	"backend_ttl-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/MainDLBlock.tres"),
 	"freezers_ttl-backend_ttl" : preload("res://World/ConstantRooms/Rooms/FreezersCavesBlock.tres"),
 	"chemlabs-freezers_ttl" : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"), # Make unique
-	"freezers_ttl-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"), # Make unique
+	"freezers_ttl-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/FreezersDLBlock.tres"), # Make unique
 	"chemlabs-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"), # Make unique
 }
 

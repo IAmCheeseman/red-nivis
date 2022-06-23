@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
-[ext_resource path="res://World/Biomes/WaterFreezers.tres" type="Resource" id=2]
+[ext_resource path="res://World/Biomes/Freezers.tres" type="Resource" id=2]
 [ext_resource path="res://World/ConstantRooms/Rooms/FreezersUpBlock.tscn" type="PackedScene" id=3]
 
 [resource]
