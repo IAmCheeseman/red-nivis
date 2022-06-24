@@ -814,6 +814,7 @@ pitchShiftRange = 1.2
 bus = "Reverb"
 
 [node name="Hurtbox" parent="." groups=["player"] instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 0, -6 )
 collision_layer = 2
 collision_mask = 2147483652
