@@ -18,6 +18,7 @@ const BIOMES = [
 	"res://World/Biomes/Freezers.tres",
 	"res://World/Biomes/WaterFreezers.tres",
 	"res://World/Biomes/ChemLabs.tres",
+	"res://World/Biomes/TechSector.tres"
 ]
 
 func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
