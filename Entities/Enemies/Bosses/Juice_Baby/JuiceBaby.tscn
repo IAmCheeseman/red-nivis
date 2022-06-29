@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/Juice_Baby/JuiceBaby.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/Juice_Baby/Juicebaby.png" type="Texture" id=2]
@@ -15,6 +15,23 @@ radius = 197.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 2.5 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Jump"
+length = 0.001
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -179,8 +196,13 @@ collision_layer = 4
 shape = SubResource( 6 )
 
 [node name="WallRay" type="RayCast2D" parent="Collisions"]
+visible = false
 position = Vector2( 0, -10 )
 enabled = true
+
+[node name="FloorRay" type="RayCast2D" parent="Collisions"]
+enabled = true
+cast_to = Vector2( 0, 2 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 5 )]
 maxHealth = 10000
@@ -194,6 +216,7 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
+anims/Jump = SubResource( 7 )
 anims/RESET = SubResource( 4 )
 anims/Teleport = SubResource( 5 )
 anims/Walk = SubResource( 3 )

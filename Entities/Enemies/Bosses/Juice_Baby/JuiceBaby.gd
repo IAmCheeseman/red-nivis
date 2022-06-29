@@ -18,6 +18,8 @@ onready var attackTimer = $Timer/AttackTimer
 
 onready var damageManager = $DamageManager
 
+onready var floorRay = $Collisions/FloorRay
+
 var player: Area2D
 
 export var accel := 10.0
@@ -61,7 +63,10 @@ func _process(delta: float) -> void:
 				
 				vel.x = lerp(vel.x, dir * maxSpeed, accel * delta)
 				
-				anim.play("Walk")
+				if !is_grounded():
+					anim.play("Jump")
+				else:
+					anim.play("Walk")
 				
 				if global_position.distance_to(player.global_position) < 48:
 					state = TELEPORT
@@ -76,6 +81,10 @@ func _process(delta: float) -> void:
 				anim.play("Teleport")
 	
 	vel.y = move_and_slide(vel).y
+
+
+func is_grounded() -> bool:
+	return floorRay.is_colliding()
 
 
 func teleport() -> void:
@@ -178,8 +187,8 @@ func attack() -> void:
 	if state == TELEPORT or !player:
 		attackTimer.start(1)
 		return
-	
-	var attackStates = [[SHOOT, 2], [TELEPORT, 1.4], [SPIT, 2]]
+	var JUMP = -1
+	var attackStates = [[SHOOT, 2], [TELEPORT, 1.4], [SPIT, 2], [JUMP, 1]]
 	var selected = attackStates[randi() % attackStates.size()]
 	
 	state = selected[0]
@@ -193,3 +202,9 @@ func attack() -> void:
 			prevGunPos = gun.position
 		SPIT:
 			spitTimer.start()
+		JUMP:
+			if is_grounded():
+				vel.y = -400
+			else:
+				attack()
+			state = MOVE
