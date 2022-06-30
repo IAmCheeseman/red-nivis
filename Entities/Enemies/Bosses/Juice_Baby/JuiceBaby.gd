@@ -62,11 +62,8 @@ func _process(delta: float) -> void:
 					if diff > 220 / 3 else dir
 				
 				vel.x = lerp(vel.x, dir * maxSpeed, accel * delta)
-				
-				if !is_grounded():
-					anim.play("Jump")
-				else:
-					anim.play("Walk")
+
+				anim.play("Walk")
 				
 				if global_position.distance_to(player.global_position) < 48:
 					state = TELEPORT
@@ -187,8 +184,7 @@ func attack() -> void:
 	if state == TELEPORT or !player:
 		attackTimer.start(1)
 		return
-	var JUMP = -1
-	var attackStates = [[SHOOT, 2], [TELEPORT, 1.4], [SPIT, 2], [JUMP, 1]]
+	var attackStates = [[SHOOT, 2], [TELEPORT, 1.4], [SPIT, 2]]
 	var selected = attackStates[randi() % attackStates.size()]
 	
 	state = selected[0]
@@ -202,9 +198,3 @@ func attack() -> void:
 			prevGunPos = gun.position
 		SPIT:
 			spitTimer.start()
-		JUMP:
-			if is_grounded():
-				vel.y = -400
-			else:
-				attack()
-			state = MOVE
