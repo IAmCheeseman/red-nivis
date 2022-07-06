@@ -25,6 +25,8 @@ var currentDialog = 1
 var finished = false
 
 signal done
+signal dialog_signal(signalName)
+signal timer_done(currentDialog)
 
 var time := 0.0
 
@@ -118,6 +120,9 @@ func increment_text() -> void:
 	var currentInteraction = dialog.get_interaction(currentDialogID)
 	currentDialog += 1
 	
+	if currentInteraction:
+		call_commands(currentDialog, currentInteraction)
+	
 	# Finishing
 	if currentInteraction == null: return
 	if currentDialog >= currentInteraction.size():
@@ -129,6 +134,20 @@ func increment_text() -> void:
 	# Starting
 	targetText = tr(currentInteraction[currentDialog])
 	charIncTimer.start(talkingSpeed)
+
+
+func call_commands(currentDialog: int, currentInteraction: Array) -> void:
+	if currentDialog >= currentInteraction.size(): return
+	var dialogText = currentInteraction[currentDialog]
+	if dialogText.begins_with("s:"):
+		emit_signal("dialog_signal", dialogText.replace("s:", ""))
+		increment_text()
+	if dialogText.begins_with("t:"):
+		hide()
+		yield(TempTimer.timer(self, float(dialogText.replace("t:", "")) ), "timeout")
+		show()
+		emit_signal("timer_done", currentDialog)
+		increment_text()
 
 
 func _input(event: InputEvent) -> void:

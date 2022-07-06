@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var anim = $AnimationPlayer
+onready var anim := $AnimationPlayer
 onready var sprite = $ScaleHelper/Sprite
 
 onready var dialog = $Dialog/Dialog

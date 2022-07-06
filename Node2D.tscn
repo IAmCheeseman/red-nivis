@@ -7,7 +7,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://Entities/Enemies/Bosses/Juice_Baby/JuiceBaby.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/NPC/RainCoatMan/RainCoatMan.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -40,7 +40,7 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="JuiceBaby" parent="." instance=ExtResource( 8 )]
-position = Vector2( 336, 260 )
+[node name="RainCoatMan" parent="." instance=ExtResource( 8 )]
+position = Vector2( 255, 286 )
 
 [editable path="CameraMoveZone"]
