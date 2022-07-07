@@ -12,7 +12,7 @@ var player: Node2D
 func _ready() -> void:
 	cooldown = Timer.new()
 	cooldown.one_shot = true
-	cooldown.wait_time = 15
+	cooldown.wait_time = 10
 	add_child(cooldown)
 
 
