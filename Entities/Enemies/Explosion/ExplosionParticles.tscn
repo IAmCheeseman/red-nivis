@@ -39,6 +39,8 @@ damping_random = 0.51
 damping_curve = SubResource( 15 )
 angle = 1199.9
 angle_random = 1.0
+scale = 2.0
+scale_random = 1.0
 color_ramp = SubResource( 7 )
 anim_speed = 2.0
 
