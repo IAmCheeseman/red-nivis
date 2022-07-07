@@ -9,7 +9,7 @@ func _add_states() -> void:
 	states.append("bomb_state")
 
 
-func bomb_state(delta: float) -> void:
+func bomb_state(_delta: float) -> void:
 	pass
 
 
@@ -22,6 +22,8 @@ func _on_dialog_signal(signalName: String) -> void:
 
 func _on_dialog_timer_done(currentDialog) -> void:
 	if currentDialog == 7:
+		yield(TempTimer.timer(self, 1.25), "timeout")
+		QuestManager.end_quest("matthews_bomb")
 		queue_free()
 		return
 	add_explosion()
@@ -54,3 +56,9 @@ func _on_start_talking() -> void:
 			"matthews_bomb", "matthew_has_bomb",
 			true
 		)
+
+
+func start_quest() -> void:
+	if defaultDialog == "Distress":
+		QuestManager.start_quest("matthews_bomb")
+		return

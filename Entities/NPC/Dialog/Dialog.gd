@@ -127,7 +127,7 @@ func increment_text() -> void:
 	currentDialog += 1
 	
 	if currentInteraction:
-		call_commands(currentDialog, currentInteraction)
+		call_commands(currentInteraction)
 	
 	# Finishing
 	if currentInteraction == null: return
@@ -142,7 +142,7 @@ func increment_text() -> void:
 	charIncTimer.start(talkingSpeed)
 
 
-func call_commands(currentDialog: int, currentInteraction: Array) -> void:
+func call_commands(currentInteraction: Array) -> void:
 	if currentDialog >= currentInteraction.size(): return
 	var dialogText = currentInteraction[currentDialog]
 	if dialogText.begins_with("s:"):
@@ -156,7 +156,7 @@ func call_commands(currentDialog: int, currentInteraction: Array) -> void:
 		increment_text()
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_SPACE):
 		if charsShown == text.text.length():
 			yield(TempTimer.idle_frame(self), "timeout")
