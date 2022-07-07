@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+onready var anim = $AnimationPlayer
+
 export var relatedQuest := ""
 export var questVariable := ""
 export var boolSetTo := true
@@ -22,3 +24,4 @@ func _on_interaction() -> void:
 			)
 		_:
 			push_error("ERR: Not int or bool.")
+	anim.play("Disappear")

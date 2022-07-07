@@ -157,7 +157,7 @@ func call_commands(currentDialog: int, currentInteraction: Array) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_released("interact") or Input.is_key_pressed(KEY_SPACE):
+	if Input.is_key_pressed(KEY_SPACE):
 		if charsShown == text.text.length():
 			yield(TempTimer.idle_frame(self), "timeout")
 			increment_text()
