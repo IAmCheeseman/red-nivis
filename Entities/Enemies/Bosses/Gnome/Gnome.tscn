@@ -578,6 +578,7 @@ autostart = true
 visible = false
 margin_top = -23.0
 margin_bottom = -23.0
+npcName = ""
 dialog = ExtResource( 8 )
 talkingSpeed = 0.02
 autoAdvance = true

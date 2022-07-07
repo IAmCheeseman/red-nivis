@@ -31,6 +31,7 @@ var damageMod := 1.0
 var currentMod: Node2D
 var healModMin := .5
 var kbMod := 1.0
+var bombDmgMod := 1.0
 
 var frictMod := 1.0
 var minFrict := .05

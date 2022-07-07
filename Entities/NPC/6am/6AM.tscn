@@ -239,6 +239,7 @@ anims/Walk = SubResource( 1 )
 position = Vector2( 0, -34 )
 
 [node name="Dialog" parent="Dialog" index="0"]
+npcName = "6AM"
 dialog = ExtResource( 3 )
 
 [node name="OpenChestJump" type="Timer" parent="." index="6"]

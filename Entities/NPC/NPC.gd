@@ -24,6 +24,7 @@ export var speed := 120.0
 export var wanderTime := Vector2(5.0, 15.0)
 export var removeBarsOnDialogEnd := true
 export var shove := -24
+export var idleAnim := "Default"
 
 signal dialog_finished
 
@@ -69,7 +70,7 @@ func walk_state(delta: float) -> void:
 	sprite.scale.x = -1 if vel.x < 0 else 1
 	
 	if global_position.distance_to(targetPos) < 5:
-		if anim.has_animation("Default"): anim.play("Default")
+		if anim.has_animation(idleAnim): anim.play(idleAnim)
 		sprite.rotation = 0
 		vel.x = 0
 	elif anim.has_animation("Walk"):
@@ -81,7 +82,7 @@ func talk_state(delta: float) -> void:
 	
 	sprite.rotation_degrees = vel.x / 25
 	
-	if anim.has_animation("Default"): anim.play("Default")
+	if anim.has_animation(idleAnim): anim.play(idleAnim)
 
 
 func _on_interaction() -> void:
@@ -101,7 +102,7 @@ func start_dialog(lines:String) -> void:
 	state = TALK
 	
 	PLAYER.playerObject.global_position = global_position + Vector2(shove, -2)
-	PLAYER.playerObject.sprite.scale.x = float(shove) / shove
+	PLAYER.playerObject.sprite.scale.x = -float(shove) / shove
 
 
 func _on_dialog_finished() -> void:

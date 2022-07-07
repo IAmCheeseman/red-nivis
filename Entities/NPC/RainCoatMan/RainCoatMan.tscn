@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/NPC/RainCoatMan/RainCoatMan.png" type="Texture" id=2]
 [ext_resource path="res://Entities/NPC/RainCoatMan/RainCoatManDialog.tres" type="Resource" id=3]
 [ext_resource path="res://Entities/NPC/RainCoatMan/RainCoatMan.gd" type="Script" id=4]
+[ext_resource path="res://Managing/SoundManager.gd" type="Script" id=5]
+[ext_resource path="res://Items/Upgrades/Grenade/Explosion.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10, 5 )
@@ -26,6 +28,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Default_Button"
+length = 0.55
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -108,14 +127,15 @@ tracks/2/keys = {
 
 [node name="RainCoatMan" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
-shove = 24
+defaultDialog = "Distress"
+shove = 48
 
 [node name="Sprite" parent="ScaleHelper" index="0"]
 position = Vector2( 0, -12 )
 texture = ExtResource( 2 )
 flip_h = false
 hframes = 6
-vframes = 2
+vframes = 3
 frame = 0
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -131,6 +151,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Default = SubResource( 2 )
+anims/Default_Button = SubResource( 6 )
 anims/Press = SubResource( 4 )
 anims/RESET = SubResource( 3 )
 
@@ -138,7 +159,12 @@ anims/RESET = SubResource( 3 )
 position = Vector2( 0, -37 )
 
 [node name="Dialog" parent="Dialog" index="0"]
+npcName = "Matthew"
 dialog = ExtResource( 3 )
+
+[node name="ExplosionSFX" type="Node2D" parent="." index="7"]
+script = ExtResource( 5 )
+audio = ExtResource( 6 )
 
 [connection signal="dialog_signal" from="Dialog/Dialog" to="." method="_on_dialog_signal"]
 [connection signal="timer_done" from="Dialog/Dialog" to="." method="_on_dialog_timer_done"]

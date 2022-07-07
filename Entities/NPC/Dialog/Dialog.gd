@@ -1,6 +1,7 @@
 extends Control
 
 
+export var npcName := "[Name]"
 export var dialog:Resource
 export var pointerOffset := 15
 export var advanceTime := 3.0
@@ -14,6 +15,7 @@ onready var advanceTimer = $AdvanceTimer
 onready var charIncTimer = $CharIncTimer
 onready var speakSound = $Bleep
 onready var dialogPrompt = $AdvanceDialogPrompt
+onready var nameLabel = $Name
 
 const MAX_SIZE = 120
 
@@ -32,6 +34,7 @@ var time := 0.0
 
 
 func _ready() -> void:
+	nameLabel.text = npcName
 	if fontOverride: text.add_font_override("normal_font", fontOverride)
 
 
@@ -78,6 +81,9 @@ func reposition_bg(resizeText: String=text.text) -> void:
 	# Label
 	text.rect_size.x = background.rect_size.x
 	text.rect_position = background.rect_position + Vector2(1, (size.y/2)-2)
+	
+	nameLabel.rect_position = -background.rect_size * Vector2(0.5, 1)
+	nameLabel.rect_position.y -= nameLabel.rect_size.y / 2
 
 
 func add_center_tags(string:String) -> String:

@@ -83,5 +83,6 @@ anims/RESET = SubResource( 2 )
 position = Vector2( 0, -30 )
 
 [node name="Dialog" parent="Dialog" index="0"]
+npcName = "Bird"
 dialog = ExtResource( 3 )
 talkingSpeed = 0.033
