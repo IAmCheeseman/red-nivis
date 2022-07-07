@@ -26,6 +26,7 @@ export var removeBarsOnDialogEnd := true
 export var shove := -24
 export var idleAnim := "Default"
 
+signal start_talking
 signal dialog_finished
 
 const WALK = 0
@@ -86,6 +87,7 @@ func talk_state(delta: float) -> void:
 
 
 func _on_interaction() -> void:
+	emit_signal("start_talking")
 	start_dialog(defaultDialog)
 
 

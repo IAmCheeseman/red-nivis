@@ -166,5 +166,6 @@ dialog = ExtResource( 3 )
 script = ExtResource( 5 )
 audio = ExtResource( 6 )
 
+[connection signal="start_talking" from="." to="." method="_on_start_talking"]
 [connection signal="dialog_signal" from="Dialog/Dialog" to="." method="_on_dialog_signal"]
 [connection signal="timer_done" from="Dialog/Dialog" to="." method="_on_dialog_timer_done"]

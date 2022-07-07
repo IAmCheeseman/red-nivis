@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Button.png-f8e7a6847ab694fddba99d59d8fffc6d.stex"
+path="res://.import/Button.png-47bbae17c9e396b21aa17893c3b0d0f5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/NPC/RainCoatMan/Button.png"
-dest_files=[ "res://.import/Button.png-f8e7a6847ab694fddba99d59d8fffc6d.stex" ]
+source_file="res://Items/QuestItems/MatthewButton/Button.png"
+dest_files=[ "res://.import/Button.png-47bbae17c9e396b21aa17893c3b0d0f5.stex" ]
 
 [params]
 

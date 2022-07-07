@@ -531,12 +531,13 @@ default_bus_layout="res://BusLayout.tres"
 [autoload]
 
 GameManager="*res://Managing/GameManager.gd"
+QuestManager="*res://Managing/QuestManager.gd"
+MusicManager="*res://Managing/MusicManager.gd"
+FastTravel="*res://World/Props/FastTravelStation/FastTravel.gd"
 Settings="*res://Managing/settings.gd"
 Cursor="*res://UI/Cursor/Cursor.tscn"
-FastTravel="*res://World/Props/FastTravelStation/FastTravel.gd"
 ToolTip="*res://UI/ToolTip/ToolTip.tscn"
 Discord="*res://addons/discord_game_sdk/discord.gd"
-MusicManager="*res://Managing/MusicManager.gd"
 Steam="*res://addons/steam_api/steam.gd"
 
 [debug]

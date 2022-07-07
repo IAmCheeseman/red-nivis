@@ -21,7 +21,7 @@ func _on_dialog_signal(signalName: String) -> void:
 
 
 func _on_dialog_timer_done(currentDialog) -> void:
-	if currentDialog == 6:
+	if currentDialog == 7:
 		queue_free()
 		return
 	add_explosion()
@@ -44,3 +44,13 @@ func add_explosion(size:int=32) -> void:
 	timer.connect("timeout", newExplosion, "queue_free")
 
 	explosionSFX.play()
+
+
+func _on_start_talking() -> void:
+	if QuestManager.get_quest_data("matthews_bomb", "player_has_bomb"):
+		defaultDialog = "Introduction"
+		idleAnim = "Default_Button"
+		QuestManager.set_quest_data(
+			"matthews_bomb", "matthew_has_bomb",
+			true
+		)

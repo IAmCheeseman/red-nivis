@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "'Ello!", "I set off bombs fer a livin'!", "Like this...", "s:bomb", "t:0.3", "t:1" ], [ "Distress", "SOME JERK BUTTS TOOK MOI BOMB SWITCH!", "CAN 'EW GET MOI BOMB SWITCH BACK!?", "I CAN MAKE YER BOMBS WAY BET'ER!" ] ]
+dialog = [ [ "Introduction", "Is tha moi bomb??!", "THANK 'EW!!", "I set off bombs fer a livin', btw.", "Like this...", "s:bomb", "t:0.3", "t:1" ], [ "Distress", "SOME JERK BUTTS TOOK MOI BOMB SWITCH!", "CAN 'EW GET MOI BOMB SWITCH BACK!?", "I CAN MAKE YER BOMBS WAY BET'ER!" ] ]
