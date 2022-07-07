@@ -23,7 +23,7 @@ func _on_dialog_signal(signalName: String) -> void:
 func _on_dialog_timer_done(currentDialog) -> void:
 	if currentDialog == 7:
 		yield(TempTimer.timer(self, 1.25), "timeout")
-		QuestManager.end_quest("matthews_bomb")
+		QuestManager.hand_in_quest("matthews_bomb")
 		queue_free()
 		return
 	add_explosion()
@@ -49,16 +49,20 @@ func add_explosion(size:int=32) -> void:
 
 
 func _on_start_talking() -> void:
-	if QuestManager.get_quest_data("matthews_bomb", "player_has_bomb"):
+	if !QuestManager.is_quest_active("matthews_bomb"): return
+	if QuestManager.is_quest_complete("matthews_bomb"):
 		defaultDialog = "Introduction"
 		idleAnim = "Default_Button"
-		QuestManager.set_quest_data(
-			"matthews_bomb", "matthew_has_bomb",
-			true
-		)
 
 
 func start_quest() -> void:
 	if defaultDialog == "Distress":
-		QuestManager.start_quest("matthews_bomb")
+		QuestManager.start_quest(
+			Quest.new(
+				"matthews_bomb",
+				"Matthew's Switch",
+				"Matthew",
+				"Matthew lost his bomb, get it for him!"
+			)
+		)
 		return

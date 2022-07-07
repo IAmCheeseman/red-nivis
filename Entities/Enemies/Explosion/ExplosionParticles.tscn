@@ -11,8 +11,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id=11]
-offsets = PoolRealArray( 0.235484, 0.674194, 1 )
-colors = PoolColorArray( 0.728516, 0.0682983, 0.0682983, 1, 0.865234, 0.625756, 0.233208, 1, 1, 1, 1, 1 )
+offsets = PoolRealArray( 0, 0.245333, 0.629333, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.865234, 0.625756, 0.233208, 1, 0.728516, 0.0682983, 0.0682983, 1, 0.301953, 0.021349, 0.021349, 1 )
 
 [sub_resource type="GradientTexture" id=7]
 gradient = SubResource( 11 )
@@ -26,20 +26,22 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 curve = SubResource( 16 )
 
 [sub_resource type="ParticlesMaterial" id=13]
-lifetime_randomness = 0.38
+lifetime_randomness = 1.0
 emission_shape = 1
-emission_sphere_radius = 46.0
+emission_sphere_radius = 23.0
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+radial_accel = 100.0
 damping = 83.65
 damping_random = 0.51
 damping_curve = SubResource( 15 )
-angle = 1199.9
+angle = 360.0
 angle_random = 1.0
-scale = 2.0
+scale = 1.2
 scale_random = 1.0
 color_ramp = SubResource( 7 )
 anim_speed = 2.0
@@ -53,7 +55,7 @@ particles_anim_loop = false
 [sub_resource type="ParticlesMaterial" id=17]
 lifetime_randomness = 1.0
 emission_shape = 1
-emission_sphere_radius = 15.3333
+emission_sphere_radius = 7.66667
 flag_disable_z = true
 direction = Vector3( 0, -1, 0 )
 spread = 90.0
@@ -72,10 +74,8 @@ anim_speed_random = 0.5
 [node name="ExplosionParticles" type="Particles2D"]
 modulate = Color( 16.18, 1, 1, 1 )
 material = SubResource( 10 )
-emitting = false
-amount = 300
-lifetime = 0.5
-one_shot = true
+amount = 100
+lifetime = 2.0
 explosiveness = 0.98
 local_coords = false
 process_material = SubResource( 13 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
 [ext_resource path="res://Entities/NPC/RainCoatMan/RainCoatMan.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Items/QuestItems/MatthewButton/MatthewButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDM.tscn" type="PackedScene" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -40,6 +41,18 @@ position = Vector2( 2087, 189 )
 shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
+
+[node name="MDM" parent="." instance=ExtResource( 10 )]
+position = Vector2( 212, 246 )
+
+[node name="MDM2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 212, 246 )
+
+[node name="MDM3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 212, 246 )
+
+[node name="MDM4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 212, 246 )
 
 [node name="RainCoatMan" parent="." instance=ExtResource( 8 )]
 position = Vector2( 255, 286 )

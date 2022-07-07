@@ -13,9 +13,8 @@ func _on_interaction() -> void:
 	var currentQuestValue = QuestManager.get_quest_data(relatedQuest, questVariable)
 	match typeof(currentQuestValue):
 		TYPE_BOOL:
-			QuestManager.set_quest_data(
-				relatedQuest, questVariable,
-				boolSetTo
+			QuestManager.complete_quest(
+				relatedQuest
 			)
 		TYPE_INT:
 			QuestManager.set_quest_data(

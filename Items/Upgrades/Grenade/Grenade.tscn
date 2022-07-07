@@ -14,10 +14,10 @@ bounce = 0.25
 radius = 3.0
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 47.0106
+radius = 35.0
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 104.12
+radius = 66.0303
 
 [sub_resource type="Animation" id=11]
 length = 3.2
@@ -207,7 +207,6 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="PlayerHitbox" parent="." instance=ExtResource( 2 )]
-visible = false
 collision_mask = 2
 damage = 1
 
@@ -216,7 +215,6 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="EnemyHitbox" parent="." groups=["Explosion"] instance=ExtResource( 2 )]
-visible = false
 collision_mask = 4
 monitorable = true
 damage = 65
@@ -227,6 +225,8 @@ shape = SubResource( 4 )
 disabled = true
 
 [node name="Explosion" parent="." instance=ExtResource( 4 )]
+emitting = false
+amount = 200
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Init"

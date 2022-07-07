@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://UI/Assets/Title_RedNivis.png" type="Texture" id=7]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=8]
 [ext_resource path="res://UI/ButtonPrompt/Prompt.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Items/QuestItems/QuestLog.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=14]
 
 [sub_resource type="Shader" id=9]
@@ -113,7 +114,7 @@ custom_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
 margin_left = 9.0
-margin_right = 113.0
+margin_right = 116.0
 margin_bottom = 195.0
 custom_constants/separation = 0
 alignment = 2
@@ -127,17 +128,28 @@ custom_fonts/font = ExtResource( 5 )
 text = "PAUSE_TTL"
 
 [node name="Continue" type="Button" parent="Margin/VBoxContainer"]
-margin_top = 144.0
-margin_right = 104.0
-margin_bottom = 163.0
+margin_top = 128.0
+margin_right = 107.0
+margin_bottom = 147.0
 custom_fonts/font = SubResource( 2 )
 text = "CONTINUE_BTN"
 align = 0
 script = ExtResource( 3 )
 
+[node name="QuestLog" type="Button" parent="Margin/VBoxContainer"]
+margin_top = 147.0
+margin_right = 107.0
+margin_bottom = 163.0
+custom_fonts/font = ExtResource( 14 )
+text = "QUEST_LOG_M_BTN"
+align = 0
+script = ExtResource( 3 )
+fromPth = NodePath("../..")
+toPth = NodePath("../../../QuestLog")
+
 [node name="Options" type="Button" parent="Margin/VBoxContainer"]
 margin_top = 163.0
-margin_right = 104.0
+margin_right = 107.0
 margin_bottom = 179.0
 custom_fonts/font = ExtResource( 14 )
 text = "OPTIONS_M_BTN"
@@ -148,7 +160,7 @@ toPth = NodePath("../../../OptionsMenu")
 
 [node name="Hub" type="Button" parent="Margin/VBoxContainer"]
 margin_top = 179.0
-margin_right = 104.0
+margin_right = 107.0
 margin_bottom = 195.0
 custom_fonts/font = ExtResource( 14 )
 text = "MAIN_MENU_BTN"
@@ -162,6 +174,9 @@ visible = false
 [node name="Back" parent="OptionsMenu/Center/NavMenu" index="6"]
 fromPth = NodePath("../../..")
 toPth = NodePath("../../../../Margin")
+
+[node name="QuestLog" parent="." instance=ExtResource( 10 )]
+visible = false
 
 [node name="Prompts" type="HBoxContainer" parent="."]
 anchor_top = 1.0
