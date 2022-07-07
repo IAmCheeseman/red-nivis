@@ -40,7 +40,7 @@ func add_explosion(size:int=32) -> void:
 	newExplosion.z_index = 2
 	GameManager.spawnManager.add_child(newExplosion)
 
-	var timer = get_tree().create_timer(1)
+	var timer = get_tree().create_timer(3)
 	timer.connect("timeout", newExplosion, "queue_free")
 
 	explosionSFX.play()
