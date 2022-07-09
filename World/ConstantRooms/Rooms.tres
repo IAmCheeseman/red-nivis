@@ -1,12 +1,13 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://World/ConstantRooms/Rooms.gd" type="Script" id=1]
 [ext_resource path="res://World/ConstantRooms/Rooms/BirbRoom.tres" type="Resource" id=2]
 [ext_resource path="res://World/ConstantRooms/Rooms/TreasureRoom.tres" type="Resource" id=3]
 [ext_resource path="res://World/ConstantRooms/Rooms/FastTravelRoom.tres" type="Resource" id=4]
+[ext_resource path="res://World/ConstantRooms/Rooms/MatthewRoom.tres" type="Resource" id=5]
 [ext_resource path="res://World/ConstantRooms/Rooms/6amRoom.tres" type="Resource" id=6]
 [ext_resource path="res://World/ConstantRooms/Rooms/LogRoom.tres" type="Resource" id=7]
 
 [resource]
 script = ExtResource( 1 )
-rooms = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ) ]
+rooms = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ) ]
