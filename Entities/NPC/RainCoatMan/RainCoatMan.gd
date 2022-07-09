@@ -57,12 +57,5 @@ func _on_start_talking() -> void:
 
 func start_quest() -> void:
 	if defaultDialog == "Distress":
-		QuestManager.start_quest(
-			Quest.new(
-				"matthews_bomb",
-				"Matthew's Switch",
-				"Matthew",
-				"Matthew lost his bomb, get it for him!"
-			)
-		)
+		QuestManager.start_quest("matthews_bomb")
 		return

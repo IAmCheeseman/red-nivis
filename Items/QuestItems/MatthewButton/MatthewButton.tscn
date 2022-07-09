@@ -9,7 +9,6 @@ extents = Vector2( 3, 6 )
 
 [node name="MatthewButton" instance=ExtResource( 1 )]
 relatedQuest = "matthews_bomb"
-questVariable = "player_has_bomb"
 
 [node name="Iteraction" parent="." index="1"]
 position = Vector2( 0, -7 )

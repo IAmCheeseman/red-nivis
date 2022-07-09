@@ -74,8 +74,10 @@ anim_speed_random = 0.5
 [node name="ExplosionParticles" type="Particles2D"]
 modulate = Color( 16.18, 1, 1, 1 )
 material = SubResource( 10 )
+emitting = false
 amount = 100
 lifetime = 2.0
+one_shot = true
 explosiveness = 0.98
 local_coords = false
 process_material = SubResource( 13 )

@@ -9,6 +9,7 @@ export var size = 75
 export var damage := 1.0
 
 func _ready() -> void:
+	if !is_instance_valid(enemyHitbox): return
 	enemyHitbox.damage = damage
 	yield(TempTimer.idle_frame(self), "timeout")
 	anim.play("Init", -1, time)

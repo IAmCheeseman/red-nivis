@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
 [ext_resource path="res://Entities/NPC/RainCoatMan/RainCoatMan.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Items/QuestItems/MatthewButton/MatthewButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemies/Bandit/Bomber/Bomber.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemies/Bandit/Shotgun/ShotgunBandit.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Entities/Enemies/Bandit/Laser/LaserBandit.tscn" type="PackedScene" id=12]
+[ext_resource path="res://World/WorldManagement/EnemyCounter.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -47,5 +51,32 @@ position = Vector2( 255, 286 )
 [node name="MatthewButton" parent="." instance=ExtResource( 9 )]
 position = Vector2( 369, 270 )
 mode = 0
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="ShotgunBandit" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 206, 116 )
+
+[node name="ShotgunBandit2" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 296, 192 )
+
+[node name="ShotgunBandit3" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 366, 251 )
+
+[node name="Bomber" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 276, 194 )
+
+[node name="LaserBandit" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 340, 255 )
+
+[node name="LaserBandit2" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 136, 121 )
+
+[node name="MatthewButton" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 203, 260 )
+
+[node name="EnemyCounter" type="Node2D" parent="Enemies"]
+script = ExtResource( 13 )
+node = NodePath("../MatthewButton")
 
 [editable path="CameraMoveZone"]

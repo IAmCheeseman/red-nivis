@@ -87,6 +87,7 @@ func create_room() -> void:
 	var cr = worldData.rooms[worldData.position.x][worldData.position.y].constantRoom
 	if cr:
 		var _cr = load(cr)
+
 		room = _cr.scene.instance()
 		if _cr.biomeSpecific.size() != 0:
 			var idx = _cr.biomes.find(biome)

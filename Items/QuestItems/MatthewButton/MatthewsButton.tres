@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Items/QuestItems/Quest.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "matthews_bomb"
+name = "Matthew's Switch"
+assignee = "Matthew"
+description = "Matthew lost his bomb, get it for him!"
+counter = 0
+targetCount = 0
+completed = false
+handedIn = false

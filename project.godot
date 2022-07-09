@@ -165,6 +165,11 @@ _global_script_classes=[ {
 "path": "res://Entities/Enemies/EnemyBullet/Falling/FallingEnemyBullet.gd"
 }, {
 "base": "Node2D",
+"class": "EnemyCounter",
+"language": "GDScript",
+"path": "res://World/WorldManagement/EnemyCounter.gd"
+}, {
+"base": "Node2D",
 "class": "EnemySpawner",
 "language": "GDScript",
 "path": "res://General/EnemySpawner.gd"
@@ -283,6 +288,11 @@ _global_script_classes=[ {
 "class": "Quest",
 "language": "GDScript",
 "path": "res://Items/QuestItems/Quest.gd"
+}, {
+"base": "Reference",
+"class": "QuestMap",
+"language": "GDScript",
+"path": "res://Items/QuestItems/QuestMap.gd"
 }, {
 "base": "Reference",
 "class": "Resetter",
@@ -466,6 +476,7 @@ _global_script_class_icons={
 "DiscordResult": "",
 "DiscordUser": "",
 "EFallingBullet": "",
+"EnemyCounter": "",
 "EnemySpawner": "",
 "EnemyTable": "",
 "ExtraTrigger": "",
@@ -490,6 +501,7 @@ _global_script_class_icons={
 "Player": "",
 "PotionBottle": "",
 "Quest": "",
+"QuestMap": "",
 "Resetter": "",
 "RoomGenerator": "",
 "RoomPlacer": "",

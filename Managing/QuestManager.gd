@@ -34,7 +34,9 @@ func increment_quest_counter(questId: String, amt:int=1) -> void:
 
 func complete_quest(questId: String) -> void:
 	var quest = find_quest_(questId)
-	assert(quest != null)
+	if quest == null:
+		start_quest(questId)
+		quest = find_quest_(questId)
 	quest.completed = true
 
 
@@ -54,9 +56,12 @@ func get_quest_data(quest: String, data: String):
 	return quests_[quest][data]
 
 
-func start_quest(quest: Quest) -> void:
+func start_quest(questId: String) -> void:
 	var questNotice = preload("res://Items/QuestItems/QuestNotice.tscn").instance()
 	add_child(questNotice)
+	
+	var quest = QuestMap.QUESTS[questId]
+	
 	questNotice.start_anim(true, tr(quest.name))
 	
 	activeQuests.append(quest)
