@@ -18,6 +18,6 @@ func update_progress(amt: float) -> void:
 	progress.value = amt
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	#get_tree().change_scene("res://World/WorldManagement/World.tscn")

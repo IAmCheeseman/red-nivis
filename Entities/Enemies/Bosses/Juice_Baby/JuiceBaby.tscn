@@ -155,7 +155,7 @@ maxSpeed = 100
 position = Vector2( 0, -8 )
 texture = ExtResource( 2 )
 hframes = 3
-vframes = 5
+vframes = 6
 
 [node name="Gun" type="Node2D" parent="Sprite"]
 position = Vector2( -5, 5 )

@@ -556,6 +556,7 @@ Settings="*res://Managing/settings.gd"
 Cursor="*res://UI/Cursor/Cursor.tscn"
 ToolTip="*res://UI/ToolTip/ToolTip.tscn"
 Discord="*res://addons/discord_game_sdk/discord.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Steam="*res://addons/steam_api/steam.gd"
 
 [debug]

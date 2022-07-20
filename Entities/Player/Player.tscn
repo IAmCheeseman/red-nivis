@@ -929,9 +929,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GrayScaleDeath" type="ColorRect" parent="CanvasLayer"]
 material = SubResource( 12 )
@@ -942,8 +939,6 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="GameOverlay" parent="CanvasLayer" instance=ExtResource( 25 )]
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource( 27 )]
 
@@ -957,6 +952,10 @@ mouse_filter = 2
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource( 26 )]
 visible = false
+
+[node name="GameOverlay" parent="CanvasLayer" instance=ExtResource( 25 )]
+margin_right = 2.0
+margin_bottom = 3.0
 
 [node name="Stamina" type="HBoxContainer" parent="."]
 margin_left = -24.0

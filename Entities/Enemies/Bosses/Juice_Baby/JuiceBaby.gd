@@ -20,6 +20,7 @@ onready var damageManager = $DamageManager
 
 onready var floorRay = $Collisions/FloorRay
 
+
 var player: Area2D
 
 export var accel := 10.0

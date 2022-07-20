@@ -13,6 +13,7 @@ func _ready():
 	slotTexture.material = slotTexture.material.duplicate()
 
 
+
 func setup(texture, itemID:String):
 	slotTexture.texture = load(texture)
 	item = itemID
