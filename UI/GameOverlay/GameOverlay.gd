@@ -4,23 +4,17 @@ var playerData = preload("res://Entities/Player/Player.tres")
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 
 # Health Bar
-onready var healthBar = $VBox/Health/HealthBar
-onready var healthBarEmpty = $VBox/Health/HealthBar/Empty
-onready var hbAnim = $VBox/Health/HealthBar/AnimationPlayer
-onready var hbShakeAnim = $VBox/Health/HealthBar/ShakeAnim
-
-onready var justLostBar = $VBox/Health/HealthBar/JustLost
-onready var justLostTween = $VBox/Health/HealthBar/JustLost/JustLostTween
-onready var justLostTimer = $VBox/Health/HealthBar/JustLost/JustLostTimer
+onready var healthBar = $VBox/Health/VBoxContainer/HBoxContainer/HPBar
+onready var healthLabel = $VBox/Health/VBoxContainer/HBoxContainer/Health
 
 onready var healBar = $VBox/Health/HealProgress
 onready var healBarTween = $VBox/Health/HealProgress/HealProgressTween
 
 # Ammo bar
 #onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
-onready var ammoBar = $VBox/Bottom/AmmoBar/TextureProgress
-onready var reloadNotif = $VBox/Bottom/AmmoBar/ReloadNotif
-onready var ammoTween = $VBox/Bottom/AmmoBar/Tween
+onready var ammoBar = $VBox/Health/VBoxContainer/AmmoBar/TextureProgress
+onready var reloadNotif = $VBox/Health/VBoxContainer/AmmoBar/ReloadNotif
+onready var ammoTween = $VBox/Health/VBoxContainer/AmmoBar/Tween
 
 onready var grenade = $VBox/Bottom/BombProgressBar
 
@@ -29,13 +23,10 @@ onready var upgrades = $TopRight/Upgrades
 onready var time = $TopRight/Time
 
 var JLTarget:Vector2
-var healthBarTexSize:Vector2
 var ammoBarTexSize:Vector2
 
 
 func _ready() -> void:
-	healthBarTexSize = healthBar.texture.get_size()
-
 	playerData.connect("healthChanged", self, "update_health")
 	playerData.connect("updateHealthUI", self, "update_health", [Vector2.ZERO])
 	playerData.connect("ammoChanged", self, "update_ammo")
@@ -56,10 +47,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	reloadNotif.hide()
 	if playerData.isReloading:
-		reloadNotif.show()
 		reloadNotif.text = "..."
+	else:
+		reloadNotif.text = "%s/%s ammo" % [playerData.ammo, playerData.maxAmmo]
 
 	if Settings.speedrunTimer:
 		var seconds = str(int(playerData.time) % 60)
@@ -73,15 +64,10 @@ func _process(delta: float) -> void:
 
 
 func update_health(_kb:Vector2) -> void:
-	healthBar.rect_min_size.x = (playerData.health*healthBarTexSize.x)
-	healthBarEmpty.rect_size.x = playerData.maxHealth*healthBarTexSize.x
-
-	hbAnim.play("Flash")
-	justLostTimer.start()
-	if playerData.health == 1:
-		hbShakeAnim.play("Shake")
-	else:
-		hbShakeAnim.stop(true)
+	healthBar.value = playerData.health
+	healthBar.max_value = playerData.maxHealth
+	
+	healthLabel.text = "%s/%s HP" % [playerData.health, playerData.maxHealth]
 
 
 
@@ -127,13 +113,5 @@ func update_abilities() -> void:
 		icon.texture = u.miniIcon
 		upgrades.add_child(icon)
 
-
-func _on_just_lost_timer_timeout() -> void:
-	justLostTween.stop_all()
-	justLostTween.interpolate_property(
-		justLostBar, "rect_size", justLostBar.rect_size,
-		healthBar.rect_size, .2
-	)
-	justLostTween.start()
 
 func _on_item_picked_up(_id) -> void: show()
