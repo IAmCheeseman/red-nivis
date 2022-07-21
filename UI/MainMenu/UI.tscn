@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=1]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=2]
@@ -12,13 +12,20 @@
 [sub_resource type="Shader" id=9]
 code = "shader_type canvas_item;
 
+uniform float is_right = 1.0;
+
 void fragment()
 {
-	COLOR.a = 1.0 - UV.x;
+	COLOR.a = mix(1.0 - UV.x, UV.x, is_right);
 }"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/is_right = 0.0
 
 [sub_resource type="ShaderMaterial" id=8]
 shader = SubResource( 9 )
+shader_param/is_right = 1.0
 
 [sub_resource type="DynamicFont" id=5]
 size = 13
@@ -32,14 +39,25 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -200, -28 )
 script = ExtResource( 4 )
 
-[node name="Background" type="VBoxContainer" parent="."]
+[node name="Background" type="HBoxContainer" parent="."]
+anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 150
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
-material = SubResource( 8 )
-margin_right = 128.0
+material = SubResource( 10 )
+margin_right = 105.0
 margin_bottom = 220.0
-rect_min_size = Vector2( 128, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Background"]
+material = SubResource( 8 )
+margin_left = 255.0
+margin_right = 360.0
+margin_bottom = 220.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0, 0, 0, 1 )
 
