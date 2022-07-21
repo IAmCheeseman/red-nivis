@@ -78,9 +78,9 @@ func take_damage(amount:int, dir:Vector2) -> void:
 		_die(dir)
 	emit_signal("damaged")
 
-	sprite.modulate = Color(1, 0, 0, 1)
+	par.modulate = Color(1, 0, 0, 1)
 	yield(TempTimer.timer(self, .2), "timeout")
-	sprite.modulate = Color(1, 1, 1, 1)
+	par.modulate = Color(1, 1, 1, 1)
 
 
 func _die(dir: Vector2) -> void:
