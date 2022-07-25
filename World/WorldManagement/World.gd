@@ -113,10 +113,11 @@ func _on_enemies_cleared(remove:bool=automaticBlockRemoval) -> void:
 		timer.connect("timeout", self, "_on_index_timer_timeout")
 		return
 	roomClearer.isChecking = false
-	for eb in exitBlockers:
-		if eb is Node2D and remove:
-			eb.queue_free()
-	exitBlockers.clear()
+	if remove:
+		for eb in exitBlockers:
+			if eb is Node2D:
+				eb.queue_free()
+		exitBlockers.clear()
 
 	var currRoom = worldData.get_current_room()
 	if currRoom.cleared or currRoom.constantRoom: return
