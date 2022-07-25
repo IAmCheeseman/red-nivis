@@ -2,7 +2,7 @@ extends Resource
 class_name DialogInteraction
 
 
-export(Array, Array, String) var dialog = []
+export(Array, Array, String, MULTILINE) var dialog = []
 
 
 func get_interaction(interaction: String):

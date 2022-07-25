@@ -17,8 +17,6 @@ func _ready():
 func setup(texture, itemID:String):
 	slotTexture.texture = load(texture)
 	item = itemID
-	
-	var i = ItemMap.ITEMS[item]
 
 
 func clear():

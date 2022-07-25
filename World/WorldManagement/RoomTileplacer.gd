@@ -128,6 +128,7 @@ func create_room() -> void:
 	# Setting player position
 	set_player_pos()
 
+	yield(TempTimer.idle_frame(self, 2), "timeout")
 	# PADDING
 	pad(Vector2(0, -PADDING), Vector2(0, roomSize.y+PADDING), Vector2.DOWN, Vector2.LEFT)
 	pad(Vector2(roomSize.x-1, -PADDING), Vector2(roomSize.x-1, roomSize.y+PADDING), Vector2.DOWN, Vector2.RIGHT)
@@ -242,7 +243,10 @@ func create_constant_room(connections) -> void:
 	var roomPr:Node2D = room.props
 	for c in roomPr.get_children():
 		roomPr.remove_child(c)
-		add_child(c)
+		if c.has_meta("set_under_root") and c.get_meta("set_under_root"):
+			world.add_child(c)
+		else:
+			add_child(c)
 	# Tiling over none connected rooms
 	var size = world.solids.get_used_rect().end-Vector2.ONE
 	var nonconnections = [Vector2.UP, Vector2.DOWN, Vector2.RIGHT, Vector2.LEFT]
@@ -323,47 +327,6 @@ func create_random_room(connections) -> void:
 
 	# Enemy Spawning
 	spawn_enemies()
-
-	# Blocking off exits
-	var dirs = [Vector2.UP, Vector2.DOWN, Vector2.RIGHT, Vector2.LEFT]
-	for i in dirs:
-		var blockOff := preload("res://World/Props/DoorBlock/DoorBlock.tscn").instance()
-		var collisionShape := RectangleShape2D.new()
-
-		var extents:Vector2 = world.solids.get_used_rect().end
-		match i:
-			Vector2.UP:
-				var collisionSize = (extents.x*.5)*world.solids.cell_size.x
-				collisionShape.extents = Vector2(5, collisionSize)
-
-				blockOff.scale.x = -1
-				blockOff.rotation_degrees = 90
-				blockOff.position = Vector2((extents.x*.5), 0)
-			Vector2.DOWN:
-				var collisionSize = (extents.x*.5)*world.solids.cell_size.x
-				collisionShape.extents = Vector2(5, collisionSize)
-
-				blockOff.rotation_degrees = 90
-				blockOff.position = Vector2((extents.x*.5), extents.y)
-			Vector2.RIGHT:
-				var collisionSize = (extents.y*.5)*world.solids.cell_size.x
-				collisionShape.extents = Vector2(5, collisionSize)
-
-				blockOff.position = Vector2(extents.x, (extents.y*.5))
-			Vector2.LEFT:
-				var collisionSize = (extents.y*.5)*world.solids.cell_size.x
-				collisionShape.extents = Vector2(5, collisionSize)
-
-				blockOff.scale.x = -1
-				blockOff.position = Vector2(0, (extents.y*.5))
-
-		add_child(blockOff)
-		blockOff.position *= world.solids.cell_size
-		blockOff.position = blockOff.position.round()
-		blockOff.collision.shape = collisionShape
-		blockOff.position_sprite()
-
-		world.exitBlockers.append(blockOff)
 
 func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
 	var area = Area2D.new()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://World/WorldManagement/RoomLockIn.gd" type="Script" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Map/Map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabBackground.tscn" type="PackedScene" id=5]
@@ -42,6 +43,10 @@ visible = false
 [node name="CameraMoveZone" parent="Props/CameraZones" instance=ExtResource( 9 )]
 
 [node name="Enemies" type="Node2D" parent="Props"]
+
+[node name="RoomLockIn" type="Node" parent="."]
+script = ExtResource( 1 )
+automaticRemoval = true
 
 [node name="Generator" type="Node2D" parent="."]
 script = ExtResource( 15 )
