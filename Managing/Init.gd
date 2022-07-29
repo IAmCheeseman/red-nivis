@@ -28,7 +28,6 @@ var titles = [
 	"The Third",
 ]
 
-
 func _ready():
 	randomize()
 	titles.shuffle()

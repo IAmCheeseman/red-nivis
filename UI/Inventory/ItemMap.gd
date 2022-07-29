@@ -59,70 +59,41 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/Crossbow.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/Crossbow.png"
 	},
-	# CAVE ITEMS
-	"fire-shotgun" : {
-		"key" : "fire-shotgun",
-		"name" : "FIRE_SHOTGUN_ITM",
-		"tier" : ToolTipGenerator.TIERS.CAVE,
-		"scene" : "res://Items/Weapons/Scenes/FireShotgun.tscn",
-		"slotTexture" : "res://Items/Weapons/Sprites/FireShotgun.png"
-	},
-	"homing-boomerang" : {
-		"key" : "homing-boomerang",
-		"name" : "HOMING_BOOMERANG_ITM",
-		"tier" : ToolTipGenerator.TIERS.CAVE,
-		"scene" : "res://Items/Weapons/Scenes/HomingBoomerang.tscn",
-		"slotTexture" : "res://Items/Weapons/Sprites/HomingBoomerang.png"
-	},
-	"flamethrower" : {
-		"key" : "flamethrower",
-		"name" : "FLAMETHROWER_ITM",
-		"tier" : ToolTipGenerator.TIERS.CAVE,
-		"scene" : "res://Items/Weapons/Scenes/FlameThrower.tscn",
-		"slotTexture" : "res://Items/Weapons/Sprites/Flamethrower.png"
-	},
 	"tbpistol" : {
 		"key" : "tbpistol",
 		"name" : "TRIPLE_BARREL_PISTOL_ITM",
-		"tier" : ToolTipGenerator.TIERS.CAVE,
+		"tier" : ToolTipGenerator.TIERS.LAB,
 		"scene" : "res://Items/Weapons/Scenes/TripleBarrelPistol.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/TripleBarrelPistol.png"
-	},
-	"laser-shotgun" : {
-		"key" : "laser-shotgun",
-		"name" : "LASER_SHOTGUN_ITM",
-		"tier" : ToolTipGenerator.TIERS.CAVE,
-		"scene" : "res://Items/Weapons/Scenes/LaserShotgun.tscn",
-		"slotTexture" : "res://Items/Weapons/Sprites/LaserShotgun.png"
 	},
 	"sniper-rifle" : {
 		"key" : "sniper-rifle",
 		"name" : "SNIPER_RIFLE_ITM",
-		"tier" : ToolTipGenerator.TIERS.CAVE,
+		"tier" : ToolTipGenerator.TIERS.LAB,
 		"scene" : "res://Items/Weapons/Scenes/SniperRifle.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/SniperRifle.png"
 	},
 	# DEEP LABS ITEMS
+	"fire-shotgun" : {
+		"key" : "fire-shotgun",
+		"name" : "FIRE_SHOTGUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/FireShotgun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/FireShotgun.png"
+	},
+	"flamethrower" : {
+		"key" : "flamethrower",
+		"name" : "FLAMETHROWER_ITM",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/FlameThrower.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Flamethrower.png"
+	},
 	"assault-rifle" : {
 		"key" : "assault-rifle",
 		"name" : "ASSAULT_RIFLE_ITM",
 		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
 		"scene" : "res://Items/Weapons/Scenes/AssaultRifle.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/AssaultRifle.png"
-	},
-	"minigun" : {
-		"key" : "minigun",
-		"name" : "MINIGUN_ITM",
-		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
-		"scene" : "res://Items/Weapons/Scenes/Minigun.tscn",
-		"slotTexture" : "res://Items/Weapons/Sprites/Minigun.png"
-	},
-	"multishot-boomerang" : {
-		"key" : "multishot-boomerang",
-		"name" : "MULTISHOT_BOOMERANG_ITM",
-		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
-		"scene" : "res://Items/Weapons/Scenes/MultishotBoomerang.tscn",
-		"slotTexture" : "res://Items/Weapons/Sprites/MultishotBoomerang.png"
 	},
 	"burst-shotgun" : {
 		"key" : "burst-shotgun",
@@ -146,6 +117,20 @@ const ITEMS = {
 		"slotTexture" : "res://Items/Weapons/Sprites/SplinterGun.png"
 	},
 	# FREEZERS ITEMS
+	"homing-boomerang" : {
+		"key" : "homing-boomerang",
+		"name" : "HOMING_BOOMERANG_ITM",
+		"tier" : ToolTipGenerator.TIERS.CAVE,
+		"scene" : "res://Items/Weapons/Scenes/HomingBoomerang.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/HomingBoomerang.png"
+	},
+	"minigun" : {
+		"key" : "minigun",
+		"name" : "MINIGUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/Minigun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/Minigun.png"
+	},
 	"j-laser" : {
 		"key" : "j-laser",
 		"name" : "J_LASER_ITM",
@@ -189,6 +174,13 @@ const ITEMS = {
 		"slotTexture" : "res://Items/Weapons/Sprites/Freezer.png"
 	},
 	# TOXIC CAVERNS ITEMS
+	"laser-shotgun" : {
+		"key" : "laser-shotgun",
+		"name" : "LASER_SHOTGUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
+		"scene" : "res://Items/Weapons/Scenes/LaserShotgun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/LaserShotgun.png"
+	},
 	"bullet-chainsaw" : {
 		"key" : "bullet-chainsaw",
 		"name" : "BULLET_CHAINSAW_ITM",
@@ -223,6 +215,13 @@ const ITEMS = {
 		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
 		"scene" : "res://Items/Weapons/Scenes/FatnoseShotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/FatnoseShotgun.png"
+	},
+	"multishot-boomerang" : {
+		"key" : "multishot-boomerang",
+		"name" : "MULTISHOT_BOOMERANG_ITM",
+		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
+		"scene" : "res://Items/Weapons/Scenes/MultishotBoomerang.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/MultishotBoomerang.png"
 	},
 	# TECH LABS ITEMS
 	"electroneer" : {

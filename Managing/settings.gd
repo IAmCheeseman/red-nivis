@@ -30,7 +30,7 @@ func load_settings() -> void:
 		newKey.scancode = OS.find_scancode_from_string(keybinds[i])
 		if "InputEventMouseButton" in keybinds[i]: 
 			newKey = InputEventMouseButton.new()
-			if "BUTTON_LEFT" in keybinds[i]: newKey.button_index = BUTTON_LEFT
+			if   "BUTTON_LEFT" in keybinds[i]: newKey.button_index = BUTTON_LEFT
 			elif "BUTTON_RIGHT" in keybinds[i]: newKey.button_index = BUTTON_RIGHT
 			elif "BUTTON_XBUTTON1" in keybinds[i]: newKey.button_index = BUTTON_XBUTTON1
 			elif "BUTTON_XBUTTON2" in keybinds[i]: newKey.button_index = BUTTON_XBUTTON2
@@ -104,7 +104,6 @@ var brightness := 1.0
 
 
 # Gameplay
-
 var speedrunTimer      := false
 var doubleDamageMode   := false
 
@@ -114,7 +113,6 @@ var controllerKeybinds := {}
 
 
 # Audio
-
 var masterVol := 1.0
 var sfx := 1.0
 var music := 1.0
