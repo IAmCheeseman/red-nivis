@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabsAtmosphere.gd" type="Script" id=1]
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=2]
@@ -73,6 +73,14 @@ color_ramp = SubResource( 9 )
 anim_offset = 1.0
 anim_offset_random = 1.0
 
+[sub_resource type="Animation" id=21]
+length = 0.001
+
+[sub_resource type="Animation" id=17]
+resource_name = "Robots"
+length = 10.0
+loop = true
+
 [node name="LabsAtmosphere" type="Node2D"]
 z_index = -2
 script = ExtResource( 1 )
@@ -83,9 +91,6 @@ margin_left = -1841.0
 margin_top = -1841.0
 margin_right = 1841.0
 margin_bottom = 1841.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Particles" type="Particles2D" parent="."]
 modulate = Color( 1, 1, 1, 0.247059 )
@@ -97,3 +102,7 @@ preprocess = 1.5
 visibility_rect = Rect2( -1000, -1000, 2000, 2000 )
 process_material = SubResource( 5 )
 texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 21 )
+anims/Robots = SubResource( 17 )

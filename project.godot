@@ -575,7 +575,7 @@ window/size/height=220
 window/size/test_width=1080
 window/size/test_height=660
 window/vsync/use_vsync=false
-window/stretch/mode="2d"
+window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
 [editor]
