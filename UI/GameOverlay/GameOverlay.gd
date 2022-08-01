@@ -50,7 +50,7 @@ func _process(_delta: float) -> void:
 	if playerData.isReloading:
 		reloadNotif.text = "..."
 	else:
-		reloadNotif.text = "%s/%s ammo" % [playerData.ammo, playerData.maxAmmo]
+		reloadNotif.text = "%s/%s" % [playerData.ammo, playerData.maxAmmo]
 
 	if Settings.speedrunTimer:
 		var seconds = str(int(playerData.time) % 60)
@@ -58,7 +58,7 @@ func _process(_delta: float) -> void:
 # warning-ignore:integer_division
 		var minutes = str(int(playerData.time) % 3600 / 60)
 # warning-ignore:integer_division
-		time.text = "Time\n%s:%s" % [minutes, seconds]
+		time.text = "Time \n%s:%s " % [minutes, seconds]
 	else:
 		time.text = ""
 
@@ -67,7 +67,7 @@ func update_health(_kb:Vector2) -> void:
 	healthBar.value = playerData.health
 	healthBar.max_value = playerData.maxHealth
 	
-	healthLabel.text = "%s/%s HP" % [playerData.health, playerData.maxHealth]
+	healthLabel.text = "%s/%s" % [playerData.health, playerData.maxHealth]
 
 
 
