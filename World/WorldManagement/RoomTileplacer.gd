@@ -9,7 +9,10 @@ enum TILES { SURR=0, LEFT=1, UP=2, RIGHT=3, DOWN=4 }
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
 var biome:WorldArea
 var room:Node
-var roomI:Image
+
+var width: int
+var height: int
+
 var brokenTiles = {}
 
 
@@ -30,7 +33,6 @@ func create_room() -> void:
 		t.queue_free()
 	biome = worldData.get_biome_by_index(worldData.rooms\
 		[worldData.position.x][worldData.position.y].biome)
-
 
 	MusicManager.set_music(biome.music)
 
@@ -93,12 +95,13 @@ func create_room() -> void:
 			var idx = _cr.biomes.find(biome)
 			room.queue_free()
 			room = _cr.biomeSpecific[idx].instance()
-
-	# Adding the tiles
-	if room:
 		create_constant_room(connections)
 	else:
-		create_random_room(connections)
+		room = load(biome.roomTemplates + "Room%s.tscn" % [ceil(rand_range(0, biome.roomCount))]).instance()
+		create_constant_room(connections)
+		width = world.solids.get_used_rect().end.x
+		height = world.solids.get_used_rect().end.y
+		spawn_enemies()
 
 	var roomSize = world.solids.get_used_rect().end
 	create_loading_zone(Vector2(-32/16, roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.LEFT) # Left
@@ -216,6 +219,9 @@ func create_constant_room(connections) -> void:
 		world.solids.update_bitmask_area(i)
 		world.background.set_cellv(i, roomS.get_cellv(i))
 		world.background.update_bitmask_area(i)
+		world.nonViableEnemySpawns.append(i)
+		for j in [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]:
+			world.nonViableEnemySpawns.append(i + j)
 	roomS.queue_free()
 	# Background
 	var roomBG:TileMap = room.BG
@@ -278,55 +284,6 @@ func create_constant_room(connections) -> void:
 					var pos = Vector2(0, y)
 					world.solids.set_cellv(pos, 0)
 					world.solids.update_bitmask_area(pos)
-
-func create_random_room(connections) -> void:
-	roomI = RoomGenerator.generate(
-		randi(),
-		biome.roomTemplates,
-# warning-ignore:integer_division
-		int(float(biome.roomTemplates.get_width())/float(RoomGenerator.TEMPLATE_SIZE)),
-		connections
-	)
-
-	# Placing the props
-	roomI.lock()
-	for x in roomI.get_width():
-		for y in roomI.get_height():
-			var pixel:Color = roomI.get_pixel(x, y)
-			# If is solid tile
-			if pixel.is_equal_approx(RoomGenerator.TILE):
-				world.solids.set_cell(x, y, 0)
-				world.solids.update_bitmask_area(Vector2(x, y))
-
-				world.background.set_cell(x, y, 0)
-				world.background.update_bitmask_area(Vector2(x, y))
-				for i in 3:
-					var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
-					world.background.set_cell(x+plus.x, y+plus.y, 0)
-					world.background.update_bitmask_area(Vector2(x, y)+plus)
-
-# warning-ignore:narrowing_conversion
-				if rand_range(0, 1) < .5 and roomI.get_pixel(x, clamp(y+1, 0, roomI.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					if biome.decorator.roofProps.size() > 0: add_props(biome.decorator.roofProps, biome.decorator.roofPropsChance, x, y+1)
-# warning-ignore:narrowing_conversion
-				if rand_range(0, 1) < .5 and roomI.get_pixel(x, clamp(y-1, 0, roomI.get_height()-1)).is_equal_approx(RoomGenerator.EMPTY):
-					if biome.decorator.groundProps.size() > 0: add_props(biome.decorator.groundProps, biome.decorator.groundPropsChance, clamp(x, 2, roomI.get_width()-2), y)
-			# If is platform
-			elif pixel.is_equal_approx(RoomGenerator.PLATFORM):
-				world.platforms.set_cell(x, y, 0)
-				world.platforms.update_bitmask_area(Vector2(x, y))
-
-				world.background.set_cell(x, y, 0)
-				world.background.update_bitmask_area(Vector2(x, y))
-				var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
-				world.background.set_cell(x+plus.x, y+plus.y, 0)
-				world.background.update_bitmask_area(Vector2(x, y)+plus)
-			# If is empty
-			if roomI.get_pixel(x, y).is_equal_approx(RoomGenerator.EMPTY):
-				world.viableEnemySpawns.append(Vector2(x, y))
-
-	# Enemy Spawning
-	spawn_enemies()
 
 func create_loading_zone(pos:Vector2, size:Vector2, direction:Vector2) -> void:
 	var area = Area2D.new()
@@ -412,20 +369,22 @@ func add_props(propArr:Array, chances:Array, x, y) -> void:
 		world.props.add_child(prop)
 		break
 
+
+
 func spawn_enemies() -> void:
 	if worldData.get_current_room().cleared: return
-	if !roomI is Image: return
-	world.viableEnemySpawns.shuffle()
 	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
-# warning-ignore:integer_division
-# warning-ignore:integer_division
+	
 	var enemyCount = ceil(
-		(roomI.get_width() / Globals.TEMPLATE_SIZE) \
-		* (roomI.get_height() / Globals.TEMPLATE_SIZE))
+		(width / Globals.TEMPLATE_SIZE) \
+		* (height / Globals.TEMPLATE_SIZE)) * 2
+	
 	for i in enemyCount:
-		if world.viableEnemySpawns.size() == 0:
-			break
-		var spawnPos:Vector2 = world.viableEnemySpawns.pop_front()
+		var spawnPos: Vector2
+		while true:
+			spawnPos = Vector2(rand_range(1, width-1), rand_range(1, height-1))
+			if !spawnPos.round() in world.nonViableEnemySpawns: break
+		
 		var spawner = preload("res://Entities/Effects/EnemySpawn.tscn").instance()
 		spawner.position = spawnPos*world.solids.cell_size
 		spawner.position.x += world.solids.cell_size.x*.5

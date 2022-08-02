@@ -25,7 +25,8 @@ export var connectionChance:float = .05
 
 # Room Gen
 export(Resource) var decorator: Resource
-export var roomTemplates:StreamTexture = preload("res://World/Templates/LabTemplates.png")
+export var roomCount: int = 1
+export var roomTemplates: String = "res://World/Templates/Labs/"
 
 # Other
 

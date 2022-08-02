@@ -23,7 +23,7 @@ export var automaticBlockRemoval := true
 
 var waves := 0
 var lockedIn: bool
-var viableEnemySpawns := []
+var nonViableEnemySpawns := []
 var exitBlockers := []
 
 signal added_enemies

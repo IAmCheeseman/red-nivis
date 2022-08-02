@@ -1,11 +1,10 @@
-[gd_resource type="Resource" load_steps=11 format=2]
+[gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://World/WorldManagement/WorldArea.gd" type="Script" id=1]
 [ext_resource path="res://World/EnviormentalArt/Caves/StoneBG.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/EnviormentalArt/Caves/StonePlatforms.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/EnviormentalArt/Caves/Stone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/EnemyPools/CavesDefault.tres" type="Resource" id=5]
-[ext_resource path="res://World/Templates/CaveTemplates.png" type="Texture" id=6]
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolidsBroken.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/EnviormentalArt/Caves/MaintenenceRoomsAmbience.ogg" type="AudioStream" id=8]
 [ext_resource path="res://World/Decorators/CavesDecorator.tres" type="Resource" id=9]
@@ -31,5 +30,6 @@ growChance = 0.5
 middleRemovalChance = 0.666
 connectionChance = 0.12
 decorator = ExtResource( 9 )
-roomTemplates = ExtResource( 6 )
+roomCount = 1
+roomTemplates = "res://World/Templates/Labs/"
 enemyPools = [ ExtResource( 5 ) ]
