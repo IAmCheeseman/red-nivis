@@ -12,7 +12,7 @@ func _ready() -> void:
 	material = CanvasItemMaterial.new()
 	material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	clear_points()
 	
 	add_point(Vector2.ZERO)
