@@ -99,7 +99,7 @@ func create_room() -> void:
 	else:
 		var idx = ceil(rand_range(0, biome.roomCount))
 		room = load(biome.roomTemplates + "Room%s.tscn" % [idx]).instance()
-		print(idx)
+
 		create_constant_room(connections)
 		width = world.solids.get_used_rect().end.x
 		height = world.solids.get_used_rect().end.y

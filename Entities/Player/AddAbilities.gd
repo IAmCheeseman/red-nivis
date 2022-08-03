@@ -18,5 +18,4 @@ func add_abilities() -> void:
 		
 		match newAbility.name:
 			"Grenade":
-				print("oi!")
 				playerData.emit_signal("updateGrenade", 15, true)
