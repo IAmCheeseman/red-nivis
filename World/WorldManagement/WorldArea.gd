@@ -25,7 +25,7 @@ export var connectionChance:float = .05
 
 # Room Gen
 export(Resource) var decorator: Resource
-export var roomCount: int = 3
+export var roomCount: int = 9
 export var roomTemplates: String = "res://World/Templates/Labs/"
 
 # Other

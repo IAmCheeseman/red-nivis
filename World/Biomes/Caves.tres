@@ -30,6 +30,6 @@ growChance = 0.5
 middleRemovalChance = 0.666
 connectionChance = 0.12
 decorator = ExtResource( 9 )
-roomCount = 3
+roomCount = 9
 roomTemplates = "res://World/Templates/Labs/"
 enemyPools = [ ExtResource( 5 ) ]
