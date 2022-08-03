@@ -24,13 +24,13 @@
 [ext_resource path="res://World/Tutorial/SuicideEncouragement.tres" type="Resource" id=22]
 [ext_resource path="res://Items/Weapons/Bullet/bulletParticles.png" type="Texture" id=23]
 [ext_resource path="res://Entities/NPC/LmaoMan/LmaoMan.tscn" type="PackedScene" id=24]
-[ext_resource path="res://UI/Assets/Prompts/S_KB.png" type="Texture" id=25]
-[ext_resource path="res://UI/Assets/Prompts/A_KB.png" type="Texture" id=26]
-[ext_resource path="res://UI/Assets/Prompts/D_KB.png" type="Texture" id=27]
+[ext_resource path="res://UI/Assets/Prompts/s_kb.tres" type="Texture" id=25]
+[ext_resource path="res://UI/Assets/Prompts/a_kb.tres" type="Texture" id=26]
+[ext_resource path="res://UI/Assets/Prompts/d_kb.tres" type="Texture" id=27]
 [ext_resource path="res://World/Tutorial/Prompts.gd" type="Script" id=28]
-[ext_resource path="res://UI/Assets/Prompts/Space_KB.png" type="Texture" id=29]
-[ext_resource path="res://UI/Assets/Prompts/Mouse_Left_KB.png" type="Texture" id=30]
-[ext_resource path="res://UI/Assets/Prompts/Mouse_Right_KB.png" type="Texture" id=31]
+[ext_resource path="res://UI/Assets/Prompts/space_kb.tres" type="Texture" id=29]
+[ext_resource path="res://UI/Assets/Prompts/mouse_left_kb.tres" type="Texture" id=30]
+[ext_resource path="res://UI/Assets/Prompts/mouse_right_kb.tres" type="Texture" id=31]
 [ext_resource path="res://World/Tutorial/LyingDownAG.tscn" type="PackedScene" id=32]
 
 [sub_resource type="Animation" id=7]
@@ -439,38 +439,32 @@ use_parent_material = true
 [node name="AKb" type="Sprite" parent="Props/Prompts/ArrowKeys"]
 use_parent_material = true
 position = Vector2( -11, -97 )
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
 [node name="DKb" type="Sprite" parent="Props/Prompts/ArrowKeys"]
 use_parent_material = true
 position = Vector2( 11, -97 )
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 27 )
 
 [node name="SKb" type="Sprite" parent="Props/Prompts"]
 use_parent_material = true
 position = Vector2( 504, 20 )
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 25 )
 
 [node name="SpaceKb" type="Sprite" parent="Props/Prompts"]
 use_parent_material = true
 position = Vector2( 0, -64 )
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 29 )
 
 [node name="LMBKb" type="Sprite" parent="Props/Prompts"]
 visible = false
 use_parent_material = true
 position = Vector2( 1238, -81 )
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 30 )
 
 [node name="RMBKb" type="Sprite" parent="Props/Prompts"]
 use_parent_material = true
 position = Vector2( 1743, -51 )
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 31 )
 
 [node name="Scanner" parent="Props" instance=ExtResource( 5 )]

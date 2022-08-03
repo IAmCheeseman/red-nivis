@@ -27,8 +27,8 @@ func _on_prompt_action_changed() -> void:
 		var newButton = $Content/TextureRect.duplicate()
 		
 		var inputEvent: InputEvent = InputMap.get_action_list(i)[0]
-		var text = "%s_KB.png" % inputEvent.as_text()
-		#yield(TempTimer.idle_frame(self), "timeout")
+		var text = "%s_kb.tres" % inputEvent.as_text().to_lower()
+		print(text)
 		
 		newButton.texture = load("res://UI/Assets/Prompts/%s" % text)
 		newButton.show()

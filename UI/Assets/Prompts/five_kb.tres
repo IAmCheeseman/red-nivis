@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/Prompts.png-8e9c1ae715c559097abb1194ba761163.stex"
+
+[resource]
+atlas = SubResource( 1 )
+region = Rect2( 45, 0, 9, 10 )

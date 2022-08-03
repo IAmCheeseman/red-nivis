@@ -127,7 +127,6 @@ script = ExtResource( 6 )
 isNegative = true
 
 [node name="Prompts" type="VBoxContainer" parent="CanvasLayer"]
-visible = false
 anchor_bottom = 1.0
 alignment = 2
 
@@ -135,7 +134,7 @@ alignment = 2
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 213.0
-margin_right = 15.0
+margin_right = 30.0
 margin_bottom = 220.0
 promptText = "Exit"
 promptAction = "pause,interact"
