@@ -54,4 +54,5 @@ anims/Default = SubResource( 3 )
 position = Vector2( 1, -34 )
 
 [node name="Dialog" parent="Dialog" index="0"]
+npcName = "Old Man"
 dialog = ExtResource( 3 )

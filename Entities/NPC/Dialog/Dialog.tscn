@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/NPC/Dialog/DialogBox.png" type="Texture" id=1]
 [ext_resource path="res://Entities/NPC/Dialog/Dialog.gd" type="Script" id=2]
-[ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://UI/Assets/Coolville.tres" type="DynamicFont" id=3]
 [ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Entities/NPC/Dialog/DefaultDialog.tres" type="Resource" id=5]
 [ext_resource path="res://Managing/SoundManager.gd" type="Script" id=6]
@@ -11,12 +11,6 @@
 
 [sub_resource type="CanvasItemMaterial" id=2]
 light_mode = 1
-
-[sub_resource type="DynamicFont" id=6]
-size = 4
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 3 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 8 )
@@ -94,7 +88,7 @@ margin_left = -25.0
 margin_top = -20.0
 margin_right = -4.0
 margin_bottom = -15.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 3 )
 text = "[Name]"
 
 [node name="Text" type="RichTextLabel" parent="."]

@@ -38,9 +38,10 @@ func _ready() -> void:
 	if fontOverride: text.add_font_override("normal_font", fontOverride)
 
 
-func _process(delta: float) -> void:
-	get_parent().position.y += sin(time) * delta
-	time += delta
+#func _process(delta: float) -> void:
+#	get_parent().position.y += sin(time) * delta
+#	rect_global_position = get_parent().global_position.round()
+#	time += delta
 
 
 func start_dialog(interaction:String="Introduction") -> void:
