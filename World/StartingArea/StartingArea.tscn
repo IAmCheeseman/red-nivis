@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/ScreenTransition.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Managing/Colliders/LoadingZone.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/StartingArea/StartingArea.gd" type="Script" id=12]
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=13]
+[ext_resource path="res://World/EnviormentalArt/BackGrounds/MountainsFar.png" type="Texture" id=14]
 [ext_resource path="res://World/EnviormentalArt/SurfaceBG.tscn" type="PackedScene" id=15]
 [ext_resource path="res://World/EnviormentalArt/BackGrounds/Clouds.png" type="Texture" id=16]
 [ext_resource path="res://World/Props/Constructor/Constructor.tscn" type="PackedScene" id=17]
@@ -105,10 +106,17 @@ layer = -5
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Backgrounds"]
 
 [node name="Sky" type="TextureRect" parent="Backgrounds/ParallaxBackground"]
-modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 16 )
+expand = true
+stretch_mode = 2
+
+[node name="Sky2" type="TextureRect" parent="Backgrounds/ParallaxBackground"]
+modulate = Color( 0.972549, 0.752941, 0.541176, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 14 )
 expand = true
 stretch_mode = 2
 
@@ -120,9 +128,6 @@ margin_left = 274.0
 margin_top = 3.0
 margin_right = 711.0
 margin_bottom = 437.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Lab" parent="." instance=ExtResource( 9 )]
 light_mask = 0
@@ -250,7 +255,7 @@ remote_path = NodePath("../../Snow")
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.262745, 0.262745, 0.262745, 1 )
+color = Color( 0.972549, 0.752941, 0.541176, 1 )
 
 [node name="Wind" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
