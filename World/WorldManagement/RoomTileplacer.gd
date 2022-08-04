@@ -377,9 +377,9 @@ func spawn_enemies() -> void:
 	if worldData.get_current_room().cleared: return
 	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
 	
-	var enemyCount = ceil(
+	var enemyCount = clamp(ceil(
 		(width / Globals.TEMPLATE_SIZE) \
-		* (height / Globals.TEMPLATE_SIZE)) * 2
+		* (height / Globals.TEMPLATE_SIZE)) * 2, 1, INF)
 	
 	for i in enemyCount:
 		var spawnPos: Vector2
