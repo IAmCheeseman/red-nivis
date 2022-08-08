@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
 [ext_resource path="res://Entities/NPC/David/David.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Sploder/Sploder.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -43,5 +44,8 @@ shape = SubResource( 1 )
 [node name="David" parent="." instance=ExtResource( 8 )]
 position = Vector2( 267, 264 )
 defaultDialog = "FunFact1"
+
+[node name="Sploder" parent="." instance=ExtResource( 9 )]
+position = Vector2( 206, 235 )
 
 [editable path="CameraMoveZone"]

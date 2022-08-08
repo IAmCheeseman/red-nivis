@@ -14,9 +14,9 @@ uniform float steps = 3.0;
 
 void fragment() {
 	vec2 offset = vec2(cos(TIME) / speed, TIME / speed);
-	float realSize = abs(sin(TIME / 10.0)) / 3.14 * 2.0;
+	float realSize = abs(sin(TIME / 10.0)) / 6.0;
 	float alpha = texture(noise, UV + offset * size).r;
-	COLOR = vec4(texture(TEXTURE, UV).rgb, (step(alpha, realSize) + 2.0) * strength);
+	COLOR = vec4(texture(TEXTURE, UV).rgb, (step(alpha, .5 + realSize) + 2.0) * strength);
 }"
 
 [sub_resource type="OpenSimplexNoise" id=14]
