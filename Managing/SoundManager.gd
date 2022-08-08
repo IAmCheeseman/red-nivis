@@ -3,14 +3,14 @@ class_name SoundManager
 
 export var audio : AudioStream
 export var directional = false
-export(float, -80, 24) var volumeMod = 0
+export(float, -80, 24) var volumeMod = 0.0
 export(float, 1, 100) var pitchShiftRange:float = 1
 export var autoplay := false
 export var loop := false
 export var attenuation := 5.0
 export var maxDist := 2000.0
 export var freeOnFinish := false
-export(String, "Master", "Ambient", "Music", "SFX", "Reverb", "ReverbLow") var bus = 0
+export(String, "Master", "Ambient", "Music", "SFX", "Reverb", "ReverbLow") var bus
 
 signal finished
 

@@ -13,9 +13,10 @@ uniform float speed = 250.0;
 uniform float steps = 3.0;
 
 void fragment() {
-	vec2 offset = vec2(0, TIME / speed);
+	vec2 offset = vec2(cos(TIME) / speed, TIME / speed);
+	float realSize = abs(sin(TIME / 10.0)) / 3.14 * 2.0;
 	float alpha = texture(noise, UV + offset * size).r;
-	COLOR = vec4(texture(TEXTURE, UV).rgb, alpha * strength);
+	COLOR = vec4(texture(TEXTURE, UV).rgb, (step(alpha, realSize) + 2.0) * strength);
 }"
 
 [sub_resource type="OpenSimplexNoise" id=14]
@@ -27,8 +28,8 @@ noise = SubResource( 14 )
 
 [sub_resource type="ShaderMaterial" id=13]
 shader = SubResource( 15 )
-shader_param/strength = 0.301
-shader_param/size = 5.905
+shader_param/strength = 0.033
+shader_param/size = 5.6
 shader_param/speed = 2500.0
 shader_param/steps = 0.0
 shader_param/noise = SubResource( 16 )

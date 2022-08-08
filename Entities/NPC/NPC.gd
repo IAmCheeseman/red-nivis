@@ -104,7 +104,7 @@ func start_dialog(lines:String) -> void:
 	state = TALK
 	
 	PLAYER.playerObject.global_position = global_position + Vector2(shove, -2)
-	PLAYER.playerObject.sprite.scale.x = shove / shove
+	PLAYER.playerObject.sprite.scale.x = float(shove) / shove
 
 
 func _on_dialog_finished() -> void:
