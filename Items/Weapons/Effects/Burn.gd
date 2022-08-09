@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 	var par = get_parent()
 	if !par is KinematicBody2D: par = par.get_parent()
-	var sprite = par.get_node("Sprite")
+	var sprite = par.get_node("Sprite") if par.has_node("Sprite") else null
 	
 	particles = preload("res://Items/Weapons/Effects/BurnEffect.tscn").instance()
 	particles.process_material = particles.process_material.duplicate()
