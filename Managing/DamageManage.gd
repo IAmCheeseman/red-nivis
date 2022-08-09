@@ -146,3 +146,4 @@ func _die(dir: Vector2) -> void:
 		Achievement.unlock("NO_HIT")
 
 	if freeOnDeath: par.queue_free()
+

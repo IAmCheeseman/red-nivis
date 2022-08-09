@@ -29,8 +29,12 @@ func _ready() -> void:
 	
 	particles = preload("res://Items/Weapons/Effects/BurnEffect.tscn").instance()
 	particles.process_material = particles.process_material.duplicate()
-	particles.process_material.emission_sphere_radius = (sprite.texture.get_width() / sprite.hframes)/ 2
-	sprite.add_child(particles)
+	if is_instance_valid(sprite):
+		particles.process_material.emission_sphere_radius = (sprite.texture.get_width() / sprite.hframes)/ 2
+		sprite.add_child(particles)
+	else:
+		particles.process_material.emission_sphere_radius = 12
+		par.add_child(particles)
 
 
 func _finish() -> void:

@@ -4,11 +4,11 @@
 [ext_resource path="res://Entities/Enemies/Sploder/Sploder.gd" type="Script" id=2]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Managing/Colliders/Hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entities/Enemies/Sploder/SploderCorpse.png" type="Texture" id=5]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/Effects/RobotSparks/RobotSparks.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Managing/Colliders/SoftCollision.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Entities/Enemies/MiniDeathMachine/MDMCorpse.png" type="Texture" id=12]
 
 [sub_resource type="CanvasItemMaterial" id=4]
 blend_mode = 1
@@ -122,9 +122,9 @@ position = Vector2( 0, 2 )
 shape = SubResource( 11 )
 
 [node name="DamageManager" parent="." instance=ExtResource( 8 )]
-maxHealth = 150
+maxHealth = 350
 difficulty = 0
-corpseSprites = [ ExtResource( 12 ) ]
+corpseSprites = [ ExtResource( 5 ) ]
 deathParticles = ExtResource( 9 )
 
 [node name="Timers" type="Node" parent="."]
@@ -139,6 +139,7 @@ one_shot = true
 [node name="RetreatTimer" type="Timer" parent="Timers"]
 one_shot = true
 
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 [connection signal="hit_object" from="Collisions/Hitbox" to="." method="_on_hit_object"]
 [connection signal="area_entered" from="Collisions/PlayerRange" to="." method="explode"]
 [connection signal="timeout" from="Timers/WanderTimer" to="." method="_on_wander_timer_timeout"]
