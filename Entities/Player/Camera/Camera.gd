@@ -72,7 +72,8 @@ func _process(_delta: float) -> void:
 		global_position += (dirMouse*mouseDist)*int(mouseWeight)
 #		global_position.y -= 16*3
 	else:
-		global_position = zoomTarget 
+		global_position = zoomTarget
+	global_position = global_position.round()
 
 func set_limits(val) -> void:
 	limits = val
