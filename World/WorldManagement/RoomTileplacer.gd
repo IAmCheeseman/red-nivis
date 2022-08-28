@@ -378,7 +378,9 @@ func spawn_enemies() -> void:
 	var enemyPool = biome.enemyPools[rand_range(0, biome.enemyPools.size())]
 	
 	var enemyCount = clamp(ceil(
+# warning-ignore:integer_division
 		(width / Globals.TEMPLATE_SIZE) \
+# warning-ignore:integer_division
 		* (height / Globals.TEMPLATE_SIZE)) * 2, 1, INF)
 	
 	for i in enemyCount:

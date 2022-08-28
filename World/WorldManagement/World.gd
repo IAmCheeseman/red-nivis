@@ -121,9 +121,16 @@ func _on_enemies_cleared(remove:bool=automaticBlockRemoval) -> void:
 
 	var currRoom = worldData.get_current_room()
 	if currRoom.cleared or currRoom.constantRoom: return
-	var clearEffectPos = roomClearer.lastKilledEnemyPos
-	var newClearEffect = preload("res://World/VisualEffects/RoomClear.tscn").instance()
-	newClearEffect.global_position = clearEffectPos
-	GameManager.spawnManager.spawn_object(newClearEffect)
-	GameManager.frameFreezer.freeze_frames(.2)
+	for i in rand_range(2, 4):
+		var clearEffectPos = player.global_position
+		clearEffectPos += Vector2(
+			rand_range(-48, 48),
+			-rand_range(0, 16)
+		)
+		var newClearEffect = preload("res://Entities/Effects/Confetti/Confetti.tscn").instance()
+		newClearEffect.global_position = clearEffectPos
+		newClearEffect.emitting = true
+		newClearEffect.rotation = rand_range(-PI / 2, 0)
+		GameManager.spawnManager.spawn_object(newClearEffect)
+		GameManager.frameFreezer.freeze_frames(.2)
 
