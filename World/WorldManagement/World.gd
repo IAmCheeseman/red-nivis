@@ -32,15 +32,12 @@ func _ready() -> void:
 	AudioServer.set_bus_effect_enabled(4, 0, true)
 	AudioServer.set_bus_effect_enabled(5, 0, true)
 	
-	
 	if !worldData.get_current_room().discovered:
 		player.playerData.score += Globals.ROOM_POINTS
 	generator.create_room()
 	seed(worldData.position.x*worldData.position.y)
 	lockedIn = rand_range(0, 1) < .2
-	if worldData.get_current_room().cleared:
-		for i in exitBlockers: i.queue_free()
-		exitBlockers.clear()
+	
 	if worldData.playerPos != Vector2.ZERO:
 		player.global_position = worldData.playerPos
 		worldData.playerPos = Vector2.ZERO
@@ -63,6 +60,12 @@ func _ready() -> void:
 
 	if worldData.savePosition == Vector2.ZERO: worldData.savePosition = worldData.position
 	GameManager.save_run()
+	
+	yield(TempTimer.idle_frame(self), "timeout")
+	
+	if worldData.get_current_room().cleared:
+		for i in exitBlockers: i.queue_free()
+		exitBlockers.clear()
 
 
 func _process(delta: float) -> void:
