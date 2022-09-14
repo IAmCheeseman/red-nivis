@@ -61,7 +61,7 @@ func _ready() -> void:
 	if worldData.savePosition == Vector2.ZERO: worldData.savePosition = worldData.position
 	GameManager.save_run()
 	
-	yield(TempTimer.idle_frame(self), "timeout")
+	yield(TempTimer.idle_frame(self, 6), "timeout")
 	
 	if worldData.get_current_room().cleared:
 		for i in exitBlockers: i.queue_free()

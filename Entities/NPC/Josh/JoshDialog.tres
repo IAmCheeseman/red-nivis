@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Entities/NPC/Dialog/DialogInteraction.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+dialog = [ [ "Distress", "Hello...", "I lost my skeleton.", "Could you help me out?" ], [ "CheckIn", "Did you get my skeleton?", "I need it back soon." ], [ "HandIn", "YAY!", "Thank you, Mr. Astronaut guy.", "t:0.5" ] ]

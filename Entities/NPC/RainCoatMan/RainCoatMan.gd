@@ -50,7 +50,7 @@ func add_explosion(size:int=32) -> void:
 
 func _on_start_talking() -> void:
 	if !QuestManager.is_quest_active("matthews_bomb"): return
-	if QuestManager.is_quest_complete("matthews_bomb"):
+	if  QuestManager.is_quest_complete("matthews_bomb"):
 		defaultDialog = "Introduction"
 		idleAnim = "Default_Button"
 
