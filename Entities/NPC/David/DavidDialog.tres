@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "Oi, I'm David.", "I seemed to have lost me space box.", "Can you get it back for me?" ], [ "FunFact1", "Did you know...", "That you cannot use a pencil in space?", "The graphite can break off and choke the astronauts." ], [ "FunFact2", "Did you know...", "That when you go out into space, your body has no gravity applied to it.", "This makes it very hard to exercise." ], [ "FunFact3", "Did you know...", "That the vacuum of space is so strong, that it can pull all your organs out." ] ]
+dialog = [ [ "Introduction", "Oi, I'm David.", "I seemed to have lost me space box.", "No, you're not gonna get it back for me.", "I'll find it meself!" ], [ "FunFact1", "Did you know...", "That you cannot use a pencil in space?", "The graphite can break off and choke the astronauts." ], [ "FunFact2", "Did you know...", "That when you go out into space, your body has no gravity applied to it.", "This makes it very hard to exercise." ], [ "FunFact3", "Did you know...", "That the vacuum of space is so strong, that it can pull all your organs out." ] ]
