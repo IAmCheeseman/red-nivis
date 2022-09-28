@@ -1,7 +1,14 @@
 extends Node
 
 
-const BOMB = preload("res://Items/Upgrades/Grenade/Grenade.tscn")
+const BOMBS = [
+	{
+		"texture" : preload("res://Items/Upgrades/Grenade/Grenade.tscn"),
+		"explosion" : preload("res://Items/Upgrades/Grenade/Grenade.tscn")
+	},
+]
+
+var bomb = preload("res://Items/Upgrades/Grenade/Grenade.tscn")
 
 var baseThrowStrength := 1
 
@@ -22,7 +29,8 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("grenade") and cooldown.is_stopped():
-		var newBomb = BOMB.instance()
+		var newBomb = bomb.instance()
+		newBomb.explosion = BOMBS[player.playerData.bombType].explosion
 		newBomb.global_position = player.global_position - Vector2(0, 8)
 		var mousePos = player.get_local_mouse_position()
 		var throwStrength:float = clamp(mousePos.length() * 3, 0, 128 * 3)

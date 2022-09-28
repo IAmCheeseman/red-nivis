@@ -33,6 +33,8 @@ var healModMin := .5
 var kbMod := 1.0
 var bombDmgMod := 1.0
 
+var bombType := 0
+
 var frictMod := 1.0
 var minFrict := .05
 var accelMod := 1.0
