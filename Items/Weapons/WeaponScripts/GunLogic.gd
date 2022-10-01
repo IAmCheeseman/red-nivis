@@ -22,6 +22,9 @@ var targetPos:Vector2
 
 var meleeCharge := 0.0
 
+var atLvl1 := false
+var atLvl2 := false
+var atLvl3 := false
 
 # warning-ignore:unused_signal
 signal gun_shot(bullet)
@@ -63,9 +66,11 @@ func _physics_process(delta) -> void:
 
 	# Settling the rotation of the gun down after it's been kicked up
 	if meleeCharge != 0:
-		var angle := PI / 2
+		var angle := PI / 3
 		var percent := clamp(meleeCharge, 0, angle-0.01) / angle
-		pivot.rotation = (angle * -percent) + get_local_mouse_position().angle()
+		var mousePos := get_local_mouse_position()
+		angle *= 1 if mousePos.x < 0 else -1
+		pivot.rotation = (angle * percent) + mousePos.angle()
 	elif !swinging:
 		if !playerData.playerObject.lockMovement:
 			var before = pivot.rotation
@@ -102,11 +107,18 @@ func _physics_process(delta) -> void:
 	if Input.is_action_pressed("melee")\
 	and !swinging\
 	and gun.meleeCooldown.is_stopped()\
-	and !GameManager.inGUI\
-	and playerData.stamina > 0:
+	and !GameManager.inGUI:
 		meleeCharge += delta
-	
-	
+		
+		if meleeCharge > 2 and !atLvl3:
+			gun.meleeLevelParticles.restart()
+			atLvl3 = true
+		elif meleeCharge > 1 and !atLvl2:
+			gun.meleeLevelParticles.restart()
+			atLvl2 = true
+		elif meleeCharge > 0.5 and !atLvl1:
+			gun.meleeLevelParticles.restart()
+			atLvl1 = true
 
 
 func pre_shoot() -> void:
@@ -135,21 +147,29 @@ func _input(event: InputEvent) -> void:
 		cooldownTimer.start(gun.reloadSpeed)
 		gun.isReloading = true
 	
-	if event.is_action_released("melee"):
-		if meleeCharge > 1.5:
-			melee(1.75, true)
+	if event.is_action_released("melee")\
+	and !swinging\
+	and gun.meleeCooldown.is_stopped()\
+	and !GameManager.inGUI:
+		if meleeCharge > 2:
+			melee(1.5, true)
 		elif meleeCharge > 1:
-			melee(1.30, true)
+			melee(1.25, true)
 		elif meleeCharge > 0.5:
-			melee(1.25, false)
+			melee(1, false)
+		else:
+			melee(0.5, false)
+		atLvl1 = false
+		atLvl2 = false
+		atLvl3 = false
+		
+		gun.meleeCooldown.start()
 		
 		meleeCharge = 0
 
 
 
-func melee(damage:=1.25, reflect:=true) -> void:
-	playerData.stamina -= 1 
-	
+func melee(damage:=1, reflect:=true) -> void:
 	var recoil = get_local_mouse_position().normalized()*gun.recoil
 	recoil.y /= 5
 	playerData.playerObject.vel += recoil
@@ -168,7 +188,7 @@ func melee(damage:=1.25, reflect:=true) -> void:
 	owner.add_child(newSwing)
 
 	var hb = newSwing.get_node("Hitbox")
-	hb.damage = gun.damage*damage if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride
+	hb.damage = gun.damage*damage if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride*damage
 
 	newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle)*8
 

@@ -20,9 +20,6 @@ export var friction:float = 3.0
 export var kbStrength:int = 45
 export var maxDashes:int = 1
 export var recoveryTime:float = 2.0
-export var maxStamina := 5
-export var staminaRecovery := 2.4
-export var stamRecovCurve: Curve
 export var tiltStrength:float = 5.0
 export var healTime := 2.0
 export var healMod := 1.0
@@ -64,8 +61,6 @@ var kills := 0
 var godmode := false
 var isReloading := false
 
-var stamina := 3 setget set_stamina
-
 var upgradeSlots = 2
 var upgrades := []
 var unlockedUpgrades := []
@@ -91,7 +86,6 @@ var deaths := 0
 signal healthChanged
 signal ammoChanged
 signal moneyChanged
-signal stamina_changed
 signal healMaterialChanged
 signal updateHealthUI
 # warning-ignore:unused_signal
@@ -137,10 +131,5 @@ func set_ammo(value:int) -> void:
 func set_heal_mat(value:int) -> void:
 	healMaterial = int(clamp(value, 0, 100))
 	emit_signal("healMaterialChanged")
-
-
-func set_stamina(val:int) -> void:
-	stamina = val
-	emit_signal("stamina_changed")
 
 

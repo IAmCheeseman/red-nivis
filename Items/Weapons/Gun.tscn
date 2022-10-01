@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Items/Weapons/Sounds/NoAmmoClick.wav" type="AudioStream" id=1]
 [ext_resource path="res://Managing/SoundManager.tscn" type="PackedScene" id=2]
@@ -6,6 +6,29 @@
 [ext_resource path="res://Items/Weapons/WeaponScripts/ProjectileBasedGun.gd" type="Script" id=4]
 [ext_resource path="res://Entities/Player/Assets/Hand.png" type="Texture" id=6]
 [ext_resource path="res://Items/Weapons/Gun.gd" type="Script" id=9]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.773109, 1 ), 0.0, 1.0728, 1, 0, Vector2( 1, 0 ), -17.6246, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 23.92
+angular_velocity = 109.92
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 89.21
+damping_random = 1.0
+angle = 90.0
+angle_random = 1.0
+scale = 4.0
+scale_random = 1.0
+scale_curve = SubResource( 3 )
 
 [node name="Gun" type="Node2D"]
 script = ExtResource( 9 )
@@ -32,6 +55,12 @@ texture = ExtResource( 6 )
 
 [node name="Hand2" type="Sprite" parent="Pivot/GunSprite"]
 texture = ExtResource( 6 )
+
+[node name="MeleeLevel" type="Particles2D" parent="Pivot/GunSprite"]
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 1 )
 
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true

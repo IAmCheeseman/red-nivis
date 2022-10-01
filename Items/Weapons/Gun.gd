@@ -52,6 +52,7 @@ onready var noAmmoClick = $NoAmmoClickSFX
 onready var cooldownTimer = $Cooldown
 onready var meleeCooldown = $MeleeCooldown
 onready var visuals = $Pivot/GunSprite
+onready var meleeLevelParticles := $Pivot/GunSprite/MeleeLevel
 onready var gunPos = visuals.position
 onready var ogSprite = visuals.texture
 
