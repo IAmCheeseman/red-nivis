@@ -1,6 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Entities/Player/Scripts/PlayerResource.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.554545 ), 0.0, -0.492273, 0, 0, Vector2( 0.0938775, 0.0636363 ), -19.6909, 0.0, 0, 0 ]
 
 [resource]
 script = ExtResource( 1 )
@@ -20,6 +23,9 @@ friction = 20.0
 kbStrength = 0
 maxDashes = 1
 recoveryTime = 2.0
+maxStamina = 3
+staminaRecovery = 2.3
+stamRecovCurve = SubResource( 1 )
 tiltStrength = 5.0
 healTime = 1.2
 healMod = 1.0
