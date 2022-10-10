@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=12 format=2]
+[gd_resource type="Resource" load_steps=11 format=2]
 
 [ext_resource path="res://World/Templates/LabTemplates.png" type="Texture" id=1]
 [ext_resource path="res://World/Decorators/Decorator.gd" type="Script" id=2]
@@ -10,12 +10,11 @@
 [ext_resource path="res://World/Props/LabStuff/Tables/BrainContainer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Props/LabStuff/Tables/SmallTableMetalEmpty.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Props/LabStuff/Tables/SmallTableWoodEmpty.tscn" type="PackedScene" id=10]
-[ext_resource path="res://World/Props/Foliage/Bush/Bush.tscn" type="PackedScene" id=11]
 
 [resource]
 script = ExtResource( 2 )
 roomTemplates = ExtResource( 1 )
 roofProps = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ) ]
 roofPropsChance = [ 0.5, 0.25, 0.5, 1.0 ]
-groundProps = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
-groundPropsChance = [ 1.0, 0.25, 0.5, 0.5, 0.75 ]
+groundProps = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ]
+groundPropsChance = [ 1.0, 0.25, 0.5, 0.5 ]
