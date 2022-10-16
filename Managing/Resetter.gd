@@ -9,7 +9,7 @@ static func reset() -> void:
 	var tradingPostData = preload("res://Entities/NPC/Birb/TradingPostData.tres")
 	
 	playerData.isDead = false
-	playerData.maxHealth = 3
+	playerData.maxHealth = 100
 	playerData.health = playerData.maxHealth
 	playerData.maxStamina = 3
 	playerData.speedMod = 1

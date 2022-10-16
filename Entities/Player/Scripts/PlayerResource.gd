@@ -101,7 +101,7 @@ signal updateAbilities
 
 
 func _init() -> void:
-	health = 3
+	health = 100
 
 
 func _on_damage_taken(damage: int, kbDir: Vector2) -> void:
