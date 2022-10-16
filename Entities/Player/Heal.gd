@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 			GameManager.currentCamera.zoom = lerp(
 				GameManager.currentCamera.zoom, Vector2(.9, .9), delta)
 		if value == max_value:
-			playerData.heal(1)
+			playerData.heal(playerData.maxHealth * 0.333)
 			finished = true
 			playerData.healMaterial = 0
 			healSfx.play()
