@@ -204,7 +204,7 @@ script = ExtResource( 7 )
 startCooldown = 0.1
 minCooldown = 0.05
 overheatShotCount = 3
-damage = 1
+damage = 30
 
 [node name="Sprite" type="Sprite" parent="Sprite/Minigun"]
 rotation = 1.5708

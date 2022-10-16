@@ -82,7 +82,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, 3 )
 collision_layer = 4
 collision_mask = 2
-damage = 1
+damage = 30
 
 [node name="CollisionShape2D" parent="Collisions/Hitbox" index="0"]
 rotation = 1.5708
