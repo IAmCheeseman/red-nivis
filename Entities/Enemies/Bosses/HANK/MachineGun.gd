@@ -6,6 +6,7 @@ onready var shootSFX = $ShootSFX
 onready var hank = owner
 
 export var totalShots := 30
+export var damage := 20
 var shots := 0
 
 const BULLET = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
@@ -28,6 +29,7 @@ func shoot() -> void:
 	newBullet.direction = global_position.direction_to(GameManager.player.global_position)
 	newBullet.global_position = global_position + (newBullet.direction * 24)
 	newBullet.speed = 100
+	newBullet.damage = damage
 	
 	GameManager.spawnManager.spawn_object(newBullet)
 	

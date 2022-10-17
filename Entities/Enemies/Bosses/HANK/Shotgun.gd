@@ -8,6 +8,7 @@ onready var hank = owner
 export var bullets := 8
 export var spread := 12
 export var flashTime := .8
+export var damage := 45
 
 const BULLET = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
 
@@ -40,6 +41,7 @@ func shoot() -> void:
 		newBullet.direction = dir
 		newBullet.global_position = global_position + (newBullet.direction * 24)
 		newBullet.speed = 100
+		newBullet.damage = damage
 
 		GameManager.spawnManager.spawn_object(newBullet)
 		

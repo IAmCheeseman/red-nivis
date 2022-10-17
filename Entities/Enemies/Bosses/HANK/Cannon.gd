@@ -7,6 +7,7 @@ onready var shootSFX = $ShootSFX
 onready var hank = owner
 
 export var flashTime := .8
+export var damage := 50
 
 const BULLET = preload("res://Entities/Enemies/EnemyBullet/EnemyBullet.tscn")
 
@@ -76,7 +77,7 @@ func create_bullet(dir, pos) -> Node2D:
 	newBullet.global_position = pos
 	newBullet.speed = 130
 	newBullet.scale *= 2
-	newBullet.damage = 2
+	newBullet.damage = damage
 	newBullet.connect("hitCollision", self, "_on_bullet_bounce")
 	
 	GameManager.spawnManager.spawn_object(newBullet)
