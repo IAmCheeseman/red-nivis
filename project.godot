@@ -149,6 +149,16 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/discord_game_sdk/discord_party_size.gdns"
 }, {
+"base": "Node",
+"class": "DiscordRPC",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/DiscordRPC.gd"
+}, {
+"base": "Reference",
+"class": "DiscordRPCEnum",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/DiscordRPCEnum.gd"
+}, {
 "base": "Reference",
 "class": "DiscordResult",
 "language": "NativeScript",
@@ -229,6 +239,31 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Managing/Colliders/Hurtbox.gd"
 }, {
+"base": "Reference",
+"class": "IPC",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/IPC.gd"
+}, {
+"base": "Reference",
+"class": "IPCModule",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/IPCModule.gd"
+}, {
+"base": "Reference",
+"class": "IPCPayload",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/IPCPayload.gd"
+}, {
+"base": "Reference",
+"class": "IPCPipe",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/pipe/IPCPipe.gd"
+}, {
+"base": "Reference",
+"class": "IPCUtil",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/util/IPCUtil.gd"
+}, {
 "base": "Resource",
 "class": "ImageManipulation",
 "language": "GDScript",
@@ -298,6 +333,21 @@ _global_script_classes=[ {
 "class": "Resetter",
 "language": "GDScript",
 "path": "res://Managing/Resetter.gd"
+}, {
+"base": "Reference",
+"class": "RichPresence",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/rich presence/RichPresence.gd"
+}, {
+"base": "Reference",
+"class": "RichPresenceButton",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/rich presence/RichPresenceButton.gd"
+}, {
+"base": "IPCModule",
+"class": "RichPresenceModule",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/rich presence/RichPresenceModule.gd"
 }, {
 "base": "Node",
 "class": "RoomGenerator",
@@ -394,6 +444,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Enemies/Bosses/Gnome/Stick.gd"
 }, {
+"base": "StreamPeerGDNative",
+"class": "StreamPeerUnix",
+"language": "NativeScript",
+"path": "res://addons/godot_editor_discord_presence/godot-unix-socket/unix-socket.gdns"
+}, {
 "base": "Reference",
 "class": "TempTimer",
 "language": "GDScript",
@@ -419,6 +474,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://General/Trail.gd"
 }, {
+"base": "Reference",
+"class": "URLUtil",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/util/URLUtil.gd"
+}, {
+"base": "Reference",
+"class": "UUID",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/util/UUID.gd"
+}, {
+"base": "IPCPipe",
+"class": "UnixPipe",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/pipe/UnixPipe.gd"
+}, {
+"base": "IPCPayload",
+"class": "UpdateRichPresencePayload",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/module/rich presence/UpdateRichPresencePayload.gd"
+}, {
 "base": "Resource",
 "class": "Upgrade",
 "language": "GDScript",
@@ -433,6 +508,11 @@ _global_script_classes=[ {
 "class": "Walker",
 "language": "GDScript",
 "path": "res://World/WorldManagement/Walker.gd"
+}, {
+"base": "IPCPipe",
+"class": "WindowsPipe",
+"language": "GDScript",
+"path": "res://addons/godot_editor_discord_presence/Discord RPC/ipc/pipe/WindowsPipe.gd"
 }, {
 "base": "Resource",
 "class": "WorldArea",
@@ -478,6 +558,8 @@ _global_script_class_icons={
 "DiscordLobbyTransaction": "",
 "DiscordOverlayManager": "",
 "DiscordPartySize": "",
+"DiscordRPC": "",
+"DiscordRPCEnum": "",
 "DiscordResult": "",
 "DiscordUser": "",
 "EFallingBullet": "",
@@ -494,6 +576,11 @@ _global_script_class_icons={
 "HPUp": "",
 "HomingEnemyBullet": "",
 "Hurtbox": "",
+"IPC": "",
+"IPCModule": "",
+"IPCPayload": "",
+"IPCPipe": "",
+"IPCUtil": "",
 "ImageManipulation": "",
 "Inventory": "",
 "ItemManagement": "",
@@ -508,6 +595,9 @@ _global_script_class_icons={
 "Quest": "",
 "QuestMap": "",
 "Resetter": "",
+"RichPresence": "",
+"RichPresenceButton": "",
+"RichPresenceModule": "",
 "RoomGenerator": "",
 "RoomLockIn": "",
 "RoomPlacer": "",
@@ -527,14 +617,20 @@ _global_script_class_icons={
 "SteamLeaderboardScoresDownloaded": "",
 "SteamUserStats": "",
 "StickBullet": "",
+"StreamPeerUnix": "",
 "TempTimer": "",
 "ToolTipGenerator": "",
 "Tooltip": "",
 "TradingPostData": "",
 "Trail": "",
+"URLUtil": "",
+"UUID": "",
+"UnixPipe": "",
+"UpdateRichPresencePayload": "",
 "Upgrade": "",
 "Utils": "",
 "Walker": "",
+"WindowsPipe": "",
 "WorldArea": "",
 "WorldData": "",
 "WorldGenerator": ""

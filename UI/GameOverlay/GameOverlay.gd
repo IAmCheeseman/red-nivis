@@ -45,12 +45,11 @@ func _ready() -> void:
 	if inventory.is_empty(): hide()
 
 
-
 func _process(_delta: float) -> void:
 	if playerData.isReloading:
 		reloadNotif.text = "..."
 	else:
-		reloadNotif.text = "%s/%s" % [playerData.ammo, playerData.maxAmmo]
+		reloadNotif.text = "%s" % playerData.ammo
 
 	if Settings.speedrunTimer:
 		var seconds = str(int(playerData.time) % 60)
