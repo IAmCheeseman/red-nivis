@@ -143,7 +143,7 @@ func grow_world() -> void:
 func get_biome_by_color(color:Color, getSecondary:bool=false):
 	for b in BIOMES.size():
 		var biome = BIOMES[b]
-		if (biome.mapColor.is_equal_approx(color)) or\
+		if biome.mapColor.is_equal_approx(color) or\
 		(biome.startingArea and color.is_equal_approx(STARTING_ROOM)) and !getSecondary:
 			return b
 		elif biome.secondaryColor.is_equal_approx(color) and getSecondary:
