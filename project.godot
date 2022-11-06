@@ -89,66 +89,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/NPC/Dialog/DialogInteraction.gd"
 }, {
-"base": "Reference",
-"class": "DiscordActivity",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_activity.gdns"
-}, {
-"base": "Reference",
-"class": "DiscordActivityAssets",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_activity_assets.gdns"
-}, {
-"base": "Reference",
-"class": "DiscordActivityManager",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_activity_manager.gdns"
-}, {
-"base": "Reference",
-"class": "DiscordActivityParty",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_activity_party.gdns"
-}, {
-"base": "Reference",
-"class": "DiscordActivitySecrets",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_activity_secrets.gdns"
-}, {
-"base": "",
-"class": "DiscordActivityTimestamps",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_activity_timestamps.gdns"
-}, {
-"base": "Reference",
-"class": "DiscordCore",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_core.gdns"
-}, {
-"base": "",
-"class": "DiscordLobby",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_lobby.gdns"
-}, {
-"base": "",
-"class": "DiscordLobbyManager",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_lobby_manager.gdns"
-}, {
-"base": "Reference",
-"class": "DiscordLobbyTransaction",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_lobby_transaction.gdns"
-}, {
-"base": "",
-"class": "DiscordOverlayManager",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_overlay_manager.gdns"
-}, {
-"base": "",
-"class": "DiscordPartySize",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_party_size.gdns"
-}, {
 "base": "Node",
 "class": "DiscordRPC",
 "language": "GDScript",
@@ -158,16 +98,6 @@ _global_script_classes=[ {
 "class": "DiscordRPCEnum",
 "language": "GDScript",
 "path": "res://addons/godot_editor_discord_presence/Discord RPC/DiscordRPCEnum.gd"
-}, {
-"base": "Reference",
-"class": "DiscordResult",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_result.gdns"
-}, {
-"base": "Reference",
-"class": "DiscordUser",
-"language": "NativeScript",
-"path": "res://addons/discord_game_sdk/discord_user.gdns"
 }, {
 "base": "KinematicBody2D",
 "class": "EFallingBullet",
@@ -379,17 +309,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Items/Passives/SpeedUp/SpeedUp.gd"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamAPI",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_api.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamCallback",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_callback.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamFriends",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_friends.gdns"
@@ -404,37 +334,37 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_id.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamLeaderboard",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_leaderboard.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamLeaderboardEntries",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_leaderboard_entries.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamLeaderboardEntry",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_leaderboard_entry.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamLeaderboardFindResult",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_find_leaderboard_result.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamLeaderboardScoreUploaded",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_leaderboard_uploaded.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamLeaderboardScoresDownloaded",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_leaderboard_scores_downloaded.gdns"
 }, {
-"base": "Reference",
+"base": "",
 "class": "SteamUserStats",
 "language": "NativeScript",
 "path": "res://addons/steam_api/steam_user_stats.gdns"
@@ -444,7 +374,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Enemies/Bosses/Gnome/Stick.gd"
 }, {
-"base": "StreamPeerGDNative",
+"base": "",
 "class": "StreamPeerUnix",
 "language": "NativeScript",
 "path": "res://addons/godot_editor_discord_presence/godot-unix-socket/unix-socket.gdns"
@@ -546,22 +476,8 @@ _global_script_class_icons={
 "Debris": "",
 "Decorator": "",
 "DialogInteraction": "",
-"DiscordActivity": "",
-"DiscordActivityAssets": "",
-"DiscordActivityManager": "",
-"DiscordActivityParty": "",
-"DiscordActivitySecrets": "",
-"DiscordActivityTimestamps": "",
-"DiscordCore": "",
-"DiscordLobby": "",
-"DiscordLobbyManager": "",
-"DiscordLobbyTransaction": "",
-"DiscordOverlayManager": "",
-"DiscordPartySize": "",
 "DiscordRPC": "",
 "DiscordRPCEnum": "",
-"DiscordResult": "",
-"DiscordUser": "",
 "EFallingBullet": "",
 "EnemyCounter": "",
 "EnemySpawner": "",
@@ -657,7 +573,6 @@ FastTravel="*res://World/Props/FastTravelStation/FastTravel.gd"
 Settings="*res://Managing/settings.gd"
 Cursor="*res://UI/Cursor/Cursor.tscn"
 ToolTip="*res://UI/ToolTip/ToolTip.tscn"
-Discord="*res://addons/discord_game_sdk/discord.gd"
 Steam="*res://addons/steam_api/steam.gd"
 
 [debug]
@@ -680,7 +595,7 @@ search_in_file_extensions=PoolStringArray( "gd", "gdshader", "shader", "tscn" )
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/discord_game_sdk/plugin.cfg", "res://addons/steam_api/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/steam_api/plugin.cfg" )
 
 [gdnative]
 
@@ -937,4 +852,3 @@ locale_filter=[ 0, [ "pr" ] ]
 
 2d/snapping/use_gpu_pixel_snap=true
 threads/thread_model=2
-gles3/shaders/shader_compilation_mode=1

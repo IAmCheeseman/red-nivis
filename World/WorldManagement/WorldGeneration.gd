@@ -12,13 +12,13 @@ var rooms = []
 var constantRoomUseage = []
 
 const BIOMES = [
-	"res://World/Biomes/Lab.tres",
-	"res://World/Biomes/Caves.tres",
-	"res://World/Biomes/DeepLabs.tres",
-	"res://World/Biomes/Freezers.tres",
-	"res://World/Biomes/WaterFreezers.tres",
-	"res://World/Biomes/ChemLabs.tres",
-	"res://World/Biomes/TechSector.tres"
+	preload("res://World/Biomes/Lab.tres"),
+	preload("res://World/Biomes/Caves.tres"),
+	preload("res://World/Biomes/DeepLabs.tres"),
+	preload("res://World/Biomes/Freezers.tres"),
+	preload("res://World/Biomes/WaterFreezers.tres"),
+	preload("res://World/Biomes/ChemLabs.tres"),
+	preload("res://World/Biomes/TechSector.tres")
 ]
 
 func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
@@ -27,7 +27,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 	var data := select_template(dontPick)
 	var template: Image = data.template
 	template.lock()
-
+	
 	var constantRooms = preload("res://World/ConstantRooms/Rooms.tres")
 
 	for i in constantRooms.rooms:
@@ -39,22 +39,22 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 			var color = template.get_pixel(x, y)
 			var biome = get_biome_by_color(color)
 			var room = {
-				"color" : color,
-				"possibleBiome" : get_biome_by_color(color, true),
-				"biome" : biome,
-				"constantRoom" : null,
-				"roomIcon" : null,
-				"discovered" : false,
-				"nearDiscovered" : false,
-				"typeAlwaysVisible": false,
-				"connections" : [],
-				"cleared" : false,
-				"isStartingRoom" : color.is_equal_approx(STARTING_ROOM),
-				"blockGrowing" : color.is_equal_approx(BLOCKING_ROOM),
-				"bossRoom" : color.is_equal_approx(BOSS_ROOM),
+				"color"             : color,
+				"possibleBiome"     : get_biome_by_color(color, true),
+				"biome"             : biome,
+				"constantRoom"      : null,
+				"roomIcon"          : null,
+				"discovered"        : false,
+				"nearDiscovered"    : false,
+				"typeAlwaysVisible" : false,
+				"connections"       : [],
+				"cleared"           : false,
+				"isStartingRoom"    : color.is_equal_approx(STARTING_ROOM),
+				"blockGrowing"      : color.is_equal_approx(BLOCKING_ROOM),
+				"bossRoom"          : color.is_equal_approx(BOSS_ROOM),
 				"isBiomeConnection" : color.is_equal_approx(CONNECTION_COLOR),
-				"nodeData" : {},
-				"secret" : false,
+				"nodeData"          : {},
+				"secret"            : false,
 			}
 			if room.isStartingRoom:
 				room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
@@ -72,7 +72,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 		RoomPlacer.generate_rooms(
 			rooms, r, r.perBiome, r.minDistOfSameType, r.biomes, self)
 	ConnectionRoomPlacer.generate_rooms(rooms, self)
-
+	
 	return { "rooms": rooms, "template": data.path }
 
 
@@ -142,7 +142,7 @@ func grow_world() -> void:
 
 func get_biome_by_color(color:Color, getSecondary:bool=false):
 	for b in BIOMES.size():
-		var biome = load(BIOMES[b])
+		var biome = BIOMES[b]
 		if (biome.mapColor.is_equal_approx(color)) or\
 		(biome.startingArea and color.is_equal_approx(STARTING_ROOM)) and !getSecondary:
 			return b
@@ -153,7 +153,7 @@ func get_biome_by_color(color:Color, getSecondary:bool=false):
 func get_biome_by_index(idx: int):
 	if idx == null: return null
 	if idx > BIOMES.size(): return null
-	return load(BIOMES[idx])
+	return BIOMES[idx]
 
 
 func get_used_rooms() -> Array:
@@ -170,12 +170,12 @@ func select_template(dontPick: String) -> Dictionary:
 	var path
 	while true:
 		path = "res://World/Templates/WorldTemplates/Template%s.png"\
-					% ceil(rand_range(0, 3))
+					% ceil(rand_range(0, 1))
 		if path != dontPick:
 			template = load(path).get_data()
 			break
 	
-	return {"template":template, "path":path}
+	return { "template":template, "path":path }
 
 
 func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array:

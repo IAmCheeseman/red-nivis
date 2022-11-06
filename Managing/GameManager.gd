@@ -40,21 +40,8 @@ func _init():
 	frameFreezer.gm = self
 
 
-func update_rp(state:String=rpBiome, details:String=rpGun) -> void:
-	if OS.get_name() == "OSX": return
-
-	yield(get_tree(), "idle_frame")
-	var activity = Discord.Activity.new()
-	activity.set_type(Discord.ActivityType.Playing)
-	activity.set_name("Red Nivis")
-	activity.set_state("Exploring %s" % tr(state))
-	activity.set_details("Using %s" % tr(details))
-
-	var assets = activity.get_assets()
-	assets.set_large_image("icon")
-	assets.set_large_text("Red Nivis")
-
-	var _result = yield(Discord.activity_manager.update_activity(activity), "result").result
+func update_rp(_state:String=rpBiome, _details:String=rpGun) -> void:
+	pass
 
 
 func _ready() -> void:
