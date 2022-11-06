@@ -18,7 +18,6 @@ const BIOMES = [
 	preload("res://World/Biomes/Freezers.tres"),
 	preload("res://World/Biomes/WaterFreezers.tres"),
 	preload("res://World/Biomes/ChemLabs.tres"),
-	preload("res://World/Biomes/TechSector.tres")
 ]
 
 func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
