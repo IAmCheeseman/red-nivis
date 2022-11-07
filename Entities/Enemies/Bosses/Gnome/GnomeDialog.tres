@@ -1,7 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://Entities/NPC/Dialog/DialogInteraction.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-dialog = [ [ "Introduction", "GNOME_INTRO" ], [ "Hit1", "GNOME_HIT1" ], [ "Hit2", "GNOME_HIT2" ], [ "Hit3", "GNOME_HIT3" ], [ "Ascend1", "GNOME_ASCEND1" ], [ "Ascend2", "GNOME_ASCEND2" ] ]

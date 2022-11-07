@@ -1,9 +1,8 @@
-[gd_resource type="Resource" load_steps=11 format=2]
+[gd_resource type="Resource" load_steps=10 format=2]
 
 [ext_resource path="res://World/ConstantRooms/ConstantRoomResource.gd" type="Script" id=1]
 [ext_resource path="res://World/Biomes/Lab.tres" type="Resource" id=2]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=3]
-[ext_resource path="res://World/Biomes/Caves.tres" type="Resource" id=4]
 [ext_resource path="res://World/Biomes/DeepLabs.tres" type="Resource" id=5]
 [ext_resource path="res://World/Biomes/WaterFreezers.tres" type="Resource" id=6]
 [ext_resource path="res://World/Biomes/Freezers.tres" type="Resource" id=7]
@@ -18,7 +17,7 @@ region = Rect2( 60, 65, 12, 12 )
 script = ExtResource( 1 )
 scene = ExtResource( 9 )
 biomeSpecific = [  ]
-biomes = [ ExtResource( 4 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 6 ) ]
+biomes = [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 6 ) ]
 mustHave = true
 typeAlwaysVisible = false
 hidden = false

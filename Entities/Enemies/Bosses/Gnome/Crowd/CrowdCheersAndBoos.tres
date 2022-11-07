@@ -1,7 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://Entities/NPC/Dialog/DialogInteraction.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-dialog = [ [ "Cheer1", "GNOME_CROWD_CHEER1" ], [ "Cheer2", "GNOME_CROWD_CHEER2" ], [ "Cheer3", "GNOME_CROWD_CHEER3" ], [ "Boo1", "GNOME_CROWD_BOO1" ], [ "Boo2", "GNOME_CROWD_BOO2" ], [ "Boo3", "GNOME_CROWD_BOO3" ] ]

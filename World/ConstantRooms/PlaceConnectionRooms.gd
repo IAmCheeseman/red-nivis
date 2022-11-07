@@ -2,7 +2,6 @@ extends Reference
 class_name ConnectionRoomPlacer
 
 const CONNECTION_ROOMS = {
-	"labs_ttl-deep_labs_ttl"     : preload("res://World/ConstantRooms/Rooms/CavesBlock.tres"),
 	"labs_ttl-chemlabs"  : preload("res://World/ConstantRooms/Rooms/LabsToChemLabsBlock.tres"),
 	"labs_ttl-freezers_ttl"  : preload("res://World/ConstantRooms/Rooms/LabsToChemLabsBlock.tres"),
 	"backend_ttl-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/MainDLBlock.tres"),

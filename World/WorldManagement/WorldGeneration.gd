@@ -13,11 +13,11 @@ var constantRoomUseage = []
 
 const BIOMES = [
 	preload("res://World/Biomes/Lab.tres"),
-	preload("res://World/Biomes/Caves.tres"),
 	preload("res://World/Biomes/DeepLabs.tres"),
 	preload("res://World/Biomes/Freezers.tres"),
 	preload("res://World/Biomes/WaterFreezers.tres"),
 	preload("res://World/Biomes/ChemLabs.tres"),
+	preload("res://World/Biomes/Lab.tres"),
 ]
 
 func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
