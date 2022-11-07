@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 disable = false
 app_id = "1928130"
-sdk_dir = "/Users/xswan/Downloads/sdk"
+sdk_dir = "C:\\Users\\xande\\OneDrive\\Documents\\Work\\sdk"
