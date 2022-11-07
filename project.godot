@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot_editor_discord_presence/Discord RPC/DiscordRPCEnum.gd"
 }, {
+"base": "Reference",
+"class": "DodgeRoomPlacer",
+"language": "GDScript",
+"path": "res://World/ConstantRooms/PlaceDodgeRooms.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "EFallingBullet",
 "language": "GDScript",
@@ -473,6 +478,7 @@ _global_script_class_icons={
 "DialogInteraction": "",
 "DiscordRPC": "",
 "DiscordRPCEnum": "",
+"DodgeRoomPlacer": "",
 "EFallingBullet": "",
 "EnemyCounter": "",
 "EnemySpawner": "",

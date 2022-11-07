@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://World/Props/Foliage/Bush/Bush.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Entities/Enemies/DodgeEnemies/Turret/Turret.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -41,11 +40,19 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="Bush" parent="." instance=ExtResource( 8 )]
-position = Vector2( 213, 288 )
-
-[node name="Turret" parent="." instance=ExtResource( 9 )]
+[node name="Turret1" parent="." instance=ExtResource( 9 )]
 position = Vector2( 258, 245 )
+
+[node name="Turret2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 233, 217 )
+type = 1
+
+[node name="Turret3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 301, 240 )
+type = 2
+
+[node name="Turret4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 326, 185 )
 type = 3
 
 [editable path="CameraMoveZone"]

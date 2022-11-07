@@ -40,6 +40,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 			var room = {
 				"color"             : color,
 				"possibleBiome"     : get_biome_by_color(color, true),
+				"isDodgeRoom"       : rand_range(0, 1) < 0.333,
 				"biome"             : biome,
 				"constantRoom"      : null,
 				"roomIcon"          : null,
@@ -71,6 +72,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 		RoomPlacer.generate_rooms(
 			rooms, r, r.perBiome, r.minDistOfSameType, r.biomes, self)
 	ConnectionRoomPlacer.generate_rooms(rooms, self)
+	DodgeRoomPlacer.generate_rooms(rooms, self)
 	
 	return { "rooms": rooms, "template": data.path }
 
