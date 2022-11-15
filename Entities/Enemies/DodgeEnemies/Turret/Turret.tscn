@@ -45,6 +45,7 @@ pitchShiftRange = 4.0
 bus = "ReverbLow"
 
 [node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="timeout" from="CooldownTimer" to="." method="shoot"]
 
