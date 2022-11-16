@@ -20,6 +20,7 @@ const BIOMES = [
 	preload("res://World/Biomes/Lab.tres"),
 ]
 
+
 func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 	seed(seed_)
 	# Creating and filling out the 2D array
@@ -40,7 +41,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 			var room = {
 				"color"             : color,
 				"possibleBiome"     : get_biome_by_color(color, true),
-				"isDodgeRoom"       : rand_range(0, 1) < 0.333,
+				"isDodgeRoom"       : randf() < 0.333,
 				"biome"             : biome,
 				"constantRoom"      : null,
 				"roomIcon"          : null,
@@ -56,6 +57,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 				"nodeData"          : {},
 				"secret"            : false,
 			}
+			if room.isStartingRoom: room.isDodgeRoom = false
 			if room.isStartingRoom:
 				room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
 			rooms[x].append(room)

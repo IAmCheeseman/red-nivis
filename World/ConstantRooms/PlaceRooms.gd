@@ -26,6 +26,7 @@ wg) -> void:
 			for j in usedRooms:
 				if j.distance_to(selectedPos) <= minDistance:
 					roomOkay = false
+			if selectedRoom.isDodgeRoom: continue
 			if selectedRoom.biome == null: continue
 			var biome = wg.get_biome_by_index(selectedRoom.biome)
 			if biome != b or !roomOkay or selectedRoom.constantRoom: continue
