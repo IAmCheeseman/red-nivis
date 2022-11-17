@@ -62,7 +62,7 @@ func take_damage(amount:int, dir:Vector2) -> void:
 	var newDP = deathParticles.instance()
 	newDP.position = global_position
 	newDP.rotation = dir.angle()
-	newDP.amount = 10
+	newDP.amount = 5
 	newDP.process_material = newDP.process_material.duplicate()
 	newDP.process_material.emission_sphere_radius = 1
 	GameManager.spawnManager.spawn_object(newDP)
