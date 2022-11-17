@@ -41,7 +41,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 			var room = {
 				"color"             : color,
 				"possibleBiome"     : get_biome_by_color(color, true),
-				"isDodgeRoom"       : randf() < 1/3,
+				"isDodgeRoom"       : randf() < 0.333,
 				"biome"             : biome,
 				"constantRoom"      : null,
 				"roomIcon"          : null,
