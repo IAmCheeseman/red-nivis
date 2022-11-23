@@ -37,7 +37,6 @@ func create_room() -> void:
 	MusicManager.set_music(biome.music)
 
 	# Adding in the nodes
-
 	world.solids = biome.solids.instance()
 	world.solids.position = Vector2.ZERO
 	world.solids.z_index = 1

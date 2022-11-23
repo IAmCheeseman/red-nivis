@@ -63,7 +63,7 @@ func _ready() -> void:
 	
 	yield(TempTimer.idle_frame(self, 6), "timeout")
 	
-	if worldData.get_current_room().cleared:
+	if worldData.get_current_room().cleared or worldData.get_current_room().constantRoom != null:
 		for i in exitBlockers: i.queue_free()
 		exitBlockers.clear()
 

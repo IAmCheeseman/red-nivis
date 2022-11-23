@@ -44,11 +44,11 @@ func _process(delta: float) -> void:
 		Type.Vertical:
 			var vel = Vector2(0, dir)
 			if test_move(transform, vel): dir *= -1
-			move_and_slide(vel * speed)
+			var _discard = move_and_slide(vel * speed)
 		Type.Horizontal:
 			var vel = Vector2(dir, 0)
 			if test_move(transform, vel): dir *= -1
-			move_and_slide(vel * speed)
+			var _discard = move_and_slide(vel * speed)
 
 
 func shoot() -> void:
