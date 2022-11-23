@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/GameOverlay/GameOverlay.gd" type="Script" id=1]
+[ext_resource path="res://UI/GameOverlay/HealthSegment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Assets/NokiaCellphone.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://UI/Assets/Bomb.png" type="Texture" id=6]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=7]
@@ -15,14 +16,6 @@ region = Rect2( 42, 78, 16, 18 )
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 7 )
 region = Rect2( 7, 13, 11, 10 )
-
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 7 )
-region = Rect2( 75, 99, 33, 7 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 7 )
-region = Rect2( 75, 92, 33, 7 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 7 )
@@ -89,17 +82,29 @@ margin_right = 11.0
 margin_bottom = 10.0
 texture = SubResource( 13 )
 
-[node name="HPBar" type="TextureProgress" parent="VBox/Health/VBoxContainer/HBoxContainer"]
+[node name="HealthBar" type="HBoxContainer" parent="VBox/Health/VBoxContainer/HBoxContainer"]
 margin_left = 15.0
-margin_top = 1.0
 margin_right = 48.0
-margin_bottom = 8.0
-rect_min_size = Vector2( 32, 6 )
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.01
-texture_under = SubResource( 15 )
-texture_progress = SubResource( 14 )
+margin_bottom = 10.0
+custom_constants/separation = -1
+
+[node name="HealthSegment" parent="VBox/Health/VBoxContainer/HBoxContainer/HealthBar" instance=ExtResource( 2 )]
+margin_bottom = 10.0
+
+[node name="HealthSegment2" parent="VBox/Health/VBoxContainer/HBoxContainer/HealthBar" instance=ExtResource( 2 )]
+margin_left = 8.0
+margin_right = 17.0
+margin_bottom = 10.0
+
+[node name="HealthSegment3" parent="VBox/Health/VBoxContainer/HBoxContainer/HealthBar" instance=ExtResource( 2 )]
+margin_left = 16.0
+margin_right = 25.0
+margin_bottom = 10.0
+
+[node name="HealthSegment4" parent="VBox/Health/VBoxContainer/HBoxContainer/HealthBar" instance=ExtResource( 2 )]
+margin_left = 24.0
+margin_right = 33.0
+margin_bottom = 10.0
 
 [node name="Health" type="Label" parent="VBox/Health/VBoxContainer/HBoxContainer"]
 margin_left = 52.0

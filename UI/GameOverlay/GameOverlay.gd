@@ -4,7 +4,7 @@ var playerData = preload("res://Entities/Player/Player.tres")
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 
 # Health Bar
-onready var healthBar = $VBox/Health/VBoxContainer/HBoxContainer/HPBar
+onready var healthBar = $VBox/Health/VBoxContainer/HBoxContainer/HealthBar
 onready var healthLabel = $VBox/Health/VBoxContainer/HBoxContainer/Health
 
 onready var healBar = $VBox/Health/HealProgress
@@ -63,8 +63,23 @@ func _process(_delta: float) -> void:
 
 
 func update_health(_kb:Vector2) -> void:
-	healthBar.value = playerData.health
-	healthBar.max_value = playerData.maxHealth
+	var hpPerSegment := 25
+	var segmentCount: int = playerData.maxHealth / hpPerSegment
+	
+	Utils.free_children(healthBar)
+	
+	var i: float = playerData.health
+	for _i in segmentCount:
+		var segment = preload("res://UI/GameOverlay/HealthSegment.tscn").instance()
+		healthBar.add_child(segment)
+		
+		if i > hpPerSegment:
+			segment.value = 1
+		else:
+			var value = i / (playerData.maxHealth / segmentCount)
+			segment.value = value
+		
+		i -= hpPerSegment
 	
 	healthLabel.text = "%s/%s" % [playerData.health, playerData.maxHealth]
 

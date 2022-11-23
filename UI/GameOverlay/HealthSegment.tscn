@@ -4,15 +4,16 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 84, 99, 9, 7 )
+region = Rect2( 83, 99, 9, 7 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 84, 92, 9, 7 )
+region = Rect2( 83, 92, 9, 7 )
 
 [node name="HealthSegment" type="TextureProgress"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 9.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 8, 0 )
 max_value = 1.0
 step = 0.01
 value = 1.0
