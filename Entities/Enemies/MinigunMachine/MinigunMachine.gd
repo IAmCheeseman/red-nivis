@@ -1,11 +1,10 @@
 extends KinematicBody2D
 
 export var speed:float = 1200
-export var accel:float = 24
+export var accel:float = 50
 export var friction:float = 12
 export var wanderRange:float = 48
 export var kbAmount:float = .5
-
 
 onready var minigun = $Sprite/Minigun
 onready var collision = $CollisionShape2D
@@ -17,18 +16,20 @@ onready var minigunSprite = $Sprite/Minigun/Sprite
 onready var wanderTimer = $Timers/WanderTimer
 onready var healthManager = $DamageManager
 onready var floorRay = $Collisions/FloorRay
-
+onready var shootTimer = $Timers/ShootTimer
 
 var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
-var player:Node2D
-var vel:Vector2 = Vector2.ZERO
-var targetPosition:Vector2 = position
-var startingPosition:Vector2 = position
+var player: Node2D
+var vel: Vector2 = Vector2.ZERO
+var targetPosition: Vector2 = position
+var startingPosition: Vector2 = position
 
 # warning-ignore:unused_signal
 signal death
 
+enum State { Normal, Shoot }
+var state: int = State.Normal
 
 func _ready() -> void:
 	startingPosition = position
@@ -42,16 +43,28 @@ func _process(delta: float) -> void:
 		player = playerDetection.get_player()
 		minigun.isOn = false
 	else:
-		minigun.start()
-		
-		minigunSprite.look_at(player.global_position)
-		
-		var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
-		minigunSprite.flip_v = false if angleVec.x > 0 else true
-
-	accel_to_point(targetPosition, delta)
-	vel += softCollision.get_push_vector()*(kbAmount*.05)
-	vel = move_and_slide(vel)
+		match state:
+			State.Normal:
+				minigun.start()
+				
+				minigunSprite.look_at(player.global_position)
+				
+				var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
+				minigunSprite.flip_v = false if angleVec.x > 0 else true
+				
+				accel_to_point(targetPosition, delta)
+				vel += softCollision.get_push_vector() * (kbAmount * 0.05)
+				vel = move_and_slide(vel)
+			State.Shoot:
+				minigun.start()
+				minigunSprite.look_at(player.global_position)
+				
+				var angleVec:Vector2 = Vector2.RIGHT.rotated(minigunSprite.rotation)
+				minigunSprite.flip_v = false if angleVec.x > 0 else true
+				
+				accel_to_point(global_position, delta)
+				vel += softCollision.get_push_vector() * (kbAmount * 0.05)
+				vel = move_and_slide(vel)
 
 
 func accel_to_point(point:Vector2, delta:float) -> void:
@@ -82,3 +95,8 @@ func select_position() -> Vector2:
 func _on_wander_timer_timeout() -> void:
 	targetPosition = select_position()
 	wanderTimer.start(rand_range(.1, 4.5))
+
+
+func _on_shoot_timer_timeout() -> void:
+	targetPosition = select_position()
+	state = State.Normal

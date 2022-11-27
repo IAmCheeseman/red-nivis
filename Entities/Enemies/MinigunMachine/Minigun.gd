@@ -38,26 +38,32 @@ func start_shooting() -> void:
 func _process(delta: float) -> void:
 	scale = Vector2.ONE
 	if anim.current_animation != "WindUp":
-		sprite.scale = sprite.scale.move_toward(
-			Vector2.ONE, 5*delta)
+		sprite.scale = sprite.scale.move_toward(Vector2.ONE, 5 * delta)
 
 	if !overheatCooldown.is_stopped()\
 	or !cooldown.is_stopped()\
 	or !isOn\
 	or anim.is_playing():
 		return
-	currentCooldown = clamp(currentCooldown*.5, minCooldown, startCooldown)
+	shoot()
+
+func shoot() -> void:
+	var machine = get_parent().get_parent()
+	machine.state = machine.State.Shoot
+	machine.shootTimer.start(rand_range(1, 2.0))
+	
+	currentCooldown = clamp(currentCooldown * 0.5, minCooldown, startCooldown)
 	cooldown.stop()
 	cooldown.start(currentCooldown)
 	
 	var newBullet = bullet.instance()
-	newBullet.direction = Vector2.RIGHT.rotated(
-		sprite.global_rotation)
+	newBullet.direction = Vector2.RIGHT.rotated(sprite.global_rotation)
 	newBullet.speed = 100
 	newBullet.damage = damage
-	newBullet.global_position = global_position+(
-		newBullet.direction*16)
+	newBullet.global_position = global_position + (newBullet.direction * 16)
 	GameManager.spawnManager.spawn_object(newBullet)
+	
+	machine.vel = -newBullet.direction * 35
 	
 	shotsInARow += 1
 	
@@ -69,6 +75,6 @@ func _process(delta: float) -> void:
 		isOn = false
 		anim.play("cooldown")
 	
-	sprite.frame = wrapi(sprite.frame+1, 0, sprite.hframes)
+	sprite.frame = wrapi(sprite.frame + 1, 0, sprite.hframes)
 	
 	shootSFX.play()
