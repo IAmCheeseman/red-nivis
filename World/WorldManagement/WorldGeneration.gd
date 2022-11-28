@@ -58,7 +58,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 				"secret"            : false,
 			}
 			if room.isStartingRoom: room.isDodgeRoom = false
-			if room.isStartingRoom:
+			if room.isStartingRoom or room.bossRoom:
 				room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
 			rooms[x].append(room)
 
