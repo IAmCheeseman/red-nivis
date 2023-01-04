@@ -6,23 +6,23 @@ var mapData = GameManager.worldData
 
 func help() -> String:
 	return """ -= HELP =-
- echo(msg)
- toggle_godmode()
- go_to(path)
- reload()
- set_health(amount)
- set_max_health(amount)
- set_money(amount)
- tp(x, y)
- set_room(x, y)
- time_scale(scale)
- toggle_revealed_map()
- op()
- give(item_id)
+ echo [message]
+ togglegodmode
+ goto [path]
+ reload
+ sethealth [amount]
+ setmaxhealth [amount]
+ setmoney [amount]
+ tp [x] [y]
+ setroom [x] [y]
+ timescale [scale]
+ togglerevealedmap()
+ op
+ give [item_id]
 """
 
 
-func toggle_revealed_map():
+func togglerevealedmap():
 	GameManager.revealMap = !GameManager.revealMap
 	return " Map reveal toggled"
 
@@ -77,58 +77,58 @@ func ability(n: String) -> String:
 	return " Gave %s" % n
 
 
-func clear_inven() -> String:
+func clearinven() -> String:
 	var inventory = preload("res://UI/Inventory/Inventory.tres")
 	inventory.clear()
 	return " Inventory cleared"
 
 
-func time_scale(time_scale):
+func timescale(time_scale):
 	Engine.time_scale = time_scale
 	return " Set time scale to %s" % time_scale
 
 
 func op():
-
-	return toggle_godmode()+"\n"+toggle_revealed_map()
+	return togglegodmode()+"\n"+togglerevealedmap()
 
 
 func echo(output:String) -> String:
 	return " " + output
 
 
-func toggle_godmode() -> String:
+func togglegodmode() -> String:
 	player.godmode = !player.godmode
 	return " Set godmode to %s" % str(player.godmode)
 
 
-func go_to(path:String) -> String:
+func goto(path:String) -> String:
 	var _discard = get_tree().change_scene(path)
 	return ""
 
 
 func reload() -> String:
+	get_tree().paused = false
 	var _discard = get_tree().reload_current_scene()
 	return ""
 
 
-func set_health(value:int) -> String:
+func sethealth(value:int) -> String:
 	player.health = value
 	return " Changed health to %s." % str(value)
 
 
-func set_max_health(value:int) -> String:
+func setmaxhealth(value:int) -> String:
 	player.maxHealth = value
 	player.health = value
 	return " Changed max health to %s." % str(value)
 
 
-func set_money(value:int) -> String:
+func setmoney(value:int) -> String:
 	player.money = value
 	return " Set money to %s." % str(value)
 
 
-func set_room(x, y) -> String:
+func setroom(x, y) -> String:
 	if !mapData.rooms[x][y].biome:
 		return " That room has no set biome."
 	mapData.position = Vector2(x, y)

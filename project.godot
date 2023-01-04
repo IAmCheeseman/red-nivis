@@ -555,7 +555,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Red Nivis"
-run/main_scene="res://Managing/Init.tscn"
+run/main_scene="res://UI/MainMenu/MainMenu.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://UI/Assets/Icon.png"
 config/windows_native_icon="res://Icon.ico"
@@ -698,6 +698,7 @@ move_right_c={
 move_right={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777295,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 move_left_c={
@@ -709,6 +710,7 @@ move_left_c={
 move_left={
 "deadzone": 0.51,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777294,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 remove_tile={
@@ -755,6 +757,7 @@ jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777292,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 hotbar_scroll_left={
@@ -777,7 +780,7 @@ drop_item={
 }
 debug_console={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":47,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 up={

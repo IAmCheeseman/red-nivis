@@ -81,6 +81,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/FireShotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/FireShotgun.png"
 	},
+	"no-barrel-shotgun" : {
+		"key" : "no-barrel-shotgun",
+		"name" : "NO_BARREL_SHOTGUN_ITM",
+		"tier" : ToolTipGenerator.TIERS.DEEPLABS,
+		"scene" : "res://Items/Weapons/Scenes/NoBarrelShotgun.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/NoBarrelShotgun.png"
+	},
 	"flamethrower" : {
 		"key" : "flamethrower",
 		"name" : "FLAMETHROWER_ITM",

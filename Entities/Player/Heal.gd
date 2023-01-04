@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 				delta
 			)
 		if value == max_value:
-			playerData.heal(playerData.maxHealth * 0.333)
+			playerData.heal(int(playerData.maxHealth * 0.333))
 			finished = true
 			playerData.healMaterial = 0
 			healSfx.play()

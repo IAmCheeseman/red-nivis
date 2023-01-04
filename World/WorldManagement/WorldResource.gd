@@ -14,10 +14,8 @@ var lastUsedTemplate: String
 const BIOMES = [
 	"res://World/Biomes/Lab.tres",
 	"res://World/Biomes/Freezers.tres",
-	"res://World/Biomes/WaterFreezers.tres",
 	"res://World/Biomes/ChemLabs.tres",
 	"res://World/Biomes/DeepLabs.tres",
-	"res://World/Biomes/Lab.tres",
 ]
 
 # warning-ignore:unused_signal

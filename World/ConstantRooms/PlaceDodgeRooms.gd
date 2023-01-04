@@ -5,7 +5,7 @@ const ROOMS = [
 	"res://World/ConstantRooms/DodgeRooms/DodgeRoom1.tres",
 ]
 
-static func generate_rooms(rooms:Array, worldGenerator):
+static func generate_rooms(rooms:Array):
 	for x in rooms.size():
 		for y in rooms[x].size():
 			var room = rooms[x][y]

@@ -6,8 +6,18 @@ onready var output = $VBoxContainer/Output
 
 func process_command(command:String):
 	if command == "": return
+	
+	var args := command.split(" ")
+	
+	var gdCommand = args[0] + "("
+	args.remove(0)
+	for i in args:
+		gdCommand += i + ","
+	gdCommand += ")"
+	print(gdCommand)
+	
 	var expression = Expression.new()
-	var error = expression.parse(command, [])
+	var error = expression.parse(gdCommand, [])
 	if error != OK:
 		output_text(expression.get_error_text())
 		return
@@ -39,6 +49,8 @@ func _input(event):
 		visible = !visible
 		input.grab_focus()
 		get_tree().paused = visible
+		yield(TempTimer.idle_frame(self), "timeout")
+		input.text = ""
 
 
 

@@ -7,17 +7,16 @@ const BOSS_ROOM        = Color("#ff0000")
 const CONNECTION_COLOR = Color("#4d2b32")
 
 export var growLoops := 2
+export var growChance := .222
 
 var rooms = []
 var constantRoomUseage = []
 
 const BIOMES = [
 	preload("res://World/Biomes/Lab.tres"),
-	preload("res://World/Biomes/DeepLabs.tres"),
 	preload("res://World/Biomes/Freezers.tres"),
-	preload("res://World/Biomes/WaterFreezers.tres"),
 	preload("res://World/Biomes/ChemLabs.tres"),
-	preload("res://World/Biomes/Lab.tres"),
+	preload("res://World/Biomes/DeepLabs.tres"),
 ]
 
 
@@ -61,7 +60,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 			if room.isStartingRoom or room.bossRoom:
 				room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
 			rooms[x].append(room)
-
+	
 	flood_world()
 	grow_world()
 
@@ -74,10 +73,9 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 		RoomPlacer.generate_rooms(
 			rooms, r, r.perBiome, r.minDistOfSameType, r.biomes, self)
 	ConnectionRoomPlacer.generate_rooms(rooms, self)
-	DodgeRoomPlacer.generate_rooms(rooms, self)
+	DodgeRoomPlacer.generate_rooms(rooms)
 	
 	return { "rooms": rooms, "template": data.path }
-
 
 func flood_rooms(position:Vector2, what, searchfor) -> void:
 	var neighbors = get_neighbors(position, true, false)
@@ -93,7 +91,7 @@ func flood_world() -> void:
 	for x in rooms.size():
 		for y in rooms[0].size():
 			var room = rooms[x][y]
-			if room.possibleBiome and rand_range(0, 1) < 1.0/10.0:
+			if room.possibleBiome and rand_range(0, 1) < 1.0 / 3.0:
 				flood_rooms(Vector2(x, y), room.possibleBiome, room.possibleBiome)
 			elif room.possibleBiome and !room.biome:
 				flood_rooms(Vector2(x, y), null, room.possibleBiome)
@@ -131,7 +129,7 @@ func grow_world() -> void:
 						break
 
 				if !goodBiome: continue
-				if (allBiomesSame and rand_range(0, 1) < .333)\
+				if (allBiomesSame and rand_range(0, 1) < growChance)\
 				and !room.blockGrowing:
 					changes.append({
 						"pos" : Vector2(x, y),
@@ -169,16 +167,16 @@ func get_used_rooms() -> Array:
 
 
 func select_template(dontPick: String) -> Dictionary:
-	var template
-	var path
+	var template: Image
+	var path: String
 	while true:
 		path = "res://World/Templates/WorldTemplates/Template%s.png"\
 					% ceil(rand_range(0, 1))
-		if path != dontPick:
-			template = load(path).get_data()
-			break
+#		if path != dontPick:
+		template = load(path).get_data()
+		break
 	
-	return { "template":template, "path":path }
+	return { "template": template, "path": path }
 
 
 func get_neighbors(vec:Vector2, emptyNei:bool=false, corners:bool=true) -> Array:

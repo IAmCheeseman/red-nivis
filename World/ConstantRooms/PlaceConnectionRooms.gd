@@ -3,16 +3,14 @@ class_name ConnectionRoomPlacer
 
 const CONNECTION_ROOMS = {
 	"labs_ttl-chemlabs"  : preload("res://World/ConstantRooms/Rooms/LabsToChemLabsBlock.tres"),
-	"labs_ttl-freezers_ttl"  : preload("res://World/ConstantRooms/Rooms/LabsToChemLabsBlock.tres"),
+	"labs_ttl-freezers_ttl"  : preload("res://World/ConstantRooms/Rooms/FreezersCavesBlock.tres"),
 	"backend_ttl-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/MainDLBlock.tres"),
-	"freezers_ttl-backend_ttl" : preload("res://World/ConstantRooms/Rooms/FreezersCavesBlock.tres"),
 	"chemlabs-freezers_ttl" : preload("res://World/ConstantRooms/Rooms/ChemLabsBlock.tres"),
 	"freezers_ttl-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/FreezersDLBlock.tres"),
 	"chemlabs-deep_labs_ttl" : preload("res://World/ConstantRooms/Rooms/ChemLabsBlock.tres")
 }
 
 static func generate_rooms(rooms:Array, wg):
-
 	for x in rooms.size():
 		for y in rooms[x].size():
 			var room = rooms[x][y]
@@ -38,6 +36,7 @@ static func generate_rooms(rooms:Array, wg):
 			var possibleKey1 = "%s-%s" % [biomes[0], biomes[1]]
 			var possibleKey2 = "%s-%s" % [biomes[1], biomes[0]]
 			if possibleKey1 == possibleKey2: continue
+			
 			var r
 			if CONNECTION_ROOMS.has(possibleKey1):
 				r = CONNECTION_ROOMS[possibleKey1]
