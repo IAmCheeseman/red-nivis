@@ -24,3 +24,10 @@ func _ready():
 	Achievement.unlock("PARTICIPATE")
 
 	var _discard = get_tree().change_scene("res://UI/MainMenu/LogoFlash.tscn")
+
+# Loading a bunch of resources so there's no mild lag spikes when
+# they're first used. 
+var resourceLoading = [
+	preload("res://Entities/Player/Player.tres"),
+	preload("res://World/WorldManagement/WorldData.tres")
+]

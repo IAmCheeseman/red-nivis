@@ -357,9 +357,9 @@ toPth = NodePath("../../../Center/NavMenu")
 [node name="Visuals" type="VBoxContainer" parent="Menus"]
 visible = false
 margin_left = 119.0
-margin_top = 30.0
+margin_top = 16.0
 margin_right = 241.0
-margin_bottom = 190.0
+margin_bottom = 204.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -382,10 +382,20 @@ custom_icons/unchecked = SubResource( 13 )
 custom_styles/focus = SubResource( 14 )
 text = "VSL_FULLSCREEN"
 
-[node name="GFX" type="CheckBox" parent="Menus/Visuals"]
+[node name="VSync" type="CheckBox" parent="Menus/Visuals"]
 margin_top = 64.0
 margin_right = 122.0
 margin_bottom = 88.0
+custom_fonts/font = ExtResource( 1 )
+custom_icons/checked = SubResource( 2 )
+custom_icons/unchecked = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+text = "V-Sync"
+
+[node name="GFX" type="CheckBox" parent="Menus/Visuals"]
+margin_top = 92.0
+margin_right = 122.0
+margin_bottom = 116.0
 custom_fonts/font = ExtResource( 1 )
 custom_icons/checked = SubResource( 2 )
 custom_icons/unchecked = SubResource( 13 )
@@ -395,27 +405,27 @@ text = "VSL_LOW_QUALITY"
 [node name="Screenshake" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 92.0
+margin_top = 120.0
 margin_right = 84.0
-margin_bottom = 114.0
+margin_bottom = 142.0
 size_flags_horizontal = 0
 optionName = "VSL_SCREENSHAKE"
 
 [node name="Framerate" parent="Menus/Visuals" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 118.0
+margin_top = 146.0
 margin_right = 84.0
-margin_bottom = 140.0
+margin_bottom = 168.0
 size_flags_horizontal = 0
 optionName = "VSL_FRM_RT"
 displayAsPercentage = false
 maxValue = 144
 
 [node name="Back" type="Button" parent="Menus/Visuals"]
-margin_top = 144.0
+margin_top = 172.0
 margin_right = 122.0
-margin_bottom = 160.0
+margin_bottom = 188.0
 custom_fonts/font = ExtResource( 1 )
 text = "BACK_BTN"
 align = 0
@@ -561,16 +571,22 @@ toPth = NodePath("../../../Center/NavMenu")
 [connection signal="toggled" from="Menus/Game/Tutorial" to="." method="_on_tutorial_toggled"]
 [connection signal="toggled" from="Menus/Game/SpeedrunMode" to="." method="_on_speedrun_mode_toggled"]
 [connection signal="toggled" from="Menus/Game/DoubleDamage" to="." method="_on_double_damage_toggled"]
+[connection signal="pressed" from="Menus/Game/Back" to="." method="_menu_change"]
 [connection signal="pressed" from="Menus/Keybinds/Reset" to="." method="_on_reset_kb_bindings_pressed"]
+[connection signal="pressed" from="Menus/Keybinds/Back" to="." method="_menu_change"]
 [connection signal="toggled" from="Menus/Visuals/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="Menus/Visuals/VSync" to="." method="_on_vsync_toggled"]
 [connection signal="toggled" from="Menus/Visuals/GFX" to="." method="_on_graphic_quality_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Screenshake" to="." method="_on_screenshake_value_changed"]
 [connection signal="value_changed" from="Menus/Visuals/Framerate" to="." method="_on_framerate_value_changed"]
+[connection signal="pressed" from="Menus/Visuals/Back" to="." method="_menu_change"]
 [connection signal="pressed" from="Menus/Language/Languages/English" to="." method="_on_english_pressed"]
 [connection signal="pressed" from="Menus/Language/Languages/Spanish" to="." method="_on_spanish_pressed"]
 [connection signal="pressed" from="Menus/Language/Languages/German" to="." method="_on_german_pressed"]
 [connection signal="pressed" from="Menus/Language/Languages/British" to="." method="_on_british_pressed"]
 [connection signal="pressed" from="Menus/Language/Back" to="." method="_on_quit"]
+[connection signal="pressed" from="Menus/Language/Back" to="." method="_menu_change"]
 [connection signal="value_changed" from="Menus/Audio/MSTRVolume" to="." method="_on_master_volume_value_changed"]
 [connection signal="value_changed" from="Menus/Audio/SFXVolume" to="." method="_on_sfx_volume_value_changed"]
 [connection signal="value_changed" from="Menus/Audio/MSXVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="pressed" from="Menus/Audio/Back" to="." method="_menu_change"]

@@ -16,6 +16,7 @@ onready var enemies = $Props/Enemies
 onready var roomClearer = $RoomClearer
 onready var darkness = $Darkness
 onready var generator = $Generator
+var doors: TileMap
 
 var worldData = preload("res://World/WorldManagement/WorldData.tres")
 
@@ -25,6 +26,7 @@ var waves := 0
 var lockedIn: bool
 var nonViableEnemySpawns := []
 var exitBlockers := []
+var alreadyExited := false
 
 signal added_enemies
 
@@ -87,10 +89,11 @@ func _on_drop_gun(gun, pos) -> void:
 
 
 func _on_load_area(area: Area2D, direction: Vector2) -> void:
-	if !area.is_in_group("player"):
+	if !area.is_in_group("player") or alreadyExited or player.playerData.isDead:
 		return
-	if player.playerData.isDead:
-		return
+	alreadyExited = true
+	player.visible = false
+	
 	GameManager.inGUI = false
 	var timer = Timer.new()
 	timer.wait_time = .4

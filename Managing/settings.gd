@@ -49,6 +49,7 @@ func save_settings() -> void:
 		"maxfps"           : maxfps,
 		"screenshake"      : screenshake,
 		"brightness"       : brightness,
+		"vsync"            : vsync,
 		"keybinds"         : keybinds,
 		"masterVol"        : masterVol,
 		"sfx"              : sfx,
@@ -68,6 +69,7 @@ func save_defaults(dm: DataManager) -> void:
 		"maxfps"           : 60,
 		"screenshake"      : 1.0,
 		"brightness"       : 1.0,
+		"vsync"            : true,
 		"keybinds"         : {},
 		"masterVol"        : 1.0,
 		"sfx"              : 1.0,
@@ -91,7 +93,8 @@ signal lang_changed
 # Graphics
 var gfx := GFX_GOOD
 var fullscreen := OS.has_feature("standalone")
-var lang = "en"
+var lang := "en"
+var vsync := true
 
 
 # Performance

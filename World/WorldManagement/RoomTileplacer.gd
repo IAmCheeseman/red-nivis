@@ -88,7 +88,7 @@ func create_room() -> void:
 	var cr = worldData.rooms[worldData.position.x][worldData.position.y].constantRoom
 	if cr:
 		var _cr = load(cr)
-
+		
 		room = _cr.scene.instance()
 		if _cr.biomeSpecific.size() != 0:
 			var idx = _cr.biomes.find(biome)
@@ -105,10 +105,10 @@ func create_room() -> void:
 		spawn_enemies()
 
 	var roomSize = world.solids.get_used_rect().end
-	create_loading_zone(Vector2(-32/16, roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.LEFT) # Left
-	create_loading_zone(Vector2(roomSize.x+(32/16), roomSize.y*.5)*16, Vector2(32/16, roomSize.y*.5)*16, Vector2.RIGHT) # Right
-	create_loading_zone(Vector2(roomSize.x*.5, -24/16)*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.UP) # Up
-	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y+(24/16))*16, Vector2(roomSize.x*.5, 32/16)*16, Vector2.DOWN) # Down
+	create_loading_zone(Vector2(2, roomSize.y*.5)*16,            Vector2(0.5, roomSize.y*.5)*16, Vector2.LEFT ) # Left
+	create_loading_zone(Vector2(roomSize.x-2, roomSize.y*.5)*16, Vector2(0.5, roomSize.y*.5)*16, Vector2.RIGHT) # Right
+	create_loading_zone(Vector2(roomSize.x*.5, 2)*16,            Vector2(roomSize.x*.5, 0.5)*16, Vector2.UP   ) # Up
+	create_loading_zone(Vector2(roomSize.x*.5, roomSize.y-2)*16, Vector2(roomSize.x*.5, 0.5)*16, Vector2.DOWN ) # Down
 
 	# Setting camera limits
 	var camMoveShape = world.mainCamMove.collisionShape.shape.duplicate()
@@ -213,6 +213,10 @@ func create_room() -> void:
 func create_constant_room(connections) -> void:
 	add_child(room)
 	room.hide()
+	
+	room.remove_child(room.doors)
+	world.add_child(room.doors)
+	world.doors = room.doors
 	# Solids
 	var roomS:TileMap = room.solids
 	for i in roomS.get_used_cells():
@@ -324,14 +328,14 @@ func set_player_pos() -> void:
 		Vector2.UP:
 			var positions = get_free_spot(Vector2(0, size.y-1), Vector2(size.x, size.y-1), Vector2.RIGHT)
 			var x = (positions.end.x-positions.start.x)*.5
-			var ppos = Vector2(positions.start.x+x, size.y)
+			var ppos = Vector2(positions.start.x+x, size.y-1)
 			world.player.position = ppos*world.solids.cell_size
 			world.player.vel.y = -world.player.playerData.jumpForce
 			if GameManager.underwater: world.player.vel.y /= 2
 		Vector2.DOWN:
 			var positions = get_free_spot(Vector2.ZERO, Vector2(size.x, 0), Vector2.RIGHT)
 			var x = (positions.end.x-positions.start.x)*.5
-			var ppos = Vector2(positions.start.x+x, 1)
+			var ppos = Vector2(positions.start.x+x, 2.5)
 			world.player.position = ppos*world.solids.cell_size
 	while world.solids.get_cellv(world.solids.world_to_map(world.player.position)) != -1:
 		world.player.position.y -= world.solids.cell_size.y
@@ -350,12 +354,11 @@ func pad(startPos:Vector2, endPos:Vector2, incDir:Vector2, padDir:Vector2) -> vo
 		else:
 			for i in PADDING:
 				var updatePos:Vector2 = pos+(padDir*i)
+				updatePos += padDir
+				world.solids.set_cellv(updatePos, 0)
+				world.solids.update_bitmask_area(updatePos)
 				world.background.set_cellv(updatePos, 0)
 				world.background.update_bitmask_area(updatePos)
-
-				var plus = Vector2(rand_range(-1, 1), rand_range(-1, 1)).round()
-				world.background.set_cellv(updatePos+plus, 0)
-				world.background.update_bitmask_area(updatePos+plus)
 		pos += incDir
 
 func add_props(propArr:Array, chances:Array, x, y) -> void:

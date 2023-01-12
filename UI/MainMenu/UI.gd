@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func play() -> void:
 	fadeOut.out()
-	yield(TempTimer.timer(self, 2.5), "timeout")
+	yield(TempTimer.timer(self, .4), "timeout")
 	var target = STARTING_AREA if GameManager.load_run() != OK else WORLD
 	if target == WORLD:
 		if GameManager.worldData.rooms.size() == 0:

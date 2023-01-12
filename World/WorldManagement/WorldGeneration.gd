@@ -40,7 +40,7 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 			var room = {
 				"color"             : color,
 				"possibleBiome"     : get_biome_by_color(color, true),
-				"isDodgeRoom"       : randf() < 0.333,
+				"isDodgeRoom"       : false,#randf() < 0.333,
 				"biome"             : biome,
 				"constantRoom"      : null,
 				"roomIcon"          : null,
@@ -56,8 +56,8 @@ func generate_world(seed_:int=randi(), dontPick: String="") -> Dictionary:
 				"nodeData"          : {},
 				"secret"            : false,
 			}
-			if room.isStartingRoom: room.isDodgeRoom = false
-			if room.isStartingRoom or room.bossRoom:
+			if room.isStartingRoom or room.bossRoom: room.isDodgeRoom = false
+			if room.isStartingRoom:
 				room.constantRoom = "res://World/ConstantRooms/Rooms/StartingRoom.tres"
 			rooms[x].append(room)
 	

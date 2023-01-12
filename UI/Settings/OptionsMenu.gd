@@ -16,8 +16,11 @@ func _ready() -> void:
 #func _process(_delta: float) -> void:
 #	BGgradient.rect_position.x = BG.rect_position.x + BG.rect_size.x
 
+func _menu_change() -> void:
+	update_settings()
+	Settings.save_settings()
 
-func _on_quit():
+func _on_quit() -> void:
 	update_settings()
 	Settings.save_settings()
 
@@ -29,6 +32,7 @@ func _on_quit():
 func update_settings() -> void:
 	OS.window_fullscreen = Settings.fullscreen
 	Engine.target_fps = Settings.maxfps
+	OS.vsync_enabled = Settings.vsync
 	AudioServer.set_bus_volume_db(0, linear2db(Settings.masterVol))
 	AudioServer.set_bus_volume_db(2, linear2db(Settings.music))
 	AudioServer.set_bus_volume_db(3, linear2db(Settings.sfx))
@@ -42,6 +46,8 @@ func _input(event: InputEvent) -> void:
 
 func _on_fullscreen_toggled(buttonPressed: bool) -> void:
 	Settings.fullscreen = buttonPressed
+func _on_vsync_toggled(buttonPressed: bool) -> void:
+	Settings.vsync = buttonPressed
 func _on_graphic_quality_changed(buttonPressed: bool) -> void:
 	Settings.gfx = Settings.GFX_BAD if buttonPressed else Settings.GFX_GOOD
 func _on_screenshake_value_changed(value: float) -> void:
@@ -82,16 +88,10 @@ func set_values() -> void:
 	find_node("MSTRVolume").get_node("HSlider").value = Settings.masterVol * 100
 	find_node("SFXVolume").get_node("HSlider").value = Settings.sfx * 100
 	find_node("MSXVolume").get_node("HSlider").value = Settings.music * 100
+	find_node("VSync").pressed = Settings.vsync
 
 
 func _on_reset_kb_bindings_pressed() -> void:
 	for i in keybinds.get_children():
 		if i.has_method("reset"): i.reset()
-
-
-
-
-
-
-
 

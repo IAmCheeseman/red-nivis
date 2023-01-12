@@ -6,3 +6,4 @@ onready var BG = $BG
 onready var platforms = $Platform
 onready var ceilingProp = $CeilingProp
 onready var groundProp = $GroundProp
+onready var doors = $Door
