@@ -24,7 +24,7 @@ onready var gunAnim = $Gun/AnimationPlayer
 onready var barrelEnd = $Gun/BarrelEnd
 
 # Exports
-export var maxHealth := 550
+
 
 export var maxSpeed := 320
 export var backwardsMod := .5
@@ -55,8 +55,6 @@ var areItemsDropped := false
 
 var state := IDLE
 
-onready var health = maxHealth
-
 var speed := 0
 var vel := Vector2.ZERO
 var target := 0.0
@@ -67,16 +65,11 @@ var chargeShotCurrentCount = 0
 
 var player: Node2D
 
-
 signal dead
 
 
-func _ready() -> void:
-	health = maxHealth
-
-
 func _process(delta: float) -> void:
-	if !is_on_floor(): vel.y += Globals.GRAVITY*delta
+	vel.y += Globals.GRAVITY * delta
 	
 	# Grabbing the player
 	if !player:
@@ -109,10 +102,10 @@ func _process(delta: float) -> void:
 				fire_state(delta)
 				# Firing
 				if fireCooldown.is_stopped():
-					GameManager.emit_signal("screenshake", 1, 4, .05, .05)
 					var newBullet = bullet.instance()
 					newBullet.global_position = barrelEnd.global_position
 					newBullet.direction = barrelEnd.global_position.direction_to(player.global_position)
+					newBullet.damage = 25
 					newBullet.speed = fastFireBulletSpeed
 					
 					GameManager.spawnManager.spawn_object(newBullet)
@@ -128,16 +121,15 @@ func _process(delta: float) -> void:
 				fire_state(delta)
 				# Firing
 				if fireCooldown.is_stopped():
-					GameManager.emit_signal("screenshake", 1, 8, .05, .05)
 					for i in shotgunBullets:
 						var newBullet = bullet.instance()
 						
 						var dir = barrelEnd.global_position.direction_to(player.global_position)
 						var spread = deg2rad(shotgunSpread*i-(shotgunSpread*(shotgunBullets-1)*.5))
 						
-						
 						newBullet.global_position = barrelEnd.global_position
 						newBullet.direction = dir.rotated(spread)
+						newBullet.damage = 25
 						newBullet.speed = shotgunBulletSpeed
 						
 						GameManager.spawnManager.spawn_object(newBullet)
@@ -150,12 +142,12 @@ func _process(delta: float) -> void:
 						fireCount = 0
 						state = IDLE
 						
-	var _discard = move_and_slide(vel*delta)
+	var _discard = move_and_slide(vel)
 
 
 func fire_state(delta: float) -> void:
 	vel.x = lerp(vel.x, 0, accel*delta)
-	gun.look_at(player.global_position)
+	gun.look_at(player.global_position + Vector2(0, -8))
 	gun.rotation_degrees = stepify(gun.rotation_degrees, 6)
 	anim.play("Shoot")
 	
@@ -265,34 +257,4 @@ func select_target_x() -> void:
 		if i > 100 and !isColliding:
 			break
 		i += 1
-
-
-func _on_hurt(amount, _dir) -> void:
-	health -= amount
-	hpBar.value = Utils.percentage_of(health, maxHealth)
-	if health <= 0:
-		emit_signal("dead")
-		# Dropping the hp
-		if !areItemsDropped:
-			var playerData = player.get_parent().playerData
-			for i in playerData.maxHealth-playerData.health:
-				var newHealth = healthPickup.instance()
-				newHealth.position = position-Vector2(0, sprite.texture.get_height()*.25)
-				var force = (Vector2.UP+Vector2(rand_range(-.25, .25), 0)).normalized()*70
-				newHealth.apply_central_impulse(force)
-				GameManager.spawnManager.spawn_object(newHealth)
-				
-				GameManager.frameFreezer.freeze_frames(.2)
-			
-			for i in drops.size():
-				var d = drops[i]
-				var newDrop:Node2D = d.instance()
-				newDrop.position = position-Vector2(0, sprite.texture.get_height()*.25)
-				newDrop.position.x += (drops.size()*.5-i)*32
-				GameManager.spawnManager.spawn_object(newDrop)
-			areItemsDropped = false
-			
-		# Getting delted 
-		queue_free()
-
 

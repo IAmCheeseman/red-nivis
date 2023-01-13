@@ -50,12 +50,6 @@ func _ready() -> void:
 	controlMaterial.light_mode = CanvasItemMaterial.LIGHT_MODE_UNSHADED
 	var _discard = get_tree().connect("node_added", self, "_on_node_added")
 
-
-func _input(_event):
-	if Input.is_action_just_pressed("toggle_fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
-
-
 func _on_node_added(node: Node) -> void:
 	if node is Light2D and Settings.gfx == Settings.GFX_BAD:
 		node.hide()

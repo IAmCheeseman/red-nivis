@@ -5,12 +5,12 @@
 [ext_resource path="res://Entities/Enemies/Bosses/LabsBoss/BossLabs.gd" type="Script" id=3]
 [ext_resource path="res://Managing/Colliders/PlayerDetection.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=5]
-[ext_resource path="res://UI/Assets/BossHPBarEmpty.png" type="Texture" id=6]
-[ext_resource path="res://UI/Assets/BossHPBarFull.png" type="Texture" id=7]
+[ext_resource path="res://UI/BossBar/Bossbar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/WorldManagement/RoomGenerator.gd" type="Script" id=8]
 [ext_resource path="res://Entities/Effects/EnemySpawnGrow.png" type="Texture" id=9]
 [ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=10]
-[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=11]
+[ext_resource path="res://Entities/Effects/Blood/Blood.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ChargeUp"
@@ -159,11 +159,13 @@ z_index = -1
 collision_layer = 0
 collision_mask = 17
 script = ExtResource( 3 )
-maxHealth = 600
-maxSpeed = 3800
-fastFireCooldown = 0.3
-fastFireShots = 5
+maxSpeed = 60
+accel = 20.0
+fastFireCooldown = 0.1
+fastFireShots = 15
+shotgunBulletSpeed = 120
 shotgunCooldown = 0.5
+chargeDamage = 50
 
 [node name="Gun" type="Sprite" parent="."]
 position = Vector2( -1, -30 )
@@ -187,7 +189,7 @@ texture = ExtResource( 1 )
 offset = Vector2( -2, -27 )
 hframes = 11
 vframes = 3
-frame = 22
+frame = 17
 
 [node name="Collisions" type="Node2D" parent="."]
 visible = false
@@ -246,37 +248,25 @@ one_shot = true
 [node name="BossBar" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BossBar"]
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_bottom = -1.0
-mouse_filter = 2
-custom_constants/separation = 1
-alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="BossBar/VBoxContainer"]
-margin_top = 194.0
-margin_right = 122.0
-margin_bottom = 204.0
-custom_fonts/font = ExtResource( 11 )
-text = " Jerry"
-
-[node name="ProgressBar" type="TextureProgress" parent="BossBar/VBoxContainer"]
-margin_top = 205.0
-margin_right = 122.0
-margin_bottom = 219.0
-value = 100.0
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 7 )
+[node name="Bossbar" parent="BossBar" instance=ExtResource( 6 )]
+bossName = "Horace"
+dmgManagerPth = NodePath("../../DamageManager")
 
 [node name="RoomGenerator" type="Node" parent="."]
 script = ExtResource( 8 )
 
+[node name="DamageManager" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -23 )
+maxHealth = 12800
+defense = 2
+kbAmount = 0.0
+difficulty = 2
+isBoss = true
+spritePath = NodePath("../Sprite")
+deathParticles = ExtResource( 11 )
+
 [connection signal="dead" from="." to="MoneyDropper" method="drop_money"]
-[connection signal="hurt" from="Collisions/Hurtbox" to="." method="_on_hurt"]
+[connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 
 [editable path="Collisions/PlayerDetection"]
 [editable path="Collisions/Hurtbox"]

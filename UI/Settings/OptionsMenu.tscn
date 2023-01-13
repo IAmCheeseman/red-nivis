@@ -44,9 +44,9 @@ __meta__ = {
 
 [node name="NavMenu" type="VBoxContainer" parent="Center"]
 margin_left = 118.0
-margin_top = 34.0
+margin_top = 44.0
 margin_right = 241.0
-margin_bottom = 186.0
+margin_bottom = 176.0
 rect_pivot_offset = Vector2( -166.714, -40.6914 )
 alignment = 1
 __meta__ = {
@@ -97,6 +97,7 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../Menus/Visuals")
 
 [node name="Language" type="Button" parent="Center/NavMenu"]
+visible = false
 margin_top = 96.0
 margin_right = 123.0
 margin_bottom = 112.0
@@ -108,9 +109,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../Menus/Language")
 
 [node name="Audio" type="Button" parent="Center/NavMenu"]
-margin_top = 116.0
+margin_top = 96.0
 margin_right = 123.0
-margin_bottom = 132.0
+margin_bottom = 112.0
 custom_fonts/font = ExtResource( 1 )
 text = "AUDIO_OPT_M"
 align = 0
@@ -119,9 +120,9 @@ fromPth = NodePath("..")
 toPth = NodePath("../../../Menus/Audio")
 
 [node name="Back" type="Button" parent="Center/NavMenu"]
-margin_top = 136.0
+margin_top = 116.0
 margin_right = 123.0
-margin_bottom = 152.0
+margin_bottom = 132.0
 custom_fonts/font = ExtResource( 1 )
 text = "BACK_BTN"
 align = 0

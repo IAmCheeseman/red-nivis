@@ -7,7 +7,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://Entities/NPC/Gunzard/Gunzard.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Entities/Enemies/Bosses/LabsBoss/Boss.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -16,7 +16,7 @@ extents = Vector2( 2049.75, 134.694 )
 script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 121, 262 )
+position = Vector2( 135, 266 )
 
 [node name="LabBackground" parent="." instance=ExtResource( 3 )]
 z_index = -1
@@ -40,7 +40,7 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="Gunzard" parent="." instance=ExtResource( 8 )]
-position = Vector2( 281, 285 )
+[node name="BossLabs" parent="." instance=ExtResource( 8 )]
+position = Vector2( 314, 274 )
 
 [editable path="CameraMoveZone"]

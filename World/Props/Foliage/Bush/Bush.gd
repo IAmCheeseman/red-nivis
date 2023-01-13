@@ -6,8 +6,7 @@ onready var playerDetection = $PlayerDetection
 onready var sprite := $Sprite
 onready var anim := $AnimationPlayer
 
-
-func _process(delta):
+func _process(_delta):
 	if playerDetection.get_player():
 		var new_particles := PARTICLES.instance()
 		new_particles.global_position = global_position

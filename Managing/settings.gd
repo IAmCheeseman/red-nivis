@@ -40,7 +40,6 @@ func load_settings() -> void:
 	yield(TempTimer.idle_frame(self), "timeout")
 	change_lang(settings.lang)
 
-
 func save_settings() -> void:
 	var dataManager = DataManager.new()
 	var settings = {
@@ -61,7 +60,6 @@ func save_settings() -> void:
 	# Saving the data
 	dataManager.save_data(settings, Globals.SETTINGS_FILE_NAME)
 
-
 func save_defaults(dm: DataManager) -> void:
 	var ok = dm.save_data({
 		"gfx"              : GFX_GOOD,
@@ -80,15 +78,12 @@ func save_defaults(dm: DataManager) -> void:
 	}, Globals.SETTINGS_FILE_NAME)
 	if ok != OK: push_error("lmao time for pain")
 
-
 func change_lang(newLang: String) -> void:
 	lang = newLang
 	TranslationServer.set_locale(lang)
 	emit_signal("lang_changed")
 
-
 signal lang_changed
-
 
 # Graphics
 var gfx := GFX_GOOD
@@ -96,15 +91,12 @@ var fullscreen := OS.has_feature("standalone")
 var lang := "en"
 var vsync := true
 
-
 # Performance
 var maxfps := 60
-
 
 # Purely visual
 var screenshake := 1.0
 var brightness := 1.0
-
 
 # Gameplay
 var speedrunTimer      := false
@@ -113,7 +105,6 @@ var doubleDamageMode   := false
 var keybinds           := {}
 var defaultKeybinds    := {}
 var controllerKeybinds := {}
-
 
 # Audio
 var masterVol := 1.0

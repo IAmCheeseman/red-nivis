@@ -188,6 +188,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/LaserShotgun.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/LaserShotgun.png"
 	},
+	"juice-revolver" : {
+		"key" : "juice-revolver",
+		"name" : "JUICE_REVOLVER_ITM",
+		"tier" : ToolTipGenerator.TIERS.TOXIC_CAVERNS,
+		"scene" : "res://Items/Weapons/Scenes/JuiceRevolver.tscn",
+		"slotTexture" : "res://Items/Weapons/Sprites/JuiceRevolver.png"
+	},
 	"bullet-chainsaw" : {
 		"key" : "bullet-chainsaw",
 		"name" : "BULLET_CHAINSAW_ITM",

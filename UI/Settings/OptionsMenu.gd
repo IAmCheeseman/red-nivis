@@ -7,14 +7,16 @@ onready var BG = $BG
 onready var backButton = $Center/NavMenu/Back
 
 var settingVals = true
+var wasVisible = false
 
 func _ready() -> void:
 	update_settings()
 	set_values()
 
-
-#func _process(_delta: float) -> void:
-#	BGgradient.rect_position.x = BG.rect_position.x + BG.rect_size.x
+func _process(delta: float) -> void:
+	if visible != wasVisible:
+		set_values()
+	wasVisible = visible
 
 func _menu_change() -> void:
 	update_settings()
@@ -37,12 +39,10 @@ func update_settings() -> void:
 	AudioServer.set_bus_volume_db(2, linear2db(Settings.music))
 	AudioServer.set_bus_volume_db(3, linear2db(Settings.sfx))
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		backButton.change_menu()
 		_on_quit()
-
 
 func _on_fullscreen_toggled(buttonPressed: bool) -> void:
 	Settings.fullscreen = buttonPressed
@@ -78,7 +78,7 @@ func _on_german_pressed() -> void:
 
 
 func set_values() -> void:
-	find_node("Fullscreen").pressed = Settings.fullscreen
+	find_node("Fullscreen").pressed = OS.window_fullscreen
 	find_node("GFX").pressed = Settings.gfx == Settings.GFX_BAD
 	find_node("SpeedrunMode").pressed = Settings.speedrunTimer
 	find_node("DoubleDamage").pressed = Settings.doubleDamageMode
