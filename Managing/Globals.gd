@@ -1,4 +1,4 @@
- extends Reference
+extends Reference
 class_name Globals
 
 const SETTINGS_FILE_NAME := "settings.dat"

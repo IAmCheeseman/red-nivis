@@ -55,6 +55,7 @@ tracks/1/keys = {
 }
 
 [node name="Birb" instance=ExtResource( 1 )]
+shove = 24
 
 [node name="Sprite" parent="ScaleHelper" index="0"]
 position = Vector2( 0, -9 )

@@ -4,6 +4,7 @@ NO_TRANS,Unavailable translation,Unavailable translation,Texto sin traducir,Kein
 INTRO,A game by IAmCheeseman,,,Ein Spiel von IAmCheeseman
 ,,,,
 BACK_BTN,Back,"go back, m8",Atrás,Zurück
+APP_BACK_BTN,Apply & Back,,,
 EXIT_BTN,Exit,Gew back tew teh action,Continuar,Verlassen
 QUIT_BTN,Quit,Col'oni's O'fer Gahms,Quitar,Verlassen
 CLEAR_CONFIRM,Do you really want to clear your current game?,Do 'ew reel'eh wa'a cle'ah 'er curen' gahm?,¿En serio quieres borrar tu partida?,Möchtest du wirklich deinen derzeitigen Spielstand leeren?
@@ -230,6 +231,8 @@ PASS_DISCO_BALL,Disco Ball,,,
 PASS_DISCO_BALL_DESC,Shoots another projectile when you hit an enemy.,,,
 PASS_TRAFFIC_CONE,Traffic Cone,,,
 PASS_TRAFFIC_CONE_DESC,Chance to throw out a traffic cone when you shoot.,,,
+PASS_BAYONETTE,Bayonette,,,
+PASS_BAYONETTE_DESC,Deal more damage to enemies up close.,,,
 ,,,,
 PISTOL_ITM,Pistol,hhhhhhhhhgggggggg,Pistola,Pistole
 AK47_ITM,AK-47,Ay Kay For'y Se'en,AK-47,AK-47
