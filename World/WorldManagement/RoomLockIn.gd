@@ -15,7 +15,6 @@ func _ready() -> void:
 	world = get_parent()
 	world.automaticBlockRemoval = automaticRemoval
 
-
 func remove_blocks() -> void:
 	world._on_enemies_cleared(true)
 
