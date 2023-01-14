@@ -151,11 +151,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
+"values": [ 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11 ]
 }
 
 [node name="BossLabs" type="KinematicBody2D"]
-z_index = -1
+z_index = 1
 collision_layer = 0
 collision_mask = 17
 script = ExtResource( 3 )
@@ -168,6 +168,7 @@ shotgunCooldown = 0.5
 chargeDamage = 50
 
 [node name="Gun" type="Sprite" parent="."]
+visible = false
 position = Vector2( -1, -30 )
 texture = ExtResource( 2 )
 offset = Vector2( 12, 1 )
@@ -185,11 +186,12 @@ anims/ChargeUp = SubResource( 1 )
 anims/Reset = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+z_index = 5
 texture = ExtResource( 1 )
 offset = Vector2( -2, -27 )
 hframes = 11
 vframes = 3
-frame = 17
+frame = 16
 
 [node name="Collisions" type="Node2D" parent="."]
 visible = false

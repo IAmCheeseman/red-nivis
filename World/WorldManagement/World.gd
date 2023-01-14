@@ -25,7 +25,6 @@ export var automaticBlockRemoval := true
 var waves := 0
 var lockedIn: bool
 var nonViableEnemySpawns := []
-var exitBlockers := []
 var alreadyExited := false
 
 signal added_enemies
@@ -66,8 +65,7 @@ func _ready() -> void:
 	yield(TempTimer.idle_frame(self, 6), "timeout")
 	
 	if worldData.get_current_room().cleared or worldData.get_current_room().constantRoom != null:
-		for i in exitBlockers: i.queue_free()
-		exitBlockers.clear()
+		doors.set_collision_layer_bit(0, 0)
 
 
 func _process(delta: float) -> void:
@@ -120,10 +118,7 @@ func _on_enemies_cleared(remove:bool=automaticBlockRemoval) -> void:
 		return
 	roomClearer.isChecking = false
 	if remove:
-		for eb in exitBlockers:
-			if eb is Node2D:
-				eb.queue_free()
-		exitBlockers.clear()
+		doors.set_collision_layer_bit(0, 0)
 
 	var currRoom = worldData.get_current_room()
 	if currRoom.cleared or currRoom.constantRoom: return
