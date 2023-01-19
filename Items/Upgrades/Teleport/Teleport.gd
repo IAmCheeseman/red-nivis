@@ -25,6 +25,7 @@ func _input(_event: InputEvent) -> void:
 	and !GameManager.inGUI:
 		var dashDir := Vector2.ZERO
 		dashDir.x = Input.get_action_strength("move_right")-Input.get_action_strength("move_left")
+		dashDir.y = Input.get_action_strength("down")-Input.get_action_strength("up")
 		dashDir = dashDir.normalized()*playerData.dashSpeed
 		if dashDir == Vector2.ZERO: return
 		canDash = false
@@ -43,7 +44,6 @@ func _input(_event: InputEvent) -> void:
 		player.state = player.states.DASH
 		player.scaleHelper.scale = Vector2(1.5, .5)
 		player.vel = dashDir
-		player.vel.y = 0
 		playerData.dashesLeft -= 1
 		player.dashCooldown.start()
 		

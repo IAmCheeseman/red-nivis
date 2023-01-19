@@ -128,7 +128,7 @@ func _physics_process(delta: float) -> void:
 			SaS.play("Dash")
 			if dashCooldown.is_stopped():
 				state = states.WALK
-				vel.y = 0
+				vel = Vector2(0, -playerData.jumpForce / 2)
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 			scaleHelper.scale = scaleHelper.scale.move_toward(Vector2.ONE, 5*delta)
 	
