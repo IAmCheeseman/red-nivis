@@ -23,7 +23,7 @@ func _on_interaction() -> void:
 
 
 func spawn_medkits() -> void:
-	var amountGone = playerData.maxHealth-playerData.health
+	var amountGone = (playerData.maxHealth - playerData.health) / 20
 	
 	var angleDiff = 17
 	for i in amountGone:
