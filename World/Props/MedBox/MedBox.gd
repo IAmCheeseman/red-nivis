@@ -23,16 +23,16 @@ func _on_interaction() -> void:
 
 
 func spawn_medkits() -> void:
-	var amountGone = (playerData.maxHealth - playerData.health) / 20
+	var medkitsToSpawn := ceil((playerData.maxHealth - playerData.health) / 25) + 1
 	
-	var angleDiff = 17
-	for i in amountGone:
+	var angleDiff := 17
+	for i in medkitsToSpawn:
 		var angle = deg2rad(
-			angleDiff*i-(angleDiff*(amountGone-1)*.5)
+			angleDiff * i - (angleDiff * (medkitsToSpawn - 1) * 0.5)
 		)
 		var pushAngle = Vector2.UP.rotated(angle)*60
 		
 		var newMedkit = preload("res://Items/Medkit/Medkit.tscn").instance()
-		newMedkit.apply_central_impulse(pushAngle)
+		newMedkit.apply_central_impulse(pushAngle) 
 		newMedkit.global_position = spawnPos.global_position
 		GameManager.spawnManager.spawn_object(newMedkit)

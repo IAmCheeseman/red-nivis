@@ -10,5 +10,5 @@ func _process(_delta: float) -> void:
 	if global_position.distance_to(
 		playerData.playerObject.global_position
 	) < 5 and fd.is_colliding():
-		playerData.heal(20)
+		playerData.heal(25)
 		queue_free()

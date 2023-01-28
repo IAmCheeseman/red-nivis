@@ -7,7 +7,7 @@
 extents = Vector2( 32, 40.5 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 67.5, 24 )
+extents = Vector2( 40, 24 )
 
 [node name="Rock" type="StaticBody2D"]
 script = ExtResource( 2 )
@@ -22,12 +22,11 @@ position = Vector2( 4, -40.5 )
 shape = SubResource( 2 )
 
 [node name="ExplosionDetection" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionDetection"]
-position = Vector2( 2.5, -24 )
+position = Vector2( 63, -24 )
 shape = SubResource( 1 )
 
 [connection signal="area_entered" from="ExplosionDetection" to="." method="_explode"]
