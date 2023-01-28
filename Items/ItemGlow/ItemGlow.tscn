@@ -25,5 +25,4 @@ pointCount = 16
 color = Color( 0.894118, 0.607843, 0.207843, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Fade"
 anims/Fade = SubResource( 1 )

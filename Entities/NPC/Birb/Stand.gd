@@ -4,7 +4,7 @@ onready var birb = $Birb
 onready var shop = $CanvasLayer
 onready var playerInven = find_node("PlayerWeapons")
 onready var naiWarning = find_node("NoAvailableItemsWarning")
-onready var warningFlash = find_node("WarningFlash")
+onready var tradeButton = find_node("Trade")
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 var shopData = preload("res://Entities/NPC/Birb/TradingPostData.tres")
@@ -62,14 +62,15 @@ func _on_player_weapon_chosen(button: CustomButton) -> void:
 	
 	# Selecting the item
 	selectedItem = button
+	tradeButton.hide()
 	
 	if button:
 		# Hiding any warnings
 		naiWarning.hide()
-		
 		if inventory.items[button.get_index()].itemData.key == "pistol":
 			naiWarning.show()
 			return
+		tradeButton.show()
 		
 		# Updating the shop items
 		tradableItems = find_same_tier_items(inventory.items[button.get_index()].itemData.tier)
@@ -85,8 +86,6 @@ func _on_player_weapon_chosen(button: CustomButton) -> void:
 ### Called when the player clicks the trade button
 func swap_items() -> void:
 	if naiWarning.visible:
-		warningFlash.stop()
-		warningFlash.play("Flash")
 		return
 	
 	# Swapping the items
