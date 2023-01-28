@@ -126,9 +126,6 @@ func _physics_process(delta: float) -> void:
 			vel.y /= 1.75
 		states.DASH:
 			SaS.play("Dash")
-			if dashCooldown.is_stopped():
-				state = states.WALK
-				vel = Vector2(0, -playerData.jumpForce / 2)
 			vel.y = move_and_slide_with_snap(vel, snapVector, Vector2.UP, true, 4, deg2rad(45)).y
 			scaleHelper.scale = scaleHelper.scale.move_toward(Vector2.ONE, 5*delta)
 	
@@ -295,8 +292,8 @@ func _input(_event: InputEvent) -> void:
 
 func _on_dash_cooldown_timeout():
 	state = states.WALK
-	vel.x *= .1
-	vel.y = Globals.GRAVITY*.25
+	vel.x *= 0.25
+	vel.y = 0
 	if is_grounded(): playerData.dashesLeft = playerData.maxDashes
 
 
