@@ -30,7 +30,7 @@ func spawn_medkits() -> void:
 		var angle = deg2rad(
 			angleDiff * i - (angleDiff * (medkitsToSpawn - 1) * 0.5)
 		)
-		var pushAngle = Vector2.UP.rotated(angle)*60
+		var pushAngle = Vector2.UP.rotated(angle) * 60
 		
 		var newMedkit = preload("res://Items/Medkit/Medkit.tscn").instance()
 		newMedkit.apply_central_impulse(pushAngle) 

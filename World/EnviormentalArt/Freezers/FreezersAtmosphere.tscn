@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Freezers/FreezersAtmosphere.gd" type="Script" id=1]
+[ext_resource path="res://World/EnviormentalArt/Freezers/Snowflakes.png" type="Texture" id=2]
 
 [sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
@@ -32,6 +33,12 @@ shader_param/speed = 2500.0
 shader_param/steps = 0.0
 shader_param/noise = SubResource( 17 )
 
+[sub_resource type="CanvasItemMaterial" id=19]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [sub_resource type="Curve" id=14]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.0769231, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.877622, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.491891, 0.0, 0, 0 ]
 
@@ -47,9 +54,13 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 35.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale = 4.0
+angle = 360.0
+angle_random = 1.0
+scale = 1.5
 scale_random = 0.87
 scale_curve = SubResource( 13 )
+anim_offset = 1.0
+anim_offset_random = 1.0
 
 [node name="FreezersAtmosphere" type="Node2D"]
 z_index = 1
@@ -62,11 +73,9 @@ margin_left = -1841.0
 margin_top = -1841.0
 margin_right = 1841.0
 margin_bottom = 1841.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Snow" type="Particles2D" parent="."]
+material = SubResource( 19 )
 z_index = -2
 amount = 1500
 lifetime = 25.0
@@ -74,3 +83,4 @@ preprocess = 15.0
 visibility_rect = Rect2( -1500, -1500, 3000, 3000 )
 local_coords = false
 process_material = SubResource( 15 )
+texture = ExtResource( 2 )
