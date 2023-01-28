@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-dialog = [ [ "Introduction", "BIRB_INTRO_LN1", "BIRB_INTRO_LN2" ] ]
+dialog = [ [ "Introduction", "BIRB_INTRO_LN1", "BIRB_INTRO_LN2" ], [ "Empty", "BIRB_EMPTY_LN1" ] ]

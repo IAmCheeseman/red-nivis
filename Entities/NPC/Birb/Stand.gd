@@ -1,15 +1,17 @@
 extends Node2D
 
+onready var birb = $Birb
 onready var shop = $CanvasLayer
 onready var playerInven = find_node("PlayerWeapons")
-onready var shopInven = find_node("ShopWeapons")
-onready var nsWarning = find_node("NoSelectionWarning")
 onready var naiWarning = find_node("NoAvailableItemsWarning")
+onready var warningFlash = find_node("WarningFlash")
 
 var inventory = preload("res://UI/Inventory/Inventory.tres")
 var shopData = preload("res://Entities/NPC/Birb/TradingPostData.tres")
 
 var selectedItem: CustomButton
+
+var tradableItems: Array
 
 
 func _ready() -> void:
@@ -20,7 +22,7 @@ func _ready() -> void:
 			shopData.tradedWeapons.append(i.itemData.key)
 	open_shop(false)
 
-
+### Updates the item lists
 func update_items(items:=inventory.items, par:=playerInven, connection:="_on_player_weapon_chosen") -> void:
 	# Removing the items
 	Utils.free_children(par)
@@ -36,76 +38,73 @@ func update_items(items:=inventory.items, par:=playerInven, connection:="_on_pla
 		newButton.setup(load(j.slotTexture), j.name, j.key)
 		newButton.connect("pressed", self, connection, [newButton])
 
-
+### Initializes the shop gui
 func open_shop(open:=true) -> void:
 	if GameManager.inGUI == open: return
+	
 	# Updating shop data
 	update_items()
-	Utils.free_children(shopInven)
 	_on_player_weapon_chosen(null)
-	nsWarning.show()
 	naiWarning.hide()
-	yield(TempTimer.idle_frame(self), "timeout")
+#	yield(TempTimer.idle_frame(self), "timeout")
 	GameManager.inGUI = open
 	
 	# Opening the shop
 	for i in shop.get_children():
 		i.visible = open
 
-
+### Called when the player chooses a weapon
 func _on_player_weapon_chosen(button: CustomButton) -> void:
-	# Unselecting every other button
+	# Deselecting every other button
 	for i in playerInven.get_children():
 		if i != button:
 			i.pressed = false
+	
 	# Selecting the item
 	selectedItem = button
 	
 	if button:
 		# Hiding any warnings
-		nsWarning.hide()
 		naiWarning.hide()
 		
 		if inventory.items[button.get_index()].itemData.key == "pistol":
-			nsWarning.hide()
 			naiWarning.show()
-			update_items([], shopInven, "swap_items")
 			return
 		
 		# Updating the shop items
-		var items = find_same_tier_items(inventory.items[button.get_index()].itemData.tier)
-		update_items(items, shopInven, "swap_items")
+		tradableItems = find_same_tier_items(inventory.items[button.get_index()].itemData.tier)
+		tradableItems.shuffle()
 		
-		# Removing the shop items if the button is unselected
-		if !button.pressed:
-			update_items()
-			nsWarning.show()
-			naiWarning.hide()
-			Utils.free_children(shopInven)
-		# If there's no shop items, display a message
-		if items.size() == 0:
-			nsWarning.hide()
-			naiWarning.show()
+		# Making sure that you can't get the debug weapon, the pistol, or your current weapon.
+		for j in tradableItems.size():
+			var i = tradableItems.size() - j
+			if tradableItems[i - 1].key in ["tw", "pistol", selectedItem.itemID]:
+				tradableItems.remove(i - 1)
 
 
-func swap_items(button: CustomButton) -> void:
+### Called when the player clicks the trade button
+func swap_items() -> void:
+	if naiWarning.visible:
+		warningFlash.stop()
+		warningFlash.play("Flash")
+		return
+	
 	# Swapping the items
 	inventory.remove_item(selectedItem.itemID)
-	inventory.add_item(button.itemID)
-	
-	# Removing the items from the shop
-	shopData.tradedWeapons.append(selectedItem.itemID)
-	for b in button.get_parent().get_children():
-		shopData.tradedWeapons.append(b.itemID)
-	selectedItem = null
+	var item = GameManager.itemManager.create_item(tradableItems.pop_front().key, true)
+	item.global_position = birb.global_position
+	GameManager.spawnManager.spawn_object(item)
 	
 	# Refreshing everything
 	update_items()
-	Utils.free_children(shopInven)
-	nsWarning.show()
 	naiWarning.hide()
 	
 	Achievement.unlock("BIRB")
+	
+	open_shop(false)
+	
+	birb.defaultDialog = "Empty"
+	birb.disconnect("dialog_finished", self, "open_shop")
 
 
 # Loops through every item in the game looking for
@@ -129,4 +128,3 @@ func _input(event: InputEvent) -> void:
 	for i in ["ui_cancel", "interact"]:
 		if event.is_action_pressed(i):
 			open_shop(false)
-			Utils.free_children(shopInven)
