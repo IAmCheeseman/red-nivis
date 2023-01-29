@@ -9,6 +9,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 2
+emission_box_extents = Vector3( 3, 3, 1 )
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0

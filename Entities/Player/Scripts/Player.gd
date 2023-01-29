@@ -292,8 +292,7 @@ func _input(_event: InputEvent) -> void:
 
 func _on_dash_cooldown_timeout():
 	state = states.WALK
-	vel.x *= 0.25
-	vel.y = 0
+	vel *= 0.25
 	if is_grounded(): playerData.dashesLeft = playerData.maxDashes
 
 
