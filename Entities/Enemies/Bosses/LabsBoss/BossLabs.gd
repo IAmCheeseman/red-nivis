@@ -65,9 +65,6 @@ var chargeShotCurrentCount = 0
 
 var player: Node2D
 
-signal dead
-
-
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY * delta
 	

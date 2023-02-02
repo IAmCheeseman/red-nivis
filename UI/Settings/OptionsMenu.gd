@@ -13,7 +13,7 @@ func _ready() -> void:
 	update_settings()
 	set_values()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if visible != wasVisible:
 		set_values()
 	wasVisible = visible
