@@ -33,17 +33,10 @@ func has_space() -> bool:
 
 
 func has_item(id:String) -> bool:
-	var hasItem = false
 	for i in items:
-		hasItem = i.itemData.key == id
-		if hasItem: break
-	return hasItem
-
-
-func get_item(id:String):
-	if id.is_valid_integer():
-		return null
-	push_error("ITEM DOES NOT EXIST: %s" % id)
+		if i.itemData.key == id:
+			return true
+	return false
 
 
 func filter_items(id:String):

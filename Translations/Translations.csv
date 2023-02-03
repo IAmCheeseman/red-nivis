@@ -144,6 +144,10 @@ SLUG_CULTIST_INTRO_LN2,Do things for me.,ew 'ings fo' 'e.,Házme un favor.,Tu et
 ,,,,
 BIRB_INTRO_LN1,Hey!,Oi!,Hey!,Hallo!
 BIRB_INTRO_LN2,Welcome to my trading post!,Wel'ome tew moi tra'in' pewst!,Bienvenido a mi negocio!,Wilkommen zu meinen Handelsposten!
+BIRB_INTRO_LN3,I'll take whatever weapon you're holding and give you something else!,,,
+,,,,
+BIRB_TRADE_LN1,"Thank you, I'll take that.",,,
+BIRB_TRADE_LN2,Here's your new weapon!,,,
 ,,,,
 BIRB_EMPTY_LN1,"Sorry, I don't have anymore items to give.",,,
 ,,,,

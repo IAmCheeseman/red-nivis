@@ -1,7 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Entities/NPC/NPC.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/NPC/Gunzard/Gunzard.png" type="Texture" id=2]
+[ext_resource path="res://UI/ButtonPrompt/Prompt.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=4]
+[ext_resource path="res://UI/Assets/FFFFORWA.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Entities/NPC/Gunzard/GunzardUI.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 10, 5 )
@@ -41,6 +46,12 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="DynamicFont" id=5]
+size = 10
+outline_size = 1
+outline_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+font_data = ExtResource( 5 )
+
 [node name="Gunzard" instance=ExtResource( 1 )]
 shove = 24
 
@@ -69,3 +80,87 @@ position = Vector2( 0, -38 )
 
 [node name="Dialog" parent="Dialog" index="0"]
 npcName = "Gunzard"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+layer = 5
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.741176 )
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 5.0
+margin_bottom = -5.0
+
+[node name="HBox" type="HBoxContainer" parent="CanvasLayer/VBox" index="0"]
+margin_right = 360.0
+margin_bottom = 156.0
+size_flags_vertical = 11
+custom_constants/separation = 48
+alignment = 1
+
+[node name="VBox1" type="VBoxContainer" parent="CanvasLayer/VBox/HBox" index="0"]
+margin_right = 360.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/VBox/HBox/VBox1" index="0"]
+margin_right = 360.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 5 )
+text = "BIRB_YOUR_ITEMS"
+align = 1
+
+[node name="PlayerWeapons" type="VBoxContainer" parent="CanvasLayer/VBox/HBox/VBox1" index="1"]
+margin_top = 19.0
+margin_right = 360.0
+margin_bottom = 19.0
+
+[node name="NoAvailableItemsWarning" type="Label" parent="CanvasLayer/VBox" index="1"]
+margin_top = 160.0
+margin_right = 360.0
+margin_bottom = 170.0
+custom_colors/font_color = Color( 0.647059, 0.188235, 0.188235, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "BIRB_NO_TRADE_WRN"
+align = 1
+autowrap = true
+
+[node name="Trade" type="Button" parent="CanvasLayer/VBox" index="2"]
+margin_left = 132.0
+margin_top = 174.0
+margin_right = 228.0
+margin_bottom = 190.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 6 )
+text = "BIRB_TRADE_BTN"
+script = ExtResource( 4 )
+isNegative = true
+
+[node name="Exit" type="Button" parent="CanvasLayer/VBox" index="3"]
+margin_left = 149.0
+margin_top = 194.0
+margin_right = 210.0
+margin_bottom = 210.0
+size_flags_horizontal = 4
+custom_fonts/font = ExtResource( 6 )
+text = "EXIT_BTN"
+script = ExtResource( 4 )
+isNegative = true
+
+[node name="Prompts" type="VBoxContainer" parent="CanvasLayer" index="2"]
+anchor_bottom = 1.0
+alignment = 2
+
+[node name="Prompt" parent="CanvasLayer/Prompts" index="0" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 210.0
+margin_right = 44.0
+margin_bottom = 220.0
+promptText = "Exit"
+promptAction = "pause,interact"

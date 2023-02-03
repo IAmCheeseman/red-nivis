@@ -1,21 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entities/NPC/Birb/BirbStand.png" type="Texture" id=1]
 [ext_resource path="res://Entities/NPC/Birb/Birb.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/NPC/Birb/Stand.gd" type="Script" id=3]
-[ext_resource path="res://UI/Assets/NokiaCellphone.tres" type="DynamicFont" id=4]
-[ext_resource path="res://UI/Assets/FFFFORWA.TTF" type="DynamicFontData" id=5]
-[ext_resource path="res://UI/PauseMenu/CustomButton.gd" type="Script" id=6]
-[ext_resource path="res://UI/ButtonPrompt/Prompt.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 4 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 10
-outline_size = 1
-outline_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
-font_data = ExtResource( 5 )
 
 [node name="Stand" type="Node2D"]
 script = ExtResource( 3 )
@@ -36,91 +26,4 @@ collision_mask = 0
 position = Vector2( 0, -3 )
 shape = SubResource( 1 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 5
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.741176 )
-
-[node name="VBox" type="VBoxContainer" parent="CanvasLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 5.0
-margin_bottom = -5.0
-
-[node name="HBox" type="HBoxContainer" parent="CanvasLayer/VBox"]
-margin_right = 360.0
-margin_bottom = 170.0
-size_flags_vertical = 11
-custom_constants/separation = 48
-alignment = 1
-
-[node name="VBox1" type="VBoxContainer" parent="CanvasLayer/VBox/HBox"]
-margin_right = 360.0
-margin_bottom = 170.0
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="CanvasLayer/VBox/HBox/VBox1"]
-margin_right = 360.0
-margin_bottom = 15.0
-custom_fonts/font = SubResource( 2 )
-text = "BIRB_YOUR_ITEMS"
-align = 1
-
-[node name="PlayerWeapons" type="VBoxContainer" parent="CanvasLayer/VBox/HBox/VBox1"]
-margin_top = 33.0
-margin_right = 360.0
-margin_bottom = 33.0
-
-[node name="NoAvailableItemsWarning" type="Label" parent="CanvasLayer/VBox"]
-margin_top = 19.0
-margin_right = 360.0
-margin_bottom = 29.0
-custom_colors/font_color = Color( 0.647059, 0.188235, 0.188235, 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "BIRB_NO_TRADE_WRN"
-align = 1
-autowrap = true
-
-[node name="Trade" type="Button" parent="CanvasLayer/VBox"]
-margin_left = 132.0
-margin_top = 174.0
-margin_right = 228.0
-margin_bottom = 190.0
-size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 4 )
-text = "BIRB_TRADE_BTN"
-script = ExtResource( 6 )
-isNegative = true
-
-[node name="Exit" type="Button" parent="CanvasLayer/VBox"]
-margin_left = 149.0
-margin_top = 194.0
-margin_right = 210.0
-margin_bottom = 210.0
-size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 4 )
-text = "EXIT_BTN"
-script = ExtResource( 6 )
-isNegative = true
-
-[node name="Prompts" type="VBoxContainer" parent="CanvasLayer"]
-anchor_bottom = 1.0
-alignment = 2
-
-[node name="Prompt" parent="CanvasLayer/Prompts" instance=ExtResource( 7 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 210.0
-margin_right = 44.0
-margin_bottom = 220.0
-promptText = "Exit"
-promptAction = "pause,interact"
-
-[connection signal="dialog_finished" from="Birb" to="." method="open_shop"]
-[connection signal="pressed" from="CanvasLayer/VBox/Trade" to="." method="swap_items"]
-[connection signal="pressed" from="CanvasLayer/VBox/Exit" to="." method="open_shop" binds= [ false ]]
+[connection signal="dialog_finished" from="Birb" to="." method="swap_items"]
