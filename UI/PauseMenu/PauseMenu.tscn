@@ -50,7 +50,7 @@ scale = 0.1
 scale_curve = SubResource( 10 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 10
+size = 8
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
@@ -114,7 +114,7 @@ custom_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
 margin_left = 9.0
-margin_right = 113.0
+margin_right = 104.0
 margin_bottom = 195.0
 custom_constants/separation = 0
 alignment = 2
@@ -128,8 +128,8 @@ custom_fonts/font = ExtResource( 5 )
 text = "PAUSE_TTL"
 
 [node name="Continue" type="Button" parent="Margin/VBoxContainer"]
-margin_top = 144.0
-margin_right = 104.0
+margin_top = 147.0
+margin_right = 95.0
 margin_bottom = 163.0
 custom_fonts/font = SubResource( 2 )
 text = "CONTINUE_BTN"
@@ -138,7 +138,7 @@ script = ExtResource( 3 )
 
 [node name="Options" type="Button" parent="Margin/VBoxContainer"]
 margin_top = 163.0
-margin_right = 104.0
+margin_right = 95.0
 margin_bottom = 179.0
 custom_fonts/font = ExtResource( 14 )
 text = "OPTIONS_M_BTN"
@@ -149,7 +149,7 @@ toPth = NodePath("../../../OptionsMenu")
 
 [node name="Hub" type="Button" parent="Margin/VBoxContainer"]
 margin_top = 179.0
-margin_right = 104.0
+margin_right = 95.0
 margin_bottom = 195.0
 custom_fonts/font = ExtResource( 14 )
 text = "MAIN_MENU_BTN"

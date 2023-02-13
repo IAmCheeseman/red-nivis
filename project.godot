@@ -585,6 +585,7 @@ window/size/width=360
 window/size/height=220
 window/size/test_width=1080
 window/size/test_height=660
+window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
