@@ -23,7 +23,9 @@ func _on_interaction() -> void:
 
 
 func spawn_medkits() -> void:
-	var medkitsToSpawn := ceil((playerData.maxHealth - playerData.health) / 25) + 1
+	var medkitsToSpawn := 0
+	while medkitsToSpawn * 25 < playerData.maxHealth - playerData.health:
+		medkitsToSpawn += 1
 	
 	var angleDiff := 17
 	for i in medkitsToSpawn:
