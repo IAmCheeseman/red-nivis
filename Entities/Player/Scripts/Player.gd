@@ -80,7 +80,6 @@ func _ready():
 # warning-ignore:incompatible_ternary
 	gravity = Globals.GRAVITY * scale.x if !GameManager.underwater else Globals.WATER_GRAVITY
 
-
 func _physics_process(delta: float) -> void:
 	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
 	healVignette.modulate.a = lerp(healVignette.modulate.a, 0, 1.25*delta)

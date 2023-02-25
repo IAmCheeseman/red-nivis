@@ -49,6 +49,8 @@ radius = 5.0
 [node name="DamageBoostPickup" type="KinematicBody2D"]
 collision_layer = 0
 script = ExtResource( 2 )
+friction = 300.0
+speed = 300.0
 incdec = 0.4
 
 [node name="Sprite" type="Sprite" parent="."]
