@@ -32,13 +32,13 @@ extents = Vector2( 48, 32.75 )
 extents = Vector2( 60.5, 35.25 )
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 19, 27.5 )
+extents = Vector2( 14, 27.5 )
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 19, 14 )
 
 [sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 7, 3.5 )
+extents = Vector2( 3.5, 3.5 )
 
 [sub_resource type="CanvasItemMaterial" id=16]
 blend_mode = 1
