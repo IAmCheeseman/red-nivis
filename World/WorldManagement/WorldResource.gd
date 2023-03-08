@@ -87,4 +87,4 @@ func set_starting_position() -> void:
 
 
 func open_exits() -> void:
-	world.doors.set_collision_layer_bit(0, 0)
+	world.open_doors()

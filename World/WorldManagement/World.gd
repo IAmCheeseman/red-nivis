@@ -66,14 +66,28 @@ func _ready() -> void:
 	
 	yield(TempTimer.idle_frame(self, 6), "timeout")
 	
-	if (worldData.get_current_room().cleared or worldData.get_current_room().constantRoom != null)\
-	and !worldData.bossAlive:
-		doors.set_collision_layer_bit(0, 0)
-
+	if !((worldData.get_current_room().cleared or worldData.get_current_room().constantRoom != null)\
+	and !worldData.bossAlive):
+		close_doors()
 
 func _process(delta: float) -> void:
 	player.playerData.time += delta
 
+func close_doors() -> void:
+	for i in doors.get_used_cells():
+		var index = doors.get_cellv(i)
+		if index >= 4: # Already closed
+			continue
+		doors.set_cellv(i, index + 4)
+		doors.update_bitmask_area(i)
+
+func open_doors() -> void:
+	for i in doors.get_used_cells():
+		var index = doors.get_cellv(i)
+		if index < 4: # Already open
+			continue
+		doors.set_cellv(i, index - 4)
+		doors.update_bitmask_area(i)
 
 func _on_index_timer_timeout() -> void:
 	emit_signal("added_enemies", enemies)
@@ -81,13 +95,11 @@ func _on_index_timer_timeout() -> void:
 	roomClearer.isChecking = true
 	roomClearer.add_enemies()
 
-
 func _on_drop_gun(gun, pos) -> void:
 	gun.position = pos
 	gun.isPickedUp = false
 	gun.set_logic(false)
 	GameManager.spawnManager.add_item(gun)
-
 
 func _on_load_area(area: Area2D, direction: Vector2) -> void:
 	if !area.is_in_group("player") or alreadyExited or player.playerData.isDead:
@@ -111,7 +123,6 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 
 	screenTrans.out()
 
-
 func _on_enemies_cleared(remove:bool=automaticBlockRemoval) -> void:
 	if rand_range(0, 1) < .5 and waves < 1 and lockedIn:
 		generator.spawn_enemies()
@@ -123,7 +134,7 @@ func _on_enemies_cleared(remove:bool=automaticBlockRemoval) -> void:
 	
 	roomClearer.isChecking = false
 	if remove and !worldData.bossAlive:
-		doors.set_collision_layer_bit(0, 0)
+		open_doors()
 
 	var currRoom = worldData.get_current_room()
 	if currRoom.cleared or currRoom.constantRoom: return
