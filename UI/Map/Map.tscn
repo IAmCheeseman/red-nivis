@@ -1,39 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/Map/Map.gd" type="Script" id=1]
 [ext_resource path="res://UI/Map/MapTiles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Assets/ui.png" type="Texture" id=3]
-[ext_resource path="res://UI/Map/MapAlpha.png" type="Texture" id=4]
 [ext_resource path="res://UI/Map/MapGenerator.gd" type="Script" id=5]
 [ext_resource path="res://UI/ButtonPrompt/Prompt.tscn" type="PackedScene" id=6]
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
 region = Rect2( 136, 65, 14, 13 )
-
-[sub_resource type="Shader" id=7]
-code = "shader_type canvas_item;
-
-uniform bool isOn = true;
-uniform sampler2D alpha;
-
-const float PI = 3.14;
-
-void fragment() {
-	vec4 color = texture(TEXTURE, UV);
-	if (isOn) {
-		float beforeA = 1.0-color.a;
-		color.a = texture(alpha, SCREEN_UV).r;
-		color.a = mix(color.a, 0.0, beforeA);
-	}
-
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
-shader_param/isOn = true
-shader_param/alpha = ExtResource( 4 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
@@ -46,7 +21,6 @@ rect_pivot_offset = Vector2( -121, 63 )
 mouse_filter = 2
 
 [node name="Prompts" type="VBoxContainer" parent="."]
-visible = false
 anchor_bottom = 1.0
 margin_right = 71.0
 alignment = 2
@@ -54,23 +28,23 @@ alignment = 2
 [node name="Prompt" parent="Prompts" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 213.0
+margin_top = 210.0
 margin_right = 71.0
 margin_bottom = 220.0
 promptText = "CLOSE_MAP_PRMPT"
 promptAction = "map"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-alignment = 2
 
 [node name="ViewportContainer" type="ViewportContainer" parent="VBoxContainer"]
-margin_top = 172.0
-margin_right = 48.0
+margin_right = 360.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 48, 48 )
 mouse_filter = 2
+size_flags_vertical = 3
 stretch = true
 script = ExtResource( 1 )
 __meta__ = {
@@ -81,35 +55,21 @@ __meta__ = {
 script = ExtResource( 5 )
 tilesPath = NodePath("../Viewport/MapTiles")
 
-[node name="Node2D" type="Node2D" parent="VBoxContainer/ViewportContainer"]
-z_index = -1
-
-[node name="Blur" type="ColorRect" parent="VBoxContainer/ViewportContainer/Node2D"]
-visible = false
-margin_right = 320.0
-margin_bottom = 220.0
-rect_min_size = Vector2( 320, 220 )
-color = Color( 0, 0, 0, 0.678431 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Selection" type="Sprite" parent="VBoxContainer/ViewportContainer"]
-visible = false
 position = Vector2( 0, -172 )
 texture = SubResource( 9 )
 centered = false
 
 [node name="Viewport" type="Viewport" parent="VBoxContainer/ViewportContainer"]
-size = Vector2( 48, 48 )
+size = Vector2( 360, 220 )
 own_world = true
 transparent_bg = true
 handle_input_locally = false
+hdr = false
 usage = 0
 render_target_update_mode = 3
 
 [node name="MapTiles" parent="VBoxContainer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
-material = SubResource( 8 )
 
 [node name="Player" type="Sprite" parent="VBoxContainer/ViewportContainer/Viewport"]
 texture = SubResource( 3 )
@@ -117,4 +77,13 @@ texture = SubResource( 3 )
 [node name="Camera" type="Camera2D" parent="VBoxContainer/ViewportContainer/Viewport"]
 current = true
 
-[node name="Tween" type="Tween" parent="VBoxContainer/ViewportContainer"]
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ViewportContainer"]
+z_index = -1
+
+[node name="Blur" type="ColorRect" parent="VBoxContainer/ViewportContainer/Node2D"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 360.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 360, 220 )
+color = Color( 0, 0, 0, 0.678431 )

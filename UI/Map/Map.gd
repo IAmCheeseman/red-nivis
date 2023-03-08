@@ -12,13 +12,15 @@ onready var prompts = $"../../Prompts"
 
 var mapData = preload("res://World/WorldManagement/WorldData.tres")
 
-var inMiniMode := true
 var miniPosition:Vector2
 var miniSize:Vector2
 var playerTarget: Vector2
 
 
 func _ready() -> void:
+	hide()
+	prompts.hide()
+	
 	yield(TempTimer.idle_frame(self), "timeout")
 	miniPosition = rect_position
 	miniSize = rect_size
@@ -30,45 +32,20 @@ func _ready() -> void:
 	player.position = camera.position - (mapData.moveDir * (tiles.cell_size * 1))
 	playerTarget = camera.position
 	camera.position = player.position
-	
-	var tween = $Tween
-	tween.interpolate_property(
-		player, "position",
-		player.position, playerTarget,
-		.7, Tween.TRANS_ELASTIC
-	)
-	tween.start()
 
-
-func _process(_delta: float) -> void:
-	if inMiniMode:
-		camera.position = player.position
-	prompts.visible = !inMiniMode
-
+func _process(delta: float) -> void:
+	blur.rect_size = get_viewport_rect().end
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("map"):
-		if inMiniMode and !GameManager.inGUI:
-			rect_position = Vector2.ZERO
-			rect_size = get_viewport_rect().end
-			viewport.size = rect_size
-			blur.show()
-			blur.rect_size = rect_size
-			inMiniMode = false
-			GameManager.inGUI = true
-			tiles.material.set_shader_param("isOn", false)
-		elif !inMiniMode:
-			rect_position = miniPosition
-			rect_size = miniSize
-			viewport.size = rect_size
-			blur.hide()
-			camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
-			inMiniMode = true
-			GameManager.inGUI = false
-			tiles.material.set_shader_param("isOn", true)
+		if !visible and GameManager.inGUI:
+			return
+		visible = not visible
+		prompts.visible = not prompts.visible
+		GameManager.inGUI = visible
 	
 	if event is InputEventMouseMotion\
 	and Input.is_action_pressed("use_item")\
-	and !inMiniMode:
+	and visible:
 		camera.position -= event.relative
 		return
