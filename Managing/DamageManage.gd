@@ -43,6 +43,7 @@ func _ready() -> void:
 	if hurtSFXPath: hurtSFX = get_node(hurtSFXPath)
 	health = maxHealth
 	if isBoss:
+		GameManager.worldData.bossAlive = true
 		var playerData = preload("res://Entities/Player/Player.tres")
 		playerData.connect("healthChanged", self, "_on_player_took_damage")
 
@@ -126,6 +127,8 @@ func _die(dir: Vector2) -> void:
 			scoreInc = Globals.HARD_ENEMY_POINTS
 			GameManager.player.playerData.healMaterial += Globals.HARD_MATERIAL_POINTS * (maxHealth / 800.0)
 	if isBoss:
+		GameManager.worldData.bossAlive = false
+		GameManager.worldData.open_exits()
 		scoreInc += Globals.BOSS_KILL
 	else:
 		GameManager.emit_signal("screenshake", 1, 2, .025, .1)
@@ -142,7 +145,7 @@ func _die(dir: Vector2) -> void:
 
 	if steamAchievement != "": Achievement.unlock(steamAchievement)
 
-	if isBoss and !	playerTookDamage:
+	if isBoss and !playerTookDamage:
 		Achievement.unlock("NO_HIT")
 
 	if freeOnDeath: par.queue_free()

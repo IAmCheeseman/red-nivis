@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Entities/Enemies/Bosses/LabsBoss/Boss.png" type="Texture" id=1]
 [ext_resource path="res://Entities/Enemies/Bosses/LabsBoss/Arm.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Entities/DamageManager.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/WorldManagement/RoomGenerator.gd" type="Script" id=8]
 [ext_resource path="res://Entities/Effects/EnemySpawnGrow.png" type="Texture" id=9]
-[ext_resource path="res://Managing/MoneyDropper.gd" type="Script" id=10]
 [ext_resource path="res://Entities/Effects/Blood/Blood.tscn" type="PackedScene" id=11]
 [ext_resource path="res://General/BossDropper.gd" type="Script" id=12]
 
@@ -216,11 +215,6 @@ position = Vector2( 0, -10 )
 enabled = true
 cast_to = Vector2( -50, 0 )
 
-[node name="MoneyDropper" type="Node2D" parent="."]
-script = ExtResource( 10 )
-moneyRange = Vector2( 1, 25 )
-valueRange = Vector2( 5, 15 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 2, -11 )
@@ -272,7 +266,6 @@ deathParticles = ExtResource( 11 )
 script = ExtResource( 12 )
 spritePath = NodePath("../Sprite")
 
-[connection signal="dead" from="." to="MoneyDropper" method="drop_money"]
 [connection signal="hurt" from="Collisions/Hurtbox" to="DamageManager" method="take_damage"]
 
 [editable path="Collisions/PlayerDetection"]

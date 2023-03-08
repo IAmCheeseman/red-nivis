@@ -23,7 +23,7 @@ var underwater = false
 var player: Node2D
 var mainTileset: TileMap
 
-var worldData = preload("res://World/WorldManagement/WorldData.tres")
+var worldData := preload("res://World/WorldManagement/WorldData.tres")
 
 # warning-ignore:unused_signal
 signal screenshake

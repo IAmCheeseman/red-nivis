@@ -1,6 +1,7 @@
 extends Resource
 class_name WorldData
 
+var bossAlive := false
 var rooms := []
 var acquiredPassives := []
 var position := Vector2.ZERO
@@ -10,6 +11,7 @@ var playerPos := Vector2(160, 32)
 var savePlayerPos := Vector2.ZERO
 var worldSeed: int
 var lastUsedTemplate: String
+var world: Node2D
 
 const BIOMES = [
 	"res://World/Biomes/Lab.tres",
@@ -84,3 +86,5 @@ func set_starting_position() -> void:
 				return
 
 
+func open_exits() -> void:
+	world.doors.set_collision_layer_bit(0, 0)

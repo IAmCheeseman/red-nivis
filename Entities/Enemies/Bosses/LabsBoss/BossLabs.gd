@@ -6,7 +6,6 @@ var fireStates = [FIRE_FAST, FIRE_SHOTGUN, FIRE_CHARGE]
 # Visuals
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
-onready var hpBar = $BossBar/VBoxContainer/ProgressBar
 
 # Collisions
 onready var playerDetection = $Collisions/PlayerDetection
@@ -24,8 +23,6 @@ onready var gunAnim = $Gun/AnimationPlayer
 onready var barrelEnd = $Gun/BarrelEnd
 
 # Exports
-
-
 export var maxSpeed := 320
 export var backwardsMod := .5
 export var accel := 5.0

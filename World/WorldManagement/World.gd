@@ -30,6 +30,8 @@ var alreadyExited := false
 signal added_enemies
 
 func _ready() -> void:
+	worldData.world = self
+	
 	AudioServer.set_bus_effect_enabled(4, 0, true)
 	AudioServer.set_bus_effect_enabled(5, 0, true)
 	
@@ -64,7 +66,8 @@ func _ready() -> void:
 	
 	yield(TempTimer.idle_frame(self, 6), "timeout")
 	
-	if worldData.get_current_room().cleared or worldData.get_current_room().constantRoom != null:
+	if (worldData.get_current_room().cleared or worldData.get_current_room().constantRoom != null)\
+	and !worldData.bossAlive:
 		doors.set_collision_layer_bit(0, 0)
 
 
@@ -100,7 +103,8 @@ func _on_load_area(area: Area2D, direction: Vector2) -> void:
 	timer.start()
 
 	var room = worldData.get_current_room()
-	if enemies.get_child_count() == 0: room.cleared = true
+	if enemies.get_child_count() == 0: 
+		room.cleared = true
 
 	worldData.position += direction
 	worldData.moveDir = direction
@@ -116,8 +120,9 @@ func _on_enemies_cleared(remove:bool=automaticBlockRemoval) -> void:
 		var timer = get_tree().create_timer(2.9)
 		timer.connect("timeout", self, "_on_index_timer_timeout")
 		return
+	
 	roomClearer.isChecking = false
-	if remove:
+	if remove and !worldData.bossAlive:
 		doors.set_collision_layer_bit(0, 0)
 
 	var currRoom = worldData.get_current_room()

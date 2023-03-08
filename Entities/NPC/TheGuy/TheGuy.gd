@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 		# Stretch
 		sprite.frame = 1
 		sprite.scale.y = clamp((1 / vel.length()) * 275, .5, 1.5)
-		sprite.scale.x = (1-sprite.scale.y) + 1 
+		sprite.scale.x = (1 - sprite.scale.y) + 1
 		sprite.rotation = vel.angle()
 		
 		# Bounce
