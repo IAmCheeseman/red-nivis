@@ -58,7 +58,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 116.039
+radius = 274.729
 
 [sub_resource type="CapsuleShape2D" id=4]
 height = 26.0
@@ -197,7 +197,6 @@ frame = 16
 visible = false
 
 [node name="PlayerDetection" parent="Collisions" instance=ExtResource( 4 )]
-visible = false
 position = Vector2( 2, -40 )
 
 [node name="CollisionShape2D" parent="Collisions/PlayerDetection" index="0"]
