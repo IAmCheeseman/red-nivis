@@ -21,7 +21,7 @@ export var kbStrength:int = 45
 export var maxDashes:int = 1
 export var recoveryTime:float = 2.0
 export var maxStamina := 5
-export var staminaRecovery := 2.4
+export var staminaRecovery := 1.0
 export var stamRecovCurve: Curve
 export var tiltStrength:float = 5.0
 export var healTime := 2.0

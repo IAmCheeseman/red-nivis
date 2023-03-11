@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://Managing/Colliders/Hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RadialGradient.png" type="Texture" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://Entities/Player/Heal.gd" type="Script" id=19]
 [ext_resource path="res://Entities/Player/Assets/Jump.wav" type="AudioStream" id=20]
 [ext_resource path="res://Entities/Player/Assets/Arm1.png" type="Texture" id=21]
-[ext_resource path="res://Entities/Player/StaminaBar.gd" type="Script" id=22]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=23]
 [ext_resource path="res://UI/DebugConsole/DebugConsole.tscn" type="PackedScene" id=24]
 [ext_resource path="res://UI/GameOverlay/GameOverlay.tscn" type="PackedScene" id=25]
@@ -766,7 +765,6 @@ shadow_filter_smooth = 5.0
 
 [node name="ScaleHelper" type="Node2D" parent="."]
 position = Vector2( 0, 5 )
-scale = Vector2( 1.8, 0.2 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
 material = SubResource( 4 )
@@ -989,21 +987,6 @@ mouse_filter = 2
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource( 26 )]
 visible = false
-
-[node name="Stamina" type="HBoxContainer" parent="."]
-margin_left = -24.0
-margin_top = -30.0
-margin_right = 24.0
-margin_bottom = -25.0
-custom_constants/separation = 1
-alignment = 1
-script = ExtResource( 22 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RegainTimer" type="Timer" parent="Stamina"]
-wait_time = 3.0
 
 [node name="HealProgress" type="TextureProgress" parent="."]
 visible = false

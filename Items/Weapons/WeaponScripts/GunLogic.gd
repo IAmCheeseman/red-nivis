@@ -117,8 +117,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("melee")\
 	and !swinging\
 	and gun.meleeCooldown.is_stopped()\
-	and !GameManager.inGUI\
-	and playerData.stamina > 0:
+	and !GameManager.inGUI:
 		melee()
 
 

@@ -45,16 +45,7 @@ func update_stamina() -> void:
 
 
 func _on_stamina_changed() -> void:
-	if playerData.stamina != 0:
-		# Getting the point on a curve for stamina regain time
-		if !regainTimer.is_inside_tree(): yield(TempTimer.idle_frame(self), "timeout")
-		regainTimer.start(
-			playerData.staminaRecovery * playerData.stamRecovCurve.interpolate_baked(
-				(healed + .01) / 1
-			)
-		)
-	else:
-		regainTimer.start(playerData.staminaRecovery)
+	regainTimer.start(playerData.staminaRecovery)
 	update_stamina()
 
 
