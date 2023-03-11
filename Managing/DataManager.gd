@@ -37,7 +37,7 @@ func load_data(path) -> Dictionary:
 
 
 func clear_data(path) -> void:
-	var save_path = SAVE_DIR+path
+	var save_path = SAVE_DIR + path
 	var dir = Directory.new()
 	if !dir.dir_exists(SAVE_DIR):
 		dir.make_dir_recursive(SAVE_DIR)

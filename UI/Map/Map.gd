@@ -27,9 +27,9 @@ func _ready() -> void:
 	
 	mapGenerator.generate_map()
 	
-	camera.position = mapData.position*tiles.cell_size+tiles.cell_size*.5
+	camera.position = mapData.position * tiles.cell_size + tiles.cell_size * 0.5
 	camera.position = camera.position.round()
-	player.position = camera.position - (mapData.moveDir * (tiles.cell_size * 1))
+	player.position = camera.position
 	playerTarget = camera.position
 	camera.position = player.position
 
