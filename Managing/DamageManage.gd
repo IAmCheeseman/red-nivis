@@ -30,7 +30,6 @@ var health:int
 export var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticles.tscn")
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var corpse = preload("res://Entities/Effects/EnemyCorpse.tscn")
-var damageBoosters = preload("res://Entities/Enemies/DamageBoostPickup/DamageBoostPickup.tscn")
 var playerData = preload("res://Entities/Player/Player.tres")
 
 signal dead
@@ -135,10 +134,6 @@ func _die(dir: Vector2) -> void:
 
 		var hurtbox = owner.find_node("Hurtbox")
 		yield(TempTimer.idle_frame(self), "timeout")
-		if hurtbox.lastHitNode:
-			var newDamageBoost = damageBoosters.instance()
-			newDamageBoost.global_position = global_position
-			GameManager.spawnManager.spawn_object(newDamageBoost)
 
 	GameManager.player.playerData.score += scoreInc
 	GameManager.player.playerData.kills += 1

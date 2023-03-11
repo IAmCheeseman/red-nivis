@@ -139,8 +139,8 @@ func melee() -> void:
 	newSwing.reflectDir = Utils.get_local_mouse_position(self).normalized()
 	owner.add_child(newSwing)
 
-	var hb = newSwing.get_node("Hitbox")
-	hb.damage = (gun.damage * (gun.multishot * 0.5)) * 0.75\
+	var hitbox = newSwing.get_node("Hitbox")
+	hitbox.damage = (gun.damage * (gun.multishot * 0.5)) * 0.75\
 		if gun.meleeDamageOverride == -1\
 		else gun.meleeDamageOverride
 

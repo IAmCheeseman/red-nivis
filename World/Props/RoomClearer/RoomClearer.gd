@@ -27,7 +27,7 @@ func add_enemies() -> void:
 			continue
 		if !i.has_node("DamageManager"): 
 			break
-		var _discard = i.get_node("DamageManager").connect("dead", self, "_on_enemy_die", [i])
+		var _discard = i.get_node("DamageManager").connect("dead", self, "_on_enemy_die", [ i ])
 
 func _process(_delta: float) -> void:
 	if enemies.get_child_count() == 0 and isChecking:

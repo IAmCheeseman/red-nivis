@@ -43,8 +43,6 @@ var ammo:int setget set_ammo
 var healMaterial := 0 setget set_heal_mat
 var dashesLeft := 1
 
-var orbOn = false
-
 var unlockedEntries := [
 	"res://Entities/Enemies/MiniDeathMachine/BestiaryEntry.tres",
 	"res://Entities/Enemies/MiniHank/BestiaryEntry.tres",

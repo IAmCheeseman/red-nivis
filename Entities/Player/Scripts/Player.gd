@@ -32,7 +32,6 @@ onready var healVignette := $CanvasLayer/HealVig
 onready var gameOverlay := $CanvasLayer/GameOverlay
 onready var tileChecker := $TileCheckers/BottomTileChecker
 onready var djParticles := $DoubleJumpParticles
-onready var dmgBuffOrb := $ScaleHelper/SpinningOrb
 onready var passives = $Passives
 
 var vel := Vector2.ZERO
@@ -80,9 +79,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	healthVig.modulate.a = lerp(healthVig.modulate.a, 0, 5.0*delta)
 	healVignette.modulate.a = lerp(healVignette.modulate.a, 0, 1.25*delta)
-
-	dmgBuffOrb.visible = playerData.orbOn
-
+	
 	# Controller stuff
 	if !GameManager.usingController: for i in 16:
 		if Input.is_joy_button_pressed(0, i):
