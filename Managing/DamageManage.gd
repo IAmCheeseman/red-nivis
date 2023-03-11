@@ -74,9 +74,6 @@ func take_damage(amount:int, dir:Vector2) -> void:
 	if par.has_method("update_healthbar"):
 		par.update_healthbar()
 
-	if get_parent().find_node("Hurtbox").lastHitNode:
-		playerData.ammo += ceil(playerData.maxAmmo / 3)
-
 	# Killing thingy
 	if health <= 0 and !alreadyDied:
 		_die(dir)

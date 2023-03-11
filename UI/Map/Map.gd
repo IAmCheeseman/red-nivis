@@ -33,7 +33,7 @@ func _ready() -> void:
 	playerTarget = camera.position
 	camera.position = player.position
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	blur.rect_size = get_viewport_rect().end
 
 func _input(event: InputEvent) -> void:

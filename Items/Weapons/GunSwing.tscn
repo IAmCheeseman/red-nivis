@@ -116,5 +116,6 @@ autoplay = true
 bus = "ReverbLow"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_area_entered"]
+[connection signal="hit_object" from="Hitbox" to="." method="_on_hitbox_hit_object"]
 
 [editable path="Hitbox"]
