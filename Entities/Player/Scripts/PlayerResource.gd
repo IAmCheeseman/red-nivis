@@ -103,7 +103,6 @@ signal updateAbilities
 func _init() -> void:
 	health = 100
 
-
 func _on_damage_taken(damage: int, kbDir: Vector2) -> void:
 	if playerObject.state == playerObject.states.DASH or immune:
 		return
@@ -111,7 +110,6 @@ func _on_damage_taken(damage: int, kbDir: Vector2) -> void:
 	if Settings.doubleDamageMode: health -= int(damage)
 	health = int(clamp(health, 0, maxHealth))
 	emit_signal("healthChanged", kbDir)
-
 
 func heal(h: int) -> void:
 	health += h
@@ -123,21 +121,17 @@ func heal(h: int) -> void:
 	)
 	emit_signal("updateHealthUI")
 
-
 func set_money(val):
 	money = val
 	emit_signal("moneyChanged")
-
 
 func set_ammo(value:int) -> void:
 	ammo = value
 	emit_signal("ammoChanged")
 
-
 func set_heal_mat(value:int) -> void:
 	healMaterial = int(clamp(value, 0, 100))
 	emit_signal("healMaterialChanged")
-
 
 func set_stamina(val:int) -> void:
 	stamina = val

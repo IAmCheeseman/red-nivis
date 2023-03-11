@@ -57,7 +57,7 @@ func _physics_process(delta) -> void:
 	if local.x < 0: gun.visuals.scale.y = -1
 	else: gun.visuals.scale.y = 1
 	# Showing the gun behind the parent based on rotation
-	#gun.get_parent().show_behind_parent = local.y < 0
+	gun.get_parent().show_behind_parent = local.y < 0
 
 	# Settling the rotation of the gun down after it's been kicked up
 	if !swinging:
@@ -69,16 +69,14 @@ func _physics_process(delta) -> void:
 		pivot.rotation += 12*delta*swingDir
 		if abs(pivot.rotation_degrees-swingStartDeg) > 65*2:
 			swinging = false
-	if !gun.isReloading or gun.reloadAngle == 0: gun.visuals.rotation = lerp_angle(gun.visuals.rotation, 0, 4*delta)
+	gun.visuals.rotation = lerp_angle(gun.visuals.rotation, 0, 4*delta)
 	pivot.scale = pivot.scale.move_toward(Vector2.ONE, 6*delta)
 
 	gun.visuals.position = gun.visuals.position.move_toward(gun.gunPos, 30 * delta)
 
 	# Shooting
 	var hasEnoughAmmo := playerData.ammo > 0
-
-	playerData.isReloading = gun.isReloading
-
+	
 	if Input.is_action_pressed("use_item")\
 	and gun.canShoot\
 	and hasEnoughAmmo\
@@ -130,15 +128,15 @@ func _input(event: InputEvent) -> void:
 func melee() -> void:
 	playerData.stamina -= 1
 	
-	var recoil = get_local_mouse_position().normalized()*gun.recoil
+	var recoil = get_local_mouse_position().normalized() * gun.recoil
 	recoil.y /= 5
 	playerData.playerObject.vel += recoil
 
 	swinging = true
 	swingDir = -swingDir
-	pivot.rotation_degrees -= 65*swingDir
+	pivot.rotation_degrees -= 65 * swingDir
 	swingStartDeg = pivot.rotation_degrees
-	pivot.scale = Vector2.ONE*1.5
+	pivot.scale = Vector2.ONE * 1.5
 
 
 	var angle = Utils.get_local_mouse_position(self).angle()
@@ -149,9 +147,9 @@ func melee() -> void:
 	owner.add_child(newSwing)
 
 	var hb = newSwing.get_node("Hitbox")
-	hb.damage = gun.damage*1.25 if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride
+	hb.damage = gun.damage * 1.25 if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride
 
-	newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle)*8
+	newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle) * 8
 
 	GameManager.emit_signal(
 		"screenshake",

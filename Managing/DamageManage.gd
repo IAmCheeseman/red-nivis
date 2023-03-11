@@ -31,6 +31,7 @@ export var deathParticles = preload("res://Entities/Enemies/Assets/DeathParticle
 var healthPickup = preload("res://Items/HealthPickup/HealthPickup.tscn")
 var corpse = preload("res://Entities/Effects/EnemyCorpse.tscn")
 var damageBoosters = preload("res://Entities/Enemies/DamageBoostPickup/DamageBoostPickup.tscn")
+var playerData = preload("res://Entities/Player/Player.tres")
 
 signal dead
 signal damaged
@@ -44,7 +45,6 @@ func _ready() -> void:
 	health = maxHealth
 	if isBoss:
 		GameManager.worldData.bossAlive = true
-		var playerData = preload("res://Entities/Player/Player.tres")
 		playerData.connect("healthChanged", self, "_on_player_took_damage")
 
 
@@ -58,7 +58,7 @@ func take_damage(amount:int, dir:Vector2) -> void:
 	var defenseReduction := 0
 	if defense > 0: defenseReduction = int(float(defense) / 2.0)
 	health -= int(clamp(amount - defenseReduction, 1, INF))
-	if par.get("vel") and kbEnabled: par.vel = dir*kbAmount-Vector2(0, upwardsKB)
+	if par.get("vel") and kbEnabled: par.vel = dir * kbAmount - Vector2(0, upwardsKB)
 
 	var newDP = deathParticles.instance()
 	newDP.position = global_position
@@ -73,6 +73,9 @@ func take_damage(amount:int, dir:Vector2) -> void:
 	# Updating the healthbar
 	if par.has_method("update_healthbar"):
 		par.update_healthbar()
+
+	if get_parent().find_node("Hurtbox").lastHitNode:
+		playerData.ammo += ceil(playerData.maxAmmo / 3)
 
 	# Killing thingy
 	if health <= 0 and !alreadyDied:

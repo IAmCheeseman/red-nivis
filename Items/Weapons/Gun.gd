@@ -59,7 +59,6 @@ onready var ogSprite = visuals.texture
 var standingOver := false
 var canShoot := false
 var canSwing := true
-var isReloading := false
 var invenIdx = 0
 var player: Resource
 var inventory = preload("res://UI/Inventory/Inventory.tres")
@@ -68,49 +67,22 @@ var inventory = preload("res://UI/Inventory/Inventory.tres")
 func _ready():
 	yield(TempTimer.idle_frame(self), "timeout")
 	player.ammo = inventory.items[invenIdx].ammoLeft
-	if player.ammo == 0:
-		cooldownTimer.start(reloadSpeed)
-		isReloading = true
-	elif player.ammo == -1:
+	if player.ammo == -1:
 		player.ammo = magazineSize
-		canShoot = true
-	else:
-		canShoot = true
+	
+	canShoot = true
 	
 	Cursor.get_node("Sprite").texture = cursor
 
 	meleeCooldown.wait_time = meleeSpeed
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	visuals.texture = ogSprite
-	
-	var setAmt := 1.0
-	if isReloading:
-		if reloadAngle == -1:
-			visuals.rotation -= (20 * (1 + randf() )) * delta
-		elif reloadAngle != 0:
-			visuals.rotation = reloadAngle
-		setAmt = 1.0 - (cooldownTimer.time_left / cooldownTimer.wait_time)
-	Cursor.get_node("Sprite").set_reload_bar(setAmt)
-	
-	if isReloading and reloadSprite:
-		visuals.texture = reloadSprite
 
 
 func _on_Cooldown_timeout():
 	canShoot = true
-	if isReloading:
-		isReloading = false
-		if reloadAmount == -1:
-			player.ammo = player.maxAmmo
-		else:
-			if player.ammo >= player.maxAmmo:
-				return
-			noAmmoClick.play()
-			player.ammo += reloadAmount
-			isReloading = true
-			cooldownTimer.start(reloadSpeed)
 	inventory.items[invenIdx].ammoLeft = player.ammo
 
 

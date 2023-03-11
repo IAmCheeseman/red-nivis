@@ -19,8 +19,8 @@ func shoot():
 		# Creating the bullet.
 		var newBullet = bullet.instance() if !gun.customBullet else gun.customBullet.instance()
 		newBullet.direction = dir.normalized()
-		newBullet.speed = gun.projSpeed+rand_range(gun.projSpeedRange.x, gun.projSpeedRange.y)
-		newBullet.scale = Vector2.ONE*rand_range(gun.projScale.x, gun.projScale.y)
+		newBullet.speed = gun.projSpeed + rand_range(gun.projSpeedRange.x, gun.projSpeedRange.y)
+		newBullet.scale = Vector2.ONE * rand_range(gun.projScale.x, gun.projScale.y)
 		newBullet.peircing = gun.peircing
 		newBullet.lifetime = gun.projLifetime
 		newBullet.global_position = global_position+dir*gun.bulletSpawnDist
@@ -32,7 +32,6 @@ func shoot():
 		GameManager.spawnManager.add_child(newBullet)
 
 		newBullet.damage = gun.damage * playerData.damageMod
-		#yield(TempTimer.idle_frame(self), "timeout")
 		if is_instance_valid(newBullet):
 			if newBullet.get("hitbox"):
 				newBullet.hitbox.effect = gun.perk
@@ -43,7 +42,6 @@ func shoot():
 		# Removing the ability to shoot for X amount of time
 		get_parent().canShoot = false
 		cooldownTimer.start(gun.cooldown*playerData.attackSpeed)
-		gun.isReloading = false
 
 		emit_signal("gun_shot", newBullet)
 
@@ -74,18 +72,11 @@ func shoot():
 
 	gun.player.playerObject.vel.x += (-get_local_mouse_position().normalized()*gun.recoil).x
 	if playerData.ammo <= 0:
-		cooldownTimer.stop()
-		cooldownTimer.start(gun.reloadSpeed)
-		cooldownTimer.set_meta("fromReload", true)
-		gun.isReloading = true
-		gun.visuals.rotation_degrees = gun.kickUp*5.2\
-		if gun.visuals.scale.y == -1\
-		else -gun.kickUp*5.2
+		gun.visuals.rotation_degrees = gun.kickUp * 5.2 \
+			if gun.visuals.scale.y == -1 else -gun.kickUp * 5.2
 		Cursor.get_node("Sprite").rotate_cursor(gun.reloadSpeed, 360)
 	else:
 		Cursor.get_node("Sprite").rotate_cursor(gun.cooldown, 90)
-		cooldownTimer.set_meta("fromReload", false)
-
 
 func _input(_event):
 	if Input.is_action_just_released("use_item"):
