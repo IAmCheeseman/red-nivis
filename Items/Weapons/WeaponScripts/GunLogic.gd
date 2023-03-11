@@ -120,9 +120,6 @@ func _input(event: InputEvent) -> void:
 	and !GameManager.inGUI\
 	and playerData.stamina > 0:
 		melee()
-	if event.is_action_pressed("reload"):
-		cooldownTimer.start(gun.reloadSpeed)
-		gun.isReloading = true
 
 
 func melee() -> void:
