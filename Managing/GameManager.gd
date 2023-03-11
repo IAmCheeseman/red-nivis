@@ -88,7 +88,6 @@ func save_run() -> void:
 	var runData = {
 		"playerData:maxHealth"          : playerData.maxHealth,
 		"playerData:health"             : playerData.health,
-		"playerData:maxStamina"         : playerData.maxStamina,
 		"playerData:money"              : playerData.money,
 		"playerData:upgrades"           : playerData.upgrades,
 		"playerData:passives"           : savedPassives,

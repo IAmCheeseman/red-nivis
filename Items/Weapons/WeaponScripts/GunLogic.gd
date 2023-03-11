@@ -122,8 +122,6 @@ func _input(event: InputEvent) -> void:
 
 
 func melee() -> void:
-	playerData.stamina -= 1
-	
 	var recoil = get_local_mouse_position().normalized() * gun.recoil
 	recoil.y /= 5
 	playerData.playerObject.vel += recoil
@@ -134,7 +132,6 @@ func melee() -> void:
 	swingStartDeg = pivot.rotation_degrees
 	pivot.scale = Vector2.ONE * 1.5
 
-
 	var angle = Utils.get_local_mouse_position(self).angle()
 
 	var newSwing = swing.instance()
@@ -143,7 +140,9 @@ func melee() -> void:
 	owner.add_child(newSwing)
 
 	var hb = newSwing.get_node("Hitbox")
-	hb.damage = gun.damage * 1.25 if gun.meleeDamageOverride == -1 else gun.meleeDamageOverride
+	hb.damage = (gun.damage * (gun.multishot * 0.5)) * 0.75\
+		if gun.meleeDamageOverride == -1\
+		else gun.meleeDamageOverride
 
 	newSwing.global_position = global_position+Vector2.RIGHT.rotated(angle) * 8
 
