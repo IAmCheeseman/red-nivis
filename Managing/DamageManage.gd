@@ -130,7 +130,7 @@ func _die(dir: Vector2) -> void:
 		GameManager.worldData.open_exits()
 		scoreInc += Globals.BOSS_KILL
 	else:
-		GameManager.emit_signal("screenshake", 1, 2, .025, .1)
+		GameManager.emit_signal("screenshake", 2, 2, .025, .2)
 
 		var hurtbox = owner.find_node("Hurtbox")
 		yield(TempTimer.idle_frame(self), "timeout")
