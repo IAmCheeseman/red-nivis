@@ -47,7 +47,6 @@ func shoot():
 
 	# Rotating the gun for juice
 	gun.visuals.rotation_degrees += gun.kickUp*2.2 if gun.visuals.scale.y == -1 else -gun.kickUp*2.2
-	pivot.scale = Vector2(rand_range(1.2, 1.4), rand_range(1.2, 1.4))
 
 	yield(TempTimer.idle_frame(self), "timeout")
 	if gun.bulletSprite:

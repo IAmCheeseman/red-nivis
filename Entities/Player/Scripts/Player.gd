@@ -331,6 +331,7 @@ func die():
 	if playerData.deaths >= 100: Achievement.unlock("100_DEATHS")
 
 	GameManager.clear_run()
+	GameManager.worldData.bossAlive = false
 	GameManager.inGUI = true
 	state = states.DEAD
 	playerData.isDead = true
