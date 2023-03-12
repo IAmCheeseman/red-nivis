@@ -21,5 +21,5 @@ func set_size(size: int, playerSize=null) -> void:
 	charAdder.startDist = size
 	charAdder.endDist = size
 	
-	particles.amount = size / 1.0
+	particles.amount = size * 3
 	particles.restart()
