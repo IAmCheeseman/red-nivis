@@ -242,7 +242,6 @@ autostart = true
 one_shot = true
 
 [node name="BossBar" type="CanvasLayer" parent="."]
-layer = 3
 
 [node name="Bossbar" parent="BossBar" instance=ExtResource( 6 )]
 bossName = "Horace"

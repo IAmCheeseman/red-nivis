@@ -29,4 +29,4 @@ func _on_area_entered(area: Area2D) -> void:
 		)
 
 func _on_hitbox_hit_object(_area: Area2D) -> void:
-	playerData.ammo += int(ceil(float(playerData.maxAmmo) / 3.0))
+	playerData.ammo += int(ceil(float(playerData.maxAmmo) / 2.0))
