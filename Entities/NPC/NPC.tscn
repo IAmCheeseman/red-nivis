@@ -6,6 +6,7 @@
 
 [node name="NPC" type="KinematicBody2D"]
 collision_layer = 0
+collision_mask = 17
 script = ExtResource( 2 )
 
 [node name="ScaleHelper" type="Node2D" parent="."]
