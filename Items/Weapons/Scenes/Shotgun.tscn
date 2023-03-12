@@ -10,8 +10,8 @@
 
 [node name="Shotgun" instance=ExtResource( 1 )]
 gunType = 1
-damage = 42.0
-meleeDamageOverride = 150.0
+damage = 35.0
+meleeDamageOverride = 115.0
 accuracy = 12.0
 cooldown = 0.4
 reloadSpeed = 0.6
@@ -22,6 +22,7 @@ projLifetime = 0.35
 recoil = 255.0
 maxHoldShots = 1
 magazineSize = 3
+maxAmmo = 6
 reloadAmount = 1
 bulletSprite = ExtResource( 3 )
 shellSprite = ExtResource( 4 )
@@ -32,6 +33,7 @@ isTwoHanded = true
 
 [node name="GunLogic" parent="." index="0"]
 script = ExtResource( 7 )
+maxBounces = 3
 
 [node name="BounceRC" type="RayCast2D" parent="GunLogic" index="0"]
 enabled = true

@@ -9,10 +9,11 @@
 [ext_resource path="res://UI/Cursor/CursorBow.tres" type="Texture" id=7]
 
 [node name="Crossbow" instance=ExtResource( 1 )]
-damage = 120.0
+damage = 200.0
 peircing = true
 recoil = 240.0
 magazineSize = 1
+maxAmmo = 5
 reloadSprite = ExtResource( 6 )
 bulletSprite = ExtResource( 4 )
 cursor = ExtResource( 7 )

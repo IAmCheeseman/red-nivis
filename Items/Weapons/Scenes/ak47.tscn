@@ -5,12 +5,13 @@
 
 [node name="ak47" instance=ExtResource( 1 )]
 gunType = 2
-damage = 30.0
-meleeDamageOverride = 200.0
+damage = 25.0
+meleeDamageOverride = 120.0
 accuracy = 6.0
 cooldown = 0.1
 recoil = 40.0
-magazineSize = 10
+magazineSize = 12
+maxAmmo = 20
 kickUp = 5.0
 bulletSpawnDist = 24.0
 ssFreq = 0.04
