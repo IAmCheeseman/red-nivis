@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	percentage += delta / 2
 	
 	targetPos = PLAYER.playerObject.global_position
-	targetPos += Vector2.RIGHT.rotated(deg2rad(360 * percentage)) * 32
+	targetPos += Vector2.RIGHT.rotated(TAU * percentage) * 32
 	targetPos -= Vector2(0, 8)
 	
 	position = position.move_toward(targetPos, 500 * delta)

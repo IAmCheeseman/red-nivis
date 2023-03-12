@@ -30,6 +30,7 @@ func add_item():
 
 		itemHolder.add_child(newItem)
 		
-		playerData.maxAmmo = newItem.magazineSize
-		playerData.ammo = playerData.maxAmmo
+		playerData.maxAmmo = newItem.maxAmmo
+		playerData.magazineSize = newItem.magazineSize
+		playerData.ammo = playerData.magazineSize
 	emit_signal("itemsChanged")

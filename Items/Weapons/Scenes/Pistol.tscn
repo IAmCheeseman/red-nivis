@@ -11,6 +11,7 @@ recoil = 1.0
 cost = 30
 maxHoldShots = 1
 magazineSize = 3
+maxAmmo = 5
 kickUp = 13.0
 bulletSpawnDist = 20.0
 

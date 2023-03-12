@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource( 1 )
 maxHealth = 100
-maxAmmo = 255
+maxAmmo = 10
+magazineSize = 255
 attackSpeed = 1.0
 speedMod = 1.0
 maxSpeed = 160.0

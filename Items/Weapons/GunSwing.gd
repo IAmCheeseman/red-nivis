@@ -13,7 +13,7 @@ func _on_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
 	
 	if body.is_in_group("EnemyBullet"):
-		playerData.ammo += int(ceil(float(playerData.maxAmmo) / 3.0))
+		playerData.ammo += int(ceil(float(playerData.magazineSize) / 3.0))
 		
 		body.direction = reflectDir
 		body.hitbox.collision_mask = 4
@@ -29,4 +29,4 @@ func _on_area_entered(area: Area2D) -> void:
 		)
 
 func _on_hitbox_hit_object(_area: Area2D) -> void:
-	playerData.ammo += int(ceil(float(playerData.maxAmmo) / 2.0))
+	playerData.ammo += int(ceil(float(playerData.magazineSize) / 2.0))

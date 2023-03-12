@@ -66,13 +66,13 @@ const ITEMS = {
 		"scene" : "res://Items/Weapons/Scenes/TripleBarrelPistol.tscn",
 		"slotTexture" : "res://Items/Weapons/Sprites/TripleBarrelPistol.png"
 	},
-	"sniper-rifle" : {
-		"key" : "sniper-rifle",
-		"name" : "SNIPER_RIFLE_ITM",
-		"tier" : ToolTipGenerator.TIERS.LAB,
-		"scene" : "res://Items/Weapons/Scenes/SniperRifle.tscn",
-		"slotTexture" : "res://Items/Weapons/Sprites/SniperRifle.png"
-	},
+#	"sniper-rifle" : {
+#		"key" : "sniper-rifle",
+#		"name" : "SNIPER_RIFLE_ITM",
+#		"tier" : ToolTipGenerator.TIERS.LAB,
+#		"scene" : "res://Items/Weapons/Scenes/SniperRifle.tscn",
+#		"slotTexture" : "res://Items/Weapons/Sprites/SniperRifle.png"
+#	},
 	# DEEP LABS ITEMS
 	"fire-shotgun" : {
 		"key" : "fire-shotgun",

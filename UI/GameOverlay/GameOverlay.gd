@@ -12,9 +12,7 @@ onready var healBarTween = $VBox/Health/HealProgress/HealProgressTween
 
 # Ammo bar
 #onready var ammoBar = $VBox/Bottom/AmmoBar/Icons
-onready var ammoBar = $VBox/Health/VBoxContainer/AmmoBar/TextureProgress
 onready var reloadNotif = $VBox/Health/VBoxContainer/AmmoBar/ReloadNotif
-onready var ammoTween = $VBox/Health/VBoxContainer/AmmoBar/Tween
 
 onready var grenade = $VBox/Bottom/BombProgressBar
 
@@ -95,13 +93,7 @@ func update_grenade(val: float, enabled: bool) -> void:
 
 
 func update_ammo() -> void:
-	#ammoBar.value = float(playerData.ammo) / float(playerData.maxAmmo)
-	ammoTween.interpolate_property(
-		ammoBar, "value",
-		ammoBar.value, float(playerData.ammo) / float(playerData.maxAmmo),
-		.05
-	)
-	ammoTween.start()
+	pass
 
 
 func update_heals() -> void:

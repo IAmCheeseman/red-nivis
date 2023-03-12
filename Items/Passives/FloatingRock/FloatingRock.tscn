@@ -24,6 +24,7 @@ position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
+visible = false
 collision_mask = 4
 tickRightAway = true
 

@@ -26,6 +26,7 @@ export var cost: int = 1
 export var maxHoldShots: int = -1
 export var customBullet: PackedScene
 export var magazineSize: int = 5
+export var maxAmmo: int = 10
 export(Script) var perk
 export var burst: bool = false
 export var reloadAmount: int = -1

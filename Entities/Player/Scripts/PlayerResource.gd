@@ -2,8 +2,9 @@ extends Resource
 class_name Player
 
 # Stats
-export var maxHealth:int = 3
-export var maxAmmo:int = 255
+export var maxHealth: int = 3
+export var maxAmmo: int = 10
+export var magazineSize: int = 255
 export var attackSpeed: float = 1.0
 
 # Movement
@@ -65,7 +66,7 @@ var unlockedUpgrades := []
 
 var passives := [
 #	{
-#		"item": "res://Items/Passives/BackGun/BackGun.tres",
+#		"item": "res://Items/Passives/FloatingRock/FloatingRock.tres",
 #		"used": false
 #	}
 ]
@@ -118,7 +119,7 @@ func set_money(val):
 	emit_signal("moneyChanged")
 
 func set_ammo(value:int) -> void:
-	ammo = value
+	ammo = clamp(value, 0, maxAmmo)
 	emit_signal("ammoChanged")
 
 func set_heal_mat(value:int) -> void:
