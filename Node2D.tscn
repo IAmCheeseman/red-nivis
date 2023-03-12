@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/EnviormentalArt/Lab/LabSolids.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,9 +7,7 @@
 [ext_resource path="res://Managing/SpawnManagement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/EnviormentalArt/Lab/OneWayPlatforms.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Node2D.gd" type="Script" id=7]
-[ext_resource path="res://World/Props/MedBox/MedBox.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Entities/NPC/David/David.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Entities/Enemies/MinigunMachine/MinigunMachine.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Entities/Enemies/Bosses/LabsBoss/Boss.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2049.75, 134.694 )
@@ -42,22 +40,10 @@ shape = SubResource( 1 )
 
 [node name="SpawningManagment" parent="." instance=ExtResource( 5 )]
 
-[node name="MedBox" parent="." instance=ExtResource( 8 )]
-position = Vector2( 299, 290 )
-
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 249, 216 )
 
-[node name="David" parent="." instance=ExtResource( 9 )]
-position = Vector2( 208, 269 )
-
-[node name="MinigunMachine" parent="." instance=ExtResource( 10 )]
-position = Vector2( 254, 204 )
-
-[node name="MinigunMachine2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 318, 231 )
-
-[node name="MinigunMachine3" parent="." instance=ExtResource( 10 )]
-position = Vector2( 372, 242 )
+[node name="BossLabs" parent="." instance=ExtResource( 8 )]
+position = Vector2( 354, 266 )
 
 [editable path="CameraMoveZone"]

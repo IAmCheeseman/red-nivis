@@ -22,6 +22,8 @@ onready var gun = $Gun
 onready var gunAnim = $Gun/AnimationPlayer
 onready var barrelEnd = $Gun/BarrelEnd
 
+onready var healthbar = $BossBar/Bossbar
+
 # Exports
 export var maxSpeed := 320
 export var backwardsMod := .5
@@ -61,6 +63,9 @@ var fireCount = 0
 var chargeShotCurrentCount = 0
 
 var player: Node2D
+
+func _ready() -> void:
+	healthbar.update_bar()
 
 func _process(delta: float) -> void:
 	vel.y += Globals.GRAVITY * delta

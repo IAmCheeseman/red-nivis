@@ -35,7 +35,7 @@ margin_top = 207.0
 margin_right = 260.0
 margin_bottom = 218.0
 size_flags_horizontal = 4
-value = 50.0
+value = 100.0
 texture_progress = SubResource( 2 )
 
 [node name="RecentDmg" type="TextureProgress" parent="TextureProgress"]
